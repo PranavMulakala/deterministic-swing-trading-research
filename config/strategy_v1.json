@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "strategy_id": "etf_pullback_uptrend_v1",
+  "random_seed": 20260905,
+  "universe": [
+    "SPY",
+    "QQQ",
+    "IWM",
+    "DIA",
+    "XLB",
+    "XLE",
+    "XLF",
+    "XLI",
+    "XLK",
+    "XLP",
+    "XLRE",
+    "XLU",
+    "XLV",
+    "XLY",
+    "XLC"
+  ],
+  "data": {
+    "source": "yahoo_chart_v8",
+    "start_date": "2006-01-01",
+    "end_date": "2026-08-31",
+    "in_sample_end": "2020-12-31",
+    "out_of_sample_start": "2021-01-01",
+    "quote_max_age_seconds": 30
+  },
+  "account": {
+    "initial_equity": 500.0,
+    "fractional_precision": 6,
+    "long_only": true,
+    "cash_only": true,
+    "paper_only": true,
+    "execution_enabled": false
+  },
+  "strategy": {
+    "trend_sma_days": 200,
+    "recovery_sma_days": 20,
+    "rsi_period": 2,
+    "rsi_entry_below": 10.0,
+    "stop_atr_days": 14,
+    "stop_atr_multiple": 2.0,
+    "time_stop_trading_days": 20
+  },
+  "risk": {
+    "max_planned_loss_pct": 0.005,
+    "max_aggregate_open_risk_pct": 0.03,
+    "daily_loss_halt_pct": 0.02
+  },
+  "costs": {
+    "half_spread_bps": 1.0,
+    "slippage_bps": 2.0,
+    "fee_bps_per_side": 0.1
+  },
+  "momentum_benchmark": {
+    "lookback_trading_days": 126,
+    "trend_sma_days": 200,
+    "top_n": 3,
+    "rebalance": "monthly"
+  }
+}
+
