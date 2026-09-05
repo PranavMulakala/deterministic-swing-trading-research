@@ -26,7 +26,7 @@
       "status": "PASS"
     },
     {
-      "detail": "checked 1992 accepted entries",
+      "detail": "checked 1992 accepted entries against configured 3.0000% limit",
       "name": "aggregate_entry_risk",
       "status": "PASS"
     },
@@ -36,9 +36,27 @@
       "status": "PASS"
     },
     {
-      "detail": "all evaluation windows end with zero positions",
-      "name": "terminal_flat",
+      "detail": "in_sample: replay_valid=True, remaining=[]; out_of_sample: replay_valid=True, remaining=[]",
+      "name": "terminal_flat_ledger_replay",
       "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "daily_loss_halt_rejections": 0,
+      "entry_attempts": 1864,
+      "entry_signals": 1864,
+      "split": "in_sample",
+      "zero_quantity_pct_of_attempts": 22.4248927,
+      "zero_quantity_rejections": 418
+    },
+    {
+      "daily_loss_halt_rejections": 0,
+      "entry_attempts": 894,
+      "entry_signals": 896,
+      "split": "out_of_sample",
+      "zero_quantity_pct_of_attempts": 16.3310962,
+      "zero_quantity_rejections": 146
     }
   ],
   "status": "PASS"

@@ -26,7 +26,7 @@ The measured conclusion is in `outputs/v1/milestone1_report.md`. V1 remains rese
 - Risk: at most 0.5% planned loss per trade, 3% aggregate planned open risk, and a 2% daily realized-loss halt.
 - Friction: spread, slippage, and fees are modeled on both sides.
 
-Read `preregistration/v1.md` for the frozen protocol and `methodology.md` for assumptions and limitations. The `src/swingbot/execution_contract.py` file documents a future broker boundary, but rejects every submission until separate validation is completed.
+Read `preregistration/v1.md` for the original frozen protocol, `preregistration/v1_post_validation_addendum.md` for non-strategy clarifications, `EXTERNAL_VALIDATION.md` for the independent audit record, and `methodology.md` for assumptions and limitations. The `src/swingbot/execution_contract.py` file documents a future broker boundary, but rejects every submission until separate validation is completed.
 
 ## Audit trail
 

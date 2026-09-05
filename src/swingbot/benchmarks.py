@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+from copy import deepcopy
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -56,13 +57,21 @@ def buy_and_hold_spy(
     fee = _fee_rate(config)
     entry = selected[0].open * (1 + execution)
     quantity = initial / (entry * (1 + fee))
+    entry_fee = quantity * entry * fee
     curve = [
         {"date": bar.date.isoformat(), "equity": round(quantity * bar.close, 8)}
         for bar in selected
     ]
     exit_fill = selected[-1].close * (1 - execution)
+    exit_fee = quantity * exit_fill * fee
     curve[-1]["equity"] = round(quantity * exit_fill * (1 - fee), 8)
-    return curve, _summary("spy_buy_and_hold", curve, initial)
+    summary = _summary("spy_buy_and_hold", curve, initial)
+    summary["total_modeled_execution_cost"] = round(
+        quantity * ((entry - selected[0].open) + (selected[-1].close - exit_fill))
+        + entry_fee + exit_fee,
+        8,
+    )
+    return curve, summary
 
 
 def monthly_momentum(
@@ -99,6 +108,7 @@ def monthly_momentum(
     fee = _fee_rate(config)
     curve: list[dict[str, object]] = []
     rebalance_count = 0
+    modeled_execution_cost = 0.0
 
     for i, day in enumerate(calendar):
         today = {symbol: rows[day] for symbol, rows in indexed.items() if day in rows}
@@ -108,14 +118,21 @@ def monthly_momentum(
             for symbol in sorted(list(holdings)):
                 if symbol not in today:
                     continue
-                fill = today[symbol][0].open * (1 - execution)
-                cash += holdings.pop(symbol) * fill * (1 - fee)
+                reference = today[symbol][0].open
+                fill = reference * (1 - execution)
+                quantity = holdings.pop(symbol)
+                exit_fee = quantity * fill * fee
+                modeled_execution_cost += quantity * (reference - fill) + exit_fee
+                cash += quantity * fill * (1 - fee)
             selected = [symbol for symbol in pending if symbol in today]
             if selected:
                 allocation = cash / len(selected)
                 for symbol in selected:
-                    fill = today[symbol][0].open * (1 + execution)
+                    reference = today[symbol][0].open
+                    fill = reference * (1 + execution)
                     quantity = allocation / (fill * (1 + fee))
+                    entry_fee = quantity * fill * fee
+                    modeled_execution_cost += quantity * (fill - reference) + entry_fee
                     cash -= quantity * fill * (1 + fee)
                     holdings[symbol] = quantity
             pending = None
@@ -139,11 +156,16 @@ def monthly_momentum(
     for symbol in sorted(list(holdings)):
         if final_day not in indexed[symbol]:
             continue
-        fill = indexed[symbol][final_day][0].close * (1 - execution)
-        cash += holdings.pop(symbol) * fill * (1 - fee)
+        reference = indexed[symbol][final_day][0].close
+        fill = reference * (1 - execution)
+        quantity = holdings.pop(symbol)
+        exit_fee = quantity * fill * fee
+        modeled_execution_cost += quantity * (reference - fill) + exit_fee
+        cash += quantity * fill * (1 - fee)
     curve[-1]["equity"] = round(cash, 8)
     summary = _summary("monthly_top3_126d_momentum", curve, initial)
     summary["rebalance_count"] = rebalance_count
+    summary["total_modeled_execution_cost"] = round(modeled_execution_cost, 8)
     return curve, summary
 
 
@@ -157,6 +179,18 @@ def write_benchmarks(
 ) -> list[dict[str, object]]:
     spy_curve, spy_metrics = buy_and_hold_spy(bars_by_symbol["SPY"], config, start, end)
     momentum_curve, momentum_metrics = monthly_momentum(bars_by_symbol, config, start, end)
+    zero_cost_config = deepcopy(config)
+    for cost_name in ("half_spread_bps", "slippage_bps", "fee_bps_per_side"):
+        zero_cost_config["costs"][cost_name] = 0.0
+    _, zero_cost_spy = buy_and_hold_spy(bars_by_symbol["SPY"], zero_cost_config, start, end)
+    _, zero_cost_momentum = monthly_momentum(bars_by_symbol, zero_cost_config, start, end)
+    for measured, zero_cost in (
+        (spy_metrics, zero_cost_spy), (momentum_metrics, zero_cost_momentum)
+    ):
+        measured["zero_cost_total_return_pct"] = zero_cost["total_return_pct"]
+        measured["modeled_cost_drag_pct_points"] = round(
+            float(zero_cost["total_return_pct"]) - float(measured["total_return_pct"]), 8
+        )
     _write_csv(output_dir / f"benchmark_spy_{split}.csv", spy_curve)
     _write_csv(output_dir / f"benchmark_momentum_{split}.csv", momentum_curve)
     summaries = [spy_metrics, momentum_metrics]

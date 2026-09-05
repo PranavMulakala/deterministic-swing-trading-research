@@ -48,7 +48,7 @@ def reproduce(root: Path) -> None:
         json.dumps({"config_sha256": config_sha256(config_path), "results": summaries}, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
-    validate_results(results, output_dir)
+    validate_results(results, output_dir, config)
     write_dashboard(output_dir)
     write_milestone_report(output_dir)
     hashes = output_hashes(output_dir)

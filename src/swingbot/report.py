@@ -90,9 +90,11 @@ svg{{width:100%;background:#161b22;border:1px solid #30363d;border-radius:8px}}c
 <div class="cards"><div class="card"><small>OOS final equity</small><h2>${float(oos_metrics['final_equity']):.2f}</h2></div>
 <div class="card"><small>OOS return</small><h2>{float(oos_metrics['total_return_pct']):.2f}%</h2></div>
 <div class="card"><small>OOS max drawdown</small><h2>{float(oos_metrics['max_drawdown_pct']):.2f}%</h2></div>
-<div class="card"><small>OOS trades</small><h2>{int(oos_metrics['trade_count'])}</h2></div></div>
+<div class="card"><small>OOS trades</small><h2>{int(oos_metrics['trade_count'])}</h2></div>
+<div class="card"><small>Zero-size attempts</small><h2>{float(oos_metrics['zero_quantity_pct_of_entry_attempts']):.2f}%</h2></div></div>
 <h2>OOS equity curve</h2>{_equity_svg(equity)}
 <h2>Measured comparison</h2><table><thead><tr><th>System</th><th>Final</th><th>Total return</th><th>CAGR</th><th>Max drawdown</th><th>Trades/rebalances</th></tr></thead><tbody>{table}</tbody></table>
+<p><small>The momentum baseline's frozen full-turnover implementation incurred ${float(oos_benchmarks[1]['total_modeled_execution_cost']):.2f} in modeled costs, a {float(oos_benchmarks[1]['modeled_cost_drag_pct_points']):.2f}-percentage-point return drag versus its zero-cost shadow. This conservative benchmark definition is not a production optimizer.</small></p>
 <h2>Last 20 OOS trades</h2><table><thead><tr><th>Symbol</th><th>Entry</th><th>Exit</th><th>P&amp;L</th><th>Risk %</th><th>Exit reason</th><th>Why qualified</th><th>Invalidation</th></tr></thead><tbody>{trade_rows}</tbody></table>
 <h2>OOS rejection reasons</h2><table><thead><tr><th>Reason</th><th>Count</th></tr></thead><tbody>{rejection_rows}</tbody></table>
 <h2>Full audit files</h2><p><a href="trades_out_of_sample.csv">All OOS trades</a> · <a href="events_out_of_sample.jsonl">Every OOS event/rejection</a> · <a href="equity_out_of_sample.csv">Equity</a> · <a href="exposure_out_of_sample.csv">Exposure</a> · <a href="validation_report.json">Invariant validation</a> · <a href="milestone1_report.md">Research report</a></p>
@@ -112,8 +114,9 @@ def write_milestone_report(output_dir: Path) -> Path:
     relative_spy = float(oos["total_return_pct"]) - float(spy["total_return_pct"])
     relative_momentum = float(oos["total_return_pct"]) - float(momentum["total_return_pct"])
     verdict = (
-        "V1 is a lower-exposure, lower-drawdown research result, but it does not establish a superior return edge. "
-        "It should not advance to broker paper execution unchanged."
+        "Independent validation confirmed v1 as a reproducible, internally correct lower-exposure, "
+        "lower-drawdown research result, but it does not establish a superior return edge. It should "
+        "not advance to broker paper execution unchanged."
     )
     content = f"""# Milestone 1 research report
 
@@ -132,6 +135,8 @@ def write_milestone_report(output_dir: Path) -> Path:
 
 OOS v1 completed {oos['trade_count']} trades, won {float(oos['win_rate_pct']):.2f}%, averaged ${float(oos['average_trade_pnl']):.4f} per trade, had profit factor {float(oos['profit_factor']):.3f}, and incurred ${float(oos['total_modeled_execution_cost']):.2f} of modeled spread, slippage, and fees. Average market exposure was {float(oos['average_exposure_pct']):.2f}%. Its total return trailed SPY by {abs(relative_spy):.2f} percentage points and momentum by {abs(relative_momentum):.2f} points, while its drawdown was lower.
 
+At the $500 scale, {oos['zero_quantity_rejections']} of {oos['entry_attempt_count']} OOS entry attempts ({float(oos['zero_quantity_pct_of_entry_attempts']):.2f}%) produced zero quantity because available cash was already deployed. The daily 2% realized-loss halt produced {oos['daily_loss_halt_rejections']} OOS rejections. The momentum baseline incurred ${float(momentum['total_modeled_execution_cost']):.2f} in modeled execution costs; its forced full-turnover convention reduced return by {float(momentum['modeled_cost_drag_pct_points']):.2f} percentage points versus an otherwise identical zero-cost shadow.
+
 ## Why it might work
 
 Broad ETFs often retain medium/long-term trend persistence while short, sharp selloffs mean-revert. The 200-day filter attempts to isolate that setting; RSI(2) locates unusually weak closes; the recovery exit avoids demanding a large forecast. This is a plausible mechanism, not proof.
@@ -146,7 +151,7 @@ The implementation is invalid if next-bar timing, checksum reproducibility, fill
 
 ## Decision
 
-Keep v1 as a reproducible baseline and evidence artifact. Do not connect it to a broker. Before any separate paper-execution milestone, independently validate event ordering and accounting, then design a genuinely new v2 hypothesis—without optimizing against the disclosed OOS results. See `methodology.md` for data and simulation limitations and `validation_report.json` for invariant checks.
+Keep v1 as a reproducible baseline and evidence artifact. Do not connect it to a broker. The independent audit of commit `0cf291235e5e75d185ddac3285be6f4ca2bc7a3f` confirmed the software/accounting result; the subsequent hardening addresses its minor documentation and validation findings without altering core economic artifacts. A genuinely new v2 hypothesis requires a new preregistration and untouched period—without optimizing against the disclosed OOS results. See `methodology.md`, `EXTERNAL_VALIDATION.md`, and `validation_report.json`.
 """
     destination = output_dir / "milestone1_report.md"
     destination.write_text(content, encoding="utf-8")

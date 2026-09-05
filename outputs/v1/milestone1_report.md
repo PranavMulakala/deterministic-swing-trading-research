@@ -2,7 +2,7 @@
 
 ## Verdict
 
-V1 is a lower-exposure, lower-drawdown research result, but it does not establish a superior return edge. It should not advance to broker paper execution unchanged.
+Independent validation confirmed v1 as a reproducible, internally correct lower-exposure, lower-drawdown research result, but it does not establish a superior return edge. It should not advance to broker paper execution unchanged.
 
 ## Measured results
 
@@ -14,6 +14,8 @@ V1 is a lower-exposure, lower-drawdown research result, but it does not establis
 | Momentum OOS | 2021-01-04 to 2026-08-31 | $793.05 | 58.61% | 8.50% | 20.79% |
 
 OOS v1 completed 684 trades, won 64.18%, averaged $0.2639 per trade, had profit factor 1.381, and incurred $38.01 of modeled spread, slippage, and fees. Average market exposure was 31.08%. Its total return trailed SPY by 83.87 percentage points and momentum by 22.51 points, while its drawdown was lower.
+
+At the $500 scale, 146 of 894 OOS entry attempts (16.33%) produced zero quantity because available cash was already deployed. The daily 2% realized-loss halt produced 0 OOS rejections. The momentum baseline incurred $26.71 in modeled execution costs; its forced full-turnover convention reduced return by 6.62 percentage points versus an otherwise identical zero-cost shadow.
 
 ## Why it might work
 
@@ -29,4 +31,4 @@ The implementation is invalid if next-bar timing, checksum reproducibility, fill
 
 ## Decision
 
-Keep v1 as a reproducible baseline and evidence artifact. Do not connect it to a broker. Before any separate paper-execution milestone, independently validate event ordering and accounting, then design a genuinely new v2 hypothesis—without optimizing against the disclosed OOS results. See `methodology.md` for data and simulation limitations and `validation_report.json` for invariant checks.
+Keep v1 as a reproducible baseline and evidence artifact. Do not connect it to a broker. The independent audit of commit `0cf291235e5e75d185ddac3285be6f4ca2bc7a3f` confirmed the software/accounting result; the subsequent hardening addresses its minor documentation and validation findings without altering core economic artifacts. A genuinely new v2 hypothesis requires a new preregistration and untouched period—without optimizing against the disclosed OOS results. See `methodology.md`, `EXTERNAL_VALIDATION.md`, and `validation_report.json`.

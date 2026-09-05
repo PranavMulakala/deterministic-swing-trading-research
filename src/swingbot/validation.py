@@ -2,11 +2,14 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 from .models import BacktestResult
 
 
-def validate_results(results: list[BacktestResult], output_dir: Path) -> dict[str, object]:
+def validate_results(
+    results: list[BacktestResult], output_dir: Path, config: dict[str, Any]
+) -> dict[str, object]:
     checks: list[dict[str, object]] = []
 
     def record(name: str, passed: bool, detail: str) -> None:
@@ -47,25 +50,74 @@ def validate_results(results: list[BacktestResult], output_dir: Path) -> dict[st
         len(buy_events) == len(sell_events) == len(all_trades),
         f"buys={len(buy_events)}, sells={len(sell_events)}, trades={len(all_trades)}",
     )
+    aggregate_limit = float(config["risk"]["max_aggregate_open_risk_pct"])
     aggregate_ok = all(
         float(event["aggregate_open_risk_after"])
-        <= float(event["equity_at_entry"]) * 0.03 + 1e-8
+        <= float(event["equity_at_entry"]) * aggregate_limit + 1e-8
         for event in buy_events
     )
-    record("aggregate_entry_risk", aggregate_ok, f"checked {len(buy_events)} accepted entries")
+    record(
+        "aggregate_entry_risk", aggregate_ok,
+        f"checked {len(buy_events)} accepted entries against configured {aggregate_limit:.4%} limit",
+    )
     cash_marks = [
         float(event["cash"]) for result in results for event in result.events
         if event["event_type"] == "pnl_mark"
     ]
     record("cash_only", all(cash >= -1e-8 for cash in cash_marks), f"minimum cash ${min(cash_marks):.8f}")
-    record(
-        "terminal_flat",
-        all(not result.exposure_curve or result.exposure_curve[-1]["open_positions"] == 0 for result in results),
-        "all evaluation windows end with zero positions",
-    )
+    terminal_replay_ok = True
+    terminal_details: list[str] = []
+    for result in results:
+        open_symbols: set[str] = set()
+        replay_ok = True
+        for event in result.events:
+            if event["event_type"] != "position_changed":
+                continue
+            symbol = str(event["symbol"])
+            if event["state"] == "opened":
+                if symbol in open_symbols:
+                    replay_ok = False
+                open_symbols.add(symbol)
+            elif event["state"] == "closed":
+                if symbol not in open_symbols:
+                    replay_ok = False
+                open_symbols.discard(symbol)
+        terminal_replay_ok = terminal_replay_ok and replay_ok and not open_symbols
+        terminal_details.append(
+            f"{result.split}: replay_valid={replay_ok}, remaining={sorted(open_symbols)}"
+        )
+    record("terminal_flat_ledger_replay", terminal_replay_ok, "; ".join(terminal_details))
+    observations = []
+    for result in results:
+        signals = sum(event["event_type"] == "entry_signal" for event in result.events)
+        attempts = sum(
+            event["event_type"] == "order_filled" and event.get("side") == "buy"
+            or event["event_type"] == "order_rejected" and "client_order_id" in event
+            for event in result.events
+        )
+        zero_quantity = sum(
+            event["event_type"] == "order_rejected" and event.get("reason") == "zero_quantity"
+            for event in result.events
+        )
+        daily_halts = sum(
+            event["event_type"] == "order_rejected" and event.get("reason") == "daily_loss_halt"
+            for event in result.events
+        )
+        observations.append(
+            {
+                "split": result.split,
+                "entry_signals": signals,
+                "entry_attempts": attempts,
+                "zero_quantity_rejections": zero_quantity,
+                "zero_quantity_pct_of_attempts": round(zero_quantity / attempts * 100, 8)
+                if attempts else 0.0,
+                "daily_loss_halt_rejections": daily_halts,
+            }
+        )
     report = {
         "status": "PASS" if all(check["status"] == "PASS" for check in checks) else "FAIL",
         "checks": checks,
+        "observations": observations,
     }
     (output_dir / "validation_report.json").write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"

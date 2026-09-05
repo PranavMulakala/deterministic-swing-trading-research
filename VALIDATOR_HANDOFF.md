@@ -1,6 +1,6 @@
 # Independent validator handoff
 
-Audit commit `ec65984` plus the later documentation-only handoff commit. The preregistered protocol was frozen in commit `877fc12` before historical market data was downloaded or the empirical strategy run was performed.
+The original independent audit completed against `0cf291235e5e75d185ddac3285be6f4ca2bc7a3f`; its verdict and six minor findings are recorded in `EXTERNAL_VALIDATION.md`. For a follow-up audit, compare the current HEAD with that commit and focus on the post-validation hardening diff. The preregistered protocol was frozen in commit `877fc12` before historical market data was downloaded or the empirical strategy run was performed.
 
 ## Start here
 

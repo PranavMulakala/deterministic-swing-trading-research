@@ -6,8 +6,11 @@
     "final_equity": 1099.84843136,
     "initial_equity": 500.0,
     "max_drawdown_pct": 24.49639899,
+    "modeled_cost_drag_pct_points": 0.1364235,
     "start_date": "2021-01-04",
-    "total_return_pct": 119.96968627
+    "total_modeled_execution_cost": 0.4960089,
+    "total_return_pct": 119.96968627,
+    "zero_cost_total_return_pct": 120.10610977
   },
   {
     "benchmark": "monthly_top3_126d_momentum",
@@ -16,8 +19,11 @@
     "final_equity": 793.04974055,
     "initial_equity": 500.0,
     "max_drawdown_pct": 20.78929958,
+    "modeled_cost_drag_pct_points": 6.62494116,
     "rebalance_count": 67,
     "start_date": "2021-01-04",
-    "total_return_pct": 58.60994811
+    "total_modeled_execution_cost": 26.71182376,
+    "total_return_pct": 58.60994811,
+    "zero_cost_total_return_pct": 65.23488927
   }
 ]

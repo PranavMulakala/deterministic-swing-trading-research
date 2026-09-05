@@ -428,6 +428,20 @@ def metrics(result: BacktestResult) -> dict[str, object]:
         sum(float(row["exposure_pct"]) for row in result.exposure_curve) / len(result.exposure_curve)
         if result.exposure_curve else 0.0
     )
+    entry_signals = sum(event["event_type"] == "entry_signal" for event in result.events)
+    entry_attempts = sum(
+        event["event_type"] == "order_filled" and event.get("side") == "buy"
+        or event["event_type"] == "order_rejected" and "client_order_id" in event
+        for event in result.events
+    )
+    zero_quantity = sum(
+        event["event_type"] == "order_rejected" and event.get("reason") == "zero_quantity"
+        for event in result.events
+    )
+    daily_halts = sum(
+        event["event_type"] == "order_rejected" and event.get("reason") == "daily_loss_halt"
+        for event in result.events
+    )
     return {
         "split": result.split,
         "start_date": result.start_date.isoformat(),
@@ -438,6 +452,12 @@ def metrics(result: BacktestResult) -> dict[str, object]:
         "cagr_pct": round(cagr * 100, 8),
         "max_drawdown_pct": round(max_drawdown * 100, 8),
         "trade_count": len(result.trades),
+        "entry_signal_count": entry_signals,
+        "entry_attempt_count": entry_attempts,
+        "zero_quantity_rejections": zero_quantity,
+        "zero_quantity_pct_of_entry_attempts": round(zero_quantity / entry_attempts * 100, 8)
+        if entry_attempts else 0.0,
+        "daily_loss_halt_rejections": daily_halts,
         "win_rate_pct": round(wins / len(result.trades) * 100, 8) if result.trades else 0.0,
         "average_win": round(sum(winning_pnl) / len(winning_pnl), 8) if winning_pnl else 0.0,
         "average_loss": round(sum(losing_pnl) / len(losing_pnl), 8) if losing_pnl else 0.0,

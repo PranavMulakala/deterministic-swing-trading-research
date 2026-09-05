@@ -1,8 +1,10 @@
 from datetime import date, timedelta
 import unittest
+from unittest.mock import patch
 
 from swingbot.backtest import BacktestEngine
-from swingbot.models import Bar
+from swingbot.models import Bar, Signal
+from swingbot.strategy import StrategyEvaluation
 
 
 def _config() -> dict:
@@ -57,6 +59,46 @@ class BacktestTests(unittest.TestCase):
         args = dict(config=_config(), bars_by_symbol={"SPY": bars}, split="test",
                     start_date=bars[0].date, end_date=bars[-1].date, run_id="same")
         self.assertEqual(BacktestEngine(**args).run().events, BacktestEngine(**args).run().events)
+
+    def test_multiple_open_losses_can_halt_later_entries_that_day(self) -> None:
+        start = date(2026, 1, 5)
+        days = [start + timedelta(days=i) for i in range(3)]
+        exiting_symbols = {"AAA", "AAB", "AAC", "AAD", "AAE"}
+        bars = {
+            symbol: [
+                Bar(symbol, days[0], 100, 101, 99, 100, 1_000_000),
+                Bar(symbol, days[1], 100, 101, 99, 100, 1_000_000),
+                Bar(symbol, days[2], 90.1, 91, 89, 90, 1_000_000),
+            ]
+            for symbol in exiting_symbols
+        }
+        bars["ZZZ"] = [Bar("ZZZ", day, 100, 101, 99, 100, 1_000_000) for day in days]
+        config = _config()
+        config["strategy"]["recovery_sma_days"] = 1
+
+        def signals(*, symbol: str, day: date, **_: object) -> StrategyEvaluation:
+            if symbol in exiting_symbols and day == days[0]:
+                return StrategyEvaluation(
+                    Signal(symbol, day, 5, 100, 100, 90, 0, "test", "test"), None
+                )
+            if (symbol, day) == ("ZZZ", days[1]):
+                return StrategyEvaluation(
+                    Signal(symbol, day, 5, 100, 100, 90, 0, "test", "test"), None
+                )
+            return StrategyEvaluation(None, "test_no_signal")
+
+        with patch("swingbot.backtest.evaluate_entry", side_effect=signals):
+            result = BacktestEngine(
+                config, bars, split="test", start_date=days[0], end_date=days[-1],
+                run_id="daily-halt-path",
+            ).run()
+        halt_events = [
+            event for event in result.events
+            if event["event_type"] == "order_rejected"
+            and event.get("reason") == "daily_loss_halt"
+        ]
+        self.assertEqual(len(halt_events), 1)
+        self.assertEqual(halt_events[0]["symbol"], "ZZZ")
 
 
 if __name__ == "__main__":
