@@ -148,19 +148,31 @@ def load_universe(config: dict[str, object], data_dir: Path) -> dict[str, list[B
         if digest != metadata["sha256"]:
             raise DataError(f"checksum mismatch for {symbol}")
         bars: list[Bar] = []
+        previous_day: date | None = None
         with source.open(newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle):
-                bars.append(
-                    Bar(
-                        symbol=symbol,
-                        date=date.fromisoformat(row["date"]),
-                        open=float(row["open"]),
-                        high=float(row["high"]),
-                        low=float(row["low"]),
-                        close=float(row["close"]),
-                        volume=float(row["volume"]),
-                    )
-                )
+                day = date.fromisoformat(row["date"])
+                if previous_day is not None and day <= previous_day:
+                    raise DataError(f"dates are not strictly increasing for {symbol}")
+                values = {name: float(row[name]) for name in ("open", "high", "low", "close", "volume")}
+                if not all(math.isfinite(value) for value in values.values()):
+                    raise DataError(f"non-finite value for {symbol} on {day}")
+                if min(values[name] for name in ("open", "high", "low", "close")) <= 0:
+                    raise DataError(f"non-positive price for {symbol} on {day}")
+                if values["volume"] < 0:
+                    raise DataError(f"negative volume for {symbol} on {day}")
+                if values["high"] < max(values["open"], values["close"], values["low"]):
+                    raise DataError(f"invalid high for {symbol} on {day}")
+                if values["low"] > min(values["open"], values["close"], values["high"]):
+                    raise DataError(f"invalid low for {symbol} on {day}")
+                bars.append(Bar(symbol=symbol, date=day, **values))
+                previous_day = day
+        if len(bars) != int(metadata["rows"]):
+            raise DataError(f"row-count mismatch for {symbol}")
+        if bars and (
+            bars[0].date.isoformat() != metadata["first_date"]
+            or bars[-1].date.isoformat() != metadata["last_date"]
+        ):
+            raise DataError(f"date coverage mismatch for {symbol}")
         bars_by_symbol[symbol] = bars
     return bars_by_symbol
-

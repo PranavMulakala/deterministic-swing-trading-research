@@ -7,7 +7,10 @@ class ArchitectureTests(unittest.TestCase):
     def test_decision_path_has_no_network_or_llm_imports(self) -> None:
         package = Path(__file__).parents[1] / "src/swingbot"
         forbidden = {"openai", "anthropic", "requests", "urllib", "socket", "httpx"}
-        for name in ("strategy.py", "risk.py", "backtest.py"):
+        for name in (
+            "strategy.py", "risk.py", "backtest.py", "config.py", "indicators.py",
+            "execution_contract.py",
+        ):
             tree = ast.parse((package / name).read_text(encoding="utf-8"))
             imports = set()
             for node in ast.walk(tree):

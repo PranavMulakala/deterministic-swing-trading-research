@@ -1,0 +1,22 @@
+{
+  "benchmark_momentum_in_sample.csv": "62f118c90ab8bac7c60c0a631868e8a8ab77dbded95fd5d7c7391944e8714b7c",
+  "benchmark_momentum_out_of_sample.csv": "b4de4a7caaa32f57e4960f7388ae2d22be8869b3a3e920677f7977cc96ed72f7",
+  "benchmark_spy_in_sample.csv": "dbfe3c8bc399c69d36081cf4a5a1dfbcc7f30af8fffd04b97eed67ac372d5655",
+  "benchmark_spy_out_of_sample.csv": "5c0e733455e98b4bd30f7b6e7198752774a91321891ec3f6c403d777fff1278d",
+  "benchmarks_in_sample.json": "e9d28049af2c5f9aa32d6b79b1e927ecfd4fd1513b2213831b9b3058c247507c",
+  "benchmarks_out_of_sample.json": "8665d044fbd6396aa75f197ad458271884b2d2d945fdbae4d656990f01dde178",
+  "dashboard.html": "31f761210645ea99572954eae9986128b74ed4d0ab5a7f7e8e48f7828c612c89",
+  "equity_in_sample.csv": "638d85513a72a0a69e8bf862e27c4d8da2c105c88893506efed3759445354fa3",
+  "equity_out_of_sample.csv": "8d25f4b2c5e312cb9d88f3345a58fd271a7e16176e1683a304193767d259414e",
+  "events_in_sample.jsonl": "37e2a5b56e20992edbc084ef195436f35a4c3c6fc159d975b1290991f4bda92f",
+  "events_out_of_sample.jsonl": "bd19e02bf29dfbc089e45c1734552ac2b2df0cbcc124a023d3c03a3fe9773241",
+  "exposure_in_sample.csv": "721d9959f30f2dd24eda05b717fbf172f83ed3ecdd2f9feebe7f5baca353a376",
+  "exposure_out_of_sample.csv": "f3af03adcba65faf2ab7dad2315f98b2832b624bb2c16cdf91843603e5caf0b4",
+  "metrics_in_sample.json": "69c9ea6b1c3824ab9518de972cc2e5bb39f97e9cc3888825a8fad0d15d87a135",
+  "metrics_out_of_sample.json": "17c67b164b244d4c43285daa118c4f1f587fa6950eca355fb8b9d7b2878dfe2b",
+  "milestone1_report.md": "9fde918185bcd6139f98521b5738f6052923c62e7e257dd98d9352f937e228df",
+  "run_summary.json": "17de52cdc6ed7ea5637e56c57f85c0ade81080d48ce13d0eb74e716737b8eb76",
+  "trades_in_sample.csv": "e85aae716c6756bd8cd58bb14514b79beae81a086de85ade0a7d719ee386ea8b",
+  "trades_out_of_sample.csv": "938e50d3dd51247286874a5811cc63ea120dc9f56a49209c2b558910efe13af9",
+  "validation_report.json": "d8ece9103cd34577758f41e16530bbd7c2ff40c1837381274676c3e37fff077d"
+}

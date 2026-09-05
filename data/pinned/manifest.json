@@ -1,0 +1,114 @@
+{
+  "adjustment": "OHLC multiplied by Yahoo adjusted-close/raw-close factor",
+  "end_date_requested": "2026-08-31",
+  "files": {
+    "DIA": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "DIA.csv",
+      "rows": 5197,
+      "sha256": "06b89a55f3e872d075c91e9baba8eaf6776acef8ab2ec4a4c24f8be6808fca3f"
+    },
+    "IWM": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "IWM.csv",
+      "rows": 5197,
+      "sha256": "15a459b1299bdaeef9997afd7611f402fa61c682910d3772c040aa03bdeeedd1"
+    },
+    "QQQ": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "QQQ.csv",
+      "rows": 5197,
+      "sha256": "047e646e7b1a142f0f97d81e9138fbeea651a81dca1a2d46c85b37338f58c601"
+    },
+    "SPY": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "SPY.csv",
+      "rows": 5197,
+      "sha256": "247d4013fb9a5679576e37a8589cc0cdffa165a21376c519cc0403425ff5969a"
+    },
+    "XLB": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLB.csv",
+      "rows": 5197,
+      "sha256": "74827a7612fa7755e585ecd615d9cadab9396a7691cb7f5f3d431d73ecc0d73f"
+    },
+    "XLC": {
+      "first_date": "2018-06-19",
+      "last_date": "2026-08-31",
+      "path": "XLC.csv",
+      "rows": 2061,
+      "sha256": "9dcb8635f1d9ef66b78834be85b87ddfd501197cb6b35c82c07281e53e7afee6"
+    },
+    "XLE": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLE.csv",
+      "rows": 5197,
+      "sha256": "b46fbf1a46b521091861d70bbe2b2ef3a39b934f04939275ebde5469e8f6d8f1"
+    },
+    "XLF": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLF.csv",
+      "rows": 5197,
+      "sha256": "bcb70e194e5943c5f318814fd2548821b36e908b36ba3372753bbc4e16948cd6"
+    },
+    "XLI": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLI.csv",
+      "rows": 5197,
+      "sha256": "96192f67ae722e689ff3cbec17e883e0eb720fb4f098426bd4121b7d018584ae"
+    },
+    "XLK": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLK.csv",
+      "rows": 5197,
+      "sha256": "0aa5b609fcdc2bf92cbb5aa7062b7e7b1ddbe83dd07c0157541edb513ee303c7"
+    },
+    "XLP": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLP.csv",
+      "rows": 5197,
+      "sha256": "91c2667329851b52378b9feda0da3cea915ba1f6e682e31b2afcff0905de5345"
+    },
+    "XLRE": {
+      "first_date": "2015-10-08",
+      "last_date": "2026-08-31",
+      "path": "XLRE.csv",
+      "rows": 2739,
+      "sha256": "8922854762afbdd29e7a451aa7f1c29531a655b759ca75496cea80c612dc1dfa"
+    },
+    "XLU": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLU.csv",
+      "rows": 5197,
+      "sha256": "7fbc0f3a85d2c8073450bb6c591f56b2248537f42be11ea2718a21d49db2559a"
+    },
+    "XLV": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLV.csv",
+      "rows": 5197,
+      "sha256": "2419a85eeacce043f75c8c9778ca96c086fcbb0f512956210c69a8baff3e46db"
+    },
+    "XLY": {
+      "first_date": "2006-01-03",
+      "last_date": "2026-08-31",
+      "path": "XLY.csv",
+      "rows": 5197,
+      "sha256": "2c9879b1e5a59052a0b4e0ade67b2da9e2450a022e92a62da0f0d1ee0fd492f6"
+    }
+  },
+  "schema_version": 1,
+  "source": "yahoo_chart_v8",
+  "start_date_requested": "2006-01-01"
+}

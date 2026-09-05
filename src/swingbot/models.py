@@ -55,11 +55,14 @@ class Trade:
     entry_date: date
     exit_signal_date: date | None
     exit_date: date
+    entry_reference: float
+    exit_reference: float
     entry_fill: float
     exit_fill: float
     quantity: float
     entry_fee: float
     exit_fee: float
+    modeled_execution_cost: float
     pnl: float
     return_pct_on_equity: float
     planned_loss: float
@@ -82,4 +85,3 @@ class BacktestResult:
     equity_curve: list[dict[str, object]] = field(default_factory=list)
     exposure_curve: list[dict[str, object]] = field(default_factory=list)
     events: list[dict[str, object]] = field(default_factory=list)
-

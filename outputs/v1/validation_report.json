@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "detail": "checked 1992 trades",
+      "name": "next_bar_entries",
+      "status": "PASS"
+    },
+    {
+      "detail": "checked 1473 close-derived exits",
+      "name": "next_bar_signal_exits",
+      "status": "PASS"
+    },
+    {
+      "detail": "maximum observed 0.50000000%",
+      "name": "per_trade_risk",
+      "status": "PASS"
+    },
+    {
+      "detail": "all run-local event sequences are contiguous",
+      "name": "ledger_sequences",
+      "status": "PASS"
+    },
+    {
+      "detail": "buys=1992, sells=1992, trades=1992",
+      "name": "fill_trade_reconciliation",
+      "status": "PASS"
+    },
+    {
+      "detail": "checked 1992 accepted entries",
+      "name": "aggregate_entry_risk",
+      "status": "PASS"
+    },
+    {
+      "detail": "minimum cash $0.00000004",
+      "name": "cash_only",
+      "status": "PASS"
+    },
+    {
+      "detail": "all evaluation windows end with zero positions",
+      "name": "terminal_flat",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

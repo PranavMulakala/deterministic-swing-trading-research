@@ -192,6 +192,10 @@ class BacktestEngine:
                     reference_price=round(snapshot.bar.open, 8), fill_price=round(entry_fill, 8),
                     fee=round(entry_fee, 8), planned_loss=round(planned_loss, 8),
                     risk_limit=round(risk_limit, 8),
+                    equity_at_entry=round(current_equity, 8),
+                    aggregate_open_risk_after=round(
+                        sum(self.risk.state.open_risk_by_symbol.values()), 8
+                    ),
                     protective_stop_status="simulated_native_for_backtest",
                     protective_stop_price=round(stop_reference, 8),
                 )
@@ -343,6 +347,9 @@ class BacktestEngine:
         proceeds = exit_fill * position.quantity - exit_fee
         cost = position.entry_fill * position.quantity + position.entry_fee
         pnl = proceeds - cost
+        modeled_execution_cost = position.quantity * (
+            (position.entry_fill - position.entry_reference) + (reference_price - exit_fill)
+        ) + position.entry_fee + exit_fee
         cash += proceeds
         trade = Trade(
             symbol=symbol,
@@ -350,11 +357,14 @@ class BacktestEngine:
             entry_date=position.entry_date,
             exit_signal_date=exit_signal_date,
             exit_date=exit_date,
+            entry_reference=position.entry_reference,
+            exit_reference=reference_price,
             entry_fill=position.entry_fill,
             exit_fill=exit_fill,
             quantity=position.quantity,
             entry_fee=position.entry_fee,
             exit_fee=exit_fee,
+            modeled_execution_cost=modeled_execution_cost,
             pnl=pnl,
             return_pct_on_equity=pnl / position.initial_equity * 100.0,
             planned_loss=position.planned_loss,
@@ -407,6 +417,10 @@ def metrics(result: BacktestResult) -> dict[str, object]:
         if peak > 0:
             max_drawdown = max(max_drawdown, (peak - equity) / peak)
     wins = sum(1 for trade in result.trades if trade.pnl > 0)
+    winning_pnl = [trade.pnl for trade in result.trades if trade.pnl > 0]
+    losing_pnl = [trade.pnl for trade in result.trades if trade.pnl < 0]
+    gross_profit = sum(winning_pnl)
+    gross_loss = -sum(losing_pnl)
     days = max(1, (result.end_date - result.start_date).days)
     years = days / 365.2425
     cagr = (result.final_equity / result.initial_equity) ** (1 / years) - 1 if result.final_equity > 0 else -1.0
@@ -425,6 +439,14 @@ def metrics(result: BacktestResult) -> dict[str, object]:
         "max_drawdown_pct": round(max_drawdown * 100, 8),
         "trade_count": len(result.trades),
         "win_rate_pct": round(wins / len(result.trades) * 100, 8) if result.trades else 0.0,
+        "average_win": round(sum(winning_pnl) / len(winning_pnl), 8) if winning_pnl else 0.0,
+        "average_loss": round(sum(losing_pnl) / len(losing_pnl), 8) if losing_pnl else 0.0,
+        "profit_factor": round(gross_profit / gross_loss, 8) if gross_loss else None,
+        "average_trade_pnl": round(sum(t.pnl for t in result.trades) / len(result.trades), 8)
+        if result.trades else 0.0,
+        "total_modeled_execution_cost": round(
+            sum(t.modeled_execution_cost for t in result.trades), 8
+        ),
         "average_exposure_pct": round(avg_exposure, 8),
         "max_planned_risk_pct": round(max((t.planned_risk_pct for t in result.trades), default=0.0), 8),
     }
@@ -481,4 +503,3 @@ def output_hashes(output_dir: Path) -> dict[str, str]:
         for path in sorted(output_dir.iterdir())
         if path.is_file() and path.name != "artifact_hashes.json"
     }
-

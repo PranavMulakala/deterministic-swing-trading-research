@@ -14,6 +14,8 @@ make reproduce
 
 `fetch-data` is the only networked step. It creates a checksummed snapshot under `data/pinned/`. `reproduce` verifies those checksums, runs the frozen in-sample and out-of-sample simulations plus both benchmarks, and writes `outputs/v1/dashboard.html`, full ledgers, trades, equity, exposure, metrics, and artifact hashes.
 
+The measured conclusion is in `outputs/v1/milestone1_report.md`. V1 remains research-only even if every software validation passes; software correctness does not imply trading profitability.
+
 ## Plain-language operating model
 
 - Market: 15 liquid US equity/sector ETFs.
