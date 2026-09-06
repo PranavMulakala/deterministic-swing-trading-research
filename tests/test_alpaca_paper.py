@@ -1,4 +1,7 @@
+import io
 import json
+import urllib.error
+from dataclasses import replace
 from decimal import Decimal
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -8,6 +11,7 @@ from unittest.mock import patch
 from swingbot.alpaca_paper import (
     AlpacaPaperClient,
     AlpacaPaperError,
+    _NoRedirect,
     _default_transport,
     _paper_order,
 )
@@ -23,6 +27,9 @@ class AlpacaPaperClientTests(unittest.TestCase):
                 "paper-key", "paper-secret",
                 trading_base_url="https://api.alpaca.markets",
             )
+
+        with self.assertRaisesRegex(AlpacaPaperError, "credentials are missing"):
+            AlpacaPaperClient("", "paper-secret")
 
     def test_entry_payload_is_exact_paper_oto_with_native_stop(self) -> None:
         calls = []
@@ -90,6 +97,62 @@ class AlpacaPaperClientTests(unittest.TestCase):
         proposal = sample_proposal(fractional=True)
         with self.assertRaises(AlpacaPaperError):
             client.submit_entry(proposal, sample_permit(proposal))
+
+    def test_every_invalid_entry_envelope_is_rejected_before_transport(self) -> None:
+        calls = []
+        client = AlpacaPaperClient(
+            "key", "secret", transport=lambda *args: calls.append(args),
+            permit_validator=lambda *_: True,
+        )
+        base = sample_proposal()
+        invalid = (
+            replace(base, action="close_position"),
+            replace(base, side="sell"),
+            replace(base, order_type="limit"),
+            replace(base, time_in_force="day"),
+            replace(base, order_class="simple"),
+            replace(base, stop_price=None),
+            replace(base, extended_hours=True),
+            replace(base, quantity=Decimal("0")),
+            replace(base, maximum_entry_reference=None),
+            replace(base, stop_price=base.maximum_entry_reference),
+        )
+        for proposal in invalid:
+            with self.subTest(proposal=proposal):
+                with self.assertRaises(AlpacaPaperError):
+                    client.submit_entry(proposal, sample_permit(proposal))
+        self.assertEqual(calls, [])
+
+    def test_every_invalid_exit_and_cancel_envelope_is_rejected_before_transport(self) -> None:
+        calls = []
+        client = AlpacaPaperClient(
+            "key", "secret", transport=lambda *args: calls.append(args),
+            permit_validator=lambda *_: True,
+        )
+        base = sample_proposal(action="close_position")
+        invalid = (
+            replace(base, action="entry_oto"),
+            replace(base, side="buy"),
+            replace(base, quantity=Decimal("0")),
+            replace(base, order_type="limit"),
+            replace(base, time_in_force="gtc"),
+            replace(base, order_class="oto"),
+            replace(base, extended_hours=True),
+            replace(base, stop_price=Decimal("118")),
+            replace(base, maximum_entry_reference=Decimal("120")),
+        )
+        for proposal in invalid:
+            with self.subTest(proposal=proposal):
+                with self.assertRaises(AlpacaPaperError):
+                    client.close_position(proposal, sample_permit(proposal))
+        with self.assertRaisesRegex(AlpacaPaperError, "approved exit proposal"):
+            entry = sample_proposal()
+            client.cancel_order("stop-1", Decimal("118"), entry, sample_permit(entry))
+        with self.assertRaisesRegex(AlpacaPaperError, "broker order id"):
+            client.cancel_order("", Decimal("118"), base, sample_permit(base))
+        with self.assertRaisesRegex(AlpacaPaperError, "stop price"):
+            client.cancel_order("stop-1", Decimal("0"), base, sample_permit(base))
+        self.assertEqual(calls, [])
 
     def test_mutation_without_matching_consumed_approval_permit_is_rejected(self) -> None:
         client = AlpacaPaperClient(
@@ -257,6 +320,40 @@ class AlpacaPaperClientTests(unittest.TestCase):
             self.assertEqual(order.order_class, "simple")
             self.assertEqual([call[0] for call in calls], ["DELETE", "GET", "POST"])
 
+    def test_mismatched_stop_cancel_ack_never_unlocks_exit_submission(self) -> None:
+        proposal = sample_proposal(action="close_position")
+        permit = sample_permit(proposal)
+        calls = []
+
+        def transport(method, url, headers, body, timeout):
+            calls.append((method, url, body))
+            if method == "DELETE":
+                return None
+            return {
+                "id": "different-stop",
+                "client_order_id": "",
+                "symbol": "QQQ",
+                "side": "sell",
+                "type": "stop",
+                "time_in_force": "gtc",
+                "order_class": "",
+                "status": "canceled",
+                "qty": "1",
+                "filled_qty": "0",
+                "stop_price": "118",
+                "extended_hours": False,
+                "legs": [],
+            }
+
+        client = AlpacaPaperClient(
+            "key", "secret", transport=transport, permit_validator=lambda *_: True
+        )
+        with self.assertRaisesRegex(AlpacaPaperError, "differs from the managed stop"):
+            client.cancel_order("stop-1", Decimal("118"), proposal, permit)
+        with self.assertRaisesRegex(AlpacaPaperError, "verified protective-stop"):
+            client.close_position(proposal, permit)
+        self.assertEqual([call[0] for call in calls], ["DELETE", "GET"])
+
     def test_production_transport_rejects_changed_final_url(self) -> None:
         class Response:
             def __enter__(self):
@@ -280,6 +377,78 @@ class AlpacaPaperClientTests(unittest.TestCase):
                 _default_transport(
                     "GET", "https://paper-api.alpaca.markets/v2/account", {}, None, 1
                 )
+
+    def test_redirect_handler_rejects_redirect_before_following_it(self) -> None:
+        with self.assertRaisesRegex(AlpacaPaperError, "redirects are prohibited"):
+            _NoRedirect().redirect_request(
+                None,
+                None,
+                302,
+                "redirect",
+                {},
+                "https://api.alpaca.markets/v2/account",
+            )
+
+    def test_production_transport_response_and_failure_contract(self) -> None:
+        class Response:
+            def __init__(self, raw):
+                self.raw = raw
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_):
+                return None
+
+            def geturl(self):
+                return "https://paper-api.alpaca.markets/v2/account"
+
+            def read(self):
+                return self.raw
+
+        class Opener:
+            def __init__(self, result):
+                self.result = result
+
+            def open(self, *_args, **_kwargs):
+                if isinstance(self.result, Exception):
+                    raise self.result
+                return self.result
+
+        url = "https://paper-api.alpaca.markets/v2/account"
+        cases = (
+            (Response(b""), None, None),
+            (Response(b'{"status":"ACTIVE"}'), {"status": "ACTIVE"}, None),
+            (Response(b"not-json"), None, "invalid JSON"),
+            (
+                urllib.error.HTTPError(
+                    url, 422, "unprocessable", {}, io.BytesIO(b'{"message":"bad request"}')
+                ),
+                None,
+                "HTTP 422: bad request",
+            ),
+            (
+                urllib.error.HTTPError(
+                    url, 500, "error", {}, io.BytesIO(b"not-json")
+                ),
+                None,
+                "HTTP 500: broker request failed",
+            ),
+            (urllib.error.URLError("offline"), None, "connection failed: offline"),
+        )
+        for result, expected, error in cases:
+            with self.subTest(error=error, expected=expected):
+                with patch(
+                    "swingbot.alpaca_paper.urllib.request.build_opener",
+                    return_value=Opener(result),
+                ):
+                    if error:
+                        with self.assertRaisesRegex(AlpacaPaperError, error):
+                            _default_transport("GET", url, {}, None, 1)
+                    else:
+                        self.assertEqual(
+                            _default_transport("GET", url, {}, None, 1), expected
+                        )
 
 
 if __name__ == "__main__":

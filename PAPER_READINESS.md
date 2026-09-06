@@ -31,11 +31,12 @@ PYTHONPATH=src python3 -m swingbot.cli analyze-paper-constraint --root .
 
 ## Measured software scope
 
-The builder reviewed all 25 `src/swingbot` modules and all 18 test/support modules, compiled the full tree with Python 3.12, and ran 87 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only validator handoff remains required.
+The builder reviewed all 25 `src/swingbot` modules and all 19 test/support modules, compiled the full tree with Python 3.12, and ran 94 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only validator handoff remains required.
 
 The automated suite exercises:
 
 - exact rejection of Alpaca's live endpoint and any alternate trading endpoint;
+- every Alpaca adapter read endpoint, exact query construction, nested-order parsing, multi-page historical bars, transport success/error handling, and every adapter safety-rejection branch;
 - exact market/GTC/OTO entry payload and broker-native stop payload;
 - secret redaction from adapter exceptions;
 - structural absence of LLM imports from all decision/execution modules and network isolation to the two approved adapters;
