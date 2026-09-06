@@ -99,6 +99,8 @@ def sample_proposal(*, fractional: bool = False, action: str = "entry_oto") -> O
         strategy_config_sha256="digest",
         fractional=fractional,
         exit_reason=None if entry else "manual_owner_exit",
+        protective_stop_order_id=None if entry else "stop-1",
+        protective_stop_price=None if entry else Decimal("118"),
     )
 
 

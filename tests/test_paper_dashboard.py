@@ -1,5 +1,6 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
+import os
 import unittest
 
 from swingbot.paper_dashboard import write_paper_dashboard
@@ -31,6 +32,19 @@ class PaperDashboardTests(unittest.TestCase):
             self.assertNotIn("paper-account-1234", rendered)
             self.assertNotIn("private-session", rendered)
             self.assertIn("[REDACTED]...1234", rendered)
+            self.assertEqual(os.stat(destination).st_mode & 0o777, 0o600)
+            self.assertEqual(os.stat(destination.parent).st_mode & 0o777, 0o700)
+
+    def test_dashboard_refuses_symbolic_link_destination(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            target = root / "target.html"
+            target.write_text("unchanged", encoding="utf-8")
+            destination = root / "status.html"
+            destination.symlink_to(target)
+            with self.assertRaisesRegex(PermissionError, "symbolic link"):
+                write_paper_dashboard({}, [], destination)
+            self.assertEqual(target.read_text(encoding="utf-8"), "unchanged")
 
 
 if __name__ == "__main__":

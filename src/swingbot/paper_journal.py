@@ -7,12 +7,13 @@ import os
 import sqlite3
 import uuid
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Iterator
 
 from .paper_models import ApprovalPermit, OrderProposal, canonical_json, parse_timestamp
+from .paper_config import QUOTE_FUTURE_TOLERANCE_SECONDS
 
 
 GENESIS_HASH = "0" * 64
@@ -49,12 +50,16 @@ class PaperJournal:
 
     def __init__(self, path: str | Path):
         self.path = Path(path)
+        if self.path.is_symlink():
+            raise JournalError("paper journal may not be a symbolic link")
         self.path.parent.mkdir(parents=True, exist_ok=True)
         os.chmod(self.path.parent, 0o700)
         self._initialize()
         os.chmod(self.path, 0o600)
 
     def _connect(self) -> sqlite3.Connection:
+        if self.path.is_symlink():
+            raise JournalError("paper journal may not be a symbolic link")
         connection = sqlite3.connect(self.path, timeout=10)
         connection.row_factory = sqlite3.Row
         connection.execute("PRAGMA foreign_keys = ON")
@@ -140,7 +145,15 @@ class PaperJournal:
     def mutation_lock(self) -> Iterator[None]:
         """Serialize the complete broker-mutation critical section across processes."""
         lock_path = self.path.with_suffix(self.path.suffix + ".lock")
-        descriptor = os.open(lock_path, os.O_CREAT | os.O_RDWR, 0o600)
+        if lock_path.is_symlink():
+            raise JournalError("paper journal lock may not be a symbolic link")
+        flags = os.O_CREAT | os.O_RDWR
+        if hasattr(os, "O_NOFOLLOW"):
+            flags |= os.O_NOFOLLOW
+        try:
+            descriptor = os.open(lock_path, flags, 0o600)
+        except OSError as exc:
+            raise JournalError("paper journal lock could not be opened safely") from exc
         try:
             os.fchmod(descriptor, 0o600)
             fcntl.flock(descriptor, fcntl.LOCK_EX)
@@ -650,6 +663,8 @@ class PaperJournal:
     ) -> None:
         if proposal.action != "close_position" or not stop_order_id:
             raise JournalError("stop-cancellation verification requires an exact exit proposal")
+        if proposal.protective_stop_order_id != stop_order_id:
+            raise JournalError("stop-cancellation verification is not bound to the exit proposal")
         if verified_at.tzinfo is None:
             raise JournalError("stop-cancellation verification timestamp must be timezone-aware")
         self.verify_integrity()
@@ -845,7 +860,8 @@ class PaperJournal:
             reviewed_at.tzinfo is None
             or quote_timestamp.tzinfo is None
             or reviewed_at < proposal.created_at
-            or quote_timestamp > reviewed_at
+            or quote_timestamp
+            > reviewed_at + timedelta(seconds=QUOTE_FUTURE_TOLERANCE_SECONDS)
             or not bid.is_finite()
             or not ask.is_finite()
             or bid <= 0
@@ -923,3 +939,36 @@ class PaperJournal:
                 (event_type,),
             ).fetchone()
         return json.loads(str(row["payload_json"])) if row else None
+
+    def first_observed_equity_for_day(self, observed_at: datetime) -> Decimal | None:
+        """Return the first broker equity snapshot in the current run and trading day."""
+        if observed_at.tzinfo is None:
+            raise JournalError("trading-day equity lookup requires a timezone-aware timestamp")
+        with self._connect() as connection:
+            run = connection.execute(
+                """
+                SELECT COALESCE(MAX(seq), 0) AS seq FROM events
+                WHERE event_type IN ('account_bound', 'paper_run_rebaselined')
+                """
+            ).fetchone()
+            rows = connection.execute(
+                """
+                SELECT occurred_at, payload_json FROM events
+                WHERE event_type = 'account_snapshot_observed' AND seq > ?
+                ORDER BY seq
+                """,
+                (int(run["seq"]),),
+            ).fetchall()
+        for row in rows:
+            timestamp = parse_timestamp(str(row["occurred_at"]))
+            if timestamp.astimezone(observed_at.tzinfo).date() != observed_at.date():
+                continue
+            payload = json.loads(str(row["payload_json"]))
+            try:
+                equity = Decimal(str(payload["equity"]))
+            except (KeyError, InvalidOperation):
+                continue
+            if not equity.is_finite() or equity <= 0:
+                continue
+            return equity
+        return None

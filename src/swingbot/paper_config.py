@@ -15,6 +15,9 @@ FROZEN_STRATEGY_CONFIG_SHA256 = (
 FROZEN_STRATEGY_VALUE_SHA256 = (
     "b1c6237d44bd50e22672b60e2d0316193c66a3646f32c06a717ffd92c4bee434"
 )
+QUOTE_FUTURE_TOLERANCE_SECONDS = 2
+CANCEL_VERIFICATION_ATTEMPTS = 5
+CANCEL_VERIFICATION_INTERVAL_SECONDS = 0.25
 
 
 class PaperConfigError(ValueError):
@@ -76,9 +79,13 @@ def _validate(config: dict[str, Any], strategy_digest: str) -> None:
         "default_kill_switch": True,
         "approval_ttl_seconds": 120,
         "quote_max_age_seconds": 30,
+        "quote_future_tolerance_seconds": QUOTE_FUTURE_TOLERANCE_SECONDS,
         "max_requote_drift_bps": 10,
         "max_quote_spread_bps": 100,
         "market_fill_buffer_bps": 25,
+        "cancel_verification_attempts": CANCEL_VERIFICATION_ATTEMPTS,
+        "cancel_verification_interval_seconds": CANCEL_VERIFICATION_INTERVAL_SECONDS,
+        "exit_cancel_cutoff_seconds_before_close": 60,
     }
     for key, expected in exact.items():
         if execution.get(key) != expected:

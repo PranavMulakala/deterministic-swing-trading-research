@@ -104,6 +104,23 @@ class PaperWorkflowTests(unittest.TestCase):
         self.assertNotEqual(proposal.proposal_id, second.proposal_id)
         self.assertNotEqual(proposal.client_order_id, second.client_order_id)
 
+    def test_execution_revalidates_current_cash_only_buying_power(self) -> None:
+        proposal = self.workflow.propose_entry("SPY")
+        reduced_cash = replace(
+            self.broker.account,
+            cash=Decimal("1"),
+            non_marginable_buying_power=Decimal("1"),
+        )
+        with self.assertRaisesRegex(PaperWorkflowError, "cash-only buying power"):
+            self.workflow._revalidate_entry(
+                proposal,
+                reduced_cash,
+                self.broker.clock,
+                self.broker.quote,
+                [],
+                [],
+            )
+
     def test_submission_needs_runtime_switch_exact_code_and_is_one_use(self) -> None:
         proposal = self.workflow.propose_entry("SPY")
         review = self.workflow.review(proposal.proposal_id)
@@ -455,6 +472,12 @@ class PaperWorkflowTests(unittest.TestCase):
 
         exit_proposal = self.workflow.propose_exit("SPY", reason="manual_owner_exit")
         exit_review = self.workflow.review(exit_proposal.proposal_id)
+        self.assertEqual(
+            exit_review["protective_stop_order_id"], entry_order.legs[0].order_id
+        )
+        self.assertEqual(
+            exit_review["protective_stop"], str(entry_order.legs[0].stop_price)
+        )
         exit_order = self.workflow.execute(
             exit_proposal.proposal_id,
             exit_review["confirmation_code"],
@@ -543,7 +566,7 @@ class PaperWorkflowTests(unittest.TestCase):
         self.assertTrue(journal.kill_switch_latched())
 
     def test_stop_cancel_unconfirmed_filled_or_unjournaled_blocks_exit(self) -> None:
-        for scenario in ("unconfirmed", "filled", "unjournaled"):
+        for scenario in ("unconfirmed", "filled", "partial_then_canceled", "unjournaled"):
             with self.subTest(scenario=scenario):
                 (
                     journal,
@@ -578,6 +601,20 @@ class PaperWorkflowTests(unittest.TestCase):
                         "record_protective_stop_cancellation_verified",
                         wraps=journal.record_protective_stop_cancellation_verified,
                     )
+                elif scenario == "partial_then_canceled":
+                    broker.cancel_order = lambda *_args, **_kwargs: replace(
+                        entry_order.legs[0],
+                        status="canceled",
+                        filled_quantity=entry_order.legs[0].quantity / 2,
+                        filled_average_price=entry_order.legs[0].stop_price,
+                        filled_at=NOW,
+                    )
+                    expected = "partially filled before cancellation"
+                    context = patch.object(
+                        journal,
+                        "record_protective_stop_cancellation_verified",
+                        wraps=journal.record_protective_stop_cancellation_verified,
+                    )
                 else:
                     broker.cancel_order = original_cancel
                     expected = "verification could not be journaled"
@@ -596,6 +633,47 @@ class PaperWorkflowTests(unittest.TestCase):
                         )
                 self.assertEqual(broker.submitted_exits, 0)
                 self.assertTrue(journal.kill_switch_latched())
+
+    def test_position_is_rechecked_after_protective_stop_cancellation(self) -> None:
+        journal, broker, workflow, _entry_order, proposal, review = (
+            self._new_open_position_stack("post-cancel-position-change")
+        )
+        original_cancel = broker.cancel_order
+
+        def cancel_then_change_position(*args, **kwargs):
+            stop = original_cancel(*args, **kwargs)
+            broker.positions = [
+                replace(broker.positions[0], quantity=proposal.quantity / 2)
+            ]
+            return stop
+
+        broker.cancel_order = cancel_then_change_position
+        with self.assertRaisesRegex(PaperWorkflowError, "state changed after stop cancellation"):
+            workflow.execute(
+                proposal.proposal_id,
+                review["confirmation_code"],
+                session_id="session-post-cancel-change",
+                environment=ENABLED,
+            )
+        self.assertEqual(broker.submitted_exits, 0)
+        self.assertTrue(journal.kill_switch_latched())
+
+    def test_exit_is_rejected_too_close_to_market_close_before_stop_cancel(self) -> None:
+        journal, broker, workflow, _entry_order, proposal, review = (
+            self._new_open_position_stack("near-close")
+        )
+        broker.clock = replace(
+            broker.clock, next_close=broker.clock.timestamp + timedelta(seconds=30)
+        )
+        with self.assertRaisesRegex(PaperWorkflowError, "too close"):
+            workflow.execute(
+                proposal.proposal_id,
+                review["confirmation_code"],
+                session_id="session-near-close",
+                environment=ENABLED,
+            )
+        self.assertEqual(broker.canceled_order_ids, [])
+        self.assertEqual(broker.submitted_exits, 0)
 
     def test_uncertain_stop_cancellation_latches_and_blocks_exit_submission(self) -> None:
         self.broker.entry_status = "filled"

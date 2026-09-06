@@ -12,6 +12,7 @@ class RiskPolicy:
     daily_loss_halt_pct: float
     quote_max_age_seconds: int
     fractional_precision: int = 6
+    quote_future_tolerance_seconds: int = 0
 
 
 @dataclass(frozen=True)
@@ -84,7 +85,10 @@ class RiskManager:
         if quote_timestamp.tzinfo is None or decision_timestamp.tzinfo is None:
             return RiskDecision(False, "timestamp_must_be_timezone_aware")
         age = (decision_timestamp - quote_timestamp).total_seconds()
-        if age < 0 or age > self.policy.quote_max_age_seconds:
+        if (
+            age < -self.policy.quote_future_tolerance_seconds
+            or age > self.policy.quote_max_age_seconds
+        ):
             return RiskDecision(False, "stale_quote")
         if self.state.start_of_day_equity > 0:
             daily_limit = self.state.start_of_day_equity * self.policy.daily_loss_halt_pct

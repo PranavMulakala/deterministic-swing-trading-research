@@ -65,6 +65,45 @@ class PaperReconciliationTests(unittest.TestCase):
         self.assertIn("cash_ledger_mismatch", report.issues)
         self.assertTrue(self.journal.kill_switch_latched())
 
+    def test_market_driven_aggregate_risk_ratio_warns_without_deadlocking_exits(self) -> None:
+        self.journal._append_state(
+            "entry_filled",
+            {
+                "symbol": "SPY", "quantity": "1", "entry_price": "100",
+                "entry_date": NOW.date().isoformat(), "planned_loss": "15",
+                "stop_price": "90", "parent_order_id": "parent-risk",
+                "stop_order_id": "stop-risk", "client_order_id": "client-risk",
+            },
+            occurred_at=NOW,
+        )
+        stop = PaperOrder(
+            "stop-risk", "", "SPY", "sell", "stop", "gtc", "simple",
+            "new", Decimal("1"), Decimal("0"), stop_price=Decimal("90"),
+        )
+        parent = PaperOrder(
+            "parent-risk", "client-risk", "SPY", "buy", "market", "gtc",
+            "oto", "filled", Decimal("1"), Decimal("1"),
+            filled_average_price=Decimal("100"), legs=(stop,), filled_at=NOW,
+        )
+        position = PaperPosition(
+            "SPY", Decimal("1"), "long", Decimal("100"), Decimal("99"),
+            Decimal("99"),
+        )
+        account = replace(
+            self.broker.account,
+            cash=Decimal("400"), non_marginable_buying_power=Decimal("400"),
+            buying_power=Decimal("400"), long_market_value=Decimal("99"),
+            equity=Decimal("499"),
+        )
+        report = self.reconciler.reconcile(
+            account=account, positions=[position], orders=[parent], now=NOW
+        )
+        self.assertTrue(report.ok, report.issues)
+        self.assertEqual(
+            report.warnings, ("aggregate_open_risk_breach_observed",)
+        )
+        self.assertFalse(self.journal.kill_switch_latched())
+
     def test_position_market_value_identities_fail_closed(self) -> None:
         position = PaperPosition(
             "SPY", Decimal("1"), "long", Decimal("100"), Decimal("101"), Decimal("100")

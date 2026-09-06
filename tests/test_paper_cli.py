@@ -167,6 +167,10 @@ class PaperCliTests(unittest.TestCase):
                 "data_base_url": "https://data.alpaca.markets",
                 "request_timeout_seconds": 20,
             },
+            "execution": {
+                "cancel_verification_attempts": 5,
+                "cancel_verification_interval_seconds": 0.25,
+            },
             "monitoring": {"poll_seconds": 15},
         }
         print_status = MagicMock()
@@ -243,6 +247,10 @@ class PaperCliTests(unittest.TestCase):
                 "trading_base_url": "https://paper-api.alpaca.markets",
                 "data_base_url": "https://data.alpaca.markets",
                 "request_timeout_seconds": 20,
+            },
+            "execution": {
+                "cancel_verification_attempts": 5,
+                "cancel_verification_interval_seconds": 0.25,
             },
             "monitoring": {"poll_seconds": 15},
         }

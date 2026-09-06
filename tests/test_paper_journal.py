@@ -78,6 +78,49 @@ class PaperJournalTests(unittest.TestCase):
             self.assertEqual(first.exitcode, 0)
             self.assertEqual(second.exitcode, 0)
 
+    def test_journal_and_lock_paths_reject_symbolic_links(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            target = root / "target.sqlite"
+            PaperJournal(target)
+            linked_journal = root / "linked.sqlite"
+            linked_journal.symlink_to(target)
+            with self.assertRaisesRegex(JournalError, "symbolic link"):
+                PaperJournal(linked_journal)
+
+            journal = PaperJournal(root / "journal.sqlite")
+            lock_path = journal.path.with_suffix(journal.path.suffix + ".lock")
+            lock_target = root / "lock-target"
+            lock_target.write_text("unchanged", encoding="utf-8")
+            lock_path.symlink_to(lock_target)
+            with self.assertRaisesRegex(JournalError, "symbolic link"):
+                with journal.mutation_lock():
+                    self.fail("symlinked lock was acquired")
+            self.assertEqual(lock_target.read_text(encoding="utf-8"), "unchanged")
+
+    def test_first_observed_equity_is_scoped_to_day_and_current_run(self) -> None:
+        with TemporaryDirectory() as directory:
+            journal = PaperJournal(Path(directory) / "journal.sqlite")
+            journal._append_state(
+                "account_bound", {"account_id": "paper"}, occurred_at=NOW
+            )
+            journal._append_state(
+                "account_snapshot_observed", {"equity": "500"}, occurred_at=NOW
+            )
+            journal._append_state(
+                "account_snapshot_observed", {"equity": "490"},
+                occurred_at=NOW + timedelta(minutes=1),
+            )
+            self.assertEqual(journal.first_observed_equity_for_day(NOW), 500)
+            self.assertIsNone(
+                journal.first_observed_equity_for_day(NOW + timedelta(days=1))
+            )
+            journal._append_state(
+                "paper_run_rebaselined", {"account_id": "paper"},
+                occurred_at=NOW + timedelta(minutes=2),
+            )
+            self.assertIsNone(journal.first_observed_equity_for_day(NOW))
+
     def test_exact_approval_is_one_use(self) -> None:
         with TemporaryDirectory() as directory:
             journal = PaperJournal(Path(directory) / "journal.sqlite")
@@ -235,6 +278,10 @@ class PaperJournalTests(unittest.TestCase):
                 journal.claim_permit(proposal, permit, "cancel_protective_stop")
             )
             self.assertFalse(journal.claim_permit(proposal, permit, "submit_order"))
+            with self.assertRaisesRegex(JournalError, "not bound"):
+                journal.record_protective_stop_cancellation_verified(
+                    proposal, permit, stop_order_id="different-stop", verified_at=NOW
+                )
             journal.record_protective_stop_cancellation_verified(
                 proposal, permit, stop_order_id="stop-1", verified_at=NOW
             )

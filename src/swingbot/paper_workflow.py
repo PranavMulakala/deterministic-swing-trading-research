@@ -322,6 +322,7 @@ class PaperWorkflow:
             now=clock.timestamp,
             planned_loss=planned_loss,
             state=state,
+            day_start_equity=self._day_start_equity(clock.timestamp),
             strategy_config=self.strategy_config,
             kill_switch=self._effective_kill_switch(),
         )
@@ -429,6 +430,8 @@ class PaperWorkflow:
             strategy_config_sha256=self.paper_config["strategy_config_sha256"],
             fractional=is_fractional(broker_position.quantity),
             exit_reason=selected_reason,
+            protective_stop_order_id=managed.stop_order_id,
+            protective_stop_price=managed.stop_price,
         )
         self._require_proposal_config(proposal)
         self.journal.record_proposal(proposal)
@@ -463,7 +466,15 @@ class PaperWorkflow:
         review = self.journal.latest_review(proposal)
         review_timestamp = parse_timestamp(str(review["occurred_at"]))
         review_quote_timestamp = parse_timestamp(str(review["quote_timestamp"]))
-        if review_timestamp > clock.timestamp or review_quote_timestamp > clock.timestamp:
+        future_tolerance = timedelta(
+            seconds=int(
+                self.paper_config["execution"]["quote_future_tolerance_seconds"]
+            )
+        )
+        if (
+            review_timestamp > clock.timestamp + future_tolerance
+            or review_quote_timestamp > clock.timestamp + future_tolerance
+        ):
             raise PaperWorkflowError("full-order review evidence is in the future")
         quote = self.broker.latest_quote(
             proposal.symbol, feed=self.paper_config["broker"]["market_data_feed"]
@@ -483,6 +494,14 @@ class PaperWorkflow:
             self._revalidate_entry(proposal, account, clock, quote, positions, orders)
         elif proposal.action == "close_position":
             self._revalidate_exit(proposal, positions)
+            seconds_before_close = (clock.next_close - clock.timestamp).total_seconds()
+            cutoff = int(
+                self.paper_config["execution"]["exit_cancel_cutoff_seconds_before_close"]
+            )
+            if seconds_before_close <= cutoff:
+                raise PaperWorkflowError(
+                    "approved exit is too close to the regular-session close to cancel protection safely"
+                )
         else:
             raise PaperWorkflowError("unknown proposal action")
 
@@ -574,6 +593,9 @@ class PaperWorkflow:
         binding = self.journal.account_binding() or {}
         run_number = int(binding.get("run_number", 1))
         broker_by_symbol = {position.symbol: position for position in positions}
+        observed_day_start = self.journal.first_observed_equity_for_day(
+            clock.timestamp
+        )
         return {
             "paper_only": True,
             "paper_run_number": run_number,
@@ -584,11 +606,20 @@ class PaperWorkflow:
             "equity": decimal_string(account.equity),
             "cash": decimal_string(account.cash),
             "day_pnl": decimal_string(account.equity - account.last_equity),
+            "observed_day_start_equity": decimal_string(observed_day_start)
+            if observed_day_start is not None else None,
+            "observed_day_pnl": decimal_string(account.equity - observed_day_start)
+            if observed_day_start is not None and account.equity.is_finite()
+            else None,
+            "alpaca_previous_close_pnl": decimal_string(
+                account.equity - account.last_equity
+            ),
             "kill_switch_latched": self.journal.kill_switch_latched(),
             "alpaca_fractional_swing_orders": "prohibited_day_only",
             "reconciliation": {
                 "ok": report.ok,
                 "issues": list(report.issues),
+                "warnings": list(report.warnings),
                 "broker_positions": report.broker_position_count,
                 "managed_positions": report.managed_position_count,
                 "working_orders": report.working_order_count,
@@ -732,14 +763,20 @@ class PaperWorkflow:
             "review_requote_timestamp": quote.timestamp.isoformat(),
             "maximum_entry_reference": decimal_string(proposal.maximum_entry_reference)
             if proposal.maximum_entry_reference is not None else None,
-            "protective_stop": decimal_string(proposal.stop_price)
-            if proposal.stop_price is not None else None,
+            "protective_stop": decimal_string(
+                proposal.stop_price
+                if proposal.stop_price is not None
+                else proposal.protective_stop_price
+            )
+            if proposal.stop_price is not None or proposal.protective_stop_price is not None
+            else None,
             "estimated_cost_or_proceeds": decimal_string(proposal.estimated_cost),
             "planned_loss": decimal_string(proposal.planned_loss),
             "risk_limit": decimal_string(proposal.risk_limit),
             "thesis": proposal.thesis,
             "invalidation": proposal.invalidation,
             "exit_reason": proposal.exit_reason,
+            "protective_stop_order_id": proposal.protective_stop_order_id,
             "client_order_id": proposal.client_order_id,
             "one_order_only": True,
             "market_order_warning": "The maximum entry reference is a pre-submit guard, not a broker limit price; the actual market fill can be worse.",
@@ -788,6 +825,8 @@ class PaperWorkflow:
             invalidation=signal.invalidation,
             strategy_config_sha256=self.paper_config["strategy_config_sha256"],
             fractional=is_fractional(quantity),
+            protective_stop_order_id=None,
+            protective_stop_price=None,
         )
 
     def _clean_snapshot(
@@ -828,6 +867,14 @@ class PaperWorkflow:
             raise PaperWorkflowError("Alpaca fractional DAY orders cannot protect a swing overnight")
         if proposal.maximum_entry_reference is None or quote.ask > proposal.maximum_entry_reference:
             raise PaperWorkflowError("current ask exceeds the approved maximum entry reference")
+        available_cash = min(account.cash, account.non_marginable_buying_power)
+        if (
+            proposal.quantity * proposal.maximum_entry_reference
+            > available_cash + Decimal("0.00000001")
+        ):
+            raise PaperWorkflowError(
+                "current cash-only buying power no longer covers the approved entry"
+            )
         state = reduce_events(self.journal.events())
         authorize_entry_risk(
             client_order_id=proposal.client_order_id,
@@ -837,6 +884,7 @@ class PaperWorkflow:
             now=clock.timestamp,
             planned_loss=proposal.planned_loss,
             state=state,
+            day_start_equity=self._day_start_equity(clock.timestamp),
             strategy_config=self.strategy_config,
             kill_switch=self._effective_kill_switch(),
         )
@@ -859,6 +907,10 @@ class PaperWorkflow:
         managed = state.positions.get(proposal.symbol)
         if managed is None:
             raise PaperWorkflowError("managed position disappeared before exit")
+        if proposal.protective_stop_order_id != managed.stop_order_id:
+            raise PaperWorkflowError(
+                "exit approval is not bound to the currently managed protective stop"
+            )
         try:
             stop = self.broker.cancel_order(
                 managed.stop_order_id,
@@ -879,6 +931,36 @@ class PaperWorkflow:
         if stop.status == "filled":
             self._latch("protective_stop_filled_during_exit", [managed.stop_order_id], now)
             raise PaperWorkflowError("protective stop filled; close order was not submitted")
+        if (
+            stop.filled_quantity != 0
+            or stop.filled_average_price is not None
+            or stop.filled_at is not None
+        ):
+            self._latch(
+                "protective_stop_partially_filled_during_exit",
+                [managed.stop_order_id, decimal_string(stop.filled_quantity)],
+                now,
+            )
+            raise PaperWorkflowError(
+                "protective stop partially filled before cancellation; close order was not submitted"
+            )
+        try:
+            account = self.broker.get_account()
+            post_cancel_clock = self.broker.get_clock()
+            positions = self.broker.list_positions()
+            require_operable_account(account, self.paper_config)
+            require_account_binding(account, self.journal.account_binding())
+            require_market_open(post_cancel_clock)
+            self._revalidate_exit(proposal, positions)
+        except Exception as exc:
+            self._latch(
+                "post_cancel_exit_revalidation_failed",
+                [managed.stop_order_id, type(exc).__name__, str(exc)],
+                now,
+            )
+            raise PaperWorkflowError(
+                "broker state changed after stop cancellation; close order was not submitted"
+            ) from None
         try:
             self.journal.record_protective_stop_cancellation_verified(
                 proposal,
@@ -1082,7 +1164,13 @@ class PaperWorkflow:
             or proposal.created_at.tzinfo is None
             or proposal.expires_at.tzinfo is None
             or proposal.quote_timestamp.tzinfo is None
-            or proposal.quote_timestamp > proposal.created_at
+            or proposal.quote_timestamp
+            > proposal.created_at
+            + timedelta(
+                seconds=int(
+                    self.paper_config["execution"]["quote_future_tolerance_seconds"]
+                )
+            )
             or proposal.expires_at <= proposal.created_at
             or proposal.expires_at - proposal.created_at
             != timedelta(
@@ -1114,6 +1202,8 @@ class PaperWorkflow:
                 or proposal.planned_loss > proposal.risk_limit
                 or proposal.signal_date is None
                 or proposal.exit_reason is not None
+                or proposal.protective_stop_order_id is not None
+                or proposal.protective_stop_price is not None
                 or not proposal.proposal_id.startswith("prop-e-")
                 or not proposal.client_order_id.startswith("swing-e-")
             ):
@@ -1133,6 +1223,10 @@ class PaperWorkflow:
                 or proposal.signal_date is not None
                 or proposal.exit_reason
                 not in {"recovery_target", "time_stop", "manual_owner_exit"}
+                or not proposal.protective_stop_order_id
+                or proposal.protective_stop_price is None
+                or not proposal.protective_stop_price.is_finite()
+                or proposal.protective_stop_price <= 0
                 or not proposal.proposal_id.startswith("prop-x-")
                 or not proposal.client_order_id.startswith("swing-x-")
             ):
@@ -1146,6 +1240,14 @@ class PaperWorkflow:
             or self._config_hash(self.paper_config) != self._paper_runtime_hash
         ):
             raise PaperWorkflowError("runtime configuration changed after workflow initialization")
+
+    def _day_start_equity(self, timestamp: datetime) -> Decimal:
+        equity = self.journal.first_observed_equity_for_day(timestamp)
+        if equity is None:
+            raise PaperWorkflowError(
+                "no broker equity snapshot exists for the current trading day"
+            )
+        return equity
 
     @staticmethod
     def _config_hash(config: dict[str, Any]) -> str:

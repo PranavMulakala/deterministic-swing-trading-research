@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -9,7 +10,12 @@ from decimal import Decimal
 from typing import Any, Callable, Optional
 
 from .models import Bar
-from .paper_config import ALPACA_DATA_BASE_URL, PAPER_TRADING_BASE_URL
+from .paper_config import (
+    ALPACA_DATA_BASE_URL,
+    CANCEL_VERIFICATION_ATTEMPTS,
+    CANCEL_VERIFICATION_INTERVAL_SECONDS,
+    PAPER_TRADING_BASE_URL,
+)
 from .paper_models import (
     ApprovalPermit,
     OrderProposal,
@@ -27,6 +33,7 @@ from .paper_models import (
 Transport = Callable[[str, str, dict[str, str], Optional[bytes], int], Any]
 PermitValidator = Callable[[OrderProposal, ApprovalPermit, str], bool]
 _MUTATING_METHODS = {"POST", "PATCH", "PUT", "DELETE"}
+_ALLOWED_METHODS = _MUTATING_METHODS | {"GET"}
 _MUTATION_TOKEN = object()
 
 
@@ -44,7 +51,7 @@ def _default_transport(
 ) -> Any:
     request = urllib.request.Request(url, data=body, headers=headers, method=method)
     try:
-        opener = urllib.request.build_opener(_NoRedirect)
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), _NoRedirect)
         with opener.open(request, timeout=timeout) as response:
             if response.geturl() != url:
                 raise AlpacaPaperError("broker response URL differs from the requested paper endpoint")
@@ -79,6 +86,9 @@ class AlpacaPaperClient:
         timeout: int = 20,
         transport: Transport | None = None,
         permit_validator: PermitValidator | None = None,
+        cancel_verification_attempts: int = CANCEL_VERIFICATION_ATTEMPTS,
+        cancel_verification_interval_seconds: float = CANCEL_VERIFICATION_INTERVAL_SECONDS,
+        sleep: Callable[[float], None] = time.sleep,
     ):
         if trading_base_url != PAPER_TRADING_BASE_URL:
             raise AlpacaPaperError("live or alternate trading endpoints are prohibited")
@@ -86,6 +96,8 @@ class AlpacaPaperClient:
             raise AlpacaPaperError("alternate market-data endpoints are prohibited")
         if not api_key or not api_secret:
             raise AlpacaPaperError("paper API credentials are missing")
+        if cancel_verification_attempts < 1 or cancel_verification_interval_seconds < 0:
+            raise AlpacaPaperError("cancel verification settings are invalid")
         self._key = api_key
         self._secret = api_secret
         self._trading_base = PAPER_TRADING_BASE_URL
@@ -93,6 +105,9 @@ class AlpacaPaperClient:
         self._timeout = timeout
         self._transport = transport or _default_transport
         self._permit_validator = permit_validator
+        self._cancel_verification_attempts = cancel_verification_attempts
+        self._cancel_verification_interval_seconds = cancel_verification_interval_seconds
+        self._sleep = sleep
         self._verified_exit_permits: set[tuple[str, str, str]] = set()
 
     def _request(
@@ -105,7 +120,9 @@ class AlpacaPaperClient:
         body: dict[str, Any] | None = None,
         _mutation_token: object | None = None,
     ) -> Any:
-        method = method.upper()
+        method = method.strip().upper()
+        if method not in _ALLOWED_METHODS:
+            raise AlpacaPaperError("unsupported broker HTTP method")
         if method in _MUTATING_METHODS and _mutation_token is not _MUTATION_TOKEN:
             raise AlpacaPaperError(
                 "direct broker mutation is prohibited; use an approval-gated adapter method"
@@ -215,11 +232,34 @@ class AlpacaPaperClient:
         ]
 
     def list_orders(self, *, status: str = "all") -> list[PaperOrder]:
-        values = self._request(
-            "GET", "/v2/orders",
-            query={"status": status, "nested": "true", "limit": 500, "direction": "desc"},
-        )
-        return [_paper_order(value) for value in values]
+        if status not in {"open", "closed", "all"}:
+            raise AlpacaPaperError("unsupported order-status filter")
+        orders: list[PaperOrder] = []
+        seen: set[str] = set()
+        before_order_id: str | None = None
+        while True:
+            query: dict[str, Any] = {
+                "status": status,
+                "nested": "true",
+                "limit": 500,
+                "direction": "desc",
+            }
+            if before_order_id is not None:
+                query["before_order_id"] = before_order_id
+            values = self._request("GET", "/v2/orders", query=query)
+            if not isinstance(values, list):
+                raise AlpacaPaperError("broker order list is not an array")
+            page = [_paper_order(value) for value in values]
+            for order in page:
+                if order.order_id in seen:
+                    raise AlpacaPaperError("broker order pagination repeated an order")
+                seen.add(order.order_id)
+                orders.append(order)
+            if len(page) < 500:
+                return orders
+            before_order_id = page[-1].order_id
+            if not before_order_id:
+                raise AlpacaPaperError("broker order pagination made no progress")
 
     def get_order(self, order_id: str) -> PaperOrder:
         value = self._request(
@@ -285,8 +325,17 @@ class AlpacaPaperClient:
             or proposal.extended_hours
         ):
             raise AlpacaPaperError("close proposal has invalid execution terms")
-        if proposal.stop_price is not None or proposal.maximum_entry_reference is not None:
-            raise AlpacaPaperError("close proposal must not contain entry or stop terms")
+        if (
+            proposal.stop_price is not None
+            or proposal.maximum_entry_reference is not None
+            or not proposal.protective_stop_order_id
+            or proposal.protective_stop_price is None
+            or not proposal.protective_stop_price.is_finite()
+            or proposal.protective_stop_price <= 0
+        ):
+            raise AlpacaPaperError(
+                "close proposal has invalid entry or protective-stop binding terms"
+            )
         permit_key = self._permit_key(proposal, permit)
         if permit_key not in self._verified_exit_permits:
             raise AlpacaPaperError(
@@ -319,9 +368,28 @@ class AlpacaPaperClient:
     ) -> PaperOrder:
         if proposal.action != "close_position":
             raise AlpacaPaperError("order cancellation requires an approved exit proposal")
+        if (
+            proposal.side != "sell"
+            or proposal.quantity <= 0
+            or proposal.order_type != "market"
+            or proposal.time_in_force != "day"
+            or proposal.order_class != "simple"
+            or proposal.extended_hours
+            or proposal.stop_price is not None
+            or proposal.maximum_entry_reference is not None
+        ):
+            raise AlpacaPaperError("order cancellation requires valid approved exit terms")
         if not order_id:
             raise AlpacaPaperError("order cancellation requires a broker order id")
-        if expected_stop_price <= 0:
+        if proposal.protective_stop_order_id != order_id:
+            raise AlpacaPaperError(
+                "order cancellation is not bound to the approved protective stop id"
+            )
+        if (
+            not expected_stop_price.is_finite()
+            or expected_stop_price <= 0
+            or proposal.protective_stop_price != expected_stop_price
+        ):
             raise AlpacaPaperError("protective stop price is invalid")
         self._require_permit(proposal, permit, "cancel_protective_stop")
         self._request(
@@ -329,7 +397,34 @@ class AlpacaPaperClient:
             f"/v2/orders/{urllib.parse.quote(order_id, safe='')}",
             _mutation_token=_MUTATION_TOKEN,
         )
-        order = self.get_order(order_id)
+        terminal = {"canceled", "expired", "filled", "rejected", "replaced"}
+        order: PaperOrder | None = None
+        for attempt in range(self._cancel_verification_attempts):
+            order = self.get_order(order_id)
+            self._validate_canceled_stop_envelope(
+                order, order_id, expected_stop_price, proposal
+            )
+            if order.status in terminal:
+                break
+            if attempt + 1 < self._cancel_verification_attempts:
+                self._sleep(self._cancel_verification_interval_seconds)
+        assert order is not None
+        if (
+            order.status in {"canceled", "expired"}
+            and order.filled_quantity == 0
+            and order.filled_average_price is None
+            and order.filled_at is None
+        ):
+            self._verified_exit_permits.add(self._permit_key(proposal, permit))
+        return order
+
+    @staticmethod
+    def _validate_canceled_stop_envelope(
+        order: PaperOrder,
+        order_id: str,
+        expected_stop_price: Decimal,
+        proposal: OrderProposal,
+    ) -> None:
         if (
             order.order_id != order_id
             or order.symbol != proposal.symbol
@@ -344,9 +439,6 @@ class AlpacaPaperClient:
             raise AlpacaPaperError(
                 "broker protective-stop acknowledgement differs from the managed stop"
             )
-        if order.status in {"canceled", "expired"}:
-            self._verified_exit_permits.add(self._permit_key(proposal, permit))
-        return order
 
     def historical_daily_bars(
         self,

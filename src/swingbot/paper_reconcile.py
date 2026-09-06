@@ -24,6 +24,7 @@ NON_PROTECTIVE_STOP_STATUSES = {
 class ReconciliationReport:
     ok: bool
     issues: tuple[str, ...]
+    warnings: tuple[str, ...]
     broker_position_count: int
     managed_position_count: int
     working_order_count: int
@@ -69,6 +70,7 @@ class PaperReconciler:
         working_statuses = set(self.paper_config["monitoring"]["order_working_statuses"])
         known_statuses = terminal | working_statuses
         issues: list[str] = []
+        warnings: list[str] = []
         for order in flattened:
             if order.status not in known_statuses:
                 issues.append(f"unknown_order_status:{order.order_id}:{order.status}")
@@ -297,7 +299,11 @@ class PaperReconciler:
                 str(self.strategy_config["risk"]["max_aggregate_open_risk_pct"])
             )
             if aggregate_risk > aggregate_limit + Decimal("0.00000001"):
-                issues.append("aggregate_open_risk_breach_observed")
+                # Market-driven equity changes can move the ratio above 3%
+                # without changing any authorized dollar risk. This blocks
+                # subsequent entries in authorize_entry_risk, but is not an
+                # unexplained broker mismatch and must not deadlock exits.
+                warnings.append("aggregate_open_risk_breach_observed")
 
         expected_cash = self._expected_cash_from_ledger()
         if (
@@ -317,6 +323,7 @@ class PaperReconciler:
         return ReconciliationReport(
             ok=not unique_issues,
             issues=unique_issues,
+            warnings=tuple(dict.fromkeys(warnings)),
             broker_position_count=len(positions),
             managed_position_count=len(state.positions),
             working_order_count=len(working),
@@ -684,6 +691,9 @@ class PaperReconciler:
         previous = self.journal.latest_payload("account_snapshot_observed")
         prior_cash = Decimal(str(previous["cash"])) if previous else account.cash
         prior_equity = Decimal(str(previous["equity"])) if previous else account.equity
+        observed_day_start = (
+            self.journal.first_observed_equity_for_day(now) or account.equity
+        )
         self.journal._append_state(
             "account_snapshot_observed",
             {
@@ -692,6 +702,7 @@ class PaperReconciler:
                 "currency": account.currency,
                 "equity": decimal_string(account.equity),
                 "last_equity": decimal_string(account.last_equity),
+                "observed_day_start_equity": decimal_string(observed_day_start),
                 "cash": decimal_string(account.cash),
                 "non_marginable_buying_power": decimal_string(
                     account.non_marginable_buying_power
@@ -699,6 +710,9 @@ class PaperReconciler:
                 "long_market_value": decimal_string(account.long_market_value),
                 "short_market_value": decimal_string(account.short_market_value),
                 "day_pnl": decimal_string(account.equity - account.last_equity),
+                "observed_day_pnl": decimal_string(
+                    account.equity - observed_day_start
+                ),
                 "cash_change_since_prior_snapshot": decimal_string(
                     account.cash - prior_cash
                 ),

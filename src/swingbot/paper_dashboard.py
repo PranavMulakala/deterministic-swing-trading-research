@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import html
 import json
+import os
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -10,6 +12,9 @@ def write_paper_dashboard(
     status: dict[str, Any], events: list[dict[str, Any]], destination: Path
 ) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
+    os.chmod(destination.parent, 0o700)
+    if destination.is_symlink():
+        raise PermissionError("paper dashboard may not be a symbolic link")
     safe_status = html.escape(json.dumps(_redact(status), indent=2, sort_keys=True))
     rows = []
     for event in reversed(events):
@@ -52,9 +57,26 @@ code {{ white-space: pre-wrap; word-break: break-word; }}
 </body>
 </html>
 """
-    temporary = destination.with_suffix(destination.suffix + ".tmp")
-    temporary.write_text(body, encoding="utf-8")
-    temporary.replace(destination)
+    temporary_name: str | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w",
+            encoding="utf-8",
+            dir=destination.parent,
+            prefix=f".{destination.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as temporary:
+            temporary_name = temporary.name
+            os.fchmod(temporary.fileno(), 0o600)
+            temporary.write(body)
+            temporary.flush()
+            os.fsync(temporary.fileno())
+        os.replace(temporary_name, destination)
+        os.chmod(destination, 0o600)
+    finally:
+        if temporary_name is not None and os.path.exists(temporary_name):
+            os.unlink(temporary_name)
 
 
 def _redact(value: Any) -> Any:

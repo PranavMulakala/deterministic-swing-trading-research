@@ -60,9 +60,17 @@ class PaperPolicyTests(unittest.TestCase):
     def test_quote_staleness_future_spread_and_requote_drift_fail_closed(self) -> None:
         good = PaperQuote("SPY", Decimal("99.95"), Decimal("100.05"), NOW)
         require_quote(good, now=NOW, paper_config=self.paper)
+        require_quote(
+            PaperQuote(
+                "SPY", Decimal("99.95"), Decimal("100.05"),
+                NOW + timedelta(seconds=1),
+            ),
+            now=NOW,
+            paper_config=self.paper,
+        )
         cases = [
             (PaperQuote("SPY", Decimal("99.95"), Decimal("100.05"), NOW - timedelta(seconds=31)), None),
-            (PaperQuote("SPY", Decimal("99.95"), Decimal("100.05"), NOW + timedelta(seconds=1)), None),
+            (PaperQuote("SPY", Decimal("99.95"), Decimal("100.05"), NOW + timedelta(seconds=3)), None),
             (PaperQuote("SPY", Decimal("90"), Decimal("110"), NOW), None),
             (good, Decimal("99")),
         ]
@@ -101,6 +109,7 @@ class PaperPolicyTests(unittest.TestCase):
             authorize_entry_risk(
                 client_order_id="next", symbol="SPY", account=broker.account,
                 quote=broker.quote, now=NOW, planned_loss=Decimal("0.01"),
+                day_start_equity=Decimal("500"),
                 state=state, strategy_config=self.strategy, kill_switch=False,
             )
         halted = OperationalState(realized_pnl_by_day={NOW.date(): Decimal("-10")})
@@ -108,6 +117,32 @@ class PaperPolicyTests(unittest.TestCase):
             authorize_entry_risk(
                 client_order_id="halted", symbol="SPY", account=broker.account,
                 quote=broker.quote, now=NOW, planned_loss=Decimal("1"),
+                day_start_equity=Decimal("500"),
+                state=halted, strategy_config=self.strategy, kill_switch=False,
+            )
+
+        authorize_entry_risk(
+            client_order_id="future-within-tolerance", symbol="SPY",
+            account=broker.account,
+            quote=PaperQuote(
+                "SPY", broker.quote.bid, broker.quote.ask,
+                NOW + timedelta(seconds=1),
+            ),
+            now=NOW, planned_loss=Decimal("1"),
+            day_start_equity=Decimal("500"), state=OperationalState(),
+            strategy_config=self.strategy, kill_switch=False,
+        )
+
+        # Alpaca last_equity is the previous close, not the durable daily halt
+        # base. The explicitly observed start value controls the 2% threshold.
+        misleading = broker.account.__class__(
+            **{**broker.account.__dict__, "last_equity": Decimal("100000")}
+        )
+        with self.assertRaisesRegex(PaperPolicyError, "daily_loss_halt"):
+            authorize_entry_risk(
+                client_order_id="halted-observed-base", symbol="SPY",
+                account=misleading, quote=broker.quote, now=NOW,
+                planned_loss=Decimal("1"), day_start_equity=Decimal("500"),
                 state=halted, strategy_config=self.strategy, kill_switch=False,
             )
 

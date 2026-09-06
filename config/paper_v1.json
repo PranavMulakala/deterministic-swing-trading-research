@@ -24,11 +24,15 @@
     "extended_hours": false,
     "approval_ttl_seconds": 120,
     "quote_max_age_seconds": 30,
+    "quote_future_tolerance_seconds": 2,
     "max_requote_drift_bps": 10,
     "max_quote_spread_bps": 100,
     "market_fill_buffer_bps": 25,
     "runtime_enable_phrase": "I_UNDERSTAND_PAPER_ONLY",
     "default_kill_switch": true,
+    "cancel_verification_attempts": 5,
+    "cancel_verification_interval_seconds": 0.25,
+    "exit_cancel_cutoff_seconds_before_close": 60,
     "fractional_swing_orders": "prohibited_because_alpaca_fractional_orders_are_day_only"
   },
   "monitoring": {

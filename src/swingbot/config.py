@@ -10,15 +10,26 @@ class ConfigError(ValueError):
     pass
 
 
+FROZEN_V1_CONFIG_SHA256 = (
+    "215d907b4d87f009d461a59fe3ff060a424cf00020fc77f2d6dfcdf138c7bd27"
+)
+
+
 def load_config(path: str | Path) -> dict[str, Any]:
     config_path = Path(path)
     raw = config_path.read_bytes()
     sidecar = config_path.with_suffix(".sha256")
-    if sidecar.exists():
-        expected = sidecar.read_text(encoding="utf-8").split()[0]
-        actual = hashlib.sha256(raw).hexdigest()
-        if actual != expected:
-            raise ConfigError(f"frozen config checksum mismatch: expected {expected}, got {actual}")
+    if not sidecar.exists():
+        raise ConfigError("frozen config checksum sidecar is missing")
+    fields = sidecar.read_text(encoding="utf-8").split()
+    if not fields:
+        raise ConfigError("frozen config checksum sidecar is empty")
+    expected = fields[0]
+    actual = hashlib.sha256(raw).hexdigest()
+    if actual != expected:
+        raise ConfigError(f"frozen config checksum mismatch: expected {expected}, got {actual}")
+    if config_path.name == "strategy_v1.json" and actual != FROZEN_V1_CONFIG_SHA256:
+        raise ConfigError("strategy_v1.json does not match the code-anchored frozen v1 digest")
     config = json.loads(raw)
     validate_config(config)
     return config

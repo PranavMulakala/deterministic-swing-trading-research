@@ -35,8 +35,7 @@ class ExecutionDisabled(RuntimeError):
 
 
 def submit_paper_order(*_: object, **__: object) -> None:
-    """Milestone-1 bright line: actual paper execution is roadmap work."""
+    """Historical milestone-1 boundary; the separate paper adapter never calls it."""
     raise ExecutionDisabled(
-        "broker submission is disabled until milestone 1 passes independent validation"
+        "the legacy milestone-1 research submission function remains disabled"
     )
-

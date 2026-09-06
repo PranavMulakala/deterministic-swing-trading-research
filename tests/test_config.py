@@ -14,6 +14,13 @@ class ConfigTests(unittest.TestCase):
             with self.assertRaisesRegex(ConfigError, "checksum mismatch"):
                 load_config(config)
 
+    def test_frozen_config_checksum_sidecar_is_required(self) -> None:
+        with TemporaryDirectory() as temporary:
+            config = Path(temporary) / "strategy_v1.json"
+            config.write_text("{}", encoding="utf-8")
+            with self.assertRaisesRegex(ConfigError, "sidecar is missing"):
+                load_config(config)
+
 
 if __name__ == "__main__":
     unittest.main()

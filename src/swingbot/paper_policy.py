@@ -4,6 +4,7 @@ from datetime import date, datetime
 from decimal import Decimal, ROUND_DOWN
 from typing import Any
 
+from .paper_config import QUOTE_FUTURE_TOLERANCE_SECONDS
 from .paper_models import PaperAccount, PaperAsset, PaperClock, PaperOrder, PaperPosition, PaperQuote
 from .paper_state import OperationalState
 from .risk import RiskManager, RiskPolicy
@@ -104,7 +105,10 @@ def require_quote(
         raise PaperPolicyError("quote and decision timestamps must be timezone-aware")
     age = (now - quote.timestamp).total_seconds()
     max_age = int(paper_config["execution"]["quote_max_age_seconds"])
-    if age < 0 or age > max_age:
+    future_tolerance = int(
+        paper_config["execution"]["quote_future_tolerance_seconds"]
+    )
+    if age < -future_tolerance or age > max_age:
         raise PaperPolicyError(f"quote is stale ({age:.3f}s old; maximum {max_age}s)")
     if (
         not quote.bid.is_finite()
@@ -172,6 +176,9 @@ def size_entry(
             daily_loss_halt_pct=float(risk_cfg["daily_loss_halt_pct"]),
             quote_max_age_seconds=int(data_cfg["quote_max_age_seconds"]),
             fractional_precision=int(account_cfg["fractional_precision"]),
+            quote_future_tolerance_seconds=int(
+                paper_config["execution"]["quote_future_tolerance_seconds"]
+            ),
         )
     )
     qty, _, _ = manager.calculate_quantity(
@@ -204,6 +211,7 @@ def authorize_entry_risk(
     quote: PaperQuote,
     now: datetime,
     planned_loss: Decimal,
+    day_start_equity: Decimal,
     state: OperationalState,
     strategy_config: dict[str, Any],
     kill_switch: bool,
@@ -216,10 +224,13 @@ def authorize_entry_risk(
             daily_loss_halt_pct=float(risk_cfg["daily_loss_halt_pct"]),
             quote_max_age_seconds=int(strategy_config["data"]["quote_max_age_seconds"]),
             fractional_precision=int(strategy_config["account"]["fractional_precision"]),
+            quote_future_tolerance_seconds=QUOTE_FUTURE_TOLERANCE_SECONDS,
         )
     )
+    if not day_start_equity.is_finite() or day_start_equity <= 0:
+        raise PaperPolicyError("observed trading-day start equity is invalid")
     today = now.date()
-    manager.start_day(today, float(account.last_equity))
+    manager.start_day(today, float(day_start_equity))
     manager.state.open_risk_by_symbol = {
         key: float(value.planned_loss) for key, value in state.positions.items()
     }

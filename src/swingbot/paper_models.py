@@ -163,6 +163,8 @@ class OrderProposal:
     strategy_config_sha256: str
     fractional: bool
     exit_reason: str | None = None
+    protective_stop_order_id: str | None = None
+    protective_stop_price: Decimal | None = None
 
     @property
     def content_hash(self) -> str:
@@ -204,6 +206,10 @@ class OrderProposal:
             strategy_config_sha256=str(payload["strategy_config_sha256"]),
             fractional=bool(payload["fractional"]),
             exit_reason=str(payload["exit_reason"]) if payload.get("exit_reason") else None,
+            protective_stop_order_id=str(payload["protective_stop_order_id"])
+            if payload.get("protective_stop_order_id") else None,
+            protective_stop_price=Decimal(str(payload["protective_stop_price"]))
+            if payload.get("protective_stop_price") is not None else None,
         )
 
 

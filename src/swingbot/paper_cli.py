@@ -69,6 +69,12 @@ def run_paper(args: argparse.Namespace) -> None:
         data_base_url=broker_cfg["data_base_url"],
         timeout=int(broker_cfg["request_timeout_seconds"]),
         permit_validator=journal.claim_permit,
+        cancel_verification_attempts=int(
+            paper["execution"]["cancel_verification_attempts"]
+        ),
+        cancel_verification_interval_seconds=float(
+            paper["execution"]["cancel_verification_interval_seconds"]
+        ),
     )
     workflow = PaperWorkflow(broker, journal, strategy, paper)
 

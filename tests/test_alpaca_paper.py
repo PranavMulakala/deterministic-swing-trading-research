@@ -6,7 +6,7 @@ from decimal import Decimal
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from swingbot.alpaca_paper import (
     AlpacaPaperClient,
@@ -30,6 +30,14 @@ class AlpacaPaperClientTests(unittest.TestCase):
 
         with self.assertRaisesRegex(AlpacaPaperError, "credentials are missing"):
             AlpacaPaperClient("", "paper-secret")
+        for kwargs in (
+            {"cancel_verification_attempts": 0},
+            {"cancel_verification_interval_seconds": -1},
+        ):
+            with self.subTest(kwargs=kwargs), self.assertRaisesRegex(
+                AlpacaPaperError, "cancel verification settings"
+            ):
+                AlpacaPaperClient("paper-key", "paper-secret", **kwargs)
 
     def test_entry_payload_is_exact_paper_oto_with_native_stop(self) -> None:
         calls = []
@@ -148,10 +156,17 @@ class AlpacaPaperClientTests(unittest.TestCase):
         with self.assertRaisesRegex(AlpacaPaperError, "approved exit proposal"):
             entry = sample_proposal()
             client.cancel_order("stop-1", Decimal("118"), entry, sample_permit(entry))
+        with self.assertRaisesRegex(AlpacaPaperError, "valid approved exit terms"):
+            invalid_exit = replace(base, side="buy")
+            client.cancel_order(
+                "stop-1", Decimal("118"), invalid_exit, sample_permit(invalid_exit)
+            )
         with self.assertRaisesRegex(AlpacaPaperError, "broker order id"):
             client.cancel_order("", Decimal("118"), base, sample_permit(base))
         with self.assertRaisesRegex(AlpacaPaperError, "stop price"):
             client.cancel_order("stop-1", Decimal("0"), base, sample_permit(base))
+        with self.assertRaisesRegex(AlpacaPaperError, "approved protective stop id"):
+            client.cancel_order("stop-2", Decimal("118"), base, sample_permit(base))
         self.assertEqual(calls, [])
 
     def test_mutation_without_matching_consumed_approval_permit_is_rejected(self) -> None:
@@ -172,6 +187,10 @@ class AlpacaPaperClientTests(unittest.TestCase):
             client._request("POST", "/v2/orders", body={})
         with self.assertRaisesRegex(AlpacaPaperError, "direct broker mutation"):
             client._request("DELETE", "/v2/orders/order-1")
+        with self.assertRaisesRegex(AlpacaPaperError, "direct broker mutation"):
+            client._request(" post ", "/v2/orders", body={})
+        with self.assertRaisesRegex(AlpacaPaperError, "unsupported broker HTTP method"):
+            client._request("TRACE", "/v2/orders")
         self.assertEqual(calls, [])
 
     def test_malformed_entry_terms_are_rejected_before_permit_claim(self) -> None:
@@ -354,6 +373,66 @@ class AlpacaPaperClientTests(unittest.TestCase):
             client.close_position(proposal, permit)
         self.assertEqual([call[0] for call in calls], ["DELETE", "GET"])
 
+    def test_cancel_polls_until_terminal_and_partial_cancel_never_unlocks_sell(self) -> None:
+        proposal = sample_proposal(action="close_position")
+        permit = sample_permit(proposal)
+        states = ["pending_cancel", "canceled"]
+        sleeps = []
+        calls = []
+
+        def transport(method, url, headers, body, timeout):
+            calls.append(method)
+            if method == "DELETE":
+                return None
+            status = states.pop(0)
+            return {
+                "id": "stop-1", "client_order_id": "", "symbol": "SPY",
+                "side": "sell", "type": "stop", "time_in_force": "gtc",
+                "order_class": "", "status": status, "qty": "1",
+                "filled_qty": "0", "stop_price": "118",
+                "extended_hours": False, "legs": [],
+            }
+
+        client = AlpacaPaperClient(
+            "key", "secret", transport=transport, permit_validator=lambda *_: True,
+            cancel_verification_attempts=3,
+            cancel_verification_interval_seconds=0.01,
+            sleep=sleeps.append,
+        )
+        stop = client.cancel_order("stop-1", Decimal("118"), proposal, permit)
+        self.assertEqual(stop.status, "canceled")
+        self.assertEqual(calls, ["DELETE", "GET", "GET"])
+        self.assertEqual(sleeps, [0.01])
+
+        partial_calls = []
+
+        def partial_transport(method, url, headers, body, timeout):
+            partial_calls.append(method)
+            if method == "DELETE":
+                return None
+            if method == "GET":
+                return {
+                    "id": "stop-1", "client_order_id": "", "symbol": "SPY",
+                    "side": "sell", "type": "stop", "time_in_force": "gtc",
+                    "order_class": "", "status": "canceled", "qty": "1",
+                    "filled_qty": "0.5", "filled_avg_price": "118",
+                    "filled_at": NOW.isoformat(), "stop_price": "118",
+                    "extended_hours": False, "legs": [],
+                }
+            raise AssertionError(method)
+
+        partial = AlpacaPaperClient(
+            "key", "secret", transport=partial_transport,
+            permit_validator=lambda *_: True,
+        )
+        observed = partial.cancel_order(
+            "stop-1", Decimal("118"), proposal, permit
+        )
+        self.assertEqual(observed.filled_quantity, Decimal("0.5"))
+        with self.assertRaisesRegex(AlpacaPaperError, "verified protective-stop"):
+            partial.close_position(proposal, permit)
+        self.assertEqual(partial_calls, ["DELETE", "GET"])
+
     def test_production_transport_rejects_changed_final_url(self) -> None:
         class Response:
             def __enter__(self):
@@ -377,6 +456,34 @@ class AlpacaPaperClientTests(unittest.TestCase):
                 _default_transport(
                     "GET", "https://paper-api.alpaca.markets/v2/account", {}, None, 1
                 )
+
+    def test_production_transport_explicitly_disables_environment_proxies(self) -> None:
+        class Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_):
+                return None
+
+            def geturl(self):
+                return "https://paper-api.alpaca.markets/v2/account"
+
+            def read(self):
+                return b"{}"
+
+        opener = MagicMock()
+        opener.open.return_value = Response()
+        with patch(
+            "swingbot.alpaca_paper.urllib.request.build_opener",
+            return_value=opener,
+        ) as build_opener:
+            _default_transport(
+                "GET", "https://paper-api.alpaca.markets/v2/account", {}, None, 1
+            )
+        handlers = build_opener.call_args.args
+        self.assertEqual(len(handlers), 2)
+        self.assertEqual(handlers[0].proxies, {})
+        self.assertIs(handlers[1], _NoRedirect)
 
     def test_redirect_handler_rejects_redirect_before_following_it(self) -> None:
         with self.assertRaisesRegex(AlpacaPaperError, "redirects are prohibited"):

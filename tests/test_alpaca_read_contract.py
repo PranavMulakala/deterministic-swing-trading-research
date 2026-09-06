@@ -289,6 +289,8 @@ class AlpacaReadContractTests(unittest.TestCase):
             )
         with self.assertRaisesRegex(AlpacaPaperError, "unsupported quote feed"):
             self.client.latest_quote("SPY", feed="bad")
+        with self.assertRaisesRegex(AlpacaPaperError, "order-status filter"):
+            self.client.list_orders(status="pending")
         with self.assertRaisesRegex(AlpacaPaperError, "unsupported historical feed"):
             self.client.historical_daily_bars(
                 ["SPY"],
@@ -309,6 +311,58 @@ class AlpacaReadContractTests(unittest.TestCase):
             self.client.get_asset("../account")
         with self.assertRaisesRegex(AlpacaPaperError, "unsafe broker path"):
             self.client._request("GET", "/v2/../account")
+
+    def test_order_history_paginates_without_truncating_at_500(self) -> None:
+        calls = []
+
+        def transport(method, url, headers, body, timeout):
+            del headers, body, timeout
+            query = parse_qs(urlparse(url).query)
+            calls.append(query)
+            if "before_order_id" not in query:
+                return [
+                    _order_payload(f"order-{index}", client_id=f"client-{index}")
+                    for index in range(500)
+                ]
+            self.assertEqual(query["before_order_id"], ["order-499"])
+            return [_order_payload("order-500", client_id="client-500")]
+
+        client = AlpacaPaperClient("key", "secret", transport=transport)
+        orders = client.list_orders(status="all")
+        self.assertEqual(len(orders), 501)
+        self.assertEqual(orders[-1].order_id, "order-500")
+        self.assertEqual(len(calls), 2)
+
+    def test_order_history_rejects_malformed_or_nonprogressing_pages(self) -> None:
+        client = AlpacaPaperClient("key", "secret", transport=lambda *_: {})
+        with self.assertRaisesRegex(AlpacaPaperError, "not an array"):
+            client.list_orders(status="all")
+
+        def duplicate_transport(method, url, headers, body, timeout):
+            del method, headers, body, timeout
+            query = parse_qs(urlparse(url).query)
+            if "before_order_id" not in query:
+                return [
+                    _order_payload(f"order-{index}", client_id=f"client-{index}")
+                    for index in range(500)
+                ]
+            return [_order_payload("order-0", client_id="duplicate")]
+
+        duplicate = AlpacaPaperClient("key", "secret", transport=duplicate_transport)
+        with self.assertRaisesRegex(AlpacaPaperError, "repeated an order"):
+            duplicate.list_orders(status="all")
+
+        def stalled_transport(*_):
+            values = [
+                _order_payload(f"order-{index}", client_id=f"client-{index}")
+                for index in range(499)
+            ]
+            values.append(_order_payload("", client_id="client-empty"))
+            return values
+
+        stalled = AlpacaPaperClient("key", "secret", transport=stalled_transport)
+        with self.assertRaisesRegex(AlpacaPaperError, "made no progress"):
+            stalled.list_orders(status="all")
 
 
 if __name__ == "__main__":
