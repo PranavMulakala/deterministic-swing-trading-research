@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "strategy_config_sha256": "215d907b4d87f009d461a59fe3ff060a424cf00020fc77f2d6dfcdf138c7bd27",
+  "broker": {
+    "provider": "alpaca",
+    "trading_base_url": "https://paper-api.alpaca.markets",
+    "data_base_url": "https://data.alpaca.markets",
+    "paper_only": true,
+    "market_data_feed": "iex",
+    "historical_adjustment": "all",
+    "request_timeout_seconds": 20
+  },
+  "account": {
+    "initial_equity": 500.0,
+    "initial_equity_tolerance": 0.01,
+    "currency": "USD",
+    "long_only": true,
+    "cash_only": true
+  },
+  "execution": {
+    "entry_order_class": "oto",
+    "entry_order_type": "market",
+    "time_in_force": "gtc",
+    "extended_hours": false,
+    "approval_ttl_seconds": 120,
+    "quote_max_age_seconds": 30,
+    "max_requote_drift_bps": 10,
+    "max_quote_spread_bps": 100,
+    "market_fill_buffer_bps": 25,
+    "runtime_enable_phrase": "I_UNDERSTAND_PAPER_ONLY",
+    "default_kill_switch": true,
+    "fractional_swing_orders": "prohibited_because_alpaca_fractional_orders_are_day_only"
+  },
+  "monitoring": {
+    "poll_seconds": 15,
+    "order_terminal_statuses": [
+      "filled",
+      "canceled",
+      "expired",
+      "rejected",
+      "replaced"
+    ],
+    "order_working_statuses": [
+      "accepted",
+      "accepted_for_bidding",
+      "calculated",
+      "done_for_day",
+      "held",
+      "new",
+      "partially_filled",
+      "pending_cancel",
+      "pending_new",
+      "pending_replace",
+      "stopped",
+      "suspended"
+    ]
+  }
+}

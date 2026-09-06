@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 from datetime import date
 from pathlib import Path
 
-from .backtest import BacktestEngine, output_hashes, write_result
+from .backtest import BacktestEngine, metrics, output_hashes, write_result
 from .benchmarks import write_benchmarks
 from .config import config_sha256, load_config
 from .data import download_universe, load_universe
 from .report import write_dashboard, write_milestone_report
 from .validation import validate_results
+from .paper_cli import add_paper_parser, run_paper
 
 
 def _paths(root: Path) -> tuple[Path, Path, Path]:
@@ -56,15 +58,62 @@ def reproduce(root: Path) -> None:
     print(json.dumps(summaries, indent=2, sort_keys=True))
 
 
+def analyze_paper_constraint(root: Path) -> None:
+    config_path, data_dir, _ = _paths(root)
+    config = copy.deepcopy(load_config(config_path))
+    config["account"]["fractional_precision"] = 0
+    bars = load_universe(config, data_dir)
+    data_cfg = config["data"]
+    ranges = {
+        "in_sample": (
+            date.fromisoformat(data_cfg["start_date"]),
+            date.fromisoformat(data_cfg["in_sample_end"]),
+        ),
+        "out_of_sample": (
+            date.fromisoformat(data_cfg["out_of_sample_start"]),
+            date.fromisoformat(data_cfg["end_date"]),
+        ),
+    }
+    results = {}
+    for split, (start, end) in ranges.items():
+        result = BacktestEngine(
+            config,
+            bars,
+            split=split,
+            start_date=start,
+            end_date=end,
+            run_id=f"posthoc-whole-share-{split}",
+        ).run()
+        results[split] = metrics(result)
+    print(
+        json.dumps(
+            {
+                "classification": "post_hoc_execution_feasibility_diagnostic_not_preregistered",
+                "change_from_frozen_v1": "fractional_precision set to zero; all other settings unchanged",
+                "results": results,
+            },
+            indent=2,
+            sort_keys=True,
+        )
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Deterministic paper-only ETF swing research")
-    parser.add_argument("command", choices=("fetch-data", "reproduce"))
-    parser.add_argument("--root", type=Path, default=Path.cwd())
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    for name in ("fetch-data", "reproduce", "analyze-paper-constraint"):
+        command = subparsers.add_parser(name)
+        command.add_argument("--root", type=Path, default=Path.cwd())
+    add_paper_parser(subparsers)
     args = parser.parse_args()
     if args.command == "fetch-data":
         fetch(args.root.resolve())
-    else:
+    elif args.command == "reproduce":
         reproduce(args.root.resolve())
+    elif args.command == "analyze-paper-constraint":
+        analyze_paper_constraint(args.root.resolve())
+    else:
+        run_paper(args)
 
 
 if __name__ == "__main__":

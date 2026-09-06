@@ -1,0 +1,179 @@
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
+import unittest
+from unittest.mock import patch
+
+from swingbot.alpaca_paper import AlpacaPaperClient, AlpacaPaperError, _default_transport
+from swingbot.paper_journal import PaperJournal
+
+from paper_fixtures import NOW, sample_permit, sample_proposal
+
+
+class AlpacaPaperClientTests(unittest.TestCase):
+    def test_constructor_rejects_live_trading_endpoint(self) -> None:
+        with self.assertRaises(AlpacaPaperError):
+            AlpacaPaperClient(
+                "paper-key", "paper-secret",
+                trading_base_url="https://api.alpaca.markets",
+            )
+
+    def test_entry_payload_is_exact_paper_oto_with_native_stop(self) -> None:
+        calls = []
+
+        def transport(method, url, headers, body, timeout):
+            calls.append((method, url, headers, body, timeout))
+            payload = json.loads(body)
+            return {
+                "id": "broker-1",
+                "client_order_id": payload["client_order_id"],
+                "symbol": payload["symbol"],
+                "side": payload["side"],
+                "type": payload["type"],
+                "time_in_force": payload["time_in_force"],
+                "order_class": payload["order_class"],
+                "status": "new",
+                "qty": payload["qty"],
+                "filled_qty": "0",
+                "legs": [],
+            }
+
+        client = AlpacaPaperClient(
+            "paper-key", "paper-secret", transport=transport,
+            permit_validator=lambda *_: True,
+        )
+        proposal = sample_proposal()
+        client.submit_entry(proposal, sample_permit(proposal))
+        method, url, headers, raw, _ = calls[0]
+        self.assertEqual(method, "POST")
+        self.assertEqual(url, "https://paper-api.alpaca.markets/v2/orders")
+        payload = json.loads(raw)
+        self.assertEqual(
+            payload,
+            {
+                "client_order_id": "swing-test-1",
+                "extended_hours": False,
+                "order_class": "oto",
+                "qty": "1",
+                "side": "buy",
+                "stop_loss": {"stop_price": "118"},
+                "symbol": "SPY",
+                "time_in_force": "gtc",
+                "type": "market",
+            },
+        )
+        self.assertEqual(headers["APCA-API-KEY-ID"], "paper-key")
+        self.assertNotIn("paper-key", url)
+        self.assertNotIn("paper-secret", raw.decode())
+
+    def test_transport_error_redacts_both_credentials(self) -> None:
+        def transport(*_):
+            raise RuntimeError("failure key-123 secret-456")
+
+        client = AlpacaPaperClient("key-123", "secret-456", transport=transport)
+        with self.assertRaises(AlpacaPaperError) as captured:
+            client.get_account()
+        self.assertNotIn("key-123", str(captured.exception))
+        self.assertNotIn("secret-456", str(captured.exception))
+        self.assertIn("[REDACTED]", str(captured.exception))
+
+    def test_fractional_or_day_entry_is_rejected_by_adapter(self) -> None:
+        client = AlpacaPaperClient(
+            "key", "secret", transport=lambda *_: {}, permit_validator=lambda *_: True
+        )
+        proposal = sample_proposal(fractional=True)
+        with self.assertRaises(AlpacaPaperError):
+            client.submit_entry(proposal, sample_permit(proposal))
+
+    def test_mutation_without_matching_consumed_approval_permit_is_rejected(self) -> None:
+        client = AlpacaPaperClient(
+            "key", "secret", transport=lambda *_: {}, permit_validator=lambda *_: False
+        )
+        proposal = sample_proposal()
+        wrong = sample_permit(sample_proposal(action="close_position"))
+        with self.assertRaisesRegex(AlpacaPaperError, "approval permit"):
+            client.submit_entry(proposal, wrong)
+
+    def test_low_level_request_cannot_bypass_mutation_gate(self) -> None:
+        calls = []
+        client = AlpacaPaperClient(
+            "key", "secret", transport=lambda *args: calls.append(args)
+        )
+        with self.assertRaisesRegex(AlpacaPaperError, "direct broker mutation"):
+            client._request("POST", "/v2/orders", body={})
+        with self.assertRaisesRegex(AlpacaPaperError, "direct broker mutation"):
+            client._request("DELETE", "/v2/orders/order-1")
+        self.assertEqual(calls, [])
+
+    def test_malformed_entry_terms_are_rejected_before_permit_claim(self) -> None:
+        claims = []
+        client = AlpacaPaperClient(
+            "key", "secret", transport=lambda *_: {},
+            permit_validator=lambda *args: claims.append(args) or True,
+        )
+        proposal = sample_proposal()
+        malformed = proposal.__class__(
+            **{**proposal.__dict__, "quantity": proposal.quantity + proposal.quantity / 2}
+        )
+        with self.assertRaisesRegex(AlpacaPaperError, "whole-share"):
+            client.submit_entry(malformed, sample_permit(malformed))
+        self.assertEqual(claims, [])
+
+    def test_real_journal_permit_allows_exactly_one_adapter_submission(self) -> None:
+        with TemporaryDirectory() as directory:
+            proposal = sample_proposal()
+            journal = PaperJournal(Path(directory) / "journal.sqlite")
+            journal.record_proposal(proposal)
+            journal.record_review(
+                proposal, quote_timestamp=NOW, bid="119.9", ask="120.1", reviewed_at=NOW
+            )
+            permit = journal.approve_and_consume(
+                proposal, proposal.confirmation_code, session_id="session", now=NOW
+            )
+            calls = []
+
+            def transport(method, url, headers, body, timeout):
+                calls.append((method, url, headers, body, timeout))
+                payload = json.loads(body)
+                return {
+                    "id": "one", "client_order_id": payload["client_order_id"],
+                    "symbol": "SPY", "side": "buy", "type": "market",
+                    "time_in_force": "gtc", "order_class": "oto", "status": "new",
+                    "qty": "1", "filled_qty": "0", "legs": [],
+                }
+
+            client = AlpacaPaperClient(
+                "key", "secret", transport=transport, permit_validator=journal.claim_permit
+            )
+            client.submit_entry(proposal, permit)
+            with self.assertRaisesRegex(AlpacaPaperError, "unused journal-backed"):
+                client.submit_entry(proposal, permit)
+            self.assertEqual(len(calls), 1)
+
+    def test_production_transport_rejects_changed_final_url(self) -> None:
+        class Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_):
+                return None
+
+            def geturl(self):
+                return "https://api.alpaca.markets/v2/account"
+
+            def read(self):
+                return b"{}"
+
+        class Opener:
+            def open(self, *_args, **_kwargs):
+                return Response()
+
+        with patch("swingbot.alpaca_paper.urllib.request.build_opener", return_value=Opener()):
+            with self.assertRaisesRegex(AlpacaPaperError, "response URL differs"):
+                _default_transport(
+                    "GET", "https://paper-api.alpaca.markets/v2/account", {}, None, 1
+                )
+
+
+if __name__ == "__main__":
+    unittest.main()
