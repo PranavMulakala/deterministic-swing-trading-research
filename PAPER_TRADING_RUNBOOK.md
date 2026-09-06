@@ -21,7 +21,7 @@ In Alpaca's paper dashboard, cancel all orders, close all positions, and reset t
 PYTHONPATH=src python3 -m swingbot.cli paper --root . bind
 ```
 
-Binding fails unless the account is ACTIVE, USD, unblocked, flat, free of working orders, and within one cent of $500. The journal stores only the account ID, last four account-number characters, and measured account state—not credentials.
+Binding fails unless the account is ACTIVE, USD, unblocked, flat, free of working orders, and both equity and cash are within one cent of $500. The journal stores only the account ID, last four account-number characters, and measured account state—not credentials.
 
 ## 3. Open every session with reconciliation
 
@@ -29,7 +29,7 @@ Binding fails unless the account is ACTIVE, USD, unblocked, flat, free of workin
 PYTHONPATH=src python3 -m swingbot.cli paper --root . status
 ```
 
-This verifies the journal hash chain and authorization tables, queries current account/position/order state, imports broker-confirmed fills using broker fill timestamps, checks every managed position has the exact active native stop, and latches the durable kill switch on any mismatch. It appends a point-in-time account/cash/mark/P&L snapshot and prints current marks and P&L. Nothing watches after the process exits.
+This verifies the journal hash chain and authorization tables, queries current account/position/order state, imports broker-confirmed fills using broker fill timestamps, reconciles cash against every confirmed fill, checks account/position market-value identities, checks every managed position has the exact active native stop, and latches the durable kill switch on any mismatch. It appends a point-in-time account/cash/mark/P&L snapshot and prints current marks and P&L. Nothing watches after the process exits.
 
 For continuous local polling while a terminal stays open:
 

@@ -26,7 +26,7 @@ class PaperReconciliationTests(unittest.TestCase):
             ROOT / "config/paper_v1.json", ROOT / "config/strategy_v1.json"
         )
         self.strategy = load_config(ROOT / "config/strategy_v1.json")
-        self.journal.append(
+        self.journal._append_state(
             "account_bound",
             {"account_id": ACCOUNT_ID, "initial_equity": "500"},
             occurred_at=NOW,
@@ -49,6 +49,39 @@ class PaperReconciliationTests(unittest.TestCase):
         )
         self.assertFalse(report.ok)
         self.assertIn("unknown_broker_position:SPY", report.issues)
+        self.assertTrue(self.journal.kill_switch_latched())
+
+    def test_cash_ledger_and_accounting_identities_fail_closed(self) -> None:
+        inconsistent = replace(
+            self.broker.account,
+            cash=Decimal("499"),
+            non_marginable_buying_power=Decimal("499"),
+            buying_power=Decimal("499"),
+        )
+        report = self.reconciler.reconcile(
+            account=inconsistent, positions=[], orders=[], now=NOW
+        )
+        self.assertIn("account_equity_identity_mismatch", report.issues)
+        self.assertIn("cash_ledger_mismatch", report.issues)
+        self.assertTrue(self.journal.kill_switch_latched())
+
+    def test_position_market_value_identities_fail_closed(self) -> None:
+        position = PaperPosition(
+            "SPY", Decimal("1"), "long", Decimal("100"), Decimal("101"), Decimal("100")
+        )
+        account = replace(
+            self.broker.account,
+            cash=Decimal("400"),
+            non_marginable_buying_power=Decimal("400"),
+            buying_power=Decimal("400"),
+            long_market_value=Decimal("101"),
+            equity=Decimal("501"),
+        )
+        report = self.reconciler.reconcile(
+            account=account, positions=[position], orders=[], now=NOW
+        )
+        self.assertIn("broker_position_market_value_mismatch:SPY", report.issues)
+        self.assertIn("account_position_market_value_mismatch", report.issues)
         self.assertTrue(self.journal.kill_switch_latched())
 
     def test_duplicate_or_malformed_broker_positions_fail_closed(self) -> None:
@@ -78,7 +111,7 @@ class PaperReconciliationTests(unittest.TestCase):
             "filled", proposal.quantity, proposal.quantity,
             filled_average_price=Decimal("120.10"), legs=(stop,), filled_at=NOW,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -94,10 +127,19 @@ class PaperReconciliationTests(unittest.TestCase):
         )
         self.assertFalse(any(event["event_type"] == "entry_filled" for event in self.journal.events()))
         broker_position = PaperPosition(
-            "SPY", proposal.quantity, "long", Decimal("120.10"), Decimal("120.10"), Decimal("60.05")
+            "SPY", proposal.quantity, "long", Decimal("120.10"), Decimal("120.10"), Decimal("120.10")
+        )
+        cash = Decimal("500") - proposal.quantity * Decimal("120.10")
+        account = replace(
+            self.broker.account,
+            cash=cash,
+            non_marginable_buying_power=cash,
+            buying_power=cash,
+            long_market_value=broker_position.market_value,
+            equity=cash + broker_position.market_value,
         )
         report = self.reconciler.reconcile(
-            account=self.broker.account,
+            account=account,
             positions=[broker_position],
             orders=[parent],
             now=NOW,
@@ -117,7 +159,7 @@ class PaperReconciliationTests(unittest.TestCase):
             "filled", proposal.quantity, proposal.quantity,
             filled_average_price=Decimal("120.10"), legs=(held_stop,), filled_at=NOW,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -149,7 +191,7 @@ class PaperReconciliationTests(unittest.TestCase):
             "partially_filled", proposal.quantity, Decimal("0.5"),
             filled_average_price=Decimal("120"), legs=(),
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -174,8 +216,8 @@ class PaperReconciliationTests(unittest.TestCase):
 
         with TemporaryDirectory() as second_directory:
             journal = PaperJournal(Path(second_directory) / "journal.sqlite")
-            journal.append("account_bound", {"account_id": ACCOUNT_ID}, occurred_at=NOW)
-            journal.append(
+            journal._append_state("account_bound", {"account_id": ACCOUNT_ID}, occurred_at=NOW)
+            journal._append_state(
                 "entry_filled",
                 {
                     "symbol": "SPY", "quantity": "1", "entry_price": "120",
@@ -201,7 +243,7 @@ class PaperReconciliationTests(unittest.TestCase):
             "partially_filled", proposal.quantity, Decimal("0.5"),
             filled_average_price=Decimal("120"), legs=(),
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -232,7 +274,7 @@ class PaperReconciliationTests(unittest.TestCase):
     def test_known_working_order_missing_from_broker_is_not_silently_ignored(self) -> None:
         proposal = sample_proposal()
         self.journal.record_proposal(proposal)
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -263,7 +305,7 @@ class PaperReconciliationTests(unittest.TestCase):
             session_id="session",
             now=NOW,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submission_started",
             {
                 "action": proposal.action,
@@ -306,7 +348,7 @@ class PaperReconciliationTests(unittest.TestCase):
             session_id="session",
             now=NOW,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submission_started",
             {
                 "action": proposal.action,
@@ -338,7 +380,7 @@ class PaperReconciliationTests(unittest.TestCase):
             "filled", proposal.quantity, proposal.quantity,
             filled_average_price=Decimal("125"), legs=(stop,), filled_at=NOW,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -365,7 +407,7 @@ class PaperReconciliationTests(unittest.TestCase):
         self.assertTrue(self.journal.kill_switch_latched())
 
     def test_native_stop_must_be_nested_under_recorded_parent(self) -> None:
-        self.journal.append(
+        self.journal._append_state(
             "entry_filled",
             {
                 "symbol": "SPY", "quantity": "1", "entry_price": "120",
@@ -408,7 +450,7 @@ class PaperReconciliationTests(unittest.TestCase):
     def test_terminal_status_or_filled_quantity_cannot_regress(self) -> None:
         proposal = sample_proposal()
         self.journal.record_proposal(proposal)
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -442,7 +484,7 @@ class PaperReconciliationTests(unittest.TestCase):
             "partial-stop", "", "SPY", "sell", "stop", "gtc", "simple", "held",
             proposal.quantity, Decimal("0"), stop_price=proposal.stop_price,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -476,7 +518,7 @@ class PaperReconciliationTests(unittest.TestCase):
     def test_known_order_envelope_mutation_is_rejected(self) -> None:
         proposal = sample_proposal()
         self.journal.record_proposal(proposal)
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -504,7 +546,7 @@ class PaperReconciliationTests(unittest.TestCase):
     def test_filled_entry_cannot_import_a_recursively_nested_stop(self) -> None:
         proposal = sample_proposal()
         self.journal.record_proposal(proposal)
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -540,7 +582,7 @@ class PaperReconciliationTests(unittest.TestCase):
         self.assertNotIn("SPY", reduce_events(self.journal.events()).positions)
 
     def test_working_stop_after_local_close_is_never_treated_as_harmless(self) -> None:
-        self.journal.append(
+        self.journal._append_state(
             "entry_filled",
             {
                 "symbol": "SPY", "quantity": "1", "entry_price": "120",
@@ -550,7 +592,7 @@ class PaperReconciliationTests(unittest.TestCase):
             },
             occurred_at=NOW,
         )
-        self.journal.append(
+        self.journal._append_state(
             "position_closed",
             {
                 "symbol": "SPY", "quantity": "1", "exit_price": "121",
@@ -586,7 +628,7 @@ class PaperReconciliationTests(unittest.TestCase):
             "filled", proposal.quantity, proposal.quantity,
             filled_average_price=Decimal("120.10"), legs=(stop,), filled_at=NOW,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "entry_oto", "symbol": "SPY",
@@ -604,16 +646,25 @@ class PaperReconciliationTests(unittest.TestCase):
             "SPY", proposal.quantity, "long", Decimal("120.10"),
             Decimal("121"), Decimal("121"),
         )
+        entry_cash = Decimal("500") - parent.filled_quantity * Decimal("120.10")
+        open_account = replace(
+            self.broker.account,
+            cash=entry_cash,
+            non_marginable_buying_power=entry_cash,
+            buying_power=entry_cash,
+            long_market_value=position.market_value,
+            equity=entry_cash + position.market_value,
+        )
         delayed = NOW + timedelta(days=2)
         report = self.reconciler.reconcile(
-            account=self.broker.account, positions=[position], orders=[parent], now=delayed
+            account=open_account, positions=[position], orders=[parent], now=delayed
         )
         self.assertTrue(report.ok, report.issues)
         state = reduce_events(self.journal.events())
         self.assertEqual(state.positions["SPY"].entry_date, NOW.date())
         snapshot = self.journal.latest_payload("account_snapshot_observed")
         self.assertEqual(snapshot["positions"][0]["current_price"], "121")
-        self.assertEqual(snapshot["day_pnl"], "0")
+        self.assertEqual(snapshot["day_pnl"], "0.9")
 
         exit_proposal = replace(
             sample_proposal(action="close_position"),
@@ -627,7 +678,7 @@ class PaperReconciliationTests(unittest.TestCase):
             "simple", "filled", exit_proposal.quantity, exit_proposal.quantity,
             filled_average_price=Decimal("119"), filled_at=exit_fill_time,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submitted",
             {
                 "action": "close_position", "symbol": "SPY",
@@ -645,7 +696,16 @@ class PaperReconciliationTests(unittest.TestCase):
             parent, legs=(replace(stop, status="canceled"),)
         )
         closed = self.reconciler.reconcile(
-            account=self.broker.account,
+            account=replace(
+                self.broker.account,
+                cash=entry_cash + exit_order.filled_quantity * Decimal("119"),
+                non_marginable_buying_power=(
+                    entry_cash + exit_order.filled_quantity * Decimal("119")
+                ),
+                buying_power=entry_cash + exit_order.filled_quantity * Decimal("119"),
+                equity=entry_cash + exit_order.filled_quantity * Decimal("119"),
+                long_market_value=Decimal("0"),
+            ),
             positions=[],
             orders=[canceled_parent, exit_order],
             now=NOW + timedelta(days=3),
@@ -662,7 +722,16 @@ class PaperReconciliationTests(unittest.TestCase):
             ]
         )
         repeated = self.reconciler.reconcile(
-            account=self.broker.account,
+            account=replace(
+                self.broker.account,
+                cash=entry_cash + exit_order.filled_quantity * Decimal("119"),
+                non_marginable_buying_power=(
+                    entry_cash + exit_order.filled_quantity * Decimal("119")
+                ),
+                buying_power=entry_cash + exit_order.filled_quantity * Decimal("119"),
+                equity=entry_cash + exit_order.filled_quantity * Decimal("119"),
+                long_market_value=Decimal("0"),
+            ),
             positions=[],
             orders=[canceled_parent, exit_order],
             now=NOW + timedelta(days=4),

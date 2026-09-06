@@ -124,6 +124,14 @@ class PaperReconciler:
             issues.append("account_equity_or_cash_invalid")
         if account.short_market_value != 0 or any(position.side != "long" for position in positions):
             issues.append("short_position_detected")
+        accounting_tolerance = Decimal(
+            str(self.paper_config["account"]["initial_equity_tolerance"])
+        )
+        if all(value.is_finite() for value in account_values) and abs(
+            account.equity
+            - (account.cash + account.long_market_value + account.short_market_value)
+        ) > accounting_tolerance:
+            issues.append("account_equity_identity_mismatch")
         position_symbols = [position.symbol for position in positions]
         for symbol in sorted(set(position_symbols)):
             if position_symbols.count(symbol) > 1:
@@ -147,6 +155,24 @@ class PaperReconciler:
             ):
                 issues.append(f"invalid_broker_position_values:{position.symbol}")
                 invalid_position_symbols.add(position.symbol)
+            elif abs(
+                position.market_value - position.quantity * position.current_price
+            ) > accounting_tolerance:
+                issues.append(f"broker_position_market_value_mismatch:{position.symbol}")
+
+        valid_market_value = sum(
+            (
+                position.market_value
+                for position in positions
+                if position.symbol not in invalid_position_symbols
+            ),
+            Decimal("0"),
+        )
+        if (
+            account.long_market_value.is_finite()
+            and abs(account.long_market_value - valid_market_value) > accounting_tolerance
+        ):
+            issues.append("account_position_market_value_mismatch")
 
         known_ids = set(state.known_broker_order_ids)
         known_parent_ids = {item.broker_order_id for item in state.submitted_by_client_id.values()}
@@ -273,9 +299,17 @@ class PaperReconciler:
             if aggregate_risk > aggregate_limit + Decimal("0.00000001"):
                 issues.append("aggregate_open_risk_breach_observed")
 
+        expected_cash = self._expected_cash_from_ledger(binding)
+        if (
+            expected_cash is not None
+            and account.cash.is_finite()
+            and abs(account.cash - expected_cash) > accounting_tolerance
+        ):
+            issues.append("cash_ledger_mismatch")
+
         unique_issues = tuple(dict.fromkeys(issues))
         if unique_issues and not self.journal.kill_switch_latched():
-            self.journal.append(
+            self.journal._append_state(
                 "kill_switch_latched",
                 {"reason": "reconciliation_mismatch", "issues": list(unique_issues)},
                 occurred_at=now,
@@ -317,7 +351,7 @@ class PaperReconciler:
             ):
                 issues.append(f"recovered_order_mismatch:{client_id}")
                 continue
-            self.journal.append(
+            self.journal._append_state(
                 "order_submitted",
                 {
                     "action": proposal.action,
@@ -457,7 +491,7 @@ class PaperReconciler:
                 issues.append(f"order_filled_timestamp_changed:{order.order_id}")
                 invalid_transition = True
             if observation_changed and not invalid_transition:
-                self.journal.append(
+                self.journal._append_state(
                     "order_status_observed",
                     {
                         "broker_order_id": order.order_id,
@@ -532,7 +566,7 @@ class PaperReconciler:
                 issues.append(f"filled_entry_invalid_actual_risk:{proposal.symbol}")
             if actual_planned_loss > proposal.risk_limit + Decimal("0.00000001"):
                 issues.append(f"filled_entry_risk_limit_breach:{proposal.symbol}")
-                self.journal.append(
+                self.journal._append_state(
                     "risk_limit_breach_observed",
                     {
                         "symbol": proposal.symbol,
@@ -542,7 +576,7 @@ class PaperReconciler:
                     proposal_id=proposal.proposal_id,
                     occurred_at=now,
                 )
-            self.journal.append(
+            self.journal._append_state(
                 "entry_filled",
                 {
                     "symbol": proposal.symbol,
@@ -625,7 +659,7 @@ class PaperReconciler:
         if order.filled_quantity != managed.quantity:
             return [f"filled_exit_quantity_mismatch:{managed.symbol}"]
         pnl = (order.filled_average_price - managed.entry_price) * order.filled_quantity
-        self.journal.append(
+        self.journal._append_state(
             "position_closed",
             {
                 "symbol": managed.symbol,
@@ -650,7 +684,7 @@ class PaperReconciler:
         previous = self.journal.latest_payload("account_snapshot_observed")
         prior_cash = Decimal(str(previous["cash"])) if previous else account.cash
         prior_equity = Decimal(str(previous["equity"])) if previous else account.equity
-        self.journal.append(
+        self.journal._append_state(
             "account_snapshot_observed",
             {
                 "account_number_suffix": account.account_number[-4:],
@@ -787,3 +821,24 @@ class PaperReconciler:
         ):
             return "unfilled_order_has_fill_evidence"
         return None
+
+    def _expected_cash_from_ledger(
+        self, binding: dict[str, Any] | None
+    ) -> Decimal | None:
+        if not binding:
+            return None
+        initial = binding.get("initial_cash", binding.get("initial_equity"))
+        if initial is None:
+            return None
+        expected = Decimal(str(initial))
+        for event in self.journal.events():
+            payload = event["payload"]
+            if event["event_type"] == "entry_filled":
+                expected -= Decimal(str(payload["quantity"])) * Decimal(
+                    str(payload["entry_price"])
+                )
+            elif event["event_type"] == "position_closed":
+                expected += Decimal(str(payload["quantity"])) * Decimal(
+                    str(payload["exit_price"])
+                )
+        return expected

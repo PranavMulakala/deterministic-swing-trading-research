@@ -1,5 +1,6 @@
 from dataclasses import replace
 from datetime import timedelta
+import multiprocessing
 import os
 import sqlite3
 from pathlib import Path
@@ -9,6 +10,13 @@ import unittest
 from swingbot.paper_journal import JournalError, PaperJournal
 
 from paper_fixtures import NOW, sample_proposal
+
+
+def _hold_journal_lock(path: str, acquired, release) -> None:
+    journal = PaperJournal(path)
+    with journal.mutation_lock():
+        acquired.set()
+        release.wait(5)
 
 
 class PaperJournalTests(unittest.TestCase):
@@ -28,6 +36,47 @@ class PaperJournalTests(unittest.TestCase):
                 connection.execute("UPDATE events SET payload_json = '{\"value\":9}' WHERE seq = 1")
             with self.assertRaises(JournalError):
                 journal.verify_integrity()
+
+    def test_mutation_lock_serializes_distinct_processes(self) -> None:
+        with TemporaryDirectory() as directory:
+            path = str(Path(directory) / "journal.sqlite")
+            PaperJournal(path)
+            context = multiprocessing.get_context("spawn")
+            first_acquired = context.Event()
+            first_release = context.Event()
+            second_acquired = context.Event()
+            second_release = context.Event()
+            first = context.Process(
+                target=_hold_journal_lock,
+                args=(path, first_acquired, first_release),
+            )
+            second = context.Process(
+                target=_hold_journal_lock,
+                args=(path, second_acquired, second_release),
+            )
+            try:
+                first.start()
+                self.assertTrue(
+                    first_acquired.wait(3), "first process never acquired lock"
+                )
+                second.start()
+                self.assertFalse(
+                    second_acquired.wait(0.25),
+                    "second process entered the mutation section concurrently",
+                )
+                first_release.set()
+                self.assertTrue(
+                    second_acquired.wait(3), "second process never acquired lock"
+                )
+            finally:
+                first_release.set()
+                second_release.set()
+                if first.pid is not None:
+                    first.join(3)
+                if second.pid is not None:
+                    second.join(3)
+            self.assertEqual(first.exitcode, 0)
+            self.assertEqual(second.exitcode, 0)
 
     def test_exact_approval_is_one_use(self) -> None:
         with TemporaryDirectory() as directory:
@@ -136,6 +185,17 @@ class PaperJournalTests(unittest.TestCase):
                     proposal_id=proposal.proposal_id,
                     occurred_at=NOW,
                 )
+            for state_event in (
+                "account_bound",
+                "entry_filled",
+                "kill_switch_cleared",
+                "order_submitted",
+                "position_closed",
+            ):
+                with self.subTest(state_event=state_event), self.assertRaisesRegex(
+                    JournalError, "validated journal operation"
+                ):
+                    journal.append(state_event, {}, occurred_at=NOW)
 
             review = journal.record_review(
                 proposal, quote_timestamp=NOW, bid="119.9", ask="120.1", reviewed_at=NOW

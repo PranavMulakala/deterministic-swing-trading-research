@@ -59,6 +59,10 @@ def require_initial_account(
         raise PaperPolicyError(
             f"paper account must be reset to ${target} before binding; equity is ${account.equity}"
         )
+    if abs(account.cash - target) > tolerance:
+        raise PaperPolicyError(
+            f"paper account must have ${target} cash before binding; cash is ${account.cash}"
+        )
     if positions or account.long_market_value != 0:
         raise PaperPolicyError("paper account must have no positions before binding")
     terminal = set(paper_config["monitoring"]["order_terminal_statuses"])

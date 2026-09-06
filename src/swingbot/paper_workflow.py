@@ -123,11 +123,12 @@ class PaperWorkflow:
             "account_id": account.account_id,
             "account_number_suffix": account.account_number[-4:],
             "initial_equity": decimal_string(account.equity),
+            "initial_cash": decimal_string(account.cash),
             "currency": account.currency,
             "clean_positions": True,
             "clean_working_orders": True,
         }
-        self.journal.append("account_bound", payload, occurred_at=timestamp)
+        self.journal._append_state("account_bound", payload, occurred_at=timestamp)
         return payload
 
     def reconcile_now(self, *, now: datetime | None = None) -> ReconciliationReport:
@@ -466,7 +467,7 @@ class PaperWorkflow:
             session_id=session_id,
             now=clock.timestamp,
         )
-        self.journal.append(
+        self.journal._append_state(
             "order_submission_started",
             {
                 "action": proposal.action,
@@ -486,7 +487,7 @@ class PaperWorkflow:
         except Exception as exc:
             order = self._resolve_uncertain_submission(proposal, clock.timestamp, exc)
         try:
-            self.journal.append(
+            self.journal._append_state(
                 "order_submitted",
                 {
                     "action": proposal.action,
@@ -597,7 +598,7 @@ class PaperWorkflow:
                 "kill switch cannot clear while reconciliation fails: "
                 + ", ".join(report.issues)
             )
-        self.journal.append(
+        self.journal._append_state(
             "kill_switch_cleared",
             {"owner_confirmation": True, "clean_reconciliation": True},
             occurred_at=clock.timestamp,
@@ -944,7 +945,7 @@ class PaperWorkflow:
 
     def _latch(self, reason: str, issues: list[str], now: datetime) -> None:
         if not self.journal.kill_switch_latched():
-            self.journal.append(
+            self.journal._append_state(
                 "kill_switch_latched",
                 {"reason": reason, "issues": issues},
                 occurred_at=now,

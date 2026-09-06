@@ -32,6 +32,10 @@ class PaperPolicyTests(unittest.TestCase):
     def test_binding_rejects_default_100k_account_and_nonempty_account(self) -> None:
         with self.assertRaises(PaperPolicyError):
             require_initial_account(paper_account(equity="100000", cash="100000"), [], [], self.paper)
+        with self.assertRaisesRegex(PaperPolicyError, "must have.*cash"):
+            require_initial_account(
+                paper_account(equity="500", cash="499"), [], [], self.paper
+            )
         position = PaperPosition("SPY", Decimal("1"), "long", Decimal("100"), Decimal("100"), Decimal("100"))
         with self.assertRaises(PaperPolicyError):
             require_initial_account(paper_account(), [position], [], self.paper)

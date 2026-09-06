@@ -60,6 +60,20 @@ class ArchitectureTests(unittest.TestCase):
             ),
         )
 
+    def test_authoritative_state_writes_are_isolated(self) -> None:
+        package = Path(__file__).parents[1] / "src/swingbot"
+        callers: set[str] = set()
+        for module in sorted(package.glob("*.py")):
+            tree = ast.parse(module.read_text(encoding="utf-8"))
+            for node in ast.walk(tree):
+                if (
+                    isinstance(node, ast.Call)
+                    and isinstance(node.func, ast.Attribute)
+                    and node.func.attr == "_append_state"
+                ):
+                    callers.add(module.name)
+        self.assertEqual(callers, {"paper_reconcile.py", "paper_workflow.py"})
+
 
 if __name__ == "__main__":
     unittest.main()

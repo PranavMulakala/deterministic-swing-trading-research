@@ -24,6 +24,19 @@ _RESERVED_AUTH_EVENTS = {
     "broker_mutation_claimed",
     "protective_stop_canceled_for_approved_exit",
 }
+_RESERVED_STATE_EVENTS = {
+    "account_bound",
+    "account_snapshot_observed",
+    "entry_filled",
+    "kill_switch_cleared",
+    "kill_switch_latched",
+    "order_status_observed",
+    "order_submission_started",
+    "order_submitted",
+    "position_closed",
+    "risk_limit_breach_observed",
+}
+_RESERVED_EVENTS = _RESERVED_AUTH_EVENTS | _RESERVED_STATE_EVENTS
 
 
 class JournalError(RuntimeError):
@@ -207,7 +220,7 @@ class PaperJournal:
         proposal_id: str | None = None,
         occurred_at: datetime | None = None,
     ) -> dict[str, Any]:
-        if event_type in _RESERVED_AUTH_EVENTS:
+        if event_type in _RESERVED_EVENTS:
             raise JournalError(
                 f"{event_type} may be written only by its validated journal operation"
             )
@@ -216,6 +229,27 @@ class PaperJournal:
             return self._append_in(
                 connection, event_type, payload,
                 proposal_id=proposal_id, occurred_at=occurred_at,
+            )
+
+    def _append_state(
+        self,
+        event_type: str,
+        payload: dict[str, Any],
+        *,
+        proposal_id: str | None = None,
+        occurred_at: datetime | None = None,
+    ) -> dict[str, Any]:
+        """Internal state transition used only by workflow and reconciliation."""
+        if event_type not in _RESERVED_STATE_EVENTS:
+            raise JournalError(f"{event_type} is not a reserved state transition")
+        self.verify_integrity()
+        with self._transaction() as connection:
+            return self._append_in(
+                connection,
+                event_type,
+                payload,
+                proposal_id=proposal_id,
+                occurred_at=occurred_at,
             )
 
     def events(self) -> list[dict[str, Any]]:

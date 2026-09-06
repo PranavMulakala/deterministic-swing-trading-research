@@ -39,6 +39,23 @@ class PaperWorkflowTests(unittest.TestCase):
     def tearDown(self) -> None:
         self.temporary.cleanup()
 
+    def _set_open_position(self, entry) -> None:
+        market_value = entry.quantity * entry.ask
+        cash = Decimal("500") - market_value
+        self.broker.positions = [
+            PaperPosition(
+                "SPY", entry.quantity, "long", entry.ask, entry.ask, market_value
+            )
+        ]
+        self.broker.account = replace(
+            self.broker.account,
+            cash=cash,
+            non_marginable_buying_power=cash,
+            buying_power=cash,
+            long_market_value=market_value,
+            equity=cash + market_value,
+        )
+
     def test_entry_proposal_is_whole_share_gtc(self) -> None:
         proposal = self.workflow.propose_entry("SPY")
         self.assertFalse(proposal.fractional)
@@ -122,7 +139,7 @@ class PaperWorkflowTests(unittest.TestCase):
         self.assertIn("point-in-time", status["monitoring_honesty"])
         decisions = self.workflow.scan_entries()
         self.assertEqual(len(decisions), len(self.strategy["universe"]))
-        self.journal.append(
+        self.journal._append_state(
             "kill_switch_latched", {"reason": "test"}, occurred_at=NOW
         )
         with self.assertRaises(PaperWorkflowError):
@@ -187,12 +204,7 @@ class PaperWorkflowTests(unittest.TestCase):
             entry.proposal_id, entry_review["confirmation_code"],
             session_id="session-entry", environment=ENABLED,
         )
-        self.broker.positions = [
-            PaperPosition(
-                "SPY", entry.quantity, "long", entry.ask, entry.ask,
-                entry.quantity * entry.ask,
-            )
-        ]
+        self._set_open_position(entry)
         report = self.workflow.reconcile_now(now=NOW)
         self.assertTrue(report.ok, report.issues)
         self.assertIn("SPY", reduce_events(self.journal.events()).positions)
@@ -220,6 +232,15 @@ class PaperWorkflowTests(unittest.TestCase):
             for order in self.broker.orders
         ]
         self.broker.positions = []
+        exit_cash = self.broker.account.cash + exit_proposal.quantity * exit_proposal.bid
+        self.broker.account = replace(
+            self.broker.account,
+            cash=exit_cash,
+            non_marginable_buying_power=exit_cash,
+            buying_power=exit_cash,
+            long_market_value=Decimal("0"),
+            equity=exit_cash,
+        )
         final = self.workflow.reconcile_now(now=NOW)
         self.assertTrue(final.ok, final.issues)
         self.assertNotIn("SPY", reduce_events(self.journal.events()).positions)
@@ -246,12 +267,7 @@ class PaperWorkflowTests(unittest.TestCase):
             entry.proposal_id, entry_review["confirmation_code"],
             session_id="session-entry", environment=ENABLED,
         )
-        self.broker.positions = [
-            PaperPosition(
-                "SPY", entry.quantity, "long", entry.ask, entry.ask,
-                entry.quantity * entry.ask,
-            )
-        ]
+        self._set_open_position(entry)
         report = self.workflow.reconcile_now(now=NOW)
         self.assertTrue(report.ok, report.issues)
         self.assertTrue(entry_order.legs)
@@ -277,12 +293,7 @@ class PaperWorkflowTests(unittest.TestCase):
             entry.proposal_id, entry_review["confirmation_code"],
             session_id="session-entry", environment=ENABLED,
         )
-        self.broker.positions = [
-            PaperPosition(
-                "SPY", entry.quantity, "long", entry.ask, entry.ask,
-                entry.quantity * entry.ask,
-            )
-        ]
+        self._set_open_position(entry)
         self.assertTrue(self.workflow.reconcile_now(now=NOW).ok)
         exit_proposal = self.workflow.propose_exit("SPY", reason="manual_owner_exit")
         exit_review = self.workflow.review(exit_proposal.proposal_id)
