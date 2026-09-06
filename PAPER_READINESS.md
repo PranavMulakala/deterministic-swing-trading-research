@@ -31,7 +31,7 @@ PYTHONPATH=src python3 -m swingbot.cli analyze-paper-constraint --root .
 
 ## Measured software scope
 
-The builder reviewed all 25 `src/swingbot` modules and all 19 test/support modules, compiled the full tree with Python 3.12, and ran 101 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only validator handoff remains required.
+The builder reviewed all 25 `src/swingbot` modules and all 19 test/support modules, compiled the full tree with Python 3.12, and ran 109 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only validator handoff remains required.
 
 The automated suite exercises:
 

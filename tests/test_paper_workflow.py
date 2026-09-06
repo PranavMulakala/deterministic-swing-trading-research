@@ -5,6 +5,7 @@ import copy
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 from swingbot.config import load_config
 from swingbot.paper_config import load_paper_config
@@ -57,6 +58,43 @@ class PaperWorkflowTests(unittest.TestCase):
             equity=cash + market_value,
         )
 
+    def _new_open_position_stack(self, name: str):
+        journal = PaperJournal(Path(self.temporary.name) / f"{name}.sqlite")
+        broker = FakeBroker()
+        broker.permit_validator = journal.claim_permit
+        workflow = PaperWorkflow(broker, journal, self.strategy, self.paper)
+        workflow.bind_clean_account(now=NOW)
+        broker.entry_status = "filled"
+        entry = workflow.propose_entry("SPY")
+        review = workflow.review(entry.proposal_id)
+        entry_order = workflow.execute(
+            entry.proposal_id,
+            review["confirmation_code"],
+            session_id=f"session-{name}-entry",
+            environment=ENABLED,
+        )
+        market_value = entry.quantity * entry.ask
+        cash = Decimal("500") - market_value
+        broker.positions = [
+            PaperPosition(
+                "SPY", entry.quantity, "long", entry.ask, entry.ask, market_value
+            )
+        ]
+        broker.account = replace(
+            broker.account,
+            cash=cash,
+            non_marginable_buying_power=cash,
+            buying_power=cash,
+            long_market_value=market_value,
+            equity=cash + market_value,
+        )
+        self.assertTrue(workflow.reconcile_now(now=NOW).ok)
+        exit_proposal = workflow.propose_exit(
+            "SPY", reason="manual_owner_exit"
+        )
+        exit_review = workflow.review(exit_proposal.proposal_id)
+        return journal, broker, workflow, entry_order, exit_proposal, exit_review
+
     def test_entry_proposal_is_whole_share_gtc(self) -> None:
         proposal = self.workflow.propose_entry("SPY")
         self.assertFalse(proposal.fractional)
@@ -99,6 +137,41 @@ class PaperWorkflowTests(unittest.TestCase):
                 environment=ENABLED,
             )
         self.assertEqual(self.broker.submitted_entries, 1)
+
+    def test_runtime_kill_switch_and_live_endpoint_environment_overrides_are_rejected(self) -> None:
+        proposal = self.workflow.propose_entry("SPY")
+        review = self.workflow.review(proposal.proposal_id)
+        with self.assertRaisesRegex(PaperWorkflowError, "runtime kill switch"):
+            self.workflow.execute(
+                proposal.proposal_id,
+                review["confirmation_code"],
+                session_id="session-killed",
+                environment={
+                    "SWINGBOT_PAPER_EXECUTION": "I_UNDERSTAND_PAPER_ONLY",
+                    "SWINGBOT_KILL_SWITCH": "1",
+                },
+            )
+        for variable in ("APCA_API_BASE_URL", "ALPACA_API_BASE_URL"):
+            with self.subTest(variable=variable):
+                environment = {**ENABLED, variable: "https://api.alpaca.markets"}
+                with self.assertRaisesRegex(PaperWorkflowError, "outside the paper endpoint"):
+                    self.workflow.execute(
+                        proposal.proposal_id,
+                        review["confirmation_code"],
+                        session_id="session-live-override",
+                        environment=environment,
+                    )
+        self.assertEqual(self.broker.submitted_entries, 0)
+
+    def test_rebinding_is_idempotent_but_identity_change_latches(self) -> None:
+        first = self.journal.account_binding()
+        self.assertEqual(self.workflow.bind_clean_account(now=NOW), first)
+        self.broker.account = replace(
+            self.broker.account, account_id="different-paper-account"
+        )
+        with self.assertRaisesRegex(PaperPolicyError, "different paper account"):
+            self.workflow.bind_clean_account(now=NOW)
+        self.assertTrue(self.journal.kill_switch_latched())
 
     def test_expired_or_changed_quote_cannot_submit(self) -> None:
         proposal = self.workflow.propose_entry("SPY")
@@ -147,6 +220,71 @@ class PaperWorkflowTests(unittest.TestCase):
             self.workflow.clear_kill_switch("WRONG")
         self.workflow.clear_kill_switch("CLEAR-PAPER-KILL-SWITCH")
         self.assertFalse(self.journal.kill_switch_latched())
+
+    def test_exit_scan_reports_active_rule_and_deduplicates_same_observation(self) -> None:
+        self.assertEqual(self.workflow.scan_exits(), [])
+        self.broker.entry_status = "filled"
+        entry = self.workflow.propose_entry("SPY")
+        review = self.workflow.review(entry.proposal_id)
+        self.workflow.execute(
+            entry.proposal_id,
+            review["confirmation_code"],
+            session_id="session-entry",
+            environment=ENABLED,
+        )
+        self._set_open_position(entry)
+        self.assertTrue(self.workflow.reconcile_now(now=NOW).ok)
+
+        first = self.workflow.scan_exits()
+        self.assertEqual(
+            first,
+            [
+                {
+                    "symbol": "SPY",
+                    "bar_date": (NOW.date() - timedelta(days=1)).isoformat(),
+                    "exit_required": True,
+                    "reason": "recovery_target",
+                }
+            ],
+        )
+        event_count = sum(
+            event["event_type"].startswith("live_exit_")
+            for event in self.journal.events()
+        )
+        self.assertEqual(self.workflow.scan_exits(), first)
+        self.assertEqual(
+            sum(
+                event["event_type"].startswith("live_exit_")
+                for event in self.journal.events()
+            ),
+            event_count,
+        )
+
+    def test_auto_exit_requires_current_deterministic_rule(self) -> None:
+        with self.assertRaisesRegex(PaperWorkflowError, "no reconciled managed position"):
+            self.workflow.propose_exit("SPY", reason="auto")
+
+        self.broker.entry_status = "filled"
+        entry = self.workflow.propose_entry("SPY")
+        review = self.workflow.review(entry.proposal_id)
+        self.workflow.execute(
+            entry.proposal_id,
+            review["confirmation_code"],
+            session_id="session-entry",
+            environment=ENABLED,
+        )
+        self._set_open_position(entry)
+        self.assertTrue(self.workflow.reconcile_now(now=NOW).ok)
+        exit_proposal = self.workflow.propose_exit("SPY", reason="auto")
+        self.assertEqual(exit_proposal.exit_reason, "recovery_target")
+
+        original_bars = self.broker.bars["SPY"]
+        self.broker.bars["SPY"] = original_bars[:-1]
+        with self.assertRaisesRegex(PaperWorkflowError, "latest completed trading-day bar"):
+            self.workflow.propose_exit("SPY", reason="auto")
+        self.broker.bars["SPY"] = original_bars
+        with self.assertRaisesRegex(PaperWorkflowError, "unsupported exit reason"):
+            self.workflow.propose_exit("SPY", reason="unsupported")
 
     def test_failed_public_operation_is_recorded_with_reason(self) -> None:
         self.broker.clock = replace(self.broker.clock, is_open=False)
@@ -365,6 +503,100 @@ class PaperWorkflowTests(unittest.TestCase):
         self.assertTrue(self.journal.kill_switch_latched())
         self.assertEqual(self.broker.submitted_entries, 1)
 
+    def test_terminal_entry_ack_and_submission_journal_failure_latch(self) -> None:
+        proposal = self.workflow.propose_entry("SPY")
+        review = self.workflow.review(proposal.proposal_id)
+        self.broker.entry_status = "rejected"
+        with self.assertRaisesRegex(PaperWorkflowError, "not working: rejected"):
+            self.workflow.execute(
+                proposal.proposal_id,
+                review["confirmation_code"],
+                session_id="session-rejected",
+                environment=ENABLED,
+            )
+        self.assertEqual(self.broker.submitted_entries, 1)
+        self.assertTrue(self.journal.kill_switch_latched())
+
+        journal = PaperJournal(Path(self.temporary.name) / "journal-failure.sqlite")
+        broker = FakeBroker()
+        broker.permit_validator = journal.claim_permit
+        workflow = PaperWorkflow(broker, journal, self.strategy, self.paper)
+        workflow.bind_clean_account(now=NOW)
+        second = workflow.propose_entry("SPY")
+        second_review = workflow.review(second.proposal_id)
+        original_append_state = journal._append_state
+
+        def fail_order_submitted(event_type, payload, **kwargs):
+            if event_type == "order_submitted":
+                raise RuntimeError("simulated journal write failure")
+            return original_append_state(event_type, payload, **kwargs)
+
+        with patch.object(journal, "_append_state", side_effect=fail_order_submitted):
+            with self.assertRaisesRegex(PaperWorkflowError, "could not be journaled"):
+                workflow.execute(
+                    second.proposal_id,
+                    second_review["confirmation_code"],
+                    session_id="session-journal-failure",
+                    environment=ENABLED,
+                )
+        self.assertEqual(broker.submitted_entries, 1)
+        self.assertTrue(journal.kill_switch_latched())
+
+    def test_stop_cancel_unconfirmed_filled_or_unjournaled_blocks_exit(self) -> None:
+        for scenario in ("unconfirmed", "filled", "unjournaled"):
+            with self.subTest(scenario=scenario):
+                (
+                    journal,
+                    broker,
+                    workflow,
+                    entry_order,
+                    proposal,
+                    review,
+                ) = self._new_open_position_stack(f"cancel-{scenario}")
+                original_cancel = broker.cancel_order
+                if scenario == "unconfirmed":
+                    broker.cancel_order = lambda *_args, **_kwargs: replace(
+                        entry_order.legs[0], status="pending_cancel"
+                    )
+                    expected = "cancellation was not confirmed"
+                    context = patch.object(
+                        journal,
+                        "record_protective_stop_cancellation_verified",
+                        wraps=journal.record_protective_stop_cancellation_verified,
+                    )
+                elif scenario == "filled":
+                    broker.cancel_order = lambda *_args, **_kwargs: replace(
+                        entry_order.legs[0],
+                        status="filled",
+                        filled_quantity=entry_order.legs[0].quantity,
+                        filled_average_price=entry_order.legs[0].stop_price,
+                        filled_at=NOW,
+                    )
+                    expected = "protective stop filled"
+                    context = patch.object(
+                        journal,
+                        "record_protective_stop_cancellation_verified",
+                        wraps=journal.record_protective_stop_cancellation_verified,
+                    )
+                else:
+                    broker.cancel_order = original_cancel
+                    expected = "verification could not be journaled"
+                    context = patch.object(
+                        journal,
+                        "record_protective_stop_cancellation_verified",
+                        side_effect=RuntimeError("simulated verification write failure"),
+                    )
+                with context:
+                    with self.assertRaisesRegex(PaperWorkflowError, expected):
+                        workflow.execute(
+                            proposal.proposal_id,
+                            review["confirmation_code"],
+                            session_id=f"session-{scenario}-exit",
+                            environment=ENABLED,
+                        )
+                self.assertEqual(broker.submitted_exits, 0)
+                self.assertTrue(journal.kill_switch_latched())
+
     def test_uncertain_stop_cancellation_latches_and_blocks_exit_submission(self) -> None:
         self.broker.entry_status = "filled"
         entry = self.workflow.propose_entry("SPY")
@@ -443,6 +675,119 @@ class PaperWorkflowTests(unittest.TestCase):
                 environment=ENABLED,
             )
         self.assertTrue(second_journal.kill_switch_latched())
+
+    def test_entry_ack_rejects_envelope_and_fill_inconsistencies(self) -> None:
+        proposal = self.workflow.propose_entry("SPY")
+        stop = PaperOrder(
+            "stop-1",
+            "",
+            proposal.symbol,
+            "sell",
+            "stop",
+            "gtc",
+            "simple",
+            "held",
+            proposal.quantity,
+            Decimal("0"),
+            stop_price=proposal.stop_price,
+        )
+        base = PaperOrder(
+            "entry-1",
+            proposal.client_order_id,
+            proposal.symbol,
+            "buy",
+            "market",
+            "gtc",
+            "oto",
+            "new",
+            proposal.quantity,
+            Decimal("0"),
+            legs=(stop,),
+        )
+        self.workflow._validate_entry_ack(proposal, base, NOW)
+        invalid = (
+            (replace(base, symbol="QQQ"), "differs from approved order"),
+            (
+                replace(base, filled_quantity=proposal.quantity),
+                "unfilled broker entry reports inconsistent fill fields",
+            ),
+            (
+                replace(
+                    base,
+                    status="filled",
+                    filled_quantity=proposal.quantity,
+                    filled_average_price=None,
+                    filled_at=NOW,
+                    legs=(replace(stop, status="new"),),
+                ),
+                "incomplete or inconsistent fill evidence",
+            ),
+            (
+                replace(
+                    base,
+                    status="filled",
+                    filled_quantity=proposal.quantity,
+                    filled_average_price=proposal.ask,
+                    filled_at=NOW,
+                ),
+                "protective stop is missing or mismatched",
+            ),
+        )
+        for order, message in invalid:
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(PaperWorkflowError, message):
+                    self.workflow._validate_entry_ack(proposal, order, NOW)
+
+    def test_exit_ack_rejects_envelope_partial_and_fill_inconsistencies(self) -> None:
+        proposal = replace(
+            sample_proposal(action="close_position"),
+            proposal_id="prop-x-test",
+            client_order_id="swing-x-test",
+            strategy_config_sha256=self.paper["strategy_config_sha256"],
+        )
+        base = PaperOrder(
+            "exit-1",
+            proposal.client_order_id,
+            proposal.symbol,
+            "sell",
+            "market",
+            "day",
+            "simple",
+            "new",
+            proposal.quantity,
+            Decimal("0"),
+        )
+        self.workflow._validate_exit_ack(proposal, base, NOW)
+        invalid = (
+            (replace(base, side="buy"), "differs from approved order"),
+            (
+                replace(
+                    base,
+                    status="partially_filled",
+                    filled_quantity=proposal.quantity / 2,
+                    filled_average_price=proposal.bid,
+                ),
+                "partially filled",
+            ),
+            (
+                replace(
+                    base,
+                    status="filled",
+                    filled_quantity=proposal.quantity,
+                    filled_average_price=None,
+                    filled_at=NOW,
+                ),
+                "incomplete or inconsistent fill evidence",
+            ),
+            (
+                replace(base, filled_at=NOW),
+                "unfilled broker exit reports inconsistent fill fields",
+            ),
+        )
+        for order, message in invalid:
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(PaperWorkflowError, message):
+                    self.workflow._validate_exit_ack(proposal, order, NOW)
 
 
 if __name__ == "__main__":
