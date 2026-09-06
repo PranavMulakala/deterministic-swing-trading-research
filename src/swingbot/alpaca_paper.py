@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import json
+import math
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from decimal import Decimal
 from typing import Any, Callable, Optional
 
@@ -31,7 +32,7 @@ from .paper_models import (
 
 
 Transport = Callable[[str, str, dict[str, str], Optional[bytes], int], Any]
-PermitValidator = Callable[[OrderProposal, ApprovalPermit, str], bool]
+PermitValidator = Callable[[OrderProposal, ApprovalPermit, str, datetime], bool]
 _MUTATING_METHODS = {"POST", "PATCH", "PUT", "DELETE"}
 _ALLOWED_METHODS = _MUTATING_METHODS | {"GET"}
 _MUTATION_TOKEN = object()
@@ -89,6 +90,7 @@ class AlpacaPaperClient:
         cancel_verification_attempts: int = CANCEL_VERIFICATION_ATTEMPTS,
         cancel_verification_interval_seconds: float = CANCEL_VERIFICATION_INTERVAL_SECONDS,
         sleep: Callable[[float], None] = time.sleep,
+        utc_now: Callable[[], datetime] | None = None,
     ):
         if trading_base_url != PAPER_TRADING_BASE_URL:
             raise AlpacaPaperError("live or alternate trading endpoints are prohibited")
@@ -108,6 +110,7 @@ class AlpacaPaperClient:
         self._cancel_verification_attempts = cancel_verification_attempts
         self._cancel_verification_interval_seconds = cancel_verification_interval_seconds
         self._sleep = sleep
+        self._utc_now = utc_now or (lambda: datetime.now(timezone.utc))
         self._verified_exit_permits: set[tuple[str, str, str]] = set()
 
     def _request(
@@ -455,6 +458,8 @@ class AlpacaPaperClient:
             raise AlpacaPaperError("paper signal bars must use adjustment=all")
         clean_symbols = [_symbol(symbol) for symbol in symbols]
         bars: dict[str, list[Bar]] = {symbol: [] for symbol in clean_symbols}
+        seen_dates: dict[str, set[date]] = {symbol: set() for symbol in clean_symbols}
+        seen_page_tokens: set[str] = set()
         page_token: str | None = None
         while True:
             query: dict[str, Any] = {
@@ -470,24 +475,33 @@ class AlpacaPaperClient:
             if page_token:
                 query["page_token"] = page_token
             value = self._request("GET", "/v2/stocks/bars", data_api=True, query=query)
-            for symbol, rows in value.get("bars", {}).items():
+            if not isinstance(value, dict) or not isinstance(value.get("bars"), dict):
+                raise AlpacaPaperError("broker bar page has an invalid shape")
+            page_rows = 0
+            for symbol, rows in value["bars"].items():
                 clean = _symbol(symbol)
-                bars.setdefault(clean, [])
+                if clean not in bars or not isinstance(rows, list):
+                    raise AlpacaPaperError("broker bar page contains an unexpected symbol or rows")
                 for row in rows:
-                    bars[clean].append(
-                        Bar(
-                            symbol=clean,
-                            date=parse_timestamp(str(row["t"])).date(),
-                            open=float(row["o"]),
-                            high=float(row["h"]),
-                            low=float(row["l"]),
-                            close=float(row["c"]),
-                            volume=float(row["v"]),
+                    bar = _validated_bar(clean, row, start=start, end=end)
+                    if bar.date in seen_dates[clean]:
+                        raise AlpacaPaperError(
+                            "broker bar pagination repeated a symbol/date"
                         )
-                    )
-            page_token = value.get("next_page_token")
-            if not page_token:
+                    seen_dates[clean].add(bar.date)
+                    bars[clean].append(bar)
+                    page_rows += 1
+            next_page_token = value.get("next_page_token")
+            if next_page_token in (None, ""):
                 break
+            if not isinstance(next_page_token, str):
+                raise AlpacaPaperError("broker bar pagination token is invalid")
+            if page_rows == 0:
+                raise AlpacaPaperError("broker bar pagination made no row progress")
+            if next_page_token in seen_page_tokens:
+                raise AlpacaPaperError("broker bar pagination made no progress")
+            seen_page_tokens.add(next_page_token)
+            page_token = next_page_token
         for symbol in bars:
             bars[symbol].sort(key=lambda bar: bar.date)
         return bars
@@ -495,6 +509,7 @@ class AlpacaPaperClient:
     def _require_permit(
         self, proposal: OrderProposal, permit: ApprovalPermit, stage: str
     ) -> None:
+        mutation_at = self._utc_now()
         basic = (
             isinstance(permit, ApprovalPermit)
             and permit.proposal_id == proposal.proposal_id
@@ -502,13 +517,19 @@ class AlpacaPaperClient:
             and bool(permit.approval_event_id)
             and bool(permit.review_event_id)
             and bool(permit.session_id)
+            and permit.issued_at.tzinfo is not None
+            and permit.mutation_deadline.tzinfo is not None
+            and mutation_at.tzinfo is not None
+            and mutation_at < permit.mutation_deadline
         )
         if (
             not basic
             or self._permit_validator is None
-            or not self._permit_validator(proposal, permit, stage)
+            or not self._permit_validator(proposal, permit, stage, mutation_at)
         ):
             raise AlpacaPaperError("broker mutation lacks an unused journal-backed approval permit")
+        if self._utc_now() >= permit.mutation_deadline:
+            raise AlpacaPaperError("broker mutation approval expired before transport")
 
     @staticmethod
     def _permit_key(
@@ -564,3 +585,39 @@ def _paper_order(value: dict[str, Any]) -> PaperOrder:
         if value.get("filled_at") else None,
         extended_hours=_boolean(value.get("extended_hours", False)),
     )
+
+
+def _validated_bar(
+    symbol: str, value: Any, *, start: date, end: date
+) -> Bar:
+    if not isinstance(value, dict):
+        raise AlpacaPaperError("broker bar row is not an object")
+    try:
+        bar_date = parse_timestamp(str(value["t"])).date()
+        open_price = _finite_float(value["o"])
+        high = _finite_float(value["h"])
+        low = _finite_float(value["l"])
+        close = _finite_float(value["c"])
+        volume = _finite_float(value["v"])
+    except (KeyError, TypeError, ValueError, OverflowError):
+        raise AlpacaPaperError("broker bar row contains invalid numeric or time data") from None
+    prices = (open_price, high, low, close)
+    if (
+        not start <= bar_date <= end
+        or any(price <= 0 for price in prices)
+        or volume < 0
+        or low > min(open_price, close)
+        or high < max(open_price, close)
+        or low > high
+    ):
+        raise AlpacaPaperError("broker bar row violates date or OHLCV constraints")
+    return Bar(symbol, bar_date, open_price, high, low, close, volume)
+
+
+def _finite_float(value: Any) -> float:
+    if isinstance(value, bool):
+        raise ValueError("boolean is not a numeric market value")
+    parsed = float(value)
+    if not math.isfinite(parsed):
+        raise ValueError("market value is not finite")
+    return parsed

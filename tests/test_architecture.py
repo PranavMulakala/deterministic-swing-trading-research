@@ -12,7 +12,7 @@ class ArchitectureTests(unittest.TestCase):
             "aiohttp", "ftplib", "http", "httpx", "requests", "socket", "subprocess",
             "urllib", "websockets",
         }
-        self.assertEqual(len(modules), 25, "classify every swingbot module when adding one")
+        self.assertEqual(len(modules), 26, "classify every swingbot module when adding one")
         for module in modules:
             tree = ast.parse(module.read_text(encoding="utf-8"))
             imports = set()

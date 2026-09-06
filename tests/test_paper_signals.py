@@ -36,6 +36,16 @@ class PaperSignalTests(unittest.TestCase):
         self.assertEqual(prior, with_incomplete)
         self.assertLess(with_incomplete.bar_date, NOW.date())
 
+    def test_nonfinite_completed_bar_cannot_create_a_signal(self) -> None:
+        config = load_config(ROOT / "config/strategy_v1.json")
+        bars = qualifying_bars()
+        bars[-1] = replace(bars[-1], close=float("nan"))
+        decision = latest_entry_decision(
+            bars, session_date=NOW.date(), strategy_config=config
+        )
+        self.assertIsNone(decision.signal)
+        self.assertEqual(decision.rejection_reason, "invalid_market_data")
+
 
 if __name__ == "__main__":
     unittest.main()

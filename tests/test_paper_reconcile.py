@@ -186,6 +186,160 @@ class PaperReconciliationTests(unittest.TestCase):
         self.assertTrue(report.ok, report.issues)
         self.assertTrue(any(event["event_type"] == "entry_filled" for event in self.journal.events()))
 
+    def test_entry_and_stop_round_trip_between_polls_reconciles_once(self) -> None:
+        proposal = sample_proposal()
+        self.journal.record_proposal(proposal)
+        self.journal._append_state(
+            "order_submitted",
+            {
+                "action": "entry_oto",
+                "symbol": "SPY",
+                "client_order_id": proposal.client_order_id,
+                "broker_order_id": "round-trip-parent",
+                "status": "new",
+                "filled_quantity": "0",
+                "planned_loss": str(proposal.planned_loss),
+            },
+            proposal_id=proposal.proposal_id,
+            occurred_at=NOW,
+        )
+        entry_time = NOW + timedelta(seconds=1)
+        stop_time = NOW + timedelta(seconds=2)
+        stop = PaperOrder(
+            "round-trip-stop",
+            "",
+            "SPY",
+            "sell",
+            "stop",
+            "gtc",
+            "simple",
+            "filled",
+            proposal.quantity,
+            proposal.quantity,
+            filled_average_price=proposal.stop_price,
+            stop_price=proposal.stop_price,
+            filled_at=stop_time,
+        )
+        parent = PaperOrder(
+            "round-trip-parent",
+            proposal.client_order_id,
+            "SPY",
+            "buy",
+            "market",
+            "gtc",
+            "oto",
+            "filled",
+            proposal.quantity,
+            proposal.quantity,
+            filled_average_price=proposal.ask,
+            legs=(stop,),
+            filled_at=entry_time,
+        )
+        expected_pnl = proposal.quantity * (proposal.stop_price - proposal.ask)
+        cash = Decimal("500") + expected_pnl
+        account = replace(
+            self.broker.account,
+            equity=cash,
+            cash=cash,
+            non_marginable_buying_power=cash,
+            buying_power=cash,
+        )
+        for _ in range(2):
+            report = self.reconciler.reconcile(
+                account=account,
+                positions=[],
+                orders=[parent],
+                now=NOW + timedelta(seconds=3),
+            )
+            self.assertTrue(report.ok, report.issues)
+        events = self.journal.events()
+        self.assertEqual(
+            sum(event["event_type"] == "entry_filled" for event in events), 1
+        )
+        self.assertEqual(
+            sum(event["event_type"] == "position_closed" for event in events), 1
+        )
+        state = reduce_events(events)
+        self.assertFalse(state.positions)
+        self.assertEqual(state.realized_pnl(NOW.date()), expected_pnl)
+        self.assertFalse(self.journal.kill_switch_latched())
+
+    def test_broker_cost_basis_mismatch_latches(self) -> None:
+        proposal = sample_proposal()
+        self.journal.record_proposal(proposal)
+        stop = PaperOrder(
+            "basis-stop",
+            "",
+            "SPY",
+            "sell",
+            "stop",
+            "gtc",
+            "simple",
+            "new",
+            proposal.quantity,
+            Decimal("0"),
+            stop_price=proposal.stop_price,
+        )
+        parent = PaperOrder(
+            "basis-parent",
+            proposal.client_order_id,
+            "SPY",
+            "buy",
+            "market",
+            "gtc",
+            "oto",
+            "filled",
+            proposal.quantity,
+            proposal.quantity,
+            filled_average_price=proposal.ask,
+            legs=(stop,),
+            filled_at=NOW,
+        )
+        self.journal._append_state(
+            "order_submitted",
+            {
+                "action": "entry_oto",
+                "symbol": "SPY",
+                "client_order_id": proposal.client_order_id,
+                "broker_order_id": parent.order_id,
+                "status": "filled",
+                "filled_quantity": str(proposal.quantity),
+                "filled_average_price": str(proposal.ask),
+                "filled_at": NOW.isoformat(),
+                "planned_loss": str(proposal.planned_loss),
+            },
+            proposal_id=proposal.proposal_id,
+            occurred_at=NOW,
+        )
+        market_value = proposal.quantity * proposal.ask
+        cash = Decimal("500") - market_value
+        account = replace(
+            self.broker.account,
+            cash=cash,
+            non_marginable_buying_power=cash,
+            buying_power=cash,
+            long_market_value=market_value,
+            equity=Decimal("500"),
+        )
+        correct = PaperPosition(
+            "SPY",
+            proposal.quantity,
+            "long",
+            proposal.ask,
+            proposal.ask,
+            market_value,
+        )
+        initial = self.reconciler.reconcile(
+            account=account, positions=[correct], orders=[parent], now=NOW
+        )
+        self.assertTrue(initial.ok, initial.issues)
+        mismatched = replace(correct, average_entry_price=Decimal("1"))
+        report = self.reconciler.reconcile(
+            account=account, positions=[mismatched], orders=[parent], now=NOW
+        )
+        self.assertIn("position_cost_basis_mismatch:SPY", report.issues)
+        self.assertTrue(self.journal.kill_switch_latched())
+
     def test_filled_parent_with_still_held_child_is_not_treated_as_protected(self) -> None:
         proposal = sample_proposal()
         self.journal.record_proposal(proposal)
@@ -354,7 +508,9 @@ class PaperReconciliationTests(unittest.TestCase):
             proposal_id=proposal.proposal_id,
             occurred_at=NOW,
         )
-        self.assertTrue(self.journal.claim_permit(proposal, permit, "submit_order"))
+        self.assertTrue(
+            self.journal.claim_permit(proposal, permit, "submit_order", NOW)
+        )
         stop = PaperOrder(
             "restart-stop", "", "SPY", "sell", "stop", "gtc", "simple", "held",
             proposal.quantity, Decimal("0"), stop_price=proposal.stop_price,
@@ -397,7 +553,9 @@ class PaperReconciliationTests(unittest.TestCase):
             proposal_id=proposal.proposal_id,
             occurred_at=NOW,
         )
-        self.assertTrue(self.journal.claim_permit(proposal, permit, "submit_order"))
+        self.assertTrue(
+            self.journal.claim_permit(proposal, permit, "submit_order", NOW)
+        )
         report = self.reconciler.reconcile(
             account=self.broker.account, positions=[], orders=[], now=NOW
         )

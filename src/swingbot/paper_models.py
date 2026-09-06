@@ -220,3 +220,5 @@ class ApprovalPermit:
     approval_event_id: str
     review_event_id: str
     session_id: str
+    issued_at: datetime
+    mutation_deadline: datetime

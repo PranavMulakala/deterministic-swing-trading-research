@@ -111,6 +111,8 @@ def sample_permit(proposal: OrderProposal) -> ApprovalPermit:
         approval_event_id="approval-event",
         review_event_id="review-event",
         session_id="test-session",
+        issued_at=NOW,
+        mutation_deadline=proposal.expires_at,
     )
 
 
@@ -133,7 +135,9 @@ class FakeBroker:
         self.fail_submit = False
         self.fail_cancel = False
         self.fail_cancel_verification = False
-        self.permit_validator: Callable[[OrderProposal, ApprovalPermit, str], bool] | None = None
+        self.permit_validator: Callable[
+            [OrderProposal, ApprovalPermit, str, datetime], bool
+        ] | None = None
 
     def get_account(self) -> PaperAccount:
         return self.account
@@ -175,7 +179,9 @@ class FakeBroker:
     def submit_entry(self, proposal: OrderProposal, permit: ApprovalPermit) -> PaperOrder:
         assert permit.proposal_id == proposal.proposal_id
         if self.permit_validator is not None:
-            assert self.permit_validator(proposal, permit, "submit_order")
+            assert self.permit_validator(
+                proposal, permit, "submit_order", self.clock.timestamp
+            )
         self.submitted_entries += 1
         if self.fail_submit:
             raise RuntimeError("simulated connection loss")
@@ -222,7 +228,9 @@ class FakeBroker:
     def close_position(self, proposal: OrderProposal, permit: ApprovalPermit) -> PaperOrder:
         assert permit.proposal_id == proposal.proposal_id
         if self.permit_validator is not None:
-            assert self.permit_validator(proposal, permit, "submit_order")
+            assert self.permit_validator(
+                proposal, permit, "submit_order", self.clock.timestamp
+            )
         self.submitted_exits += 1
         if self.fail_submit:
             raise RuntimeError("simulated connection loss")
@@ -250,7 +258,12 @@ class FakeBroker:
         assert proposal.proposal_id == permit.proposal_id
         assert expected_stop_price > 0
         if self.permit_validator is not None:
-            assert self.permit_validator(proposal, permit, "cancel_protective_stop")
+            assert self.permit_validator(
+                proposal,
+                permit,
+                "cancel_protective_stop",
+                self.clock.timestamp,
+            )
         if self.fail_cancel:
             raise RuntimeError("simulated cancellation uncertainty")
         self.canceled_order_ids.append(order_id)

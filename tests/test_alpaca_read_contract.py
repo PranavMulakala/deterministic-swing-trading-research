@@ -364,6 +364,116 @@ class AlpacaReadContractTests(unittest.TestCase):
         with self.assertRaisesRegex(AlpacaPaperError, "made no progress"):
             stalled.list_orders(status="all")
 
+    def test_bars_reject_nonfinite_ohlcv_duplicates_and_stalled_tokens(self) -> None:
+        cases = {
+            "nonfinite": {
+                "bars": {
+                    "SPY": [
+                        _RecordingTransport._bar(
+                            "2026-01-03T05:00:00Z", float("nan")
+                        )
+                    ]
+                },
+                "next_page_token": None,
+            },
+            "invalid_ohlc": {
+                "bars": {
+                    "SPY": [
+                        {
+                            **_RecordingTransport._bar(
+                                "2026-01-03T05:00:00Z", 500
+                            ),
+                            "h": 499,
+                        }
+                    ]
+                },
+                "next_page_token": None,
+            },
+        }
+        for name, response in cases.items():
+            with self.subTest(name=name):
+                client = AlpacaPaperClient(
+                    "key", "secret", transport=lambda *_args, r=response: r
+                )
+                with self.assertRaises(AlpacaPaperError):
+                    client.historical_daily_bars(
+                        ["SPY"],
+                        start=date(2026, 1, 1),
+                        end=date(2026, 1, 5),
+                        feed="iex",
+                        adjustment="all",
+                    )
+
+        calls = []
+
+        def repeated_token(*_args):
+            calls.append(1)
+            day = "02" if len(calls) == 1 else "03"
+            return {
+                "bars": {
+                    "SPY": [
+                        _RecordingTransport._bar(
+                            f"2026-01-{day}T05:00:00Z", 500 + len(calls)
+                        )
+                    ]
+                },
+                "next_page_token": "same-token",
+            }
+
+        client = AlpacaPaperClient("key", "secret", transport=repeated_token)
+        with self.assertRaisesRegex(AlpacaPaperError, "made no progress"):
+            client.historical_daily_bars(
+                ["SPY"],
+                start=date(2026, 1, 1),
+                end=date(2026, 1, 5),
+                feed="iex",
+                adjustment="all",
+            )
+        self.assertEqual(len(calls), 2)
+
+        stalled_calls = []
+
+        def no_row_progress(*_args):
+            stalled_calls.append(1)
+            return {"bars": {}, "next_page_token": "new-token"}
+
+        client = AlpacaPaperClient("key", "secret", transport=no_row_progress)
+        with self.assertRaisesRegex(AlpacaPaperError, "no row progress"):
+            client.historical_daily_bars(
+                ["SPY"],
+                start=date(2026, 1, 1),
+                end=date(2026, 1, 5),
+                feed="iex",
+                adjustment="all",
+            )
+        self.assertEqual(len(stalled_calls), 1)
+
+        duplicate_page = 0
+
+        def duplicate_bar(*_args):
+            nonlocal duplicate_page
+            duplicate_page += 1
+            return {
+                "bars": {
+                    "SPY": [
+                        _RecordingTransport._bar(
+                            "2026-01-03T05:00:00Z", 500
+                        )
+                    ]
+                },
+                "next_page_token": "page-two" if duplicate_page == 1 else None,
+            }
+
+        client = AlpacaPaperClient("key", "secret", transport=duplicate_bar)
+        with self.assertRaisesRegex(AlpacaPaperError, "repeated a symbol/date"):
+            client.historical_daily_bars(
+                ["SPY"],
+                start=date(2026, 1, 1),
+                end=date(2026, 1, 5),
+                feed="iex",
+                adjustment="all",
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -2,6 +2,7 @@ import io
 import json
 import urllib.error
 from dataclasses import replace
+from datetime import timedelta
 from decimal import Decimal
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -62,6 +63,7 @@ class AlpacaPaperClientTests(unittest.TestCase):
         client = AlpacaPaperClient(
             "paper-key", "paper-secret", transport=transport,
             permit_validator=lambda *_: True,
+            utc_now=lambda: NOW,
         )
         proposal = sample_proposal()
         client.submit_entry(proposal, sample_permit(proposal))
@@ -86,6 +88,27 @@ class AlpacaPaperClientTests(unittest.TestCase):
         self.assertEqual(headers["APCA-API-KEY-ID"], "paper-key")
         self.assertNotIn("paper-key", url)
         self.assertNotIn("paper-secret", raw.decode())
+
+    def test_mutation_deadline_is_rechecked_immediately_before_transport(self) -> None:
+        proposal = sample_proposal()
+        permit = sample_permit(proposal)
+        times = iter(
+            [
+                proposal.expires_at - timedelta(seconds=1),
+                proposal.expires_at,
+            ]
+        )
+        calls = []
+        client = AlpacaPaperClient(
+            "paper-key",
+            "paper-secret",
+            transport=lambda *args: calls.append(args),
+            permit_validator=lambda *_: True,
+            utc_now=lambda: next(times),
+        )
+        with self.assertRaisesRegex(AlpacaPaperError, "expired before transport"):
+            client.submit_entry(proposal, permit)
+        self.assertEqual(calls, [])
 
     def test_transport_error_redacts_both_credentials(self) -> None:
         def transport(*_):
@@ -232,7 +255,9 @@ class AlpacaPaperClientTests(unittest.TestCase):
                 }
 
             client = AlpacaPaperClient(
-                "key", "secret", transport=transport, permit_validator=journal.claim_permit
+                "key", "secret", transport=transport,
+                permit_validator=journal.claim_permit,
+                utc_now=lambda: NOW,
             )
             client.submit_entry(proposal, permit)
             with self.assertRaisesRegex(AlpacaPaperError, "unused journal-backed"):
@@ -325,6 +350,7 @@ class AlpacaPaperClientTests(unittest.TestCase):
             client = AlpacaPaperClient(
                 "key", "secret", transport=transport,
                 permit_validator=journal.claim_permit,
+                utc_now=lambda: NOW,
             )
             with self.assertRaisesRegex(AlpacaPaperError, "verified protective-stop"):
                 client.close_position(proposal, permit)
@@ -365,7 +391,9 @@ class AlpacaPaperClientTests(unittest.TestCase):
             }
 
         client = AlpacaPaperClient(
-            "key", "secret", transport=transport, permit_validator=lambda *_: True
+            "key", "secret", transport=transport,
+            permit_validator=lambda *_: True,
+            utc_now=lambda: NOW,
         )
         with self.assertRaisesRegex(AlpacaPaperError, "differs from the managed stop"):
             client.cancel_order("stop-1", Decimal("118"), proposal, permit)
@@ -398,6 +426,7 @@ class AlpacaPaperClientTests(unittest.TestCase):
             cancel_verification_attempts=3,
             cancel_verification_interval_seconds=0.01,
             sleep=sleeps.append,
+            utc_now=lambda: NOW,
         )
         stop = client.cancel_order("stop-1", Decimal("118"), proposal, permit)
         self.assertEqual(stop.status, "canceled")
@@ -424,6 +453,7 @@ class AlpacaPaperClientTests(unittest.TestCase):
         partial = AlpacaPaperClient(
             "key", "secret", transport=partial_transport,
             permit_validator=lambda *_: True,
+            utc_now=lambda: NOW,
         )
         observed = partial.cancel_order(
             "stop-1", Decimal("118"), proposal, permit

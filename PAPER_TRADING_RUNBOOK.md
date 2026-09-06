@@ -59,7 +59,7 @@ PYTHONPATH=src python3 -m swingbot.cli paper --root . execute PROPOSAL_ID \
   --session-id CURRENT_SESSION_ID
 ```
 
-The enable values disappear when that process exits. The confirmation expires after 120 seconds and can be consumed once. It is bound to the exact latest review event and that review's side-appropriate quote, so a stale, superseded, or changed proposal requires a new review and approval. Submission re-queries account, positions, orders, clock, asset, and quote.
+The enable values disappear when that process exits. The confirmation expires after 120 seconds and can be consumed once. It is bound to the exact latest review event and that review's side-appropriate quote, so a stale, superseded, or changed proposal requires a new review and approval. Submission completes asset and state requests, re-queries account, positions, orders and quote, then samples the broker clock last. The resulting permit expires at the earliest proposal-expiry, quote-age, or regular-session boundary and is checked again immediately before broker transport.
 
 `maximum_entry_reference` is a local pre-submit guard, not a broker limit price. A market order can fill worse after submission. Reconciliation measures risk again from the actual fill and latches the kill switch if the observed fill exceeds the approved risk ceiling. A stop can also fill below its stop price during a gap or fast market.
 

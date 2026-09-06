@@ -262,6 +262,11 @@ class PaperReconciler:
                 continue
             if abs(broker_position.quantity - managed.quantity) > Decimal("0.000001"):
                 issues.append(f"position_quantity_mismatch:{symbol}")
+            if (
+                abs(broker_position.average_entry_price - managed.entry_price)
+                > accounting_tolerance
+            ):
+                issues.append(f"position_cost_basis_mismatch:{symbol}")
 
         for symbol, managed in state.positions.items():
             if symbol not in broker_by_symbol:
@@ -416,7 +421,10 @@ class PaperReconciler:
                 and stop.time_in_force == "gtc"
                 and stop.quantity == proposal.quantity
                 and stop.stop_price == proposal.stop_price
-                and stop.status in working_statuses
+                and (
+                    stop.status in working_statuses
+                    or (order.status == "filled" and stop.status == "filled")
+                )
                 and not stop.extended_hours
                 and not stop.legs
             )
@@ -537,7 +545,11 @@ class PaperReconciler:
             proposal.client_order_id not in state.entry_filled_client_order_ids
             and order.status == "filled"
         ):
-            if order.filled_average_price is None:
+            if (
+                order.filled_average_price is None
+                or not order.filled_average_price.is_finite()
+                or order.filled_average_price <= 0
+            ):
                 return [f"filled_entry_missing_average_price:{proposal.symbol}"]
             if (
                 order.filled_at is None
@@ -551,6 +563,11 @@ class PaperReconciler:
             working_statuses = set(
                 self.paper_config["monitoring"]["order_working_statuses"]
             )
+            active_stop = (
+                stop.status in working_statuses
+                and stop.status not in NON_PROTECTIVE_STOP_STATUSES
+            )
+            completed_stop = stop.status == "filled"
             if (
                 stop.symbol != proposal.symbol
                 or stop.side != "sell"
@@ -560,10 +577,18 @@ class PaperReconciler:
                 or stop.stop_price != proposal.stop_price
                 or stop.extended_hours
                 or bool(stop.legs)
-                or stop.status not in working_statuses
-                or stop.status in NON_PROTECTIVE_STOP_STATUSES
+                or not (active_stop or completed_stop)
             ):
                 return [f"filled_entry_stop_not_active:{proposal.symbol}:{stop.status}"]
+            if completed_stop:
+                stop_issue = self._order_fill_state_issue(stop, now)
+                if stop_issue is not None:
+                    return [
+                        f"filled_entry_stop_has_invalid_fill:{proposal.symbol}:{stop_issue}"
+                    ]
+                assert stop.filled_at is not None and order.filled_at is not None
+                if stop.filled_at < order.filled_at:
+                    return [f"filled_entry_stop_precedes_entry:{proposal.symbol}"]
             if order.filled_quantity != proposal.quantity:
                 return [f"filled_entry_quantity_mismatch:{proposal.symbol}"]
             actual_planned_loss = order.filled_quantity * (
@@ -598,7 +623,7 @@ class PaperReconciler:
                     "client_order_id": proposal.client_order_id,
                 },
                 proposal_id=proposal.proposal_id,
-                occurred_at=now,
+                occurred_at=order.filled_at,
             )
             state = reduce_events(self.journal.events())
         managed = state.positions.get(proposal.symbol)
@@ -678,7 +703,7 @@ class PaperReconciler:
                 "broker_order_id": order.order_id,
             },
             proposal_id=proposal_id,
-            occurred_at=now,
+            occurred_at=order.filled_at,
         )
         return []
 

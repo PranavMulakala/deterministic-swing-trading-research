@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+import math
 
 from .models import Signal
 
@@ -26,6 +27,13 @@ def evaluate_entry(
     if None in (sma20, sma200, rsi2, atr14):
         return StrategyEvaluation(None, "insufficient_history")
     assert sma20 is not None and sma200 is not None and rsi2 is not None and atr14 is not None
+    if not all(
+        math.isfinite(value)
+        for value in (close, sma20, sma200, rsi2, atr14, entry_threshold)
+    ):
+        return StrategyEvaluation(None, "invalid_numeric_input")
+    if close <= 0 or sma20 <= 0 or sma200 <= 0 or atr14 <= 0:
+        return StrategyEvaluation(None, "invalid_numeric_input")
     if close <= sma200:
         return StrategyEvaluation(None, "trend_filter_failed")
     if rsi2 >= entry_threshold:
@@ -45,5 +53,11 @@ def evaluate_entry(
 
 
 def recovery_exit(close: float, sma20: float | None) -> bool:
-    return sma20 is not None and close >= sma20
-
+    return (
+        sma20 is not None
+        and math.isfinite(close)
+        and math.isfinite(sma20)
+        and close > 0
+        and sma20 > 0
+        and close >= sma20
+    )

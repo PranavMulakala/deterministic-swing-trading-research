@@ -32,7 +32,7 @@ PYTHONPATH=src python3 -m swingbot.cli analyze-paper-constraint --root .
 
 ## Measured software scope
 
-The builder reviewed all 25 `src/swingbot` modules and all 19 test/support modules and ran 121 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only Astra-medium validator handoff remains required.
+The builder reviewed all 26 `src/swingbot` modules and all 19 test/support modules and ran 132 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. A separate read-only validation of the exact resulting commit remains required.
 
 The automated suite exercises:
 
@@ -45,6 +45,9 @@ The automated suite exercises:
 - frozen strategy-config binding and rejection of weakened paper settings;
 - $100,000 default paper balance rejection, clean $500 account binding, long/cash-only checks;
 - stale, excessively future-dated, malformed, wide-spread, and materially changed quote rejection, with a fixed two-second tolerance for a quote sampled just after the broker clock;
+- final pre-mutation account/order/position/quote refresh with the broker clock sampled last, plus a journal-bound adapter deadline at the earliest proposal, quote-age, or regular-session boundary;
+- post-acknowledgement broker-clock validation for fill timestamps, including a normal fill that occurs after preflight;
+- finite, positive, internally consistent daily OHLCV validation before indicator or signal creation;
 - whole-share cash/risk sizing and the 0.5% per-trade limit;
 - 3% aggregate open risk including submitted-but-not-filled entries; a market-driven ratio overrun warns and blocks additional entry risk without deadlocking approved exits;
 - daily loss halt based on the first durable equity observation of the trading day rather than Alpaca's previous-close `last_equity`, duplicate client ID defense, and kill switches;
@@ -54,8 +57,9 @@ The automated suite exercises:
 - cross-process serialization of every public workflow operation, including broker snapshots, reconciliation, proposal/review changes, approval, stop cancellation, and submission;
 - unknown, duplicate, malformed, status-regressing, or quantity-regressing broker state; account mismatch; partial fills; and inactive, missing, malformed, or orphan native stops;
 - broker-fill-driven local position creation/removal using broker fill timestamps, fill-ledger cash reconciliation, account/position market-value identities, and point-in-time account/cash/mark/P&L snapshots;
+- chronological and idempotent recovery when a complete entry and protective-stop fill both occur between polls, plus broker-versus-ledger average-entry-price comparison at the declared one-cent tolerance;
 - exact stop-id/price-bound cancellation confirmation before an approved ordinary exit, bounded polling for Alpaca's asynchronous cancellation, rejection of partial-fill evidence, post-cancel account/clock/position revalidation, and independent adapter plus durable-journal submission gates;
-- explicit disabling of environment HTTP proxies for broker egress, full order-history pagination past 500 parent orders, owner-only permissions for the journal/dashboard, and symbolic-link rejection on sensitive local paths;
+- explicit disabling of environment HTTP proxies for broker egress, bounded historical-bar and full order-history pagination, owner-only permissions for the journal/dashboard, and leaf/ancestor symbolic-link rejection on sensitive local paths;
 - restart recovery of one exact broker order by client order ID, with a latched kill switch and no retry when zero or multiple matches remain unresolved;
 - an explicitly confirmed clean-$500 rebaseline after manual broker recovery that preserves the old audit trail, resets operational state, restarts the paper gate, and invalidates every prior-run proposal and permit;
 - unchanged frozen v1 deterministic backtest tests and artifact reproduction.
@@ -68,7 +72,7 @@ The suite uses an injected fake broker. It does not prove Alpaca accepted a real
 - The owner's paper account ID, status, current balance, permissions, asset flags, and market-data entitlement are unverified.
 - No paper order was submitted.
 - No real Alpaca fill, child stop, cancel, restart, or reconciliation cycle was observed.
-- The final builder commit has not yet received the requested independent Astra-medium audit. The earlier Claude paper audit targeted obsolete commit `4fff0c1` and does not certify this tree; `PAPER_AUDIT_RESPONSE.md` records the builder's disposition of its leads.
+- The final builder commit has not yet received a fresh independent audit. Astra's five-major/two-minor report targeted predecessor `959b050`; the earlier Claude paper audit targeted obsolete commit `4fff0c1`. Neither certifies this tree. `PAPER_AUDIT_RESPONSE.md` records the builder's dispositions.
 
 ## Decision required before an operational trial
 

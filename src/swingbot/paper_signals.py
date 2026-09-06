@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal
+import math
 from typing import Any
 
 from .indicators import sma, wilder_atr, wilder_rsi
@@ -27,6 +28,20 @@ def latest_entry_decision(
     symbol = bars[0].symbol if bars else ""
     if not completed:
         return LiveSignalDecision(symbol, None, None, "no_completed_daily_bar")
+    expected_symbol = completed[0].symbol
+    if (
+        any(not _valid_bar(bar) or bar.symbol != expected_symbol for bar in completed)
+        or any(
+            current.date <= prior.date
+            for prior, current in zip(completed, completed[1:])
+        )
+    ):
+        return LiveSignalDecision(
+            completed[-1].symbol,
+            completed[-1].date,
+            None,
+            "invalid_market_data",
+        )
     closes = [bar.close for bar in completed]
     highs = [bar.high for bar in completed]
     lows = [bar.low for bar in completed]
@@ -79,6 +94,15 @@ def latest_exit_reason(
     completed = [bar for bar in bars if bar.date < session_date]
     if not completed:
         return None
+    expected_symbol = completed[0].symbol
+    if (
+        any(not _valid_bar(bar) or bar.symbol != expected_symbol for bar in completed)
+        or any(
+            current.date <= prior.date
+            for prior, current in zip(completed, completed[1:])
+        )
+    ):
+        raise ValueError("completed daily bars contain invalid market data")
     closes = [bar.close for bar in completed]
     period = int(strategy_config["strategy"]["recovery_sma_days"])
     latest_sma20 = sma(closes, period)[-1]
@@ -88,3 +112,16 @@ def latest_exit_reason(
     if held_sessions >= int(strategy_config["strategy"]["time_stop_trading_days"]):
         return "time_stop"
     return None
+
+
+def _valid_bar(bar: Bar) -> bool:
+    values = (bar.open, bar.high, bar.low, bar.close, bar.volume)
+    return (
+        bool(bar.symbol)
+        and all(math.isfinite(value) for value in values)
+        and min(bar.open, bar.high, bar.low, bar.close) > 0
+        and bar.volume >= 0
+        and bar.low <= min(bar.open, bar.close)
+        and bar.high >= max(bar.open, bar.close)
+        and bar.low <= bar.high
+    )

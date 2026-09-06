@@ -46,6 +46,17 @@ class PaperDashboardTests(unittest.TestCase):
                 write_paper_dashboard({}, [], destination)
             self.assertEqual(target.read_text(encoding="utf-8"), "unchanged")
 
+    def test_dashboard_refuses_symbolic_link_ancestor(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            actual = root / "actual"
+            actual.mkdir()
+            alias = root / "alias"
+            alias.symlink_to(actual, target_is_directory=True)
+            with self.assertRaisesRegex(PermissionError, "symbolic link"):
+                write_paper_dashboard({}, [], alias / "status.html")
+            self.assertFalse((actual / "status.html").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

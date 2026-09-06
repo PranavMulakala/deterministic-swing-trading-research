@@ -203,6 +203,112 @@ class PaperWorkflowTests(unittest.TestCase):
             )
         self.assertEqual(self.broker.submitted_entries, 0)
 
+    def test_final_refresh_blocks_expiry_or_market_close_during_preflight(self) -> None:
+        for scenario in ("expiry", "quote_stale", "market_close"):
+            with self.subTest(scenario=scenario):
+                journal = PaperJournal(
+                    Path(self.temporary.name) / f"final-refresh-{scenario}.sqlite"
+                )
+                broker = FakeBroker()
+                broker.permit_validator = journal.claim_permit
+                workflow = PaperWorkflow(broker, journal, self.strategy, self.paper)
+                workflow.bind_clean_account(now=NOW)
+                proposal = workflow.propose_entry("SPY")
+                review = workflow.review(proposal.proposal_id)
+                if scenario == "expiry":
+                    broker.clock = replace(
+                        broker.clock, timestamp=NOW + timedelta(seconds=119)
+                    )
+                    broker.quote = replace(
+                        broker.quote, timestamp=broker.clock.timestamp
+                    )
+                else:
+                    broker.clock = replace(
+                        broker.clock, next_close=NOW + timedelta(seconds=1)
+                    )
+                original_asset = broker.get_asset
+
+                def delayed_asset(symbol):
+                    delay = 31 if scenario == "quote_stale" else 2
+                    broker.clock = replace(
+                        broker.clock,
+                        timestamp=broker.clock.timestamp + timedelta(seconds=delay),
+                        is_open=scenario != "market_close",
+                    )
+                    return original_asset(symbol)
+
+                broker.get_asset = delayed_asset
+                with self.assertRaises(Exception):
+                    workflow.execute(
+                        proposal.proposal_id,
+                        review["confirmation_code"],
+                        session_id=f"session-{scenario}",
+                        environment=ENABLED,
+                    )
+                self.assertEqual(broker.submitted_entries, 0)
+
+    def test_fill_timestamp_is_bounded_by_post_acknowledgement_clock(self) -> None:
+        self.broker.entry_status = "filled"
+        proposal = self.workflow.propose_entry("SPY")
+        review = self.workflow.review(proposal.proposal_id)
+        original_submit = self.broker.submit_entry
+
+        def submit_with_normal_broker_latency(*args, **kwargs):
+            order = original_submit(*args, **kwargs)
+            order = replace(order, filled_at=NOW + timedelta(seconds=1))
+            self.broker.orders = [order]
+            self.broker.clock = replace(
+                self.broker.clock, timestamp=NOW + timedelta(seconds=2)
+            )
+            return order
+
+        self.broker.submit_entry = submit_with_normal_broker_latency
+        order = self.workflow.execute(
+            proposal.proposal_id,
+            review["confirmation_code"],
+            session_id="session-valid-fill-latency",
+            environment=ENABLED,
+        )
+        self.assertEqual(order.filled_at, NOW + timedelta(seconds=1))
+        self.assertEqual(self.broker.submitted_entries, 1)
+        self.assertFalse(self.journal.kill_switch_latched())
+
+    def test_entry_and_stop_can_both_fill_before_acknowledgement(self) -> None:
+        self.broker.entry_status = "filled"
+        proposal = self.workflow.propose_entry("SPY")
+        review = self.workflow.review(proposal.proposal_id)
+        original_submit = self.broker.submit_entry
+
+        def submit_round_trip(*args, **kwargs):
+            order = original_submit(*args, **kwargs)
+            stop = replace(
+                order.legs[0],
+                status="filled",
+                filled_quantity=proposal.quantity,
+                filled_average_price=proposal.stop_price,
+                filled_at=NOW + timedelta(seconds=2),
+            )
+            order = replace(
+                order,
+                filled_at=NOW + timedelta(seconds=1),
+                legs=(stop,),
+            )
+            self.broker.orders = [order]
+            self.broker.clock = replace(
+                self.broker.clock, timestamp=NOW + timedelta(seconds=3)
+            )
+            return order
+
+        self.broker.submit_entry = submit_round_trip
+        order = self.workflow.execute(
+            proposal.proposal_id,
+            review["confirmation_code"],
+            session_id="session-round-trip-ack",
+            environment=ENABLED,
+        )
+        self.assertEqual(order.legs[0].status, "filled")
+        self.assertFalse(self.journal.kill_switch_latched())
+
     def test_confirmation_code_is_bound_to_the_exact_latest_review(self) -> None:
         proposal = self.workflow.propose_entry("SPY")
         first = self.workflow.review(proposal.proposal_id)
@@ -350,7 +456,9 @@ class PaperWorkflowTests(unittest.TestCase):
         self.assertTrue(baseline["prior_run_terminated"])
         self.assertFalse(self.journal.kill_switch_latched())
         self.assertFalse(reduce_events(self.journal.events()).positions)
-        self.assertFalse(self.journal.claim_permit(proposal, permit, "submit_order"))
+        self.assertFalse(
+            self.journal.claim_permit(proposal, permit, "submit_order", NOW)
+        )
         with self.assertRaisesRegex(JournalError, "prior paper run"):
             self.workflow.review(proposal.proposal_id)
         report = self.workflow.reconcile_now(now=NOW)

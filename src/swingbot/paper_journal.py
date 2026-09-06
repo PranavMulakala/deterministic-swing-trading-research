@@ -14,6 +14,7 @@ from typing import Any, Iterator
 
 from .paper_models import ApprovalPermit, OrderProposal, canonical_json, parse_timestamp
 from .paper_config import QUOTE_FUTURE_TOLERANCE_SECONDS
+from .safe_paths import UnsafePathError, require_no_symlink_components
 
 
 GENESIS_HASH = "0" * 64
@@ -49,17 +50,15 @@ class PaperJournal:
     """Durable append-only operational journal with an integrity hash chain."""
 
     def __init__(self, path: str | Path):
-        self.path = Path(path)
-        if self.path.is_symlink():
-            raise JournalError("paper journal may not be a symbolic link")
+        self.path = self._safe_path(path, "paper journal")
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        self._safe_path(self.path, "paper journal")
         os.chmod(self.path.parent, 0o700)
         self._initialize()
         os.chmod(self.path, 0o600)
 
     def _connect(self) -> sqlite3.Connection:
-        if self.path.is_symlink():
-            raise JournalError("paper journal may not be a symbolic link")
+        self._safe_path(self.path, "paper journal")
         connection = sqlite3.connect(self.path, timeout=10)
         connection.row_factory = sqlite3.Row
         connection.execute("PRAGMA foreign_keys = ON")
@@ -144,9 +143,11 @@ class PaperJournal:
     @contextmanager
     def mutation_lock(self) -> Iterator[None]:
         """Serialize the complete broker-mutation critical section across processes."""
-        lock_path = self.path.with_suffix(self.path.suffix + ".lock")
-        if lock_path.is_symlink():
-            raise JournalError("paper journal lock may not be a symbolic link")
+        self._safe_path(self.path, "paper journal")
+        lock_path = self._safe_path(
+            self.path.with_suffix(self.path.suffix + ".lock"),
+            "paper journal lock",
+        )
         flags = os.O_CREAT | os.O_RDWR
         if hasattr(os, "O_NOFOLLOW"):
             flags |= os.O_NOFOLLOW
@@ -161,6 +162,13 @@ class PaperJournal:
         finally:
             fcntl.flock(descriptor, fcntl.LOCK_UN)
             os.close(descriptor)
+
+    @staticmethod
+    def _safe_path(path: str | Path, label: str) -> Path:
+        try:
+            return require_no_symlink_components(path, label=label)
+        except UnsafePathError as exc:
+            raise JournalError(str(exc)) from None
 
     @staticmethod
     def _event_hash(
@@ -421,6 +429,7 @@ class PaperJournal:
         review_event_id: str,
         session_id: str,
         now: datetime,
+        mutation_deadline: datetime | None = None,
     ) -> ApprovalPermit:
         self.verify_integrity()
         if not session_id.strip():
@@ -431,8 +440,13 @@ class PaperJournal:
             raise JournalError("approval timestamp must be timezone-aware")
         if now < proposal.created_at:
             raise JournalError("approval timestamp precedes proposal creation")
-        if now > proposal.expires_at:
+        deadline = mutation_deadline or proposal.expires_at
+        if deadline.tzinfo is None:
+            raise JournalError("mutation deadline must be timezone-aware")
+        if now >= proposal.expires_at:
             raise JournalError("proposal approval window expired")
+        if deadline <= now or deadline > proposal.expires_at:
+            raise JournalError("mutation deadline is outside the approval window")
         with self._transaction() as connection:
             rows = connection.execute(
                 """
@@ -493,6 +507,8 @@ class PaperJournal:
                     "session_id": session_id,
                     "action": proposal.action,
                     "one_order_only": True,
+                    "issued_at": now.isoformat(),
+                    "mutation_deadline": deadline.isoformat(),
                 },
                 proposal_id=proposal.proposal_id,
                 occurred_at=now,
@@ -530,6 +546,8 @@ class PaperJournal:
                 approval_event_id=str(approval["event_id"]),
                 review_event_id=review_event_id,
                 session_id=session_id,
+                issued_at=now,
+                mutation_deadline=deadline,
             )
 
     @staticmethod
@@ -556,12 +574,16 @@ class PaperJournal:
         proposal: OrderProposal,
         permit: ApprovalPermit,
         stage: str,
+        claimed_at: datetime | None = None,
     ) -> bool:
         valid_stages = {
             "entry_oto": {"submit_order"},
             "close_position": {"cancel_protective_stop", "submit_order"},
         }
         if stage not in valid_stages.get(proposal.action, set()):
+            return False
+        mutation_at = claimed_at or datetime.now(timezone.utc)
+        if mutation_at.tzinfo is None:
             return False
         self.verify_integrity()
         with self._transaction() as connection:
@@ -580,6 +602,13 @@ class PaperJournal:
             if approval is None:
                 return False
             payload = json.loads(str(approval["approval_payload"]))
+            try:
+                issued_at = parse_timestamp(str(payload["issued_at"]))
+                mutation_deadline = parse_timestamp(
+                    str(payload["mutation_deadline"])
+                )
+            except (KeyError, ValueError):
+                return False
             if (
                 str(approval["proposal_id"]) != proposal.proposal_id
                 or str(approval["content_hash"]) != proposal.content_hash
@@ -591,6 +620,14 @@ class PaperJournal:
                 or payload.get("content_hash") != proposal.content_hash
                 or payload.get("review_event_id") != permit.review_event_id
                 or payload.get("session_id") != permit.session_id
+                or permit.issued_at != issued_at
+                or permit.mutation_deadline != mutation_deadline
+                or mutation_deadline > proposal.expires_at
+                or mutation_deadline <= issued_at
+                or mutation_at + timedelta(seconds=QUOTE_FUTURE_TOLERANCE_SECONDS)
+                < issued_at
+                or mutation_at >= mutation_deadline
+                or mutation_at >= proposal.expires_at
             ):
                 return False
             consumed_rows = connection.execute(
@@ -632,13 +669,12 @@ class PaperJournal:
                 ).fetchone()
                 if canceled is None or verified is None:
                     return False
-            claimed_at = datetime.now(timezone.utc)
             connection.execute(
                 """
                 INSERT INTO permit_claims(approval_event_id, stage, claimed_at)
                 VALUES (?, ?, ?)
                 """,
-                (permit.approval_event_id, stage, claimed_at.isoformat()),
+                (permit.approval_event_id, stage, mutation_at.isoformat()),
             )
             self._append_in(
                 connection,
@@ -649,7 +685,7 @@ class PaperJournal:
                     "stage": stage,
                 },
                 proposal_id=proposal.proposal_id,
-                occurred_at=claimed_at,
+                occurred_at=mutation_at,
             )
             return True
 

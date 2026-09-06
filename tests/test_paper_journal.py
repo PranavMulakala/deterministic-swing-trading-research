@@ -98,6 +98,18 @@ class PaperJournalTests(unittest.TestCase):
                     self.fail("symlinked lock was acquired")
             self.assertEqual(lock_target.read_text(encoding="utf-8"), "unchanged")
 
+    def test_journal_rejects_symlinked_ancestor_without_chmodding_target(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            target = root / "actual"
+            target.mkdir(mode=0o755)
+            os.chmod(target, 0o755)
+            alias = root / "alias"
+            alias.symlink_to(target, target_is_directory=True)
+            with self.assertRaisesRegex(JournalError, "traverse a symbolic link"):
+                PaperJournal(alias / "journal.sqlite")
+            self.assertEqual(os.stat(target).st_mode & 0o777, 0o755)
+
     def test_first_observed_equity_is_scoped_to_day_and_current_run(self) -> None:
         with TemporaryDirectory() as directory:
             journal = PaperJournal(Path(directory) / "journal.sqlite")
@@ -154,13 +166,46 @@ class PaperJournalTests(unittest.TestCase):
                 proposal, code,
                 review_event_id=review["event_id"], session_id="session", now=NOW
             )
-            self.assertTrue(journal.claim_permit(proposal, permit, "submit_order"))
-            self.assertFalse(journal.claim_permit(proposal, permit, "submit_order"))
+            self.assertTrue(
+                journal.claim_permit(proposal, permit, "submit_order", NOW)
+            )
+            self.assertFalse(
+                journal.claim_permit(proposal, permit, "submit_order", NOW)
+            )
             with self.assertRaises(JournalError):
                 journal.approve_and_consume(
                     proposal, code,
                     review_event_id=review["event_id"], session_id="session", now=NOW
                 )
+
+    def test_permit_claim_rejects_the_exact_mutation_deadline(self) -> None:
+        with TemporaryDirectory() as directory:
+            journal = PaperJournal(Path(directory) / "journal.sqlite")
+            proposal = sample_proposal()
+            journal.record_proposal(proposal)
+            review = journal.record_review(
+                proposal,
+                quote_timestamp=NOW,
+                bid="119.9",
+                ask="120.1",
+                reviewed_at=NOW,
+            )
+            deadline = NOW + timedelta(seconds=1)
+            permit = journal.approve_and_consume(
+                proposal,
+                journal.confirmation_code_for_review(proposal, review),
+                review_event_id=review["event_id"],
+                session_id="deadline-session",
+                now=NOW,
+                mutation_deadline=deadline,
+            )
+            self.assertFalse(
+                journal.claim_permit(proposal, permit, "submit_order", deadline)
+            )
+            self.assertNotIn(
+                "broker_mutation_claimed",
+                journal.proposal_event_types(proposal.proposal_id),
+            )
 
     def test_approval_without_recorded_full_review_is_rejected(self) -> None:
         with TemporaryDirectory() as directory:
@@ -273,11 +318,17 @@ class PaperJournalTests(unittest.TestCase):
                 session_id="session",
                 now=NOW,
             )
-            self.assertFalse(journal.claim_permit(proposal, permit, "submit_order"))
-            self.assertTrue(
-                journal.claim_permit(proposal, permit, "cancel_protective_stop")
+            self.assertFalse(
+                journal.claim_permit(proposal, permit, "submit_order", NOW)
             )
-            self.assertFalse(journal.claim_permit(proposal, permit, "submit_order"))
+            self.assertTrue(
+                journal.claim_permit(
+                    proposal, permit, "cancel_protective_stop", NOW
+                )
+            )
+            self.assertFalse(
+                journal.claim_permit(proposal, permit, "submit_order", NOW)
+            )
             with self.assertRaisesRegex(JournalError, "not bound"):
                 journal.record_protective_stop_cancellation_verified(
                     proposal, permit, stop_order_id="different-stop", verified_at=NOW
@@ -285,7 +336,9 @@ class PaperJournalTests(unittest.TestCase):
             journal.record_protective_stop_cancellation_verified(
                 proposal, permit, stop_order_id="stop-1", verified_at=NOW
             )
-            self.assertTrue(journal.claim_permit(proposal, permit, "submit_order"))
+            self.assertTrue(
+                journal.claim_permit(proposal, permit, "submit_order", NOW)
+            )
 
 
 if __name__ == "__main__":

@@ -42,9 +42,9 @@ The added operational path is intentionally narrow:
 - empty account binding only when Alpaca reports approximately $500 equity, no positions, and no working orders;
 - completed prior-session bars only, the frozen ETF universe and indicators, and no LLM in data, signal, risk, sizing, or execution;
 - whole-share market/GTC OTO entries with a broker-native stop, because Alpaca documents fractional equity orders as DAY-only;
-- a fresh quote, full order review, a 120-second confirmation bound to the exact latest review, and process-only enable/kill-switch values for every single order; persisted runtime gates are rejected;
+- a fresh quote, full order review, a 120-second confirmation bound to the exact latest review, a final broker-state refresh with the clock sampled last, and an adapter-enforced deadline at the earliest proposal/quote/session boundary; process-only enable/kill-switch values are required for every single order and persisted runtime gates are rejected;
 - an exit review that binds the exact protective-stop order ID and price, waits for terminal cancellation, rejects any partial fill, revalidates broker position/account state, and then permits one sell;
-- durable SQLite event journal with a hash chain and cross-checked authorization capabilities, client-order idempotency, exact restart recovery, broker-timestamped fills, fill-ledger cash/accounting reconciliation, point-in-time account marks, a latched kill switch on unknown state, and an explicit clean-$500 new-run rebaseline that preserves history and invalidates old authority;
+- durable SQLite event journal with a hash chain and cross-checked authorization capabilities, client-order idempotency, exact restart recovery (including a completed entry/stop round trip between polls), broker-timestamped fills, fill-ledger cash/accounting and cost-basis reconciliation, point-in-time account marks, a latched kill switch on unknown state, and an explicit clean-$500 new-run rebaseline that preserves history and invalidates old authority;
 - scheduled exits require a separate fresh approval; the already-approved protective stop remains broker-native and may execute without another prompt.
 
 Setup and operating steps are in `PAPER_TRADING_RUNBOOK.md`. The exact independent-review scope is in `PAPER_VALIDATOR_HANDOFF.md`.

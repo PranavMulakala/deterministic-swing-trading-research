@@ -7,14 +7,18 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
+from .safe_paths import require_no_symlink_components
+
 
 def write_paper_dashboard(
     status: dict[str, Any], events: list[dict[str, Any]], destination: Path
 ) -> None:
+    destination = require_no_symlink_components(
+        destination, label="paper dashboard"
+    )
     destination.parent.mkdir(parents=True, exist_ok=True)
+    require_no_symlink_components(destination, label="paper dashboard")
     os.chmod(destination.parent, 0o700)
-    if destination.is_symlink():
-        raise PermissionError("paper dashboard may not be a symbolic link")
     safe_status = html.escape(json.dumps(_redact(status), indent=2, sort_keys=True))
     rows = []
     for event in reversed(events):

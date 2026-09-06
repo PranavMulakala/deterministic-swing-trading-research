@@ -1,6 +1,20 @@
-# Builder response to the owner-supplied Claude paper audit
+# Builder response to the owner-supplied paper audits
 
-The supplied Claude report audited commit `4fff0c1f7c2dd53b82778615a81b13e128285937`, not this branch's eventual frozen Astra target. Claude explicitly reported that its audit did not certify the later tree. This document records builder dispositions, not independent validation.
+The earlier Claude report audited commit `4fff0c1f7c2dd53b82778615a81b13e128285937`. The later Astra High report audited commit `959b050280316d67eca3cec379e3001bc50ca142` and found five major defects plus two minor gaps. This document records builder dispositions and test evidence, not independent validation of the resulting commit.
+
+## Astra findings reproduced and implemented after `959b050`
+
+| Astra finding | Builder disposition |
+|---|---|
+| F1, approval/quote/session checks could age before POST | Execution now completes slow asset/state requests before a final account/position/order/quote refresh with the broker clock sampled last. The approved capability carries a journal-bound deadline equal to the earliest proposal expiry, quote-age limit, or session boundary; the adapter checks it both before and after the durable permit claim, immediately before transport. Exit permits use the earlier cancel cutoff. Tests cross proposal expiry and market close during preflight and expire a permit between claim and transport; no POST occurs. |
+| F2, normal post-preflight fill appeared future-dated | Fill evidence is now bounded by a broker clock sampled after the acknowledgement is received. A regression submits at `15:00:00`, fills at `15:00:01`, acknowledges at `15:00:02`, and remains unlatched. |
+| F3, NaN daily bar could create a signal and order | Historical rows now require a valid object, requested symbol, timezone-aware in-range date, finite positive OHLC, nonnegative finite volume, and a consistent high/low envelope. Signal evaluation independently rejects invalid bars and nonfinite indicators. Tests cover NaN, inconsistent OHLC, and a direct signal-path injection. |
+| F4, complete entry/stop round trip between polls failed | Reconciliation now accepts a broker-confirmed filled child stop as historical protection when the parent also fully filled, validates both fills and their chronological order, records the entry and close with broker fill timestamps, and remains idempotent on later polls. The regression reconciles exact cash and realized P&L with one entry and one close event. |
+| F5, broker cost-basis mismatch passed | Managed quantity and average entry price are both compared to the journaled fill. A difference over the declared one-cent accounting tolerance is an issue and latches the kill switch. |
+| N1, repeated bar page token could loop forever | Historical-bar pagination rejects repeated tokens, repeated symbol/date rows, malformed page shapes, unexpected symbols, and invalid token types. The repeated-token regression terminates on the second page request. |
+| N2, symlinked journal ancestor was followed and chmodded | Journal, lock, and dashboard paths validate every existing component before directory creation/open and again after creation. User-controlled ancestor symlinks are rejected before chmod; root-owned macOS compatibility aliases such as `/var` remain usable. |
+
+The builder suite now executes 132 tests. The frozen historical strategy, data, configuration, preregistration, and v1 artifacts are intentionally unchanged.
 
 ## Established findings
 
@@ -36,4 +50,4 @@ The supplied Claude report audited commit `4fff0c1f7c2dd53b82778615a81b13e128285
 
 ## Still requires independent validation and owner-account evidence
 
-The new frozen commit must be audited read-only by Astra-medium. No local test establishes that the owner's real Alpaca paper account accepts the exact OTO payload, produces the assumed child-stop lifecycle, exposes cancellation within the bounded polling window, or supplies IEX bars sufficiently equivalent to the frozen Yahoo dataset. No credential was read and no order was placed during this build.
+The new commit must be audited read-only from its exact hash. No local test establishes that the owner's real Alpaca paper account accepts the exact OTO payload, produces the assumed child-stop lifecycle, exposes cancellation within the bounded polling window, or supplies IEX bars sufficiently equivalent to the frozen Yahoo dataset. No credential was read and no order was placed during this build.
