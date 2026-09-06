@@ -113,7 +113,9 @@ def run_paper(args: argparse.Namespace) -> None:
             journal,
             root,
             args.iterations,
-            args.interval or int(paper["monitoring"]["poll_seconds"]),
+            args.interval
+            if args.interval is not None
+            else int(paper["monitoring"]["poll_seconds"]),
         )
 
 
