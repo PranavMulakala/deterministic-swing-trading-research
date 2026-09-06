@@ -93,6 +93,7 @@ class AlpacaPaperClient:
         self._timeout = timeout
         self._transport = transport or _default_transport
         self._permit_validator = permit_validator
+        self._verified_exit_permits: set[tuple[str, str, str]] = set()
 
     def _request(
         self,
@@ -148,16 +149,18 @@ class AlpacaPaperClient:
             multiplier=_decimal(value.get("multiplier", "1")),
             long_market_value=_decimal(value.get("long_market_value", "0")),
             short_market_value=_decimal(value.get("short_market_value", "0")),
-            trading_blocked=bool(value.get("trading_blocked", False)),
-            account_blocked=bool(value.get("account_blocked", False)),
-            trade_suspended_by_user=bool(value.get("trade_suspended_by_user", False)),
+            trading_blocked=_boolean(value.get("trading_blocked", False)),
+            account_blocked=_boolean(value.get("account_blocked", False)),
+            trade_suspended_by_user=_boolean(
+                value.get("trade_suspended_by_user", False)
+            ),
         )
 
     def get_clock(self) -> PaperClock:
         value = self._request("GET", "/v2/clock")
         return PaperClock(
             timestamp=parse_timestamp(str(value["timestamp"])),
-            is_open=bool(value["is_open"]),
+            is_open=_boolean(value["is_open"]),
             next_open=parse_timestamp(str(value["next_open"])),
             next_close=parse_timestamp(str(value["next_close"])),
         )
@@ -176,8 +179,8 @@ class AlpacaPaperClient:
             status=str(value["status"]),
             asset_class=str(value["class"]),
             exchange=str(value.get("exchange", "")),
-            tradable=bool(value["tradable"]),
-            fractionable=bool(value.get("fractionable", False)),
+            tradable=_boolean(value["tradable"]),
+            fractionable=_boolean(value.get("fractionable", False)),
         )
 
     def latest_quote(self, symbol: str, *, feed: str) -> PaperQuote:
@@ -284,7 +287,13 @@ class AlpacaPaperClient:
             raise AlpacaPaperError("close proposal has invalid execution terms")
         if proposal.stop_price is not None or proposal.maximum_entry_reference is not None:
             raise AlpacaPaperError("close proposal must not contain entry or stop terms")
+        permit_key = self._permit_key(proposal, permit)
+        if permit_key not in self._verified_exit_permits:
+            raise AlpacaPaperError(
+                "close submission requires broker-verified protective-stop cancellation"
+            )
         self._require_permit(proposal, permit, "submit_order")
+        self._verified_exit_permits.discard(permit_key)
         value = self._request(
             "POST",
             "/v2/orders",
@@ -302,18 +311,42 @@ class AlpacaPaperClient:
         return _paper_order(value)
 
     def cancel_order(
-        self, order_id: str, proposal: OrderProposal, permit: ApprovalPermit
-    ) -> None:
+        self,
+        order_id: str,
+        expected_stop_price: Decimal,
+        proposal: OrderProposal,
+        permit: ApprovalPermit,
+    ) -> PaperOrder:
         if proposal.action != "close_position":
             raise AlpacaPaperError("order cancellation requires an approved exit proposal")
         if not order_id:
             raise AlpacaPaperError("order cancellation requires a broker order id")
+        if expected_stop_price <= 0:
+            raise AlpacaPaperError("protective stop price is invalid")
         self._require_permit(proposal, permit, "cancel_protective_stop")
         self._request(
             "DELETE",
             f"/v2/orders/{urllib.parse.quote(order_id, safe='')}",
             _mutation_token=_MUTATION_TOKEN,
         )
+        order = self.get_order(order_id)
+        if (
+            order.order_id != order_id
+            or order.symbol != proposal.symbol
+            or order.side != "sell"
+            or order.order_type != "stop"
+            or order.time_in_force != "gtc"
+            or order.quantity != proposal.quantity
+            or order.stop_price != expected_stop_price
+            or order.extended_hours
+            or bool(order.legs)
+        ):
+            raise AlpacaPaperError(
+                "broker protective-stop acknowledgement differs from the managed stop"
+            )
+        if order.status in {"canceled", "expired"}:
+            self._verified_exit_permits.add(self._permit_key(proposal, permit))
+        return order
 
     def historical_daily_bars(
         self,
@@ -375,6 +408,7 @@ class AlpacaPaperClient:
             and permit.proposal_id == proposal.proposal_id
             and permit.content_hash == proposal.content_hash
             and bool(permit.approval_event_id)
+            and bool(permit.review_event_id)
             and bool(permit.session_id)
         )
         if (
@@ -384,9 +418,25 @@ class AlpacaPaperClient:
         ):
             raise AlpacaPaperError("broker mutation lacks an unused journal-backed approval permit")
 
+    @staticmethod
+    def _permit_key(
+        proposal: OrderProposal, permit: ApprovalPermit
+    ) -> tuple[str, str, str]:
+        return (
+            proposal.proposal_id,
+            proposal.content_hash,
+            permit.approval_event_id,
+        )
+
 
 def _decimal(value: Any) -> Decimal:
     return Decimal(str(value))
+
+
+def _boolean(value: Any) -> bool:
+    if type(value) is not bool:
+        raise AlpacaPaperError("broker returned a non-boolean boolean field")
+    return value
 
 
 def _symbol(value: str) -> str:
@@ -405,7 +455,10 @@ def _paper_order(value: dict[str, Any]) -> PaperOrder:
         side=str(value["side"]),
         order_type=str(value.get("type") or value.get("order_type") or ""),
         time_in_force=str(value.get("time_in_force", "")),
-        order_class=str(value.get("order_class", "simple")),
+        # Alpaca's own simple-order examples use an empty string even though the
+        # documented enum names this class "simple". Normalize the wire value so
+        # exact exit acknowledgement checks work with either representation.
+        order_class=str(value.get("order_class") or "simple"),
         status=str(value["status"]),
         quantity=_decimal(value.get("qty", "0")),
         filled_quantity=_decimal(value.get("filled_qty", "0")),
@@ -415,4 +468,7 @@ def _paper_order(value: dict[str, Any]) -> PaperOrder:
         parent_order_id=str(value["parent_order_id"])
         if value.get("parent_order_id") else None,
         legs=legs,
+        filled_at=parse_timestamp(str(value["filled_at"]))
+        if value.get("filled_at") else None,
+        extended_hours=_boolean(value.get("extended_hours", False)),
     )

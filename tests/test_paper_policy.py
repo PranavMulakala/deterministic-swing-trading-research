@@ -5,7 +5,7 @@ import unittest
 
 from swingbot.config import load_config
 from swingbot.paper_config import load_paper_config
-from swingbot.paper_models import PaperPosition, PaperQuote
+from swingbot.paper_models import PaperOrder, PaperPosition, PaperQuote
 from swingbot.paper_policy import (
     PaperPolicyError,
     authorize_entry_risk,
@@ -41,6 +41,17 @@ class PaperPolicyTests(unittest.TestCase):
         )
         with self.assertRaises(PaperPolicyError):
             require_initial_account(broker_value_only, [], [], self.paper)
+        nested_stop = PaperOrder(
+            "stop", "", "SPY", "sell", "stop", "gtc", "simple", "new",
+            Decimal("1"), Decimal("0"), stop_price=Decimal("90"),
+        )
+        terminal_parent = PaperOrder(
+            "parent", "client", "SPY", "buy", "market", "gtc", "oto", "filled",
+            Decimal("1"), Decimal("1"), filled_average_price=Decimal("100"),
+            legs=(nested_stop,), filled_at=NOW,
+        )
+        with self.assertRaisesRegex(PaperPolicyError, "working orders"):
+            require_initial_account(paper_account(), [], [terminal_parent], self.paper)
 
     def test_quote_staleness_future_spread_and_requote_drift_fail_closed(self) -> None:
         good = PaperQuote("SPY", Decimal("99.95"), Decimal("100.05"), NOW)
@@ -54,6 +65,13 @@ class PaperPolicyTests(unittest.TestCase):
         for quote, prior in cases:
             with self.subTest(quote=quote, prior=prior), self.assertRaises(PaperPolicyError):
                 require_quote(quote, now=NOW, paper_config=self.paper, prior_ask=prior)
+        with self.assertRaisesRegex(PaperPolicyError, "bid moved"):
+            require_quote(
+                good,
+                now=NOW,
+                paper_config=self.paper,
+                prior_bid=Decimal("101"),
+            )
 
     def test_sizing_is_cash_and_half_percent_risk_capped(self) -> None:
         broker = FakeBroker()

@@ -42,8 +42,8 @@ The added operational path is intentionally narrow:
 - empty account binding only when Alpaca reports approximately $500 equity, no positions, and no working orders;
 - completed prior-session bars only, the frozen ETF universe and indicators, and no LLM in data, signal, risk, sizing, or execution;
 - whole-share market/GTC OTO entries with a broker-native stop, because Alpaca documents fractional equity orders as DAY-only;
-- a fresh quote, full order review, a 120-second exact-proposal confirmation code, a runtime enable phrase, and a default-on runtime kill switch for every single order;
-- durable SQLite event journal with a hash chain, client-order idempotency, restart reconciliation, broker-confirmed fills, and a latched kill switch on any unknown or mismatched broker state;
+- a fresh quote, full order review, a 120-second confirmation bound to the exact latest review, and process-only enable/kill-switch values for every single order; persisted runtime gates are rejected;
+- durable SQLite event journal with a hash chain and cross-checked authorization capabilities, client-order idempotency, exact restart recovery, broker-timestamped fills, point-in-time account marks, and a latched kill switch on any unknown or mismatched broker state;
 - scheduled exits require a separate fresh approval; the already-approved protective stop remains broker-native and may execute without another prompt.
 
 Setup and operating steps are in `PAPER_TRADING_RUNBOOK.md`. The exact independent-review scope is in `PAPER_VALIDATOR_HANDOFF.md`.

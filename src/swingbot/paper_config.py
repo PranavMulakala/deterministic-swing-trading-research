@@ -9,6 +9,12 @@ from typing import Any
 
 PAPER_TRADING_BASE_URL = "https://paper-api.alpaca.markets"
 ALPACA_DATA_BASE_URL = "https://data.alpaca.markets"
+FROZEN_STRATEGY_CONFIG_SHA256 = (
+    "215d907b4d87f009d461a59fe3ff060a424cf00020fc77f2d6dfcdf138c7bd27"
+)
+FROZEN_STRATEGY_VALUE_SHA256 = (
+    "b1c6237d44bd50e22672b60e2d0316193c66a3646f32c06a717ffd92c4bee434"
+)
 
 
 class PaperConfigError(ValueError):
@@ -25,7 +31,9 @@ def load_paper_config(path: str | Path, strategy_path: str | Path) -> dict[str, 
 def _validate(config: dict[str, Any], strategy_digest: str) -> None:
     if config.get("schema_version") != 1:
         raise PaperConfigError("unsupported paper config schema")
-    if config.get("strategy_config_sha256") != strategy_digest:
+    if strategy_digest != FROZEN_STRATEGY_CONFIG_SHA256:
+        raise PaperConfigError("paper workflow requires the exact frozen v1 strategy bytes")
+    if config.get("strategy_config_sha256") != FROZEN_STRATEGY_CONFIG_SHA256:
         raise PaperConfigError("paper workflow is not bound to the frozen strategy config")
 
     broker = config.get("broker", {})
@@ -37,8 +45,8 @@ def _validate(config: dict[str, Any], strategy_digest: str) -> None:
         raise PaperConfigError("unexpected Alpaca market-data endpoint")
     if broker.get("paper_only") is not True:
         raise PaperConfigError("paper_only must be true")
-    if broker.get("market_data_feed") not in {"iex", "sip"}:
-        raise PaperConfigError("market_data_feed must be iex or sip")
+    if broker.get("market_data_feed") != "iex":
+        raise PaperConfigError("paper v1 market_data_feed must remain iex")
     if broker.get("historical_adjustment") != "all":
         raise PaperConfigError("daily bars must request all corporate-action adjustments")
     if broker.get("request_timeout_seconds") != 20:

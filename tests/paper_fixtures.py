@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import replace
 from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
+from typing import Callable
 
 from swingbot.models import Bar
 from swingbot.paper_models import (
@@ -106,6 +107,7 @@ def sample_permit(proposal: OrderProposal) -> ApprovalPermit:
         proposal_id=proposal.proposal_id,
         content_hash=proposal.content_hash,
         approval_event_id="approval-event",
+        review_event_id="review-event",
         session_id="test-session",
     )
 
@@ -123,9 +125,13 @@ class FakeBroker:
         self.submitted_exits = 0
         self.canceled_order_ids: list[str] = []
         self.entry_status = "new"
+        self.entry_stop_type = "stop"
+        self.entry_stop_status: str | None = None
         self.exit_status = "new"
         self.fail_submit = False
         self.fail_cancel = False
+        self.fail_cancel_verification = False
+        self.permit_validator: Callable[[OrderProposal, ApprovalPermit, str], bool] | None = None
 
     def get_account(self) -> PaperAccount:
         return self.account
@@ -166,18 +172,29 @@ class FakeBroker:
 
     def submit_entry(self, proposal: OrderProposal, permit: ApprovalPermit) -> PaperOrder:
         assert permit.proposal_id == proposal.proposal_id
+        if self.permit_validator is not None:
+            assert self.permit_validator(proposal, permit, "submit_order")
         self.submitted_entries += 1
         if self.fail_submit:
             raise RuntimeError("simulated connection loss")
+        partially_filled = self.entry_status == "partially_filled"
+        filled_quantity = (
+            proposal.quantity
+            if self.entry_status == "filled"
+            else proposal.quantity / 2
+            if partially_filled
+            else Decimal("0")
+        )
         stop = PaperOrder(
             order_id=f"stop-{self.submitted_entries}",
             client_order_id="",
             symbol=proposal.symbol,
             side="sell",
-            order_type="stop",
+            order_type=self.entry_stop_type,
             time_in_force="gtc",
-            order_class="",
-            status="held" if self.entry_status != "filled" else "new",
+            order_class="simple",
+            status=self.entry_stop_status
+            or ("held" if self.entry_status != "filled" else "new"),
             quantity=proposal.quantity,
             filled_quantity=Decimal("0"),
             stop_price=proposal.stop_price,
@@ -192,15 +209,18 @@ class FakeBroker:
             order_class="oto",
             status=self.entry_status,
             quantity=proposal.quantity,
-            filled_quantity=proposal.quantity if self.entry_status == "filled" else Decimal("0"),
-            filled_average_price=proposal.ask if self.entry_status == "filled" else None,
+            filled_quantity=filled_quantity,
+            filled_average_price=proposal.ask if filled_quantity > 0 else None,
             legs=(stop,),
+            filled_at=NOW if self.entry_status == "filled" else None,
         )
         self.orders.append(order)
         return order
 
     def close_position(self, proposal: OrderProposal, permit: ApprovalPermit) -> PaperOrder:
         assert permit.proposal_id == proposal.proposal_id
+        if self.permit_validator is not None:
+            assert self.permit_validator(proposal, permit, "submit_order")
         self.submitted_exits += 1
         if self.fail_submit:
             raise RuntimeError("simulated connection loss")
@@ -216,18 +236,26 @@ class FakeBroker:
             quantity=proposal.quantity,
             filled_quantity=proposal.quantity if self.exit_status == "filled" else Decimal("0"),
             filled_average_price=proposal.bid if self.exit_status == "filled" else None,
+            filled_at=NOW if self.exit_status == "filled" else None,
         )
         self.orders.append(order)
         return order
 
     def cancel_order(
-        self, order_id: str, proposal: OrderProposal, permit: ApprovalPermit
-    ) -> None:
+        self, order_id: str, expected_stop_price: Decimal,
+        proposal: OrderProposal, permit: ApprovalPermit,
+    ) -> PaperOrder:
         assert proposal.proposal_id == permit.proposal_id
+        assert expected_stop_price > 0
+        if self.permit_validator is not None:
+            assert self.permit_validator(proposal, permit, "cancel_protective_stop")
         if self.fail_cancel:
             raise RuntimeError("simulated cancellation uncertainty")
         self.canceled_order_ids.append(order_id)
         self.orders = [_replace_order_status(order, order_id, "canceled") for order in self.orders]
+        if self.fail_cancel_verification:
+            raise RuntimeError("simulated cancellation verification loss")
+        return self.get_order(order_id)
 
     def historical_daily_bars(
         self, symbols: list[str], *, start: date, end: date, feed: str, adjustment: str

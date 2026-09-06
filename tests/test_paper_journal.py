@@ -1,3 +1,4 @@
+from dataclasses import replace
 from datetime import timedelta
 import os
 import sqlite3
@@ -6,7 +7,6 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from swingbot.paper_journal import JournalError, PaperJournal
-from swingbot.paper_models import OrderProposal
 
 from paper_fixtures import NOW, sample_proposal
 
@@ -34,34 +34,40 @@ class PaperJournalTests(unittest.TestCase):
             journal = PaperJournal(Path(directory) / "journal.sqlite")
             proposal = sample_proposal()
             journal.record_proposal(proposal)
-            journal.record_review(
+            review = journal.record_review(
                 proposal,
                 quote_timestamp=NOW,
                 bid="119.9",
                 ask="120.1",
                 reviewed_at=NOW,
             )
+            code = journal.confirmation_code_for_review(proposal, review)
             with self.assertRaises(JournalError):
                 journal.approve_and_consume(
-                    proposal, "WRONG", session_id="session", now=NOW
+                    proposal, "WRONG", review_event_id=review["event_id"],
+                    session_id="session", now=NOW
                 )
             with self.assertRaises(JournalError):
                 journal.approve_and_consume(
-                    proposal, proposal.confirmation_code, session_id="", now=NOW
+                    proposal, code,
+                    review_event_id=review["event_id"], session_id="", now=NOW
                 )
             with self.assertRaises(JournalError):
                 journal.approve_and_consume(
-                    proposal, proposal.confirmation_code,
+                    proposal, code,
+                    review_event_id=review["event_id"],
                     session_id="session", now=proposal.created_at - timedelta(seconds=1),
                 )
             permit = journal.approve_and_consume(
-                proposal, proposal.confirmation_code, session_id="session", now=NOW
+                proposal, code,
+                review_event_id=review["event_id"], session_id="session", now=NOW
             )
             self.assertTrue(journal.claim_permit(proposal, permit, "submit_order"))
             self.assertFalse(journal.claim_permit(proposal, permit, "submit_order"))
             with self.assertRaises(JournalError):
                 journal.approve_and_consume(
-                    proposal, proposal.confirmation_code, session_id="session", now=NOW
+                    proposal, code,
+                    review_event_id=review["event_id"], session_id="session", now=NOW
                 )
 
     def test_approval_without_recorded_full_review_is_rejected(self) -> None:
@@ -71,9 +77,107 @@ class PaperJournalTests(unittest.TestCase):
             journal.record_proposal(proposal)
             with self.assertRaisesRegex(JournalError, "full-order review"):
                 journal.approve_and_consume(
-                    proposal, proposal.confirmation_code,
+                    proposal, "CONFIRM-NOT-A-RECORDED-REVIEW",
+                    review_event_id="missing-review",
                     session_id="session", now=NOW,
                 )
+
+    def test_approval_is_bound_to_stored_proposal_and_exact_latest_review(self) -> None:
+        with TemporaryDirectory() as directory:
+            journal = PaperJournal(Path(directory) / "journal.sqlite")
+            proposal = sample_proposal()
+            journal.record_proposal(proposal)
+            review = journal.record_review(
+                proposal, quote_timestamp=NOW, bid="119.9", ask="120.1", reviewed_at=NOW
+            )
+            changed = replace(proposal, quantity=proposal.quantity + 1)
+            code = journal.confirmation_code_for_review(proposal, review)
+            with self.assertRaisesRegex(JournalError, "stored exact proposal"):
+                journal.approve_and_consume(
+                    changed,
+                    code,
+                    review_event_id=review["event_id"],
+                    session_id="session",
+                    now=NOW,
+                )
+
+            newer_review = journal.record_review(
+                proposal,
+                quote_timestamp=NOW,
+                bid="119.9",
+                ask="120.1",
+                reviewed_at=NOW,
+            )
+            self.assertNotEqual(
+                code, journal.confirmation_code_for_review(proposal, newer_review)
+            )
+            with self.assertRaisesRegex(JournalError, "newer or different"):
+                journal.approve_and_consume(
+                    proposal,
+                    code,
+                    review_event_id=review["event_id"],
+                    session_id="session",
+                    now=NOW,
+                )
+
+    def test_generic_events_cannot_forge_a_mutation_permit(self) -> None:
+        with TemporaryDirectory() as directory:
+            journal = PaperJournal(Path(directory) / "journal.sqlite")
+            proposal = sample_proposal()
+            journal.record_proposal(proposal)
+            with self.assertRaisesRegex(JournalError, "validated journal operation"):
+                journal.append(
+                    "owner_approved",
+                    {
+                        "content_hash": proposal.content_hash,
+                        "review_event_id": "fake-review",
+                        "session_id": "session",
+                    },
+                    proposal_id=proposal.proposal_id,
+                    occurred_at=NOW,
+                )
+
+            review = journal.record_review(
+                proposal, quote_timestamp=NOW, bid="119.9", ask="120.1", reviewed_at=NOW
+            )
+            journal.approve_and_consume(
+                proposal,
+                journal.confirmation_code_for_review(proposal, review),
+                review_event_id=review["event_id"],
+                session_id="session",
+                now=NOW,
+            )
+            with sqlite3.connect(journal.path) as connection:
+                connection.execute(
+                    "UPDATE approval_permits SET session_id = 'tampered'"
+                )
+            with self.assertRaisesRegex(JournalError, "permit content"):
+                journal.verify_integrity()
+
+    def test_exit_permit_requires_cancel_claim_and_verified_cancel_before_submit(self) -> None:
+        with TemporaryDirectory() as directory:
+            journal = PaperJournal(Path(directory) / "journal.sqlite")
+            proposal = sample_proposal(action="close_position")
+            journal.record_proposal(proposal)
+            review = journal.record_review(
+                proposal, quote_timestamp=NOW, bid="119.9", ask="120.1", reviewed_at=NOW
+            )
+            permit = journal.approve_and_consume(
+                proposal,
+                journal.confirmation_code_for_review(proposal, review),
+                review_event_id=review["event_id"],
+                session_id="session",
+                now=NOW,
+            )
+            self.assertFalse(journal.claim_permit(proposal, permit, "submit_order"))
+            self.assertTrue(
+                journal.claim_permit(proposal, permit, "cancel_protective_stop")
+            )
+            self.assertFalse(journal.claim_permit(proposal, permit, "submit_order"))
+            journal.record_protective_stop_cancellation_verified(
+                proposal, permit, stop_order_id="stop-1", verified_at=NOW
+            )
+            self.assertTrue(journal.claim_permit(proposal, permit, "submit_order"))
 
 
 if __name__ == "__main__":

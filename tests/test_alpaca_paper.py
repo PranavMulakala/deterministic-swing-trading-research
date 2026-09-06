@@ -1,10 +1,16 @@
 import json
+from decimal import Decimal
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from swingbot.alpaca_paper import AlpacaPaperClient, AlpacaPaperError, _default_transport
+from swingbot.alpaca_paper import (
+    AlpacaPaperClient,
+    AlpacaPaperError,
+    _default_transport,
+    _paper_order,
+)
 from swingbot.paper_journal import PaperJournal
 
 from paper_fixtures import NOW, sample_permit, sample_proposal
@@ -124,11 +130,12 @@ class AlpacaPaperClientTests(unittest.TestCase):
             proposal = sample_proposal()
             journal = PaperJournal(Path(directory) / "journal.sqlite")
             journal.record_proposal(proposal)
-            journal.record_review(
+            review = journal.record_review(
                 proposal, quote_timestamp=NOW, bid="119.9", ask="120.1", reviewed_at=NOW
             )
             permit = journal.approve_and_consume(
-                proposal, proposal.confirmation_code, session_id="session", now=NOW
+                proposal, journal.confirmation_code_for_review(proposal, review),
+                review_event_id=review["event_id"], session_id="session", now=NOW
             )
             calls = []
 
@@ -149,6 +156,106 @@ class AlpacaPaperClientTests(unittest.TestCase):
             with self.assertRaisesRegex(AlpacaPaperError, "unused journal-backed"):
                 client.submit_entry(proposal, permit)
             self.assertEqual(len(calls), 1)
+
+    def test_simple_order_wire_value_and_broker_fill_time_are_normalized(self) -> None:
+        order = _paper_order(
+            {
+                "id": "exit-1",
+                "client_order_id": "client-1",
+                "symbol": "SPY",
+                "side": "sell",
+                "type": "market",
+                "time_in_force": "day",
+                "order_class": "",
+                "status": "filled",
+                "qty": "1",
+                "filled_qty": "1",
+                "filled_avg_price": "120",
+                "filled_at": NOW.isoformat(),
+                "extended_hours": False,
+            }
+        )
+        self.assertEqual(order.order_class, "simple")
+        self.assertEqual(order.filled_at, NOW)
+        self.assertFalse(order.extended_hours)
+
+    def test_broker_boolean_fields_must_be_real_json_booleans(self) -> None:
+        with self.assertRaisesRegex(AlpacaPaperError, "non-boolean"):
+            _paper_order(
+                {
+                    "id": "order-1", "client_order_id": "client-1", "symbol": "SPY",
+                    "side": "buy", "type": "market", "time_in_force": "day",
+                    "order_class": "", "status": "new", "qty": "1",
+                    "filled_qty": "0", "extended_hours": "false",
+                }
+            )
+
+    def test_broker_timestamps_must_include_an_offset(self) -> None:
+        with self.assertRaisesRegex(ValueError, "UTC offset"):
+            _paper_order(
+                {
+                    "id": "order-1", "client_order_id": "client-1", "symbol": "SPY",
+                    "side": "sell", "type": "market", "time_in_force": "day",
+                    "order_class": "", "status": "filled", "qty": "1",
+                    "filled_qty": "1", "filled_avg_price": "120",
+                    "filled_at": "2026-01-05T15:00:00", "extended_hours": False,
+                }
+            )
+
+    def test_exit_adapter_requires_verified_stop_cancel_before_sell(self) -> None:
+        with TemporaryDirectory() as directory:
+            proposal = sample_proposal(action="close_position")
+            journal = PaperJournal(Path(directory) / "journal.sqlite")
+            journal.record_proposal(proposal)
+            review = journal.record_review(
+                proposal, quote_timestamp=NOW, bid="119.9", ask="120.1", reviewed_at=NOW
+            )
+            permit = journal.approve_and_consume(
+                proposal,
+                journal.confirmation_code_for_review(proposal, review),
+                review_event_id=review["event_id"],
+                session_id="session",
+                now=NOW,
+            )
+            calls = []
+
+            def transport(method, url, headers, body, timeout):
+                calls.append((method, url, body))
+                if method == "DELETE":
+                    return None
+                if method == "GET":
+                    return {
+                        "id": "stop-1", "client_order_id": "", "symbol": "SPY",
+                        "side": "sell", "type": "stop", "time_in_force": "gtc",
+                        "order_class": "", "status": "canceled", "qty": "1",
+                        "filled_qty": "0", "stop_price": "118", "legs": [],
+                        "extended_hours": False,
+                    }
+                payload = json.loads(body)
+                return {
+                    "id": "exit-1", "client_order_id": payload["client_order_id"],
+                    "symbol": "SPY", "side": "sell", "type": "market",
+                    "time_in_force": "day", "order_class": "", "status": "new",
+                    "qty": "1", "filled_qty": "0", "legs": [],
+                    "extended_hours": False,
+                }
+
+            client = AlpacaPaperClient(
+                "key", "secret", transport=transport,
+                permit_validator=journal.claim_permit,
+            )
+            with self.assertRaisesRegex(AlpacaPaperError, "verified protective-stop"):
+                client.close_position(proposal, permit)
+            stop = client.cancel_order(
+                "stop-1", Decimal("118"), proposal, permit
+            )
+            self.assertEqual(stop.status, "canceled")
+            journal.record_protective_stop_cancellation_verified(
+                proposal, permit, stop_order_id="stop-1", verified_at=NOW
+            )
+            order = client.close_position(proposal, permit)
+            self.assertEqual(order.order_class, "simple")
+            self.assertEqual([call[0] for call in calls], ["DELETE", "GET", "POST"])
 
     def test_production_transport_rejects_changed_final_url(self) -> None:
         class Response:

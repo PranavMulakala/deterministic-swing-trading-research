@@ -21,9 +21,28 @@ def require_operable_account(account: PaperAccount, paper_config: dict[str, Any]
         raise PaperPolicyError("paper account currency mismatch")
     if account.trading_blocked or account.account_blocked or account.trade_suspended_by_user:
         raise PaperPolicyError("paper account is blocked or trade-suspended")
+    numeric = (
+        account.equity,
+        account.last_equity,
+        account.cash,
+        account.non_marginable_buying_power,
+        account.buying_power,
+        account.multiplier,
+        account.long_market_value,
+        account.short_market_value,
+    )
+    if not all(value.is_finite() for value in numeric):
+        raise PaperPolicyError("paper account contains a non-finite numeric value")
     if account.short_market_value != 0:
         raise PaperPolicyError("cash/long-only policy rejects any short market value")
-    if account.equity <= 0 or account.cash < 0:
+    if (
+        account.equity <= 0
+        or account.cash < 0
+        or account.non_marginable_buying_power < 0
+        or account.buying_power < 0
+        or account.multiplier <= 0
+        or account.long_market_value < 0
+    ):
         raise PaperPolicyError("paper account equity/cash state is invalid")
 
 
@@ -43,7 +62,7 @@ def require_initial_account(
     if positions or account.long_market_value != 0:
         raise PaperPolicyError("paper account must have no positions before binding")
     terminal = set(paper_config["monitoring"]["order_terminal_statuses"])
-    working = [order for order in orders if order.status not in terminal]
+    working = [order for order in _flatten_orders(orders) if order.status not in terminal]
     if working:
         raise PaperPolicyError("paper account must have no working orders before binding")
 
@@ -75,6 +94,7 @@ def require_quote(
     now: datetime,
     paper_config: dict[str, Any],
     prior_ask: Decimal | None = None,
+    prior_bid: Decimal | None = None,
 ) -> None:
     if now.tzinfo is None or quote.timestamp.tzinfo is None:
         raise PaperPolicyError("quote and decision timestamps must be timezone-aware")
@@ -82,16 +102,33 @@ def require_quote(
     max_age = int(paper_config["execution"]["quote_max_age_seconds"])
     if age < 0 or age > max_age:
         raise PaperPolicyError(f"quote is stale ({age:.3f}s old; maximum {max_age}s)")
-    if quote.bid <= 0 or quote.ask <= 0 or quote.ask < quote.bid or quote.mid <= 0:
+    if (
+        not quote.bid.is_finite()
+        or not quote.ask.is_finite()
+        or quote.bid <= 0
+        or quote.ask <= 0
+        or quote.ask < quote.bid
+        or quote.mid <= 0
+    ):
         raise PaperPolicyError("quote has invalid bid/ask values")
     spread_bps = (quote.ask - quote.bid) / quote.mid * Decimal("10000")
     if spread_bps > Decimal(str(paper_config["execution"]["max_quote_spread_bps"])):
         raise PaperPolicyError(f"quote spread is too wide ({spread_bps:.4f} bps)")
     if prior_ask is not None:
+        if not prior_ask.is_finite() or prior_ask <= 0:
+            raise PaperPolicyError("prior ask is invalid")
         drift_bps = abs(quote.ask - prior_ask) / prior_ask * Decimal("10000")
         if drift_bps > Decimal(str(paper_config["execution"]["max_requote_drift_bps"])):
             raise PaperPolicyError(
                 f"ask moved {drift_bps:.4f} bps; create and approve a fresh proposal"
+            )
+    if prior_bid is not None:
+        if not prior_bid.is_finite() or prior_bid <= 0:
+            raise PaperPolicyError("prior bid is invalid")
+        drift_bps = abs(quote.bid - prior_bid) / prior_bid * Decimal("10000")
+        if drift_bps > Decimal(str(paper_config["execution"]["max_requote_drift_bps"])):
+            raise PaperPolicyError(
+                f"bid moved {drift_bps:.4f} bps; create and approve a fresh proposal"
             )
 
 
@@ -112,6 +149,8 @@ def size_entry(
     strategy_config: dict[str, Any],
     paper_config: dict[str, Any],
 ) -> tuple[Decimal, Decimal, Decimal, Decimal, Decimal]:
+    if not atr14.is_finite() or atr14 <= 0:
+        raise PaperPolicyError("ATR must be a positive finite value")
     multiple = Decimal(str(strategy_config["strategy"]["stop_atr_multiple"]))
     stop = price_floor(quote.ask - atr14 * multiple)
     if stop <= 0 or stop >= quote.ask:
@@ -205,7 +244,10 @@ def require_no_symbol_conflict(
 ) -> None:
     if any(position.symbol == symbol for position in positions):
         raise PaperPolicyError("position already exists for symbol")
-    if any(order.symbol == symbol and order.status not in terminal_statuses for order in orders):
+    if any(
+        order.symbol == symbol and order.status not in terminal_statuses
+        for order in _flatten_orders(orders)
+    ):
         raise PaperPolicyError("working order already exists for symbol")
 
 
@@ -213,3 +255,11 @@ def daily_loss_day(now: datetime) -> date:
     if now.tzinfo is None:
         raise PaperPolicyError("timestamp must be timezone-aware")
     return now.date()
+
+
+def _flatten_orders(orders: list[PaperOrder]) -> list[PaperOrder]:
+    flattened: list[PaperOrder] = []
+    for order in orders:
+        flattened.append(order)
+        flattened.extend(_flatten_orders(list(order.legs)))
+    return flattened

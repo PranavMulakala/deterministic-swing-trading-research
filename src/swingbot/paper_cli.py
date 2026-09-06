@@ -17,8 +17,6 @@ from .paper_workflow import PaperWorkflow
 ALLOWED_ENV_KEYS = {
     "ALPACA_PAPER_API_KEY",
     "ALPACA_PAPER_API_SECRET",
-    "SWINGBOT_PAPER_EXECUTION",
-    "SWINGBOT_KILL_SWITCH",
 }
 
 

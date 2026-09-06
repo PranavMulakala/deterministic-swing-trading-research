@@ -16,7 +16,10 @@ def decimal_string(value: Decimal) -> str:
 
 
 def parse_timestamp(value: str) -> datetime:
-    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise ValueError("timestamp must include a UTC offset")
+    return parsed
 
 
 def _json_value(value: Any) -> Any:
@@ -114,6 +117,8 @@ class PaperOrder:
     stop_price: Decimal | None = None
     parent_order_id: str | None = None
     legs: tuple["PaperOrder", ...] = field(default_factory=tuple)
+    filled_at: datetime | None = None
+    extended_hours: bool = False
 
 
 @dataclass(frozen=True)
@@ -163,10 +168,6 @@ class OrderProposal:
     def content_hash(self) -> str:
         return hashlib.sha256(canonical_json(self).encode("utf-8")).hexdigest()
 
-    @property
-    def confirmation_code(self) -> str:
-        return f"CONFIRM-{self.content_hash[:12].upper()}"
-
     def to_payload(self) -> dict[str, Any]:
         return json.loads(canonical_json(self))
 
@@ -211,4 +212,5 @@ class ApprovalPermit:
     proposal_id: str
     content_hash: str
     approval_event_id: str
+    review_event_id: str
     session_id: str

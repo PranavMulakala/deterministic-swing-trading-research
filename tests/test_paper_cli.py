@@ -24,6 +24,9 @@ class PaperCliTests(unittest.TestCase):
             path.write_text("UNEXPECTED_KEY=value\n", encoding="utf-8")
             with self.assertRaises(ValueError):
                 _load_env(path)
+            path.write_text("SWINGBOT_KILL_SWITCH=0\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "unexpected .env key"):
+                _load_env(path)
 
     def test_env_values_are_not_shell_evaluated(self) -> None:
         with TemporaryDirectory() as directory:

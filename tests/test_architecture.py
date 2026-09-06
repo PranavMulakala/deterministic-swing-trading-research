@@ -33,7 +33,7 @@ class ArchitectureTests(unittest.TestCase):
             if module.name not in {"data.py", "alpaca_paper.py"}:
                 self.assertFalse(
                     imports & network_imports,
-                    f"{module.name}: network-capable imports are restricted to data.py: "
+                    f"{module.name}: network-capable imports are restricted to the two approved adapters: "
                     f"{imports & network_imports}",
                 )
 

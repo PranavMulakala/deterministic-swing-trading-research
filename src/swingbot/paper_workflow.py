@@ -1,12 +1,19 @@
 from __future__ import annotations
 
+import copy
 import hashlib
 import os
 from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from typing import Any, Mapping, Protocol
 
-from .paper_journal import JournalError, PaperJournal
+from .config import validate_config
+from .paper_config import (
+    FROZEN_STRATEGY_CONFIG_SHA256,
+    FROZEN_STRATEGY_VALUE_SHA256,
+    _validate as validate_paper_config,
+)
+from .paper_journal import PaperJournal
 from .paper_models import (
     ApprovalPermit,
     LiveSignal,
@@ -19,9 +26,9 @@ from .paper_models import (
     PaperQuote,
     canonical_json,
     decimal_string,
+    parse_timestamp,
 )
 from .paper_policy import (
-    PaperPolicyError,
     authorize_entry_risk,
     is_fractional,
     require_account_binding,
@@ -33,7 +40,12 @@ from .paper_policy import (
     require_quote,
     size_entry,
 )
-from .paper_reconcile import PaperReconciler, ReconciliationReport, flatten_orders
+from .paper_reconcile import (
+    NON_PROTECTIVE_STOP_STATUSES,
+    PaperReconciler,
+    ReconciliationReport,
+    flatten_orders,
+)
 from .paper_signals import latest_entry_decision, latest_exit_reason
 from .paper_state import reduce_events
 
@@ -51,8 +63,9 @@ class Broker(Protocol):
     def submit_entry(self, proposal: OrderProposal, permit: ApprovalPermit) -> PaperOrder: ...
     def close_position(self, proposal: OrderProposal, permit: ApprovalPermit) -> PaperOrder: ...
     def cancel_order(
-        self, order_id: str, proposal: OrderProposal, permit: ApprovalPermit
-    ) -> None: ...
+        self, order_id: str, expected_stop_price: Decimal,
+        proposal: OrderProposal, permit: ApprovalPermit,
+    ) -> PaperOrder: ...
     def historical_daily_bars(
         self, symbols: list[str], *, start: date, end: date, feed: str, adjustment: str
     ) -> dict[str, list[Any]]: ...
@@ -72,21 +85,39 @@ class PaperWorkflow:
     ):
         self.broker = broker
         self.journal = journal
-        self.strategy_config = strategy_config
-        self.paper_config = paper_config
-        self.reconciler = PaperReconciler(journal, paper_config, strategy_config)
-        self.universe = tuple(str(item) for item in strategy_config["universe"])
+        self.strategy_config = copy.deepcopy(strategy_config)
+        self.paper_config = copy.deepcopy(paper_config)
+        validate_config(self.strategy_config)
+        validate_paper_config(self.paper_config, FROZEN_STRATEGY_CONFIG_SHA256)
+        if self._config_hash(self.strategy_config) != FROZEN_STRATEGY_VALUE_SHA256:
+            raise PaperWorkflowError("runtime strategy does not match frozen v1")
+        self._strategy_runtime_hash = self._config_hash(self.strategy_config)
+        self._paper_runtime_hash = self._config_hash(self.paper_config)
+        self.reconciler = PaperReconciler(
+            journal, self.paper_config, self.strategy_config
+        )
+        self.universe = tuple(str(item) for item in self.strategy_config["universe"])
 
     def bind_clean_account(self, *, now: datetime | None = None) -> dict[str, Any]:
+        self._require_runtime_config()
         self.journal.verify_integrity()
         account = self.broker.get_account()
         positions = self.broker.list_positions()
         orders = self.broker.list_orders(status="all")
-        require_initial_account(account, positions, orders, self.paper_config)
         existing = self.journal.account_binding()
         if existing:
-            require_account_binding(account, existing)
+            try:
+                require_account_binding(account, existing)
+            except Exception:
+                timestamp = now or datetime.now(timezone.utc)
+                self._latch(
+                    "account_binding_mismatch",
+                    [account.account_id[-4:]],
+                    timestamp,
+                )
+                raise
             return existing
+        require_initial_account(account, positions, orders, self.paper_config)
         timestamp = now or datetime.now(timezone.utc)
         payload = {
             "account_id": account.account_id,
@@ -100,8 +131,8 @@ class PaperWorkflow:
         return payload
 
     def reconcile_now(self, *, now: datetime | None = None) -> ReconciliationReport:
+        self._require_runtime_config()
         account = self.broker.get_account()
-        require_account_binding(account, self.journal.account_binding())
         timestamp = now or datetime.now(timezone.utc)
         report = self.reconciler.reconcile(
             account=account,
@@ -283,6 +314,7 @@ class PaperWorkflow:
             planned_loss=planned_loss,
             risk_limit=risk_limit,
         )
+        self._require_proposal_config(proposal)
         self.journal.record_proposal(proposal)
         return proposal
 
@@ -371,6 +403,7 @@ class PaperWorkflow:
             fractional=is_fractional(broker_position.quantity),
             exit_reason=selected_reason,
         )
+        self._require_proposal_config(proposal)
         self.journal.record_proposal(proposal)
         return proposal
 
@@ -393,19 +426,31 @@ class PaperWorkflow:
         self, proposal_id: str, confirmation_code: str, *, session_id: str
     ) -> PaperOrder:
         self.journal.verify_integrity()
+        self._require_runtime_config()
         proposal = self.journal.get_proposal(proposal_id)
+        self._require_proposal_config(proposal)
         account, clock, positions, orders = self._clean_snapshot()
         require_market_open(clock)
         if proposal.account_id != account.account_id:
             raise PaperWorkflowError("proposal belongs to a different paper account")
+        review = self.journal.latest_review(proposal)
+        review_timestamp = parse_timestamp(str(review["occurred_at"]))
+        review_quote_timestamp = parse_timestamp(str(review["quote_timestamp"]))
+        if review_timestamp > clock.timestamp or review_quote_timestamp > clock.timestamp:
+            raise PaperWorkflowError("full-order review evidence is in the future")
         quote = self.broker.latest_quote(
             proposal.symbol, feed=self.paper_config["broker"]["market_data_feed"]
         )
+        if quote.timestamp < review_quote_timestamp:
+            raise PaperWorkflowError("execution quote is older than the approved review quote")
         require_quote(
             quote,
             now=clock.timestamp,
             paper_config=self.paper_config,
-            prior_ask=proposal.ask,
+            prior_ask=Decimal(str(review["ask"]))
+            if proposal.action == "entry_oto" else None,
+            prior_bid=Decimal(str(review["bid"]))
+            if proposal.action == "close_position" else None,
         )
         if proposal.action == "entry_oto":
             self._revalidate_entry(proposal, account, clock, quote, positions, orders)
@@ -417,6 +462,7 @@ class PaperWorkflow:
         permit = self.journal.approve_and_consume(
             proposal,
             confirmation_code,
+            review_event_id=str(review["event_id"]),
             session_id=session_id,
             now=clock.timestamp,
         )
@@ -439,25 +485,40 @@ class PaperWorkflow:
                 order = self.broker.close_position(proposal, permit)
         except Exception as exc:
             order = self._resolve_uncertain_submission(proposal, clock.timestamp, exc)
-        self.journal.append(
-            "order_submitted",
-            {
-                "action": proposal.action,
-                "symbol": proposal.symbol,
-                "client_order_id": proposal.client_order_id,
-                "broker_order_id": order.order_id,
-                "status": order.status,
-                "planned_loss": decimal_string(proposal.planned_loss),
-            },
-            proposal_id=proposal.proposal_id,
-            occurred_at=clock.timestamp,
-        )
         try:
+            self.journal.append(
+                "order_submitted",
+                {
+                    "action": proposal.action,
+                    "symbol": proposal.symbol,
+                    "client_order_id": proposal.client_order_id,
+                    "broker_order_id": order.order_id,
+                    "status": order.status,
+                    "filled_quantity": decimal_string(order.filled_quantity),
+                    "filled_average_price": decimal_string(order.filled_average_price)
+                    if order.filled_average_price is not None else None,
+                    "filled_at": order.filled_at.isoformat()
+                    if order.filled_at is not None else None,
+                    "planned_loss": decimal_string(proposal.planned_loss),
+                },
+                proposal_id=proposal.proposal_id,
+                occurred_at=clock.timestamp,
+            )
+        except Exception as exc:
+            self._latch_best_effort(
+                "order_submission_journal_failure",
+                [proposal.client_order_id, type(exc).__name__],
+                clock.timestamp,
+            )
+            raise PaperWorkflowError(
+                "broker order may exist but its submission could not be journaled; do not retry"
+            ) from None
+        try:
+            order = self.broker.get_order(order.order_id)
             if proposal.action == "entry_oto":
-                order = self.broker.get_order(order.order_id)
-                self._validate_entry_ack(proposal, order)
+                self._validate_entry_ack(proposal, order, clock.timestamp)
             else:
-                self._validate_exit_ack(proposal, order)
+                self._validate_exit_ack(proposal, order, clock.timestamp)
         except Exception as exc:
             self._latch("post_submission_validation_failed", [str(exc)], clock.timestamp)
             raise
@@ -469,9 +530,9 @@ class PaperWorkflow:
         return order
 
     def status(self) -> dict[str, Any]:
+        self._require_runtime_config()
         self.journal.verify_integrity()
         account = self.broker.get_account()
-        require_account_binding(account, self.journal.account_binding())
         clock = self.broker.get_clock()
         positions = self.broker.list_positions()
         orders = self.broker.list_orders(status="all")
@@ -518,6 +579,7 @@ class PaperWorkflow:
         }
 
     def clear_kill_switch(self, confirmation: str) -> None:
+        self._require_runtime_config()
         if confirmation != "CLEAR-PAPER-KILL-SWITCH":
             raise PaperWorkflowError("kill-switch clear confirmation is incorrect")
         if not self.journal.kill_switch_latched():
@@ -542,7 +604,9 @@ class PaperWorkflow:
         )
 
     def review(self, proposal_id: str) -> dict[str, Any]:
+        self._require_runtime_config()
         proposal = self.journal.get_proposal(proposal_id)
+        self._require_proposal_config(proposal)
         account, clock, positions, orders = self._clean_snapshot()
         del orders
         if proposal.account_id != account.account_id:
@@ -556,14 +620,15 @@ class PaperWorkflow:
             quote,
             now=clock.timestamp,
             paper_config=self.paper_config,
-            prior_ask=proposal.ask,
+            prior_ask=proposal.ask if proposal.action == "entry_oto" else None,
+            prior_bid=proposal.bid if proposal.action == "close_position" else None,
         )
         if proposal.action == "entry_oto":
             if proposal.maximum_entry_reference is None or quote.ask > proposal.maximum_entry_reference:
                 raise PaperWorkflowError("current ask exceeds the proposal's entry guard")
         elif proposal.action == "close_position":
             self._revalidate_exit(proposal, positions)
-        self.journal.record_review(
+        review_event = self.journal.record_review(
             proposal,
             quote_timestamp=quote.timestamp,
             bid=decimal_string(quote.bid),
@@ -573,7 +638,10 @@ class PaperWorkflow:
         return {
             "paper_only": True,
             "proposal_id": proposal.proposal_id,
-            "confirmation_code": proposal.confirmation_code,
+            "review_event_id": review_event["event_id"],
+            "confirmation_code": self.journal.confirmation_code_for_review(
+                proposal, review_event
+            ),
             "expires_at": proposal.expires_at.isoformat(),
             "account_suffix": proposal.account_id[-4:],
             "ticker": proposal.symbol,
@@ -653,8 +721,8 @@ class PaperWorkflow:
         self,
     ) -> tuple[PaperAccount, PaperClock, list[PaperPosition], list[PaperOrder]]:
         self.journal.verify_integrity()
+        self._require_runtime_config()
         account = self.broker.get_account()
-        require_account_binding(account, self.journal.account_binding())
         clock = self.broker.get_clock()
         positions = self.broker.list_positions()
         orders = self.broker.list_orders(status="all")
@@ -719,7 +787,12 @@ class PaperWorkflow:
         if managed is None:
             raise PaperWorkflowError("managed position disappeared before exit")
         try:
-            self.broker.cancel_order(managed.stop_order_id, proposal, permit)
+            stop = self.broker.cancel_order(
+                managed.stop_order_id,
+                managed.stop_price,
+                proposal,
+                permit,
+            )
         except Exception as exc:
             self._latch(
                 "protective_stop_cancel_uncertain",
@@ -727,21 +800,35 @@ class PaperWorkflow:
                 now,
             )
             raise PaperWorkflowError("protective stop cancellation outcome is uncertain") from None
-        stop = self.broker.get_order(managed.stop_order_id)
         if stop.status not in {"canceled", "filled", "expired"}:
             self._latch("protective_stop_cancel_unconfirmed", [managed.stop_order_id], now)
             raise PaperWorkflowError("protective stop cancellation was not confirmed")
         if stop.status == "filled":
             self._latch("protective_stop_filled_during_exit", [managed.stop_order_id], now)
             raise PaperWorkflowError("protective stop filled; close order was not submitted")
-        self.journal.append(
-            "protective_stop_canceled_for_approved_exit",
-            {"symbol": proposal.symbol, "stop_order_id": managed.stop_order_id},
-            proposal_id=proposal.proposal_id,
-            occurred_at=now,
-        )
+        try:
+            self.journal.record_protective_stop_cancellation_verified(
+                proposal,
+                permit,
+                stop_order_id=managed.stop_order_id,
+                verified_at=now,
+            )
+        except Exception as exc:
+            self._latch_best_effort(
+                "protective_stop_cancel_journal_failure",
+                [managed.stop_order_id, type(exc).__name__],
+                now,
+            )
+            raise PaperWorkflowError(
+                "protective stop was canceled but verification could not be journaled; exit blocked"
+            ) from None
 
-    def _validate_entry_ack(self, proposal: OrderProposal, order: PaperOrder) -> None:
+    def _validate_entry_ack(
+        self, proposal: OrderProposal, order: PaperOrder, now: datetime
+    ) -> None:
+        known_statuses = set(self.paper_config["monitoring"]["order_terminal_statuses"]) | set(
+            self.paper_config["monitoring"]["order_working_statuses"]
+        )
         if (
             order.client_order_id != proposal.client_order_id
             or order.symbol != proposal.symbol
@@ -750,22 +837,43 @@ class PaperWorkflow:
             or order.time_in_force != "gtc"
             or order.order_class != "oto"
             or order.quantity != proposal.quantity
+            or order.extended_hours
+            or order.status not in known_statuses
         ):
             raise PaperWorkflowError("broker entry acknowledgement differs from approved order")
-        stops = [
-            leg for leg in flatten_orders(list(order.legs))
-            if leg.side == "sell" and leg.order_type in {"stop", "stop_limit"}
-        ]
+        if order.status == "partially_filled" or (
+            order.filled_quantity > 0 and order.filled_quantity < order.quantity
+        ):
+            raise PaperWorkflowError("broker entry is partially filled and not fully protected")
+        if order.status == "filled":
+            self._require_complete_fill(proposal, order, "entry", now)
+        elif order.filled_quantity != 0 or order.filled_at is not None:
+            raise PaperWorkflowError("unfilled broker entry reports inconsistent fill fields")
+        stops = list(order.legs)
         if (
             len(stops) != 1
+            or stops[0].symbol != proposal.symbol
+            or stops[0].side != "sell"
+            or stops[0].order_type != "stop"
             or stops[0].stop_price != proposal.stop_price
             or stops[0].quantity != proposal.quantity
             or stops[0].time_in_force != "gtc"
+            or stops[0].extended_hours
+            or bool(stops[0].legs)
+            or stops[0].status not in set(
+                self.paper_config["monitoring"]["order_working_statuses"]
+            )
+            or stops[0].status in NON_PROTECTIVE_STOP_STATUSES - {"held"}
+            or (order.status == "filled" and stops[0].status == "held")
         ):
             raise PaperWorkflowError("broker-native protective stop is missing or mismatched")
 
-    @staticmethod
-    def _validate_exit_ack(proposal: OrderProposal, order: PaperOrder) -> None:
+    def _validate_exit_ack(
+        self, proposal: OrderProposal, order: PaperOrder, now: datetime
+    ) -> None:
+        known_statuses = set(self.paper_config["monitoring"]["order_terminal_statuses"]) | set(
+            self.paper_config["monitoring"]["order_working_statuses"]
+        )
         if (
             order.client_order_id != proposal.client_order_id
             or order.symbol != proposal.symbol
@@ -775,8 +883,35 @@ class PaperWorkflow:
             or order.order_class != "simple"
             or order.quantity != proposal.quantity
             or bool(order.legs)
+            or order.extended_hours
+            or order.status not in known_statuses
         ):
             raise PaperWorkflowError("broker exit acknowledgement differs from approved order")
+        if order.status == "partially_filled" or (
+            order.filled_quantity > 0 and order.filled_quantity < order.quantity
+        ):
+            raise PaperWorkflowError("broker exit is partially filled after stop cancellation")
+        if order.status == "filled":
+            self._require_complete_fill(proposal, order, "exit", now)
+        elif order.filled_quantity != 0 or order.filled_at is not None:
+            raise PaperWorkflowError("unfilled broker exit reports inconsistent fill fields")
+
+    @staticmethod
+    def _require_complete_fill(
+        proposal: OrderProposal, order: PaperOrder, label: str, now: datetime
+    ) -> None:
+        if (
+            order.filled_quantity != proposal.quantity
+            or order.filled_average_price is None
+            or not order.filled_average_price.is_finite()
+            or order.filled_average_price <= 0
+            or order.filled_at is None
+            or order.filled_at.tzinfo is None
+            or order.filled_at > now
+        ):
+            raise PaperWorkflowError(
+                f"filled broker {label} has incomplete or inconsistent fill evidence"
+            )
 
     def _resolve_uncertain_submission(
         self, proposal: OrderProposal, now: datetime, original_error: Exception
@@ -815,11 +950,116 @@ class PaperWorkflow:
                 occurred_at=now,
             )
 
+    def _latch_best_effort(self, reason: str, issues: list[str], now: datetime) -> None:
+        try:
+            self._latch(reason, issues, now)
+        except Exception:
+            # A broken/unwritable journal already stops the command. Preserve
+            # the original uncertainty error rather than masking it here.
+            pass
+
     def _universe_symbol(self, symbol: str) -> str:
         clean = symbol.strip().upper()
         if clean not in self.universe:
             raise PaperWorkflowError("symbol is outside the frozen ETF universe")
         return clean
+
+    def _require_proposal_config(self, proposal: OrderProposal) -> None:
+        if proposal.strategy_config_sha256 != FROZEN_STRATEGY_CONFIG_SHA256:
+            raise PaperWorkflowError("proposal is bound to a different frozen strategy config")
+        numeric = (
+            proposal.quantity,
+            proposal.bid,
+            proposal.ask,
+            proposal.estimated_cost,
+            proposal.planned_loss,
+            proposal.risk_limit,
+        )
+        if not all(value.is_finite() for value in numeric):
+            raise PaperWorkflowError("proposal contains a non-finite numeric value")
+        if (
+            proposal.symbol not in self.universe
+            or proposal.symbol != proposal.symbol.upper()
+            or not proposal.account_id
+            or proposal.quantity <= 0
+            or proposal.bid <= 0
+            or proposal.ask < proposal.bid
+            or proposal.estimated_cost <= 0
+            or proposal.planned_loss < 0
+            or proposal.risk_limit < 0
+            or not proposal.thesis.strip()
+            or not proposal.invalidation.strip()
+            or proposal.created_at.tzinfo is None
+            or proposal.expires_at.tzinfo is None
+            or proposal.quote_timestamp.tzinfo is None
+            or proposal.quote_timestamp > proposal.created_at
+            or proposal.expires_at <= proposal.created_at
+            or proposal.expires_at - proposal.created_at
+            != timedelta(
+                seconds=int(self.paper_config["execution"]["approval_ttl_seconds"])
+            )
+        ):
+            raise PaperWorkflowError("proposal has invalid identity, timing, quote, or value fields")
+        if proposal.action == "entry_oto":
+            if (
+                proposal.side != "buy"
+                or proposal.order_type != "market"
+                or proposal.time_in_force != "gtc"
+                or proposal.order_class != "oto"
+                or proposal.extended_hours
+                or proposal.fractional
+                or proposal.quantity != proposal.quantity.to_integral_value()
+                or proposal.maximum_entry_reference is None
+                or proposal.stop_price is None
+                or not proposal.maximum_entry_reference.is_finite()
+                or not proposal.stop_price.is_finite()
+                or proposal.maximum_entry_reference <= 0
+                or proposal.stop_price <= 0
+                or proposal.stop_price >= proposal.maximum_entry_reference
+                or proposal.estimated_cost
+                != proposal.quantity * proposal.maximum_entry_reference
+                or proposal.planned_loss
+                != proposal.quantity
+                * (proposal.maximum_entry_reference - proposal.stop_price)
+                or proposal.planned_loss > proposal.risk_limit
+                or proposal.signal_date is None
+                or proposal.exit_reason is not None
+                or not proposal.proposal_id.startswith("prop-e-")
+                or not proposal.client_order_id.startswith("swing-e-")
+            ):
+                raise PaperWorkflowError("entry proposal terms are internally inconsistent")
+        elif proposal.action == "close_position":
+            if (
+                proposal.side != "sell"
+                or proposal.order_type != "market"
+                or proposal.time_in_force != "day"
+                or proposal.order_class != "simple"
+                or proposal.extended_hours
+                or proposal.maximum_entry_reference is not None
+                or proposal.stop_price is not None
+                or proposal.estimated_cost != proposal.quantity * proposal.bid
+                or proposal.planned_loss != 0
+                or proposal.risk_limit != 0
+                or proposal.signal_date is not None
+                or proposal.exit_reason
+                not in {"recovery_target", "time_stop", "manual_owner_exit"}
+                or not proposal.proposal_id.startswith("prop-x-")
+                or not proposal.client_order_id.startswith("swing-x-")
+            ):
+                raise PaperWorkflowError("exit proposal terms are internally inconsistent")
+        else:
+            raise PaperWorkflowError("proposal action is unsupported")
+
+    def _require_runtime_config(self) -> None:
+        if (
+            self._config_hash(self.strategy_config) != self._strategy_runtime_hash
+            or self._config_hash(self.paper_config) != self._paper_runtime_hash
+        ):
+            raise PaperWorkflowError("runtime configuration changed after workflow initialization")
+
+    @staticmethod
+    def _config_hash(config: dict[str, Any]) -> str:
+        return hashlib.sha256(canonical_json(config).encode("utf-8")).hexdigest()
 
     def _expected_signal_date(self, clock: PaperClock) -> date:
         days = self.broker.trading_days(
