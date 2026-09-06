@@ -1,9 +1,10 @@
+import argparse
 import os
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 
-from swingbot.paper_cli import _load_env
+from swingbot.paper_cli import _load_env, add_paper_parser
 
 
 class PaperCliTests(unittest.TestCase):
@@ -35,6 +36,21 @@ class PaperCliTests(unittest.TestCase):
             path.chmod(0o600)
             _load_env(path)
             self.assertEqual(os.environ["ALPACA_PAPER_API_SECRET"], "$(not-a-command)")
+
+    def test_reset_run_command_requires_explicit_confirmation_argument(self) -> None:
+        parser = argparse.ArgumentParser()
+        subparsers = parser.add_subparsers(dest="command", required=True)
+        add_paper_parser(subparsers)
+        args = parser.parse_args(
+            [
+                "paper", "reset-run", "--confirmation",
+                "REBASELINE-PAPER-RUN-AT-CLEAN-500",
+            ]
+        )
+        self.assertEqual(args.paper_command, "reset-run")
+        self.assertEqual(
+            args.confirmation, "REBASELINE-PAPER-RUN-AT-CLEAN-500"
+        )
 
 
 if __name__ == "__main__":

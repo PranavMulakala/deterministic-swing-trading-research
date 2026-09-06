@@ -88,6 +88,13 @@ PYTHONPATH=src python3 -m swingbot.cli paper --root . clear-kill \
   --confirmation CLEAR-PAPER-KILL-SWITCH
 ```
 
-If a position is unprotected, use Alpaca's paper UI to restore protection or close it, then reconcile. Do not delete or edit the SQLite journal to force a pass.
+If a position is unprotected, use Alpaca's paper UI to restore protection or close it. Because that manual activity is intentionally unknown to the journal, ordinary reconciliation must remain failed. Cancel every remaining order, close every position, reset both paper cash and equity to $500, and explicitly terminate the broken run with:
+
+```bash
+PYTHONPATH=src python3 -m swingbot.cli paper --root . reset-run \
+  --confirmation REBASELINE-PAPER-RUN-AT-CLEAN-500
+```
+
+This command is accepted only while the durable kill switch is latched, against the same bound paper account, and after the broker is flat, has no working orders, and reports both cash and equity within one cent of $500. It appends a rebaseline event instead of deleting history, invalidates every prior proposal and permit, clears prior operational positions/orders from the new run, and restarts the paper-observation gate from zero. Do not delete or edit the SQLite journal to force a pass.
 
 The application cannot protect credentials from another process running as the same macOS user. Keep the computer account and `.env` private; the in-application approval gate is not an operating-system security boundary.

@@ -77,6 +77,7 @@ class PaperWorkflowError(RuntimeError):
 
 
 _Result = TypeVar("_Result")
+REBASELINE_CONFIRMATION = "REBASELINE-PAPER-RUN-AT-CLEAN-500"
 
 
 def _serialized(method: Callable[..., _Result]) -> Callable[..., _Result]:
@@ -146,6 +147,7 @@ class PaperWorkflow:
             "currency": account.currency,
             "clean_positions": True,
             "clean_working_orders": True,
+            "run_number": 1,
         }
         self.journal._append_state("account_bound", payload, occurred_at=timestamp)
         return payload
@@ -569,9 +571,13 @@ class PaperWorkflow:
             now=clock.timestamp,
         )
         state = reduce_events(self.journal.events())
+        binding = self.journal.account_binding() or {}
+        run_number = int(binding.get("run_number", 1))
         broker_by_symbol = {position.symbol: position for position in positions}
         return {
             "paper_only": True,
+            "paper_run_number": run_number,
+            "paper_gate_restarted": run_number > 1,
             "broker_timestamp": clock.timestamp.isoformat(),
             "market_open": clock.is_open,
             "account_number_suffix": account.account_number[-4:],
@@ -629,6 +635,45 @@ class PaperWorkflow:
             {"owner_confirmation": True, "clean_reconciliation": True},
             occurred_at=clock.timestamp,
         )
+
+    @_serialized
+    def rebaseline_clean_account(
+        self, confirmation: str, *, now: datetime | None = None
+    ) -> dict[str, Any]:
+        """Start a new audited paper run after an external manual recovery."""
+        self._require_runtime_config()
+        self.journal.verify_integrity()
+        if confirmation != REBASELINE_CONFIRMATION:
+            raise PaperWorkflowError("paper-run rebaseline confirmation is incorrect")
+        if not self.journal.kill_switch_latched():
+            raise PaperWorkflowError("paper-run rebaseline requires a latched kill switch")
+        binding = self.journal.account_binding()
+        account = self.broker.get_account()
+        require_account_binding(account, binding)
+        positions = self.broker.list_positions()
+        orders = self.broker.list_orders(status="all")
+        require_initial_account(account, positions, orders, self.paper_config)
+        timestamp = now or self.broker.get_clock().timestamp
+        prior_runs = sum(
+            event["event_type"] in {"account_bound", "paper_run_rebaselined"}
+            for event in self.journal.events()
+        )
+        payload = {
+            "account_id": account.account_id,
+            "account_number_suffix": account.account_number[-4:],
+            "initial_equity": decimal_string(account.equity),
+            "initial_cash": decimal_string(account.cash),
+            "currency": account.currency,
+            "clean_positions": True,
+            "clean_working_orders": True,
+            "owner_confirmation": True,
+            "prior_run_terminated": True,
+            "run_number": prior_runs + 1,
+        }
+        self.journal._append_state(
+            "paper_run_rebaselined", payload, occurred_at=timestamp
+        )
+        return payload
 
     @_serialized
     def review(self, proposal_id: str) -> dict[str, Any]:

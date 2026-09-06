@@ -44,6 +44,10 @@ def add_paper_parser(subparsers: argparse._SubParsersAction[argparse.ArgumentPar
     execute.add_argument("--session-id", required=True)
     clear = commands.add_parser("clear-kill", help="clear only after a clean reconciliation")
     clear.add_argument("--confirmation", required=True)
+    reset = commands.add_parser(
+        "reset-run", help="start a new run after a clean manual broker recovery"
+    )
+    reset.add_argument("--confirmation", required=True)
     monitor = commands.add_parser("monitor", help="poll/reconcile while this process stays running")
     monitor.add_argument("--iterations", type=int, default=0, help="0 means run until interrupted")
     monitor.add_argument("--interval", type=int, default=None)
@@ -101,6 +105,8 @@ def run_paper(args: argparse.Namespace) -> None:
     elif command == "clear-kill":
         workflow.clear_kill_switch(args.confirmation)
         _print({"kill_switch_latched": journal.kill_switch_latched()})
+    elif command == "reset-run":
+        _print(workflow.rebaseline_clean_account(args.confirmation))
     elif command == "monitor":
         _monitor(
             workflow,

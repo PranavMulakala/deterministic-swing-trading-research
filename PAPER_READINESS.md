@@ -31,7 +31,7 @@ PYTHONPATH=src python3 -m swingbot.cli analyze-paper-constraint --root .
 
 ## Measured software scope
 
-The builder reviewed all 25 `src/swingbot` modules and all 18 test/support modules, compiled the full tree with Python 3.12, and ran 84 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only validator handoff remains required.
+The builder reviewed all 25 `src/swingbot` modules and all 18 test/support modules, compiled the full tree with Python 3.12, and ran 87 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only validator handoff remains required.
 
 The automated suite exercises:
 
@@ -53,6 +53,7 @@ The automated suite exercises:
 - broker-fill-driven local position creation/removal using broker fill timestamps, fill-ledger cash reconciliation, account/position market-value identities, and point-in-time account/cash/mark/P&L snapshots;
 - exact stop cancellation confirmation before an approved ordinary exit, with independent adapter and durable-journal submission gates;
 - restart recovery of one exact broker order by client order ID, with a latched kill switch and no retry when zero or multiple matches remain unresolved;
+- an explicitly confirmed clean-$500 rebaseline after manual broker recovery that preserves the old audit trail, resets operational state, restarts the paper gate, and invalidates every prior-run proposal and permit;
 - unchanged frozen v1 deterministic backtest tests and artifact reproduction.
 
 The suite uses an injected fake broker. It does not prove Alpaca accepted a real request from the owner's account. The journal hash chain detects mutation, reordering, and gaps inside an existing database; it is not a signed external audit anchor and cannot prove that an attacker did not delete or fully rebuild the database. The approval controls protect the supplied application path from accidental or unauthorized-in-workflow submission; Python is not a security sandbox against a hostile local user who can read source and credentials or write a separate broker client.

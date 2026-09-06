@@ -63,7 +63,9 @@ def reduce_events(events: list[dict[str, Any]]) -> OperationalState:
     for event in events:
         event_type = event["event_type"]
         payload = event["payload"]
-        if event_type == "order_submission_started":
+        if event_type == "paper_run_rebaselined":
+            state = OperationalState()
+        elif event_type == "order_submission_started":
             attempt = SubmissionAttempt(
                 proposal_id=str(event["proposal_id"]),
                 action=str(payload["action"]),

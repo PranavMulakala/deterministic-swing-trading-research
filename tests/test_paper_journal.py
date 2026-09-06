@@ -190,6 +190,7 @@ class PaperJournalTests(unittest.TestCase):
                 "entry_filled",
                 "kill_switch_cleared",
                 "order_submitted",
+                "paper_run_rebaselined",
                 "position_closed",
             ):
                 with self.subTest(state_event=state_event), self.assertRaisesRegex(

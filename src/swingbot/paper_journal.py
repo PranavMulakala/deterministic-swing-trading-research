@@ -33,6 +33,7 @@ _RESERVED_STATE_EVENTS = {
     "order_status_observed",
     "order_submission_started",
     "order_submitted",
+    "paper_run_rebaselined",
     "position_closed",
     "risk_limit_breach_observed",
 }
@@ -352,6 +353,8 @@ class PaperJournal:
         }
         self._validate_review(proposal, payload, reviewed_at=reviewed_at)
         with self._transaction() as connection:
+            if not self._proposal_is_current_run(connection, proposal.proposal_id):
+                raise JournalError("proposal belongs to a prior paper run")
             return self._append_in(
                 connection,
                 "proposal_reviewed",
@@ -365,6 +368,8 @@ class PaperJournal:
         if stored.content_hash != proposal.content_hash:
             raise JournalError("review lookup does not match the stored exact proposal")
         with self._connect() as connection:
+            if not self._proposal_is_current_run(connection, proposal.proposal_id):
+                raise JournalError("proposal belongs to a prior paper run")
             row = connection.execute(
                 """
                 SELECT event_id, occurred_at, payload_json FROM events
@@ -429,6 +434,8 @@ class PaperJournal:
             created_row = next(
                 row for row in rows if str(row["event_type"]) == "proposal_created"
             )
+            if not self._proposal_is_current_run(connection, proposal.proposal_id):
+                raise JournalError("proposal belongs to a prior paper run")
             created_payload = json.loads(str(created_row["payload_json"]))
             stored = OrderProposal.from_payload(created_payload["proposal"])
             if (
@@ -546,6 +553,8 @@ class PaperJournal:
         self.verify_integrity()
         with self._transaction() as connection:
             self._verify_authorization_state(connection)
+            if not self._proposal_is_current_run(connection, proposal.proposal_id):
+                return False
             approval = connection.execute(
                 """
                 SELECT p.*, e.payload_json AS approval_payload
@@ -646,6 +655,8 @@ class PaperJournal:
         self.verify_integrity()
         with self._transaction() as connection:
             self._verify_authorization_state(connection)
+            if not self._proposal_is_current_run(connection, proposal.proposal_id):
+                raise JournalError("proposal belongs to a prior paper run")
             approval = connection.execute(
                 """
                 SELECT * FROM approval_permits WHERE approval_event_id = ?
@@ -845,11 +856,21 @@ class PaperJournal:
             raise JournalError("full-order review occurs after the approval timestamp")
 
     def account_binding(self) -> dict[str, Any] | None:
-        return self.latest_payload("account_bound")
+        with self._connect() as connection:
+            row = connection.execute(
+                """
+                SELECT payload_json FROM events
+                WHERE event_type IN ('account_bound', 'paper_run_rebaselined')
+                ORDER BY seq DESC LIMIT 1
+                """
+            ).fetchone()
+        return json.loads(str(row["payload_json"])) if row else None
 
     def permit_stage_claimed_for_proposal(self, proposal_id: str, stage: str) -> bool:
         self.verify_integrity()
         with self._connect() as connection:
+            if not self._proposal_is_current_run(connection, proposal_id):
+                return False
             row = connection.execute(
                 """
                 SELECT 1
@@ -866,9 +887,34 @@ class PaperJournal:
     def kill_switch_latched(self) -> bool:
         events = [
             event for event in self.events()
-            if event["event_type"] in {"kill_switch_latched", "kill_switch_cleared"}
+            if event["event_type"] in {
+                "kill_switch_latched", "kill_switch_cleared", "paper_run_rebaselined"
+            }
         ]
         return bool(events and events[-1]["event_type"] == "kill_switch_latched")
+
+    @staticmethod
+    def _proposal_is_current_run(
+        connection: sqlite3.Connection, proposal_id: str
+    ) -> bool:
+        proposal = connection.execute(
+            """
+            SELECT seq FROM events
+            WHERE proposal_id = ? AND event_type = 'proposal_created'
+            ORDER BY seq DESC LIMIT 1
+            """,
+            (proposal_id,),
+        ).fetchone()
+        if proposal is None:
+            return False
+        rebaseline = connection.execute(
+            """
+            SELECT seq FROM events
+            WHERE event_type = 'paper_run_rebaselined'
+            ORDER BY seq DESC LIMIT 1
+            """
+        ).fetchone()
+        return rebaseline is None or int(proposal["seq"]) > int(rebaseline["seq"])
 
     def latest_payload(self, event_type: str) -> dict[str, Any] | None:
         with self._connect() as connection:

@@ -299,7 +299,7 @@ class PaperReconciler:
             if aggregate_risk > aggregate_limit + Decimal("0.00000001"):
                 issues.append("aggregate_open_risk_breach_observed")
 
-        expected_cash = self._expected_cash_from_ledger(binding)
+        expected_cash = self._expected_cash_from_ledger()
         if (
             expected_cash is not None
             and account.cash.is_finite()
@@ -822,16 +822,23 @@ class PaperReconciler:
             return "unfilled_order_has_fill_evidence"
         return None
 
-    def _expected_cash_from_ledger(
-        self, binding: dict[str, Any] | None
-    ) -> Decimal | None:
-        if not binding:
+    def _expected_cash_from_ledger(self) -> Decimal | None:
+        events = self.journal.events()
+        bindings = [
+            event for event in events
+            if event["event_type"] in {"account_bound", "paper_run_rebaselined"}
+        ]
+        if not bindings:
             return None
-        initial = binding.get("initial_cash", binding.get("initial_equity"))
+        binding = bindings[-1]
+        payload = binding["payload"]
+        initial = payload.get("initial_cash", payload.get("initial_equity"))
         if initial is None:
             return None
         expected = Decimal(str(initial))
-        for event in self.journal.events():
+        for event in events:
+            if event["seq"] <= binding["seq"]:
+                continue
             payload = event["payload"]
             if event["event_type"] == "entry_filled":
                 expected -= Decimal(str(payload["quantity"])) * Decimal(

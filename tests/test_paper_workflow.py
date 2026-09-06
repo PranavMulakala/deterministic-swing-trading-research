@@ -8,7 +8,7 @@ import unittest
 
 from swingbot.config import load_config
 from swingbot.paper_config import load_paper_config
-from swingbot.paper_journal import PaperJournal
+from swingbot.paper_journal import JournalError, PaperJournal
 from swingbot.paper_models import PaperOrder, PaperPosition
 from swingbot.paper_policy import PaperPolicyError
 from swingbot.paper_state import reduce_events
@@ -156,6 +156,102 @@ class PaperWorkflowTests(unittest.TestCase):
         self.assertEqual(failure["operation"], "propose_entry")
         self.assertEqual(failure["error_type"], "PaperPolicyError")
         self.assertIn("regular market session", failure["reason"])
+
+    def test_clean_rebaseline_ends_old_run_and_invalidates_old_approval(self) -> None:
+        proposal = self.workflow.propose_entry("SPY")
+        review = self.workflow.review(proposal.proposal_id)
+        permit = self.journal.approve_and_consume(
+            proposal,
+            review["confirmation_code"],
+            review_event_id=review["review_event_id"],
+            session_id="old-run-session",
+            now=NOW,
+        )
+        self.journal._append_state(
+            "entry_filled",
+            {
+                "symbol": proposal.symbol,
+                "quantity": str(proposal.quantity),
+                "entry_price": str(proposal.ask),
+                "entry_date": NOW.date().isoformat(),
+                "planned_loss": str(proposal.planned_loss),
+                "stop_price": str(proposal.stop_price),
+                "parent_order_id": "old-parent",
+                "stop_order_id": "old-stop",
+                "client_order_id": proposal.client_order_id,
+            },
+            proposal_id=proposal.proposal_id,
+            occurred_at=NOW,
+        )
+        self.journal._append_state(
+            "kill_switch_latched", {"reason": "manual_recovery_required"},
+            occurred_at=NOW,
+        )
+
+        baseline = self.workflow.rebaseline_clean_account(
+            "REBASELINE-PAPER-RUN-AT-CLEAN-500", now=NOW
+        )
+        self.assertEqual(baseline["run_number"], 2)
+        self.assertTrue(baseline["prior_run_terminated"])
+        self.assertFalse(self.journal.kill_switch_latched())
+        self.assertFalse(reduce_events(self.journal.events()).positions)
+        self.assertFalse(self.journal.claim_permit(proposal, permit, "submit_order"))
+        with self.assertRaisesRegex(JournalError, "prior paper run"):
+            self.workflow.review(proposal.proposal_id)
+        report = self.workflow.reconcile_now(now=NOW)
+        self.assertTrue(report.ok, report.issues)
+        status = self.workflow.status()
+        self.assertEqual(status["paper_run_number"], 2)
+        self.assertTrue(status["paper_gate_restarted"])
+        self.assertIsNotNone(self.workflow.propose_entry("SPY"))
+
+    def test_rebaseline_requires_latch_confirmation_same_clean_account(self) -> None:
+        confirmation = "REBASELINE-PAPER-RUN-AT-CLEAN-500"
+        with self.assertRaisesRegex(PaperWorkflowError, "latched kill switch"):
+            self.workflow.rebaseline_clean_account(confirmation, now=NOW)
+        self.journal._append_state(
+            "kill_switch_latched", {"reason": "test"}, occurred_at=NOW
+        )
+        with self.assertRaisesRegex(PaperWorkflowError, "confirmation is incorrect"):
+            self.workflow.rebaseline_clean_account("WRONG", now=NOW)
+
+        original_account = self.broker.account
+        self.broker.account = replace(
+            original_account, account_id="different-paper-account"
+        )
+        with self.assertRaisesRegex(PaperPolicyError, "different paper account"):
+            self.workflow.rebaseline_clean_account(confirmation, now=NOW)
+
+        self.broker.account = replace(
+            original_account,
+            equity=Decimal("499"),
+            cash=Decimal("499"),
+            non_marginable_buying_power=Decimal("499"),
+            buying_power=Decimal("499"),
+        )
+        with self.assertRaisesRegex(PaperPolicyError, "reset to.*500"):
+            self.workflow.rebaseline_clean_account(confirmation, now=NOW)
+
+        self.broker.account = original_account
+        self.broker.positions = [
+            PaperPosition(
+                "SPY", Decimal("1"), "long", Decimal("100"), Decimal("100"),
+                Decimal("100"),
+            )
+        ]
+        with self.assertRaisesRegex(PaperPolicyError, "no positions"):
+            self.workflow.rebaseline_clean_account(confirmation, now=NOW)
+
+        self.broker.positions = []
+        self.broker.orders = [
+            PaperOrder(
+                "working", "manual", "SPY", "buy", "limit", "day", "simple",
+                "new", Decimal("1"), Decimal("0"),
+            )
+        ]
+        with self.assertRaisesRegex(PaperPolicyError, "no working orders"):
+            self.workflow.rebaseline_clean_account(confirmation, now=NOW)
+        self.assertTrue(self.journal.kill_switch_latched())
 
     def test_status_latches_account_binding_mismatch_before_any_new_order(self) -> None:
         self.broker.account = replace(
