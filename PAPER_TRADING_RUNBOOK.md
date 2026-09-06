@@ -47,6 +47,8 @@ PYTHONPATH=src python3 -m swingbot.cli paper --root . review PROPOSAL_ID
 
 An entry proposal is created only during regular hours from the most recent completed prior-session bar. It is rejected if the frozen signal fails, the quote is stale or wide, a position or order conflicts, the account is unreconciled, or whole-share sizing would break cash/risk limits. The review prints the ticker, side, whole-share quantity, market/GTC/OTO terms, quote and timestamp, maximum entry reference, native stop, estimated cost, planned loss, account ID suffix, thesis, invalidation, client order ID, expiration, and exact confirmation code.
 
+Every failed public paper command appends a timestamped `paper_operation_failed` event with the operation, error type, and reason when the journal remains writable. This record is diagnostic only and cannot create authorization or authoritative broker state.
+
 Only after the owner explicitly approves that exact order in the current conversation, run one process-scoped submission:
 
 ```bash

@@ -74,6 +74,31 @@ class ArchitectureTests(unittest.TestCase):
                     callers.add(module.name)
         self.assertEqual(callers, {"paper_reconcile.py", "paper_workflow.py"})
 
+    def test_every_public_workflow_operation_is_process_serialized(self) -> None:
+        module = Path(__file__).parents[1] / "src/swingbot/paper_workflow.py"
+        tree = ast.parse(module.read_text(encoding="utf-8"))
+        workflow = next(
+            node
+            for node in tree.body
+            if isinstance(node, ast.ClassDef) and node.name == "PaperWorkflow"
+        )
+        public = {
+            node.name
+            for node in workflow.body
+            if isinstance(node, ast.FunctionDef)
+            and not node.name.startswith("_")
+        }
+        serialized = {
+            node.name
+            for node in workflow.body
+            if isinstance(node, ast.FunctionDef)
+            and any(
+                isinstance(decorator, ast.Name) and decorator.id == "_serialized"
+                for decorator in node.decorator_list
+            )
+        }
+        self.assertEqual(serialized, public)
+
 
 if __name__ == "__main__":
     unittest.main()

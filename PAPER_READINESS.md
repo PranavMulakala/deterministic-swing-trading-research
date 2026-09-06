@@ -31,7 +31,7 @@ PYTHONPATH=src python3 -m swingbot.cli analyze-paper-constraint --root .
 
 ## Measured software scope
 
-The builder reviewed all 25 `src/swingbot` modules and all 18 test/support modules, compiled the full tree with Python 3.12, and ran 82 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only validator handoff remains required.
+The builder reviewed all 25 `src/swingbot` modules and all 18 test/support modules, compiled the full tree with Python 3.12, and ran 84 automated tests. That is complete file-scope review plus targeted invariant coverage; it is not a claim of mathematical correctness or 100% line/branch coverage. The separate read-only validator handoff remains required.
 
 The automated suite exercises:
 
@@ -46,8 +46,9 @@ The automated suite exercises:
 - 3% aggregate open risk including submitted-but-not-filled entries;
 - daily loss halt, duplicate client ID defense, and kill switches;
 - current-session daily bar exclusion (no incomplete-bar look-ahead);
+- a timestamped non-authoritative failure record for every rejected or failed public paper operation, without masking the original error;
 - append-only hash-chain tamper detection, cross-checked authorization tables, generic-append rejection for authorization and authoritative state events, and one-use, expiring approval bound to the exact latest review;
-- cross-process serialization of revalidation, approval, stop cancellation, and submission;
+- cross-process serialization of every public workflow operation, including broker snapshots, reconciliation, proposal/review changes, approval, stop cancellation, and submission;
 - unknown, duplicate, malformed, status-regressing, or quantity-regressing broker state; account mismatch; partial fills; and inactive, missing, malformed, or orphan native stops;
 - broker-fill-driven local position creation/removal using broker fill timestamps, fill-ledger cash reconciliation, account/position market-value identities, and point-in-time account/cash/mark/P&L snapshots;
 - exact stop cancellation confirmation before an approved ordinary exit, with independent adapter and durable-journal submission gates;

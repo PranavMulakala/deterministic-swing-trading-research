@@ -10,6 +10,7 @@ from swingbot.config import load_config
 from swingbot.paper_config import load_paper_config
 from swingbot.paper_journal import PaperJournal
 from swingbot.paper_models import PaperOrder, PaperPosition
+from swingbot.paper_policy import PaperPolicyError
 from swingbot.paper_state import reduce_events
 from swingbot.paper_workflow import PaperWorkflow, PaperWorkflowError
 
@@ -146,6 +147,15 @@ class PaperWorkflowTests(unittest.TestCase):
             self.workflow.clear_kill_switch("WRONG")
         self.workflow.clear_kill_switch("CLEAR-PAPER-KILL-SWITCH")
         self.assertFalse(self.journal.kill_switch_latched())
+
+    def test_failed_public_operation_is_recorded_with_reason(self) -> None:
+        self.broker.clock = replace(self.broker.clock, is_open=False)
+        with self.assertRaisesRegex(PaperPolicyError, "regular market session"):
+            self.workflow.propose_entry("SPY")
+        failure = self.journal.latest_payload("paper_operation_failed")
+        self.assertEqual(failure["operation"], "propose_entry")
+        self.assertEqual(failure["error_type"], "PaperPolicyError")
+        self.assertIn("regular market session", failure["reason"])
 
     def test_status_latches_account_binding_mismatch_before_any_new_order(self) -> None:
         self.broker.account = replace(

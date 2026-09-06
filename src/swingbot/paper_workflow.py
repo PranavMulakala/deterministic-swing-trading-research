@@ -5,7 +5,8 @@ import hashlib
 import os
 from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
-from typing import Any, Mapping, Protocol
+from functools import wraps
+from typing import Any, Callable, Mapping, Protocol, TypeVar
 
 from .config import validate_config
 from .paper_config import (
@@ -75,6 +76,23 @@ class PaperWorkflowError(RuntimeError):
     pass
 
 
+_Result = TypeVar("_Result")
+
+
+def _serialized(method: Callable[..., _Result]) -> Callable[..., _Result]:
+    """Keep broker snapshots, journal transitions, and approvals process-serial."""
+    @wraps(method)
+    def wrapper(self: "PaperWorkflow", *args: Any, **kwargs: Any) -> _Result:
+        with self.journal.mutation_lock():
+            try:
+                return method(self, *args, **kwargs)
+            except Exception as exc:
+                self._record_operation_failure_best_effort(method.__name__, exc)
+                raise
+
+    return wrapper
+
+
 class PaperWorkflow:
     def __init__(
         self,
@@ -98,6 +116,7 @@ class PaperWorkflow:
         )
         self.universe = tuple(str(item) for item in self.strategy_config["universe"])
 
+    @_serialized
     def bind_clean_account(self, *, now: datetime | None = None) -> dict[str, Any]:
         self._require_runtime_config()
         self.journal.verify_integrity()
@@ -131,6 +150,7 @@ class PaperWorkflow:
         self.journal._append_state("account_bound", payload, occurred_at=timestamp)
         return payload
 
+    @_serialized
     def reconcile_now(self, *, now: datetime | None = None) -> ReconciliationReport:
         self._require_runtime_config()
         account = self.broker.get_account()
@@ -144,6 +164,7 @@ class PaperWorkflow:
         require_operable_account(account, self.paper_config)
         return report
 
+    @_serialized
     def scan_entries(self) -> list[dict[str, Any]]:
         account, clock, positions, orders = self._clean_snapshot()
         del account, positions, orders
@@ -180,6 +201,7 @@ class PaperWorkflow:
             results.append(payload)
         return results
 
+    @_serialized
     def scan_exits(self) -> list[dict[str, Any]]:
         account, clock, positions, orders = self._clean_snapshot()
         del account, positions, orders
@@ -228,6 +250,7 @@ class PaperWorkflow:
             results.append(payload)
         return results
 
+    @_serialized
     def propose_entry(self, symbol: str) -> OrderProposal:
         clean_symbol = self._universe_symbol(symbol)
         account, clock, positions, orders = self._clean_snapshot()
@@ -319,6 +342,7 @@ class PaperWorkflow:
         self.journal.record_proposal(proposal)
         return proposal
 
+    @_serialized
     def propose_exit(self, symbol: str, *, reason: str = "auto") -> OrderProposal:
         clean_symbol = self._universe_symbol(symbol)
         account, clock, positions, orders = self._clean_snapshot()
@@ -408,6 +432,7 @@ class PaperWorkflow:
         self.journal.record_proposal(proposal)
         return proposal
 
+    @_serialized
     def execute(
         self,
         proposal_id: str,
@@ -418,10 +443,9 @@ class PaperWorkflow:
     ) -> PaperOrder:
         env = environment if environment is not None else os.environ
         self._require_runtime_enable(env)
-        with self.journal.mutation_lock():
-            return self._execute_locked(
-                proposal_id, confirmation_code, session_id=session_id
-            )
+        return self._execute_locked(
+            proposal_id, confirmation_code, session_id=session_id
+        )
 
     def _execute_locked(
         self, proposal_id: str, confirmation_code: str, *, session_id: str
@@ -530,6 +554,7 @@ class PaperWorkflow:
             )
         return order
 
+    @_serialized
     def status(self) -> dict[str, Any]:
         self._require_runtime_config()
         self.journal.verify_integrity()
@@ -579,6 +604,7 @@ class PaperWorkflow:
             "monitoring_honesty": "This is a point-in-time poll; no monitoring occurs when the process is not running.",
         }
 
+    @_serialized
     def clear_kill_switch(self, confirmation: str) -> None:
         self._require_runtime_config()
         if confirmation != "CLEAR-PAPER-KILL-SWITCH":
@@ -604,6 +630,7 @@ class PaperWorkflow:
             occurred_at=clock.timestamp,
         )
 
+    @_serialized
     def review(self, proposal_id: str) -> dict[str, Any]:
         self._require_runtime_config()
         proposal = self.journal.get_proposal(proposal_id)
@@ -957,6 +984,23 @@ class PaperWorkflow:
         except Exception:
             # A broken/unwritable journal already stops the command. Preserve
             # the original uncertainty error rather than masking it here.
+            pass
+
+    def _record_operation_failure_best_effort(
+        self, operation: str, error: Exception
+    ) -> None:
+        try:
+            self.journal.append(
+                "paper_operation_failed",
+                {
+                    "operation": operation,
+                    "error_type": type(error).__name__,
+                    "reason": str(error),
+                },
+                occurred_at=datetime.now(timezone.utc),
+            )
+        except Exception:
+            # A broken journal must never replace the original fail-closed error.
             pass
 
     def _universe_symbol(self, symbol: str) -> str:
