@@ -106,3 +106,22 @@ This command is accepted only while the durable kill switch is latched, against 
 The application cannot protect credentials from another process running as the same macOS user. Keep the computer account and `.env` private; the in-application approval gate is not an operating-system security boundary.
 
 Broker HTTP requests explicitly ignore `HTTP_PROXY`, `HTTPS_PROXY`, and `ALL_PROXY`. The journal, lock, and generated status dashboard use owner-only permissions; sensitive paths refuse symbolic links. Order reconciliation paginates the Alpaca history rather than silently truncating at 500 parent orders.
+
+## 7. Optional unattended paper-only trial
+
+The `paper-autopilot-v1` branch intentionally changes the order-by-order human approval rule for a paper experiment. A one-time launch authorization permits only the frozen strategy to scan and execute against the hardcoded Alpaca paper endpoint. Each exact order still receives a fresh quote, full review, final reconciliation, one-use permit, native stop for entries, and a distinct `automation_approved` audit event. It never records an automated decision as an owner-confirmed order.
+
+Run one bounded cycle for inspection:
+
+```bash
+PYTHONPATH=src .venv/bin/python -m swingbot.cli paper --root . autopilot \
+  --authorization I_AUTHORIZE_UNATTENDED_PAPER_ONLY --iterations 1
+```
+
+The included macOS LaunchAgent is scheduled for 6:29 a.m. Pacific, Monday through Friday. A holiday run exits after Alpaca reports that the next open is on another date. A normal run waits for the open, scans the completed prior-session bars once, reconciles every 15 seconds, and exits after the observed session closes. If one or more deterministic exits fire, it submits only the first exit and defers every other action until a later session so it cannot race a canceled protective stop against another action. Only one process can hold the owner-only autopilot lock. The Mac must be powered on, logged in, connected to the internet, and not have its lid closed. Logs are written under `outputs/paper/` and are excluded from Git.
+
+Disable the installed job without touching account positions or broker-native stops:
+
+```bash
+launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.pranav.swingbot.paper-autopilot.plist
+```

@@ -13,7 +13,11 @@ from swingbot.paper_journal import JournalError, PaperJournal
 from swingbot.paper_models import PaperOrder, PaperPosition
 from swingbot.paper_policy import PaperPolicyError
 from swingbot.paper_state import reduce_events
-from swingbot.paper_workflow import PaperWorkflow, PaperWorkflowError
+from swingbot.paper_workflow import (
+    AUTOPILOT_AUTHORIZATION,
+    PaperWorkflow,
+    PaperWorkflowError,
+)
 
 from paper_fixtures import FakeBroker, NOW, ACCOUNT_ID, sample_proposal
 
@@ -146,6 +150,29 @@ class PaperWorkflowTests(unittest.TestCase):
         self.assertEqual(order.order_class, "oto")
         self.assertEqual(len(order.legs), 1)
         self.assertEqual(self.broker.submitted_entries, 1)
+
+    def test_automated_execution_requires_policy_and_records_its_true_source(self) -> None:
+        proposal = self.workflow.propose_entry("SPY")
+        review = self.workflow.review(proposal.proposal_id)
+        with self.assertRaisesRegex(PaperWorkflowError, "autopilot authorization"):
+            self.workflow.execute_automated(
+                proposal.proposal_id,
+                review["confirmation_code"],
+                session_id="paper-autopilot-test",
+                authorization="WRONG",
+                environment=ENABLED,
+            )
+        order = self.workflow.execute_automated(
+            proposal.proposal_id,
+            review["confirmation_code"],
+            session_id="paper-autopilot-test",
+            authorization=AUTOPILOT_AUTHORIZATION,
+            environment=ENABLED,
+        )
+        self.assertEqual(order.order_class, "oto")
+        event_types = self.journal.proposal_event_types(proposal.proposal_id)
+        self.assertIn("automation_approved", event_types)
+        self.assertNotIn("owner_approved", event_types)
         with self.assertRaises(Exception):
             self.workflow.execute(
                 proposal.proposal_id,

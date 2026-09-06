@@ -78,6 +78,7 @@ class PaperWorkflowError(RuntimeError):
 
 _Result = TypeVar("_Result")
 REBASELINE_CONFIRMATION = "REBASELINE-PAPER-RUN-AT-CLEAN-500"
+AUTOPILOT_AUTHORIZATION = "I_AUTHORIZE_UNATTENDED_PAPER_ONLY"
 
 
 def _serialized(method: Callable[..., _Result]) -> Callable[..., _Result]:
@@ -451,11 +452,41 @@ class PaperWorkflow:
         env = environment if environment is not None else os.environ
         self._require_runtime_enable(env)
         return self._execute_locked(
-            proposal_id, confirmation_code, session_id=session_id
+            proposal_id,
+            confirmation_code,
+            session_id=session_id,
+            approval_kind="owner",
+        )
+
+    @_serialized
+    def execute_automated(
+        self,
+        proposal_id: str,
+        confirmation_code: str,
+        *,
+        session_id: str,
+        authorization: str,
+        environment: Mapping[str, str] | None = None,
+    ) -> PaperOrder:
+        """Execute one exact reviewed order under the owner's paper-only policy."""
+        if authorization != AUTOPILOT_AUTHORIZATION:
+            raise PaperWorkflowError("paper autopilot authorization is absent")
+        env = environment if environment is not None else os.environ
+        self._require_runtime_enable(env)
+        return self._execute_locked(
+            proposal_id,
+            confirmation_code,
+            session_id=session_id,
+            approval_kind="automation",
         )
 
     def _execute_locked(
-        self, proposal_id: str, confirmation_code: str, *, session_id: str
+        self,
+        proposal_id: str,
+        confirmation_code: str,
+        *,
+        session_id: str,
+        approval_kind: str,
     ) -> PaperOrder:
         self.journal.verify_integrity()
         self._require_runtime_config()
@@ -545,6 +576,7 @@ class PaperWorkflow:
             session_id=session_id,
             now=clock.timestamp,
             mutation_deadline=mutation_deadline,
+            approval_kind=approval_kind,
         )
         self.journal._append_state(
             "order_submission_started",
@@ -651,6 +683,8 @@ class PaperWorkflow:
             "paper_gate_restarted": run_number > 1,
             "broker_timestamp": clock.timestamp.isoformat(),
             "market_open": clock.is_open,
+            "next_open": clock.next_open.isoformat(),
+            "next_close": clock.next_close.isoformat(),
             "account_number_suffix": account.account_number[-4:],
             "equity": decimal_string(account.equity),
             "cash": decimal_string(account.cash),

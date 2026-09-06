@@ -12,6 +12,7 @@ from .paper_config import load_paper_config
 from .paper_dashboard import write_paper_dashboard
 from .paper_journal import PaperJournal
 from .paper_workflow import PaperWorkflow
+from .paper_autopilot import run_autopilot
 
 
 ALLOWED_ENV_KEYS = {
@@ -51,6 +52,17 @@ def add_paper_parser(subparsers: argparse._SubParsersAction[argparse.ArgumentPar
     monitor = commands.add_parser("monitor", help="poll/reconcile while this process stays running")
     monitor.add_argument("--iterations", type=int, default=0, help="0 means run until interrupted")
     monitor.add_argument("--interval", type=int, default=None)
+    autopilot = commands.add_parser(
+        "autopilot",
+        help="paper-only unattended scan, review, and execution of the frozen strategy",
+    )
+    autopilot.add_argument("--authorization", required=True)
+    autopilot.add_argument(
+        "--iterations", type=int, default=0,
+        help="0 waits for the next open session and exits after that session closes",
+    )
+    autopilot.add_argument("--interval", type=int, default=None)
+    autopilot.add_argument("--closed-interval", type=int, default=60)
 
 
 def run_paper(args: argparse.Namespace) -> None:
@@ -122,6 +134,18 @@ def run_paper(args: argparse.Namespace) -> None:
             args.interval
             if args.interval is not None
             else int(paper["monitoring"]["poll_seconds"]),
+        )
+    elif command == "autopilot":
+        run_autopilot(
+            workflow,
+            journal,
+            root,
+            authorization=args.authorization,
+            iterations=args.iterations,
+            interval=args.interval
+            if args.interval is not None
+            else int(paper["monitoring"]["poll_seconds"]),
+            closed_interval=args.closed_interval,
         )
 
 

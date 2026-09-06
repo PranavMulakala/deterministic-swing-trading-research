@@ -49,6 +49,12 @@ The added operational path is intentionally narrow:
 
 Setup and operating steps are in `PAPER_TRADING_RUNBOOK.md`. The exact independent-review scope is in `PAPER_VALIDATOR_HANDOFF.md`.
 
+### Paper-only unattended trial
+
+The `paper-autopilot-v1` branch adds a separately labeled, preauthorized paper-only runner. It reconciles the bound account, scans the frozen 15-ETF strategy once per open session, prioritizes one deterministic exit and defers entries until that exit has reconciled, restates and requotes every exact order, and submits qualifying paper orders without a conversation-time confirmation. Automated approvals are journaled as `automation_approved`, never as `owner_approved`. Each symbol/action is attempted at most once per session and failures are not retried automatically.
+
+The runner cannot change the universe, strategy, risk limits, broker hostname, or execution payload. It exits on a closed holiday, after an observed session closes, on a kill switch, or on reconciliation failure. This mode changes the manual approval model and therefore is not covered by the earlier independent validation record. It remains a paper experiment; the frozen v1 economics still underperformed both benchmarks.
+
 ## Audit trail
 
 The event ledger logs every entry decision (including rejection), signal, simulated fill, position change, and daily P&L mark with deterministic IDs. The data manifest and artifact hash list make accidental changes detectable. Re-running against identical code, config, and pinned data must reproduce identical artifacts.

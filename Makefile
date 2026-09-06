@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: test fetch-data reproduce paper-constraint
+.PHONY: test fetch-data reproduce paper-constraint paper-autopilot
 
 test:
 	PYTHONPATH=src $(PYTHON) -m unittest discover -s tests -v
@@ -13,3 +13,6 @@ reproduce: test
 
 paper-constraint:
 	PYTHONPATH=src $(PYTHON) -m swingbot.cli analyze-paper-constraint --root .
+
+paper-autopilot:
+	./scripts/run_paper_autopilot.sh

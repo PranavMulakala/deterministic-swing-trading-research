@@ -20,6 +20,7 @@ from .safe_paths import UnsafePathError, require_no_symlink_components, private_
 
 GENESIS_HASH = "0" * 64
 _RESERVED_AUTH_EVENTS = {
+    "automation_approved",
     "proposal_created",
     "proposal_reviewed",
     "owner_approved",
@@ -497,8 +498,11 @@ class PaperJournal:
         session_id: str,
         now: datetime,
         mutation_deadline: datetime | None = None,
+        approval_kind: str = "owner",
     ) -> ApprovalPermit:
         self.verify_integrity()
+        if approval_kind not in {"owner", "automation"}:
+            raise JournalError("approval kind must be owner or automation")
         if not session_id.strip():
             raise JournalError("approval requires a non-empty current session id")
         if not review_event_id:
@@ -567,12 +571,13 @@ class PaperJournal:
                 raise JournalError("this proposal approval has already been used")
             approval = self._append_in(
                 connection,
-                "owner_approved",
+                "owner_approved" if approval_kind == "owner" else "automation_approved",
                 {
                     "content_hash": proposal.content_hash,
                     "review_event_id": review_event_id,
                     "session_id": session_id,
                     "action": proposal.action,
+                    "approval_kind": approval_kind,
                     "one_order_only": True,
                     "issued_at": now.isoformat(),
                     "mutation_deadline": deadline.isoformat(),
@@ -666,7 +671,8 @@ class PaperJournal:
                 SELECT p.*, e.payload_json AS approval_payload
                 FROM approval_permits p
                 JOIN events e ON e.event_id = p.approval_event_id
-                WHERE p.approval_event_id = ? AND e.event_type = 'owner_approved'
+                WHERE p.approval_event_id = ?
+                  AND e.event_type IN ('owner_approved', 'automation_approved')
                 """,
                 (permit.approval_event_id,),
             ).fetchone()
@@ -846,7 +852,7 @@ class PaperJournal:
             SELECT event_id, occurred_at, event_type, proposal_id, payload_json
             FROM events
             WHERE event_type IN (
-                'owner_approved', 'approval_consumed',
+                'owner_approved', 'automation_approved', 'approval_consumed',
                 'broker_mutation_claimed',
                 'protective_stop_canceled_for_approved_exit'
             )
@@ -863,11 +869,11 @@ class PaperJournal:
         }
         permits = connection.execute("SELECT * FROM approval_permits").fetchall()
         permit_ids = {str(row["approval_event_id"]) for row in permits}
-        owner_ids = {
+        approval_ids = {
             event_id for event_id, event in events.items()
-            if event["event_type"] == "owner_approved"
+            if event["event_type"] in {"owner_approved", "automation_approved"}
         }
-        if permit_ids != owner_ids:
+        if permit_ids != approval_ids:
             raise JournalError("authorization permit table does not match approval events")
         consumed = [
             event for event in events.values()
@@ -875,14 +881,23 @@ class PaperJournal:
         ]
         for permit in permits:
             approval_id = str(permit["approval_event_id"])
-            owner = events[approval_id]
+            approval = events[approval_id]
             if (
-                owner["proposal_id"] != str(permit["proposal_id"])
-                or owner["payload"].get("content_hash") != str(permit["content_hash"])
-                or owner["payload"].get("review_event_id")
+                approval["proposal_id"] != str(permit["proposal_id"])
+                or approval["payload"].get("content_hash") != str(permit["content_hash"])
+                or approval["payload"].get("review_event_id")
                 != str(permit["review_event_id"])
-                or owner["payload"].get("session_id") != str(permit["session_id"])
-                or owner["payload"].get("action") != str(permit["action"])
+                or approval["payload"].get("session_id") != str(permit["session_id"])
+                or approval["payload"].get("action") != str(permit["action"])
+                or approval["payload"].get(
+                    "approval_kind",
+                    "owner" if approval["event_type"] == "owner_approved" else "",
+                )
+                != (
+                    "owner"
+                    if approval["event_type"] == "owner_approved"
+                    else "automation"
+                )
                 or not any(
                     event["proposal_id"] == str(permit["proposal_id"])
                     and event["payload"].get("approval_event_id") == approval_id

@@ -137,6 +137,14 @@ class PaperCliTests(unittest.TestCase):
                 ["paper", "monitor", "--iterations", "2", "--interval", "3"],
                 "monitor",
             ),
+            (
+                [
+                    "paper", "autopilot",
+                    "--authorization", "I_AUTHORIZE_UNATTENDED_PAPER_ONLY",
+                    "--iterations", "1",
+                ],
+                "autopilot",
+            ),
         )
         for argv, expected in cases:
             with self.subTest(argv=argv):
@@ -175,6 +183,7 @@ class PaperCliTests(unittest.TestCase):
         }
         print_status = MagicMock()
         monitor = MagicMock()
+        autopilot = MagicMock()
         with TemporaryDirectory() as directory, patch.multiple(
             "swingbot.paper_cli",
             _load_env=MagicMock(),
@@ -186,6 +195,7 @@ class PaperCliTests(unittest.TestCase):
             _print=MagicMock(),
             _print_status=print_status,
             _monitor=monitor,
+            run_autopilot=autopilot,
         ):
             root = Path(directory)
             resolved_root = root.resolve()
@@ -224,6 +234,16 @@ class PaperCliTests(unittest.TestCase):
                     ),
                 ),
                 ("monitor", {"iterations": 2, "interval": None}, None),
+                (
+                    "autopilot",
+                    {
+                        "authorization": "I_AUTHORIZE_UNATTENDED_PAPER_ONLY",
+                        "iterations": 1,
+                        "interval": None,
+                        "closed_interval": 60,
+                    },
+                    None,
+                ),
             )
             for command, extra, expected_call in cases:
                 with self.subTest(command=command):
@@ -239,6 +259,16 @@ class PaperCliTests(unittest.TestCase):
                     if command == "monitor":
                         monitor.assert_called_with(
                             workflow, journal, resolved_root, 2, 15
+                        )
+                    if command == "autopilot":
+                        autopilot.assert_called_with(
+                            workflow,
+                            journal,
+                            resolved_root,
+                            authorization="I_AUTHORIZE_UNATTENDED_PAPER_ONLY",
+                            iterations=1,
+                            interval=15,
+                            closed_interval=60,
                         )
 
     def test_explicit_zero_monitor_interval_is_rejected(self) -> None:
