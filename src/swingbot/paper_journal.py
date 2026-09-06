@@ -5,8 +5,9 @@ import hashlib
 import json
 import os
 import sqlite3
+import time
 import uuid
-from contextlib import contextmanager
+from contextlib import contextmanager, ExitStack
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -14,7 +15,7 @@ from typing import Any, Iterator
 
 from .paper_models import ApprovalPermit, OrderProposal, canonical_json, parse_timestamp
 from .paper_config import QUOTE_FUTURE_TOLERANCE_SECONDS
-from .safe_paths import UnsafePathError, require_no_symlink_components
+from .safe_paths import UnsafePathError, require_no_symlink_components, private_parent
 
 
 GENESIS_HASH = "0" * 64
@@ -46,27 +47,97 @@ class JournalError(RuntimeError):
     pass
 
 
+class _JournalConnection(sqlite3.Connection):
+    """SQLite transactions persisted as locked, atomic, descriptor-relative files.
+
+    SQLite's Python API cannot open relative to a directory fd on macOS. Keeping
+    its connection in memory avoids asking SQLite to re-resolve an unsafe path.
+    The on-disk file remains an ordinary SQLite database, including its hash chain.
+    """
+
+    def attach(self, path: Path) -> None:
+        self._resources = ExitStack()
+        try:
+            self._directory = self._resources.enter_context(
+                private_parent(path, label="paper journal")
+            )
+            self._filename = path.name
+            lock = self._directory.open_file(path.name + ".storage.lock", os.O_CREAT | os.O_RDWR)
+            self._resources.callback(os.close, lock)
+            fcntl.flock(lock, fcntl.LOCK_EX)
+            self._resources.callback(fcntl.flock, lock, fcntl.LOCK_UN)
+            # Never silently discard an uncheckpointed legacy transaction.
+            for suffix in ("-wal", "-journal", "-shm"):
+                name = path.name + suffix
+                self._directory.check_leaf(name)
+                try:
+                    contents = self._directory.read(name)
+                except FileNotFoundError:
+                    continue
+                if contents:
+                    raise JournalError("legacy journal sidecar requires an owner-controlled checkpoint")
+            try:
+                self._original = self._directory.read(path.name)
+            except FileNotFoundError:
+                self._original = b""
+            if self._original:
+                contents = self._original
+                if contents[:16] != b"SQLite format 3\x00":
+                    raise JournalError("paper journal has an invalid SQLite header")
+                # SQLite file-format bytes 18/19 select WAL vs rollback mode.
+                # A fully checkpointed WAL database has identical data pages.
+                if contents[18:20] == b"\x02\x02":
+                    contents = contents[:18] + b"\x01\x01" + contents[20:]
+                self.deserialize(contents)
+            self.row_factory = sqlite3.Row
+            self.execute("PRAGMA foreign_keys = ON")
+        except BaseException:
+            self.close()
+            raise
+
+    def commit(self) -> None:
+        super().commit()
+        contents = self.serialize()
+        if contents != self._original:
+            self._directory.replace(self._filename, contents)
+            self._original = contents
+
+    def close(self) -> None:
+        try:
+            super().close()
+        finally:
+            if hasattr(self, "_resources"):
+                self._resources.close()
+
+    def __exit__(self, exc_type: Any, exc: Any, traceback: Any) -> bool:
+        try:
+            if exc_type is None:
+                self.commit()
+            else:
+                self.rollback()
+        finally:
+            self.close()
+        return False
+
+
 class PaperJournal:
     """Durable append-only operational journal with an integrity hash chain."""
 
     def __init__(self, path: str | Path):
         self.path = self._safe_path(path, "paper journal")
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        self._safe_path(self.path, "paper journal")
-        os.chmod(self.path.parent, 0o700)
         self._initialize()
-        os.chmod(self.path, 0o600)
 
     def _connect(self) -> sqlite3.Connection:
         self._safe_path(self.path, "paper journal")
-        connection = sqlite3.connect(self.path, timeout=10)
-        connection.row_factory = sqlite3.Row
-        connection.execute("PRAGMA foreign_keys = ON")
-        return connection
+        connection = sqlite3.connect(":memory:", factory=_JournalConnection)
+        try:
+            connection.attach(self.path)
+            return connection
+        except OSError as exc:
+            raise JournalError(str(exc)) from None
 
     def _initialize(self) -> None:
         with self._connect() as connection:
-            connection.execute("PRAGMA journal_mode = WAL")
             connection.execute(
                 """
                 CREATE TABLE IF NOT EXISTS events (
@@ -148,20 +219,16 @@ class PaperJournal:
             self.path.with_suffix(self.path.suffix + ".lock"),
             "paper journal lock",
         )
-        flags = os.O_CREAT | os.O_RDWR
-        if hasattr(os, "O_NOFOLLOW"):
-            flags |= os.O_NOFOLLOW
-        try:
-            descriptor = os.open(lock_path, flags, 0o600)
-        except OSError as exc:
-            raise JournalError("paper journal lock could not be opened safely") from exc
-        try:
-            os.fchmod(descriptor, 0o600)
-            fcntl.flock(descriptor, fcntl.LOCK_EX)
+        with ExitStack() as resources:
+            try:
+                directory = resources.enter_context(private_parent(lock_path, label="paper journal lock"))
+                descriptor = directory.open_file(lock_path.name, os.O_CREAT | os.O_RDWR)
+                resources.callback(os.close, descriptor)
+                fcntl.flock(descriptor, fcntl.LOCK_EX)
+            except OSError as exc:
+                raise JournalError("paper journal lock could not be opened safely") from exc
+            resources.callback(fcntl.flock, descriptor, fcntl.LOCK_UN)
             yield
-        finally:
-            fcntl.flock(descriptor, fcntl.LOCK_UN)
-            os.close(descriptor)
 
     @staticmethod
     def _safe_path(path: str | Path, label: str) -> Path:
@@ -576,6 +643,7 @@ class PaperJournal:
         stage: str,
         claimed_at: datetime | None = None,
     ) -> bool:
+        started = time.monotonic()
         valid_stages = {
             "entry_oto": {"submit_order"},
             "close_position": {"cancel_protective_stop", "submit_order"},
@@ -588,6 +656,9 @@ class PaperJournal:
         self.verify_integrity()
         with self._transaction() as connection:
             self._verify_authorization_state(connection)
+            # Include integrity checks and lock acquisition in the claim time;
+            # the caller's pre-lock timestamp cannot grant an expired capability.
+            mutation_at += timedelta(seconds=time.monotonic() - started)
             if not self._proposal_is_current_run(connection, proposal.proposal_id):
                 return False
             approval = connection.execute(

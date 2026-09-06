@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 import json
+import http.client
 import math
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from typing import Any, Callable, Optional
 
@@ -16,6 +17,7 @@ from .paper_config import (
     CANCEL_VERIFICATION_ATTEMPTS,
     CANCEL_VERIFICATION_INTERVAL_SECONDS,
     PAPER_TRADING_BASE_URL,
+    QUOTE_FUTURE_TOLERANCE_SECONDS,
 )
 from .paper_models import (
     ApprovalPermit,
@@ -47,12 +49,48 @@ class _NoRedirect(urllib.request.HTTPRedirectHandler):
         raise AlpacaPaperError("broker redirects are prohibited")
 
 
+class _GuardedHTTPSConnection(http.client.HTTPSConnection):
+    """Check after connection/TLS setup, before each HTTP socket write."""
+
+    def __init__(self, host: str, *, before_send: Callable[[], None], **kwargs: Any):
+        super().__init__(host, **kwargs)
+        self._before_send = before_send
+
+    def send(self, data: Any) -> None:
+        if self.sock is None:
+            self.connect()
+        self._before_send()
+        super().send(data)
+
+
+class _GuardedHTTPSHandler(urllib.request.HTTPSHandler):
+    def __init__(self, before_send: Callable[[], None]):
+        super().__init__()
+        self._before_send = before_send
+
+    def https_open(self, request: Any) -> Any:
+        def connection(host: str, **kwargs: Any) -> _GuardedHTTPSConnection:
+            return _GuardedHTTPSConnection(
+                host, before_send=self._before_send, **kwargs
+            )
+        return self.do_open(
+            connection, request,
+            context=self._context,
+        )
+
+
 def _default_transport(
-    method: str, url: str, headers: dict[str, str], body: bytes | None, timeout: int
+    method: str, url: str, headers: dict[str, str], body: bytes | None, timeout: int,
+    *, before_send: Callable[[], None] | None = None,
 ) -> Any:
     request = urllib.request.Request(url, data=body, headers=headers, method=method)
     try:
-        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), _NoRedirect)
+        handlers: list[Any] = [urllib.request.ProxyHandler({}), _NoRedirect]
+        if before_send is not None:
+            handlers.append(_GuardedHTTPSHandler(before_send))
+        opener = urllib.request.build_opener(*handlers)
+        if before_send is not None:
+            before_send()
         with opener.open(request, timeout=timeout) as response:
             if response.geturl() != url:
                 raise AlpacaPaperError("broker response URL differs from the requested paper endpoint")
@@ -91,6 +129,7 @@ class AlpacaPaperClient:
         cancel_verification_interval_seconds: float = CANCEL_VERIFICATION_INTERVAL_SECONDS,
         sleep: Callable[[float], None] = time.sleep,
         utc_now: Callable[[], datetime] | None = None,
+        monotonic: Callable[[], float] = time.monotonic,
     ):
         if trading_base_url != PAPER_TRADING_BASE_URL:
             raise AlpacaPaperError("live or alternate trading endpoints are prohibited")
@@ -106,11 +145,14 @@ class AlpacaPaperClient:
         self._data_base = ALPACA_DATA_BASE_URL
         self._timeout = timeout
         self._transport = transport or _default_transport
+        self._default_transport_selected = transport is None
         self._permit_validator = permit_validator
         self._cancel_verification_attempts = cancel_verification_attempts
         self._cancel_verification_interval_seconds = cancel_verification_interval_seconds
         self._sleep = sleep
         self._utc_now = utc_now or (lambda: datetime.now(timezone.utc))
+        self._monotonic = monotonic
+        self._clock_anchor: tuple[datetime, float] | None = None
         self._verified_exit_permits: set[tuple[str, str, str]] = set()
 
     def _request(
@@ -122,6 +164,9 @@ class AlpacaPaperClient:
         query: dict[str, Any] | None = None,
         body: dict[str, Any] | None = None,
         _mutation_token: object | None = None,
+        _proposal: OrderProposal | None = None,
+        _permit: ApprovalPermit | None = None,
+        _stage: str = "",
     ) -> Any:
         method = method.strip().upper()
         if method not in _ALLOWED_METHODS:
@@ -146,7 +191,22 @@ class AlpacaPaperClient:
         if body is not None:
             headers["Content-Type"] = "application/json"
             encoded = json.dumps(body, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        before_send = None
+        if method in _MUTATING_METHODS:
+            if _proposal is None or _permit is None:
+                raise AlpacaPaperError("broker mutation requires exact authorization terms")
+            # Serialization and request construction must not outlive an earlier
+            # permit check. Claim only once; subsequent socket checks never claim.
+            self._require_permit(_proposal, _permit, _stage)
+            before_send = lambda: self._require_transport_window(_permit)
         try:
+            if self._default_transport_selected:
+                return self._transport(
+                    method, url, headers, encoded, self._timeout,
+                    before_send=before_send,
+                )
+            if before_send is not None:
+                before_send()
             return self._transport(method, url, headers, encoded, self._timeout)
         except Exception as exc:
             message = str(exc).replace(self._key, "[REDACTED]").replace(self._secret, "[REDACTED]")
@@ -177,13 +237,25 @@ class AlpacaPaperClient:
         )
 
     def get_clock(self) -> PaperClock:
+        started = self._monotonic()
         value = self._request("GET", "/v2/clock")
-        return PaperClock(
+        clock = PaperClock(
             timestamp=parse_timestamp(str(value["timestamp"])),
             is_open=_boolean(value["is_open"]),
             next_open=parse_timestamp(str(value["next_open"])),
             next_close=parse_timestamp(str(value["next_close"])),
         )
+        # Anchoring at request START conservatively includes the entire request
+        # latency. A backwards local wall-clock step cannot extend authorization.
+        anchor = clock.timestamp
+        if self._clock_anchor is not None:
+            previous, previous_started = self._clock_anchor
+            elapsed = started - previous_started
+            if elapsed < 0 or not math.isfinite(elapsed):
+                raise AlpacaPaperError("monotonic mutation clock regressed")
+            anchor = max(anchor, previous + timedelta(seconds=elapsed))
+        self._clock_anchor = (anchor, started)
+        return clock
 
     def trading_days(self, *, start: date, end: date) -> list[date]:
         values = self._request(
@@ -298,7 +370,6 @@ class AlpacaPaperClient:
             or proposal.stop_price >= proposal.maximum_entry_reference
         ):
             raise AlpacaPaperError("entry price guard or protective stop is invalid")
-        self._require_permit(proposal, permit, "submit_order")
         value = self._request(
             "POST",
             "/v2/orders",
@@ -314,6 +385,7 @@ class AlpacaPaperClient:
                 "extended_hours": False,
             },
             _mutation_token=_MUTATION_TOKEN,
+            _proposal=proposal, _permit=permit, _stage="submit_order",
         )
         return _paper_order(value)
 
@@ -344,7 +416,6 @@ class AlpacaPaperClient:
             raise AlpacaPaperError(
                 "close submission requires broker-verified protective-stop cancellation"
             )
-        self._require_permit(proposal, permit, "submit_order")
         self._verified_exit_permits.discard(permit_key)
         value = self._request(
             "POST",
@@ -359,6 +430,7 @@ class AlpacaPaperClient:
                 "extended_hours": False,
             },
             _mutation_token=_MUTATION_TOKEN,
+            _proposal=proposal, _permit=permit, _stage="submit_order",
         )
         return _paper_order(value)
 
@@ -394,11 +466,11 @@ class AlpacaPaperClient:
             or proposal.protective_stop_price != expected_stop_price
         ):
             raise AlpacaPaperError("protective stop price is invalid")
-        self._require_permit(proposal, permit, "cancel_protective_stop")
         self._request(
             "DELETE",
             f"/v2/orders/{urllib.parse.quote(order_id, safe='')}",
             _mutation_token=_MUTATION_TOKEN,
+            _proposal=proposal, _permit=permit, _stage="cancel_protective_stop",
         )
         terminal = {"canceled", "expired", "filled", "rejected", "replaced"}
         order: PaperOrder | None = None
@@ -509,7 +581,7 @@ class AlpacaPaperClient:
     def _require_permit(
         self, proposal: OrderProposal, permit: ApprovalPermit, stage: str
     ) -> None:
-        mutation_at = self._utc_now()
+        mutation_at = self._effective_now()
         basic = (
             isinstance(permit, ApprovalPermit)
             and permit.proposal_id == proposal.proposal_id
@@ -528,7 +600,28 @@ class AlpacaPaperClient:
             or not self._permit_validator(proposal, permit, stage, mutation_at)
         ):
             raise AlpacaPaperError("broker mutation lacks an unused journal-backed approval permit")
-        if self._utc_now() >= permit.mutation_deadline:
+        self._require_transport_window(permit)
+
+    def _effective_now(self) -> datetime:
+        local = self._utc_now()
+        if local.tzinfo is None:
+            raise AlpacaPaperError("mutation clock must be timezone-aware")
+        if self._clock_anchor is not None:
+            broker_time, started = self._clock_anchor
+            elapsed = self._monotonic() - started
+            if elapsed < 0 or not math.isfinite(elapsed):
+                raise AlpacaPaperError("monotonic mutation clock regressed")
+            return max(local, broker_time + timedelta(seconds=elapsed))
+        if self._default_transport_selected:
+            raise AlpacaPaperError("broker clock must be sampled before mutation")
+        return local  # Explicitly injected offline transports retain a test clock.
+
+    def _require_transport_window(self, permit: ApprovalPermit) -> None:
+        # Reserve the entire tolerated clock uncertainty, never use it to extend
+        # a deadline. Equality is expired. Network arrival time is not guaranteed.
+        if self._effective_now() + timedelta(
+            seconds=QUOTE_FUTURE_TOLERANCE_SECONDS
+        ) >= permit.mutation_deadline:
             raise AlpacaPaperError("broker mutation approval expired before transport")
 
     @staticmethod

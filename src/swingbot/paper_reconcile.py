@@ -6,7 +6,7 @@ from decimal import Decimal
 from typing import Any
 
 from .paper_journal import PaperJournal
-from .paper_models import OrderProposal, PaperAccount, PaperOrder, PaperPosition, decimal_string
+from .paper_models import OrderProposal, PaperAccount, PaperOrder, PaperPosition, decimal_string, parse_timestamp
 from .paper_state import ManagedPosition, reduce_events
 
 
@@ -690,6 +690,17 @@ class PaperReconciler:
             return [f"filled_exit_missing_or_invalid_timestamp:{managed.symbol}"]
         if order.filled_quantity != managed.quantity:
             return [f"filled_exit_quantity_mismatch:{managed.symbol}"]
+        # The entry may have been imported on an earlier poll. Validate causality
+        # here, in the shared stop/approved-exit close path, before changing state.
+        entry = next((
+            event for event in reversed(self.journal.events())
+            if event["event_type"] == "entry_filled"
+            and event["payload"].get("client_order_id") == managed.entry_client_order_id
+        ), None)
+        if entry is None:
+            return [f"filled_exit_missing_entry_timestamp:{managed.symbol}"]
+        if order.filled_at < parse_timestamp(str(entry["occurred_at"])):
+            return [f"filled_exit_precedes_entry:{managed.symbol}"]
         pnl = (order.filled_average_price - managed.entry_price) * order.filled_quantity
         self.journal._append_state(
             "position_closed",
@@ -855,10 +866,17 @@ class PaperReconciler:
                 return "incomplete_filled_evidence"
         elif order.filled_quantity == order.quantity:
             return "fully_filled_quantity_with_nonfilled_status"
-        elif order.filled_quantity == 0 and (
-            order.filled_average_price is not None or order.filled_at is not None
+        elif order.filled_quantity == 0:
+            if order.status == "partially_filled":
+                return "partial_status_without_partial_quantity"
+            if order.filled_average_price is not None or order.filled_at is not None:
+                return "unfilled_order_has_fill_evidence"
+        elif (
+            order.status != "partially_filled"
+            or order.filled_average_price is None
+            or order.filled_at is None
         ):
-            return "unfilled_order_has_fill_evidence"
+            return "inconsistent_partial_fill_evidence"
         return None
 
     def _expected_cash_from_ledger(self) -> Decimal | None:

@@ -23,6 +23,19 @@ Try to falsify both halves: find any code path that could reach live money or by
 10. Check Alpaca's current official documentation for fractional TIF, advanced-order TIF and leg behavior, empty/simple `order_class`, order states, asynchronous cancellation, `filled_at`/`filled_qty`, nested retrieval, pagination, paper endpoint, account, asset, quote, and historical-bar semantics. Confirm that parent/child association is validated through the documented direct nested `legs` relationship without assuming an undocumented child `parent_order_id`. Cite exact primary pages and identify any documentation ambiguity.
 11. Inspect all 26 source modules and every test, not a sample. Report critical, major, and minor findings with file and line evidence.
 
+## Additional counterexamples after the `35b570c` re-audit
+
+The current owner-authorized fixes are described in `PAPER_FIX_VERIFICATION.md`. Independently repeat those probes; do not infer certification from the fixing agent's results.
+
+- Cross the deadline during JSON serialization, journal lock/integrity checking, TLS setup, and between HTTP header/body writes. Exercise the production urllib handler with a fake socket, not only an injected transport. Test equality and local/broker clock regressions. Distinguish local write authorization from unprovable remote arrival timing or arbitrary process suspension.
+- Import an entry on one poll, then report a protective stop or ordinary exit with an earlier timestamp on the next. Neither may create a close or realized P&L. Equal entry/stop timestamps remain valid.
+- Complete a coherent zero-P&L entry/stop round trip during a slow order poll. Status, scan, reconciliation, and owner-confirmed clearing must use a subsequent broker clock, without accepting genuinely future fills.
+- Make real adapter parsing raise on malformed timestamps, numeric strings, or missing fields. Restore a clean response and prove new execution stays blocked by a durable latch. Test working child orders with partial, future, nonfinite, price-only, and missing-ID fill evidence.
+- Repeat contradictory child-order fill probes during later reconciliation, not only the immediate acknowledgement. A working status such as `new` with a partial filled quantity must latch; coherent `partially_filled` evidence must remain fail-closed through the existing partial-fill path.
+- Swap ancestors after directory opening and before chmod/open/replace; swap leaves after checking and before opening. Verify the redirected target's contents and mode remain untouched for journal, lock, and dashboard. Preserve legitimate root-owned macOS aliases.
+- Test competing journal writers and failures both before and after atomic snapshot publication. Reopen and verify event/hash-chain integrity and exact-once authorization. Legacy uncheckpointed WAL/rollback data must be rejected without discarding it; a closed, fully checkpointed legacy SQLite file must preserve all existing events.
+- Confirm current PDT claims use current official documentation. Do not treat the older versioned paper guide as proof of owner-account restrictions.
+
 ## Bright-line pass conditions
 
 - Zero path to live-money submission.

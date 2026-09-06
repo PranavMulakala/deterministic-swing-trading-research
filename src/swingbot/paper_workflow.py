@@ -121,9 +121,9 @@ class PaperWorkflow:
     def bind_clean_account(self, *, now: datetime | None = None) -> dict[str, Any]:
         self._require_runtime_config()
         self.journal.verify_integrity()
-        account = self.broker.get_account()
-        positions = self.broker.list_positions()
-        orders = self.broker.list_orders(status="all")
+        account = self._broker_read(self.broker.get_account)
+        positions = self._broker_read(self.broker.list_positions)
+        orders = self._broker_read(self.broker.list_orders, status="all")
         existing = self.journal.account_binding()
         if existing:
             try:
@@ -155,12 +155,14 @@ class PaperWorkflow:
     @_serialized
     def reconcile_now(self, *, now: datetime | None = None) -> ReconciliationReport:
         self._require_runtime_config()
-        account = self.broker.get_account()
-        timestamp = now or datetime.now(timezone.utc)
+        account = self._broker_read(self.broker.get_account)
+        positions = self._broker_read(self.broker.list_positions)
+        orders = self._broker_read(self.broker.list_orders, status="all")
+        timestamp = now or self._broker_read(self.broker.get_clock).timestamp
         report = self.reconciler.reconcile(
             account=account,
-            positions=self.broker.list_positions(),
-            orders=self.broker.list_orders(status="all"),
+            positions=positions,
+            orders=orders,
             now=timestamp,
         )
         require_operable_account(account, self.paper_config)
@@ -171,7 +173,7 @@ class PaperWorkflow:
         account, clock, positions, orders = self._clean_snapshot()
         del account, positions, orders
         start = clock.timestamp.date() - timedelta(days=500)
-        bars = self.broker.historical_daily_bars(
+        bars = self._broker_read(self.broker.historical_daily_bars,
             list(self.universe),
             start=start,
             end=clock.timestamp.date(),
@@ -210,7 +212,7 @@ class PaperWorkflow:
         state = reduce_events(self.journal.events())
         if not state.positions:
             return []
-        bars = self.broker.historical_daily_bars(
+        bars = self._broker_read(self.broker.historical_daily_bars,
             sorted(state.positions),
             start=clock.timestamp.date() - timedelta(days=500),
             end=clock.timestamp.date(),
@@ -258,7 +260,7 @@ class PaperWorkflow:
         account, clock, positions, orders = self._clean_snapshot()
         require_market_open(clock)
         start = clock.timestamp.date() - timedelta(days=500)
-        bars_by_symbol = self.broker.historical_daily_bars(
+        bars_by_symbol = self._broker_read(self.broker.historical_daily_bars,
             [clean_symbol],
             start=start,
             end=clock.timestamp.date(),
@@ -286,7 +288,7 @@ class PaperWorkflow:
                 occurred_at=clock.timestamp,
             )
             raise PaperWorkflowError(f"entry fails strategy filter: {decision.rejection_reason}")
-        quote = self.broker.latest_quote(
+        quote = self._broker_read(self.broker.latest_quote,
             clean_symbol, feed=self.paper_config["broker"]["market_data_feed"]
         )
         require_quote(quote, now=clock.timestamp, paper_config=self.paper_config)
@@ -298,7 +300,7 @@ class PaperWorkflow:
             paper_config=self.paper_config,
         )
         fractional = is_fractional(quantity)
-        asset = self.broker.get_asset(clean_symbol)
+        asset = self._broker_read(self.broker.get_asset, clean_symbol)
         require_asset(asset, clean_symbol, fractional=fractional)
         terminal = set(self.paper_config["monitoring"]["order_terminal_statuses"])
         require_no_symbol_conflict(clean_symbol, positions, orders, terminal)
@@ -364,7 +366,7 @@ class PaperWorkflow:
             raise PaperWorkflowError("another working order already exists for symbol")
         selected_reason = reason
         if reason == "auto":
-            bars = self.broker.historical_daily_bars(
+            bars = self._broker_read(self.broker.historical_daily_bars,
                 [clean_symbol],
                 start=clock.timestamp.date() - timedelta(days=500),
                 end=clock.timestamp.date(),
@@ -388,7 +390,7 @@ class PaperWorkflow:
                 raise PaperWorkflowError("position has no deterministic exit signal")
         if selected_reason not in {"recovery_target", "time_stop", "manual_owner_exit"}:
             raise PaperWorkflowError("unsupported exit reason")
-        quote = self.broker.latest_quote(
+        quote = self._broker_read(self.broker.latest_quote,
             clean_symbol, feed=self.paper_config["broker"]["market_data_feed"]
         )
         require_quote(quote, now=clock.timestamp, paper_config=self.paper_config)
@@ -470,19 +472,19 @@ class PaperWorkflow:
         if proposal.action == "entry_oto":
             # Asset lookup can be a slow network request. Complete it before the
             # final state/quote/clock snapshot used to authorize a mutation.
-            asset = self.broker.get_asset(proposal.symbol)
+            asset = self._broker_read(self.broker.get_asset, proposal.symbol)
         elif proposal.action != "close_position":
             raise PaperWorkflowError("unknown proposal action")
 
         # Sample the clock last so every potentially slow preflight request is
         # bounded by the final broker timestamp rather than the initial snapshot.
-        account = self.broker.get_account()
-        positions = self.broker.list_positions()
-        orders = self.broker.list_orders(status="all")
-        quote = self.broker.latest_quote(
+        account = self._broker_read(self.broker.get_account)
+        positions = self._broker_read(self.broker.list_positions)
+        orders = self._broker_read(self.broker.list_orders, status="all")
+        quote = self._broker_read(self.broker.latest_quote,
             proposal.symbol, feed=self.paper_config["broker"]["market_data_feed"]
         )
-        clock = self.broker.get_clock()
+        clock = self._broker_read(self.broker.get_clock)
         report = self.reconciler.reconcile(
             account=account, positions=positions, orders=orders, now=clock.timestamp
         )
@@ -593,8 +595,8 @@ class PaperWorkflow:
             ) from None
         acknowledgement_clock: PaperClock | None = None
         try:
-            order = self.broker.get_order(order.order_id)
-            acknowledgement_clock = self.broker.get_clock()
+            order = self._broker_read(self.broker.get_order, order.order_id)
+            acknowledgement_clock = self._broker_read(self.broker.get_clock)
             if proposal.action == "entry_oto":
                 self._validate_entry_ack(
                     proposal, order, acknowledgement_clock.timestamp
@@ -626,10 +628,10 @@ class PaperWorkflow:
     def status(self) -> dict[str, Any]:
         self._require_runtime_config()
         self.journal.verify_integrity()
-        account = self.broker.get_account()
-        clock = self.broker.get_clock()
-        positions = self.broker.list_positions()
-        orders = self.broker.list_orders(status="all")
+        account = self._broker_read(self.broker.get_account)
+        positions = self._broker_read(self.broker.list_positions)
+        orders = self._broker_read(self.broker.list_orders, status="all")
+        clock = self._broker_read(self.broker.get_clock)
         report = self.reconciler.reconcile(
             account=account,
             positions=positions,
@@ -695,12 +697,14 @@ class PaperWorkflow:
             raise PaperWorkflowError("kill-switch clear confirmation is incorrect")
         if not self.journal.kill_switch_latched():
             return
-        account = self.broker.get_account()
-        clock = self.broker.get_clock()
+        account = self._broker_read(self.broker.get_account)
+        positions = self._broker_read(self.broker.list_positions)
+        orders = self._broker_read(self.broker.list_orders, status="all")
+        clock = self._broker_read(self.broker.get_clock)
         report = self.reconciler.reconcile(
             account=account,
-            positions=self.broker.list_positions(),
-            orders=self.broker.list_orders(status="all"),
+            positions=positions,
+            orders=orders,
             now=clock.timestamp,
         )
         if not report.ok:
@@ -726,12 +730,12 @@ class PaperWorkflow:
         if not self.journal.kill_switch_latched():
             raise PaperWorkflowError("paper-run rebaseline requires a latched kill switch")
         binding = self.journal.account_binding()
-        account = self.broker.get_account()
+        account = self._broker_read(self.broker.get_account)
         require_account_binding(account, binding)
-        positions = self.broker.list_positions()
-        orders = self.broker.list_orders(status="all")
+        positions = self._broker_read(self.broker.list_positions)
+        orders = self._broker_read(self.broker.list_orders, status="all")
         require_initial_account(account, positions, orders, self.paper_config)
-        timestamp = now or self.broker.get_clock().timestamp
+        timestamp = now or self._broker_read(self.broker.get_clock).timestamp
         prior_runs = sum(
             event["event_type"] in {"account_bound", "paper_run_rebaselined"}
             for event in self.journal.events()
@@ -764,7 +768,7 @@ class PaperWorkflow:
             raise PaperWorkflowError("proposal belongs to a different paper account")
         if clock.timestamp > proposal.expires_at:
             raise PaperWorkflowError("proposal has expired; create a fresh proposal")
-        quote = self.broker.latest_quote(
+        quote = self._broker_read(self.broker.latest_quote,
             proposal.symbol, feed=self.paper_config["broker"]["market_data_feed"]
         )
         require_quote(
@@ -881,10 +885,10 @@ class PaperWorkflow:
     ) -> tuple[PaperAccount, PaperClock, list[PaperPosition], list[PaperOrder]]:
         self.journal.verify_integrity()
         self._require_runtime_config()
-        account = self.broker.get_account()
-        clock = self.broker.get_clock()
-        positions = self.broker.list_positions()
-        orders = self.broker.list_orders(status="all")
+        account = self._broker_read(self.broker.get_account)
+        positions = self._broker_read(self.broker.list_positions)
+        orders = self._broker_read(self.broker.list_orders, status="all")
+        clock = self._broker_read(self.broker.get_clock)
         report = self.reconciler.reconcile(
             account=account, positions=positions, orders=orders, now=clock.timestamp
         )
@@ -910,7 +914,7 @@ class PaperWorkflow:
     ) -> None:
         terminal = set(self.paper_config["monitoring"]["order_terminal_statuses"])
         require_no_symbol_conflict(proposal.symbol, positions, orders, terminal)
-        asset = asset or self.broker.get_asset(proposal.symbol)
+        asset = asset or self._broker_read(self.broker.get_asset, proposal.symbol)
         require_asset(asset, proposal.symbol, fractional=proposal.fractional)
         if proposal.fractional:
             raise PaperWorkflowError("Alpaca fractional DAY orders cannot protect a swing overnight")
@@ -1016,9 +1020,9 @@ class PaperWorkflow:
                 "protective stop partially filled before cancellation; close order was not submitted"
             )
         try:
-            account = self.broker.get_account()
-            post_cancel_clock = self.broker.get_clock()
-            positions = self.broker.list_positions()
+            account = self._broker_read(self.broker.get_account)
+            positions = self._broker_read(self.broker.list_positions)
+            post_cancel_clock = self._broker_read(self.broker.get_clock)
             require_operable_account(account, self.paper_config)
             require_account_binding(account, self.journal.account_binding())
             require_market_open(post_cancel_clock)
@@ -1085,7 +1089,11 @@ class PaperWorkflow:
             raise PaperWorkflowError("broker entry is partially filled and not fully protected")
         if order.status == "filled":
             self._require_complete_fill(proposal, order, "entry", now)
-        elif order.filled_quantity != 0 or order.filled_at is not None:
+        elif (
+            order.filled_quantity != 0
+            or order.filled_at is not None
+            or order.filled_average_price is not None
+        ):
             raise PaperWorkflowError("unfilled broker entry reports inconsistent fill fields")
         stops = list(order.legs)
         working_statuses = set(
@@ -1120,6 +1128,16 @@ class PaperWorkflow:
                 raise PaperWorkflowError(
                     "broker-native protective stop fill predates the entry fill"
                 )
+        elif (
+            not stops[0].order_id
+            or not stops[0].filled_quantity.is_finite()
+            or stops[0].filled_quantity != 0
+            or stops[0].filled_average_price is not None
+            or stops[0].filled_at is not None
+        ):
+            raise PaperWorkflowError(
+                "working broker-native protective stop reports invalid fill evidence"
+            )
 
     def _validate_exit_ack(
         self, proposal: OrderProposal, order: PaperOrder, now: datetime
@@ -1146,7 +1164,11 @@ class PaperWorkflow:
             raise PaperWorkflowError("broker exit is partially filled after stop cancellation")
         if order.status == "filled":
             self._require_complete_fill(proposal, order, "exit", now)
-        elif order.filled_quantity != 0 or order.filled_at is not None:
+        elif (
+            order.filled_quantity != 0
+            or order.filled_at is not None
+            or order.filled_average_price is not None
+        ):
             raise PaperWorkflowError("unfilled broker exit reports inconsistent fill fields")
 
     @staticmethod
@@ -1170,7 +1192,7 @@ class PaperWorkflow:
         self, proposal: OrderProposal, now: datetime, original_error: Exception
     ) -> PaperOrder:
         try:
-            return self.broker.get_order_by_client_id(proposal.client_order_id)
+            return self._broker_read(self.broker.get_order_by_client_id, proposal.client_order_id)
         except Exception:
             self._latch(
                 "order_submission_uncertain",
@@ -1227,6 +1249,21 @@ class PaperWorkflow:
         except Exception:
             # A broken journal must never replace the original fail-closed error.
             pass
+
+    def _broker_read(
+        self, method: Callable[..., _Result], *args: Any, **kwargs: Any
+    ) -> _Result:
+        try:
+            return method(*args, **kwargs)
+        except Exception as exc:
+            # Malformed wire data may raise before reconciliation can inspect a
+            # typed snapshot. A later clean response must not erase that failure.
+            self._latch_best_effort(
+                "broker_read_failed",
+                [getattr(method, "__name__", "broker_read"), type(exc).__name__],
+                datetime.now(timezone.utc),
+            )
+            raise
 
     def _universe_symbol(self, symbol: str) -> str:
         clean = symbol.strip().upper()
@@ -1352,7 +1389,7 @@ class PaperWorkflow:
         return hashlib.sha256(canonical_json(config).encode("utf-8")).hexdigest()
 
     def _expected_signal_date(self, clock: PaperClock) -> date:
-        days = self.broker.trading_days(
+        days = self._broker_read(self.broker.trading_days,
             start=clock.timestamp.date() - timedelta(days=10),
             end=clock.timestamp.date(),
         )

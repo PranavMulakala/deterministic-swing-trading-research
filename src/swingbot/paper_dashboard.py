@@ -2,12 +2,10 @@ from __future__ import annotations
 
 import html
 import json
-import os
-import tempfile
 from pathlib import Path
 from typing import Any
 
-from .safe_paths import require_no_symlink_components
+from .safe_paths import require_no_symlink_components, private_parent
 
 
 def write_paper_dashboard(
@@ -16,9 +14,6 @@ def write_paper_dashboard(
     destination = require_no_symlink_components(
         destination, label="paper dashboard"
     )
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    require_no_symlink_components(destination, label="paper dashboard")
-    os.chmod(destination.parent, 0o700)
     safe_status = html.escape(json.dumps(_redact(status), indent=2, sort_keys=True))
     rows = []
     for event in reversed(events):
@@ -61,26 +56,8 @@ code {{ white-space: pre-wrap; word-break: break-word; }}
 </body>
 </html>
 """
-    temporary_name: str | None = None
-    try:
-        with tempfile.NamedTemporaryFile(
-            "w",
-            encoding="utf-8",
-            dir=destination.parent,
-            prefix=f".{destination.name}.",
-            suffix=".tmp",
-            delete=False,
-        ) as temporary:
-            temporary_name = temporary.name
-            os.fchmod(temporary.fileno(), 0o600)
-            temporary.write(body)
-            temporary.flush()
-            os.fsync(temporary.fileno())
-        os.replace(temporary_name, destination)
-        os.chmod(destination, 0o600)
-    finally:
-        if temporary_name is not None and os.path.exists(temporary_name):
-            os.unlink(temporary_name)
+    with private_parent(destination, label="paper dashboard") as directory:
+        directory.replace(destination.name, body.encode("utf-8"))
 
 
 def _redact(value: Any) -> Any:
