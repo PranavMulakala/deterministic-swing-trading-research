@@ -106,10 +106,19 @@ def floor_cents(x):
     return math.floor(x * 100 + 1e-9) / 100
 
 
+APPROVED = {"short_delta": TARGET_DELTA, "width": WIDTH, "long_delta": None, "min_credit": MIN_CREDIT}
+# Pre-declared on Sept 28 after the approved rule proved almost never to trade (median credit $0.40-0.67):
+# the smallest fix, and the structure of the FlashAlpha study that motivated the volatility filter.
+VARIANTS = {"approved_5wide_min075": APPROVED,
+            "5wide_min050": {**APPROVED, "min_credit": 0.50},
+            "delta25_10_nomin": {"short_delta": 0.25, "width": None, "long_delta": 0.10, "min_credit": 0.0}}
+
+
 class Replay:
-    def __init__(self, days, calendar, rates, scenario, use_vol_filter=True):
+    def __init__(self, days, calendar, rates, scenario, use_vol_filter=True, rules=None, name="approved_5wide_min075"):
         self.days, self.calendar, self.rates = days, calendar, rates
         self.scenario, self.use_vol_filter = scenario, use_vol_filter
+        self.rules, self.name = rules or APPROVED, name
         self.cash, self.position, self.trades, self.marks = START_EQUITY, None, [], []
         self.stats, self.closes = Counter(), []
 
@@ -168,24 +177,35 @@ class Replay:
         if not trend_ok or (self.use_vol_filter and not vol_ok):
             self.stats["skip_filters"] += 1
             return
-        candidates = []
+        rules = self.rules
+        deltas = {}
         for strike, q in chain.items():
-            if strike - WIDTH in chain and strike < spot:
+            if strike < spot:
                 iv = implied_vol(mid(q), spot, strike, t, r)
                 if iv is not None:
-                    delta = bs_put(spot, strike, t, r, iv)[1]
-                    candidates.append((abs(abs(delta) - TARGET_DELTA), -strike, strike, delta))
-        if not candidates:
+                    deltas[strike] = bs_put(spot, strike, t, r, iv)[1]
+        shorts = [(abs(abs(d) - rules["short_delta"]), -k, k, d) for k, d in deltas.items()
+                  if rules["width"] is None or k - rules["width"] in chain]
+        if not shorts:
             self.stats["skip_no_candidates"] += 1
             return
-        _, _, short_k, delta = min(candidates)
-        short, long = chain[short_k], chain[short_k - WIDTH]
+        _, _, short_k, delta = min(shorts)
+        if rules["width"] is not None:
+            long_k = short_k - rules["width"]
+        else:
+            longs = [(abs(abs(d) - rules["long_delta"]), k) for k, d in deltas.items() if k < short_k]
+            if not longs:
+                self.stats["skip_no_candidates"] += 1
+                return
+            long_k = min(longs)[1]
+        width = short_k - long_k
+        short, long = chain[short_k], chain[long_k]
         mid_credit = floor_cents(mid(short) - mid(long))
-        if mid_credit < MIN_CREDIT:
+        if mid_credit < rules["min_credit"] or mid_credit <= 0 or mid_credit >= width:
             self.stats["skip_credit"] += 1
             return
         equity = self.equity_mark(quotes) if self.position else self.cash
-        qty = min(MAX_CONTRACTS, int(equity * RISK // ((WIDTH - mid_credit) * 100)))
+        qty = min(MAX_CONTRACTS, int(equity * RISK // ((width - mid_credit) * 100)))
         credit = mid_credit if self.scenario == "mid" else round(short[0] - long[1], 2)
         if qty < 1 or credit <= 0:
             self.stats["skip_size_or_fill"] += 1
@@ -193,11 +213,12 @@ class Replay:
         fees = FEE_PER_LEG * 2 * qty
         self.cash += credit * 100 * qty - fees
         self.position = {"entry_date": day.isoformat(), "expiration": expiration.isoformat(), "short": short_k,
-                         "long": short_k - WIDTH, "delta": round(delta, 3), "qty": qty, "credit": credit,
+                         "long": long_k, "width": width, "delta": round(delta, 3), "qty": qty, "credit": credit,
                          "mid_credit": mid_credit, "breakeven": short_k - credit, "tp_limit": floor_cents(credit / 2),
+                         "max_loss": round((width - credit) * 100 * qty, 2),
                          "entry_fees": fees, "spot": round(spot, 2), "atm_iv": round(atm_iv or 0, 4),
                          "rv20": round(rv20, 4), "short_key": (expiration, "P", short_k),
-                         "long_key": (expiration, "P", short_k - WIDTH)}
+                         "long_key": (expiration, "P", long_k)}
         self.stats["entries"] += 1
 
     def equity_mark(self, quotes):
@@ -205,7 +226,7 @@ class Replay:
             return self.cash
         p = self.position
         short, long = quotes.get(p["short_key"]), quotes.get(p["long_key"])
-        value = (mid(short) - mid(long)) if short and long else p.get("last_value", WIDTH / 2)
+        value = (mid(short) - mid(long)) if short and long else p.get("last_value", p["width"] / 2)
         p["last_value"] = value
         return self.cash - value * 100 * p["qty"]
 
@@ -215,7 +236,7 @@ class Replay:
         if self.position and day >= date.fromisoformat(self.position["expiration"]):
             spot = morning_spot or (self.closes[-1] if self.closes else None)
             if spot is not None:  # Safeguard only: missing quotes kept the time exit from firing.
-                self.exit(day, min(WIDTH, max(0.0, self.position["short"] - spot)), "expired_settlement")
+                self.exit(day, min(self.position["width"], max(0.0, self.position["short"] - spot)), "expired_settlement")
                 self.stats["expired_settlement"] += 1
         if self.position and morning:
             self.check_profit_take(day, morning)
@@ -239,10 +260,16 @@ class Replay:
                 self.closes.append(close_spot)
             self.marks.append((day.isoformat(), round(self.equity_mark(close), 2)))
 
-    def report(self):
+    def report(self, holdout_from=None):
         pnls = [t["pnl"] for t in self.trades]
         wins = [p for p in pnls if p > 0]
         losses = [p for p in pnls if p <= 0]
+        periods = {}
+        if holdout_from:
+            for label, keep in (("development", lambda t: t["entry_date"] < holdout_from),
+                                ("holdout", lambda t: t["entry_date"] >= holdout_from)):
+                chosen = [t for t in self.trades if keep(t)]
+                periods[label] = period_stats(chosen)
         peak, drawdown, worst = START_EQUITY, 0.0, None
         for day, equity in self.marks:
             peak = max(peak, equity)
@@ -256,8 +283,10 @@ class Replay:
             y["wins"] += t["pnl"] > 0
         final = self.marks[-1][1] if self.marks else START_EQUITY
         span_years = max((date.fromisoformat(self.marks[-1][0]) - date.fromisoformat(self.marks[0][0])).days / 365.25, 1e-9) if self.marks else 1
-        return {"scenario": self.scenario, "vol_filter": self.use_vol_filter,
+        return {"variant": self.name, "rules": self.rules, "scenario": self.scenario, "vol_filter": self.use_vol_filter,
                 "first_day": self.marks[0][0] if self.marks else None, "last_day": self.marks[-1][0] if self.marks else None,
+                "trades_per_year": round(len(pnls) / span_years, 2), "periods": periods,
+                "avg_return_on_risk_pct": period_stats(self.trades)["avg_return_on_risk_pct"],
                 "trades": len(pnls), "win_rate": round(len(wins) / len(pnls), 3) if pnls else None,
                 "avg_win": round(statistics.mean(wins), 2) if wins else None,
                 "avg_loss": round(statistics.mean(losses), 2) if losses else None,
@@ -267,6 +296,17 @@ class Replay:
                 "max_drawdown_pct": round(drawdown * 100, 2), "max_drawdown_day": worst,
                 "exit_reasons": dict(Counter(t["reason"] for t in self.trades)), "by_year": dict(sorted(years.items())),
                 "filter_stats": dict(self.stats), "open_position_at_end": bool(self.position), "trade_list": self.trades}
+
+
+def period_stats(trades):
+    pnls = [t["pnl"] for t in trades]
+    rors = [t["pnl"] / t["max_loss"] * 100 for t in trades if t.get("max_loss")]
+    wins = [p for p in pnls if p > 0]
+    return {"trades": len(pnls), "win_rate": round(len(wins) / len(pnls), 3) if pnls else None,
+            "total_pnl": round(sum(pnls), 2), "avg_pnl": round(statistics.mean(pnls), 2) if pnls else None,
+            "worst_trade": min(pnls) if pnls else None,
+            "avg_return_on_risk_pct": round(statistics.mean(rors), 2) if rors else None,
+            "exit_reasons": dict(Counter(t["reason"] for t in trades))}
 
 
 def available_days():
@@ -282,14 +322,17 @@ def calendar_days(first, last):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--through", type=date.fromisoformat, help="ignore data after this date (e.g. while downloading)")
+    parser.add_argument("--holdout-from", help="report trades entered on/after this date (YYYY-MM-DD) separately")
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Output already exists")
-    days = available_days()
+    days = [d for d in available_days() if args.through is None or d <= args.through]
     calendar = calendar_days(days[0], date(days[-1].year + 1, 3, 31))
     missing = [d for d in calendar if days[0] <= d <= days[-1] and d not in set(days)]
     rates = load_rates()
-    replays = [Replay(days, calendar, rates, scenario, vol) for vol in (True, False) for scenario in ("mid", "natural")]
+    replays = [Replay(days, calendar, rates, scenario, vol, rules, name) for name, rules in VARIANTS.items()
+               for vol in (True, False) for scenario in ("mid", "natural")]
     spots = []
     for day in days:  # Each day's file is read once and fed to all four scenarios.
         snap = load_day(DATA / str(day.year) / f"{day.isoformat()}.csv.gz")
@@ -299,7 +342,7 @@ def main():
         spots.append(close_spot)
         for replay in replays:
             replay.step(day, morning, close, morning_spot, close_spot)
-    results = [replay.report() for replay in replays]
+    results = [replay.report(args.holdout_from) for replay in replays]
     spots = [s for s in (spots[0], spots[-1])]
     out = {"status": "HISTORICAL_REPLAY_NOT_LIVE_EVIDENCE", "data_days": len(days), "first": days[0].isoformat(),
            "last": days[-1].isoformat(), "calendar_days_missing_data": [d.isoformat() for d in missing],
@@ -308,8 +351,9 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(out, indent=2, default=str) + "\n")
     for res in results:
-        print(json.dumps({k: res[k] for k in ("scenario", "vol_filter", "trades", "win_rate", "avg_win", "avg_loss",
-                                               "worst_trade", "total_pnl", "cagr_pct", "max_drawdown_pct")}))
+        print(json.dumps({k: res[k] for k in ("variant", "scenario", "vol_filter", "trades", "trades_per_year", "win_rate",
+                                               "avg_win", "avg_loss", "worst_trade", "total_pnl",
+                                               "avg_return_on_risk_pct", "max_drawdown_pct")}))
 
 
 if __name__ == "__main__":
