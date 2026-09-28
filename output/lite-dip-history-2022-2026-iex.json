@@ -1,0 +1,900 @@
+{
+  "symbol": "LITE",
+  "signal_feed": "iex",
+  "ticket_dollars": "60000",
+  "sale_needs_trading_beyond_target_pct": "0",
+  "missing_sip_sessions": 0,
+  "windows": {
+    "boom_2025_2026": {
+      "from": "2025-01-02",
+      "to": "2026-09-28",
+      "sessions": 435,
+      "signals": 177,
+      "buys": 92,
+      "no_data": 31,
+      "skipped_holding": 85,
+      "sales": 92,
+      "realized_pnl": 125568,
+      "marked_pnl_at_end": 125568,
+      "weeks": 92,
+      "weeks_realized_1000_plus": 53,
+      "weeks_marked_1000_plus": 52,
+      "weeks_marked_minus_1000_or_worse": 20,
+      "worst_marked_week": -9275,
+      "average_realized_per_week": 1365,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597,
+      "worst_paper_loss_on_one_holding": {
+        "entry_day": "2025-02-10",
+        "fill": "83.97",
+        "low": "45.65",
+        "percent": -45.6,
+        "dollars": -27360
+      },
+      "longest_hold": {
+        "entry_day": "2025-02-10",
+        "exit_day": "2025-06-12",
+        "sessions": 86
+      },
+      "same_day_sales": 47,
+      "sales_within_5_sessions": 81,
+      "open_at_end": null
+    },
+    "year_2025": {
+      "from": "2025-01-02",
+      "to": "2025-12-31",
+      "sessions": 250,
+      "signals": 88,
+      "buys": 38,
+      "no_data": 31,
+      "skipped_holding": 50,
+      "sales": 37,
+      "realized_pnl": 50402,
+      "marked_pnl_at_end": 46535,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 24,
+      "weeks_marked_1000_plus": 27,
+      "weeks_marked_minus_1000_or_worse": 13,
+      "worst_marked_week": -9275,
+      "average_realized_per_week": 951,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597,
+      "worst_paper_loss_on_one_holding": {
+        "entry_day": "2025-02-10",
+        "fill": "83.97",
+        "low": "45.65",
+        "percent": -45.6,
+        "dollars": -27360
+      },
+      "longest_hold": {
+        "entry_day": "2025-02-10",
+        "exit_day": "2025-06-12",
+        "sessions": 86
+      },
+      "same_day_sales": 14,
+      "sales_within_5_sessions": 31,
+      "open_at_end": {
+        "entry_day": "2025-12-26",
+        "fill": "393.80",
+        "shares": 152,
+        "marked_pnl": -3867
+      }
+    },
+    "year_2026": {
+      "from": "2026-01-02",
+      "to": "2026-09-28",
+      "sessions": 185,
+      "signals": 89,
+      "buys": 56,
+      "skipped_holding": 33,
+      "sales": 56,
+      "realized_pnl": 76362,
+      "marked_pnl_at_end": 76362,
+      "weeks": 40,
+      "weeks_realized_1000_plus": 29,
+      "weeks_marked_1000_plus": 25,
+      "weeks_marked_minus_1000_or_worse": 8,
+      "worst_marked_week": -5485,
+      "average_realized_per_week": 1909,
+      "longest_run_of_weeks_without_a_sale": 7,
+      "worst_drop_from_peak_marked": -21185,
+      "worst_paper_loss_on_one_holding": {
+        "entry_day": "2026-06-16",
+        "fill": "933.24",
+        "low": "594.84",
+        "percent": -36.3,
+        "dollars": -21658
+      },
+      "longest_hold": {
+        "entry_day": "2026-06-16",
+        "exit_day": "2026-08-12",
+        "sessions": 40
+      },
+      "same_day_sales": 35,
+      "sales_within_5_sessions": 52,
+      "open_at_end": null
+    },
+    "stress_2022_2024": {
+      "from": "2022-01-03",
+      "to": "2024-12-31",
+      "sessions": 753,
+      "no_data": 445,
+      "signals": 87,
+      "buys": 52,
+      "skipped_holding": 35,
+      "sales": 51,
+      "realized_pnl": 65263,
+      "marked_pnl_at_end": 61756,
+      "weeks": 157,
+      "weeks_realized_1000_plus": 41,
+      "weeks_marked_1000_plus": 61,
+      "weeks_marked_minus_1000_or_worse": 32,
+      "worst_marked_week": -8644,
+      "average_realized_per_week": 416,
+      "longest_run_of_weeks_without_a_sale": 32,
+      "worst_drop_from_peak_marked": -22736,
+      "worst_paper_loss_on_one_holding": {
+        "entry_day": "2023-06-21",
+        "fill": "58.08",
+        "low": "35.35",
+        "percent": -39.1,
+        "dollars": -23480
+      },
+      "longest_hold": {
+        "entry_day": "2023-06-21",
+        "exit_day": "2024-02-06",
+        "sessions": 159
+      },
+      "same_day_sales": 21,
+      "sales_within_5_sessions": 40,
+      "open_at_end": {
+        "entry_day": "2024-12-18",
+        "fill": "89.18",
+        "shares": 672,
+        "marked_pnl": -3508
+      }
+    }
+  },
+  "switched_on_each_month": [
+    {
+      "switched_on": "2022-01",
+      "first_buy": "2022-02-01",
+      "price": "100.26",
+      "sold": "2022-03-03",
+      "months_waiting": 1.0,
+      "worst_paper_loss": -9018
+    },
+    {
+      "switched_on": "2022-02",
+      "first_buy": "2022-02-01",
+      "price": "100.26",
+      "sold": "2022-03-03",
+      "months_waiting": 1.0,
+      "worst_paper_loss": -9018
+    },
+    {
+      "switched_on": "2022-03",
+      "first_buy": "2022-03-07",
+      "price": "93.62",
+      "sold": "2022-03-09",
+      "months_waiting": 0.1,
+      "worst_paper_loss": -2272
+    },
+    {
+      "switched_on": "2022-04",
+      "first_buy": "2022-04-14",
+      "price": "87.22",
+      "sold": "2022-04-21",
+      "months_waiting": 0.2,
+      "worst_paper_loss": -1628
+    },
+    {
+      "switched_on": "2022-05",
+      "first_buy": "2022-05-04",
+      "price": "88.39",
+      "sold": "2022-05-04",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -2292
+    },
+    {
+      "switched_on": "2022-06",
+      "first_buy": "2022-07-05",
+      "price": "75.77",
+      "sold": "2022-07-06",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -443
+    },
+    {
+      "switched_on": "2022-07",
+      "first_buy": "2022-07-05",
+      "price": "75.77",
+      "sold": "2022-07-06",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -443
+    },
+    {
+      "switched_on": "2022-08",
+      "first_buy": "2022-08-10",
+      "price": "89.89",
+      "sold": "2022-08-10",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -28
+    },
+    {
+      "switched_on": "2022-09",
+      "first_buy": "2022-09-02",
+      "price": "79.57",
+      "sold": "2022-09-02",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -83
+    },
+    {
+      "switched_on": "2022-10",
+      "first_buy": "2022-10-12",
+      "price": "70.41",
+      "sold": "2022-10-18",
+      "months_waiting": 0.2,
+      "worst_paper_loss": -4047
+    },
+    {
+      "switched_on": "2022-11",
+      "first_buy": "2022-11-03",
+      "price": "72.12",
+      "sold": "2022-11-04",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -370
+    },
+    {
+      "switched_on": "2022-12",
+      "first_buy": "2022-12-23",
+      "price": "49.93",
+      "sold": "2022-12-23",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -36
+    },
+    {
+      "switched_on": "2023-01",
+      "first_buy": "2023-03-06",
+      "price": "53.99",
+      "sold": "2023-05-30",
+      "months_waiting": 2.8,
+      "worst_paper_loss": -13321
+    },
+    {
+      "switched_on": "2023-02",
+      "first_buy": "2023-03-06",
+      "price": "53.99",
+      "sold": "2023-05-30",
+      "months_waiting": 2.8,
+      "worst_paper_loss": -13321
+    },
+    {
+      "switched_on": "2023-03",
+      "first_buy": "2023-03-06",
+      "price": "53.99",
+      "sold": "2023-05-30",
+      "months_waiting": 2.8,
+      "worst_paper_loss": -13321
+    },
+    {
+      "switched_on": "2023-04",
+      "first_buy": "2023-05-24",
+      "price": "46.02",
+      "sold": "2023-05-25",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -873
+    },
+    {
+      "switched_on": "2023-05",
+      "first_buy": "2023-05-24",
+      "price": "46.02",
+      "sold": "2023-05-25",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -873
+    },
+    {
+      "switched_on": "2023-06",
+      "first_buy": "2023-06-06",
+      "price": "49.80",
+      "sold": "2023-06-07",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -734
+    },
+    {
+      "switched_on": "2023-07",
+      "first_buy": "2023-07-12",
+      "price": "53.31",
+      "sold": "2023-07-12",
+      "months_waiting": 0.0,
+      "worst_paper_loss": 0
+    },
+    {
+      "switched_on": "2023-08",
+      "first_buy": "2023-08-09",
+      "price": "51.72",
+      "sold": "2023-08-23",
+      "months_waiting": 0.5,
+      "worst_paper_loss": -8085
+    },
+    {
+      "switched_on": "2023-09",
+      "first_buy": "2023-09-01",
+      "price": "53.86",
+      "sold": "2024-01-22",
+      "months_waiting": 4.7,
+      "worst_paper_loss": -20602
+    },
+    {
+      "switched_on": "2023-10",
+      "first_buy": "2023-10-12",
+      "price": "42.18",
+      "sold": "2023-11-06",
+      "months_waiting": 0.8,
+      "worst_paper_loss": -9712
+    },
+    {
+      "switched_on": "2023-11",
+      "first_buy": "2023-11-09",
+      "price": "42.69",
+      "sold": "2023-11-14",
+      "months_waiting": 0.2,
+      "worst_paper_loss": -5170
+    },
+    {
+      "switched_on": "2023-12",
+      "first_buy": "2023-12-05",
+      "price": "43.08",
+      "sold": "2023-12-07",
+      "months_waiting": 0.1,
+      "worst_paper_loss": -2826
+    },
+    {
+      "switched_on": "2024-01",
+      "first_buy": "2024-01-04",
+      "price": "49.10",
+      "sold": "2024-01-04",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -24
+    },
+    {
+      "switched_on": "2024-02",
+      "first_buy": "2024-02-06",
+      "price": "59.60",
+      "sold": "2024-02-07",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -1418
+    },
+    {
+      "switched_on": "2024-03",
+      "first_buy": "2024-03-07",
+      "price": "48.81",
+      "sold": "2024-03-08",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -1057
+    },
+    {
+      "switched_on": "2024-04",
+      "first_buy": "2024-04-22",
+      "price": "41.26",
+      "sold": "2024-04-23",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -756
+    },
+    {
+      "switched_on": "2024-05",
+      "first_buy": "2024-05-02",
+      "price": "42.96",
+      "sold": "2024-05-02",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -503
+    },
+    {
+      "switched_on": "2024-06",
+      "first_buy": "2024-06-11",
+      "price": "45.49",
+      "sold": "2024-06-12",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -725
+    },
+    {
+      "switched_on": "2024-07",
+      "first_buy": "2024-07-25",
+      "price": "52.23",
+      "sold": "2024-08-15",
+      "months_waiting": 0.7,
+      "worst_paper_loss": -16009
+    },
+    {
+      "switched_on": "2024-08",
+      "first_buy": "2024-08-02",
+      "price": "45.37",
+      "sold": "2024-08-02",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -1084
+    },
+    {
+      "switched_on": "2024-09",
+      "first_buy": "2024-09-19",
+      "price": "59.78",
+      "sold": "2024-09-19",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -742
+    },
+    {
+      "switched_on": "2024-10",
+      "first_buy": "2024-10-04",
+      "price": "67.46",
+      "sold": "2024-10-04",
+      "months_waiting": 0.0,
+      "worst_paper_loss": -693
+    },
+    {
+      "switched_on": "2024-11",
+      "first_buy": "2024-11-08",
+      "price": "85.39",
+      "sold": "2024-11-11",
+      "months_waiting": 0.1,
+      "worst_paper_loss": -2246
+    },
+    {
+      "switched_on": "2024-12",
+      "first_buy": "2024-12-06",
+      "price": "92.21",
+      "sold": "2024-12-12",
+      "months_waiting": 0.2,
+      "worst_paper_loss": -3900
+    }
+  ],
+  "first_year_after_switch_on": [
+    {
+      "switched_on": "2022-01",
+      "sales": 20,
+      "realized_pnl": 24256,
+      "marked_pnl_at_end": 24256,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 17,
+      "longest_run_of_weeks_without_a_sale": 9,
+      "worst_drop_from_peak_marked": -8972
+    },
+    {
+      "switched_on": "2022-02",
+      "sales": 20,
+      "realized_pnl": 24256,
+      "marked_pnl_at_end": 24256,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 17,
+      "longest_run_of_weeks_without_a_sale": 9,
+      "worst_drop_from_peak_marked": -8972
+    },
+    {
+      "switched_on": "2022-03",
+      "sales": 19,
+      "realized_pnl": 23054,
+      "marked_pnl_at_end": 23054,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 16,
+      "longest_run_of_weeks_without_a_sale": 10,
+      "worst_drop_from_peak_marked": -8972
+    },
+    {
+      "switched_on": "2022-04",
+      "sales": 18,
+      "realized_pnl": 21851,
+      "marked_pnl_at_end": 21873,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 15,
+      "longest_run_of_weeks_without_a_sale": 14,
+      "worst_drop_from_peak_marked": -8972
+    },
+    {
+      "switched_on": "2022-05",
+      "sales": 17,
+      "realized_pnl": 20436,
+      "marked_pnl_at_end": 14059,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 14,
+      "longest_run_of_weeks_without_a_sale": 18,
+      "worst_drop_from_peak_marked": -9743
+    },
+    {
+      "switched_on": "2022-06",
+      "sales": 14,
+      "realized_pnl": 17042,
+      "marked_pnl_at_end": 17042,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 12,
+      "longest_run_of_weeks_without_a_sale": 22,
+      "worst_drop_from_peak_marked": -13076
+    },
+    {
+      "switched_on": "2022-07",
+      "sales": 19,
+      "realized_pnl": 23684,
+      "marked_pnl_at_end": 22289,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 15,
+      "longest_run_of_weeks_without_a_sale": 22,
+      "worst_drop_from_peak_marked": -13076
+    },
+    {
+      "switched_on": "2022-08",
+      "sales": 18,
+      "realized_pnl": 22482,
+      "marked_pnl_at_end": 16573,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 14,
+      "longest_run_of_weeks_without_a_sale": 22,
+      "worst_drop_from_peak_marked": -13076
+    },
+    {
+      "switched_on": "2022-09",
+      "sales": 15,
+      "realized_pnl": 18874,
+      "marked_pnl_at_end": 14763,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 12,
+      "longest_run_of_weeks_without_a_sale": 22,
+      "worst_drop_from_peak_marked": -13076
+    },
+    {
+      "switched_on": "2022-10",
+      "sales": 12,
+      "realized_pnl": 15264,
+      "marked_pnl_at_end": 1938,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 9,
+      "longest_run_of_weeks_without_a_sale": 22,
+      "worst_drop_from_peak_marked": -14710
+    },
+    {
+      "switched_on": "2022-11",
+      "sales": 11,
+      "realized_pnl": 14063,
+      "marked_pnl_at_end": -5430,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 8,
+      "longest_run_of_weeks_without_a_sale": 22,
+      "worst_drop_from_peak_marked": -22736
+    },
+    {
+      "switched_on": "2022-12",
+      "sales": 8,
+      "realized_pnl": 10453,
+      "marked_pnl_at_end": -5321,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 5,
+      "longest_run_of_weeks_without_a_sale": 23,
+      "worst_drop_from_peak_marked": -22736
+    },
+    {
+      "switched_on": "2023-01",
+      "sales": 7,
+      "realized_pnl": 9252,
+      "marked_pnl_at_end": 3446,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 4,
+      "longest_run_of_weeks_without_a_sale": 27,
+      "worst_drop_from_peak_marked": -22736
+    },
+    {
+      "switched_on": "2023-02",
+      "sales": 7,
+      "realized_pnl": 9252,
+      "marked_pnl_at_end": 6008,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 4,
+      "longest_run_of_weeks_without_a_sale": 32,
+      "worst_drop_from_peak_marked": -22736
+    },
+    {
+      "switched_on": "2023-03",
+      "sales": 13,
+      "realized_pnl": 17006,
+      "marked_pnl_at_end": 16569,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 8,
+      "longest_run_of_weeks_without_a_sale": 32,
+      "worst_drop_from_peak_marked": -22736
+    },
+    {
+      "switched_on": "2023-04",
+      "sales": 16,
+      "realized_pnl": 20431,
+      "marked_pnl_at_end": 20431,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 11,
+      "longest_run_of_weeks_without_a_sale": 32,
+      "worst_drop_from_peak_marked": -22736
+    },
+    {
+      "switched_on": "2023-05",
+      "sales": 17,
+      "realized_pnl": 21638,
+      "marked_pnl_at_end": 21638,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 12,
+      "longest_run_of_weeks_without_a_sale": 32,
+      "worst_drop_from_peak_marked": -22736
+    },
+    {
+      "switched_on": "2023-06",
+      "sales": 18,
+      "realized_pnl": 24883,
+      "marked_pnl_at_end": 24883,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 13,
+      "longest_run_of_weeks_without_a_sale": 32,
+      "worst_drop_from_peak_marked": -22736
+    },
+    {
+      "switched_on": "2023-07",
+      "sales": 16,
+      "realized_pnl": 21588,
+      "marked_pnl_at_end": 21588,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 14,
+      "longest_run_of_weeks_without_a_sale": 21,
+      "worst_drop_from_peak_marked": -19845
+    },
+    {
+      "switched_on": "2023-08",
+      "sales": 15,
+      "realized_pnl": 20390,
+      "marked_pnl_at_end": 19850,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 13,
+      "longest_run_of_weeks_without_a_sale": 21,
+      "worst_drop_from_peak_marked": -19845
+    },
+    {
+      "switched_on": "2023-09",
+      "sales": 15,
+      "realized_pnl": 20389,
+      "marked_pnl_at_end": 20732,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 13,
+      "longest_run_of_weeks_without_a_sale": 21,
+      "worst_drop_from_peak_marked": -19845
+    },
+    {
+      "switched_on": "2023-10",
+      "sales": 21,
+      "realized_pnl": 27645,
+      "marked_pnl_at_end": 27645,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 18,
+      "longest_run_of_weeks_without_a_sale": 8,
+      "worst_drop_from_peak_marked": -13673
+    },
+    {
+      "switched_on": "2023-11",
+      "sales": 22,
+      "realized_pnl": 28843,
+      "marked_pnl_at_end": 24718,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 19,
+      "longest_run_of_weeks_without_a_sale": 8,
+      "worst_drop_from_peak_marked": -13673
+    },
+    {
+      "switched_on": "2023-12",
+      "sales": 24,
+      "realized_pnl": 31244,
+      "marked_pnl_at_end": 29896,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 21,
+      "longest_run_of_weeks_without_a_sale": 8,
+      "worst_drop_from_peak_marked": -13673
+    },
+    {
+      "switched_on": "2024-01",
+      "sales": 24,
+      "realized_pnl": 31229,
+      "marked_pnl_at_end": 27721,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 21,
+      "longest_run_of_weeks_without_a_sale": 8,
+      "worst_drop_from_peak_marked": -13673
+    },
+    {
+      "switched_on": "2024-02",
+      "sales": 27,
+      "realized_pnl": 36873,
+      "marked_pnl_at_end": 36873,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 23,
+      "longest_run_of_weeks_without_a_sale": 8,
+      "worst_drop_from_peak_marked": -13673
+    },
+    {
+      "switched_on": "2024-03",
+      "sales": 23,
+      "realized_pnl": 32051,
+      "marked_pnl_at_end": 22320,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 20,
+      "longest_run_of_weeks_without_a_sale": 8,
+      "worst_drop_from_peak_marked": -13673
+    },
+    {
+      "switched_on": "2024-04",
+      "sales": 21,
+      "realized_pnl": 29642,
+      "marked_pnl_at_end": 14177,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 18,
+      "longest_run_of_weeks_without_a_sale": 8,
+      "worst_drop_from_peak_marked": -18950
+    },
+    {
+      "switched_on": "2024-05",
+      "sales": 20,
+      "realized_pnl": 28435,
+      "marked_pnl_at_end": 10600,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 17,
+      "longest_run_of_weeks_without_a_sale": 12,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2024-06",
+      "sales": 17,
+      "realized_pnl": 22769,
+      "marked_pnl_at_end": 14422,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 14,
+      "longest_run_of_weeks_without_a_sale": 16,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2024-07",
+      "sales": 18,
+      "realized_pnl": 23691,
+      "marked_pnl_at_end": 23578,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 15,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2024-08",
+      "sales": 24,
+      "realized_pnl": 37205,
+      "marked_pnl_at_end": 37205,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 19,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2024-09",
+      "sales": 23,
+      "realized_pnl": 30171,
+      "marked_pnl_at_end": 29418,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 19,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2024-10",
+      "sales": 26,
+      "realized_pnl": 33926,
+      "marked_pnl_at_end": 31353,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 21,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2024-11",
+      "sales": 32,
+      "realized_pnl": 41189,
+      "marked_pnl_at_end": 41189,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 22,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2024-12",
+      "sales": 34,
+      "realized_pnl": 46814,
+      "marked_pnl_at_end": 46814,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 23,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2025-01",
+      "sales": 37,
+      "realized_pnl": 50402,
+      "marked_pnl_at_end": 46535,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 24,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2025-02",
+      "sales": 42,
+      "realized_pnl": 56171,
+      "marked_pnl_at_end": 56171,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 26,
+      "longest_run_of_weeks_without_a_sale": 17,
+      "worst_drop_from_peak_marked": -24597
+    },
+    {
+      "switched_on": "2025-03",
+      "sales": 56,
+      "realized_pnl": 77827,
+      "marked_pnl_at_end": 77827,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 34,
+      "longest_run_of_weeks_without_a_sale": 6,
+      "worst_drop_from_peak_marked": -18371
+    },
+    {
+      "switched_on": "2025-04",
+      "sales": 66,
+      "realized_pnl": 94009,
+      "marked_pnl_at_end": 91680,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 40,
+      "longest_run_of_weeks_without_a_sale": 2,
+      "worst_drop_from_peak_marked": -10094
+    },
+    {
+      "switched_on": "2025-05",
+      "sales": 69,
+      "realized_pnl": 101316,
+      "marked_pnl_at_end": 101316,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 41,
+      "longest_run_of_weeks_without_a_sale": 2,
+      "worst_drop_from_peak_marked": -10094
+    },
+    {
+      "switched_on": "2025-06",
+      "sales": 73,
+      "realized_pnl": 100588,
+      "marked_pnl_at_end": 97702,
+      "weeks": 52,
+      "weeks_realized_1000_plus": 42,
+      "longest_run_of_weeks_without_a_sale": 2,
+      "worst_drop_from_peak_marked": -10094
+    },
+    {
+      "switched_on": "2025-07",
+      "sales": 76,
+      "realized_pnl": 104125,
+      "marked_pnl_at_end": 99311,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 43,
+      "longest_run_of_weeks_without_a_sale": 2,
+      "worst_drop_from_peak_marked": -10094
+    },
+    {
+      "switched_on": "2025-08",
+      "sales": 71,
+      "realized_pnl": 97637,
+      "marked_pnl_at_end": 83579,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 40,
+      "longest_run_of_weeks_without_a_sale": 6,
+      "worst_drop_from_peak_marked": -21185
+    },
+    {
+      "switched_on": "2025-09",
+      "sales": 72,
+      "realized_pnl": 98785,
+      "marked_pnl_at_end": 97695,
+      "weeks": 53,
+      "weeks_realized_1000_plus": 39,
+      "longest_run_of_weeks_without_a_sale": 7,
+      "worst_drop_from_peak_marked": -21185
+    }
+  ]
+}
