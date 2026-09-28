@@ -138,6 +138,22 @@ Everything below was read-only unless stated otherwise.
 - After today's loader fix it ran once, at 11:12 ET: `GET /v1beta1/options/snapshots/SPY?feed=opra` returned **HTTP 403**. The free Alpaca plan is **not entitled to OPRA** options quotes.
 - Existing options code is the simulated $1,000 long SPY/QQQ call/put ledger in `agentic_portfolio_v1`; its orders are permanently disabled and it was never validated.
 
+**SPY bull put spread paper bot: live on paper (about 14:50 ET).**
+- **Code and rules:** `research/spy_put_spread_v1/` ([PROTOCOL](../research/spy_put_spread_v1/PROTOCOL.md)). The owner approved the rules, the volatility filter and the weekday 10:30 schedule. 17 offline tests pass.
+- **Account:** its own Alpaca paper account (number ending **Y47T**, options level 3), bound at 14:44 ET.
+- **Key mix-up, resolved:** keys had first been regenerated on the LITE bot's account (ending **OPE5**), which invalidated the LITE keys. They were moved programmatically into `.env.lite`, verified, and binding now also compares account IDs.
+- **Plumbing test passed** (1 contract, excluded from results):
+  - short 740 / long 735 put, Oct 30 expiry
+  - $0.60 credit; leg signs verified; negative `limit_price` = credit confirmed
+  - GTC profit-take placed and cancelled; bought back for $0.66 (−$6); flat
+- **Signal check at 14:45** (the filters are not enforced in a plumbing test):
+  - trend ok (771.35 > 759.90)
+  - IV/RV 1.20, passing at the threshold
+  - mid credit $0.59, below the $0.75 minimum, so a real Monday entry would have been skipped
+- **Entry time lock:** launchd fired once at 13:40 ET, catching up after the Mac woke from sleep. That run was harmless because it had no keys. Entries are now limited to Mondays 10:25–11:30 ET.
+- **First possible rule-based entry:** Mon Oct 5, 10:30 ET.
+- **Backtest:** the owner chose Databento's free credit. The key is saved in `.env.databento` (gitignored). A free cost estimate is running; no data has been purchased.
+
 **Still unverified.**
 - Any paper order or fill, and whether target sells fill.
 - Overnight gaps; GTC expiry and corporate-action handling.
