@@ -195,4 +195,4 @@ Everything below was read-only unless stated otherwise.
   - No change made to the options bot. The owner chooses: keep it as a plumbing check, switch it off, or close the research.
 - **Paper test plan:** [PAPER_TEST_PLAN_20260929.md](PAPER_TEST_PLAN_20260929.md). It has an 8-week LITE paper test, a weekly scorecard, and proposed checkpoints: −$15,000 open paper loss, six weeks without a sale, or any HALTED/ERROR email or missing email.
 - **Pre-flight (read-only):** both launchd jobs are loaded; the ETF job is disabled. The Mac sleeps after 1 minute idle, and today's 10:00 run was missed because it was asleep. The owner should keep it plugged in, lid open, with no sleep on power, or deploy to the cloud.
-
+- **Visual summary for the owner** (private artifact): https://claude.ai/artifact/8cqznZXa4FrbTTqpxLeKy8. It shows weekly profit and the running total for 2025–2026 and 2022–2024, the news test, the options holdout, and tomorrow's checklist.
