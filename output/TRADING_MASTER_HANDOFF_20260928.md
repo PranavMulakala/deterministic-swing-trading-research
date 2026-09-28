@@ -189,4 +189,10 @@ Everything below was read-only unless stated otherwise.
   - Alpha Vantage has only 20 LITE articles for Mar 2022–Dec 2024 and 98 for 2025 (65 in December), against 781 for Jan–Sep 2026. Some timestamps look like fillers.
   - The worst buys had no bearish LITE news: Jan 24, 2025 had none, and Jun 16, 2026 was rated Bullish. Their losses came from market-wide selloffs.
   - Macro news remains untested. The suggested measure is the market's own move before 10:00 (QQQ, 10-year yield), which needs a new pre-declared plan and owner approval.
+- **Options backtest finished.** The download ended at 18:10 ET: 3,210 days (2013-04-01 to 2025-12-31), none missing, about $6.44 of the free credit.
+  - **The pre-declared holdout FAILED** ([results](SPY_SPREAD_BACKTEST_HOLDOUT_RESULTS_20260928.md)). Candidate: $5 wide, minimum $0.50, no filter. In 2021-04 to 2025-12 under natural fills: 78 trades, 85% wins, −$1,809, −1.33% average return on risk. Mid fills: +$1,260. Capping one above-width Aug 5, 2024 exit: −$1,361, still failing.
+  - Every variant lost under natural fills. The approved rule (what the paper bot runs) traded 4 times in 12¾ years.
+  - No change made to the options bot. The owner chooses: keep it as a plumbing check, switch it off, or close the research.
+- **Paper test plan:** [PAPER_TEST_PLAN_20260929.md](PAPER_TEST_PLAN_20260929.md). It has an 8-week LITE paper test, a weekly scorecard, and proposed checkpoints: −$15,000 open paper loss, six weeks without a sale, or any HALTED/ERROR email or missing email.
+- **Pre-flight (read-only):** both launchd jobs are loaded; the ETF job is disabled. The Mac sleeps after 1 minute idle, and today's 10:00 run was missed because it was asleep. The owner should keep it plugged in, lid open, with no sleep on power, or deploy to the cloud.
 

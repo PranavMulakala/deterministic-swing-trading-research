@@ -1,5 +1,7 @@
 # SPY bull put spread backtest — development results and pre-declared holdout (Sept 28, 2026, about 17:30 ET)
 
+> **Holdout result (18:15 ET): FAILED.** The candidate lost $1,809 under natural fills (−1.33% average return on risk). See [SPY_SPREAD_BACKTEST_HOLDOUT_RESULTS_20260928.md](SPY_SPREAD_BACKTEST_HOLDOUT_RESULTS_20260928.md).
+
 Historical replay only; this is not live evidence. Code: `research/spy_put_spread_backtest_v1/backtest.py`.
 
 - **Data:** Databento OPRA `cbbo-1m` for the SPY chain at 10:30 ET and the close each trading day, bought with the owner-approved free credit. Development period: **2013-04-01 to 2021-03-31**, 2,016 trading days, none missing.

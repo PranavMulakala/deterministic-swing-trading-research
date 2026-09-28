@@ -67,7 +67,7 @@ Paste into a new chat:
    - **The download runs detached** (`nohup` + `caffeinate`, PID was 41110). It is resumable and skips finished days.
      - Progress: `outputs/spy_options_data/progress.jsonl` (about 3,210 days total; 1,561 done at 16:50 ET). Log: `fetch.log`.
      - If it stopped, re-run the command in `fetch_databento.py`'s docstring (`--start 2013-04-01 --end 2025-12-31 --workers 16`).
-   - **When complete:** run `PYTHONPATH=src:. .venv/bin/python -m research.spy_put_spread_backtest_v1.backtest --output output/spy-put-spread-backtest-2013-2025.json`, then explain to me in plain terms:
+   - **DONE (Sept 28, 18:15 ET):** the download completed (3,210 days, about $6.44), and the pre-declared holdout **FAILED**: −$1,809 under natural fills. See `output/SPY_SPREAD_BACKTEST_HOLDOUT_RESULTS_20260928.md`. Don't retune on this data. The original request was to explain in plain terms:
      - trades and win rate
      - average win and loss, worst trade, max drawdown
      - year by year, including 2015/2018/2020/2022
@@ -89,7 +89,8 @@ Paste into a new chat:
    - Robinhood has no stock API for scripts; its Agentic Trading is long-only single-leg options.
 
 ## Next steps
-1. Confirm the download finished (or resume it), run the backtest, and explain the results. Don't retune the rules on the same data without saying it's in-sample.
+1. Options: the holdout failed. Ask me whether to keep the paper options bot as a plumbing check or switch it off. Any new options idea needs a new pre-declared plan.
+1b. LITE: follow `output/PAPER_TEST_PLAN_20260929.md` (8-week paper test, weekly scorecard, checkpoints). Remind me to paste the Alpha Vantage key into `.env.news` and to keep the Mac awake at 10:00.
 2. Watch the bots' daily emails (Tue Sept 29: LITE 10:00, options 10:30). Investigate any HALTED/ERROR and the `KILL` files.
 3. When I'm on home Wi-Fi, deploy to the cloud (the LITE bot kit exists; build one for the options bot) so the bots don't depend on my laptop.
 4. Git: branch `paper-autopilot-v1`, all work committed, **nothing pushed**.

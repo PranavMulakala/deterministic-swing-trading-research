@@ -29,6 +29,9 @@ Source: [LITE_DIP_BOT_HISTORY_20260928.md](LITE_DIP_BOT_HISTORY_20260928.md).
 - Real fills and slippage. Alpaca paper fills instantly at the quoted price.
 - How it feels to watch −$20,000 for weeks.
 
+## Options bot
+The SPY bull put spread rules **failed** their pre-declared holdout: the candidate lost $1,809 in 2021–2025 under realistic fills ([results](SPY_SPREAD_BACKTEST_HOLDOUT_RESULTS_20260928.md)). The paper options bot runs the approved rules, which traded only 4 times in 12¾ years. It is a plumbing check, not a path to the goal. Keep it or switch it off; that is the owner's choice.
+
 ## Before any real-money version (the owner's decision)
 - **Broker:** one with an order API. Robinhood has none for stocks.
 - **Maximum loss:** a written limit the owner would accept on one position.
