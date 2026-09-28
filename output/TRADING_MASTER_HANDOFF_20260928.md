@@ -178,5 +178,15 @@ Everything below was read-only unless stated otherwise.
   - 2025: +$38,403, 18 of 53 weeks, a 25-week gap with no sale, −$32,080 paper loss.
   - 2022–2024: a Jan 18, 2022 buy at $104.90 was stuck until Jul 28, 2025, at worst −$39,713 (−66%).
 - **The real position:** LITE's official close was $921.32, so the owner's 33.034698 shares were about +$435 at 4 PM. The owner saw $500+ including after-hours.
-- **News sentiment:** the owner wants news (China/Iran/US, bonds) factored in. It is untested: there is no point-in-time LITE news history in the repo. It was offered only as a learning-only log, pending approval.
+- **News reading in the daily email.** The owner said "yes add the news sentiment to the daily email" (commit 594001d).
+  - Code: `research/lite_paper_bot_v1/news.py`. It reports Alpha Vantage's relevance-weighted LITE sentiment and top headlines for articles published from the previous weekday's 16:00 ET to 10:00 ET.
+  - It is fetched after all order steps and logged to `outputs/lite_paper_bot/news.jsonl`, never to `events.jsonl`: the cloud kit's test reads that log's last line. It never changes a trade.
+  - Alpha Vantage timestamps are New York time. Checked: bank prime-rate cuts after the 14:00 ET Fed decision on 2025-09-17 are stamped 15:09 and 15:20.
+  - **Owner action:** paste a free Alpha Vantage key into `.env.news` (0600, gitignored; `open -e .env.news`). Until then, the email says "not set up".
+  - The cloud kit now ships `news.py` and the key. 33 tests pass (bot, news, history).
+- **News-sentiment test** (plan committed first, f6e67f1; results 14f994a): [results](LITE_NEWS_SENTIMENT_TEST_RESULTS_20260928.md).
+  - The filter tested was: skip dip buys on mornings rated Somewhat-Bearish or worse. It **did not help**. It skipped 3 of 192 buys in 2025–2026 and 1 of 215 in 2022–2024, and the worst drops were unchanged.
+  - Alpha Vantage has only 20 LITE articles for Mar 2022–Dec 2024 and 98 for 2025 (65 in December), against 781 for Jan–Sep 2026. Some timestamps look like fillers.
+  - The worst buys had no bearish LITE news: Jan 24, 2025 had none, and Jun 16, 2026 was rated Bullish. Their losses came from market-wide selloffs.
+  - Macro news remains untested. The suggested measure is the market's own move before 10:00 (QQQ, 10-year yield), which needs a new pre-declared plan and owner approval.
 

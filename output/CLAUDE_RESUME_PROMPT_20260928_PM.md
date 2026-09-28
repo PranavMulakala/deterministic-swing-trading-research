@@ -43,6 +43,8 @@ Paste into a new chat:
      - 2025: 18 of 53 weeks, with a −$32k paper loss (Jan–Jul).
      - 2022–2024: one buy was stuck 3½ years at up to −$39.7k.
      - $1,000 weeks came from LITE's boom; no period was free of $20k+ paper losses.
+   - The daily email now includes a **learning-only LITE news reading** (Alpha Vantage, news from the previous weekday's 16:00 ET to 10:00 ET; it never changes a trade). I need to put my Alpha Vantage key in `.env.news`.
+   - Historical news test: `output/LITE_NEWS_SENTIMENT_TEST_RESULTS_20260928.md`. Skipping bearish-news mornings **did not help**, and the archive is too thin before December 2025.
 3. **Options paper bot** (`research/spy_put_spread_v1/`, rules in its PROTOCOL.md, all owner-approved):
    - Entry conditions:
      - SPY bull put spread: sell ≈0.20-delta put, buy $5 lower, 21–35 DTE
