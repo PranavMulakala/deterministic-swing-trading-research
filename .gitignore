@@ -5,7 +5,11 @@ __pycache__/
 .DS_Store
 outputs/tmp/
 outputs/paper/
+webull*_sdk.log
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
 *.sqlite.lock
+.env.lite
+outputs/lite_paper_bot/
+outputs/real_position_alert/

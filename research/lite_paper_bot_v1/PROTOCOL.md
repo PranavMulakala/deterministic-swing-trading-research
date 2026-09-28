@@ -1,0 +1,36 @@
+# LITE paper dip bot v1 — frozen September 28, 2026
+
+**Paper trading only.** This bot places orders in a dedicated Alpaca **paper** account ("LITE bot"). It never uses live trading, Robinhood, the ETF bot's paper account, or Joey's material. The owner approved its rules and the weekday 10:00 schedule on September 28, 2026: the dip rule, 7 shares, a +2% target over the actual fill, no automatic stop, no time limit, no averaging down.
+
+## The rule (checked once per weekday)
+
+At **10:00:30 ET**, look at LITE's six completed **IEX** five-minute bars, 09:30 through 09:55:
+
+1. **Dip:** the lowest price in those bars is at least 1% below the 09:30 bar's open.
+2. **Still down:** the 09:55 bar closes below that open.
+
+If both hold and the bot holds no LITE, it buys. This is the `dip_30` definition from `research/lite_funded_comparison_v1/run.py`, applied to the free IEX feed. For learning only, each day also records whether the stricter conditions held (the last three closes rising; morning volume ≥1.5× the prior 20 IEX mornings). Those two never change the decision.
+
+## Orders
+
+- **Buy:** 7 whole shares; a DAY **limit** order at the reference price +0.1%, rounded to the cent. The reference is the fresh IEX ask (≤30 s old), or else the latest IEX trade (≤60 s old). It must be within 2% of the 09:55 close, or the day is skipped. The buy must be submitted by 10:04:00 ET. Anything unfilled is cancelled at 10:05:00 ET.
+- **Sell:** as soon as shares fill, a GTC **limit** sell for exactly the filled shares at **the average fill × 1.02, rounded up to the cent**. It never sells below that price, and it never uses market or stop orders.
+- **One position at a time.** No new buy while holding. There is no same-day re-entry and no averaging down.
+- **Cash only:** the account's cash must cover 7 × limit × 1.01, and each buy is capped at $8,000. Borrowing power is ignored.
+
+## Every run also
+
+- Checks the bound account ID, that the market is open, and that the broker clock agrees with the Mac's within 60 s.
+- Re-places the target sell if it is missing (Alpaca cancels GTC orders after 90 days, and corporate actions can cancel them).
+- Records a completed sale with its realized profit.
+- **Halts** by writing `outputs/lite_paper_bot/KILL` with the reason, and places no further orders, on anything unexpected: the wrong account, a position or order the bot didn't create, a share count that doesn't match, or a position that vanished without its sell filling. The owner deletes `KILL` after reviewing.
+- Emails one summary per run to pranavm1104@gmail.com: signal or no signal, orders, fills, the holding's marked profit/loss and cash tied up, and any halt. A missing weekday email means something is wrong.
+- If it starts after 10:04 ET (for example, the Mac was asleep), it skips the buy for that day but still checks and reports.
+
+## First run
+
+`--bind` locks the bot to the new paper account after read-only checks: the account is ACTIVE and not blocked, has no positions and no open orders, and holds at least $8,000 cash. Until it is bound, scheduled runs place no orders.
+
+## What this cannot show
+
+Alpaca paper fills are optimistic: instant fills at the best price, random partial fills, no queue position or slippage. The free IEX feed is about 2% of volume. A paper profit is not live-money evidence, and nothing here bounds the loss on an unsold position. Signals and fills from this bot are prospective records. They count as evidence only alongside their unresolved holdings and marked losses.
