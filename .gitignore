@@ -13,3 +13,5 @@ webull*_sdk.log
 .env.lite
 outputs/lite_paper_bot/
 outputs/real_position_alert/
+.env.options
+outputs/spy_put_spread_bot/

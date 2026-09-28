@@ -133,6 +133,11 @@ Everything below was read-only unless stated otherwise.
 - Verified run at 10:37: without keys it reported `NOT_SET_UP` and emailed.
 - The owner created the separate "LITE bot" paper account and saved its keys: `.env.lite` is 0600 and its key differs from the ETF paper key. **Bound at 10:40:45 ET** after read-only checks: $100,000 cash, no positions, no open orders. The first scheduled run is Tue Sep 29, 10:00 ET.
 
+**Options track opened (owner request, about 11:10 ET).** This is a separate strategy; it is not mixed with LITE or with Joey's material.
+- The old `agentic_shadow_v1` OPRA probe was never actually blocked by entitlement: the same `_load_env` bug stopped it before any request.
+- After today's loader fix it ran once, at 11:12 ET: `GET /v1beta1/options/snapshots/SPY?feed=opra` returned **HTTP 403**. The free Alpaca plan is **not entitled to OPRA** options quotes.
+- Existing options code is the simulated $1,000 long SPY/QQQ call/put ledger in `agentic_portfolio_v1`; its orders are permanently disabled and it was never validated.
+
 **Still unverified.**
 - Any paper order or fill, and whether target sells fill.
 - Overnight gaps; GTC expiry and corporate-action handling.
