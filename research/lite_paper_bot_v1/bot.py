@@ -22,6 +22,8 @@ import urllib.parse
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 from zoneinfo import ZoneInfo
 
+from research.lite_paper_bot_v1 import news
+
 NY = ZoneInfo("America/New_York")
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "outputs/lite_paper_bot"
@@ -400,7 +402,7 @@ def holding_line(broker, state):
             f"{'+' if change >= 0 else '-'}${abs(change):,.2f}. Target sell waiting at ${held['target']}.")
 
 
-def summary(events, holding):
+def summary(events, holding, reading=None):
     order = ("HALTED", "ERROR", "FILLED_AND_TARGET_PLACED", "ADOPTED_INTERRUPTED_BUY", "SOLD_AT_TARGET",
              "BUY_UNFILLED", "TARGET_SELL_REPLACED", "SIGNAL_SKIPPED_HOLDING", "NO_FRESH_PRICE",
              "INSUFFICIENT_CASH_OR_CAP", "LATE_START", "NO_DATA", "NO_SIGNAL", "MARKET_CLOSED", "NOT_BOUND",
@@ -409,7 +411,7 @@ def summary(events, holding):
     headline = next((kind for kind in order if kind in kinds), kinds[-1] if kinds else "NO_EVENTS")
     lines = [f"- {event['type']}: " + ", ".join(f"{k}={v}" for k, v in event.items() if k not in ("type", "at"))
              for event in events]
-    body = "\n".join(lines + ["", holding, "",
+    body = "\n".join(lines + ["", holding, *([""] + news.lines(reading) if reading else []), "",
                               "PAPER TRADING ONLY: no real money. Rules: research/lite_paper_bot_v1/PROTOCOL.md"])
     return headline.replace("_", " ").title(), body
 
@@ -506,7 +508,13 @@ def main():
         if state.get("account_id"):
             save_state(state, state_path)
     holding = holding_line(broker, state) if broker else "Holding: unknown (no broker connection)."
-    headline, body = summary(events, holding)
+    reading = news.reading(now())  # After every order step; learning only, never raises.
+    try:
+        with (OUT / "news.jsonl").open("a") as handle:
+            handle.write(json.dumps({"at": now().isoformat(), **reading}, sort_keys=True) + "\n")
+    except OSError:
+        pass  # The email below still carries the reading.
+    headline, body = summary(events, holding, reading)
     try:
         from research.real_position_alert_v1.monitor import resend_key, send
         send(f"LITE paper bot {datetime.now(NY):%a %b %d}: {headline}", body, resend_key(),

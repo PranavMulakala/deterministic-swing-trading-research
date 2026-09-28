@@ -31,6 +31,7 @@ SSH = ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=10", "-o", "StrictHos
        "-o", "IdentitiesOnly=yes", "-i", str(Path.home() / ".ssh/personal_trading_cloud"), HOST]
 BUNDLE = {
     "research/lite_paper_bot_v1/bot.py": "research/lite_paper_bot_v1/bot.py",
+    "research/lite_paper_bot_v1/news.py": "research/lite_paper_bot_v1/news.py",
     "research/lite_paper_bot_v1/PROTOCOL.md": "research/lite_paper_bot_v1/PROTOCOL.md",
     "research/lite_paper_bot_v1/test_bot.py": "research/lite_paper_bot_v1/test_bot.py",
     "research/real_position_alert_v1/monitor.py": "research/real_position_alert_v1/monitor.py",
@@ -74,6 +75,8 @@ def put(path, text):
 root = Path("/opt/lite-paper-bot")
 put(root / ".env.lite", "LITE_PAPER_API_KEY=%s\nLITE_PAPER_API_SECRET=%s\n" % (v["key"], v["secret"]))
 put(root / ".env", "TRADING_REPORT_RESEND_API_KEY=%s\n" % v["resend"])
+if v.get("news"):
+    put(root / ".env.news", "ALPHAVANTAGE_API_KEY=%s\n" % v["news"])
 state = root / "outputs/lite_paper_bot/state.json"
 if state.exists():
     print("keys written (values suppressed); existing server state kept")
@@ -127,6 +130,7 @@ def main():
     if now.weekday() < 5 and time(9, 25) <= now.time() <= time(10, 10):
         raise SystemExit("Not deploying between 09:25 and 10:10 ET on a weekday: the Mac copy may be trading.")
     from research.lite_paper_bot_v1.bot import OUT, credentials
+    from research.lite_paper_bot_v1.news import api_key as news_key
     from research.real_position_alert_v1.monitor import resend_key
     tests = subprocess.run([sys.executable, "-m", "unittest", "-q", "research.lite_paper_bot_v1.test_bot"],
                            cwd=ROOT, env={**os.environ, "PYTHONPATH": f"{ROOT / 'src'}:{ROOT}",
@@ -146,7 +150,8 @@ def main():
         print("Dry run: nothing sent.")
         return
     print("1/5 install:", remote(INSTALL, archive).replace("\n", " | "))
-    payload = json.dumps({"key": key, "secret": secret, "resend": resend, "state": state}).encode()
+    payload = json.dumps({"key": key, "secret": secret, "resend": resend, "state": state,
+                          "news": news_key() or ""}).encode()
     print("2/5 keys:", remote("python3 -c " + shlex.quote(SECRETS), payload))
     last = json.loads(remote(TEST_RUN))
     print("3/5 server test run:", last.get("type"), "-", str(last.get("detail", ""))[:120])

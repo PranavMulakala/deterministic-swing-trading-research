@@ -26,6 +26,7 @@ If both hold and the bot holds no LITE, it buys. This is the `dip_30` definition
 - **Halts** by writing `outputs/lite_paper_bot/KILL` with the reason, and places no further orders, on anything unexpected: the wrong account, a position or order the bot didn't create, a share count that doesn't match, or a position that vanished without its sell filling. The owner deletes `KILL` after reviewing.
 - Emails one summary per run to pranavm1104@gmail.com: signal or no signal, orders, fills, the holding's marked profit/loss and cash tied up, and any halt. A missing weekday email means something is wrong.
 - If it starts after 10:04 ET (for example, the Mac was asleep), it skips the buy for that day but still checks and reports.
+- After every order step, it records a **learning-only news reading**. The source is Alpha Vantage's relevance-weighted LITE sentiment and top headlines for articles published from the previous weekday's 16:00 ET to 10:00 ET. It is written to `outputs/lite_paper_bot/news.jsonl` and shown in the email. It never changes a decision. It needs the owner's key in the owner-only `.env.news`; without one, the email says so.
 
 ## First run
 
@@ -34,6 +35,8 @@ If both hold and the bot holds no LITE, it buys. This is the `dip_30` definition
 ## Changes
 
 - **September 28, 2026, evening, by the owner:** size raised from 7 to 66 shares and the per-buy cap from $8,000 to $72,000, matching the owner's $50,000–$70,000 budget for this paper test. The rule, the +2% target, no stop and the 10:00 schedule are unchanged. It applies from the 10:00 ET run on September 29; the bot had placed no orders before the change. At this size, each +2% sale makes about $1,200, a 10% drop while holding is a paper loss of about $6,000, and the 2026 replay's worst hold (entered June 16, down 36% at its low) would have been about −$21,900 before it recovered.
+
+- **September 28, 2026, evening, by the owner:** "add the news sentiment to the daily email". The reading is learning only and does not change the rule. Only LITE-specific news is scored: Alpha Vantage's general economy feed was checked, and it was mostly unrelated company stories.
 
 ## What this cannot show
 
