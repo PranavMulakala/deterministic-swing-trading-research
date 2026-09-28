@@ -1,11 +1,20 @@
 # Deterministic ETF Swing Research v1
 
+> **September 28, 2026 Claude handoff:** Start with the [master trading recap](output/TRADING_MASTER_HANDOFF_20260928.md) and [paste-ready resume prompt](output/CLAUDE_RESUME_PROMPT_20260928.md). These add Joey's materials, the latest LITE diagnostics, and a timestamped Monday paper-account check to the older project map. Neither document authorizes orders.
+
+> **September 22, 2026 orientation:** See the [current project handoff](output/PROJECT_HANDOFF_20260922.md) for all experiments, updated broker/cloud status, LITE opening-dip evidence, and the Claude review prompt. The dated material below retains its original scope; it is not a current status report for every project track. Frozen strategies and historical evidence are unchanged.
+
+
 This repository contains two deliberately separated layers:
 
 - Frozen milestone 1 produces auditable historical research. Its config, pinned data, results, and independent validation record remain unchanged.
 - The `paper-trading-readiness-v1` branch adds a human-approved Alpaca paper adapter. It contains a real paper submission path, but the default runtime kill switch blocks it and the code has no live-money endpoint.
 
 The current operational verdict is **NO-GO for a faithful v1 paper trial**. Read `PAPER_READINESS.md` before configuring a broker account.
+
+The separate no-cost Alpaca indicative-data plumbing experiment is documented
+in [`research/agentic_shadow_indicative_v1/README.md`](research/agentic_shadow_indicative_v1/README.md).
+Its outputs cannot validate the frozen OPRA hypothesis or trading performance.
 
 ## Quick start
 

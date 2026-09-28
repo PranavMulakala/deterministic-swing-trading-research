@@ -1,0 +1,20 @@
+{
+  "verdict": "NOT_ESTABLISHED",
+  "files": {
+    "common.py": "dfe3805775626f0230a71a47bc34e507c8ccc42ff9a4244e20270e8cb83f6ce4",
+    "engine.py": "c4314cf9ff7b66a14bd3b94a469e03d78d0bfbd99b84228e62387cb193227d19",
+    "run.py": "0a192d5b4540af0f7ecfbdaf1a277105fa408fddb8c52f92cd28c9b08ab0e3a9",
+    "collect.py": "dc7be771dae012842092c3c0eb3768db469e8a6cee1afa439f501d0b3a6aa617",
+    "verify_execution.py": "d7705e94d3c05538b476173fc69e1144901e67f165b89de2d60baa266ab3fe84",
+    "runs/entry-01/manifest.json": "029f1cf13c2f2692388a5da7938edd9307ce37c31724ee18be9394c2f4eebdbd",
+    "runs/exit-01/manifest.json": "0583cd8645b36170b60b3df54f47a474b6af840c2408ab71ad14507e52167e1a",
+    "runs/replay-01/report.json": "187e78f468e7cee485bde03bb8cce8b61802393b8211afe24a0e5737898a1d8c",
+    "runs/replay-01/results.json": "a23ccf7aaa6eca9143b4bddb68694d2efeea3ea11d7a106b16aca57d60bb010f",
+    "runs/replay-01/source_verification.json": "592f166ef3ec79620e952286a2d8b4e607c740b78048673f7f7e074ede04ade0"
+  },
+  "tests_passed": 302,
+  "ledger_variants_completed": 28,
+  "source_checked_fill_event_instances": 142,
+  "source_checked_first_exit_trigger_instances": 71,
+  "live_money_or_deployment_authorized": false
+}

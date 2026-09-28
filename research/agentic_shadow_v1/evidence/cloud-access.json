@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-09-14T19:43:45.950221+00:00",
+  "host": "198.211.113.234",
+  "access": "BLOCKED",
+  "reason": "No trusted ED25519 key in known_hosts; prior /private/tmp/trading-cloud-verified-host missing. Strict host-key verification failed.",
+  "network": "SSH server reachable after sandbox escalation",
+  "deployed_revision": null,
+  "scheduled_run_verified": false,
+  "collector_current_health": "UNVERIFIED; no remote command executed",
+  "remote_changes": false
+}

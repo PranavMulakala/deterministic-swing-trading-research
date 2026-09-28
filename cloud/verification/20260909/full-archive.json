@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "all_current_pages_hashed_parsed_and_schema_checked": 4780,
+  "raw_records": 1359755,
+  "streams": {
+    "bars": 363,
+    "news": 363,
+    "LITE:quotes": 363,
+    "LITE:trades": 363,
+    "COHR:quotes": 363,
+    "COHR:trades": 363,
+    "CIEN:quotes": 363,
+    "CIEN:trades": 363,
+    "FN:quotes": 363,
+    "FN:trades": 363,
+    "AAOI:quotes": 363,
+    "AAOI:trades": 363,
+    "bars5": 363,
+    "sector_news": 61
+  },
+  "predeployment_pages_preserved_byte_for_byte": 4706,
+  "predeployment_pages_changed_or_missing": 0,
+  "backup_integrity": "ok"
+}

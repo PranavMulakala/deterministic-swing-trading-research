@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "package_version": "agentic_stock_paper_free_v1",
+  "frozen_at": "2026-09-16T10:30:00-07:00",
+  "change_policy": "new version required",
+  "hash_algorithm": "sha256",
+  "files": {
+    "README.md": "b53ec22e97bf943f4ae4dad7b2f91ce17e2adace014f1239fd6651c30f4f7bc1",
+    "__init__.py": "ae45b2bd3a3d6dd7eb45524f09a69c2a29b210eaca3947fba43845fa28b757cf",
+    "config.json": "29131f7f64031bb229e4f19c2a6bb8bb07e94e52598abd513e0c33527dd8d815",
+    "freeze.py": "6fe06cef1c0ec81741694591476e2a0527fed6703d24923b108ac0cdef53244b",
+    "runner_cli.py": "45ebdbbe6cebf1766b93a630b2c8b1fc8509e371fe9f4eaae371571ad9b0fe64",
+    "runtime.py": "950cc9e72a8ae4f75c87e2f816c27758f4ce8a61383879b8741b7ec26478b4f5"
+  }
+}

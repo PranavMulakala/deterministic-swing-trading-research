@@ -1,0 +1,31 @@
+[Unit]
+Description=Free stock paper evidence producer (market-data GETs only)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/trading-collector/credentials.json
+
+[Service]
+Type=oneshot
+SuccessExitStatus=2
+User=trading-collector
+Group=trading-collector
+WorkingDirectory=/opt/agentic-stock-free-v2
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONPATH=/opt/agentic-stock-free-v2
+ExecStart=/usr/bin/python3 /opt/agentic-stock-free-v2/cloud/free_stock_provider.py
+StateDirectory=agentic-stock-free-input
+UMask=0077
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/etc/trading-collector/credentials.json
+InaccessiblePaths=-/var/lib/agentic-stock-free-runtime
+ReadWritePaths=/var/lib/agentic-stock-free-input
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+MemoryMax=512M
+CPUQuota=50%
+TimeoutStartSec=180
+TasksMax=16

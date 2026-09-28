@@ -1,0 +1,11 @@
+{
+  "id": "orb-quote-trade-execution-v2",
+  "frozen_at_utc": "2026-09-07T17:45:15Z",
+  "execution_sha256": "cc5a9ef58b42488b4f0dc672e0b6785267088f11a3f337ea62ce5cab89ad9cac",
+  "protocol_sha256": "39f66cf9eb5be7446b198f9fb881041942662ee5feaa6ceace90bab2c97176c2",
+  "parent_spec_sha256": "ed33a1757a5e3b9831b130aa1cd7f0e9579e0aa22d547c9f3056ff3ff9daa95b",
+  "parent_prepared_sha256": "e4d7b99e14729b6a7053eb14156910015dd9e6eec6eda9eb60b63eff8dc62a6a",
+  "parent_actions_sha256": "1ad5b15e4877c0ed7558d78b3ce623548209724be79b326f2b2e2b721e2f17fe",
+  "stage": "frozen_before_new_quote_collection_and_v2_pnl",
+  "untouched_holdout": false
+}

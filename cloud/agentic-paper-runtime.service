@@ -1,0 +1,26 @@
+[Unit]
+Description=$10,000 stock/options paper lifecycle (no orders)
+
+[Service]
+Type=oneshot
+User=trading-collector
+Group=trading-collector
+WorkingDirectory=/opt/agentic-paper-runtime-v1-20260915b
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -m research.agentic_paper_runtime_v1.runner_cli
+StateDirectory=agentic-paper-runtime
+UMask=0077
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/var/lib/agentic-paper-input
+InaccessiblePaths=/etc/trading-collector -/etc/agentic-paper
+PrivateNetwork=true
+IPAddressDeny=any
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+CapabilityBoundingSet=
+MemoryMax=512M
+CPUQuota=50%
+TimeoutStartSec=120
+TasksMax=16

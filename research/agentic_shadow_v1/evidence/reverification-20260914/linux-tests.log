@@ -1,0 +1,9 @@
+bundle.tar.gz: OK
+Shadow release verified: 0337a4f4917a7a71734b0d77652a9e402d8f8a9e1435d91d88faf744e05b91a3
+{"evidence_kind":"observed","observations":1,"orders":false,"real_data_readiness":"BLOCKED: normalized options feed and coverage not verified"}
+----------------------------------------------------------------------
+Ran 46 tests in 1.628s
+
+OK
+{"evidence_kind":"fixture","observations":4,"orders":false,"real_data_readiness":"BLOCKED: normalized options feed and coverage not verified"}
+Shadow release verified: 0337a4f4917a7a71734b0d77652a9e402d8f8a9e1435d91d88faf744e05b91a3

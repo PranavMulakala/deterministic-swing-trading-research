@@ -1,0 +1,7332 @@
+{
+  "evidence": "SYNTHETIC",
+  "status": "SYNTHETIC_SOFTWARE_CHECK_ONLY",
+  "cost_status": "ILLUSTRATIVE_SCENARIOS_NOT_VERIFIED_BROKER_FEES",
+  "source": "Invented fixture; neither prices nor profits are market observations",
+  "limitations": [
+    "Exchange-event clock, not local receipt or broker execution.",
+    "Declared input coverage is not independently verified vendor completeness.",
+    "Top-of-book size does not guarantee a fill; routing and queue competition unmodeled.",
+    "Fixed data/platform expenses and broker margin eligibility are not verified.",
+    "Quote gaps suppress final equity; observed drawdown is then only a lower bound.",
+    "Pilot outcomes cannot establish future profitability."
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "name": "fee2_slip0",
+        "round_trip_fee": 2,
+        "slippage_ticks_per_side": 0
+      },
+      "pattern_signals": 1,
+      "risk_assessable_signals": 1,
+      "risk_unknown_signals": 0,
+      "risk_fit_signals": 1,
+      "risk_fit_pct_of_all_patterns": 100.0,
+      "risk_fit_pct_of_assessable": 100.0,
+      "entry_to_stop_ticks": {
+        "minimum": 16,
+        "median": 16,
+        "maximum": 16
+      },
+      "eligible_after_risk_and_reward": 1,
+      "entries": 1,
+      "closed_trades": 1,
+      "closed_trade_net_pnl": 25.5,
+      "worst_closed_trade_net_pnl": 25.5,
+      "ending_equity": 5025.5,
+      "max_observed_drawdown_dollars": 2.5,
+      "full_drawdown_established": true,
+      "account_halt": null,
+      "quality_issues": [],
+      "unresolved_position": null,
+      "screens": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 10.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39954,
+          "stop_distance_ticks": 16,
+          "planned_net_reward": 20.0,
+          "net_reward_risk": 2.0,
+          "reason": "ELIGIBLE"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 10.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39954,
+          "stop_distance_ticks": 16,
+          "planned_net_reward": 20.0,
+          "net_reward_risk": 2.0,
+          "reason": "ELIGIBLE",
+          "portfolio_reason": "ENTERED",
+          "day_risk_budget": 12.5
+        }
+      ],
+      "rejection_counts": {},
+      "trades": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 10.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39954,
+          "stop_distance_ticks": 16,
+          "planned_net_reward": 20.0,
+          "net_reward_risk": 2.0,
+          "reason": "ELIGIBLE",
+          "exit_due_ns": 1788529567100000000,
+          "exit_reason": "TARGET",
+          "trigger_ns": 1788529567000000000,
+          "exit_ns": 1788529568000000000,
+          "exit_ticks": 40009,
+          "gross_pnl": 27.5,
+          "fees": 2,
+          "net_pnl": 25.5
+        }
+      ],
+      "equity": [
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529440000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529441000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529442000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529443000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529444000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529445000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529446000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529447000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529448000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529449000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529450000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529451000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529452000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529453000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529454000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529455000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529456000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529457000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529458000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529459000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529460000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529461000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529462000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529463000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529464000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529465000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529466000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529467000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529468000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529469000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529470000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529471000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529472000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529473000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529474000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529475000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529476000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529477000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529478000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529479000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529480000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529481000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529482000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529483000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529484000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529485000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529486000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529487000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529488000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529489000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529490000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529491000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529492000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529493000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529494000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529495000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529496000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529497000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529498000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529499000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529500000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529501000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529502000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529503000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529504000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529505000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529506000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529507000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529508000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529509000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529510000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529511000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529512000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529513000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529514000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529515000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529516000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529517000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529518000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529519000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529520000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529521000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529522000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529523000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529524000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529525000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529526000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529527000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529528000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529529000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529530000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529531000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529532000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529533000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529534000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529535000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529536000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529537000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529538000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529539000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529540000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529541000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529542000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529543000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529544000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529545000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529546000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529547000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529548000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529549000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529550000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529551000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529552000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529553000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529554000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529555000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529556000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529557000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529558000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529559000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529560000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529561000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529561000000000,
+          "equity": 4997.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529562000000000,
+          "equity": 5001.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529563000000000,
+          "equity": 5005.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529564000000000,
+          "equity": 5009.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529565000000000,
+          "equity": 5013.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529566000000000,
+          "equity": 5017.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529567000000000,
+          "equity": 5021.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529568000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529568000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529569000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529570000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529571000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529572000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529573000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529574000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529575000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529576000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529577000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529578000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529579000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529580000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529581000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529582000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529583000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529584000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529585000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529586000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529587000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529588000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529589000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529590000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529591000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529592000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529593000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529594000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529595000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529596000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529597000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529598000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529599000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529600000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529601000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529602000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529603000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529604000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529605000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529606000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529607000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529608000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529609000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529610000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529611000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529612000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529613000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529614000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529615000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529616000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529617000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529618000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529619000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529620000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529621000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529622000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529623000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529624000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529625000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529626000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529627000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529628000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529629000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529630000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529631000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529632000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529633000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529634000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529635000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529636000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529637000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529638000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529639000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529640000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529641000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529642000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529643000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529644000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529645000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529646000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529647000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529648000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529649000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529650000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529651000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529652000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529653000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529654000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529655000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529656000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529657000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529658000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529659000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529660000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529661000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529662000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529663000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529664000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529665000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529666000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529667000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529668000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529669000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529670000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529671000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529672000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529673000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529674000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529675000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529676000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529677000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529678000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529679000000000,
+          "equity": 5025.5,
+          "daily_halt": false,
+          "account_halt": null
+        }
+      ],
+      "session_notes": [
+        {
+          "date": "2026-09-03",
+          "signal_count": 0,
+          "note": "NO_PREVIOUS_SESSION"
+        },
+        {
+          "date": "2026-09-04",
+          "signal_count": 1,
+          "note": null
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "fee2_slip1",
+        "round_trip_fee": 2,
+        "slippage_ticks_per_side": 1
+      },
+      "pattern_signals": 1,
+      "risk_assessable_signals": 1,
+      "risk_unknown_signals": 0,
+      "risk_fit_signals": 1,
+      "risk_fit_pct_of_all_patterns": 100.0,
+      "risk_fit_pct_of_assessable": 100.0,
+      "entry_to_stop_ticks": {
+        "minimum": 17,
+        "median": 17,
+        "maximum": 17
+      },
+      "eligible_after_risk_and_reward": 1,
+      "entries": 1,
+      "closed_trades": 1,
+      "closed_trade_net_pnl": 24.5,
+      "worst_closed_trade_net_pnl": 24.5,
+      "ending_equity": 5024.5,
+      "max_observed_drawdown_dollars": 3.5,
+      "full_drawdown_established": true,
+      "account_halt": null,
+      "quality_issues": [],
+      "unresolved_position": null,
+      "screens": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 11.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39955,
+          "stop_distance_ticks": 17,
+          "planned_net_reward": 19.0,
+          "net_reward_risk": 1.7272727272727273,
+          "reason": "ELIGIBLE"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 11.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39955,
+          "stop_distance_ticks": 17,
+          "planned_net_reward": 19.0,
+          "net_reward_risk": 1.7272727272727273,
+          "reason": "ELIGIBLE",
+          "portfolio_reason": "ENTERED",
+          "day_risk_budget": 12.5
+        }
+      ],
+      "rejection_counts": {},
+      "trades": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 11.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39955,
+          "stop_distance_ticks": 17,
+          "planned_net_reward": 19.0,
+          "net_reward_risk": 1.7272727272727273,
+          "reason": "ELIGIBLE",
+          "exit_due_ns": 1788529567100000000,
+          "exit_reason": "TARGET",
+          "trigger_ns": 1788529567000000000,
+          "exit_ns": 1788529568000000000,
+          "exit_ticks": 40008,
+          "gross_pnl": 26.5,
+          "fees": 2,
+          "net_pnl": 24.5
+        }
+      ],
+      "equity": [
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529440000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529441000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529442000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529443000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529444000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529445000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529446000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529447000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529448000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529449000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529450000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529451000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529452000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529453000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529454000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529455000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529456000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529457000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529458000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529459000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529460000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529461000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529462000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529463000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529464000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529465000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529466000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529467000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529468000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529469000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529470000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529471000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529472000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529473000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529474000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529475000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529476000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529477000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529478000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529479000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529480000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529481000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529482000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529483000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529484000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529485000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529486000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529487000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529488000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529489000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529490000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529491000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529492000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529493000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529494000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529495000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529496000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529497000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529498000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529499000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529500000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529501000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529502000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529503000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529504000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529505000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529506000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529507000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529508000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529509000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529510000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529511000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529512000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529513000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529514000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529515000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529516000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529517000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529518000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529519000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529520000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529521000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529522000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529523000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529524000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529525000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529526000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529527000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529528000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529529000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529530000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529531000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529532000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529533000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529534000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529535000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529536000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529537000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529538000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529539000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529540000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529541000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529542000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529543000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529544000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529545000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529546000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529547000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529548000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529549000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529550000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529551000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529552000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529553000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529554000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529555000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529556000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529557000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529558000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529559000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529560000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529561000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529561000000000,
+          "equity": 4996.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529562000000000,
+          "equity": 5000.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529563000000000,
+          "equity": 5004.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529564000000000,
+          "equity": 5008.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529565000000000,
+          "equity": 5012.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529566000000000,
+          "equity": 5016.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529567000000000,
+          "equity": 5020.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529568000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529568000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529569000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529570000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529571000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529572000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529573000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529574000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529575000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529576000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529577000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529578000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529579000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529580000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529581000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529582000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529583000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529584000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529585000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529586000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529587000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529588000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529589000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529590000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529591000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529592000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529593000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529594000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529595000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529596000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529597000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529598000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529599000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529600000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529601000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529602000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529603000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529604000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529605000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529606000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529607000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529608000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529609000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529610000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529611000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529612000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529613000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529614000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529615000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529616000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529617000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529618000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529619000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529620000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529621000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529622000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529623000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529624000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529625000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529626000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529627000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529628000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529629000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529630000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529631000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529632000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529633000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529634000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529635000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529636000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529637000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529638000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529639000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529640000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529641000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529642000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529643000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529644000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529645000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529646000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529647000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529648000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529649000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529650000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529651000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529652000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529653000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529654000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529655000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529656000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529657000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529658000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529659000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529660000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529661000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529662000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529663000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529664000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529665000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529666000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529667000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529668000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529669000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529670000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529671000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529672000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529673000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529674000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529675000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529676000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529677000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529678000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529679000000000,
+          "equity": 5024.5,
+          "daily_halt": false,
+          "account_halt": null
+        }
+      ],
+      "session_notes": [
+        {
+          "date": "2026-09-03",
+          "signal_count": 0,
+          "note": "NO_PREVIOUS_SESSION"
+        },
+        {
+          "date": "2026-09-04",
+          "signal_count": 1,
+          "note": null
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "fee2_slip2",
+        "round_trip_fee": 2,
+        "slippage_ticks_per_side": 2
+      },
+      "pattern_signals": 1,
+      "risk_assessable_signals": 1,
+      "risk_unknown_signals": 0,
+      "risk_fit_signals": 1,
+      "risk_fit_pct_of_all_patterns": 100.0,
+      "risk_fit_pct_of_assessable": 100.0,
+      "entry_to_stop_ticks": {
+        "minimum": 18,
+        "median": 18,
+        "maximum": 18
+      },
+      "eligible_after_risk_and_reward": 1,
+      "entries": 1,
+      "closed_trades": 1,
+      "closed_trade_net_pnl": 23.5,
+      "worst_closed_trade_net_pnl": 23.5,
+      "ending_equity": 5023.5,
+      "max_observed_drawdown_dollars": 4.5,
+      "full_drawdown_established": true,
+      "account_halt": null,
+      "quality_issues": [],
+      "unresolved_position": null,
+      "screens": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 12.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39956,
+          "stop_distance_ticks": 18,
+          "planned_net_reward": 18.0,
+          "net_reward_risk": 1.5,
+          "reason": "ELIGIBLE"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 12.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39956,
+          "stop_distance_ticks": 18,
+          "planned_net_reward": 18.0,
+          "net_reward_risk": 1.5,
+          "reason": "ELIGIBLE",
+          "portfolio_reason": "ENTERED",
+          "day_risk_budget": 12.5
+        }
+      ],
+      "rejection_counts": {},
+      "trades": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 12.0,
+          "risk_fits": true,
+          "eligible": true,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39956,
+          "stop_distance_ticks": 18,
+          "planned_net_reward": 18.0,
+          "net_reward_risk": 1.5,
+          "reason": "ELIGIBLE",
+          "exit_due_ns": 1788529567100000000,
+          "exit_reason": "TARGET",
+          "trigger_ns": 1788529567000000000,
+          "exit_ns": 1788529568000000000,
+          "exit_ticks": 40007,
+          "gross_pnl": 25.5,
+          "fees": 2,
+          "net_pnl": 23.5
+        }
+      ],
+      "equity": [
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529440000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529441000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529442000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529443000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529444000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529445000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529446000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529447000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529448000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529449000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529450000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529451000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529452000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529453000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529454000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529455000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529456000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529457000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529458000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529459000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529460000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529461000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529462000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529463000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529464000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529465000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529466000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529467000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529468000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529469000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529470000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529471000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529472000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529473000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529474000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529475000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529476000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529477000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529478000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529479000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529480000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529481000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529482000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529483000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529484000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529485000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529486000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529487000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529488000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529489000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529490000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529491000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529492000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529493000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529494000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529495000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529496000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529497000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529498000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529499000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529500000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529501000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529502000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529503000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529504000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529505000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529506000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529507000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529508000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529509000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529510000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529511000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529512000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529513000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529514000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529515000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529516000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529517000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529518000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529519000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529520000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529521000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529522000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529523000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529524000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529525000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529526000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529527000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529528000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529529000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529530000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529531000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529532000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529533000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529534000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529535000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529536000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529537000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529538000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529539000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529540000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529541000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529542000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529543000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529544000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529545000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529546000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529547000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529548000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529549000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529550000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529551000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529552000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529553000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529554000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529555000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529556000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529557000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529558000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529559000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529560000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529561000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529561000000000,
+          "equity": 4995.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529562000000000,
+          "equity": 4999.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529563000000000,
+          "equity": 5003.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529564000000000,
+          "equity": 5007.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529565000000000,
+          "equity": 5011.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529566000000000,
+          "equity": 5015.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529567000000000,
+          "equity": 5019.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529568000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529568000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529569000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529570000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529571000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529572000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529573000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529574000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529575000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529576000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529577000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529578000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529579000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529580000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529581000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529582000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529583000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529584000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529585000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529586000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529587000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529588000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529589000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529590000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529591000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529592000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529593000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529594000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529595000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529596000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529597000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529598000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529599000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529600000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529601000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529602000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529603000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529604000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529605000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529606000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529607000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529608000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529609000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529610000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529611000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529612000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529613000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529614000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529615000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529616000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529617000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529618000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529619000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529620000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529621000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529622000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529623000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529624000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529625000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529626000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529627000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529628000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529629000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529630000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529631000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529632000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529633000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529634000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529635000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529636000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529637000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529638000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529639000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529640000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529641000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529642000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529643000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529644000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529645000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529646000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529647000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529648000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529649000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529650000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529651000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529652000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529653000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529654000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529655000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529656000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529657000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529658000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529659000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529660000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529661000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529662000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529663000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529664000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529665000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529666000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529667000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529668000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529669000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529670000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529671000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529672000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529673000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529674000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529675000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529676000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529677000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529678000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529679000000000,
+          "equity": 5023.5,
+          "daily_halt": false,
+          "account_halt": null
+        }
+      ],
+      "session_notes": [
+        {
+          "date": "2026-09-03",
+          "signal_count": 0,
+          "note": "NO_PREVIOUS_SESSION"
+        },
+        {
+          "date": "2026-09-04",
+          "signal_count": 1,
+          "note": null
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "fee4_slip2",
+        "round_trip_fee": 4,
+        "slippage_ticks_per_side": 2
+      },
+      "pattern_signals": 1,
+      "risk_assessable_signals": 1,
+      "risk_unknown_signals": 0,
+      "risk_fit_signals": 0,
+      "risk_fit_pct_of_all_patterns": 0.0,
+      "risk_fit_pct_of_assessable": 0.0,
+      "entry_to_stop_ticks": {
+        "minimum": 18,
+        "median": 18,
+        "maximum": 18
+      },
+      "eligible_after_risk_and_reward": 0,
+      "entries": 0,
+      "closed_trades": 0,
+      "closed_trade_net_pnl": 0,
+      "worst_closed_trade_net_pnl": null,
+      "ending_equity": 5000,
+      "max_observed_drawdown_dollars": 0.0,
+      "full_drawdown_established": true,
+      "account_halt": null,
+      "quality_issues": [],
+      "unresolved_position": null,
+      "screens": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 14.0,
+          "risk_fits": false,
+          "eligible": false,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39956,
+          "stop_distance_ticks": 18,
+          "planned_net_reward": 16.0,
+          "net_reward_risk": 1.1428571428571428,
+          "reason": "RISK_BUDGET"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "2026-09-04:15:1",
+          "day": "2026-09-04",
+          "contract": "MNQU6",
+          "signal_ns": 1788529560000000000,
+          "direction": 1,
+          "stop_ticks": 39938,
+          "target_ticks": 39998,
+          "vwap_ticks": 39998.50000000001,
+          "prior_high_ticks": 40050,
+          "prior_low_ticks": 39950,
+          "quote_index": 121,
+          "planned_risk": 14.0,
+          "risk_fits": false,
+          "eligible": false,
+          "entry_ns": 1788529561000000000,
+          "bid_ticks": 39953,
+          "ask_ticks": 39954,
+          "spread_ticks": 1,
+          "entry_ticks": 39956,
+          "stop_distance_ticks": 18,
+          "planned_net_reward": 16.0,
+          "net_reward_risk": 1.1428571428571428,
+          "reason": "RISK_BUDGET",
+          "portfolio_reason": "CURRENT_DAY_RISK_BUDGET",
+          "day_risk_budget": 12.5
+        }
+      ],
+      "rejection_counts": {
+        "CURRENT_DAY_RISK_BUDGET": 1
+      },
+      "trades": [],
+      "equity": [
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529440000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529441000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529442000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529443000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529444000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529445000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529446000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529447000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529448000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529449000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529450000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529451000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529452000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529453000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529454000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529455000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529456000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529457000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529458000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529459000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529460000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529461000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529462000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529463000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529464000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529465000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529466000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529467000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529468000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529469000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529470000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529471000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529472000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529473000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529474000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529475000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529476000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529477000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529478000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529479000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529480000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529481000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529482000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529483000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529484000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529485000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529486000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529487000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529488000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529489000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529490000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529491000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529492000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529493000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529494000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529495000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529496000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529497000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529498000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529499000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529500000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529501000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529502000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529503000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529504000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529505000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529506000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529507000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529508000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529509000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529510000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529511000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529512000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529513000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529514000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529515000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529516000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529517000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529518000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529519000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529520000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529521000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529522000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529523000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529524000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529525000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529526000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529527000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529528000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529529000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529530000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529531000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529532000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529533000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529534000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529535000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529536000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529537000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529538000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529539000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529540000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529541000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529542000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529543000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529544000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529545000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529546000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529547000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529548000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529549000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529550000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529551000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529552000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529553000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529554000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529555000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529556000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529557000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529558000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529559000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529560000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529561000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529562000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529563000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529564000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529565000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529566000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529567000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529568000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529569000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529570000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529571000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529572000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529573000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529574000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529575000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529576000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529577000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529578000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529579000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529580000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529581000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529582000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529583000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529584000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529585000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529586000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529587000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529588000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529589000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529590000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529591000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529592000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529593000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529594000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529595000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529596000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529597000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529598000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529599000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529600000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529601000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529602000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529603000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529604000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529605000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529606000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529607000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529608000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529609000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529610000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529611000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529612000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529613000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529614000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529615000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529616000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529617000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529618000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529619000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529620000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529621000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529622000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529623000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529624000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529625000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529626000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529627000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529628000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529629000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529630000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529631000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529632000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529633000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529634000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529635000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529636000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529637000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529638000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529639000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529640000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529641000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529642000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529643000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529644000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529645000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529646000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529647000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529648000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529649000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529650000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529651000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529652000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529653000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529654000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529655000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529656000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529657000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529658000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529659000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529660000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529661000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529662000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529663000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529664000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529665000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529666000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529667000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529668000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529669000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529670000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529671000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529672000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529673000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529674000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529675000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529676000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529677000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529678000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        },
+        {
+          "day": "2026-09-04",
+          "ts_ns": 1788529679000000000,
+          "equity": 5000,
+          "daily_halt": false,
+          "account_halt": null
+        }
+      ],
+      "session_notes": [
+        {
+          "date": "2026-09-03",
+          "signal_count": 0,
+          "note": "NO_PREVIOUS_SESSION"
+        },
+        {
+          "date": "2026-09-04",
+          "signal_count": 1,
+          "note": null
+        }
+      ]
+    }
+  ],
+  "budget_table": [
+    {
+      "scenario": "fee2_slip0",
+      "budget": 12.5,
+      "round_trip_fee": 2,
+      "slippage_ticks_per_side": 0,
+      "max_quote_to_stop_ticks": 21
+    },
+    {
+      "scenario": "fee2_slip1",
+      "budget": 12.5,
+      "round_trip_fee": 2,
+      "slippage_ticks_per_side": 1,
+      "max_quote_to_stop_ticks": 19
+    },
+    {
+      "scenario": "fee2_slip2",
+      "budget": 12.5,
+      "round_trip_fee": 2,
+      "slippage_ticks_per_side": 2,
+      "max_quote_to_stop_ticks": 17
+    },
+    {
+      "scenario": "fee4_slip2",
+      "budget": 12.5,
+      "round_trip_fee": 4,
+      "slippage_ticks_per_side": 2,
+      "max_quote_to_stop_ticks": 13
+    }
+  ],
+  "initial_cash": 5000,
+  "initial_risk_budget": 12.5,
+  "provenance": {
+    "files": {
+      "DATA_CONTRACT.md": "5286777b1e2648942485367f48ae82fad1fd8c376a3f1c7d1368b8a3a2f09132",
+      "PROTOCOL.md": "128341ce61ca0a2c5b9bdc2fda70e13d04082981677b0d11941597af8242e905",
+      "README.md": "12a84daec9f880671374c2b17e6475d937d6711a4d5b61663792d0a481957850",
+      "config.json": "41521d784062f5b8594c2fa093dd388c6f3888dd7c0d51edabb2db11f5fefa24",
+      "engine.py": "8f20d82fdea5670d72f72095a2998d2c7aa10da299a92daf898e0df3a3163dc4",
+      "fixture.py": "f137a6a8077847179780aa50cdf13b1810d43b1aa0bf1535219b2066e3f964ad",
+      "run.py": "6fbd5da8a885a8472a281f77a746dea201492a3b6dd8e602c067a97c1dd93ab9",
+      "test_engine.py": "b393079be60642a3eab574f6888f7b523e380dbadf47f74c3ecaea1d91e0f679"
+    },
+    "input_sha256": null,
+    "input_file": null
+  }
+}

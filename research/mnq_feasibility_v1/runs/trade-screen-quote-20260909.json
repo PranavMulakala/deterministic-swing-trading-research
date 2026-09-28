@@ -1,0 +1,235 @@
+{
+  "checked_at_utc": "2026-09-09T06:13:22.984878+00:00",
+  "status": "QUOTE_ONLY_NO_PURCHASE",
+  "requests": [
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-03T13:30:00Z",
+        "end": "2026-08-03T20:00:00Z"
+      },
+      "estimated_usd": "1.022097408772"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-04T13:30:00Z",
+        "end": "2026-08-04T20:00:00Z"
+      },
+      "estimated_usd": "1.062235593796"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-05T13:30:00Z",
+        "end": "2026-08-05T20:00:00Z"
+      },
+      "estimated_usd": "1.255670428276"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-06T13:30:00Z",
+        "end": "2026-08-06T20:00:00Z"
+      },
+      "estimated_usd": "1.302365005016"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-07T13:30:00Z",
+        "end": "2026-08-07T20:00:00Z"
+      },
+      "estimated_usd": "1.136628985405"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-10T13:30:00Z",
+        "end": "2026-08-10T20:00:00Z"
+      },
+      "estimated_usd": "0.966398119926"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-11T13:30:00Z",
+        "end": "2026-08-11T20:00:00Z"
+      },
+      "estimated_usd": "0.995377421379"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-12T13:30:00Z",
+        "end": "2026-08-12T20:00:00Z"
+      },
+      "estimated_usd": "0.906624555588"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-13T13:30:00Z",
+        "end": "2026-08-13T20:00:00Z"
+      },
+      "estimated_usd": "0.889523863792"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-14T13:30:00Z",
+        "end": "2026-08-14T20:00:00Z"
+      },
+      "estimated_usd": "0.875413477421"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-17T13:30:00Z",
+        "end": "2026-08-17T20:00:00Z"
+      },
+      "estimated_usd": "0.852840363979"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-18T13:30:00Z",
+        "end": "2026-08-18T20:00:00Z"
+      },
+      "estimated_usd": "1.065233409405"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-19T13:30:00Z",
+        "end": "2026-08-19T20:00:00Z"
+      },
+      "estimated_usd": "1.158791542053"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-20T13:30:00Z",
+        "end": "2026-08-20T20:00:00Z"
+      },
+      "estimated_usd": "1.145718812942"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-21T13:30:00Z",
+        "end": "2026-08-21T20:00:00Z"
+      },
+      "estimated_usd": "0.899378478527"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-24T13:30:00Z",
+        "end": "2026-08-24T20:00:00Z"
+      },
+      "estimated_usd": "0.963555514812"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-25T13:30:00Z",
+        "end": "2026-08-25T20:00:00Z"
+      },
+      "estimated_usd": "0.897258102894"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-26T13:30:00Z",
+        "end": "2026-08-26T20:00:00Z"
+      },
+      "estimated_usd": "0.911118149757"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-27T13:30:00Z",
+        "end": "2026-08-27T20:00:00Z"
+      },
+      "estimated_usd": "1.099647581577"
+    },
+    {
+      "request": {
+        "dataset": "GLBX.MDP3",
+        "symbols": "MNQU6",
+        "stype_in": "raw_symbol",
+        "schema": "trades",
+        "start": "2026-08-28T13:30:00Z",
+        "end": "2026-08-28T20:00:00Z"
+      },
+      "estimated_usd": "1.225091457367"
+    }
+  ],
+  "trade_only_estimated_usd": "20.630968272684",
+  "estimated_with_previously_quoted_definitions_usd": "20.630987208335",
+  "all_mbp1_prior_estimated_usd": "54.962699558585",
+  "limitations": [
+    "Trade-only data can find fixed-rule patterns but cannot verify executable quotes or costs.",
+    "Buy quotes for every day with qualifying signals, not selected winners; the second-stage cost is not yet known.",
+    "Buying trades and then MBP-1 duplicates the trade component; staged total can exceed MBP-1 alone if many days contain signals.",
+    "No new data purchased or downloaded by this script."
+  ]
+}

@@ -1,0 +1,5 @@
+scenario,budget,round_trip_fee,slippage_ticks_per_side,max_quote_to_stop_ticks
+fee2_slip0,12.5,2,0,21
+fee2_slip1,12.5,2,1,19
+fee2_slip2,12.5,2,2,17
+fee4_slip2,12.5,4,2,13

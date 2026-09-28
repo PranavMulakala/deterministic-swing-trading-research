@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "inspected_on": "2026-09-15",
+  "overall": "BLOCKED",
+  "sources": {
+    "cloud/collector.py": "a07051763a0f696ef3f510c8f39dfa1b734f8ce4e4407021a9b83df576162f4a",
+    "cloud/build_research_bundle.py": "da14592da6ea460c4ef5edaab7a28065d83092d1c971ca2abb6480ca0155a435",
+    "cloud/news_context_v1.json": "14936e9065cdba1e6c9370b1cc17f2fb848ccf247fc04f2b7381e8005d3c6728"
+  },
+  "measured_or_code_visible_gaps": [
+    "main collector delay is 1200 seconds while frozen stock evidence permits 300 seconds and option evidence permits 30 seconds",
+    "main collector has no option-chain stream",
+    "main collector has no earnings-calendar source",
+    "frozen cloud bundle exposes 20 warmup sessions, insufficient to derive SMA50 without another point-in-time history source",
+    "this version has no modeled fill, mark, exit, or closed-trade lifecycle"
+  ],
+  "per_arm": {
+    "price_stock": ["FRESHNESS", "SMA50_HISTORY", "EARNINGS", "PAPER_LIFECYCLE"],
+    "context_stock": ["FRESHNESS", "SMA50_HISTORY", "EARNINGS", "RAW_CONTEXT_RECEIPTS", "PAPER_LIFECYCLE"],
+    "price_options": ["OPTION_CHAIN", "FRESHNESS", "PAPER_LIFECYCLE"],
+    "context_options": ["OPTION_CHAIN", "FRESHNESS", "RAW_CONTEXT_RECEIPTS", "PAPER_LIFECYCLE"]
+  },
+  "promotion": "PROHIBITED"
+}

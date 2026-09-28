@@ -1,0 +1,8 @@
+{
+  "research/lite_execution_data/runs/sip-bars-01/LITE_5Min.json": "41fd6ae0f253904f59ff79b275bae0bf4543b114708ff04dc73ffd1da230e183",
+  "research/lite_execution_data/runs/sip-bars-01/LITE_1Min.json": "888afe48369af81b0e3d44eba6734676acdb5e9848d503fe4da17788bf98090c",
+  "research/lite_2026/snapshot.json": "42342bcebbc42da4c51b028b15c90ce8942809566c14c69a841f6cb55e1202a5",
+  "research/lite_execution_data/study.py": "3b6dc7ffcce0c1a970c721bfb95dc0776ad390f5da7af6539722fd7c4c06434e",
+  "research/lite_reversal_v1/experiment.py": "471df4e457dd3a06b5e07b94cdfed66adff746e3564c6e9eb67ca9f07f21e797",
+  "research/lite_reversal_v1/config.json": "b5eea4e339b369aae698e0a116002ff4e912d0c8abec568607fc7aa7fe747b74"
+}

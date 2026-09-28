@@ -1,0 +1,14 @@
+{
+  "status": "NOT_ESTABLISHED",
+  "files": {
+    "engine.py": "45dbc8370a3582d66166385fc26ceec36f34c22a1c30e2cbb33ceaa9675dc20d",
+    "run.py": "e886923fda8ed3d0f454a56c104f424792ee7ede87fd9d5eb2c40d50f7a0c2d7",
+    "runs/comparison-02/report.json": "65138e35e047c41e69555ef52408f984f94f9e8fbc760c55bcb2679cc2993cbc",
+    "runs/comparison-02/results.json": "f14067956dad9c887f6c6420eaea71820c27443d5ccb631a64bc73940bb6db25",
+    "runs/comparison-02/prepared.json": "e4d7b99e14729b6a7053eb14156910015dd9e6eec6eda9eb60b63eff8dc62a6a",
+    "runs/execution-evidence-02/report.json": "65d89ed98509fb1de9e4b49c818a3abad63d3cc8774421892de70a01cb3a3b67",
+    "runs/execution-evidence-02/raw.json": "e9acd76c2fab1d5eeafc8fb4aa7d36031f32c8b40642c8c39f162765fd3daac7"
+  },
+  "reproduction": "comparison-01 and comparison-02 ledger results match exactly; comparison-02 adds stronger independent accounting checks and descriptive controls",
+  "no_order_or_deployment_authorization": true
+}

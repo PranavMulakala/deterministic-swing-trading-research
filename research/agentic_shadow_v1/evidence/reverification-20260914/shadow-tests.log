@@ -1,0 +1,5 @@
+----------------------------------------------------------------------
+Ran 46 tests in 0.432s
+
+OK
+{"evidence_kind":"observed","observations":1,"orders":false,"real_data_readiness":"BLOCKED: normalized options feed and coverage not verified"}

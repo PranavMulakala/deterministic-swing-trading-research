@@ -1,0 +1,40 @@
+{
+  "verified_at_utc": "2026-09-14T23:12:31.260240+00:00",
+  "release_revision": "1127c399b1898472f4c9fd9345ac77106287686be9d3d56301873e80f7b29b49",
+  "release_manifest_verified": true,
+  "tests_passed": 66,
+  "test_failures": 0,
+  "live_forced_smoke": {
+    "status": "PUBLISHED",
+    "symbol": "SPY",
+    "network_requests": 10,
+    "joined_contracts": 302,
+    "orders": false,
+    "subscriptions_changed": false,
+    "raw_responses_rehashed": 10,
+    "largest_raw_response_bytes": 110517,
+    "packet_bytes": 2184858,
+    "ledger_bytes": 28672,
+    "full_contracts_archived": 302,
+    "contracts_evaluated_before_compaction": 302,
+    "contracts_stored_in_ledger": 0
+  },
+  "consumer": {
+    "accepted": true,
+    "all_six_data_sections_available": true,
+    "ingestion_error": null,
+    "packet_hash_bound": true,
+    "archive_hash_bound": true,
+    "purpose": "PLUMBING ONLY",
+    "real_money": "DISABLED; no broker order client or endpoint"
+  },
+  "independent_checkpoint_required_sessions_zero": {
+    "passed": true,
+    "archives_verified": 1,
+    "consumer_events": 1,
+    "issues": []
+  },
+  "actual_secret_value_scan": "PASS",
+  "interpretation": "PLUMBING ONLY — NOT VALID FOR PROFIT, EXECUTION, OR AGENT-EFFICACY ANALYSIS"
+}
+

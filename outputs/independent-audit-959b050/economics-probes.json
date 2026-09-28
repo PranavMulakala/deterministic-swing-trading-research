@@ -1,0 +1,27 @@
+{
+  "in_sample": {
+    "spy": {
+      "ending_equity": 2017.98330179,
+      "curve_rows": 3776,
+      "max_absolute_curve_difference": 0.0
+    },
+    "momentum": {
+      "ending_equity": 1234.56921595,
+      "curve_rows": 3776,
+      "max_absolute_curve_difference": 0.0
+    }
+  },
+  "out_of_sample": {
+    "spy": {
+      "ending_equity": 1099.84843136,
+      "curve_rows": 1421,
+      "max_absolute_curve_difference": 0.0
+    },
+    "momentum": {
+      "ending_equity": 793.04974055,
+      "curve_rows": 1421,
+      "max_absolute_curve_difference": 0.0
+    }
+  },
+  "indicator_prefix_checks": 45
+}

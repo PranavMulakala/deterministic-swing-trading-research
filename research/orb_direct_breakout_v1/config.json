@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "id": "orb-direct-breakout-prospective-v1",
+  "prospective_start": "2026-09-16",
+  "parent_selection": "research/orb_comparison_v1/spec.json",
+  "execution_model": "research/orb_quote_v2/execution.json",
+  "entry_change_only": "first completed five-minute close above opening-range high; no retest",
+  "arms": ["A", "B"],
+  "delay_seconds": [1, 2],
+  "cost_bps": [10, 25],
+  "orders_enabled": false,
+  "promotion_enabled": false,
+  "minimum_review_sessions": 20,
+  "minimum_closed_trades_per_arm": 20
+}
+

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "package_version": "1.0.0",
+  "mode": "PAPER_ONLY_NO_ORDER",
+  "orders_enabled": false,
+  "broker_enabled": false,
+  "model_calls_enabled": false,
+  "network_enabled": false,
+  "account_id": "paper-10000-stock-free-v1",
+  "initial_cash": "10000.00",
+  "stock_symbols": ["AAOI", "CIEN", "COHR", "FN", "LITE"],
+  "source_mode": "ALPACA_BASIC_FREE_IEX_LIVE_SIP_HISTORY_V1",
+  "minimum_history_sessions": 50,
+  "stock_max_age_seconds": 300,
+  "earnings_horizon_days": 7,
+  "required_receipts": ["direct_news", "earnings_calendar", "stock_history", "stock_quotes"],
+  "review": {
+    "minimum_completed_sessions": 30,
+    "minimum_closed_trades": 20,
+    "promotion_enabled": false
+  }
+}

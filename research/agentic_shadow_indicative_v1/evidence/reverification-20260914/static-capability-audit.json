@@ -1,0 +1,15 @@
+{
+  "release_revision": "1127c399b1898472f4c9fd9345ac77106287686be9d3d56301873e80f7b29b49",
+  "ast_http_methods": [
+    "GET"
+  ],
+  "ast_static_hosts": [
+    "data.alpaca.markets",
+    "paper-api.alpaca.markets"
+  ],
+  "producer_mutating_capability_scan": "PASS",
+  "consumer_declared_isolation": "PASS",
+  "credentials_included": false,
+  "orders": false
+}
+

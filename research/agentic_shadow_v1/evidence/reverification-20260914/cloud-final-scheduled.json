@@ -1,0 +1,302 @@
+{
+  "checked_at": "2026-09-14T20:19:35.016895+00:00",
+  "shadow_timer": {
+    "NextElapseUSecMonotonic": "6d 14h 33min 26.131519s",
+    "LastTriggerUSec": "Mon 2026-09-14 20:19:30 UTC",
+    "ActiveState": "active"
+  },
+  "shadow_service": {
+    "Result": "success",
+    "ExecMainStartTimestamp": "Mon 2026-09-14 20:19:31 UTC",
+    "ExecMainExitTimestamp": "Mon 2026-09-14 20:19:34 UTC",
+    "ExecMainStatus": "0",
+    "MemoryPeak": "[not set]",
+    "CPUQuotaPerSecUSec": "100ms",
+    "MemoryMax": "134217728",
+    "DynamicUser": "yes",
+    "InaccessiblePaths": "-/etc/trading-collector -/var/lib/trading-collector -/var/lib/trading-research -/root",
+    "PrivateNetwork": "yes",
+    "ProtectHome": "yes",
+    "ProtectSystem": "strict",
+    "NoNewPrivileges": "yes",
+    "RestrictAddressFamilies": "AF_UNIX",
+    "ActiveState": "inactive"
+  },
+  "collector": {
+    "MainPID": "74726",
+    "NRestarts": "0",
+    "ActiveState": "active"
+  },
+  "collector_code_sha256": "a07051763a0f696ef3f510c8f39dfa1b734f8ce4e4407021a9b83df576162f4a",
+  "collector_health": {
+    "at": "2026-09-14T20:18:41.012943Z",
+    "mode": "DELAYED_RESEARCH_ONLY_NO_ORDERS",
+    "news_context": {
+      "id": "optical-sector-news-context-v1",
+      "start": "2026-09-09T00:00:00Z",
+      "symbols": 13,
+      "selection": false
+    },
+    "initial_start": "2026-09-08T00:00:00Z",
+    "completed_through": {
+      "bars": "2026-09-14T19:55:00Z",
+      "bars5": "2026-09-14T19:55:00Z",
+      "news": "2026-09-14T19:55:00Z",
+      "sector_news": "2026-09-14T19:55:00Z",
+      "LITE:quotes": "2026-09-14T19:55:00Z",
+      "LITE:trades": "2026-09-14T19:55:00Z",
+      "COHR:quotes": "2026-09-14T19:55:00Z",
+      "COHR:trades": "2026-09-14T19:55:00Z",
+      "CIEN:quotes": "2026-09-14T19:55:00Z",
+      "CIEN:trades": "2026-09-14T19:55:00Z",
+      "FN:quotes": "2026-09-14T19:55:00Z",
+      "FN:trades": "2026-09-14T19:55:00Z",
+      "AAOI:quotes": "2026-09-14T19:55:00Z",
+      "AAOI:trades": "2026-09-14T19:55:00Z"
+    },
+    "pending_streams": [],
+    "errors": {},
+    "pages": 27253,
+    "records": 5438656
+  },
+  "report": {
+    "experiment": "agentic-options-shadow-7500-v1",
+    "capital_per_arm_cents": 750000,
+    "evidence_kind": "observed",
+    "local_software": "see HANDOFF.md for tested release verdict",
+    "real_data_readiness": "BLOCKED: normalized options feed and coverage not verified",
+    "real_money": "NOT AUTHORIZED",
+    "model": "mock-v1; zero API calls",
+    "costs_note": "Fees are debited. Spread/slippage figures are attribution, not additional debits. External data/cloud costs unverified.",
+    "unknown_marks_note": "Unknown liquidation marks use worst-case loss plus reserved exit fee for risk decisions; these are not observed prices.",
+    "generated_at": "2026-09-14T20:19:33.780604+00:00",
+    "last_observation": "2026-09-14T20:19:33.774517+00:00",
+    "observations": 5,
+    "available_data": {
+      "chain": false,
+      "underlying": false,
+      "bars": false,
+      "calendar": false,
+      "events": false,
+      "news": false
+    },
+    "contract_rejections": {},
+    "arms": {
+      "analyst": {
+        "breaches": [],
+        "cash_cents": 750000,
+        "closed_trades": 0,
+        "daily_pause": false,
+        "day": "2026-09-14",
+        "day_start_cents": 750000,
+        "equity_cents": 750000,
+        "experiment_pause": false,
+        "fees_cents": 0,
+        "fills": 0,
+        "max_drawdown_cents": 0,
+        "peak_cents": 750000,
+        "pending": null,
+        "position": null,
+        "realized_cents": 0,
+        "slippage_cents": 0,
+        "spread_cents": 0,
+        "unknown_mark": false,
+        "unrealized_cents": 0,
+        "net_pnl_cents": 0,
+        "decision_reasons": {
+          "missing_data": 5
+        },
+        "unfilled_reasons": {}
+      },
+      "analyst_critic": {
+        "breaches": [],
+        "cash_cents": 750000,
+        "closed_trades": 0,
+        "daily_pause": false,
+        "day": "2026-09-14",
+        "day_start_cents": 750000,
+        "equity_cents": 750000,
+        "experiment_pause": false,
+        "fees_cents": 0,
+        "fills": 0,
+        "max_drawdown_cents": 0,
+        "peak_cents": 750000,
+        "pending": null,
+        "position": null,
+        "realized_cents": 0,
+        "slippage_cents": 0,
+        "spread_cents": 0,
+        "unknown_mark": false,
+        "unrealized_cents": 0,
+        "net_pnl_cents": 0,
+        "decision_reasons": {
+          "missing_data": 5
+        },
+        "unfilled_reasons": {}
+      },
+      "deterministic": {
+        "breaches": [],
+        "cash_cents": 750000,
+        "closed_trades": 0,
+        "daily_pause": false,
+        "day": "2026-09-14",
+        "day_start_cents": 750000,
+        "equity_cents": 750000,
+        "experiment_pause": false,
+        "fees_cents": 0,
+        "fills": 0,
+        "max_drawdown_cents": 0,
+        "peak_cents": 750000,
+        "pending": null,
+        "position": null,
+        "realized_cents": 0,
+        "slippage_cents": 0,
+        "spread_cents": 0,
+        "unknown_mark": false,
+        "unrealized_cents": 0,
+        "net_pnl_cents": 0,
+        "decision_reasons": {
+          "missing_data": 5
+        },
+        "unfilled_reasons": {}
+      }
+    },
+    "last_decisions": {
+      "analyst": {
+        "actions": [],
+        "proposal": null,
+        "verdict": "missing_data"
+      },
+      "analyst_critic": {
+        "actions": [],
+        "proposal": null,
+        "verdict": "missing_data"
+      },
+      "deterministic": {
+        "actions": [],
+        "proposal": null,
+        "verdict": "missing_data"
+      }
+    },
+    "recent_decisions": [
+      {
+        "event_id": "unavailable-2026-09-14T20:17:17.368520+00:00",
+        "observed_at": "2026-09-14T20:17:17.368520+00:00",
+        "packet_hash": "ee1ccfd0bb07d97e0892efb1f65321a54644a33ec4aa2f0670f24bff71ba6d60",
+        "candidate": null,
+        "decisions": {
+          "analyst": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "analyst_critic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "deterministic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          }
+        }
+      },
+      {
+        "event_id": "unavailable-2026-09-14T20:17:51.793720+00:00",
+        "observed_at": "2026-09-14T20:17:51.793720+00:00",
+        "packet_hash": "c4cf677e43aceee7b73c6f9748d160785387390af793e124646b3c7e82e4be2a",
+        "candidate": null,
+        "decisions": {
+          "analyst": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "analyst_critic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "deterministic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          }
+        }
+      },
+      {
+        "event_id": "unavailable-2026-09-14T20:18:25.112697+00:00",
+        "observed_at": "2026-09-14T20:18:25.112697+00:00",
+        "packet_hash": "086ce5d18c0ca9c1444a164baf232d61d9c9535be74037b3b50eba71c1e9ebc1",
+        "candidate": null,
+        "decisions": {
+          "analyst": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "analyst_critic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "deterministic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          }
+        }
+      },
+      {
+        "event_id": "unavailable-2026-09-14T20:18:59.230759+00:00",
+        "observed_at": "2026-09-14T20:18:59.230759+00:00",
+        "packet_hash": "64e3797adc2580b31e12a3918e8112d80121c60f601de87e820a6ac6af584a4f",
+        "candidate": null,
+        "decisions": {
+          "analyst": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "analyst_critic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "deterministic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          }
+        }
+      },
+      {
+        "event_id": "unavailable-2026-09-14T20:19:33.774517+00:00",
+        "observed_at": "2026-09-14T20:19:33.774517+00:00",
+        "packet_hash": "0a6459691e30daa0bc5e1e9ca6f164990073570cd70278dd5f64c5272a78c711",
+        "candidate": null,
+        "decisions": {
+          "analyst": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "analyst_critic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          },
+          "deterministic": {
+            "actions": [],
+            "proposal": null,
+            "verdict": "missing_data"
+          }
+        }
+      }
+    ],
+    "sources": {},
+    "interpretation": "Software and simulated outcomes do not establish a trading edge. Three arms are alternatives with matched inputs.",
+    "ingestion_error": "missing_input"
+  }
+}

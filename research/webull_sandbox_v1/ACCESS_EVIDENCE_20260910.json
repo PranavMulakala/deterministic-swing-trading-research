@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "ACTUAL_SANDBOX_READ_ONLY_PROBE",
+  "checked_at_utc": "2026-09-10T07:25:25.617485+00:00",
+  "symbol": "MNQU6",
+  "environment": "SANDBOX",
+  "orders_enabled": false,
+  "orders_submitted": 0,
+  "live_trial_authorized": false,
+  "requests": [
+    {
+      "path": "/openapi/config",
+      "sent_at_utc": "2026-09-10T07:25:25.619165+00:00",
+      "status": 200,
+      "received_at_utc": "2026-09-10T07:25:25.803847+00:00"
+    },
+    {
+      "path": "/trading/accounts/list",
+      "sent_at_utc": "2026-09-10T07:25:25.805547+00:00",
+      "status": 200,
+      "received_at_utc": "2026-09-10T07:25:25.955892+00:00"
+    },
+    {
+      "path": "/trading/assets/balances/get",
+      "sent_at_utc": "2026-09-10T07:25:25.958651+00:00",
+      "status": 200,
+      "received_at_utc": "2026-09-10T07:25:26.126487+00:00"
+    },
+    {
+      "path": "/trading/assets/positions/list",
+      "sent_at_utc": "2026-09-10T07:25:26.130111+00:00",
+      "status": 200,
+      "received_at_utc": "2026-09-10T07:25:26.309736+00:00"
+    },
+    {
+      "path": "/trading/orders/open-orders/list",
+      "sent_at_utc": "2026-09-10T07:25:26.311267+00:00",
+      "status": 200,
+      "received_at_utc": "2026-09-10T07:25:26.462359+00:00"
+    },
+    {
+      "path": "/openapi/config",
+      "sent_at_utc": "2026-09-10T07:25:26.465592+00:00",
+      "status": 200,
+      "received_at_utc": "2026-09-10T07:25:26.610710+00:00"
+    },
+    {
+      "path": "/trading/instruments/futures/contracts/list",
+      "sent_at_utc": "2026-09-10T07:25:26.614252+00:00",
+      "status": 200,
+      "received_at_utc": "2026-09-10T07:25:26.770922+00:00"
+    },
+    {
+      "path": "/market-data/futures/snapshots/list",
+      "sent_at_utc": "2026-09-10T07:25:26.772259+00:00",
+      "status": 417,
+      "received_at_utc": "2026-09-10T07:25:26.923818+00:00",
+      "error_code": "ILLEGAL_PARAMETER",
+      "error_message": "only these symbols are supported:[mesmain]",
+      "mentions_permission": false,
+      "mentions_subscription": false
+    },
+    {
+      "path": "/market-data/futures/depths/list",
+      "sent_at_utc": "2026-09-10T07:25:26.926465+00:00",
+      "status": 417,
+      "received_at_utc": "2026-09-10T07:25:27.136082+00:00",
+      "error_code": "ILLEGAL_PARAMETER",
+      "error_message": "only these symbols are supported:[mesmain]",
+      "mentions_permission": false,
+      "mentions_subscription": false
+    }
+  ],
+  "checks": {
+    "accounts": {
+      "http_status": 200,
+      "observed_at_utc": "2026-09-10T07:25:25.956068+00:00",
+      "response_sha256": "af8b3b8114909d48eb6e460127fe3df695cd105847af8febbd0f4f252acb53a4",
+      "public_fields": [
+        {
+          "account_type": "CASH",
+          "account_label": "Events Cash",
+          "account_class": "EVENTS_CASH"
+        },
+        {
+          "account_type": "CASH",
+          "account_label": "Individual Cash",
+          "account_class": "INDIVIDUAL_CASH"
+        },
+        {
+          "account_type": "MARGIN",
+          "account_label": "Futures",
+          "account_class": "FUTURES"
+        },
+        {
+          "account_type": "MARGIN",
+          "account_label": "Individual Margin",
+          "account_class": "INDIVIDUAL_MARGIN"
+        },
+        {
+          "account_type": "CASH",
+          "account_label": "Crypto",
+          "account_class": "CRYPTO"
+        }
+      ],
+      "top_level_field_names": [],
+      "row_count": 5,
+      "row_field_names": [
+        "account_class",
+        "account_id",
+        "account_label",
+        "account_number",
+        "account_type",
+        "user_id"
+      ]
+    },
+    "futures_balance": {
+      "http_status": 200,
+      "observed_at_utc": "2026-09-10T07:25:26.126705+00:00",
+      "response_sha256": "fa771ecc37e3a582f776cc8f39c3c0fa5a65ed6c7d7c3ba55e4008688fe32fc3",
+      "public_fields": {},
+      "top_level_field_names": [
+        "account_currency_assets",
+        "init_margin",
+        "intraday_margin",
+        "margin_excess",
+        "margin_ratio",
+        "open_margin_calls",
+        "total_asset_currency",
+        "total_cash_balance",
+        "total_net_liquidation_value",
+        "total_unrealized_profit_loss",
+        "used_margin",
+        "used_margin_for_open_order"
+      ],
+      "more_pages_indicated": false
+    },
+    "futures_positions": {
+      "http_status": 200,
+      "observed_at_utc": "2026-09-10T07:25:26.309816+00:00",
+      "response_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "public_fields": [],
+      "top_level_field_names": [],
+      "row_count": 0,
+      "row_field_names": []
+    },
+    "futures_open_orders": {
+      "http_status": 200,
+      "observed_at_utc": "2026-09-10T07:25:26.462522+00:00",
+      "response_sha256": "8fe32e407a1038ee38753b70e5374b3a46d6ae9d5f16cd5b73c53abaca8f5ed0",
+      "public_fields": {
+        "data": []
+      },
+      "top_level_field_names": [
+        "data"
+      ],
+      "more_pages_indicated": false,
+      "row_count": 0,
+      "row_field_names": []
+    },
+    "contract": {
+      "http_status": 200,
+      "observed_at_utc": "2026-09-10T07:25:26.770992+00:00",
+      "response_sha256": "8c81dbce5882cf6791ceba930abc33fa9432f81c808bc415c6b1b6857f2d037d",
+      "public_fields": [
+        {
+          "symbol": "MNQU6",
+          "code": "MNQ",
+          "name": "Micro E-mini Nasdaq-100 SEP 26",
+          "currency": "USD",
+          "size": "2.0000000000",
+          "unit": 1,
+          "settlement": "CASH",
+          "status": "OC",
+          "exchange_code": "XCME",
+          "contract_month": "202609",
+          "settlement_date": "2026-09-18",
+          "min_tick": "0.2500000000",
+          "last_trading_date": "2026-09-18",
+          "contract_type": "MONTHLY"
+        }
+      ],
+      "top_level_field_names": [],
+      "row_count": 1,
+      "row_field_names": [
+        "code",
+        "contract_month",
+        "contract_type",
+        "currency",
+        "exchange_code",
+        "first_trading_date",
+        "instrument_id",
+        "last_trading_date",
+        "min_tick",
+        "name",
+        "product_class_id",
+        "product_class_name",
+        "settlement",
+        "settlement_date",
+        "size",
+        "status",
+        "symbol",
+        "unit"
+      ]
+    },
+    "snapshot": {
+      "error_type": "ServerException",
+      "result": "REQUEST_FAILED",
+      "status": 417,
+      "error_code": "ILLEGAL_PARAMETER",
+      "error_message": "only these symbols are supported:[mesmain]",
+      "mentions_permission": false,
+      "mentions_subscription": false
+    },
+    "depth": {
+      "error_type": "ServerException",
+      "result": "REQUEST_FAILED",
+      "status": 417,
+      "error_code": "ILLEGAL_PARAMETER",
+      "error_message": "only these symbols are supported:[mesmain]",
+      "mentions_permission": false,
+      "mentions_subscription": false
+    }
+  },
+  "execution_readiness": "NOT_READY",
+  "futures_account_count": 1,
+  "access_blockers": [
+    "SNAPSHOT_UNAVAILABLE",
+    "DEPTH_UNAVAILABLE"
+  ],
+  "result": "ACCESS_BLOCKED"
+}

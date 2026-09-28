@@ -1,0 +1,193 @@
+{
+  "cwd": "/Users/pranavmulakala/personal/deterministic-swing-trading-research",
+  "runtime_executable": "/Users/pranavmulakala/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+  "runtime_version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "remote": "origin\tgit@github-personal:PranavMulakala/deterministic-swing-trading-research.git (fetch)\norigin\tgit@github-personal:PranavMulakala/deterministic-swing-trading-research.git (push)",
+  "branch": "paper-trading-readiness-v1",
+  "head": "959b050280316d67eca3cec379e3001bc50ca142",
+  "status_short": "?? outputs/independent-audit-959b050/",
+  "tracked_worktree_diff": "",
+  "staged_diff": "",
+  "frozen_worktree_diff": "",
+  "frozen_baseline_diff": "",
+  "source_count": 25,
+  "test_support_count": 19,
+  "scope": {
+    "src/swingbot/__init__.py": {
+      "lines": 3,
+      "sha256": "40b063492349ccaa65184e769870480f55ace8b9680f3fd3475403c3801ea283"
+    },
+    "src/swingbot/alpaca_paper.py": {
+      "lines": 566,
+      "sha256": "72149b8eb39d1b79148b7f3b9c9ca6f2f978b0ff5aa08803dad5bb1fd1bf8496"
+    },
+    "src/swingbot/backtest.py": {
+      "lines": 525,
+      "sha256": "cee99dc7cc75885d1885cffcdb2be69937eaca241349dfc8e34613e21a1055f2"
+    },
+    "src/swingbot/benchmarks.py": {
+      "lines": 200,
+      "sha256": "ff105395813ebe9f1da4da51544020776c6b6ed3807c7a2c5ede185cb5983bc0"
+    },
+    "src/swingbot/cli.py": {
+      "lines": 120,
+      "sha256": "5e73b7a677a51f3cbcfaeba012a22fafa302f04baf290c9155d1ef68fd517fdb"
+    },
+    "src/swingbot/config.py": {
+      "lines": 68,
+      "sha256": "29b53dcc3c004d8a6480f1a7bce820c7976bcaf4a58f12b33e6331cbc64c065d"
+    },
+    "src/swingbot/data.py": {
+      "lines": 178,
+      "sha256": "912e1c484701b4d0d7f7c58407489f703d4e33dcb5890aa2a8685081003b5955"
+    },
+    "src/swingbot/execution_contract.py": {
+      "lines": 41,
+      "sha256": "0726074373abf7ff5201f94741ad5d076e25c6cfd1e0b98531e014fc92ff22b7"
+    },
+    "src/swingbot/indicators.py": {
+      "lines": 73,
+      "sha256": "d208e435efa32989ea4e0d13f4cbe36b38722c7bf5610f1a46080ec39760c0f1"
+    },
+    "src/swingbot/ledger.py": {
+      "lines": 40,
+      "sha256": "2e58b6c343e686291a5cc8ca6adcbebc9f8d4fff209fecce3a0508e840f23a7b"
+    },
+    "src/swingbot/models.py": {
+      "lines": 87,
+      "sha256": "fcb6c2e97ae660145f4ef2ddaaa826401bb8b59387f97f84d813cc2a750f366f"
+    },
+    "src/swingbot/paper_cli.py": {
+      "lines": 192,
+      "sha256": "be8e97341361af4318daf01f70aa8ada1ccbfc22e0d3228890bb7bdc65a51a78"
+    },
+    "src/swingbot/paper_config.py": {
+      "lines": 115,
+      "sha256": "fcbf319878e39112280bf2b6b3fc0363587c33444a9b3c2fbe28dacfcc64fe11"
+    },
+    "src/swingbot/paper_dashboard.py": {
+      "lines": 96,
+      "sha256": "671fedb2006fa464ae2ab8b99b2ef51921225e8ca35922883df1fc55811d50c2"
+    },
+    "src/swingbot/paper_journal.py": {
+      "lines": 974,
+      "sha256": "e3925c56724b8e1610a09d9adbd1fcb2da08d9e49378b5b2abb8afc6a87625cb"
+    },
+    "src/swingbot/paper_models.py": {
+      "lines": 222,
+      "sha256": "bc342ec1304d1c55815aaf38f1f91b7398dd0562eddfe04f112a56243d232b2b"
+    },
+    "src/swingbot/paper_policy.py": {
+      "lines": 280,
+      "sha256": "efc1a45e740a2138b06155fe6e43c908a9eead60b21d21419d22420cd0267c61"
+    },
+    "src/swingbot/paper_reconcile.py": {
+      "lines": 865,
+      "sha256": "469c80108703989b9a93b995ed81673eca04e1aed601ffcfb3fc0a2987c68f59"
+    },
+    "src/swingbot/paper_signals.py": {
+      "lines": 90,
+      "sha256": "9abf03515fb1ab8f0347f3d30519013cecee563135d9de738a67b9135030b8e4"
+    },
+    "src/swingbot/paper_state.py": {
+      "lines": 146,
+      "sha256": "c5acbf493b7bff0dcac106e79c8747427ebe5e3748c18db7342bfda33be8f4e9"
+    },
+    "src/swingbot/paper_workflow.py": {
+      "lines": 1280,
+      "sha256": "b059de94a5b771b5a1245b74680dedc9ec64dba067821cea5a0d9d7cdfe8a86f"
+    },
+    "src/swingbot/report.py": {
+      "lines": 158,
+      "sha256": "cad2c4cce0ce7d76c8f2419a6d5bf0a0c5077576a7dd7bfbd1e0da94addc204b"
+    },
+    "src/swingbot/risk.py": {
+      "lines": 117,
+      "sha256": "c9b1720b7b57bf3f7d744a5218601d577927566efb807dc78d0f599ab00856f4"
+    },
+    "src/swingbot/strategy.py": {
+      "lines": 49,
+      "sha256": "f3963bfde2d060f91a8a9a0764af6c887df745e2b8559295f8df71657b31836d"
+    },
+    "src/swingbot/validation.py": {
+      "lines": 127,
+      "sha256": "14e404355c34dcda06ca8177f8e49fa1410f8af7df33b266bdad0f405b6b6699"
+    },
+    "tests/paper_fixtures.py": {
+      "lines": 285,
+      "sha256": "614c9bef58280d13047f174199ddc6d36546190e0987d2122bb5dee8b5c3a053"
+    },
+    "tests/test_alpaca_paper.py": {
+      "lines": 562,
+      "sha256": "0c6ad7683e21073953f8bd6a151703f3d6a6e632fa39a2ad759f962b0b853e33"
+    },
+    "tests/test_alpaca_read_contract.py": {
+      "lines": 369,
+      "sha256": "de33fb2a135f78ead7a2f9a3945e10be486610aa6577f3778c85976a1ab2a1e9"
+    },
+    "tests/test_architecture.py": {
+      "lines": 104,
+      "sha256": "b679c54d288f9f3e31121d8bfc0ba84b842de273b027727821d3224db248f16c"
+    },
+    "tests/test_backtest.py": {
+      "lines": 105,
+      "sha256": "88c1bce947a79694f642cd85d959035a096817ba9e851531caf4a88b086b68ff"
+    },
+    "tests/test_config.py": {
+      "lines": 26,
+      "sha256": "46097708ee4ebe4033135eb28c59b879f5c02d468d20a22b5ea13535b86294ab"
+    },
+    "tests/test_data.py": {
+      "lines": 24,
+      "sha256": "39db3f949f82c7289449d515d121f5ad2a4db3b2750f3b45217bc8612850bdd3"
+    },
+    "tests/test_execution_contract.py": {
+      "lines": 13,
+      "sha256": "146620ce80b980d77b39110a7f7242843ba5b529aadc078c85020eef78fc2de8"
+    },
+    "tests/test_indicators.py": {
+      "lines": 21,
+      "sha256": "af10540f46cf4790540b9af58f3d95d631869a3afe57059ef908806e2ccc405c"
+    },
+    "tests/test_paper_cli.py": {
+      "lines": 333,
+      "sha256": "fac2d55e8344a295dbf47d19f5c6db4d66ca29880b625dfdcc7ec8bf02ad9031"
+    },
+    "tests/test_paper_config.py": {
+      "lines": 68,
+      "sha256": "083dda99c293697f72cb54f78865f73c014868d53fef1d22826b961187621882"
+    },
+    "tests/test_paper_constraint.py": {
+      "lines": 31,
+      "sha256": "b8af99289d0ab6fa281faa8e4e748226bd3e991a914c78963f5edbc0e0829f52"
+    },
+    "tests/test_paper_dashboard.py": {
+      "lines": 51,
+      "sha256": "56767887a1f03881ec23cce170ddae47809bf5b69dffefb67a6243d6ed24a820"
+    },
+    "tests/test_paper_journal.py": {
+      "lines": 292,
+      "sha256": "645ee92f0bbf323f3d87931ea03d4b640ceabb7c5d3f51e6df38694cefc0347a"
+    },
+    "tests/test_paper_policy.py": {
+      "lines": 151,
+      "sha256": "3fc0df80f4ad2ab444d3d3ed227385f8e8902f99a1639f6065a4d4bb881dbff0"
+    },
+    "tests/test_paper_reconcile.py": {
+      "lines": 795,
+      "sha256": "e751fb4951b2bcd6adf4200b2de2bf8533a2e7b2aec9e1c2edaa40b8d4320bfc"
+    },
+    "tests/test_paper_signals.py": {
+      "lines": 41,
+      "sha256": "89d1de429ea8fac6b5beb1adba5c858fb4a4fb29c8c034f126f94f2ac563fe10"
+    },
+    "tests/test_paper_workflow.py": {
+      "lines": 872,
+      "sha256": "66c246908ecacbab6d9f84eb9c301c828255c92d0933479622ed9e91096442a7"
+    },
+    "tests/test_risk.py": {
+      "lines": 60,
+      "sha256": "db8b48072f87f10ee058184c545a2b332909a9d1dcd9a7c762e864bd3f5f452b"
+    }
+  }
+}

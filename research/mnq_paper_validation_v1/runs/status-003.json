@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "comparator_sha256": "0ce165128f8af3cbafd5747c03504a4ee4b9ddbb6bbe7e282f40531d11fae12f",
+  "live_readiness": "NOT_READY",
+  "live_trial_authorized": false,
+  "orders_enabled": false,
+  "comparison_status": "EVIDENCE_BLOCKED",
+  "evidence_authenticity": "NOT_INDEPENDENTLY_VERIFIED",
+  "blockers": [
+    "MISSING_ACTUAL_BROKER_PAPER_RECORDS",
+    "MISSING_CORRESPONDING_SHADOW_SIMULATION"
+  ],
+  "differences": [],
+  "matches": [],
+  "remaining_requirements": [
+    "Broker paper environment and export provenance need independent verification.",
+    "Replay must use the same complete market stream, contract, clock and frozen rules as paper.",
+    "Frozen-engine execution provenance, stop/target prices, planned-risk sizing, and intratrade loss/drawdown pauses are not established by this record contract.",
+    "Actual broker fees, margin and platform costs must be verified.",
+    "Protective-order, disconnect, duplicate-submit, restart and pause behavior need broker paper tests.",
+    "Historical edge and its uncertainty on reserved data remain a separate research requirement.",
+    "A concrete live loss budget and explicit user approval are required; this tool cannot authorize trading."
+  ],
+  "limits": [
+    "Hashes prove file identity, not that the exporter or broker produced truthful records.",
+    "A reconciliation pass is not proof of profitable trading or execution readiness.",
+    "Only completed flat-to-flat windows are supported. Open exposure blocks comparison.",
+    "No fill, price, fee, position or missing order is imputed.",
+    "No numerical acceptance tolerance has been approved; all nonzero differences require review."
+  ],
+  "created_at": "2026-09-09T06:50:29.594883+00:00",
+  "inputs": {
+    "paper": null,
+    "simulation": null
+  }
+}

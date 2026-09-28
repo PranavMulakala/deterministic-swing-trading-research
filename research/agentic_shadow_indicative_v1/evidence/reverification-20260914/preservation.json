@@ -1,0 +1,9 @@
+{
+  "baseline_captured_before_new_experiment_work": true,
+  "baseline_file_count": 75,
+  "baseline_files_removed": 0,
+  "baseline_files_changed": 0,
+  "baseline_files_byte_identical": true,
+  "note": "Six pre-existing result artifacts outside the captured frozen baseline were present; no baseline member changed."
+}
+

@@ -1,0 +1,37 @@
+[Unit]
+Description=Read-only Alpaca indicative packet producer (plumbing only)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=shadow-indicative-producer
+Group=shadow-indicative
+LoadCredential=alpaca.env:/etc/trading-shadow-indicative/alpaca.env
+WorkingDirectory=@RELEASE@
+Environment=PYTHONPATH=@RELEASE@/src:@RELEASE@
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=SHADOW_RELEASE_REVISION=@REVISION@
+ExecStartPre=/usr/bin/python3 @RELEASE@/verify_release.py
+ExecStart=/usr/bin/python3 -m research.agentic_shadow_indicative_v1.producer --output /var/lib/trading-shadow-indicative-inbox/packet.json --archive-dir /var/lib/trading-shadow-indicative-archive --status /var/lib/trading-shadow-indicative-inbox/producer-status.json --run-log /var/lib/trading-shadow-indicative-archive/run-log.jsonl
+ReadWritePaths=/var/lib/trading-shadow-indicative-inbox /var/lib/trading-shadow-indicative-archive
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SystemCallArchitectures=native
+MemoryMax=256M
+CPUQuota=20%
+Nice=15
+TimeoutStartSec=90
+UMask=0027

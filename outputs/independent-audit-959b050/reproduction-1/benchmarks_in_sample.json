@@ -1,0 +1,29 @@
+[
+  {
+    "benchmark": "spy_buy_and_hold",
+    "cagr_pct": 9.75288906,
+    "end_date": "2020-12-31",
+    "final_equity": 2017.98330179,
+    "initial_equity": 500.0,
+    "max_drawdown_pct": 55.18945111,
+    "modeled_cost_drag_pct_points": 0.25030752,
+    "start_date": "2006-01-03",
+    "total_modeled_execution_cost": 0.78071622,
+    "total_return_pct": 303.59666036,
+    "zero_cost_total_return_pct": 303.84696788
+  },
+  {
+    "benchmark": "monthly_top3_126d_momentum",
+    "cagr_pct": 6.21413107,
+    "end_date": "2020-12-31",
+    "final_equity": 1234.56921595,
+    "initial_equity": 500.0,
+    "max_drawdown_pct": 29.59682392,
+    "modeled_cost_drag_pct_points": 25.24325477,
+    "rebalance_count": 179,
+    "start_date": "2006-01-03",
+    "total_modeled_execution_cost": 72.45849852,
+    "total_return_pct": 146.91384319,
+    "zero_cost_total_return_pct": 172.15709796
+  }
+]

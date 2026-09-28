@@ -1,0 +1,17 @@
+{
+  "deployed_revision": "0337a4f4917a7a71734b0d77652a9e402d8f8a9e1435d91d88faf744e05b91a3",
+  "files": {
+    "run.py": "5a355475b4ae71a2780dbd268c4fa1bc493e0466b69e0d25ea0ea68e870a901f",
+    "test_shadow.py": "21382abb7795c9c1b727ebf6986cd1d6788c93a687cc4b6894f1f15dd02355eb",
+    "test_adversarial.py": "170c1aa029805f03120aabaa471bbba49888b9eb2001a0642fd165f728e822ad",
+    "engine.py": "c39cb2a49cd160720f35522aaa0afa80eb297e601482cd0af9d860530a8a59ce",
+    "learning.py": "6c1b9cdd9e2f3f641f35d2d689e95ec84ae936848888257480aa78ed8f99af74",
+    "report.py": "41685cac55d483d5a709d44759beaad2a2ba3547b1e762660c4e00895a9b5584",
+    "fixtures.py": "2a1d8e548634e080b95b17a3872b924c503d136fe2d2a2fea034c4003ab4c85f",
+    "probe_data.py": "030a83279b360157251ad85f79da23acca9c74f9e9b54514618365b2f8e3e61c",
+    "config.json": "c0c9442974b17eb28b32c2f80eb17a63556b7db5f15703465f1cd03b3a650f7e",
+    "PROTOCOL.md": "9f37b52bf224b62a753cd141b8e0fa1d4f9ec89c2a042f83365c9f2a6ad2bbb6",
+    "FREEZE.json": "18aceb7d2ee3a4e1bccdce587bc45759f1acd911aebe4fd0194a0d53211d3069",
+    "REVERIFICATION_20260914.md": "2e18dd4842394f711a8113e771e65d47edf4f3322d9cc247ddc9eb9430ca7073"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "as_of": "2026-09-22",
+  "scope": "Documentation-only handoff validation; no new strategy, market replay, broker order, remote check or full test-suite execution.",
+  "research_source_doc_config_files_checked": 290,
+  "changed_protected_files": [],
+  "handoff_local_markdown_links": "all resolve",
+  "python_test_modules_inventoried": 70,
+  "static_test_function_definitions": 1079,
+  "runtime_test_count_or_pass_claim": false,
+  "new_documents": [
+    "output/PROJECT_HANDOFF_20260922.md",
+    "output/CLAUDE_PROJECT_PROMPT_20260922.md",
+    "output/project-test-inventory-20260922.md",
+    "output/project-test-inventory-20260922.json"
+  ],
+  "updated_mutable_entrypoints": [
+    "README.md",
+    "VALIDATOR_HANDOFF.md",
+    "PAPER_VALIDATOR_HANDOFF.md",
+    "PAPER_READINESS.md",
+    "learnings.md",
+    "cloud/README.md",
+    "output/robinhood-capital-plan-20260922.md"
+  ]
+}

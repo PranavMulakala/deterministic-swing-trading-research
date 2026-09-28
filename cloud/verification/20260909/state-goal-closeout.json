@@ -1,0 +1,222 @@
+{
+  "checked_at": "2026-09-09T07:05:46.753966+00:00",
+  "direct_readiness": {
+    "checked_at": "2026-09-09T07:05:46.529232+00:00",
+    "orders_enabled": false,
+    "required_streams": 14,
+    "status": "READY_FOR_DELAYED_RESEARCH_SESSION",
+    "reasons": [],
+    "maximum_checkpoint_lag_seconds": 1246,
+    "free_bytes": 48513998848
+  },
+  "latest_research_readiness": {
+    "checked_at": "2026-09-09T07:02:36.948860+00:00",
+    "free_bytes": 48514019328,
+    "maximum_checkpoint_lag_seconds": 1356,
+    "orders_enabled": false,
+    "reasons": [],
+    "required_streams": 14,
+    "status": "READY_FOR_DELAYED_RESEARCH_SESSION"
+  },
+  "health": {
+    "at": "2026-09-09T07:05:36.159663Z",
+    "mode": "DELAYED_RESEARCH_ONLY_NO_ORDERS",
+    "news_context": {
+      "id": "optical-sector-news-context-v1",
+      "start": "2026-09-09T00:00:00Z",
+      "symbols": 13,
+      "selection": false
+    },
+    "initial_start": "2026-09-08T00:00:00Z",
+    "completed_through": {
+      "bars": "2026-09-09T06:45:00Z",
+      "bars5": "2026-09-09T06:45:00Z",
+      "news": "2026-09-09T06:45:00Z",
+      "sector_news": "2026-09-09T06:45:00Z",
+      "LITE:quotes": "2026-09-09T06:45:00Z",
+      "LITE:trades": "2026-09-09T06:45:00Z",
+      "COHR:quotes": "2026-09-09T06:45:00Z",
+      "COHR:trades": "2026-09-09T06:45:00Z",
+      "CIEN:quotes": "2026-09-09T06:45:00Z",
+      "CIEN:trades": "2026-09-09T06:45:00Z",
+      "FN:quotes": "2026-09-09T06:45:00Z",
+      "FN:trades": "2026-09-09T06:45:00Z",
+      "AAOI:quotes": "2026-09-09T06:45:00Z",
+      "AAOI:trades": "2026-09-09T06:45:00Z"
+    },
+    "pending_streams": [],
+    "errors": {},
+    "pages": 4878,
+    "records": 1359756
+  },
+  "services": {
+    "trading-collector.service": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Wed 2026-09-09 06:32:24 UTC",
+      "ExecMainExitTimestamp": "",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "14651392",
+      "MemoryMax": "805306368",
+      "WorkingDirectory": "/opt/trading-collector",
+      "ReadOnlyPaths": "",
+      "InaccessiblePaths": "",
+      "PrivateNetwork": "no",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    },
+    "trading-research.service": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Wed 2026-09-09 07:02:36 UTC",
+      "ExecMainExitTimestamp": "Wed 2026-09-09 07:02:37 UTC",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "[not set]",
+      "MemoryMax": "1048576000",
+      "WorkingDirectory": "/opt/trading-research-v2-20260909",
+      "ReadOnlyPaths": "/var/lib/trading-collector",
+      "InaccessiblePaths": "/etc/trading-collector",
+      "PrivateNetwork": "yes",
+      "ActiveState": "inactive",
+      "UnitFileState": "static"
+    },
+    "trading-research.timer": {
+      "LastTriggerUSec": "Wed 2026-09-09 07:02:36 UTC",
+      "Result": "success",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    },
+    "trading-references.timer": {
+      "LastTriggerUSec": "Wed 2026-09-09 01:17:26 UTC",
+      "Result": "success",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    },
+    "trading-dashboard.service": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Wed 2026-09-09 06:32:27 UTC",
+      "ExecMainExitTimestamp": "",
+      "ExecMainStatus": "0",
+      "MemoryCurrent": "15343616",
+      "MemoryMax": "268435456",
+      "WorkingDirectory": "/opt/trading-dashboard-20260909",
+      "ReadOnlyPaths": "/var/lib/trading-collector /var/lib/trading-research /opt/trading-research-v2-20260909",
+      "InaccessiblePaths": "/etc/trading-collector",
+      "PrivateNetwork": "no",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    }
+  },
+  "pin_manifest": "d2cf583908999e85a66868212fb832a67007e469d5d2922c6522afe66a4a512b",
+  "pinned_files_verified": 20,
+  "dashboard_files_verified": 16,
+  "preserved_old_artifacts": 2,
+  "calendar_session": {
+    "close": "16:00",
+    "date": "2026-09-09",
+    "open": "09:30",
+    "session_close": "2000",
+    "session_open": "0400",
+    "settlement_date": "2026-09-10"
+  },
+  "reference_fetched_at": "2026-09-09T06:38:56.427569Z",
+  "sector_news": {
+    "first_window": 1788912000,
+    "last_window_end": 1788936300,
+    "pages": 81,
+    "records": 3,
+    "committed_first_receipt": "2026-09-09T06:32:25.912322Z"
+  },
+  "archive_integrity": {
+    "integrity": "ok",
+    "recent_page_hashes_verified": 200,
+    "checkpoints": {
+      "bars": 1788936300,
+      "bars5": 1788936300,
+      "news": 1788936300,
+      "sector_news": 1788936300,
+      "LITE:quotes": 1788936300,
+      "LITE:trades": 1788936300,
+      "COHR:quotes": 1788936300,
+      "COHR:trades": 1788936300,
+      "CIEN:quotes": 1788936300,
+      "CIEN:trades": 1788936300,
+      "FN:quotes": 1788936300,
+      "FN:trades": 1788936300,
+      "AAOI:quotes": 1788936300,
+      "AAOI:trades": 1788936300
+    },
+    "records_by_stream": {
+      "AAOI:quotes": 158672,
+      "AAOI:trades": 163200,
+      "CIEN:quotes": 60682,
+      "CIEN:trades": 88464,
+      "COHR:quotes": 177307,
+      "COHR:trades": 206393,
+      "FN:quotes": 24828,
+      "FN:trades": 33178,
+      "LITE:quotes": 152579,
+      "LITE:trades": 275245,
+      "bars": 13579,
+      "bars5": 5582,
+      "news": 44,
+      "sector_news": 3
+    }
+  },
+  "latest_run": "4992845fcba2f0e8c08e12374dd5c7407269dd615c7ffb39f0d63d8c4fdfa9ed",
+  "latest_checked_at": "2026-09-09T07:02:36.948860+00:00",
+  "parent_result_sections_unchanged": [
+    "orb",
+    "orb_summaries",
+    "ledger_audits",
+    "contrasts",
+    "bar_proxy_diagnostic",
+    "prepared",
+    "lite",
+    "lite_excluded",
+    "days"
+  ],
+  "distinct_completed_session_dates": 1,
+  "forward_capital_arms": {
+    "broker_ready": false,
+    "capital_arms": [
+      5000,
+      10000
+    ],
+    "days": [],
+    "evaluation_start": "2026-09-09",
+    "excluded": {},
+    "id": "lite-capital-feasibility-v2",
+    "mode": "whole",
+    "results": {},
+    "status": "WAITING_FOR_FIRST_FORWARD_SESSION"
+  },
+  "dashboard": {
+    "snapshot_at": "2026-09-09T07:05:37.482959+00:00",
+    "streams": 14,
+    "artifact_and_source_verified": true,
+    "research_checked_at": "2026-09-09T07:02:36.948860+00:00",
+    "research_run_id": "4992845fcba2f0e8c08e12374dd5c7407269dd615c7ffb39f0d63d8c4fdfa9ed",
+    "context_symbols": [
+      "GLW",
+      "VZ",
+      "NVDA",
+      "AVGO",
+      "MRVL",
+      "ANET",
+      "CSCO",
+      "NOK",
+      "AMZN",
+      "MSFT",
+      "META",
+      "GOOGL",
+      "ORCL"
+    ],
+    "capital_arms": [
+      5000,
+      10000
+    ]
+  },
+  "orders_enabled": false
+}

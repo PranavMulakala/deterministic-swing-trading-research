@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-09-10T07:28:28.764747+00:00",
+  "status": "PREPARATION_COMPLETE_MNQ_EXECUTION_BLOCKED",
+  "tests": {
+    "webull_offline": 11,
+    "existing_comparator": 39,
+    "total_passed": 50
+  },
+  "test_commands": [
+    "outputs/tmp/webull-check-venv/bin/python -m unittest research.webull_sandbox_v1.test_probe",
+    "outputs/tmp/webull-check-venv/bin/python -m unittest discover -s research/mnq_paper_validation_v1 -p test_*.py"
+  ],
+  "frozen_files_match_prior_validation": true,
+  "actual_probe_source": "outputs/paper/webull_sandbox/20260910T072527139011Z.json",
+  "actual_paper_round_trips": 0,
+  "orders_submitted": 0,
+  "new_purchases": 0,
+  "live_trial_authorized": false,
+  "artifacts": {
+    "research/webull_sandbox_v1/probe.py": "815b61f63dc22c7681b06930e0445bddbbf5cfe8391882938e50a4514e76d2f7",
+    "research/webull_sandbox_v1/test_probe.py": "70d59d68094801e20fcff1daa671d39144219441ff1d1f73a6571c7428f452aa",
+    "research/webull_sandbox_v1/requirements.txt": "2276b12eac5a6f8ab7a5d52879b68cc7db9b5fab2a180ab7e5149ae5035cf837",
+    "research/webull_sandbox_v1/ACCESS_EVIDENCE_20260910.json": "57bfafe1f779512d237406d3254fc3f4d4f8c18a78fb47990be942bebd6703a9",
+    "research/webull_sandbox_v1/COMPARISON_STATUS.json": "54f3f63ab5b921942b23d3d84e344d22243777dccd2e74f5646f08ac903f69d1",
+    "scripts/check_webull_sandbox.py": "9eb212a1fb455bb154c100ad116d524e46227636aea6bd418d6b92b02a9f2b83"
+  },
+  "limits": [
+    "Latest network probe ran before the final malformed-JSON response handling refactor; the final change is covered offline.",
+    "Access receipts are sanitized observations, not raw broker fill exports or proof of realtime data access.",
+    "The account and MNQU6 directory entry are verified; sandbox MNQU6 snapshot/depth access is rejected.",
+    "No order-writing adapter or unattended trading loop is armed."
+  ]
+}

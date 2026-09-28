@@ -1,0 +1,230 @@
+{
+  "status": "DOWNLOAD_AND_STRUCTURAL_VALIDATION_COMPLETE",
+  "checked_at_utc": "2026-09-09T05:28:46.683620+00:00",
+  "files_verified": 28,
+  "compressed_files_bytes": 1561641549,
+  "provider_cost_usd": "11.06613318994642",
+  "market_record_count": 82515039,
+  "definition_record_count": 5,
+  "market_files": [
+    {
+      "filename": "glbx-mdp3-20260831.mbp-1.dbn.zst",
+      "record_count": 17619987,
+      "actions": {
+        "A": 8428531,
+        "C": 8355669,
+        "M": 146114,
+        "T": 689673
+      },
+      "capture_start_ns": 1788183000000061225,
+      "capture_last_ns": 1788206399999818402,
+      "event_min_ns": 1788182999998885757,
+      "event_max_ns": 1788206399999439071,
+      "trade_minutes_present": 390,
+      "expected_minutes": 390,
+      "official_decoder_cross_checked_records": 1770,
+      "diagnostics": {
+        "receive_time_regressions": 0,
+        "event_time_regressions": 0,
+        "event_timestamps_outside_capture_window": 8,
+        "bad_receive_timestamp_flag": 0,
+        "maybe_bad_book_flag": 0,
+        "snapshot_flag": 0,
+        "undefined_bid_or_ask": 0,
+        "crossed_book": 0,
+        "locked_book": 0,
+        "price_off_tick": 0,
+        "bid_px_00_off_tick": 0,
+        "ask_px_00_off_tick": 0
+      }
+    },
+    {
+      "filename": "glbx-mdp3-20260901.mbp-1.dbn.zst",
+      "record_count": 18559230,
+      "actions": {
+        "A": 8841658,
+        "C": 8771024,
+        "M": 146500,
+        "T": 800048
+      },
+      "capture_start_ns": 1788269400000132461,
+      "capture_last_ns": 1788292799999963511,
+      "event_min_ns": 1788269399999832887,
+      "event_max_ns": 1788292799999538903,
+      "trade_minutes_present": 390,
+      "expected_minutes": 390,
+      "official_decoder_cross_checked_records": 1860,
+      "diagnostics": {
+        "receive_time_regressions": 0,
+        "event_time_regressions": 0,
+        "event_timestamps_outside_capture_window": 4,
+        "bad_receive_timestamp_flag": 0,
+        "maybe_bad_book_flag": 0,
+        "snapshot_flag": 0,
+        "undefined_bid_or_ask": 0,
+        "crossed_book": 0,
+        "locked_book": 0,
+        "price_off_tick": 0,
+        "bid_px_00_off_tick": 0,
+        "ask_px_00_off_tick": 0
+      }
+    },
+    {
+      "filename": "glbx-mdp3-20260902.mbp-1.dbn.zst",
+      "record_count": 15650010,
+      "actions": {
+        "A": 7436433,
+        "C": 7427558,
+        "M": 143996,
+        "T": 642023
+      },
+      "capture_start_ns": 1788355800000063184,
+      "capture_last_ns": 1788379199999820613,
+      "event_min_ns": 1788355799999980623,
+      "event_max_ns": 1788379199999640979,
+      "trade_minutes_present": 390,
+      "expected_minutes": 390,
+      "official_decoder_cross_checked_records": 1570,
+      "diagnostics": {
+        "receive_time_regressions": 0,
+        "event_time_regressions": 0,
+        "event_timestamps_outside_capture_window": 1,
+        "bad_receive_timestamp_flag": 0,
+        "maybe_bad_book_flag": 0,
+        "snapshot_flag": 0,
+        "undefined_bid_or_ask": 0,
+        "crossed_book": 0,
+        "locked_book": 0,
+        "price_off_tick": 0,
+        "bid_px_00_off_tick": 0,
+        "ask_px_00_off_tick": 0
+      }
+    },
+    {
+      "filename": "glbx-mdp3-20260903.mbp-1.dbn.zst",
+      "record_count": 16246518,
+      "actions": {
+        "A": 7698296,
+        "C": 7679181,
+        "M": 117999,
+        "T": 751042
+      },
+      "capture_start_ns": 1788442200003348512,
+      "capture_last_ns": 1788465599999854944,
+      "event_min_ns": 1788442200001261751,
+      "event_max_ns": 1788465599999361005,
+      "trade_minutes_present": 390,
+      "expected_minutes": 390,
+      "official_decoder_cross_checked_records": 1630,
+      "diagnostics": {
+        "receive_time_regressions": 0,
+        "event_time_regressions": 0,
+        "event_timestamps_outside_capture_window": 0,
+        "bad_receive_timestamp_flag": 0,
+        "maybe_bad_book_flag": 0,
+        "snapshot_flag": 0,
+        "undefined_bid_or_ask": 0,
+        "crossed_book": 0,
+        "locked_book": 0,
+        "price_off_tick": 0,
+        "bid_px_00_off_tick": 0,
+        "ask_px_00_off_tick": 0
+      }
+    },
+    {
+      "filename": "glbx-mdp3-20260904.mbp-1.dbn.zst",
+      "record_count": 14439294,
+      "actions": {
+        "A": 6861200,
+        "C": 6827105,
+        "M": 96932,
+        "T": 654057
+      },
+      "capture_start_ns": 1788528600000017907,
+      "capture_last_ns": 1788551999999898107,
+      "event_min_ns": 1788528599999600581,
+      "event_max_ns": 1788551999999472681,
+      "trade_minutes_present": 390,
+      "expected_minutes": 390,
+      "official_decoder_cross_checked_records": 1450,
+      "diagnostics": {
+        "receive_time_regressions": 0,
+        "event_time_regressions": 0,
+        "event_timestamps_outside_capture_window": 13,
+        "bad_receive_timestamp_flag": 0,
+        "maybe_bad_book_flag": 0,
+        "snapshot_flag": 0,
+        "undefined_bid_or_ask": 0,
+        "crossed_book": 0,
+        "locked_book": 0,
+        "price_off_tick": 0,
+        "bid_px_00_off_tick": 0,
+        "ask_px_00_off_tick": 0
+      }
+    }
+  ],
+  "definitions": [
+    {
+      "filename": "glbx-mdp3-20260831.definition.dbn.zst",
+      "instrument_id": 42004800,
+      "symbol": "MNQU6",
+      "currency": "USD",
+      "tick_size": "0.25",
+      "multiplier": "2",
+      "tick_value_usd": "0.50",
+      "expiration_utc": "2026-09-18T13:30:00+00:00"
+    },
+    {
+      "filename": "glbx-mdp3-20260901.definition.dbn.zst",
+      "instrument_id": 42004800,
+      "symbol": "MNQU6",
+      "currency": "USD",
+      "tick_size": "0.25",
+      "multiplier": "2",
+      "tick_value_usd": "0.50",
+      "expiration_utc": "2026-09-18T13:30:00+00:00"
+    },
+    {
+      "filename": "glbx-mdp3-20260902.definition.dbn.zst",
+      "instrument_id": 42004800,
+      "symbol": "MNQU6",
+      "currency": "USD",
+      "tick_size": "0.25",
+      "multiplier": "2",
+      "tick_value_usd": "0.50",
+      "expiration_utc": "2026-09-18T13:30:00+00:00"
+    },
+    {
+      "filename": "glbx-mdp3-20260903.definition.dbn.zst",
+      "instrument_id": 42004800,
+      "symbol": "MNQU6",
+      "currency": "USD",
+      "tick_size": "0.25",
+      "multiplier": "2",
+      "tick_value_usd": "0.50",
+      "expiration_utc": "2026-09-18T13:30:00+00:00"
+    },
+    {
+      "filename": "glbx-mdp3-20260904.definition.dbn.zst",
+      "instrument_id": 42004800,
+      "symbol": "MNQU6",
+      "currency": "USD",
+      "tick_size": "0.25",
+      "multiplier": "2",
+      "tick_value_usd": "0.50",
+      "expiration_utc": "2026-09-18T13:30:00+00:00"
+    }
+  ],
+  "tools": {
+    "databento-dbn": "0.69.0",
+    "numpy": "2.5.3",
+    "zstandard": "0.25.0"
+  },
+  "validator_sha256": "9ba9f397c46195e2c1215ffce1af66ca6e5bf511b6d96c660a73adb5e3102ef4",
+  "limitations": [
+    "Not an independent exchange completeness audit.",
+    "Capture-time request boundaries differ from event-time replay boundaries.",
+    "Flags, trade/book semantics, sequencing, and replay importer require separate validation.",
+    "No strategy results, paper orders, or live trading were produced."
+  ]
+}

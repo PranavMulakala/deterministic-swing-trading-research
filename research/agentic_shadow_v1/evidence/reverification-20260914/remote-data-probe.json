@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-09-14T20:13:52.157205+00:00",
+  "probe": "options_opra_GET_only",
+  "orders": false,
+  "status": "BLOCKED",
+  "reason": "opra_http_403",
+  "free_bytes": 48436211712,
+  "collector_code_sha256": "a07051763a0f696ef3f510c8f39dfa1b734f8ce4e4407021a9b83df576162f4a",
+  "memory_available_kb": "1561744"
+}

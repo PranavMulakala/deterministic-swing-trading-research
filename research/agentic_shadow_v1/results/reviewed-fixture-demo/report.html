@@ -1,0 +1,578 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>agentic-options-shadow-7500-v1</title>
+<style>body{font:16px system-ui;max-width:1250px;margin:35px auto;padding:20px;background:#101827;color:#eef3ff}table{border-collapse:collapse;width:100%}td,th{padding:10px;text-align:left;border-bottom:1px solid #40506b}pre{white-space:pre-wrap;overflow-wrap:anywhere}p{line-height:1.5}</style>
+<h1>agentic-options-shadow-7500-v1</h1><p>FIXTURE evidence · $7,500 per alternative arm · mocked agents · no broker orders</p>
+<p>BLOCKED: normalized options feed and coverage not verified. Real-money options: NOT AUTHORIZED.</p>
+<table><thead><tr><th>Arm</th><th>Cash</th><th>Risk equity</th><th>Realized</th><th>Unrealized</th><th>Fees</th><th>Max drawdown</th><th>Position</th><th>Entries</th></tr></thead><tbody><tr><td>analyst</td><td>$7,513.70</td><td>$7,513.70</td><td>$13.70</td><td>$0.00</td><td>$1.30</td><td>$6.30</td><td>none</td><td>eligible</td></tr><tr><td>analyst_critic</td><td>$7,513.70</td><td>$7,513.70</td><td>$13.70</td><td>$0.00</td><td>$1.30</td><td>$6.30</td><td>none</td><td>eligible</td></tr><tr><td>deterministic</td><td>$7,513.70</td><td>$7,513.70</td><td>$13.70</td><td>$0.00</td><td>$1.30</td><td>$6.30</td><td>none</td><td>eligible</td></tr></tbody></table>
+<p>Unknown liquidation marks use worst-case loss plus reserved exit fee for risk decisions; these are not observed prices. Fees are debited. Spread/slippage figures are attribution, not additional debits. External data/cloud costs unverified.</p>
+<details><summary>Inputs, proposals, positions and rejection reasons</summary><pre>{
+  &quot;experiment&quot;: &quot;agentic-options-shadow-7500-v1&quot;,
+  &quot;capital_per_arm_cents&quot;: 750000,
+  &quot;evidence_kind&quot;: &quot;fixture&quot;,
+  &quot;local_software&quot;: &quot;see HANDOFF.md for tested release verdict&quot;,
+  &quot;real_data_readiness&quot;: &quot;BLOCKED: normalized options feed and coverage not verified&quot;,
+  &quot;real_money&quot;: &quot;NOT AUTHORIZED&quot;,
+  &quot;model&quot;: &quot;mock-v1; zero API calls&quot;,
+  &quot;costs_note&quot;: &quot;Fees are debited. Spread/slippage figures are attribution, not additional debits. External data/cloud costs unverified.&quot;,
+  &quot;unknown_marks_note&quot;: &quot;Unknown liquidation marks use worst-case loss plus reserved exit fee for risk decisions; these are not observed prices.&quot;,
+  &quot;generated_at&quot;: &quot;2026-09-14T20:16:13.432772+00:00&quot;,
+  &quot;last_observation&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+  &quot;observations&quot;: 4,
+  &quot;available_data&quot;: {
+    &quot;chain&quot;: true,
+    &quot;underlying&quot;: true,
+    &quot;bars&quot;: true,
+    &quot;calendar&quot;: true,
+    &quot;events&quot;: true,
+    &quot;news&quot;: true
+  },
+  &quot;contract_rejections&quot;: {
+    &quot;risk_budget&quot;: 2
+  },
+  &quot;arms&quot;: {
+    &quot;analyst&quot;: {
+      &quot;breaches&quot;: [],
+      &quot;cash_cents&quot;: 751370,
+      &quot;closed_trades&quot;: 1,
+      &quot;daily_pause&quot;: false,
+      &quot;day&quot;: &quot;2026-09-14&quot;,
+      &quot;day_start_cents&quot;: 750000,
+      &quot;equity_cents&quot;: 751370,
+      &quot;experiment_pause&quot;: false,
+      &quot;fees_cents&quot;: 130,
+      &quot;fills&quot;: 2,
+      &quot;max_drawdown_cents&quot;: 630,
+      &quot;peak_cents&quot;: 751370,
+      &quot;pending&quot;: null,
+      &quot;position&quot;: null,
+      &quot;realized_cents&quot;: 1370,
+      &quot;slippage_cents&quot;: 200,
+      &quot;spread_cents&quot;: 300,
+      &quot;unknown_mark&quot;: false,
+      &quot;unrealized_cents&quot;: 0,
+      &quot;net_pnl_cents&quot;: 1370,
+      &quot;decision_reasons&quot;: {
+        &quot;accepted&quot;: 1,
+        &quot;existing_exposure&quot;: 1,
+        &quot;no_eligible_contract&quot;: 2
+      },
+      &quot;unfilled_reasons&quot;: {}
+    },
+    &quot;analyst_critic&quot;: {
+      &quot;breaches&quot;: [],
+      &quot;cash_cents&quot;: 751370,
+      &quot;closed_trades&quot;: 1,
+      &quot;daily_pause&quot;: false,
+      &quot;day&quot;: &quot;2026-09-14&quot;,
+      &quot;day_start_cents&quot;: 750000,
+      &quot;equity_cents&quot;: 751370,
+      &quot;experiment_pause&quot;: false,
+      &quot;fees_cents&quot;: 130,
+      &quot;fills&quot;: 2,
+      &quot;max_drawdown_cents&quot;: 630,
+      &quot;peak_cents&quot;: 751370,
+      &quot;pending&quot;: null,
+      &quot;position&quot;: null,
+      &quot;realized_cents&quot;: 1370,
+      &quot;slippage_cents&quot;: 200,
+      &quot;spread_cents&quot;: 300,
+      &quot;unknown_mark&quot;: false,
+      &quot;unrealized_cents&quot;: 0,
+      &quot;net_pnl_cents&quot;: 1370,
+      &quot;decision_reasons&quot;: {
+        &quot;accepted&quot;: 1,
+        &quot;existing_exposure&quot;: 1,
+        &quot;no_eligible_contract&quot;: 2
+      },
+      &quot;unfilled_reasons&quot;: {}
+    },
+    &quot;deterministic&quot;: {
+      &quot;breaches&quot;: [],
+      &quot;cash_cents&quot;: 751370,
+      &quot;closed_trades&quot;: 1,
+      &quot;daily_pause&quot;: false,
+      &quot;day&quot;: &quot;2026-09-14&quot;,
+      &quot;day_start_cents&quot;: 750000,
+      &quot;equity_cents&quot;: 751370,
+      &quot;experiment_pause&quot;: false,
+      &quot;fees_cents&quot;: 130,
+      &quot;fills&quot;: 2,
+      &quot;max_drawdown_cents&quot;: 630,
+      &quot;peak_cents&quot;: 751370,
+      &quot;pending&quot;: null,
+      &quot;position&quot;: null,
+      &quot;realized_cents&quot;: 1370,
+      &quot;slippage_cents&quot;: 200,
+      &quot;spread_cents&quot;: 300,
+      &quot;unknown_mark&quot;: false,
+      &quot;unrealized_cents&quot;: 0,
+      &quot;net_pnl_cents&quot;: 1370,
+      &quot;decision_reasons&quot;: {
+        &quot;accepted&quot;: 1,
+        &quot;existing_exposure&quot;: 1,
+        &quot;no_eligible_contract&quot;: 2
+      },
+      &quot;unfilled_reasons&quot;: {}
+    }
+  },
+  &quot;last_decisions&quot;: {
+    &quot;analyst&quot;: {
+      &quot;actions&quot;: [
+        {
+          &quot;decision_id&quot;: &quot;475d46bf4d0fc3d1267f0b38ccdc1c315f68cdaa29c86a7c286a794b69f1ed68&quot;,
+          &quot;kind&quot;: &quot;simulated_fill&quot;,
+          &quot;price_cents&quot;: 81,
+          &quot;quantity&quot;: 1,
+          &quot;quote_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+          &quot;side&quot;: &quot;sell&quot;
+        }
+      ],
+      &quot;proposal&quot;: null,
+      &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+    },
+    &quot;analyst_critic&quot;: {
+      &quot;actions&quot;: [
+        {
+          &quot;decision_id&quot;: &quot;6a56ad17a8994b5eaf15a1aa23bf29a45fc0f63c8459232f0a53949c433cc8a9&quot;,
+          &quot;kind&quot;: &quot;simulated_fill&quot;,
+          &quot;price_cents&quot;: 81,
+          &quot;quantity&quot;: 1,
+          &quot;quote_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+          &quot;side&quot;: &quot;sell&quot;
+        }
+      ],
+      &quot;proposal&quot;: null,
+      &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+    },
+    &quot;deterministic&quot;: {
+      &quot;actions&quot;: [
+        {
+          &quot;decision_id&quot;: &quot;7e4d4657d4510a4618b8d36d966d033677b5866063f443b726106b63173a6053&quot;,
+          &quot;kind&quot;: &quot;simulated_fill&quot;,
+          &quot;price_cents&quot;: 81,
+          &quot;quantity&quot;: 1,
+          &quot;quote_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+          &quot;side&quot;: &quot;sell&quot;
+        }
+      ],
+      &quot;proposal&quot;: null,
+      &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+    }
+  },
+  &quot;recent_decisions&quot;: [
+    {
+      &quot;event_id&quot;: &quot;fixture-2026-09-14T14:00:00+00:00&quot;,
+      &quot;observed_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+      &quot;packet_hash&quot;: &quot;72ec694c0ab7571ebdb92e4a6ed0729723d0c5d258e61b76bf7294ffd10af0f9&quot;,
+      &quot;candidate&quot;: {
+        &quot;close_at&quot;: &quot;2026-09-14T20:00:00+00:00&quot;,
+        &quot;contract&quot;: {
+          &quot;adjusted&quot;: false,
+          &quot;currency&quot;: &quot;USD&quot;,
+          &quot;expiry&quot;: &quot;2026-09-24&quot;,
+          &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+          &quot;multiplier&quot;: 100,
+          &quot;open_interest&quot;: 1000,
+          &quot;provenance&quot;: {
+            &quot;feed&quot;: &quot;fixture-only&quot;,
+            &quot;published_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+            &quot;raw&quot;: {
+              &quot;adjusted&quot;: false,
+              &quot;currency&quot;: &quot;USD&quot;,
+              &quot;expiry&quot;: &quot;2026-09-24&quot;,
+              &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+              &quot;multiplier&quot;: 100,
+              &quot;open_interest&quot;: 1000,
+              &quot;right&quot;: &quot;C&quot;,
+              &quot;strike_mills&quot;: 502000,
+              &quot;style&quot;: &quot;american&quot;,
+              &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+              &quot;underlying&quot;: &quot;SPY&quot;
+            },
+            &quot;received_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+            &quot;sha256&quot;: &quot;4c57914eb581d3a0e05ad6b3668c207bdf9139ada2c883b861df0d5882d4d567&quot;,
+            &quot;source&quot;: &quot;synthetic-fixture&quot;
+          },
+          &quot;right&quot;: &quot;C&quot;,
+          &quot;strike_mills&quot;: 502000,
+          &quot;style&quot;: &quot;american&quot;,
+          &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+          &quot;underlying&quot;: &quot;SPY&quot;
+        },
+        &quot;limit_cents&quot;: 66,
+        &quot;loss_cents&quot;: 6730,
+        &quot;quantity&quot;: 1
+      },
+      &quot;decisions&quot;: {
+        &quot;analyst&quot;: {
+          &quot;actions&quot;: [],
+          &quot;proposal&quot;: {
+            &quot;analyst&quot;: {
+              &quot;action&quot;: &quot;accept&quot;,
+              &quot;confidence&quot;: 50,
+              &quot;counterargument&quot;: &quot;Momentum may reverse and option costs may exceed the move.&quot;,
+              &quot;evidence&quot;: [
+                &quot;72ec694c0ab7571ebdb92e4a6ed0729723d0c5d258e61b76bf7294ffd10af0f9&quot;
+              ],
+              &quot;model&quot;: &quot;mock-v1&quot;,
+              &quot;role&quot;: &quot;analyst&quot;,
+              &quot;thesis&quot;: &quot;Fixture response for proposal-path verification only.&quot;
+            }
+          },
+          &quot;verdict&quot;: &quot;accepted&quot;
+        },
+        &quot;analyst_critic&quot;: {
+          &quot;actions&quot;: [],
+          &quot;proposal&quot;: {
+            &quot;analyst&quot;: {
+              &quot;action&quot;: &quot;accept&quot;,
+              &quot;confidence&quot;: 50,
+              &quot;counterargument&quot;: &quot;Momentum may reverse and option costs may exceed the move.&quot;,
+              &quot;evidence&quot;: [
+                &quot;72ec694c0ab7571ebdb92e4a6ed0729723d0c5d258e61b76bf7294ffd10af0f9&quot;
+              ],
+              &quot;model&quot;: &quot;mock-v1&quot;,
+              &quot;role&quot;: &quot;analyst&quot;,
+              &quot;thesis&quot;: &quot;Fixture response for proposal-path verification only.&quot;
+            },
+            &quot;critic&quot;: {
+              &quot;action&quot;: &quot;accept&quot;,
+              &quot;confidence&quot;: 50,
+              &quot;counterargument&quot;: &quot;Momentum may reverse and option costs may exceed the move.&quot;,
+              &quot;evidence&quot;: [
+                &quot;72ec694c0ab7571ebdb92e4a6ed0729723d0c5d258e61b76bf7294ffd10af0f9&quot;
+              ],
+              &quot;model&quot;: &quot;mock-v1&quot;,
+              &quot;role&quot;: &quot;critic&quot;,
+              &quot;thesis&quot;: &quot;Fixture response for proposal-path verification only.&quot;
+            }
+          },
+          &quot;verdict&quot;: &quot;accepted&quot;
+        },
+        &quot;deterministic&quot;: {
+          &quot;actions&quot;: [],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;accepted&quot;
+        }
+      }
+    },
+    {
+      &quot;event_id&quot;: &quot;fixture-2026-09-14T14:00:02+00:00&quot;,
+      &quot;observed_at&quot;: &quot;2026-09-14T14:00:02+00:00&quot;,
+      &quot;packet_hash&quot;: &quot;a6367a62fbf36705584a081c9b71ded26bba02f244c2e8a6cad2ecfd97a68017&quot;,
+      &quot;candidate&quot;: {
+        &quot;close_at&quot;: &quot;2026-09-14T20:00:00+00:00&quot;,
+        &quot;contract&quot;: {
+          &quot;adjusted&quot;: false,
+          &quot;currency&quot;: &quot;USD&quot;,
+          &quot;expiry&quot;: &quot;2026-09-24&quot;,
+          &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+          &quot;multiplier&quot;: 100,
+          &quot;open_interest&quot;: 1000,
+          &quot;provenance&quot;: {
+            &quot;feed&quot;: &quot;fixture-only&quot;,
+            &quot;published_at&quot;: &quot;2026-09-14T14:00:02+00:00&quot;,
+            &quot;raw&quot;: {
+              &quot;adjusted&quot;: false,
+              &quot;currency&quot;: &quot;USD&quot;,
+              &quot;expiry&quot;: &quot;2026-09-24&quot;,
+              &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+              &quot;multiplier&quot;: 100,
+              &quot;open_interest&quot;: 1000,
+              &quot;right&quot;: &quot;C&quot;,
+              &quot;strike_mills&quot;: 502000,
+              &quot;style&quot;: &quot;american&quot;,
+              &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+              &quot;underlying&quot;: &quot;SPY&quot;
+            },
+            &quot;received_at&quot;: &quot;2026-09-14T14:00:02+00:00&quot;,
+            &quot;sha256&quot;: &quot;4c57914eb581d3a0e05ad6b3668c207bdf9139ada2c883b861df0d5882d4d567&quot;,
+            &quot;source&quot;: &quot;synthetic-fixture&quot;
+          },
+          &quot;right&quot;: &quot;C&quot;,
+          &quot;strike_mills&quot;: 502000,
+          &quot;style&quot;: &quot;american&quot;,
+          &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+          &quot;underlying&quot;: &quot;SPY&quot;
+        },
+        &quot;limit_cents&quot;: 66,
+        &quot;loss_cents&quot;: 6730,
+        &quot;quantity&quot;: 1
+      },
+      &quot;decisions&quot;: {
+        &quot;analyst&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;decision_id&quot;: &quot;3b25a148df8be70659a66f06a123f1a2551506b9c8b1dad4defd05c938d3f904&quot;,
+              &quot;kind&quot;: &quot;simulated_fill&quot;,
+              &quot;price_cents&quot;: 66,
+              &quot;quantity&quot;: 1,
+              &quot;quote_at&quot;: &quot;2026-09-14T14:00:02+00:00&quot;,
+              &quot;side&quot;: &quot;buy&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;existing_exposure&quot;
+        },
+        &quot;analyst_critic&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;decision_id&quot;: &quot;65cff03d8718148c33a78f4f30314d02602903fcc241d8a1353f70d3b4afd609&quot;,
+              &quot;kind&quot;: &quot;simulated_fill&quot;,
+              &quot;price_cents&quot;: 66,
+              &quot;quantity&quot;: 1,
+              &quot;quote_at&quot;: &quot;2026-09-14T14:00:02+00:00&quot;,
+              &quot;side&quot;: &quot;buy&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;existing_exposure&quot;
+        },
+        &quot;deterministic&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;decision_id&quot;: &quot;2790d8cca7af515d2ae60f66cbbf92ad635ba42c4bdbed36845ef7b07016f822&quot;,
+              &quot;kind&quot;: &quot;simulated_fill&quot;,
+              &quot;price_cents&quot;: 66,
+              &quot;quantity&quot;: 1,
+              &quot;quote_at&quot;: &quot;2026-09-14T14:00:02+00:00&quot;,
+              &quot;side&quot;: &quot;buy&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;existing_exposure&quot;
+        }
+      }
+    },
+    {
+      &quot;event_id&quot;: &quot;fixture-2026-09-14T16:00:03+00:00&quot;,
+      &quot;observed_at&quot;: &quot;2026-09-14T16:00:03+00:00&quot;,
+      &quot;packet_hash&quot;: &quot;a25b1b5ac6a605f3b246cf6db34d8565203f1c2a3de201b63b58e6465abfa376&quot;,
+      &quot;candidate&quot;: null,
+      &quot;decisions&quot;: {
+        &quot;analyst&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;contract&quot;: {
+                &quot;adjusted&quot;: false,
+                &quot;currency&quot;: &quot;USD&quot;,
+                &quot;expiry&quot;: &quot;2026-09-24&quot;,
+                &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+                &quot;multiplier&quot;: 100,
+                &quot;open_interest&quot;: 1000,
+                &quot;provenance&quot;: {
+                  &quot;feed&quot;: &quot;fixture-only&quot;,
+                  &quot;published_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+                  &quot;raw&quot;: {
+                    &quot;adjusted&quot;: false,
+                    &quot;currency&quot;: &quot;USD&quot;,
+                    &quot;expiry&quot;: &quot;2026-09-24&quot;,
+                    &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+                    &quot;multiplier&quot;: 100,
+                    &quot;open_interest&quot;: 1000,
+                    &quot;right&quot;: &quot;C&quot;,
+                    &quot;strike_mills&quot;: 502000,
+                    &quot;style&quot;: &quot;american&quot;,
+                    &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+                    &quot;underlying&quot;: &quot;SPY&quot;
+                  },
+                  &quot;received_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+                  &quot;sha256&quot;: &quot;4c57914eb581d3a0e05ad6b3668c207bdf9139ada2c883b861df0d5882d4d567&quot;,
+                  &quot;source&quot;: &quot;synthetic-fixture&quot;
+                },
+                &quot;right&quot;: &quot;C&quot;,
+                &quot;strike_mills&quot;: 502000,
+                &quot;style&quot;: &quot;american&quot;,
+                &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+                &quot;underlying&quot;: &quot;SPY&quot;
+              },
+              &quot;decided_at&quot;: &quot;2026-09-14T16:00:03+00:00&quot;,
+              &quot;decision_id&quot;: &quot;475d46bf4d0fc3d1267f0b38ccdc1c315f68cdaa29c86a7c286a794b69f1ed68&quot;,
+              &quot;kind&quot;: &quot;exit_decision&quot;,
+              &quot;reason&quot;: &quot;holding_limit&quot;,
+              &quot;side&quot;: &quot;sell&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+        },
+        &quot;analyst_critic&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;contract&quot;: {
+                &quot;adjusted&quot;: false,
+                &quot;currency&quot;: &quot;USD&quot;,
+                &quot;expiry&quot;: &quot;2026-09-24&quot;,
+                &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+                &quot;multiplier&quot;: 100,
+                &quot;open_interest&quot;: 1000,
+                &quot;provenance&quot;: {
+                  &quot;feed&quot;: &quot;fixture-only&quot;,
+                  &quot;published_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+                  &quot;raw&quot;: {
+                    &quot;adjusted&quot;: false,
+                    &quot;currency&quot;: &quot;USD&quot;,
+                    &quot;expiry&quot;: &quot;2026-09-24&quot;,
+                    &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+                    &quot;multiplier&quot;: 100,
+                    &quot;open_interest&quot;: 1000,
+                    &quot;right&quot;: &quot;C&quot;,
+                    &quot;strike_mills&quot;: 502000,
+                    &quot;style&quot;: &quot;american&quot;,
+                    &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+                    &quot;underlying&quot;: &quot;SPY&quot;
+                  },
+                  &quot;received_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+                  &quot;sha256&quot;: &quot;4c57914eb581d3a0e05ad6b3668c207bdf9139ada2c883b861df0d5882d4d567&quot;,
+                  &quot;source&quot;: &quot;synthetic-fixture&quot;
+                },
+                &quot;right&quot;: &quot;C&quot;,
+                &quot;strike_mills&quot;: 502000,
+                &quot;style&quot;: &quot;american&quot;,
+                &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+                &quot;underlying&quot;: &quot;SPY&quot;
+              },
+              &quot;decided_at&quot;: &quot;2026-09-14T16:00:03+00:00&quot;,
+              &quot;decision_id&quot;: &quot;6a56ad17a8994b5eaf15a1aa23bf29a45fc0f63c8459232f0a53949c433cc8a9&quot;,
+              &quot;kind&quot;: &quot;exit_decision&quot;,
+              &quot;reason&quot;: &quot;holding_limit&quot;,
+              &quot;side&quot;: &quot;sell&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+        },
+        &quot;deterministic&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;contract&quot;: {
+                &quot;adjusted&quot;: false,
+                &quot;currency&quot;: &quot;USD&quot;,
+                &quot;expiry&quot;: &quot;2026-09-24&quot;,
+                &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+                &quot;multiplier&quot;: 100,
+                &quot;open_interest&quot;: 1000,
+                &quot;provenance&quot;: {
+                  &quot;feed&quot;: &quot;fixture-only&quot;,
+                  &quot;published_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+                  &quot;raw&quot;: {
+                    &quot;adjusted&quot;: false,
+                    &quot;currency&quot;: &quot;USD&quot;,
+                    &quot;expiry&quot;: &quot;2026-09-24&quot;,
+                    &quot;expiry_at&quot;: &quot;2026-09-24T20:00:00+00:00&quot;,
+                    &quot;multiplier&quot;: 100,
+                    &quot;open_interest&quot;: 1000,
+                    &quot;right&quot;: &quot;C&quot;,
+                    &quot;strike_mills&quot;: 502000,
+                    &quot;style&quot;: &quot;american&quot;,
+                    &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+                    &quot;underlying&quot;: &quot;SPY&quot;
+                  },
+                  &quot;received_at&quot;: &quot;2026-09-14T14:00:00+00:00&quot;,
+                  &quot;sha256&quot;: &quot;4c57914eb581d3a0e05ad6b3668c207bdf9139ada2c883b861df0d5882d4d567&quot;,
+                  &quot;source&quot;: &quot;synthetic-fixture&quot;
+                },
+                &quot;right&quot;: &quot;C&quot;,
+                &quot;strike_mills&quot;: 502000,
+                &quot;style&quot;: &quot;american&quot;,
+                &quot;symbol&quot;: &quot;SPY260924C00502000&quot;,
+                &quot;underlying&quot;: &quot;SPY&quot;
+              },
+              &quot;decided_at&quot;: &quot;2026-09-14T16:00:03+00:00&quot;,
+              &quot;decision_id&quot;: &quot;7e4d4657d4510a4618b8d36d966d033677b5866063f443b726106b63173a6053&quot;,
+              &quot;kind&quot;: &quot;exit_decision&quot;,
+              &quot;reason&quot;: &quot;holding_limit&quot;,
+              &quot;side&quot;: &quot;sell&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+        }
+      }
+    },
+    {
+      &quot;event_id&quot;: &quot;fixture-2026-09-14T16:00:05+00:00&quot;,
+      &quot;observed_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+      &quot;packet_hash&quot;: &quot;2af65839925be3468245682ade6e804b12509c9c20f0ab3299829bb476a33994&quot;,
+      &quot;candidate&quot;: null,
+      &quot;decisions&quot;: {
+        &quot;analyst&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;decision_id&quot;: &quot;475d46bf4d0fc3d1267f0b38ccdc1c315f68cdaa29c86a7c286a794b69f1ed68&quot;,
+              &quot;kind&quot;: &quot;simulated_fill&quot;,
+              &quot;price_cents&quot;: 81,
+              &quot;quantity&quot;: 1,
+              &quot;quote_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+              &quot;side&quot;: &quot;sell&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+        },
+        &quot;analyst_critic&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;decision_id&quot;: &quot;6a56ad17a8994b5eaf15a1aa23bf29a45fc0f63c8459232f0a53949c433cc8a9&quot;,
+              &quot;kind&quot;: &quot;simulated_fill&quot;,
+              &quot;price_cents&quot;: 81,
+              &quot;quantity&quot;: 1,
+              &quot;quote_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+              &quot;side&quot;: &quot;sell&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+        },
+        &quot;deterministic&quot;: {
+          &quot;actions&quot;: [
+            {
+              &quot;decision_id&quot;: &quot;7e4d4657d4510a4618b8d36d966d033677b5866063f443b726106b63173a6053&quot;,
+              &quot;kind&quot;: &quot;simulated_fill&quot;,
+              &quot;price_cents&quot;: 81,
+              &quot;quantity&quot;: 1,
+              &quot;quote_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+              &quot;side&quot;: &quot;sell&quot;
+            }
+          ],
+          &quot;proposal&quot;: null,
+          &quot;verdict&quot;: &quot;no_eligible_contract&quot;
+        }
+      }
+    }
+  ],
+  &quot;sources&quot;: {
+    &quot;chain&quot;: {
+      &quot;source&quot;: &quot;synthetic-fixture&quot;,
+      &quot;feed&quot;: &quot;fixture-only&quot;,
+      &quot;published_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+      &quot;received_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;
+    },
+    &quot;underlying&quot;: {
+      &quot;source&quot;: &quot;synthetic-fixture&quot;,
+      &quot;feed&quot;: &quot;fixture-only&quot;,
+      &quot;published_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+      &quot;received_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;
+    },
+    &quot;calendar&quot;: {
+      &quot;source&quot;: &quot;synthetic-fixture&quot;,
+      &quot;feed&quot;: &quot;fixture-only&quot;,
+      &quot;published_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+      &quot;received_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;
+    },
+    &quot;events&quot;: {
+      &quot;source&quot;: &quot;synthetic-fixture&quot;,
+      &quot;feed&quot;: &quot;fixture-only&quot;,
+      &quot;published_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+      &quot;received_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;
+    },
+    &quot;news&quot;: {
+      &quot;source&quot;: &quot;synthetic-fixture&quot;,
+      &quot;feed&quot;: &quot;fixture-only&quot;,
+      &quot;published_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;,
+      &quot;received_at&quot;: &quot;2026-09-14T16:00:05+00:00&quot;
+    }
+  },
+  &quot;interpretation&quot;: &quot;Software and simulated outcomes do not establish a trading edge. Three arms are alternatives with matched inputs.&quot;,
+  &quot;ingestion_error&quot;: null
+}</pre></details>
+<p>Software and simulated outcomes do not establish a trading edge. Three arms are alternatives with matched inputs.</p></html>

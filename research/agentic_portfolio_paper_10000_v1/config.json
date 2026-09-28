@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "profile": "agentic_portfolio_paper_10000_v1",
+  "mode": "PAPER_ONLY_NO_ORDER",
+  "capabilities": {
+    "orders_enabled": false,
+    "model_calls_enabled": false,
+    "network_enabled": false,
+    "broker_enabled": false,
+    "deploy_enabled": false
+  },
+  "core_binding": {
+    "package": "research.agentic_portfolio_v1",
+    "freeze_sha256": "e6d3961f98830ef46850f194ae77f7486714faac685bd6acd77a8a496ecf488d",
+    "manifest_verification_required": true
+  },
+  "virtual_accounts": {
+    "stock_swing": {
+      "account_id": "paper-10000-stock-swing-v1",
+      "initial_cash": "10000.00",
+      "ledger": "separate",
+      "engine": "StockSwingEngine"
+    },
+    "long_options": {
+      "account_id": "paper-10000-long-options-v1",
+      "initial_cash": "10000.00",
+      "ledger": "separate",
+      "engine": "OptionShadowEngine"
+    },
+    "total_simulated_bookkeeping": "20000.00",
+    "shared_pool": false
+  },
+  "risk_policy": {
+    "source": "research.agentic_portfolio_v1.risk.RiskPolicy",
+    "max_equity_position": "0.20",
+    "max_total_deployed": "0.50",
+    "min_cash_reserve": "0.50",
+    "max_total_option_contractual_loss": "0.05",
+    "daily_realized_loss_pause": "0.02",
+    "high_water_drawdown_pause": "0.05"
+  },
+  "trial": {
+    "timezone": "America/New_York",
+    "start_date": "2026-09-15",
+    "first_checkpoint_at": "2026-10-26T16:30:00-04:00",
+    "scheduled_final_review_at": "2026-10-30T16:30:00-04:00",
+    "scheduled_nyse_sessions": 34,
+    "minimum_completed_eligible_market_sessions": 30,
+    "minimum_closed_trades_per_strategy": 20,
+    "scheduled_session_dates": [
+      "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18",
+      "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24",
+      "2026-09-25", "2026-09-28", "2026-09-29", "2026-09-30",
+      "2026-10-01", "2026-10-02", "2026-10-05", "2026-10-06",
+      "2026-10-07", "2026-10-08", "2026-10-09", "2026-10-12",
+      "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16",
+      "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22",
+      "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28",
+      "2026-10-29", "2026-10-30"
+    ],
+    "calendar_source": "NYSE published 2026 holidays and trading hours",
+    "calendar_source_url": "https://www.nyse.com/markets/hours-calendars",
+    "actual_session_completeness_must_be_verified": true,
+    "review_is_proof_or_promotion": false
+  },
+  "news_external_factors": {
+    "collector_records_direct_news_metadata": true,
+    "collector_records_sector_news_metadata": true,
+    "collector_performs_sentiment_scoring": false,
+    "engines_consume_collector_news_metadata": false,
+    "stock_engine_consumes_supplied_hard_adverse_news_boolean": true,
+    "options_engine_consumes_news_or_sentiment": false,
+    "comprehensive_news_integration": false,
+    "fundamentals_integration": false,
+    "analyst_ratings_integration": false,
+    "macro_interpretation": false,
+    "sentiment_integration": false
+  }
+}

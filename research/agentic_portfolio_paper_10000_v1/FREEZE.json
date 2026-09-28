@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "package_version": "agentic_portfolio_paper_10000_v1",
+  "frozen_at": "2026-09-14T00:00:00Z",
+  "change_policy": "Do not mutate this version. Any runtime, protocol, configuration, calendar, account, capability, or documentation change requires a new versioned package and manifest.",
+  "hash_algorithm": "sha256",
+  "files": {
+    "PROTOCOL.md": "c575266b8063647a9c8c69493c5f2dfb72297b32127d567035ffccbd556dc566",
+    "README.md": "d05a9305a8c33ea08ad2b03e6103a8c56b6608aba123ab03c97b0689234f5313",
+    "__init__.py": "96d88bc1def71bd9040812b38c775af9aa03a49996833207e9f9d05c8ec75427",
+    "config.json": "967d1846f260e04414edf6e297b322105fea895461f56298e91216e4c2cf6f7c",
+    "demo.py": "09aedc4015dd9f7e3f9a8291f8044a2e2168ba20546147ffbee21e260171f1b3",
+    "freeze.py": "b0aecdedd3f84daa5a3265d039ad99decda60023492332c2c6a0e4d0d2b449fa",
+    "profile.py": "becba7d225e6e5de42fd18d9e2847cb1ad5a30c63deb0e111758768c5fab3d32"
+  }
+}

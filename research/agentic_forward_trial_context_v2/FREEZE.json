@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "package_version": "agentic_forward_trial_context_v2",
+  "frozen_at": "2026-09-15T08:24:17Z",
+  "change_policy": "Immutable. Any change requires a new versioned package and manifest.",
+  "hash_algorithm": "sha256",
+  "files": {
+    "ARCHITECTURE.md": "00cfbd43a9584535ac268c529450e6cdf38f73b81e954353d534cf9ffb7d09fa",
+    "DATA_CONTRACT.md": "0b2cb22b1d22af6e7d13889cfe55a6748224ad64a74fa96ab01905fa9b0b2dcf",
+    "PROTOCOL.md": "0af6307291371a8055602b39cf239754b1934e71ef4a7e730d509b0950ed2417",
+    "README.md": "49fbb8e14a49d0de4199d794c5e9db8ef87d14a13e93f1fffe8ca092c752afef",
+    "__init__.py": "25d4cba551deae381b7217471a1a04e9df1714895fef04245bb6f63f726279d0",
+    "binding.py": "11c9b8b5561607639238776ae06133a9e75d24c6ad2bb4ce417d37dbdc841395",
+    "config.json": "51c3941753035133cefa5c8cf164d27f6c43f3a5f31aef7298109f65cf0f66a8",
+    "context.py": "f80e6c2299f4414d6a6390a35899d5fe1ad1478ca2587d53b3005606bfa91b0b",
+    "data_gap_snapshot.json": "d1f442d7af19be2cec13ca651fe053890ba0fe3631120906d41dc1e88953ff10",
+    "demo.py": "7cdd003158a7886119b28d9c35fcdb23fd4d66c32715b92830ad37c6e3dab514",
+    "deployment/README.md": "2e1ee6a08c322ad174cd9f656b6aec06fb2a9f44021f03c988eac4681dc45155",
+    "freeze.py": "8c20e911c4e7186aef57ff24947741f2d639b326bafc7508469229da71274db1",
+    "macro.py": "8a32a6eecd161ff763e9aee20f4254d554d2059a1faa6463407f1a4e3ad0ce1c",
+    "macro_calendar.json": "7fdeb30cbf8e50808c3e07e5d70558537ffe0a3ad84f9a8eebfc272b392ebdb0",
+    "observer.py": "63d8d8f9e200667e29424701b9325708ef53c6d2a7225b43e0d88aa66b27a6bb",
+    "receipts.py": "5cf087962bc56fd6e84ccc25b5f82d8038c655f30731fcb50c05120ed3e95605",
+    "runner.py": "92312e30096113d6f68ed595ce3ca09e0b3ade389c924302808defbb2d1063ef",
+    "sector_mapping.json": "84e0a8e09590f01ee70327b0c74fd72466499db5e983b2703b69fa4f6094b697"
+  }
+}

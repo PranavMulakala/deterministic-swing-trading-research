@@ -1,0 +1,27 @@
+{
+  "observed_at_utc": "2026-09-28T11:57:47.245201+00:00",
+  "source": "allowlisted Alpaca paper GET only",
+  "account_status": "ACTIVE",
+  "paper_cash": "7500",
+  "paper_equity": "7500",
+  "paper_buying_power": "30000",
+  "multiplier": "4",
+  "trading_blocked": false,
+  "account_blocked": false,
+  "position_count": 0,
+  "open_order_count": 0,
+  "paper_clock": {
+    "timestamp": "2026-09-28T07:57:47.185324286-04:00",
+    "is_open": false,
+    "next_open": "2026-09-28T09:30:00-04:00",
+    "next_close": "2026-09-28T16:00:00-04:00"
+  },
+  "calendar": [
+    {
+      "date": "2026-09-28",
+      "open": "09:30",
+      "close": "16:00"
+    }
+  ],
+  "orders_sent": 0
+}

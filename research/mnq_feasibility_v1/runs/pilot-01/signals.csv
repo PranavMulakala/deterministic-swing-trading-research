@@ -1,0 +1,1 @@
+scenario,id,day,direction,signal_ns,entry_ns,entry_ticks,stop_ticks,stop_distance_ticks,spread_ticks,planned_risk,risk_fits,planned_net_reward,net_reward_risk,reason,portfolio_reason

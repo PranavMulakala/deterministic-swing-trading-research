@@ -1,0 +1,10 @@
+Personal collector invariants and isolated release identity verified.
+Shadow release verified: 0337a4f4917a7a71734b0d77652a9e402d8f8a9e1435d91d88faf744e05b91a3
+Created symlink /etc/systemd/system/timers.target.wants/trading-shadow-7500.timer → /etc/systemd/system/trading-shadow-7500.timer.
+Installed shadow release 0337a4f4917a7a71734b0d77652a9e402d8f8a9e1435d91d88faf744e05b91a3. Verify an actual timer-triggered run before claiming scheduling readiness.
+NextElapseUSecMonotonic=infinity
+LastTriggerUSec=Mon 2026-09-14 20:17:14 UTC
+ActiveState=active
+Result=success
+ExecMainStatus=0
+ActiveState=activating

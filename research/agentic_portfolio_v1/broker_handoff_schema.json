@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Read-only broker handoff receipts",
+  "description": "Validation contract only. It has no endpoints or execution operations.",
+  "oneOf": [
+    {"$ref": "#/$defs/accountRead"},
+    {"$ref": "#/$defs/quoteRead"},
+    {"$ref": "#/$defs/orderReview"}
+  ],
+  "$defs": {
+    "accountRead": {
+      "type": "object",
+      "required": ["receipt_type", "account_ref", "status", "buying_power", "observed_at", "retrieved_at", "receipt_hash"],
+      "properties": {
+        "receipt_type": {"const": "ACCOUNT_READ"}, "account_ref": {"type": "string", "minLength": 1},
+        "status": {"const": "READ_ONLY"}, "buying_power": {"type": "string", "minLength": 1},
+        "observed_at": {"type": "string", "format": "date-time"},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "receipt_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "quoteRead": {
+      "type": "object",
+      "required": ["receipt_type", "symbol", "bid", "ask", "source", "observed_at", "retrieved_at", "receipt_hash"],
+      "properties": {
+        "receipt_type": {"const": "QUOTE_READ"}, "symbol": {"type": "string", "minLength": 1},
+        "bid": {"type": "string", "minLength": 1}, "ask": {"type": "string", "minLength": 1}, "source": {"type": "string", "minLength": 1},
+        "observed_at": {"type": "string", "format": "date-time"},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "receipt_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "orderReview": {
+      "type": "object",
+      "required": ["receipt_type", "intent_hash", "account_ref", "symbol", "side", "quantity", "order_type", "limit_price", "time_in_force", "estimated_cost", "warnings", "reviewed_at", "status", "quote_receipt_hash", "quote_symbol", "quote_observed_at", "quote_retrieved_at", "receipt_hash"],
+      "properties": {
+        "receipt_type": {"const": "ORDER_REVIEW"}, "intent_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "account_ref": {"type": "string", "minLength": 1}, "symbol": {"type": "string", "minLength": 1},
+        "side": {"enum": ["BUY", "SELL"]}, "quantity": {"type": "string", "minLength": 1},
+        "order_type": {"const": "LIMIT"}, "limit_price": {"type": "string", "minLength": 1},
+        "time_in_force": {"enum": ["DAY", "GTC"]}, "estimated_cost": {"type": "string", "minLength": 1},
+        "warnings": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "quote_receipt_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "quote_symbol": {"type": "string", "minLength": 1},
+        "quote_observed_at": {"type": "string", "format": "date-time"},
+        "quote_retrieved_at": {"type": "string", "format": "date-time"},
+        "reviewed_at": {"type": "string", "format": "date-time"},
+        "status": {"const": "REVIEW_ONLY"},
+        "receipt_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

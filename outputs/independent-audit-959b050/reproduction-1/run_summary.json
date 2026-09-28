@@ -1,0 +1,115 @@
+{
+  "config_sha256": "215d907b4d87f009d461a59fe3ff060a424cf00020fc77f2d6dfcdf138c7bd27",
+  "results": {
+    "in_sample": {
+      "benchmarks": [
+        {
+          "benchmark": "spy_buy_and_hold",
+          "cagr_pct": 9.75288906,
+          "end_date": "2020-12-31",
+          "final_equity": 2017.98330179,
+          "initial_equity": 500.0,
+          "max_drawdown_pct": 55.18945111,
+          "modeled_cost_drag_pct_points": 0.25030752,
+          "start_date": "2006-01-03",
+          "total_modeled_execution_cost": 0.78071622,
+          "total_return_pct": 303.59666036,
+          "zero_cost_total_return_pct": 303.84696788
+        },
+        {
+          "benchmark": "monthly_top3_126d_momentum",
+          "cagr_pct": 6.21413107,
+          "end_date": "2020-12-31",
+          "final_equity": 1234.56921595,
+          "initial_equity": 500.0,
+          "max_drawdown_pct": 29.59682392,
+          "modeled_cost_drag_pct_points": 25.24325477,
+          "rebalance_count": 179,
+          "start_date": "2006-01-03",
+          "total_modeled_execution_cost": 72.45849852,
+          "total_return_pct": 146.91384319,
+          "zero_cost_total_return_pct": 172.15709796
+        }
+      ],
+      "strategy": {
+        "average_exposure_pct": 23.80404064,
+        "average_loss": -2.31219526,
+        "average_trade_pnl": 0.2006786,
+        "average_win": 1.67185202,
+        "cagr_pct": 2.85452517,
+        "daily_loss_halt_rejections": 0,
+        "end_date": "2020-12-31",
+        "entry_attempt_count": 1864,
+        "entry_signal_count": 1864,
+        "final_equity": 762.48760914,
+        "initial_equity": 500.0,
+        "max_drawdown_pct": 15.39123092,
+        "max_planned_risk_pct": 0.5,
+        "profit_factor": 1.23503751,
+        "split": "in_sample",
+        "start_date": "2006-01-03",
+        "total_modeled_execution_cost": 94.55485755,
+        "total_return_pct": 52.49752183,
+        "trade_count": 1308,
+        "win_rate_pct": 63.0733945,
+        "zero_quantity_pct_of_entry_attempts": 22.4248927,
+        "zero_quantity_rejections": 418
+      }
+    },
+    "out_of_sample": {
+      "benchmarks": [
+        {
+          "benchmark": "spy_buy_and_hold",
+          "cagr_pct": 14.96210338,
+          "end_date": "2026-08-31",
+          "final_equity": 1099.84843136,
+          "initial_equity": 500.0,
+          "max_drawdown_pct": 24.49639899,
+          "modeled_cost_drag_pct_points": 0.1364235,
+          "start_date": "2021-01-04",
+          "total_modeled_execution_cost": 0.4960089,
+          "total_return_pct": 119.96968627,
+          "zero_cost_total_return_pct": 120.10610977
+        },
+        {
+          "benchmark": "monthly_top3_126d_momentum",
+          "cagr_pct": 8.50081969,
+          "end_date": "2026-08-31",
+          "final_equity": 793.04974055,
+          "initial_equity": 500.0,
+          "max_drawdown_pct": 20.78929958,
+          "modeled_cost_drag_pct_points": 6.62494116,
+          "rebalance_count": 67,
+          "start_date": "2021-01-04",
+          "total_modeled_execution_cost": 26.71182376,
+          "total_return_pct": 58.60994811,
+          "zero_cost_total_return_pct": 65.23488927
+        }
+      ],
+      "strategy": {
+        "average_exposure_pct": 31.08109596,
+        "average_loss": -1.93590404,
+        "average_trade_pnl": 0.26386011,
+        "average_win": 1.49151892,
+        "cagr_pct": 5.60236644,
+        "daily_loss_halt_rejections": 0,
+        "end_date": "2026-08-31",
+        "entry_attempt_count": 894,
+        "entry_signal_count": 896,
+        "final_equity": 680.48031652,
+        "initial_equity": 500.0,
+        "max_drawdown_pct": 7.43023693,
+        "max_planned_risk_pct": 0.5,
+        "profit_factor": 1.38052214,
+        "split": "out_of_sample",
+        "start_date": "2021-01-04",
+        "total_modeled_execution_cost": 38.01215841,
+        "total_return_pct": 36.0960633,
+        "trade_count": 684,
+        "win_rate_pct": 64.18128655,
+        "zero_quantity_pct_of_entry_attempts": 16.3310962,
+        "zero_quantity_rejections": 146
+      }
+    }
+  }
+}

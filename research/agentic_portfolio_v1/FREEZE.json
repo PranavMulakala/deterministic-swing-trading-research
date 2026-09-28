@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "package_version": "agentic_portfolio_v1",
+  "frozen_at": "2026-09-14T00:00:00Z",
+  "change_policy": "Do not mutate this version. Any runtime, protocol, configuration, or documentation change requires a new versioned package and manifest.",
+  "hash_algorithm": "sha256",
+  "files": {
+    "ARCHITECTURE.md": "c34d50794b0d5b0363f2c3bf7f74db2469b63a867f1d6f2937307b0918aef240",
+    "PROTOCOL.md": "b83c4f34be7f3f09bcb41c86213aea6374b1e20243dfb9394ab7dc693751dd7d",
+    "README.md": "e5127dcc3d2c21892d653702cccc6b63bf2ee8afcb06fddb909fe59158f8ff8b",
+    "THIRD_PARTY.md": "aaf9db50e3294c695b9259254dfc12d542c6720d5b541e00afcbaf2e8efeed65",
+    "__init__.py": "282593519dada52e12970c10e9215e5027332dc5a6cf685b707d2fda93898eed",
+    "broker_handoff.py": "d0c27a596998794e6f9c0c8f8bdcc0071594d173df05dee69d1fc52ce6f7b18a",
+    "broker_handoff_schema.json": "7f01ade48b6f34f50fe5b4009c6a8a46516c2e69f7e19420da771338556964af",
+    "common.py": "57dbe79e024f981d68daf38515d9e3bc510476e40746fdce714cba268e715190",
+    "config.json": "19e827c6725af4dd9bfc3b0f4e183942a24bce0c027adfaaf81dbb80437ad283",
+    "config.py": "f86aa42d4ce096027b85744c4e464882002220279147bf5a70bb841e0d791a9f",
+    "controller.py": "4e5415bf6683f3dc53055caaf3abbd3b380fd7e9823bcb16f82bc29ace04f980",
+    "council.py": "d75a7ea20bae7259b894653b188339447d153f8c4e2f39498f89e490b6ec0373",
+    "decisions.py": "378fe761a3a0872bd5a8a8bfac4a48f0891efeb697cd70c3061acccdc83c3fa1",
+    "demo.py": "8817c9c7c9e95d721ec3d28242a8d21c138a6bd06e2a6f75b1eb6ea953595244",
+    "evidence.py": "628a4d4c3f68154573a1a29f5e0c451d5b83c95c775fc3aadd96bafd35746935",
+    "freeze.py": "94aefacf38ba4295ee73552637a09b54303eef125e9c734ada65488d4c400d56",
+    "options.py": "cf10b9b537c59a97b6de1862aa16a997ae3bb3ca14c3528bd9abcd44ea46b503",
+    "risk.py": "d65b8c45b016e0611effd46da969dbff6766c442682d7050122325289a6cceda",
+    "risk_policy.json": "565ea0f3281f97fa180d0082a4028b7b9cf8307cabe24eff786dd5bfc49fdfc4",
+    "stock.py": "1816f35149cc0f0faf567609c8dd4511eda5e199b258bcbd3cd1c4359ab04118"
+  }
+}

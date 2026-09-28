@@ -1,0 +1,39 @@
+{
+  "checked_at_utc": "2026-09-09T06:55:42.231488+00:00",
+  "status": "PREPARATION_VERIFIED_LIVE_NOT_READY",
+  "tests": {
+    "research_reference_import_quote_extension": 54,
+    "paper_comparator": 39,
+    "offline_trial_budget": 21
+  },
+  "test_total": 114,
+  "test_scope": "Synthetic and offline software tests, not broker execution or profitability.",
+  "independent_audit": "Seven reproduced comparator issues and two budget issues closed with regressions; trade overflow fixed.",
+  "frozen_files": {
+    "engine.py": "8f20d82fdea5670d72f72095a2998d2c7aa10da299a92daf898e0df3a3163dc4",
+    "config.json": "41521d784062f5b8594c2fa093dd388c6f3888dd7c0d51edabb2db11f5fefa24",
+    "PROTOCOL.md": "128341ce61ca0a2c5b9bdc2fda70e13d04082981677b0d11941597af8242e905",
+    "fixture.py": "f137a6a8077847179780aa50cdf13b1810d43b1aa0bf1535219b2066e3f964ad",
+    "test_engine.py": "b393079be60642a3eab574f6888f7b523e380dbadf47f74c3ecaea1d91e0f679"
+  },
+  "august_evaluation_sessions": 19,
+  "august_patterns": 0,
+  "artifacts": {
+    "research/mnq_feasibility_v1/runs/trade-extension-01/report.json": "7ec5cb75656ee93e19698d0050db5a57cd4c69dbcfa3bdeab8bc2f7735e0d36f",
+    "research/mnq_feasibility_v1/runs/bridge-01/report.json": "4018227f424726145dd489949065af59ed022063715d5a48f668c6eff5fbfb1a",
+    "research/mnq_paper_validation_v1/compare.py": "04e6dd4dc9ac56ffb9826b62345f2df5918a400eafb589123004b584c376568b",
+    "research/mnq_paper_validation_v1/runs/status-004.json": "01f070793b5b0b6a35d8bf1bb700923e5efff07b9c2a446d563b8b103f168055",
+    "research/mnq_live_trial_v1/trial_budget.py": "5c7a52b6e745392b01323c7f4e7d587d0d8061f7ca4f5500841a405ebe87f6ad",
+    "research/mnq_live_trial_v1/trial_budget_proposal.json": "0e1183c4ca646301afa2a0ec409ae565b2e0e61bb11516ec7cb28bc9b2ab4cc7"
+  },
+  "actual_paper_records_available": false,
+  "live_trial_approved": false,
+  "live_orders_submitted": false,
+  "remaining": [
+    "Strategy evidence: zero setups in available evaluations.",
+    "Selected futures broker, account permissions and actual costs/margin.",
+    "Broker-specific adapter and actual paired paper/market records.",
+    "Full risk/trigger/pause/recovery verification in paper.",
+    "Held-out strategy evidence and final user approval."
+  ]
+}

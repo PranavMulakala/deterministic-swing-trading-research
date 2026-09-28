@@ -1,0 +1,19 @@
+{
+  "revision": "33e7f3be86448d7d6ccf0c6f17d4e3afe1b2a930e1cd25f7f33c01605bbeeaa8",
+  "files": {
+    "install.sh": "f6c8e7772b1de84f060fcc148d1c5795cb4114b296abb321d4333802ea4e7a0a",
+    "research/agentic_shadow_v1/FREEZE.json": "18aceb7d2ee3a4e1bccdce587bc45759f1acd911aebe4fd0194a0d53211d3069",
+    "research/agentic_shadow_v1/PROTOCOL.md": "9f37b52bf224b62a753cd141b8e0fa1d4f9ec89c2a042f83365c9f2a6ad2bbb6",
+    "research/agentic_shadow_v1/config.json": "c0c9442974b17eb28b32c2f80eb17a63556b7db5f15703465f1cd03b3a650f7e",
+    "research/agentic_shadow_v1/engine.py": "0455bd1ab5410626a177b7d4b32835f0c6dc9abb98a969ee04d5f6901e55cdcf",
+    "research/agentic_shadow_v1/fixtures.py": "2a1d8e548634e080b95b17a3872b924c503d136fe2d2a2fea034c4003ab4c85f",
+    "research/agentic_shadow_v1/report.py": "7c0d4df6f5fe3246ba7f16f5a98d6c7bc7b203e20fbf780552dbe9569bbad99f",
+    "research/agentic_shadow_v1/run.py": "5a355475b4ae71a2780dbd268c4fa1bc493e0466b69e0d25ea0ea68e870a901f",
+    "src/swingbot/__init__.py": "40b063492349ccaa65184e769870480f55ace8b9680f3fd3475403c3801ea283",
+    "src/swingbot/safe_paths.py": "3e5f30eed049574a38cc65e9217a23f0952a77202b5e62e17b45838e1ce3ec3a",
+    "trading-shadow-7500.service": "cdbe869809dc7cfb8fcf33d5c3af584524b8a31e9b60a96efdfce99473b0a2aa",
+    "trading-shadow-7500.timer": "f3f43abfd729ef5604538d83f769bf9c5f4dc22370bb042f8763ecef34acfb03",
+    "verify_release.py": "e6c304e146214bb6c9991a5b4a4b3f18b7e7ad6744d8094ba4e98e9986988d42"
+  },
+  "orders": false
+}

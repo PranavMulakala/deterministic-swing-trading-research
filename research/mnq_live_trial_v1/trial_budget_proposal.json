@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "proposal_id": "mnq_limited_live_budget_v1",
+  "status": "NOT_APPROVED",
+  "orders_enabled": false,
+  "live_authorized": false,
+  "purpose": "OFFLINE_REVIEW_ONLY_NOT_BROKER_ENFORCEMENT",
+  "instrument_root": "MNQ",
+  "trade_risk_cap_usd": 12.5,
+  "trade_risk_fraction": 0.0025,
+  "daily_loss_cap_usd": 25,
+  "daily_loss_fraction": 0.005,
+  "total_nonreplenishing_loss_allowance_usd": 50,
+  "high_water_drawdown_fraction": 0.05,
+  "max_contracts": 1,
+  "max_entry_attempts_per_day": 2,
+  "review_after_completed_round_trips": 5,
+  "review_after_completed_sessions": 5,
+  "loss_limits_are_guarantees": false
+}

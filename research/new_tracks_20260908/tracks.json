@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-09-08",
+  "status": "DRAFT_RESEARCH_TRACKS_NOT_PREREGISTERED",
+  "orders_enabled": false,
+  "collection_enabled": false,
+  "frozen_existing_tracks_changed": false,
+  "tracks": [
+    {
+      "id": "key_level_vwap_reversion_v1",
+      "title": "Key levels + VWAP reversion",
+      "source": "User-supplied ShamanJohnny Reddit comment; claimed performance unverified",
+      "status": "AWAITING_INSTRUMENT_CAPITAL_RULES_AND_DATA",
+      "hypothesis": "Test whether an objectively defined extension and failed continuation at predeclared levels predicts reversion after costs.",
+      "source_market": "NQ futures; MNQ or an ETF proxy would need a separately specified instrument choice",
+      "chosen_instrument": null,
+      "initial_simulated_cash": null,
+      "risk_limits": null,
+      "rules": null,
+      "freeze_timestamp": null,
+      "forward_start": null,
+      "missing_decisions": ["Instrument and contract rollover", "Bar timeframe and regular/overnight session anchor", "SMA versus EMA for 20/200", "VWAP variance formula and exact extension threshold", "Causal definitions of key levels, exhaustion and failed continuation", "True bid/ask delta versus an explicitly labeled price-based proxy", "Entry, invalidation stop, profit exit and maximum holding time", "Per-trade/day/portfolio risk limits and no-new-entry conditions"],
+      "required_data": ["Chosen futures contract trades and bid/ask timestamps if futures selected", "Warmup, contract reference, session calendar and roll policy", "Commissions, spread, slippage, gaps, fills and contract multiplier"],
+      "comparison": "Separately declared no-delta ablation only if approved before results; cash baseline; net expectancy and drawdown",
+      "not_currently_collected": ["NQ", "MNQ", "futures aggressor-side order flow"]
+    },
+    {
+      "id": "spy_weekly_wheel_v1",
+      "title": "SPY weekly put / covered-call cycle",
+      "source": "User-supplied sellputsthencalls Reddit comment; wheel interpretation, exact rules unconfirmed",
+      "status": "AWAITING_CAPITAL_OPTIONS_DATA_AND_RULES",
+      "hypothesis": "Measure total account return and downside of a fully collateralized weekly SPY options cycle versus comparable SPY buy-and-hold and cash.",
+      "chosen_instrument": "SPY listed options and SPY shares; no order or collection activation",
+      "initial_simulated_cash": null,
+      "risk_limits": null,
+      "rules": null,
+      "freeze_timestamp": null,
+      "forward_start": null,
+      "missing_decisions": ["Realistic simulated capital and maximum collateral allocation", "Cash-secured puts and share-covered calls only", "Entry day/time and exact eligible Friday expiration selection including holidays", "Strike selection: moneyness or Greek delta, tie-break rules and data source", "Profit-taking, close/roll/hold-to-expiration policy", "Early assignment, exercise, dividends, option multiplier and deliverable handling", "Marked-to-market loss limits and gap handling", "Fees, spread and conservative option fill model"],
+      "required_data": ["Timestamped SPY option chains and bid/ask quotes", "Contract multipliers, expirations, deliverables and corporate actions", "Assignment/exercise events and dividends", "Option and stock transaction costs and realistic collateral ledger"],
+      "comparison": "Premium, option liability, stock P&L, dividends, cash yield and total net liquidation value separately; matched buy-and-hold and cash baseline",
+      "not_currently_collected": ["SPY option chains", "OPRA option quotes", "option assignment events"]
+    }
+  ]
+}

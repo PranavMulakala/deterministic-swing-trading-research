@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "old_run_id": "dcc93b46b34cea054f813a80c4e7ba6ca01e85f88e174c8fc918d2d9d3e2023a",
+  "staged_run_id": "3d34bdcfe51bc798f4275b4325d17ac093d36545b8338ca6e115a12fc2ba7726",
+  "parent_result_sections_equal": [
+    "orb",
+    "orb_summaries",
+    "ledger_audits",
+    "contrasts",
+    "bar_proxy_diagnostic",
+    "prepared",
+    "lite",
+    "lite_excluded",
+    "days"
+  ],
+  "linux_tests": 34,
+  "isolation": "all_three_passed",
+  "new_arms_status": "WAITING_FOR_FIRST_FORWARD_SESSION",
+  "pins_sha256": "d2cf583908999e85a66868212fb832a67007e469d5d2922c6522afe66a4a512b"
+}

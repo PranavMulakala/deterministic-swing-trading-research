@@ -1,0 +1,116 @@
+{
+  "checkpoint_passed": true,
+  "complete_sessions": 5,
+  "consumer_events": 1695,
+  "execution_validity": "NOT VALID FOR PROFIT, EXECUTION, OR AGENT-EFFICACY ANALYSIS",
+  "experiment": "agentic-options-shadow-indicative-7500-v1",
+  "interpretation": "Operational evidence only. Do not interpret P&L, fills, win rate, drawdown, or arm differences.",
+  "issues": [],
+  "published_archives_verified": 1695,
+  "purpose": "PLUMBING ONLY",
+  "required_complete_sessions": 5,
+  "revision": "1127c399b1898472f4c9fd9345ac77106287686be9d3d56301873e80f7b29b49",
+  "run_latency_seconds": {
+    "max": 6.308238,
+    "median": 3.1977975,
+    "p95": 4.104293
+  },
+  "runs_for_revision": 9467,
+  "session_results": [
+    {
+      "complete": true,
+      "date": "2026-09-15",
+      "max_success_gap_seconds": 68.887317,
+      "published_and_consumed": 331,
+      "scheduled_runs": 331,
+      "status_counts": {
+        "PUBLISHED": 331
+      }
+    },
+    {
+      "complete": true,
+      "date": "2026-09-16",
+      "max_success_gap_seconds": 69.076116,
+      "published_and_consumed": 328,
+      "scheduled_runs": 328,
+      "status_counts": {
+        "PUBLISHED": 328
+      }
+    },
+    {
+      "complete": true,
+      "date": "2026-09-17",
+      "max_success_gap_seconds": 68.641498,
+      "published_and_consumed": 329,
+      "scheduled_runs": 329,
+      "status_counts": {
+        "PUBLISHED": 329
+      }
+    },
+    {
+      "complete": true,
+      "date": "2026-09-18",
+      "max_success_gap_seconds": 68.075308,
+      "published_and_consumed": 330,
+      "scheduled_runs": 330,
+      "status_counts": {
+        "PUBLISHED": 330
+      }
+    },
+    {
+      "complete": true,
+      "date": "2026-09-21",
+      "max_success_gap_seconds": 67.73826,
+      "published_and_consumed": 330,
+      "scheduled_runs": 330,
+      "status_counts": {
+        "PUBLISHED": 330
+      }
+    }
+  ],
+  "audit_completed_at_utc": "2026-09-21 20:56:41 UTC",
+  "checkpoint_exit_code": 0,
+  "operational_reliability": {
+    "scheduled_runs_in_audited_windows": 1648,
+    "published_and_consumed_in_audited_windows": 1648,
+    "observed_success_fraction": 1,
+    "maximum_success_gap_seconds": 69.076116,
+    "window_eastern": "10:00 through 15:55; scheduled records through 16:00",
+    "note": "Observed five-session sample only; not a future reliability guarantee."
+  },
+  "deployment_verification": {
+    "release_manifest_verified": true,
+    "active_working_directory_revision": "1127c399b1898472f4c9fd9345ac77106287686be9d3d56301873e80f7b29b49",
+    "producer_timer_active": true,
+    "producer_timer_enabled": true,
+    "consumer_path_active": true,
+    "consumer_path_enabled": true,
+    "producer_result": "success",
+    "consumer_result": "success",
+    "consumer_private_network": true,
+    "consumer_ip_address_deny": [
+      "0.0.0.0/0",
+      "::/0"
+    ],
+    "consumer_address_families": [
+      "AF_UNIX"
+    ],
+    "consumer_credentials_and_archive_inaccessible": true
+  },
+  "original_experiment": {
+    "timer_active": true,
+    "collector_active": true,
+    "latest_service_result": "success",
+    "report_generated_at": "2026-09-21T20:22:51.340219+00:00",
+    "ingestion_error": "missing_input",
+    "readiness": "BLOCKED: normalized options feed and coverage not verified",
+    "baseline_note": "Missing normalized input is the pre-existing frozen experiment state, not indicative collection failure.",
+    "recent_health_window_start_utc": "2026-09-21T19:00:00Z",
+    "recent_health_checked_at_utc": "2026-09-21T20:23:12.256885+00:00",
+    "completed_service_runs_in_window": 142,
+    "timeouts_in_window": 0,
+    "earlier_timeout_note": "Morning repeated 20-second timeouts were observed; later checks show successful runs without restarting or modifying services. Root cause not established."
+  },
+  "audit_transport_note": "First SSH connection failed to deliver checkpoint output after its remote process ended. A fresh read-only run with SSH keepalives returned the complete JSON and exit code 0.",
+  "scope": "PLUMBING ONLY; no orders, no subscriptions changed, no remote service modifications, no credential values collected, no return interpretation."
+}

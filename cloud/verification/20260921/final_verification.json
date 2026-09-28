@@ -1,0 +1,147 @@
+{
+  "checked_at": "2026-09-21T16:35:18.695594+00:00",
+  "services": {
+    "agentic-paper-runtime": {
+      "ActiveState": "activating",
+      "ExecMainExitTimestamp": "",
+      "ExecMainStartTimestamp": "Mon 2026-09-21 16:35:18 UTC",
+      "ExecMainStatus": "0",
+      "Result": "success"
+    },
+    "agentic-stock-free-provider": {
+      "ActiveState": "inactive",
+      "ExecMainExitTimestamp": "Mon 2026-09-21 16:34:09 UTC",
+      "ExecMainStartTimestamp": "Mon 2026-09-21 16:34:07 UTC",
+      "ExecMainStatus": "2",
+      "Result": "success"
+    },
+    "agentic-stock-free-runtime": {
+      "ActiveState": "inactive",
+      "ExecMainExitTimestamp": "Mon 2026-09-21 16:34:10 UTC",
+      "ExecMainStartTimestamp": "Mon 2026-09-21 16:34:09 UTC",
+      "ExecMainStatus": "0",
+      "Result": "success"
+    },
+    "trading-collector": {
+      "ActiveState": "active",
+      "ExecMainExitTimestamp": "",
+      "ExecMainStartTimestamp": "Fri 2026-09-18 06:49:19 UTC",
+      "ExecMainStatus": "0",
+      "Result": "success"
+    },
+    "trading-dashboard": {
+      "ActiveState": "active",
+      "ExecMainExitTimestamp": "",
+      "ExecMainStartTimestamp": "Mon 2026-09-21 16:19:49 UTC",
+      "ExecMainStatus": "0",
+      "Result": "success"
+    },
+    "trading-research": {
+      "ActiveState": "inactive",
+      "ExecMainExitTimestamp": "Mon 2026-09-21 16:35:07 UTC",
+      "ExecMainStartTimestamp": "Mon 2026-09-21 16:34:01 UTC",
+      "ExecMainStatus": "0",
+      "Result": "success"
+    },
+    "trading-shadow-7500": {
+      "ActiveState": "inactive",
+      "ExecMainExitTimestamp": "Mon 2026-09-21 16:35:10 UTC",
+      "ExecMainStartTimestamp": "Mon 2026-09-21 16:35:05 UTC",
+      "ExecMainStatus": "0",
+      "Result": "success"
+    },
+    "trading-shadow-indicative-producer": {
+      "ActiveState": "inactive",
+      "ExecMainExitTimestamp": "Mon 2026-09-21 16:35:08 UTC",
+      "ExecMainStartTimestamp": "Mon 2026-09-21 16:35:02 UTC",
+      "ExecMainStatus": "0",
+      "Result": "success"
+    }
+  },
+  "dashboard": {
+    "connection": {
+      "error": null,
+      "last_attempt": "2026-09-21T16:34:21.204037+00:00",
+      "refresh_seconds": 60
+    },
+    "fetched_at": "2026-09-21T16:34:19.199803+00:00",
+    "stock_status": "BLOCKED_DATA",
+    "verification": {
+      "artifact": {
+        "index_hash_matches": true,
+        "latest_results_match": true,
+        "sha256": "28f4fc9d197a460013f5b41bcfbbf8f35a1fac751a832ecf3a38322d26c0490b"
+      },
+      "display_pages_hashed": 464,
+      "latest_sha256": "28f4fc9d197a460013f5b41bcfbbf8f35a1fac751a832ecf3a38322d26c0490b",
+      "manifest_matches_deployment": true,
+      "pin_mismatches": [],
+      "pinned_files": 25,
+      "pins_sha256": "ec9ad04fc8908d66b036c3ae6f3cb0de6dc16e822a2c2a5a2ed1496feec05cfb",
+      "reference_fetched_at": "2026-09-21T12:48:37.068102Z",
+      "reference_sha256": "753ec9313f560810020748398b6021e33c0f712aa6671f0e961619aca6dfa588",
+      "scope": "Displayed session bar/news pages and latest nonempty tick pages; not a full archive or execution audit"
+    }
+  },
+  "collector": {
+    "at": "2026-09-21T16:33:44.564563Z",
+    "records": 10077022,
+    "errors": {},
+    "pending_streams": [],
+    "through": {
+      "AAOI:quotes": "2026-09-21T16:10:00Z",
+      "AAOI:trades": "2026-09-21T16:10:00Z",
+      "CIEN:quotes": "2026-09-21T16:10:00Z",
+      "CIEN:trades": "2026-09-21T16:10:00Z",
+      "COHR:quotes": "2026-09-21T16:10:00Z",
+      "COHR:trades": "2026-09-21T16:10:00Z",
+      "FN:quotes": "2026-09-21T16:10:00Z",
+      "FN:trades": "2026-09-21T16:10:00Z",
+      "LITE:quotes": "2026-09-21T16:10:00Z",
+      "LITE:trades": "2026-09-21T16:10:00Z",
+      "bars": "2026-09-21T16:10:00Z",
+      "bars5": "2026-09-21T16:10:00Z",
+      "news": "2026-09-21T16:10:00Z",
+      "sector_news": "2026-09-21T16:10:00Z"
+    }
+  },
+  "research": {
+    "status": "REPLAY_COMPLETE_RESEARCH_ONLY",
+    "checked_at": "2026-09-21T16:34:02.446071+00:00",
+    "days": [
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-14",
+      "2026-09-15",
+      "2026-09-16",
+      "2026-09-17",
+      "2026-09-18"
+    ],
+    "etf_swing": {
+      "reason": "No adjusted daily warmup/forward feed equivalence; no fabricated ETF performance",
+      "status": "BLOCKED_DAILY_DATA_PARITY"
+    },
+    "news_context_status": "metadata_only_not_used_for_selection"
+  },
+  "stock": {
+    "status": "BLOCKED_DATA",
+    "checked_at": "2026-09-21T16:34:10.341593+00:00",
+    "reason": "provider blocked: IEX snapshot is stale for CIEN"
+  },
+  "provider": {
+    "checked_at": "2026-09-21T16:34:09.348371+00:00",
+    "orders_enabled": false,
+    "reason": "IEX snapshot is stale for CIEN",
+    "source_mode": "ALPACA_BASIC_FREE_IEX_QUOTES_SIP_HISTORY_V2",
+    "status": "BLOCKED_DATA"
+  },
+  "combined": {
+    "checked_at": "2026-09-21T16:34:19.233043+00:00",
+    "orders_enabled": false,
+    "reason": "no validated provider cycle is available",
+    "reasons": null,
+    "status": "BLOCKED_DATA"
+  }
+}

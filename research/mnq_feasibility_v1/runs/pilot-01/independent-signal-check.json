@@ -1,0 +1,37 @@
+{
+  "method": "Separate enumeration of cached audited bars; original engine not called.",
+  "sessions": [
+    {
+      "day": "2026-09-01",
+      "short_outside_3sd": 0,
+      "long_outside_3sd": 0,
+      "short_also_touching_previous_high": 0,
+      "long_also_touching_previous_low": 0,
+      "complete_patterns": 0
+    },
+    {
+      "day": "2026-09-02",
+      "short_outside_3sd": 0,
+      "long_outside_3sd": 0,
+      "short_also_touching_previous_high": 0,
+      "long_also_touching_previous_low": 0,
+      "complete_patterns": 0
+    },
+    {
+      "day": "2026-09-03",
+      "short_outside_3sd": 0,
+      "long_outside_3sd": 0,
+      "short_also_touching_previous_high": 0,
+      "long_also_touching_previous_low": 0,
+      "complete_patterns": 0
+    },
+    {
+      "day": "2026-09-04",
+      "short_outside_3sd": 0,
+      "long_outside_3sd": 0,
+      "short_also_touching_previous_high": 0,
+      "long_also_touching_previous_low": 0,
+      "complete_patterns": 0
+    }
+  ]
+}

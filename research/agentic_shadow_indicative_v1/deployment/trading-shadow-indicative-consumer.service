@@ -1,0 +1,38 @@
+[Unit]
+Description=Credential-free $7500 indicative shadow consumer (plumbing only)
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+SupplementaryGroups=shadow-indicative
+StateDirectory=trading-shadow-indicative-@STATE@
+StateDirectoryMode=0700
+WorkingDirectory=@RELEASE@
+Environment=PYTHONPATH=@RELEASE@/src:@RELEASE@
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStartPre=/usr/bin/python3 @RELEASE@/verify_release.py
+ExecStart=/usr/bin/python3 -m research.agentic_shadow_indicative_v1.run --kind indicative --state /var/lib/private/trading-shadow-indicative-@STATE@ --input /var/lib/trading-shadow-indicative-inbox/packet.json
+PrivateNetwork=yes
+IPAddressDeny=any
+RestrictAddressFamilies=AF_UNIX
+ReadOnlyPaths=/var/lib/trading-shadow-indicative-inbox
+InaccessiblePaths=-/etc/trading-shadow-indicative -/var/lib/trading-shadow-indicative-archive -/etc/trading-collector -/var/lib/trading-collector -/var/lib/trading-research -/root
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+MemoryMax=128M
+CPUQuota=10%
+Nice=15
+TimeoutStartSec=30
+UMask=0077

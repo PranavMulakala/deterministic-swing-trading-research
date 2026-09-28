@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "package_version": "1.0.0",
+  "mode": "PAPER_ONLY_NO_ORDER",
+  "orders_enabled": false,
+  "broker_enabled": false,
+  "model_calls_enabled": false,
+  "network_enabled": false,
+  "stock_account_cash": "10000.00",
+  "option_account_cash": "10000.00",
+  "stock_symbols": ["AAOI", "CIEN", "COHR", "FN", "LITE"],
+  "option_underlyings": ["QQQ", "SPY"],
+  "minimum_history_sessions": 50,
+  "stock_max_age_seconds": 300,
+  "option_max_age_seconds": 30,
+  "required_context_receipts": ["direct_news", "earnings_calendar", "macro_calendar", "market_context", "option_chain", "sector_news", "stock_history", "stock_quotes"],
+  "review": {
+    "minimum_completed_sessions": 30,
+    "minimum_stock_closed_trades": 20,
+    "minimum_option_closed_trades": 20,
+    "promotion_enabled": false
+  }
+}

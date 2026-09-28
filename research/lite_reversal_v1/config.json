@@ -1,0 +1,15 @@
+{
+  "version": "lite-reversal-research-v1",
+  "snapshot_sha256": "42342bcebbc42da4c51b028b15c90ce8942809566c14c69a841f6cb55e1202a5",
+  "symbol": "LITE",
+  "initial_cash": 500.0,
+  "risk_fraction": 0.005,
+  "opening_drop_fraction": 0.01,
+  "stop_buffer_fraction": 0.0005,
+  "minimum_reward_risk": 1.5,
+  "maximum_entry_gap_fraction": 0.002,
+  "cost_bps_per_side": [10, 25],
+  "target_penetration_bps": 5,
+  "bootstrap_repetitions": 2000,
+  "bootstrap_seed": 20260906
+}

@@ -1,0 +1,37 @@
+[Unit]
+Description=Paper-only stock email alerts (no broker orders)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/stock-paper-alerts/config.json
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+WorkingDirectory=/opt/stock-paper-alerts
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONPATH=/opt/stock-paper-alerts
+LoadCredential=stock-config:/etc/stock-paper-alerts/config.json
+LoadCredential=alpaca-paper:/etc/trading-collector/credentials.json
+LoadCredential=resend-send:/etc/ibkr-paper/smtp.json
+ExecStart=/usr/bin/python3 -m research.alpaca_stock_paper_v1.worker --config %d/stock-config --secrets @systemd --outbox /var/lib/stock-paper-alerts/outbox.sqlite --send
+StateDirectory=stock-paper-alerts
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+InaccessiblePaths=/etc/trading-collector /etc/ibkr-paper
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+MemoryMax=256M
+CPUQuota=50%
+TasksMax=16
+TimeoutStartSec=180
+StandardOutput=journal
+StandardError=journal

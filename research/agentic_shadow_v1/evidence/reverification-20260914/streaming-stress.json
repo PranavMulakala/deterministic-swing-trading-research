@@ -1,0 +1,7 @@
+{
+  "fixture": "15600 small missing-input records; synthetic archive, not market load",
+  "observations": 15600,
+  "report_seconds_with_tracemalloc": 1.448,
+  "peak_python_allocated_bytes": 54668,
+  "recent_decisions": 20
+}

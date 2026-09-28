@@ -1,0 +1,10 @@
+[Unit]
+Description=Run indicative shadow consumer when a complete packet is replaced
+
+[Path]
+PathChanged=/var/lib/trading-shadow-indicative-inbox/packet.json
+Unit=trading-shadow-indicative-consumer.service
+
+[Install]
+WantedBy=multi-user.target
+

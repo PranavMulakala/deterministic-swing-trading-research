@@ -1,0 +1,107 @@
+test_bearish_signal_selects_long_put (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_bearish_signal_selects_long_put) ... ok
+test_exit_must_have_verified_open_session (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_exit_must_have_verified_open_session) ... FAIL
+test_failed_loader_does_not_leak_partial_credentials_into_retry (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_failed_loader_does_not_leak_partial_credentials_into_retry) ... ERROR
+test_fill_uses_revised_earlier_close (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_fill_uses_revised_earlier_close) ... FAIL
+test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) ... 
+  test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) (value=False) ... FAIL
+  test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) (value=[]) ... FAIL
+  test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) (value=0) ... FAIL
+  test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) (value='') ... FAIL
+test_malformed_provenance_keeps_observed_report_alive (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_malformed_provenance_keeps_observed_report_alive) ... ERROR
+test_model_veto_cannot_modify_baseline_inputs (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_model_veto_cannot_modify_baseline_inputs) ... ok
+test_open_exposure_adopts_earlier_session_close (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_open_exposure_adopts_earlier_session_close) ... FAIL
+
+======================================================================
+ERROR: test_failed_loader_does_not_leak_partial_credentials_into_retry (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_failed_loader_does_not_leak_partial_credentials_into_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 62, in test_failed_loader_does_not_leak_partial_credentials_into_retry
+    self.assertEqual(probe()['status'],'BLOCKED')
+                     ^^^^^^^
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/probe_data.py", line 40, in probe
+    payload=json.loads(raw)
+            ^^^^^^^^^^^^^^^
+  File "/Users/pranavmulakala/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 339, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not MagicMock
+
+======================================================================
+ERROR: test_malformed_provenance_keeps_observed_report_alive (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_malformed_provenance_keeps_observed_report_alive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 49, in test_malformed_provenance_keeps_observed_report_alive
+    with patch('sys.argv',['shadow','--kind','observed','--state',str(state),'--input',str(inp)]), contextlib.redirect_stdout(io.StringIO()):main()
+                                                                                                                                             ^^^^^^
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/run.py", line 42, in main
+    ledger.step(packet)
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/engine.py", line 409, in step
+    self.reject_synthetic(packet)
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/engine.py", line 469, in reject_synthetic
+    if 'fixture' in p.get('source','').lower() or p.get('feed') in ('fixture-only','indicative'):
+                    ^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+FAIL: test_exit_must_have_verified_open_session (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_exit_must_have_verified_open_session)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 42, in test_exit_must_have_verified_open_session
+    self.assertIsNotNone(result['state']['deterministic']['position'])
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_fill_uses_revised_earlier_close (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_fill_uses_revised_earlier_close)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 28, in test_fill_uses_revised_earlier_close
+    self.assertEqual(stamp(result['state']['deterministic']['position']['close_at']),stamp(p['calendar']['close']))
+AssertionError: datetime.datetime(2026, 9, 14, 20, 0, tzinfo=datetime.timezone.utc) != datetime.datetime(2026, 9, 14, 15, 0, tzinfo=datetime.timezone.utc)
+
+======================================================================
+FAIL: test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) (value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 68, in test_invalid_proposal_container_never_silently_accepts
+    with self.subTest(value=value),self.assertRaises(ValueError):self.db.step(packet(),proposals=value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) (value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 68, in test_invalid_proposal_container_never_silently_accepts
+    with self.subTest(value=value),self.assertRaises(ValueError):self.db.step(packet(),proposals=value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) (value=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 68, in test_invalid_proposal_container_never_silently_accepts
+    with self.subTest(value=value),self.assertRaises(ValueError):self.db.step(packet(),proposals=value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) (value='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 68, in test_invalid_proposal_container_never_silently_accepts
+    with self.subTest(value=value),self.assertRaises(ValueError):self.db.step(packet(),proposals=value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_open_exposure_adopts_earlier_session_close (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_open_exposure_adopts_earlier_session_close)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pranavmulakala/personal/deterministic-swing-trading-research/research/agentic_shadow_v1/test_adversarial.py", line 35, in test_open_exposure_adopts_earlier_session_close
+    self.assertIsNotNone(result['state']['deterministic']['pending'])
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.089s
+
+FAILED (failures=7, errors=2)

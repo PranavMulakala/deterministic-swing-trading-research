@@ -1,0 +1,36 @@
+[Unit]
+Description=Personal delayed market research collector (no orders)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/trading-collector/credentials.json
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=trading-collector
+Group=trading-collector
+WorkingDirectory=/opt/trading-collector
+ExecStart=/usr/bin/python3 /opt/trading-collector/collector.py
+Restart=on-failure
+RestartSec=30
+UMask=0077
+StateDirectory=trading-collector
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+MemoryMax=768M
+CPUQuota=50%
+TasksMax=32
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

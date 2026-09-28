@@ -1,0 +1,77 @@
+{
+  "expiry_during_two_second_call": {
+    "post_count": 1,
+    "post": {
+      "method": "POST",
+      "url": "https://paper-api.alpaca.markets/v2/orders",
+      "body": {
+        "client_order_id": "swing-e-81da41fd3063113fcf9a1dfeab80e904",
+        "extended_hours": false,
+        "order_class": "oto",
+        "qty": "3",
+        "side": "buy",
+        "stop_loss": {
+          "stop_price": "110.08"
+        },
+        "symbol": "SPY",
+        "time_in_force": "gtc",
+        "type": "market"
+      },
+      "clock": "2026-01-05T15:02:01+00:00"
+    },
+    "proposal_expires_at": "2026-01-05T15:02:00+00:00",
+    "thesis": "close 110.5000 > SMA200 105.9720; RSI2 7.6923 < 10.0000",
+    "market_open_at_post": true,
+    "latched": false
+  },
+  "close_during_two_second_call": {
+    "post_count": 1,
+    "post": {
+      "method": "POST",
+      "url": "https://paper-api.alpaca.markets/v2/orders",
+      "body": {
+        "client_order_id": "swing-e-81da41fd3063113fcf9a1dfeab80e904",
+        "extended_hours": false,
+        "order_class": "oto",
+        "qty": "3",
+        "side": "buy",
+        "stop_loss": {
+          "stop_price": "110.08"
+        },
+        "symbol": "SPY",
+        "time_in_force": "gtc",
+        "type": "market"
+      },
+      "clock": "2026-01-05T15:00:02+00:00"
+    },
+    "proposal_expires_at": "2026-01-05T15:02:00+00:00",
+    "thesis": "close 110.5000 > SMA200 105.9720; RSI2 7.6923 < 10.0000",
+    "market_open_at_post": false,
+    "latched": false
+  },
+  "nan_parsed_by_adapter": {
+    "post_count": 1,
+    "post": {
+      "method": "POST",
+      "url": "https://paper-api.alpaca.markets/v2/orders",
+      "body": {
+        "client_order_id": "swing-e-81da41fd3063113fcf9a1dfeab80e904",
+        "extended_hours": false,
+        "order_class": "oto",
+        "qty": "3",
+        "side": "buy",
+        "stop_loss": {
+          "stop_price": "110.08"
+        },
+        "symbol": "SPY",
+        "time_in_force": "gtc",
+        "type": "market"
+      },
+      "clock": "2026-01-05T15:00:00+00:00"
+    },
+    "proposal_expires_at": "2026-01-05T15:02:00+00:00",
+    "thesis": "close nan > SMA200 nan; RSI2 nan < 10.0000",
+    "market_open_at_post": true,
+    "latched": false
+  }
+}

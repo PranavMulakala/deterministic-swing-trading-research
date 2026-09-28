@@ -1,0 +1,5942 @@
+{
+  "status": "OFFLINE_DEVELOPMENT_NOT_PAPER_OR_LIVE_ORDER_EVIDENCE",
+  "runner_sha256": "bfa8de277321f80ff04507fb2970e1f0355c6a3c8d70d3d0fa52e750119816a2",
+  "protocol_sha256": "d53b614fe5b22a25091138019296d28c37b5ef4d0d63f986c2a82be3e2839132",
+  "source_hashes": {
+    "LITE_1Min.json": "888afe48369af81b0e3d44eba6734676acdb5e9848d503fe4da17788bf98090c",
+    "LITE_5Min.json": "41fd6ae0f253904f59ff79b275bae0bf4543b114708ff04dc73ffd1da230e183",
+    "SPY_5Min.json": "077d6c10bd9fdd8702e0370bb2e84d0e73e3c9e93e93e21879d0a4c80f6b4542"
+  },
+  "data_through": "2026-09-04",
+  "recent_window_start": "2026-06-06",
+  "scenarios": [
+    {
+      "sample": "full",
+      "cost_bps_per_side": 0,
+      "first_session": "2026-01-02",
+      "last_session": "2026-09-04",
+      "session_count": 170,
+      "qualified_days": 1,
+      "skipped_occupied": 0,
+      "unfilled_limit": 0,
+      "skipped_not_net_profitable": 0,
+      "skipped_cash": 0,
+      "entries": 1,
+      "closed_trades": 1,
+      "unresolved_positions": 0,
+      "ending_marked_equity": "10103.60",
+      "net_marked_pnl": "103.60",
+      "worst_daily_drawdown_pct": "0",
+      "worst_observed_later_low_vs_entry_pct": "-1.893702444184115646645360140",
+      "unresolved": null,
+      "trades": [
+        {
+          "entry_date": "2026-08-12",
+          "exit_date": "2026-08-12",
+          "exit_bar_index": 14,
+          "entry_price_with_cost": "879.23",
+          "target": "899.95",
+          "net_exit_price": "899.95",
+          "pnl": "103.60",
+          "lowest_later_low": "862.58"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-08-12",
+          "limit": "879.23",
+          "morning_volume": "2414255.0",
+          "prior_20_mean_volume": "824632.7"
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-01-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-12",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-13",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-14",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-17",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-18",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-19",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-20",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-21",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-24",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-25",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-26",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-27",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-28",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-31",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-09-01",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-09-02",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-09-03",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-09-04",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        }
+      ]
+    },
+    {
+      "sample": "full",
+      "cost_bps_per_side": 10,
+      "first_session": "2026-01-02",
+      "last_session": "2026-09-04",
+      "session_count": 170,
+      "qualified_days": 1,
+      "skipped_occupied": 0,
+      "unfilled_limit": 0,
+      "skipped_not_net_profitable": 0,
+      "skipped_cash": 0,
+      "entries": 1,
+      "closed_trades": 1,
+      "unresolved_positions": 0,
+      "ending_marked_equity": "10094.70410",
+      "net_marked_pnl": "94.70410",
+      "worst_daily_drawdown_pct": "0",
+      "worst_observed_later_low_vs_entry_pct": "-1.991710733450664981663696450",
+      "unresolved": null,
+      "trades": [
+        {
+          "entry_date": "2026-08-12",
+          "exit_date": "2026-08-12",
+          "exit_bar_index": 14,
+          "entry_price_with_cost": "880.10923",
+          "target": "899.95",
+          "net_exit_price": "899.05005",
+          "pnl": "94.70410",
+          "lowest_later_low": "862.58"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-08-12",
+          "limit": "879.23",
+          "morning_volume": "2414255.0",
+          "prior_20_mean_volume": "824632.7"
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-01-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-12",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-13",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-14",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-17",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-18",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-19",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-20",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-21",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-24",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-25",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-26",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-27",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-28",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-31",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-09-01",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-09-02",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-09-03",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-09-04",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        }
+      ]
+    },
+    {
+      "sample": "full",
+      "cost_bps_per_side": 25,
+      "first_session": "2026-01-02",
+      "last_session": "2026-09-04",
+      "session_count": 170,
+      "qualified_days": 1,
+      "skipped_occupied": 0,
+      "unfilled_limit": 0,
+      "skipped_not_net_profitable": 0,
+      "skipped_cash": 0,
+      "entries": 1,
+      "closed_trades": 1,
+      "unresolved_positions": 0,
+      "ending_marked_equity": "10081.360250",
+      "net_marked_pnl": "81.360250",
+      "worst_daily_drawdown_pct": "0",
+      "worst_observed_later_low_vs_entry_pct": "-2.138356552802110370718563740",
+      "unresolved": null,
+      "trades": [
+        {
+          "entry_date": "2026-08-12",
+          "exit_date": "2026-08-12",
+          "exit_bar_index": 14,
+          "entry_price_with_cost": "881.428075",
+          "target": "899.95",
+          "net_exit_price": "897.700125",
+          "pnl": "81.360250",
+          "lowest_later_low": "862.58"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-08-12",
+          "limit": "879.23",
+          "morning_volume": "2414255.0",
+          "prior_20_mean_volume": "824632.7"
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-01-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-12",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-13",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-14",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-17",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-18",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-19",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-20",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-21",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-24",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-25",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-26",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-27",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-28",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-31",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-09-01",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-09-02",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-09-03",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-09-04",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        }
+      ]
+    },
+    {
+      "sample": "full",
+      "cost_bps_per_side": 50,
+      "first_session": "2026-01-02",
+      "last_session": "2026-09-04",
+      "session_count": 170,
+      "qualified_days": 1,
+      "skipped_occupied": 0,
+      "unfilled_limit": 0,
+      "skipped_not_net_profitable": 0,
+      "skipped_cash": 0,
+      "entries": 1,
+      "closed_trades": 1,
+      "unresolved_positions": 0,
+      "ending_marked_equity": "10059.12050",
+      "net_marked_pnl": "59.12050",
+      "worst_daily_drawdown_pct": "0",
+      "worst_observed_later_low_vs_entry_pct": "-2.381793476800115071288915570",
+      "unresolved": null,
+      "trades": [
+        {
+          "entry_date": "2026-08-12",
+          "exit_date": "2026-08-12",
+          "exit_bar_index": 14,
+          "entry_price_with_cost": "883.62615",
+          "target": "899.95",
+          "net_exit_price": "895.45025",
+          "pnl": "59.12050",
+          "lowest_later_low": "862.58"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-08-12",
+          "limit": "879.23",
+          "morning_volume": "2414255.0",
+          "prior_20_mean_volume": "824632.7"
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-01-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-01-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-02-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-03-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-04-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-19",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-05-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-12",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-13",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-14",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-17",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-18",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-19",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-20",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-21",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-24",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-25",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-26",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-27",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-28",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-31",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-09-01",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-09-02",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-09-03",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-09-04",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        }
+      ]
+    },
+    {
+      "sample": "recent_90_calendar_days",
+      "cost_bps_per_side": 0,
+      "first_session": "2026-06-08",
+      "last_session": "2026-09-04",
+      "session_count": 63,
+      "qualified_days": 1,
+      "skipped_occupied": 0,
+      "unfilled_limit": 0,
+      "skipped_not_net_profitable": 0,
+      "skipped_cash": 0,
+      "entries": 1,
+      "closed_trades": 1,
+      "unresolved_positions": 0,
+      "ending_marked_equity": "10103.60",
+      "net_marked_pnl": "103.60",
+      "worst_daily_drawdown_pct": "0",
+      "worst_observed_later_low_vs_entry_pct": "-1.893702444184115646645360140",
+      "unresolved": null,
+      "trades": [
+        {
+          "entry_date": "2026-08-12",
+          "exit_date": "2026-08-12",
+          "exit_bar_index": 14,
+          "entry_price_with_cost": "879.23",
+          "target": "899.95",
+          "net_exit_price": "899.95",
+          "pnl": "103.60",
+          "lowest_later_low": "862.58"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-08-12",
+          "limit": "879.23",
+          "morning_volume": "2414255.0",
+          "prior_20_mean_volume": "824632.7"
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-06-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-12",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-13",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-14",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-17",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-18",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-19",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-20",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-21",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-24",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-25",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-26",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-27",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-28",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-08-31",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-09-01",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-09-02",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-09-03",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        },
+        {
+          "date": "2026-09-04",
+          "cash": "10103.60",
+          "equity": "10103.60",
+          "holding": false
+        }
+      ]
+    },
+    {
+      "sample": "recent_90_calendar_days",
+      "cost_bps_per_side": 10,
+      "first_session": "2026-06-08",
+      "last_session": "2026-09-04",
+      "session_count": 63,
+      "qualified_days": 1,
+      "skipped_occupied": 0,
+      "unfilled_limit": 0,
+      "skipped_not_net_profitable": 0,
+      "skipped_cash": 0,
+      "entries": 1,
+      "closed_trades": 1,
+      "unresolved_positions": 0,
+      "ending_marked_equity": "10094.70410",
+      "net_marked_pnl": "94.70410",
+      "worst_daily_drawdown_pct": "0",
+      "worst_observed_later_low_vs_entry_pct": "-1.991710733450664981663696450",
+      "unresolved": null,
+      "trades": [
+        {
+          "entry_date": "2026-08-12",
+          "exit_date": "2026-08-12",
+          "exit_bar_index": 14,
+          "entry_price_with_cost": "880.10923",
+          "target": "899.95",
+          "net_exit_price": "899.05005",
+          "pnl": "94.70410",
+          "lowest_later_low": "862.58"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-08-12",
+          "limit": "879.23",
+          "morning_volume": "2414255.0",
+          "prior_20_mean_volume": "824632.7"
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-06-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-12",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-13",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-14",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-17",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-18",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-19",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-20",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-21",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-24",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-25",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-26",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-27",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-28",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-08-31",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-09-01",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-09-02",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-09-03",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        },
+        {
+          "date": "2026-09-04",
+          "cash": "10094.70410",
+          "equity": "10094.70410",
+          "holding": false
+        }
+      ]
+    },
+    {
+      "sample": "recent_90_calendar_days",
+      "cost_bps_per_side": 25,
+      "first_session": "2026-06-08",
+      "last_session": "2026-09-04",
+      "session_count": 63,
+      "qualified_days": 1,
+      "skipped_occupied": 0,
+      "unfilled_limit": 0,
+      "skipped_not_net_profitable": 0,
+      "skipped_cash": 0,
+      "entries": 1,
+      "closed_trades": 1,
+      "unresolved_positions": 0,
+      "ending_marked_equity": "10081.360250",
+      "net_marked_pnl": "81.360250",
+      "worst_daily_drawdown_pct": "0",
+      "worst_observed_later_low_vs_entry_pct": "-2.138356552802110370718563740",
+      "unresolved": null,
+      "trades": [
+        {
+          "entry_date": "2026-08-12",
+          "exit_date": "2026-08-12",
+          "exit_bar_index": 14,
+          "entry_price_with_cost": "881.428075",
+          "target": "899.95",
+          "net_exit_price": "897.700125",
+          "pnl": "81.360250",
+          "lowest_later_low": "862.58"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-08-12",
+          "limit": "879.23",
+          "morning_volume": "2414255.0",
+          "prior_20_mean_volume": "824632.7"
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-06-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-12",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-13",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-14",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-17",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-18",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-19",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-20",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-21",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-24",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-25",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-26",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-27",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-28",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-08-31",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-09-01",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-09-02",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-09-03",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        },
+        {
+          "date": "2026-09-04",
+          "cash": "10081.360250",
+          "equity": "10081.360250",
+          "holding": false
+        }
+      ]
+    },
+    {
+      "sample": "recent_90_calendar_days",
+      "cost_bps_per_side": 50,
+      "first_session": "2026-06-08",
+      "last_session": "2026-09-04",
+      "session_count": 63,
+      "qualified_days": 1,
+      "skipped_occupied": 0,
+      "unfilled_limit": 0,
+      "skipped_not_net_profitable": 0,
+      "skipped_cash": 0,
+      "entries": 1,
+      "closed_trades": 1,
+      "unresolved_positions": 0,
+      "ending_marked_equity": "10059.12050",
+      "net_marked_pnl": "59.12050",
+      "worst_daily_drawdown_pct": "0",
+      "worst_observed_later_low_vs_entry_pct": "-2.381793476800115071288915570",
+      "unresolved": null,
+      "trades": [
+        {
+          "entry_date": "2026-08-12",
+          "exit_date": "2026-08-12",
+          "exit_bar_index": 14,
+          "entry_price_with_cost": "883.62615",
+          "target": "899.95",
+          "net_exit_price": "895.45025",
+          "pnl": "59.12050",
+          "lowest_later_low": "862.58"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-08-12",
+          "limit": "879.23",
+          "morning_volume": "2414255.0",
+          "prior_20_mean_volume": "824632.7"
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-06-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-12",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-18",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-25",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-26",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-06-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-01",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-02",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-08",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-09",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-13",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-14",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-15",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-16",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-17",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-20",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-21",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-22",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-23",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-24",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-27",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-28",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-29",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-30",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-07-31",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-03",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-04",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-05",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-06",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-07",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-10",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-11",
+          "cash": "10000",
+          "equity": "10000",
+          "holding": false
+        },
+        {
+          "date": "2026-08-12",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-13",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-14",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-17",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-18",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-19",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-20",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-21",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-24",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-25",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-26",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-27",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-28",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-08-31",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-09-01",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-09-02",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-09-03",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        },
+        {
+          "date": "2026-09-04",
+          "cash": "10059.12050",
+          "equity": "10059.12050",
+          "holding": false
+        }
+      ]
+    }
+  ]
+}

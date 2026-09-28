@@ -1,0 +1,7 @@
+{
+  "supplement": "corporate_action_reconciliation",
+  "path_relative_to_frozen_data": "actions.json",
+  "sha256": "1ad5b15e4877c0ed7558d78b3ce623548209724be79b326f2b2e2b721e2f17fe",
+  "evidence_level": "single_provider_retrospective_no_reported_actions",
+  "execution_mode": "finalized_bar_proxy_only"
+}

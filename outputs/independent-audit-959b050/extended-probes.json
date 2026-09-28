@@ -1,0 +1,81 @@
+{
+  "position_cost_basis_mismatch": {
+    "ok": true,
+    "issues": [],
+    "managed_entry_price": "110.51",
+    "broker_average_entry_price": "1",
+    "latched": false
+  },
+  "prior_C1_repeated_stop_close": [
+    {
+      "ok": true,
+      "issues": [],
+      "entry_events": 1,
+      "close_events": 1,
+      "realized_pnl": "-1.29"
+    },
+    {
+      "ok": true,
+      "issues": [],
+      "entry_events": 1,
+      "close_events": 1,
+      "realized_pnl": "-1.29"
+    },
+    {
+      "ok": true,
+      "issues": [],
+      "entry_events": 1,
+      "close_events": 1,
+      "realized_pnl": "-1.29"
+    },
+    {
+      "ok": true,
+      "issues": [],
+      "entry_events": 1,
+      "close_events": 1,
+      "realized_pnl": "-1.29"
+    }
+  ],
+  "regressed_closed_stop": {
+    "ok": false,
+    "issues": [
+      "orphan_working_native_stop:stop-1"
+    ]
+  },
+  "concurrent_approval_claim": [
+    [
+      "approved",
+      true
+    ],
+    [
+      "rejected",
+      "this proposal approval has already been used"
+    ]
+  ],
+  "journal_field_tampering_detected": {
+    "event_id": true,
+    "occurred_at": true,
+    "event_type": true,
+    "proposal_id": true,
+    "payload_json": true,
+    "prev_hash": true,
+    "event_hash": true,
+    "seq": true,
+    "middle_delete": true
+  },
+  "symlinked_journal_parent": {
+    "accepted": true,
+    "actual_mode": "0o700"
+  },
+  "url_paths_keep_fixed_authority": [
+    "https://paper-api.alpaca.markets//api.alpaca.markets/v2/orders",
+    "https://paper-api.alpaca.markets/@api.alpaca.markets",
+    "https://paper-api.alpaca.markets/%2f%2fapi.alpaca.markets",
+    "https://paper-api.alpaca.markets/v2/orders?x=https://api.alpaca.markets",
+    "https://paper-api.alpaca.markets/v2/orders#https://api.alpaca.markets"
+  ],
+  "repeated_bar_token": {
+    "requests": 4,
+    "same_token_requested_again": true
+  }
+}

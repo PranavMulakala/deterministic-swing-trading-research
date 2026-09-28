@@ -1,0 +1,273 @@
+{
+  "status": "HISTORICAL_PILOT_DIAGNOSTIC_NOT_TRADING_READINESS",
+  "evidence": "HISTORICAL",
+  "initial_cash": 5000,
+  "initial_risk_budget": 12.5,
+  "cost_status": "ILLUSTRATIVE_SCENARIOS_NOT_VERIFIED_BROKER_FEES",
+  "scenarios": [
+    {
+      "scenario": {
+        "name": "fee2_slip0",
+        "round_trip_fee": 2,
+        "slippage_ticks_per_side": 0
+      },
+      "pattern_signals": 0,
+      "risk_assessable_signals": 0,
+      "risk_unknown_signals": 0,
+      "risk_fit_signals": 0,
+      "risk_fit_pct_of_all_patterns": null,
+      "risk_fit_pct_of_assessable": null,
+      "entry_to_stop_ticks": null,
+      "eligible_after_risk_and_reward": 0,
+      "entries": 0,
+      "closed_trades": 0,
+      "closed_trade_net_pnl": 0,
+      "worst_closed_trade_net_pnl": null,
+      "ending_equity": 5000,
+      "max_observed_drawdown_dollars": 0.0,
+      "full_drawdown_established": true,
+      "account_halt": null,
+      "quality_issues": [],
+      "unresolved_position": null,
+      "screens": [],
+      "decisions": [],
+      "rejection_counts": {},
+      "trades": [],
+      "equity": [],
+      "session_notes": [
+        {
+          "date": "2026-08-31",
+          "signal_count": 0,
+          "note": "NO_PREVIOUS_SESSION"
+        },
+        {
+          "date": "2026-09-01",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-02",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-03",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-04",
+          "signal_count": 0,
+          "note": null
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "fee2_slip1",
+        "round_trip_fee": 2,
+        "slippage_ticks_per_side": 1
+      },
+      "pattern_signals": 0,
+      "risk_assessable_signals": 0,
+      "risk_unknown_signals": 0,
+      "risk_fit_signals": 0,
+      "risk_fit_pct_of_all_patterns": null,
+      "risk_fit_pct_of_assessable": null,
+      "entry_to_stop_ticks": null,
+      "eligible_after_risk_and_reward": 0,
+      "entries": 0,
+      "closed_trades": 0,
+      "closed_trade_net_pnl": 0,
+      "worst_closed_trade_net_pnl": null,
+      "ending_equity": 5000,
+      "max_observed_drawdown_dollars": 0.0,
+      "full_drawdown_established": true,
+      "account_halt": null,
+      "quality_issues": [],
+      "unresolved_position": null,
+      "screens": [],
+      "decisions": [],
+      "rejection_counts": {},
+      "trades": [],
+      "equity": [],
+      "session_notes": [
+        {
+          "date": "2026-08-31",
+          "signal_count": 0,
+          "note": "NO_PREVIOUS_SESSION"
+        },
+        {
+          "date": "2026-09-01",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-02",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-03",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-04",
+          "signal_count": 0,
+          "note": null
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "fee2_slip2",
+        "round_trip_fee": 2,
+        "slippage_ticks_per_side": 2
+      },
+      "pattern_signals": 0,
+      "risk_assessable_signals": 0,
+      "risk_unknown_signals": 0,
+      "risk_fit_signals": 0,
+      "risk_fit_pct_of_all_patterns": null,
+      "risk_fit_pct_of_assessable": null,
+      "entry_to_stop_ticks": null,
+      "eligible_after_risk_and_reward": 0,
+      "entries": 0,
+      "closed_trades": 0,
+      "closed_trade_net_pnl": 0,
+      "worst_closed_trade_net_pnl": null,
+      "ending_equity": 5000,
+      "max_observed_drawdown_dollars": 0.0,
+      "full_drawdown_established": true,
+      "account_halt": null,
+      "quality_issues": [],
+      "unresolved_position": null,
+      "screens": [],
+      "decisions": [],
+      "rejection_counts": {},
+      "trades": [],
+      "equity": [],
+      "session_notes": [
+        {
+          "date": "2026-08-31",
+          "signal_count": 0,
+          "note": "NO_PREVIOUS_SESSION"
+        },
+        {
+          "date": "2026-09-01",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-02",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-03",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-04",
+          "signal_count": 0,
+          "note": null
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "fee4_slip2",
+        "round_trip_fee": 4,
+        "slippage_ticks_per_side": 2
+      },
+      "pattern_signals": 0,
+      "risk_assessable_signals": 0,
+      "risk_unknown_signals": 0,
+      "risk_fit_signals": 0,
+      "risk_fit_pct_of_all_patterns": null,
+      "risk_fit_pct_of_assessable": null,
+      "entry_to_stop_ticks": null,
+      "eligible_after_risk_and_reward": 0,
+      "entries": 0,
+      "closed_trades": 0,
+      "closed_trade_net_pnl": 0,
+      "worst_closed_trade_net_pnl": null,
+      "ending_equity": 5000,
+      "max_observed_drawdown_dollars": 0.0,
+      "full_drawdown_established": true,
+      "account_halt": null,
+      "quality_issues": [],
+      "unresolved_position": null,
+      "screens": [],
+      "decisions": [],
+      "rejection_counts": {},
+      "trades": [],
+      "equity": [],
+      "session_notes": [
+        {
+          "date": "2026-08-31",
+          "signal_count": 0,
+          "note": "NO_PREVIOUS_SESSION"
+        },
+        {
+          "date": "2026-09-01",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-02",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-03",
+          "signal_count": 0,
+          "note": null
+        },
+        {
+          "date": "2026-09-04",
+          "signal_count": 0,
+          "note": null
+        }
+      ]
+    }
+  ],
+  "source": "Databento MNQU6 approved pilot, Aug 31 warmup and Sep 1-4 evaluation",
+  "equity_storage": "Quotes while exposed and at decisions; redundant flat marks omitted without changing equity or pauses.",
+  "data_expense_usd": "11.06613318994642",
+  "data_expense_in_trading_ledger": false,
+  "limitations": [
+    "Four evaluation sessions are insufficient to establish an edge.",
+    "Fees and slippage are declared scenarios, not verified broker costs.",
+    "Capture-time acquisition bounds do not independently establish every exchange event at session boundaries.",
+    "Hypothetical exchange-time latency and top-of-book availability do not prove broker fills.",
+    "Source minute coverage and flags do not independently certify venue completeness.",
+    "No live-trading or paper-broker readiness established."
+  ],
+  "provenance": {
+    "import_manifest_sha256": "63634124e68f895dab8a9ea279d17daa05d8eb3cf2f2912ae3e8822ca955b3ff",
+    "files": {
+      "DATA_CONTRACT.md": "41b9874e4ebd8620f126e63863e9866814e082e086ab511280b8a00f0d3a57bb",
+      "IMPORT_PROTOCOL.md": "5e88d36ecd37644e8ff44cb9932dead22d112a9f3a030b031fd1b70ffea5922c",
+      "PROTOCOL.md": "128341ce61ca0a2c5b9bdc2fda70e13d04082981677b0d11941597af8242e905",
+      "README.md": "18b5d09b47b37147d075360f0c056f35120493cc66a96840704462a601af21cc",
+      "acquire_databento.py": "e1e5b7c46517ecc3ce9b3788866c0ec68defc1126882fc20ba7ae47ece557d75",
+      "config.json": "41521d784062f5b8594c2fa093dd388c6f3888dd7c0d51edabb2db11f5fefa24",
+      "engine.py": "8f20d82fdea5670d72f72095a2998d2c7aa10da299a92daf898e0df3a3163dc4",
+      "fixture.py": "f137a6a8077847179780aa50cdf13b1810d43b1aa0bf1535219b2066e3f964ad",
+      "import_databento.py": "4051f8d5584955c637026774aeab250a3b97bffc1b5c26b734dd62727ac0845a",
+      "quote_databento.py": "c8db64998f47056ce47f073ec7ce5845cddb5dd9508e9d82bf6df4d716aaeb29",
+      "quote_only.py": "0781f2f0fd73492689cbcf961a591056bbc73f7613c21b304ef666852a8605cb",
+      "replay_prepared.py": "94087e04d8ac07be3e6b245c7f695f181a765567af369548dfcc6601b8939e6e",
+      "run.py": "6fbd5da8a885a8472a281f77a746dea201492a3b6dd8e602c067a97c1dd93ab9",
+      "run_imported.py": "8a5a1b79a6dffcb64915f34e5ffe51dd47888a0951e6f847270bc697e4f2d175",
+      "test_engine.py": "b393079be60642a3eab574f6888f7b523e380dbadf47f74c3ecaea1d91e0f679",
+      "test_import_and_prepared.py": "05763074eec30fb8a4041d919a400ef05ad7e0147272f9ee934214b10a16c561",
+      "test_quote_only.py": "867f77cc044519fe65fdda24acca0840dfa54ddbfd345b2faee3aa01bf7e81f4",
+      "validate_download.py": "9ba9f397c46195e2c1215ffce1af66ca6e5bf511b6d96c660a73adb5e3102ef4"
+    },
+    "frozen_sources_unchanged": true
+  }
+}

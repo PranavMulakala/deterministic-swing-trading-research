@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "mapping_id": "bounded-optical-sector-context-v1",
+  "source_reference": "cloud/news_context_v1.json",
+  "source_reference_sha256": "14936e9065cdba1e6c9370b1cc17f2fb848ccf247fc04f2b7381e8005d3c6728",
+  "mapped_symbols": ["AMZN", "ANET", "AVGO", "CSCO", "GLW", "GOOGL", "META", "MRVL", "MSFT", "NOK", "NVDA", "ORCL", "VZ"],
+  "applies_to": {
+    "AAOI": ["AMZN", "ANET", "AVGO", "CSCO", "GLW", "GOOGL", "META", "MRVL", "MSFT", "NOK", "NVDA", "ORCL", "VZ"],
+    "CIEN": ["AMZN", "ANET", "AVGO", "CSCO", "GLW", "GOOGL", "META", "MRVL", "MSFT", "NOK", "NVDA", "ORCL", "VZ"],
+    "COHR": ["AMZN", "ANET", "AVGO", "CSCO", "GLW", "GOOGL", "META", "MRVL", "MSFT", "NOK", "NVDA", "ORCL", "VZ"],
+    "FN": ["AMZN", "ANET", "AVGO", "CSCO", "GLW", "GOOGL", "META", "MRVL", "MSFT", "NOK", "NVDA", "ORCL", "VZ"],
+    "LITE": ["AMZN", "ANET", "AVGO", "CSCO", "GLW", "GOOGL", "META", "MRVL", "MSFT", "NOK", "NVDA", "ORCL", "VZ"],
+    "QQQ": ["AMZN", "ANET", "AVGO", "CSCO", "GOOGL", "META", "MRVL", "MSFT", "NVDA", "ORCL"],
+    "SPY": ["AMZN", "ANET", "AVGO", "CSCO", "GOOGL", "META", "MRVL", "MSFT", "NVDA", "ORCL"]
+  },
+  "limitations": "Only these precommitted upstream, customer, supplier and peer symbols are relevant. Unmapped headlines are ignored."
+}
+

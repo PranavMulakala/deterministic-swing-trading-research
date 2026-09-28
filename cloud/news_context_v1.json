@@ -1,0 +1,30 @@
+{
+  "id": "optical-sector-news-context-v1",
+  "created_after_session": "2026-09-08",
+  "collection_start": "2026-09-09T00:00:00Z",
+  "selection_or_execution_use": false,
+  "purpose": "Prospective metadata-only context for upstream customer, supplier, peer, and AI-networking catalysts that direct ticker news can miss.",
+  "symbols": [
+    "GLW",
+    "VZ",
+    "NVDA",
+    "AVGO",
+    "MRVL",
+    "ANET",
+    "CSCO",
+    "NOK",
+    "AMZN",
+    "MSFT",
+    "META",
+    "GOOGL",
+    "ORCL"
+  ],
+  "applies_to": {
+    "LITE": ["GLW", "VZ", "NVDA", "AVGO", "MRVL", "ANET", "CSCO", "NOK", "AMZN", "MSFT", "META", "GOOGL", "ORCL"],
+    "COHR": ["GLW", "VZ", "NVDA", "AVGO", "MRVL", "ANET", "CSCO", "NOK", "AMZN", "MSFT", "META", "GOOGL", "ORCL"],
+    "CIEN": ["GLW", "VZ", "NVDA", "AVGO", "MRVL", "ANET", "CSCO", "NOK", "AMZN", "MSFT", "META", "GOOGL", "ORCL"],
+    "FN": ["GLW", "VZ", "NVDA", "AVGO", "MRVL", "ANET", "CSCO", "NOK", "AMZN", "MSFT", "META", "GOOGL", "ORCL"],
+    "AAOI": ["GLW", "VZ", "NVDA", "AVGO", "MRVL", "ANET", "CSCO", "NOK", "AMZN", "MSFT", "META", "GOOGL", "ORCL"]
+  },
+  "limitations": "This is a frozen bounded context universe, not comprehensive 24/7 news coverage, sentiment scoring, or a causal oracle."
+}

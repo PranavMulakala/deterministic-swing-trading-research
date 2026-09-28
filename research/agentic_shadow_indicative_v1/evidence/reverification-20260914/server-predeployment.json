@@ -1,0 +1,16 @@
+{
+  "checked_at_utc": "2026-09-14T23:11:04+00:00",
+  "server": "198.211.113.234",
+  "currently_loaded_indicative_revision": "abcdf07de03a38820b1a2c41adcb48892d9fdb0eec3977ba5eae440a72d92e28",
+  "indicative_timer_active": true,
+  "indicative_timer_enabled": true,
+  "indicative_path_active": true,
+  "indicative_path_enabled": true,
+  "last_consumer_result": "success",
+  "original_shadow_timer_active": true,
+  "original_shadow_timer_enabled": true,
+  "candidate_uploaded": false,
+  "candidate_deployed": false,
+  "blocker": "Automatic approval review requires explicit destination-specific authorization before private project code may be uploaded."
+}
+

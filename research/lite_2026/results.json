@@ -1,0 +1,1153 @@
+{
+  "exploratory": true,
+  "feed": "iex",
+  "through": "2026-09-04",
+  "snapshot_sha256": "42342bcebbc42da4c51b028b15c90ce8942809566c14c69a841f6cb55e1202a5",
+  "selected_cohort": {
+    "AAOI": {
+      "sessions": 170,
+      "last_date": "2026-09-04",
+      "adjusted_close_change_ytd_pct": 202.741,
+      "median_daily_bar_range_pct": 10.199,
+      "range_note": "IEX daily-bar range, not necessarily regular-hours-only"
+    },
+    "CIEN": {
+      "sessions": 170,
+      "last_date": "2026-09-04",
+      "adjusted_close_change_ytd_pct": 37.33,
+      "median_daily_bar_range_pct": 5.87,
+      "range_note": "IEX daily-bar range, not necessarily regular-hours-only"
+    },
+    "COHR": {
+      "sessions": 170,
+      "last_date": "2026-09-04",
+      "adjusted_close_change_ytd_pct": 52.886,
+      "median_daily_bar_range_pct": 7.054,
+      "range_note": "IEX daily-bar range, not necessarily regular-hours-only"
+    },
+    "FN": {
+      "sessions": 170,
+      "last_date": "2026-09-04",
+      "adjusted_close_change_ytd_pct": -10.469,
+      "median_daily_bar_range_pct": 5.648,
+      "range_note": "IEX daily-bar range, not necessarily regular-hours-only"
+    },
+    "LITE": {
+      "sessions": 170,
+      "last_date": "2026-09-04",
+      "adjusted_close_change_ytd_pct": 139.142,
+      "median_daily_bar_range_pct": 7.485,
+      "range_note": "IEX daily-bar range, not necessarily regular-hours-only"
+    },
+    "QQQ": {
+      "sessions": 170,
+      "last_date": "2026-09-04",
+      "adjusted_close_change_ytd_pct": 17.347,
+      "median_daily_bar_range_pct": 1.338,
+      "range_note": "IEX daily-bar range, not necessarily regular-hours-only"
+    },
+    "SPY": {
+      "sessions": 170,
+      "last_date": "2026-09-04",
+      "adjusted_close_change_ytd_pct": 13.566,
+      "median_daily_bar_range_pct": 0.886,
+      "range_note": "IEX daily-bar range, not necessarily regular-hours-only"
+    }
+  },
+  "lite": {
+    "calendar_sessions": 170,
+    "qualified_sessions": 166,
+    "excluded": {
+      "less_than_90_percent_bar_coverage": 4
+    },
+    "early_drop_at_least_one_pct": {
+      "n": 116,
+      "recovered_open_pct": 63.79,
+      "mean_ten_to_close_pct": 0.704,
+      "median_ten_to_close_pct": 0.567,
+      "positive_ten_to_close_pct": 56.03,
+      "worst_ten_to_close_pct": -6.363
+    },
+    "by_month": {
+      "2026-01": {
+        "n": 14,
+        "recovered_open_pct": 50.0,
+        "mean_ten_to_close_pct": 0.395,
+        "median_ten_to_close_pct": -0.742,
+        "positive_ten_to_close_pct": 42.86,
+        "worst_ten_to_close_pct": -4.041
+      },
+      "2026-02": {
+        "n": 13,
+        "recovered_open_pct": 92.31,
+        "mean_ten_to_close_pct": 1.829,
+        "median_ten_to_close_pct": 1.103,
+        "positive_ten_to_close_pct": 61.54,
+        "worst_ten_to_close_pct": -4.82
+      },
+      "2026-03": {
+        "n": 12,
+        "recovered_open_pct": 50.0,
+        "mean_ten_to_close_pct": -0.299,
+        "median_ten_to_close_pct": -0.885,
+        "positive_ten_to_close_pct": 41.67,
+        "worst_ten_to_close_pct": -5.563
+      },
+      "2026-04": {
+        "n": 12,
+        "recovered_open_pct": 58.33,
+        "mean_ten_to_close_pct": 0.378,
+        "median_ten_to_close_pct": 0.775,
+        "positive_ten_to_close_pct": 66.67,
+        "worst_ten_to_close_pct": -5.789
+      },
+      "2026-05": {
+        "n": 16,
+        "recovered_open_pct": 56.25,
+        "mean_ten_to_close_pct": 0.04,
+        "median_ten_to_close_pct": 0.567,
+        "positive_ten_to_close_pct": 62.5,
+        "worst_ten_to_close_pct": -4.241
+      },
+      "2026-06": {
+        "n": 18,
+        "recovered_open_pct": 72.22,
+        "mean_ten_to_close_pct": 1.891,
+        "median_ten_to_close_pct": 2.429,
+        "positive_ten_to_close_pct": 66.67,
+        "worst_ten_to_close_pct": -6.363
+      },
+      "2026-07": {
+        "n": 13,
+        "recovered_open_pct": 53.85,
+        "mean_ten_to_close_pct": -0.283,
+        "median_ten_to_close_pct": -1.017,
+        "positive_ten_to_close_pct": 30.77,
+        "worst_ten_to_close_pct": -3.397
+      },
+      "2026-08": {
+        "n": 15,
+        "recovered_open_pct": 80.0,
+        "mean_ten_to_close_pct": 1.127,
+        "median_ten_to_close_pct": 2.308,
+        "positive_ten_to_close_pct": 60.0,
+        "worst_ten_to_close_pct": -4.901
+      },
+      "2026-09": {
+        "n": 3,
+        "recovered_open_pct": 33.33,
+        "mean_ten_to_close_pct": 1.149,
+        "median_ten_to_close_pct": 1.338,
+        "positive_ten_to_close_pct": 100.0,
+        "worst_ten_to_close_pct": 0.648
+      }
+    },
+    "observations": [
+      {
+        "date": "2026-01-02",
+        "early_drop_pct": -1.0446818588495277,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.01
+      },
+      {
+        "date": "2026-01-05",
+        "early_drop_pct": -11.190053285968037,
+        "recovered_open": false,
+        "ten_to_close_pct": 1.631
+      },
+      {
+        "date": "2026-01-06",
+        "early_drop_pct": -4.43522879032826,
+        "recovered_open": true,
+        "ten_to_close_pct": 10.125
+      },
+      {
+        "date": "2026-01-07",
+        "early_drop_pct": -4.662241311987492,
+        "recovered_open": true,
+        "ten_to_close_pct": 5.658
+      },
+      {
+        "date": "2026-01-08",
+        "early_drop_pct": -10.177361650300675,
+        "recovered_open": false,
+        "ten_to_close_pct": -1.552
+      },
+      {
+        "date": "2026-01-09",
+        "early_drop_pct": -0.8090903682551054,
+        "recovered_open": true,
+        "ten_to_close_pct": -2.044
+      },
+      {
+        "date": "2026-01-12",
+        "early_drop_pct": -3.0943061812273687,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.356
+      },
+      {
+        "date": "2026-01-13",
+        "early_drop_pct": -0.7345630462848973,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.54
+      },
+      {
+        "date": "2026-01-14",
+        "early_drop_pct": -4.073980095294482,
+        "recovered_open": false,
+        "ten_to_close_pct": -2.49
+      },
+      {
+        "date": "2026-01-15",
+        "early_drop_pct": -1.9019435811263086,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.482
+      },
+      {
+        "date": "2026-01-16",
+        "early_drop_pct": -7.172881162072519,
+        "recovered_open": false,
+        "ten_to_close_pct": -0.211
+      },
+      {
+        "date": "2026-01-20",
+        "early_drop_pct": -0.6191615841889875,
+        "recovered_open": true,
+        "ten_to_close_pct": 5.752
+      },
+      {
+        "date": "2026-01-21",
+        "early_drop_pct": -3.6485500391881254,
+        "recovered_open": true,
+        "ten_to_close_pct": 0.26
+      },
+      {
+        "date": "2026-01-22",
+        "early_drop_pct": -4.672220686750639,
+        "recovered_open": false,
+        "ten_to_close_pct": -1.784
+      },
+      {
+        "date": "2026-01-23",
+        "early_drop_pct": -5.112161069254673,
+        "recovered_open": false,
+        "ten_to_close_pct": -1.674
+      },
+      {
+        "date": "2026-01-26",
+        "early_drop_pct": -2.262685767840411,
+        "recovered_open": true,
+        "ten_to_close_pct": -4.041
+      },
+      {
+        "date": "2026-01-27",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.679
+      },
+      {
+        "date": "2026-01-28",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.462
+      },
+      {
+        "date": "2026-01-29",
+        "early_drop_pct": -2.202410816512934,
+        "recovered_open": false,
+        "ten_to_close_pct": -1.272
+      },
+      {
+        "date": "2026-01-30",
+        "early_drop_pct": -0.47917434574271667,
+        "recovered_open": true,
+        "ten_to_close_pct": -7.345
+      },
+      {
+        "date": "2026-02-02",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.305
+      },
+      {
+        "date": "2026-02-03",
+        "early_drop_pct": -4.280310132236331,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.116
+      },
+      {
+        "date": "2026-02-04",
+        "early_drop_pct": -4.046462513199578,
+        "recovered_open": true,
+        "ten_to_close_pct": -4.82
+      },
+      {
+        "date": "2026-02-05",
+        "early_drop_pct": -1.828094562974747,
+        "recovered_open": true,
+        "ten_to_close_pct": 4.844
+      },
+      {
+        "date": "2026-02-06",
+        "early_drop_pct": -2.507116676279608,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.65
+      },
+      {
+        "date": "2026-02-09",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.87
+      },
+      {
+        "date": "2026-02-10",
+        "early_drop_pct": -3.2922560886684993,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.048
+      },
+      {
+        "date": "2026-02-11",
+        "early_drop_pct": -0.02394912142206218,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.829
+      },
+      {
+        "date": "2026-02-12",
+        "early_drop_pct": -2.170656782350411,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.103
+      },
+      {
+        "date": "2026-02-13",
+        "early_drop_pct": -6.992248062015505,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.623
+      },
+      {
+        "date": "2026-02-17",
+        "early_drop_pct": -1.6833797585886878,
+        "recovered_open": true,
+        "ten_to_close_pct": 9.612
+      },
+      {
+        "date": "2026-02-18",
+        "early_drop_pct": -2.762321472797824,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.761
+      },
+      {
+        "date": "2026-02-19",
+        "early_drop_pct": -2.2892003408908845,
+        "recovered_open": true,
+        "ten_to_close_pct": 8.157
+      },
+      {
+        "date": "2026-02-20",
+        "early_drop_pct": -0.15057406361752568,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.385
+      },
+      {
+        "date": "2026-02-23",
+        "early_drop_pct": -1.7829982682026846,
+        "recovered_open": true,
+        "ten_to_close_pct": 0.427
+      },
+      {
+        "date": "2026-02-24",
+        "early_drop_pct": -1.5210752275711448,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.494
+      },
+      {
+        "date": "2026-02-25",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": -4.258
+      },
+      {
+        "date": "2026-02-26",
+        "early_drop_pct": -4.71816283924843,
+        "recovered_open": false,
+        "ten_to_close_pct": -1.384
+      },
+      {
+        "date": "2026-02-27",
+        "early_drop_pct": -0.589363428487133,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.11
+      },
+      {
+        "date": "2026-03-02",
+        "early_drop_pct": -4.59051781573968,
+        "recovered_open": true,
+        "ten_to_close_pct": 6.785
+      },
+      {
+        "date": "2026-03-03",
+        "early_drop_pct": -4.979924081509601,
+        "recovered_open": false,
+        "ten_to_close_pct": -1.855
+      },
+      {
+        "date": "2026-03-04",
+        "early_drop_pct": -8.898655351041551,
+        "recovered_open": false,
+        "ten_to_close_pct": 2.126
+      },
+      {
+        "date": "2026-03-05",
+        "early_drop_pct": -0.5988585724337359,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.935
+      },
+      {
+        "date": "2026-03-06",
+        "early_drop_pct": -0.29376244410352914,
+        "recovered_open": true,
+        "ten_to_close_pct": -11.433
+      },
+      {
+        "date": "2026-03-09",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": 5.05
+      },
+      {
+        "date": "2026-03-10",
+        "early_drop_pct": -0.6535561578282834,
+        "recovered_open": true,
+        "ten_to_close_pct": -4.689
+      },
+      {
+        "date": "2026-03-11",
+        "early_drop_pct": -2.0648334725212436,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.971
+      },
+      {
+        "date": "2026-03-13",
+        "early_drop_pct": -2.332574389573683,
+        "recovered_open": false,
+        "ten_to_close_pct": -0.271
+      },
+      {
+        "date": "2026-03-16",
+        "early_drop_pct": -1.6427354587491005,
+        "recovered_open": true,
+        "ten_to_close_pct": -5.403
+      },
+      {
+        "date": "2026-03-17",
+        "early_drop_pct": -3.7455534630675857,
+        "recovered_open": true,
+        "ten_to_close_pct": 4.801
+      },
+      {
+        "date": "2026-03-18",
+        "early_drop_pct": -0.9522471910112351,
+        "recovered_open": true,
+        "ten_to_close_pct": -4.571
+      },
+      {
+        "date": "2026-03-19",
+        "early_drop_pct": -0.9022045686103652,
+        "recovered_open": true,
+        "ten_to_close_pct": 8.427
+      },
+      {
+        "date": "2026-03-20",
+        "early_drop_pct": -6.2979395158466955,
+        "recovered_open": false,
+        "ten_to_close_pct": -4.146
+      },
+      {
+        "date": "2026-03-23",
+        "early_drop_pct": -3.801932040802536,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.5
+      },
+      {
+        "date": "2026-03-24",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": 5.357
+      },
+      {
+        "date": "2026-03-25",
+        "early_drop_pct": -3.928346951602768,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.15
+      },
+      {
+        "date": "2026-03-26",
+        "early_drop_pct": -2.3024855001278377,
+        "recovered_open": false,
+        "ten_to_close_pct": -5.563
+      },
+      {
+        "date": "2026-03-27",
+        "early_drop_pct": -0.5485699762074581,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.097
+      },
+      {
+        "date": "2026-03-30",
+        "early_drop_pct": -9.927682763820812,
+        "recovered_open": false,
+        "ten_to_close_pct": -1.686
+      },
+      {
+        "date": "2026-03-31",
+        "early_drop_pct": -0.3799369497977767,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.909
+      },
+      {
+        "date": "2026-04-01",
+        "early_drop_pct": -0.058552792832045064,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.095
+      },
+      {
+        "date": "2026-04-02",
+        "early_drop_pct": -0.0486885835855988,
+        "recovered_open": true,
+        "ten_to_close_pct": 7.583
+      },
+      {
+        "date": "2026-04-06",
+        "early_drop_pct": -3.1581479254359612,
+        "recovered_open": false,
+        "ten_to_close_pct": -4.144
+      },
+      {
+        "date": "2026-04-07",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.165
+      },
+      {
+        "date": "2026-04-08",
+        "early_drop_pct": -2.9284887994848408,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.418
+      },
+      {
+        "date": "2026-04-09",
+        "early_drop_pct": -0.07406398910823064,
+        "recovered_open": true,
+        "ten_to_close_pct": -5.855
+      },
+      {
+        "date": "2026-04-10",
+        "early_drop_pct": -4.473490935396407,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.408
+      },
+      {
+        "date": "2026-04-13",
+        "early_drop_pct": -3.9798446120932307,
+        "recovered_open": false,
+        "ten_to_close_pct": 0.424
+      },
+      {
+        "date": "2026-04-14",
+        "early_drop_pct": -7.350107422091301,
+        "recovered_open": false,
+        "ten_to_close_pct": 1.046
+      },
+      {
+        "date": "2026-04-15",
+        "early_drop_pct": -3.126377598702179,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.376
+      },
+      {
+        "date": "2026-04-16",
+        "early_drop_pct": -0.4720682869112647,
+        "recovered_open": true,
+        "ten_to_close_pct": 0.961
+      },
+      {
+        "date": "2026-04-17",
+        "early_drop_pct": -2.496710526315793,
+        "recovered_open": false,
+        "ten_to_close_pct": 0.504
+      },
+      {
+        "date": "2026-04-20",
+        "early_drop_pct": -4.000890571078697,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.625
+      },
+      {
+        "date": "2026-04-21",
+        "early_drop_pct": -1.9248939770155293,
+        "recovered_open": false,
+        "ten_to_close_pct": -5.789
+      },
+      {
+        "date": "2026-04-22",
+        "early_drop_pct": -2.710455795724187,
+        "recovered_open": true,
+        "ten_to_close_pct": 4.35
+      },
+      {
+        "date": "2026-04-27",
+        "early_drop_pct": -4.983377057417804,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.554
+      },
+      {
+        "date": "2026-04-29",
+        "early_drop_pct": -0.4886988393402514,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.205
+      },
+      {
+        "date": "2026-04-30",
+        "early_drop_pct": -3.1094478733208475,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.335
+      },
+      {
+        "date": "2026-05-01",
+        "early_drop_pct": -0.39717322230743424,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.372
+      },
+      {
+        "date": "2026-05-04",
+        "early_drop_pct": -3.054208143879933,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.083
+      },
+      {
+        "date": "2026-05-05",
+        "early_drop_pct": -0.999666948479494,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.338
+      },
+      {
+        "date": "2026-05-06",
+        "early_drop_pct": -5.762048192771085,
+        "recovered_open": false,
+        "ten_to_close_pct": 0.541
+      },
+      {
+        "date": "2026-05-07",
+        "early_drop_pct": -4.63713529299381,
+        "recovered_open": false,
+        "ten_to_close_pct": 2.083
+      },
+      {
+        "date": "2026-05-08",
+        "early_drop_pct": -2.492987453521489,
+        "recovered_open": true,
+        "ten_to_close_pct": -2.842
+      },
+      {
+        "date": "2026-05-11",
+        "early_drop_pct": -0.0010515247108267012,
+        "recovered_open": true,
+        "ten_to_close_pct": 9.117
+      },
+      {
+        "date": "2026-05-12",
+        "early_drop_pct": -1.4357734603024919,
+        "recovered_open": true,
+        "ten_to_close_pct": -3.499
+      },
+      {
+        "date": "2026-05-13",
+        "early_drop_pct": -4.59534066269951,
+        "recovered_open": true,
+        "ten_to_close_pct": 0.44
+      },
+      {
+        "date": "2026-05-14",
+        "early_drop_pct": -1.8225094860124913,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.422
+      },
+      {
+        "date": "2026-05-15",
+        "early_drop_pct": -1.8520683023238615,
+        "recovered_open": true,
+        "ten_to_close_pct": 4.597
+      },
+      {
+        "date": "2026-05-18",
+        "early_drop_pct": -6.665827472083663,
+        "recovered_open": false,
+        "ten_to_close_pct": -0.905
+      },
+      {
+        "date": "2026-05-19",
+        "early_drop_pct": -0.7982408923806306,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.538
+      },
+      {
+        "date": "2026-05-20",
+        "early_drop_pct": -4.322841279785694,
+        "recovered_open": false,
+        "ten_to_close_pct": -2.552
+      },
+      {
+        "date": "2026-05-21",
+        "early_drop_pct": -1.4881105748034695,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.606
+      },
+      {
+        "date": "2026-05-22",
+        "early_drop_pct": -3.082422421385278,
+        "recovered_open": true,
+        "ten_to_close_pct": 0.592
+      },
+      {
+        "date": "2026-05-26",
+        "early_drop_pct": -4.6344274721965455,
+        "recovered_open": false,
+        "ten_to_close_pct": -1.599
+      },
+      {
+        "date": "2026-05-27",
+        "early_drop_pct": -3.5110986232087638,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.003
+      },
+      {
+        "date": "2026-05-28",
+        "early_drop_pct": -4.99218720835356,
+        "recovered_open": false,
+        "ten_to_close_pct": -4.241
+      },
+      {
+        "date": "2026-05-29",
+        "early_drop_pct": -3.068774464822921,
+        "recovered_open": false,
+        "ten_to_close_pct": 1.905
+      },
+      {
+        "date": "2026-06-01",
+        "early_drop_pct": -1.8442025464087797,
+        "recovered_open": true,
+        "ten_to_close_pct": 8.381
+      },
+      {
+        "date": "2026-06-02",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": 4.575
+      },
+      {
+        "date": "2026-06-03",
+        "early_drop_pct": -6.712338750819913,
+        "recovered_open": false,
+        "ten_to_close_pct": -2.714
+      },
+      {
+        "date": "2026-06-04",
+        "early_drop_pct": -3.8682369648790904,
+        "recovered_open": true,
+        "ten_to_close_pct": 7.735
+      },
+      {
+        "date": "2026-06-05",
+        "early_drop_pct": -2.4429163650720676,
+        "recovered_open": true,
+        "ten_to_close_pct": -4.455
+      },
+      {
+        "date": "2026-06-08",
+        "early_drop_pct": -6.462704059811253,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.363
+      },
+      {
+        "date": "2026-06-09",
+        "early_drop_pct": -3.7080952302532277,
+        "recovered_open": false,
+        "ten_to_close_pct": -6.363
+      },
+      {
+        "date": "2026-06-10",
+        "early_drop_pct": -0.7065142294128579,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.666
+      },
+      {
+        "date": "2026-06-11",
+        "early_drop_pct": -2.704079270269022,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.657
+      },
+      {
+        "date": "2026-06-12",
+        "early_drop_pct": -2.361283760876931,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.374
+      },
+      {
+        "date": "2026-06-15",
+        "early_drop_pct": -3.881387371889866,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.2
+      },
+      {
+        "date": "2026-06-16",
+        "early_drop_pct": -2.950394635456799,
+        "recovered_open": false,
+        "ten_to_close_pct": -6.21
+      },
+      {
+        "date": "2026-06-17",
+        "early_drop_pct": -2.8536156607519847,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.487
+      },
+      {
+        "date": "2026-06-18",
+        "early_drop_pct": -3.663369143116313,
+        "recovered_open": false,
+        "ten_to_close_pct": -0.438
+      },
+      {
+        "date": "2026-06-22",
+        "early_drop_pct": -3.1325892023164603,
+        "recovered_open": true,
+        "ten_to_close_pct": 6.375
+      },
+      {
+        "date": "2026-06-23",
+        "early_drop_pct": -1.8722533261091967,
+        "recovered_open": true,
+        "ten_to_close_pct": -2.636
+      },
+      {
+        "date": "2026-06-24",
+        "early_drop_pct": -2.2285783836416773,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.494
+      },
+      {
+        "date": "2026-06-25",
+        "early_drop_pct": -8.358618209606005,
+        "recovered_open": false,
+        "ten_to_close_pct": 5.812
+      },
+      {
+        "date": "2026-06-26",
+        "early_drop_pct": -5.609765011146428,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.882
+      },
+      {
+        "date": "2026-06-29",
+        "early_drop_pct": -4.154035942546486,
+        "recovered_open": true,
+        "ten_to_close_pct": 10.097
+      },
+      {
+        "date": "2026-06-30",
+        "early_drop_pct": -0.9361682033362184,
+        "recovered_open": true,
+        "ten_to_close_pct": 0.017
+      },
+      {
+        "date": "2026-07-01",
+        "early_drop_pct": -1.8286250861264786,
+        "recovered_open": true,
+        "ten_to_close_pct": -2.691
+      },
+      {
+        "date": "2026-07-02",
+        "early_drop_pct": -0.12217549545379125,
+        "recovered_open": true,
+        "ten_to_close_pct": -8.749
+      },
+      {
+        "date": "2026-07-06",
+        "early_drop_pct": -1.0820658624782542,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.017
+      },
+      {
+        "date": "2026-07-07",
+        "early_drop_pct": -0.45895170283948294,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.435
+      },
+      {
+        "date": "2026-07-08",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.467
+      },
+      {
+        "date": "2026-07-09",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.885
+      },
+      {
+        "date": "2026-07-10",
+        "early_drop_pct": -0.3591106501588115,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.655
+      },
+      {
+        "date": "2026-07-13",
+        "early_drop_pct": -2.270987496810406,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.685
+      },
+      {
+        "date": "2026-07-14",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.935
+      },
+      {
+        "date": "2026-07-15",
+        "early_drop_pct": -6.856736615022562,
+        "recovered_open": false,
+        "ten_to_close_pct": -2.096
+      },
+      {
+        "date": "2026-07-16",
+        "early_drop_pct": -3.1869514095868245,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.625
+      },
+      {
+        "date": "2026-07-17",
+        "early_drop_pct": -3.8731095536702287,
+        "recovered_open": true,
+        "ten_to_close_pct": 5.818
+      },
+      {
+        "date": "2026-07-20",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": -3.39
+      },
+      {
+        "date": "2026-07-21",
+        "early_drop_pct": -1.6454482894219358,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.379
+      },
+      {
+        "date": "2026-07-22",
+        "early_drop_pct": -0.014728625082849334,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.849
+      },
+      {
+        "date": "2026-07-23",
+        "early_drop_pct": -0.5729291000238668,
+        "recovered_open": true,
+        "ten_to_close_pct": -5.101
+      },
+      {
+        "date": "2026-07-24",
+        "early_drop_pct": -4.2273327397218345,
+        "recovered_open": false,
+        "ten_to_close_pct": -3.034
+      },
+      {
+        "date": "2026-07-27",
+        "early_drop_pct": -4.912147377523879,
+        "recovered_open": false,
+        "ten_to_close_pct": -2.053
+      },
+      {
+        "date": "2026-07-28",
+        "early_drop_pct": -8.64840792696504,
+        "recovered_open": false,
+        "ten_to_close_pct": 4.714
+      },
+      {
+        "date": "2026-07-29",
+        "early_drop_pct": -5.2338121242714974,
+        "recovered_open": false,
+        "ten_to_close_pct": -3.397
+      },
+      {
+        "date": "2026-07-30",
+        "early_drop_pct": -1.4822156816754695,
+        "recovered_open": true,
+        "ten_to_close_pct": 0.108
+      },
+      {
+        "date": "2026-07-31",
+        "early_drop_pct": -5.598397796304555,
+        "recovered_open": false,
+        "ten_to_close_pct": -0.098
+      },
+      {
+        "date": "2026-08-03",
+        "early_drop_pct": -2.057931275888225,
+        "recovered_open": true,
+        "ten_to_close_pct": 8.32
+      },
+      {
+        "date": "2026-08-04",
+        "early_drop_pct": -3.1987845439986895,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.393
+      },
+      {
+        "date": "2026-08-05",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": -5.769
+      },
+      {
+        "date": "2026-08-06",
+        "early_drop_pct": -1.488809199950547,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.202
+      },
+      {
+        "date": "2026-08-07",
+        "early_drop_pct": -0.5202149686551749,
+        "recovered_open": true,
+        "ten_to_close_pct": -0.64
+      },
+      {
+        "date": "2026-08-10",
+        "early_drop_pct": -9.821792807300056,
+        "recovered_open": false,
+        "ten_to_close_pct": -4.901
+      },
+      {
+        "date": "2026-08-11",
+        "early_drop_pct": -3.1137231276165522,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.661
+      },
+      {
+        "date": "2026-08-12",
+        "early_drop_pct": -6.588273375673892,
+        "recovered_open": true,
+        "ten_to_close_pct": 6.031
+      },
+      {
+        "date": "2026-08-13",
+        "early_drop_pct": -1.895783135777318,
+        "recovered_open": true,
+        "ten_to_close_pct": -4.665
+      },
+      {
+        "date": "2026-08-14",
+        "early_drop_pct": -0.8038423215145474,
+        "recovered_open": true,
+        "ten_to_close_pct": -1.39
+      },
+      {
+        "date": "2026-08-17",
+        "early_drop_pct": -1.7362926350141805,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.634
+      },
+      {
+        "date": "2026-08-18",
+        "early_drop_pct": -0.2218561230093341,
+        "recovered_open": true,
+        "ten_to_close_pct": -4.654
+      },
+      {
+        "date": "2026-08-19",
+        "early_drop_pct": -5.775893740285431,
+        "recovered_open": false,
+        "ten_to_close_pct": -0.667
+      },
+      {
+        "date": "2026-08-20",
+        "early_drop_pct": -1.3415356352956875,
+        "recovered_open": true,
+        "ten_to_close_pct": 5.556
+      },
+      {
+        "date": "2026-08-21",
+        "early_drop_pct": -1.025812939993287,
+        "recovered_open": true,
+        "ten_to_close_pct": -3.698
+      },
+      {
+        "date": "2026-08-24",
+        "early_drop_pct": -3.8345498783454945,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.817
+      },
+      {
+        "date": "2026-08-25",
+        "early_drop_pct": -1.71774772513702,
+        "recovered_open": true,
+        "ten_to_close_pct": 2.308
+      },
+      {
+        "date": "2026-08-26",
+        "early_drop_pct": 0.0,
+        "recovered_open": true,
+        "ten_to_close_pct": 4.109
+      },
+      {
+        "date": "2026-08-27",
+        "early_drop_pct": -4.044198203274174,
+        "recovered_open": true,
+        "ten_to_close_pct": 3.146
+      },
+      {
+        "date": "2026-08-28",
+        "early_drop_pct": -2.4699748330165305,
+        "recovered_open": false,
+        "ten_to_close_pct": -3.826
+      },
+      {
+        "date": "2026-08-31",
+        "early_drop_pct": -0.8657694113438752,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.143
+      },
+      {
+        "date": "2026-09-01",
+        "early_drop_pct": -4.268441486411534,
+        "recovered_open": false,
+        "ten_to_close_pct": 0.648
+      },
+      {
+        "date": "2026-09-02",
+        "early_drop_pct": -0.46160448150682765,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.193
+      },
+      {
+        "date": "2026-09-03",
+        "early_drop_pct": -4.361868419842763,
+        "recovered_open": false,
+        "ten_to_close_pct": 1.338
+      },
+      {
+        "date": "2026-09-04",
+        "early_drop_pct": -2.2948345908299417,
+        "recovered_open": true,
+        "ten_to_close_pct": 1.46
+      }
+    ]
+  },
+  "news": {
+    "status": "historical_endpoint_access_confirmed",
+    "unique_article_ids": 228,
+    "updated_after_creation": 119,
+    "sources": [
+      "benzinga"
+    ],
+    "note": "Current historical versions; original article text and first delivery time not established."
+  }
+}

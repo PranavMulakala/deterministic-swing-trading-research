@@ -1,0 +1,61 @@
+{
+  "synthetic_only": true,
+  "checks": [
+    {
+      "scenario": "5000_dip_10bps",
+      "shares": 3.0,
+      "planned_risk": 22.773150000000328,
+      "entry_debit": 2645.9433,
+      "ledger": "PASS"
+    },
+    {
+      "scenario": "5000_dip_25bps",
+      "shares": 2.0,
+      "planned_risk": 17.813249999999925,
+      "entry_debit": 1766.6055,
+      "ledger": "PASS"
+    },
+    {
+      "scenario": "5000_vwap_retest_10bps",
+      "shares": 3.0,
+      "planned_risk": 23.19677999999999,
+      "entry_debit": 2651.3486999999996,
+      "ledger": "PASS"
+    },
+    {
+      "scenario": "5000_vwap_retest_25bps",
+      "shares": 3.0,
+      "planned_risk": 23.161949999999592,
+      "entry_debit": 2655.3217499999996,
+      "ledger": "PASS"
+    },
+    {
+      "scenario": "10000_dip_10bps",
+      "shares": 6.0,
+      "planned_risk": 45.546300000000656,
+      "entry_debit": 5291.8866,
+      "ledger": "PASS"
+    },
+    {
+      "scenario": "10000_dip_25bps",
+      "shares": 5.0,
+      "planned_risk": 44.533124999999814,
+      "entry_debit": 4416.51375,
+      "ledger": "PASS"
+    },
+    {
+      "scenario": "10000_vwap_retest_10bps",
+      "shares": 6.0,
+      "planned_risk": 46.39355999999998,
+      "entry_debit": 5302.697399999999,
+      "ledger": "PASS"
+    },
+    {
+      "scenario": "10000_vwap_retest_25bps",
+      "shares": 6.0,
+      "planned_risk": 46.323899999999185,
+      "entry_debit": 5310.643499999999,
+      "ledger": "PASS"
+    }
+  ]
+}

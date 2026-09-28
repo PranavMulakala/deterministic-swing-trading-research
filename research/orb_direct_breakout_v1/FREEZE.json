@@ -1,0 +1,14 @@
+{
+  "change_policy": "new version required",
+  "files": {
+    "PROTOCOL.md": "1aa0676d1614eb0f6c4c0c0c79f61e778579734a4313314a2ce761505bd5598b",
+    "__init__.py": "60bf480b7a672f389cbca8384e67bc5751eeb962de27f4f38d60943f5a496022",
+    "config.json": "8f680be499c3d0c464cfef7f1449b136fae75a1c3b0e9c70e553f9d9fc4305c8",
+    "engine.py": "d864021620d85bce962eaa8727ec5d927dd407951730792350d19d7f7ef276ee",
+    "test_direct.py": "2a25c4db504620399d45fa62a1c7a2c5b66e322264493240f91278cc902a77a2"
+  },
+  "frozen_at": "2026-09-15T23:00:00-07:00",
+  "hash_algorithm": "sha256",
+  "package_version": "orb_direct_breakout_v1",
+  "schema_version": "1.0"
+}

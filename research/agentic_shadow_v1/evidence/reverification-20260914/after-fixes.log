@@ -1,0 +1,52 @@
+test_agent_critic_only_filters (research.agentic_shadow_v1.test_shadow.ShadowTests.test_agent_critic_only_filters) ... ok
+test_atomic_rollback_before_append (research.agentic_shadow_v1.test_shadow.ShadowTests.test_atomic_rollback_before_append) ... ok
+test_cannot_fill_using_decision_quote (research.agentic_shadow_v1.test_shadow.ShadowTests.test_cannot_fill_using_decision_quote) ... ok
+test_cli_malformed_observed_input_emits_blocked_report (research.agentic_shadow_v1.test_shadow.ShadowTests.test_cli_malformed_observed_input_emits_blocked_report) ... ok
+test_concurrent_duplicate_has_one_committed_event (research.agentic_shadow_v1.test_shadow.ShadowTests.test_concurrent_duplicate_has_one_committed_event) ... ok
+test_contract_identity_and_adjustments (research.agentic_shadow_v1.test_shadow.ShadowTests.test_contract_identity_and_adjustments) ... ok
+test_daily_and_drawdown_thresholds_and_latches (research.agentic_shadow_v1.test_shadow.ShadowTests.test_daily_and_drawdown_thresholds_and_latches) ... ok
+test_decisions_commit_before_later_fills (research.agentic_shadow_v1.test_shadow.ShadowTests.test_decisions_commit_before_later_fills) ... ok
+test_duplicate_chain_and_incomplete_chain (research.agentic_shadow_v1.test_shadow.ShadowTests.test_duplicate_chain_and_incomplete_chain) ... ok
+test_duplicate_idempotent_and_conflict_rejected (research.agentic_shadow_v1.test_shadow.ShadowTests.test_duplicate_idempotent_and_conflict_rejected) ... ok
+test_earnings_and_corporate_action_exclusion (research.agentic_shadow_v1.test_shadow.ShadowTests.test_earnings_and_corporate_action_exclusion) ... ok
+test_end_to_end_loss_pauses_across_sessions (research.agentic_shadow_v1.test_shadow.ShadowTests.test_end_to_end_loss_pauses_across_sessions) ... ok
+test_exact_capital_and_risk (research.agentic_shadow_v1.test_shadow.ShadowTests.test_exact_capital_and_risk) ... ok
+test_exit_zero_bid_size_stays_unresolved (research.agentic_shadow_v1.test_shadow.ShadowTests.test_exit_zero_bid_size_stays_unresolved) ... ok
+test_expiry_DNE_lapse_and_no_stock_exposure (research.agentic_shadow_v1.test_shadow.ShadowTests.test_expiry_DNE_lapse_and_no_stock_exposure) ... ok
+test_fixture_and_observed_ledgers_cannot_mix (research.agentic_shadow_v1.test_shadow.ShadowTests.test_fixture_and_observed_ledgers_cannot_mix) ... ok
+test_fractional_partial_and_multiple_contracts_rejected (research.agentic_shadow_v1.test_shadow.ShadowTests.test_fractional_partial_and_multiple_contracts_rejected) ... ok
+test_ioc_timeout_and_price_movement (research.agentic_shadow_v1.test_shadow.ShadowTests.test_ioc_timeout_and_price_movement) ... ok
+test_learning_cannot_rewrite_rules_or_decisions (research.agentic_shadow_v1.test_shadow.ShadowTests.test_learning_cannot_rewrite_rules_or_decisions) ... ok
+test_ledger_hash_tamper_and_sql_mutation_guard (research.agentic_shadow_v1.test_shadow.ShadowTests.test_ledger_hash_tamper_and_sql_mutation_guard) ... ok
+test_malformed_quote_keeps_time_exit_management (research.agentic_shadow_v1.test_shadow.ShadowTests.test_malformed_quote_keeps_time_exit_management) ... ok
+test_model_cannot_override_authority (research.agentic_shadow_v1.test_shadow.ShadowTests.test_model_cannot_override_authority) ... ok
+test_news_future_revision_and_missing_url (research.agentic_shadow_v1.test_shadow.ShadowTests.test_news_future_revision_and_missing_url) ... ok
+test_observed_rejects_relabelled_fixture (research.agentic_shadow_v1.test_shadow.ShadowTests.test_observed_rejects_relabelled_fixture) ... ok
+test_observed_wall_clock_future_and_old (research.agentic_shadow_v1.test_shadow.ShadowTests.test_observed_wall_clock_future_and_old) ... ok
+test_older_and_equal_time_rejected (research.agentic_shadow_v1.test_shadow.ShadowTests.test_older_and_equal_time_rejected) ... ok
+test_pause_does_not_stop_exit_management (research.agentic_shadow_v1.test_shadow.ShadowTests.test_pause_does_not_stop_exit_management) ... ok
+test_proposal_must_cite_exact_input (research.agentic_shadow_v1.test_shadow.ShadowTests.test_proposal_must_cite_exact_input) ... ok
+test_quote_rejection_matrix (research.agentic_shadow_v1.test_shadow.ShadowTests.test_quote_rejection_matrix) ... ok
+test_report_has_evidence_and_rejections (research.agentic_shadow_v1.test_shadow.ShadowTests.test_report_has_evidence_and_rejections) ... ok
+test_restart_exact_recovery (research.agentic_shadow_v1.test_shadow.ShadowTests.test_restart_exact_recovery) ... ok
+test_round_trip_arithmetic_and_matching_arms (research.agentic_shadow_v1.test_shadow.ShadowTests.test_round_trip_arithmetic_and_matching_arms) ... ok
+test_rules_edited_fail_closed (research.agentic_shadow_v1.test_shadow.ShadowTests.test_rules_edited_fail_closed) ... ok
+test_sourced_expiry_time_required (research.agentic_shadow_v1.test_shadow.ShadowTests.test_sourced_expiry_time_required) ... ok
+test_stale_missing_future_inputs_fail_closed (research.agentic_shadow_v1.test_shadow.ShadowTests.test_stale_missing_future_inputs_fail_closed) ... ok
+test_stale_quote_and_market_before_publication (research.agentic_shadow_v1.test_shadow.ShadowTests.test_stale_quote_and_market_before_publication) ... ok
+test_symlink_ledger_refused (research.agentic_shadow_v1.test_shadow.ShadowTests.test_symlink_ledger_refused) ... ok
+test_unknown_marks_are_not_option_prices_and_time_exit_continues (research.agentic_shadow_v1.test_shadow.ShadowTests.test_unknown_marks_are_not_option_prices_and_time_exit_continues) ... ok
+test_bearish_signal_selects_long_put (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_bearish_signal_selects_long_put) ... ok
+test_exit_must_have_verified_open_session (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_exit_must_have_verified_open_session) ... ok
+test_failed_loader_does_not_leak_partial_credentials_into_retry (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_failed_loader_does_not_leak_partial_credentials_into_retry) ... ok
+test_fill_uses_revised_earlier_close (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_fill_uses_revised_earlier_close) ... ok
+test_invalid_proposal_container_never_silently_accepts (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_invalid_proposal_container_never_silently_accepts) ... ok
+test_malformed_provenance_keeps_observed_report_alive (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_malformed_provenance_keeps_observed_report_alive) ... ok
+test_model_veto_cannot_modify_baseline_inputs (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_model_veto_cannot_modify_baseline_inputs) ... ok
+test_open_exposure_adopts_earlier_session_close (research.agentic_shadow_v1.test_adversarial.AdversarialTests.test_open_exposure_adopts_earlier_session_close) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 0.379s
+
+OK
+{"evidence_kind":"observed","observations":1,"orders":false,"real_data_readiness":"BLOCKED: normalized options feed and coverage not verified"}

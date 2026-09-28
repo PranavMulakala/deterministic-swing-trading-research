@@ -1,0 +1,77 @@
+{
+  "status": "EXPLORATORY_SEAM_DIAGNOSTIC_NOT_TRADING_READINESS",
+  "created_at": "2026-09-09T06:52:36.431590+00:00",
+  "evidence": "HISTORICAL",
+  "diagnostic_day": "2026-08-31",
+  "previous_session_day": "2026-08-28",
+  "contract": "MNQU6",
+  "rationale": "August 31 was original-pilot warmup; the newly available August 28 completes its same-contract prior-session reference.",
+  "separate_from_preserved_pilot_and_extension_reports": true,
+  "held_out": false,
+  "newly_purchased_data": false,
+  "new_data_expense_usd": "0",
+  "complete_patterns": 0,
+  "signals": [],
+  "independent_signal_check": {
+    "matched": true,
+    "above_three_sd_minutes": 0,
+    "below_three_sd_minutes": 0
+  },
+  "scenarios": [],
+  "replay_performed": false,
+  "risk_fit_percentage": null,
+  "cost_status": "ILLUSTRATIVE_SCENARIOS_NOT_VERIFIED_BROKER_FEES",
+  "sources": [
+    {
+      "date": "2026-08-28",
+      "trade_file": "research/mnq_feasibility_v1/data/trade-extension-import-v1/2026-08-28.trades.bin",
+      "trade_sha256": "620a1768754e2b1c246b33a6e7aebccabe22d9b4a91a2a0ad70784a1fdb3f58a",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-19/files/glbx-mdp3-20260828.trades.dbn.zst",
+      "source_sha256": "b14e090ea535e35c17308ff2ca29bc9a1afe5390cd6776a9cf2ddb3be9d0140b",
+      "trade_count": 978744,
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.153683453798294e-09,
+        "maximum_sd_tick_difference": 3.5294078770675696e-10
+      }
+    },
+    {
+      "date": "2026-08-31",
+      "trade_file": "research/mnq_feasibility_v1/data/import-v1/2026-08-31.trades.bin",
+      "trade_sha256": "a4b88180b3b7d8e54934064fb39b90022bd2facba45dc993900f6cf25522b4e8",
+      "source_file": "research/mnq_feasibility_v1/data/databento-pilot-20260908/request-00/files/glbx-mdp3-20260831.mbp-1.dbn.zst",
+      "source_sha256": "314711548fff31654e904b1dda73eb99e892058d634a4fd9442f6b8adfac4053",
+      "trade_count": 689672,
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.0954757928848267e-09,
+        "maximum_sd_tick_difference": 4.3937120608461555e-10
+      }
+    }
+  ],
+  "quote_file": "research/mnq_feasibility_v1/data/import-v1/2026-08-31.quotes.bin",
+  "quote_sha256": "c1ba3c6eb148c133a16db306e048ab88eda8aef742af984b220a5f874b7d090f",
+  "quote_count": 16930307,
+  "provenance": {
+    "frozen_files": {
+      "engine.py": "8f20d82fdea5670d72f72095a2998d2c7aa10da299a92daf898e0df3a3163dc4",
+      "config.json": "41521d784062f5b8594c2fa093dd388c6f3888dd7c0d51edabb2db11f5fefa24",
+      "PROTOCOL.md": "128341ce61ca0a2c5b9bdc2fda70e13d04082981677b0d11941597af8242e905",
+      "fixture.py": "f137a6a8077847179780aa50cdf13b1810d43b1aa0bf1535219b2066e3f964ad",
+      "test_engine.py": "b393079be60642a3eab574f6888f7b523e380dbadf47f74c3ecaea1d91e0f679"
+    },
+    "bridge_script_sha256": "9ab35dbb40cc59527d8fbbb5f374cda18333e541338383f81927ebdab74170ef",
+    "pilot_manifest_sha256": "63634124e68f895dab8a9ea279d17daa05d8eb3cf2f2912ae3e8822ca955b3ff",
+    "extension_manifest_sha256": "ec50fe96ecafb87822e533d8ac43ffc9bfe56f843352e58646f675458e754001",
+    "independent_checker_sha256": "40b4f514fab986b81c7e7dcc0048f4e2aeada850ce333410dccdac020cd4f832",
+    "prepared_replay_sha256": "94087e04d8ac07be3e6b245c7f695f181a765567af369548dfcc6601b8939e6e"
+  },
+  "limitations": [
+    "Extra exploratory check added after inspecting the earlier pilot and extension; not an untouched validation sample.",
+    "Separate diagnostic with fresh $5000 simulated equity if replayed; it does not splice or claim a continuous portfolio ledger across prior reports.",
+    "All cost scenarios remain illustrative, not verified broker fees or observed execution.",
+    "Source/cached-bar agreement and 390-minute coverage do not independently certify exchange completeness.",
+    "Capture-time boundaries may omit late-arriving exchange-time records.",
+    "No broker paper execution, live order, strategy profitability, or live readiness is established."
+  ]
+}

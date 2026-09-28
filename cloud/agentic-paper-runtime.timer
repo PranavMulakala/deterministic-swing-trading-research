@@ -1,0 +1,10 @@
+[Unit]
+Description=Check $10,000 stock/options paper lifecycle every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

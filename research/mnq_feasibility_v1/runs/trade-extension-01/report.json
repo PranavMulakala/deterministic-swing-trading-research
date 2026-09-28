@@ -1,0 +1,611 @@
+{
+  "status": "SIGNAL_SCREEN_COMPLETE_NOT_TRADING_READINESS",
+  "evidence": "HISTORICAL",
+  "evaluated_sessions": 19,
+  "warmup_sessions": 1,
+  "complete_patterns": 0,
+  "sessions_with_patterns": 0,
+  "signals": [],
+  "sessions": [
+    {
+      "date": "2026-08-03",
+      "contract": "MNQU6",
+      "source_sha256": "e6725d1da0b0bb7a9aadd0f8477285a79c09a17d043b0333f80e9554495da79e",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-00/files/glbx-mdp3-20260803.trades.dbn.zst",
+      "trade_file": "2026-08-03.trades.bin",
+      "trade_sha256": "02d0f6c4333983fcf09d3185c29c785c0e47b8fccc2a6feaf6859d9ff3ed7561",
+      "raw_record_count": 816569,
+      "trade_count": 816569,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 90,
+      "flags": {
+        "0": 816569
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 3.3760443329811096e-09,
+        "maximum_sd_tick_difference": 1.855255504779052e-09
+      },
+      "patterns": 0,
+      "warmup": true
+    },
+    {
+      "date": "2026-08-04",
+      "contract": "MNQU6",
+      "source_sha256": "5383fdab6073a1647c0f609d50bff54a91fb87593ab4c2447da89a1f90cb4c14",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-01/files/glbx-mdp3-20260804.trades.dbn.zst",
+      "trade_file": "2026-08-04.trades.bin",
+      "trade_sha256": "5e9ecf379321ef229fe0822734065aec0e839108be9c993a4bdf1069de6ce973",
+      "raw_record_count": 848636,
+      "trade_count": 848635,
+      "excluded_event_boundary_records": 1,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 90,
+      "flags": {
+        "0": 848636
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.6775524020195007e-09,
+        "maximum_sd_tick_difference": 6.637037586187944e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-05",
+      "contract": "MNQU6",
+      "source_sha256": "fdf460196f11f0369835a43edc9f694146ad80c117f9b2a9faa62932f4830950",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-02/files/glbx-mdp3-20260805.trades.dbn.zst",
+      "trade_file": "2026-08-05.trades.bin",
+      "trade_sha256": "e7303d0e55e91d65b56267eb15fff41e17def0737c6470bf06d59230a758b71c",
+      "raw_record_count": 1003174,
+      "trade_count": 1003174,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 110,
+      "flags": {
+        "0": 1003174
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 3.6088749766349792e-09,
+        "maximum_sd_tick_difference": 8.015490493562538e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-06",
+      "contract": "MNQU6",
+      "source_sha256": "11def9cbf71a9e67e2851da4d26b67b509f3706f3d3b8e347270a1ba4b3ff938",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-03/files/glbx-mdp3-20260806.trades.dbn.zst",
+      "trade_file": "2026-08-06.trades.bin",
+      "trade_sha256": "124c6377bf8885ceb138e246969e493c80c63211c42c63ea8e99fd066a4454fe",
+      "raw_record_count": 1040479,
+      "trade_count": 1040479,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 110,
+      "flags": {
+        "0": 1040479
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 5.3551048040390015e-09,
+        "maximum_sd_tick_difference": 3.732338882400654e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-07",
+      "contract": "MNQU6",
+      "source_sha256": "4c3adc3020cda49d083d23885b2d455fac2ed9d356239b72959437ba1d517466",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-04/files/glbx-mdp3-20260807.trades.dbn.zst",
+      "trade_file": "2026-08-07.trades.bin",
+      "trade_sha256": "4d66ca192dd51a19dcc79d1d89c48287d9b7819b82648629405ddebd8bd3e121",
+      "raw_record_count": 908070,
+      "trade_count": 908069,
+      "excluded_event_boundary_records": 1,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 100,
+      "flags": {
+        "0": 908070
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.1245796233415604e-09,
+        "maximum_sd_tick_difference": 4.2365400076960213e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-10",
+      "contract": "MNQU6",
+      "source_sha256": "e2b8563923df8fed37cc207de5ad2f1a5287858f621396d96798ba944f049073",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-05/files/glbx-mdp3-20260810.trades.dbn.zst",
+      "trade_file": "2026-08-10.trades.bin",
+      "trade_sha256": "9fe91c1bd6d5da6c22da001b0c3e76778bd95bb708b6f6253116d7ff6e9b6d4b",
+      "raw_record_count": 772070,
+      "trade_count": 772070,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 80,
+      "flags": {
+        "0": 772070
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.3865140974521637e-09,
+        "maximum_sd_tick_difference": 8.853930921759456e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-11",
+      "contract": "MNQU6",
+      "source_sha256": "4d952c671aacfae02832241cfad77afab6686c120f0b6af29bb5842806f2d7de",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-06/files/glbx-mdp3-20260811.trades.dbn.zst",
+      "trade_file": "2026-08-11.trades.bin",
+      "trade_sha256": "b83c34a2ef4970b58a39b3b5618f54061dd72312047e50c834bc5208cff22748",
+      "raw_record_count": 795222,
+      "trade_count": 795222,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 80,
+      "flags": {
+        "0": 795222
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 3.7834979593753815e-09,
+        "maximum_sd_tick_difference": 9.284235602535773e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-12",
+      "contract": "MNQU6",
+      "source_sha256": "57dd10152237972a01ef2b998fae19eefd22280c9c3658f9a2dda451d6d6a79b",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-07/files/glbx-mdp3-20260812.trades.dbn.zst",
+      "trade_file": "2026-08-12.trades.bin",
+      "trade_sha256": "460f607aaaf8203c7cb86cdbe2b6459580cc3f1cdc390c6a87543d9bf8879f33",
+      "raw_record_count": 724316,
+      "trade_count": 724312,
+      "excluded_event_boundary_records": 4,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 80,
+      "flags": {
+        "0": 724316
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.6921043172478676e-09,
+        "maximum_sd_tick_difference": 4.161506694799755e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-13",
+      "contract": "MNQU6",
+      "source_sha256": "f04a8f79760d6b7f32784306450a106edc0c783afc29c4e7e2c9288c73b37cff",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-08/files/glbx-mdp3-20260813.trades.dbn.zst",
+      "trade_file": "2026-08-13.trades.bin",
+      "trade_sha256": "a874a08da0b61dce4fff81154ddfda21953d1b5fbce5dac20829c37fd5ac0d6d",
+      "raw_record_count": 710654,
+      "trade_count": 710654,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 80,
+      "flags": {
+        "0": 710654
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 3.9726728573441505e-09,
+        "maximum_sd_tick_difference": 1.1368115337972995e-09
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-14",
+      "contract": "MNQU6",
+      "source_sha256": "394ca91860154494a90a50b838b172fc25cd8a32ab0d995bd5fdc78f7d6ff280",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-09/files/glbx-mdp3-20260814.trades.dbn.zst",
+      "trade_file": "2026-08-14.trades.bin",
+      "trade_sha256": "308a22a3029fc2b134c176e6c0c13c3b78cd5d6e7d37ef4b2d9cf3708fda2eb2",
+      "raw_record_count": 699381,
+      "trade_count": 699378,
+      "excluded_event_boundary_records": 3,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 70,
+      "flags": {
+        "0": 699381
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.3283064365386963e-09,
+        "maximum_sd_tick_difference": 8.48274339659838e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-17",
+      "contract": "MNQU6",
+      "source_sha256": "85e5dfdb023c2f84727104949d88efb756129954176533bb5d4f7f7bfcaaaf2c",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-10/files/glbx-mdp3-20260817.trades.dbn.zst",
+      "trade_file": "2026-08-17.trades.bin",
+      "trade_sha256": "44c889df9c8b830ea16aa91679c3d2eedc2d186c8e9cdc8c5aeabce9856c8d9f",
+      "raw_record_count": 681347,
+      "trade_count": 681347,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 70,
+      "flags": {
+        "0": 681347
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 3.92901711165905e-09,
+        "maximum_sd_tick_difference": 1.1058034488087287e-09
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-18",
+      "contract": "MNQU6",
+      "source_sha256": "7072f9759df0267cc75b388e65a5870469c805b9b172d8fef1706d97d704d09f",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-11/files/glbx-mdp3-20260818.trades.dbn.zst",
+      "trade_file": "2026-08-18.trades.bin",
+      "trade_sha256": "745cd423b161b1f59ad436f341a782ffbf0f0f7403dbd34247e0b8b734767905",
+      "raw_record_count": 851031,
+      "trade_count": 851031,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 90,
+      "flags": {
+        "0": 851031
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 4.190951585769653e-09,
+        "maximum_sd_tick_difference": 1.044128339344752e-09
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-19",
+      "contract": "MNQU6",
+      "source_sha256": "18ece4475f335f06d98e7e3d9ade7868cad2559977752930d42df33a01f4bebd",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-12/files/glbx-mdp3-20260819.trades.dbn.zst",
+      "trade_file": "2026-08-19.trades.bin",
+      "trade_sha256": "f9d0342f86408e75f6138d1f5a6574c36cc72e64b9af38dd59c6bf2a1d72e7ba",
+      "raw_record_count": 925776,
+      "trade_count": 925776,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 100,
+      "flags": {
+        "0": 925776
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 4.627509042620659e-09,
+        "maximum_sd_tick_difference": 1.373848590446869e-09
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-20",
+      "contract": "MNQU6",
+      "source_sha256": "46f363562fb9d298d26893df213fc3d2cac89b91e0a9b32d6c5aa7dc70fca6da",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-13/files/glbx-mdp3-20260820.trades.dbn.zst",
+      "trade_file": "2026-08-20.trades.bin",
+      "trade_sha256": "b0d658b836b6313ca377239db43c00d7685c556ad768d7b5d178194813a636b5",
+      "raw_record_count": 915332,
+      "trade_count": 915331,
+      "excluded_event_boundary_records": 1,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 100,
+      "flags": {
+        "0": 915332
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.561137080192566e-09,
+        "maximum_sd_tick_difference": 4.2797410060302354e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-21",
+      "contract": "MNQU6",
+      "source_sha256": "82eef18c14c84af303a69218a8e7ab2662c683c435c8ab53bb62e66a127389ed",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-14/files/glbx-mdp3-20260821.trades.dbn.zst",
+      "trade_file": "2026-08-21.trades.bin",
+      "trade_sha256": "542daf241dc757b14fba0f174f3d2abc5646cad29648a27d9e726fcea0f8014d",
+      "raw_record_count": 718527,
+      "trade_count": 718525,
+      "excluded_event_boundary_records": 2,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 80,
+      "flags": {
+        "0": 718527
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.735760062932968e-09,
+        "maximum_sd_tick_difference": 2.517595021345187e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-24",
+      "contract": "MNQU6",
+      "source_sha256": "c7cdf86902c6b2723abde9ea0ade52b84e21eae34e35e8f4a575b057c24f3641",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-15/files/glbx-mdp3-20260824.trades.dbn.zst",
+      "trade_file": "2026-08-24.trades.bin",
+      "trade_sha256": "6cc55bab6ded8a86d6d4c16699e99f6dbd68bbd5668348d52875b4bea87b345f",
+      "raw_record_count": 769799,
+      "trade_count": 769799,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 80,
+      "flags": {
+        "0": 769799
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 3.725290298461914e-09,
+        "maximum_sd_tick_difference": 1.5269279174390249e-09
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-25",
+      "contract": "MNQU6",
+      "source_sha256": "862b0d20e816dbaa7d396ca60fc602bcd21bd0f34c78bbb6de7cff6fa7543242",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-16/files/glbx-mdp3-20260825.trades.dbn.zst",
+      "trade_file": "2026-08-25.trades.bin",
+      "trade_sha256": "2bdbaec33e47a0f01006610e2405bae83fcadef4f2154e87d8724fce3e4bf84a",
+      "raw_record_count": 716833,
+      "trade_count": 716833,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 80,
+      "flags": {
+        "0": 716833
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.153683453798294e-09,
+        "maximum_sd_tick_difference": 6.170068900246406e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-26",
+      "contract": "MNQU6",
+      "source_sha256": "07db2d430c9523cc64b5d1f5cb24f2b29d8c60d92faf91212a55a62e76ae19b9",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-17/files/glbx-mdp3-20260826.trades.dbn.zst",
+      "trade_file": "2026-08-26.trades.bin",
+      "trade_sha256": "6b155fc28d1bda1ea8b20e724bf58aafefbab50ce247234e9808ef07c5bee62e",
+      "raw_record_count": 727906,
+      "trade_count": 727904,
+      "excluded_event_boundary_records": 2,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 80,
+      "flags": {
+        "0": 727906
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 3.2887328416109085e-09,
+        "maximum_sd_tick_difference": 5.450147000374272e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-27",
+      "contract": "MNQU6",
+      "source_sha256": "c21dc1bebb11a498316a55049596cd68a4aa91f84db1e3485278b2841041f664",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-18/files/glbx-mdp3-20260827.trades.dbn.zst",
+      "trade_file": "2026-08-27.trades.bin",
+      "trade_sha256": "8803a201bbdfe85b7961d3c35c0534913866f931fe0767e5d2360530baec549c",
+      "raw_record_count": 878525,
+      "trade_count": 878525,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 90,
+      "flags": {
+        "0": 878525
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.9976945370435715e-09,
+        "maximum_sd_tick_difference": 9.932819011737593e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    },
+    {
+      "date": "2026-08-28",
+      "contract": "MNQU6",
+      "source_sha256": "b14e090ea535e35c17308ff2ca29bc9a1afe5390cd6776a9cf2ddb3be9d0140b",
+      "source_file": "research/mnq_feasibility_v1/data/databento-trade-extension-v1/request-19/files/glbx-mdp3-20260828.trades.dbn.zst",
+      "trade_file": "2026-08-28.trades.bin",
+      "trade_sha256": "620a1768754e2b1c246b33a6e7aebccabe22d9b4a91a2a0ad70784a1fdb3f58a",
+      "raw_record_count": 978744,
+      "trade_count": 978744,
+      "excluded_event_boundary_records": 0,
+      "receive_timestamp_regressions": 0,
+      "official_decoder_sampled_records": 100,
+      "flags": {
+        "0": 978744
+      },
+      "bar_audit": {
+        "minutes_verified": 390,
+        "maximum_vwap_tick_difference": 2.153683453798294e-09,
+        "maximum_sd_tick_difference": 3.5294078770675696e-10
+      },
+      "patterns": 0,
+      "warmup": false
+    }
+  ],
+  "pattern_session_percentage": 0.0,
+  "risk_fit_percentage": null,
+  "net_profit": null,
+  "drawdown": null,
+  "win_rate": null,
+  "provider_cost_usd": "20.63098720833659",
+  "remaining_extension_budget_usd": "35.36901279166341",
+  "definition_records": 23,
+  "independent_signal_checks": [
+    {
+      "date": "2026-08-04",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-05",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 1
+    },
+    {
+      "date": "2026-08-06",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-07",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-10",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-11",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-12",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-13",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-14",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-17",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-18",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-19",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-20",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-21",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-24",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-25",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-26",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-27",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    },
+    {
+      "date": "2026-08-28",
+      "patterns": 0,
+      "above_three_sd_minutes": 0,
+      "below_three_sd_minutes": 0
+    }
+  ],
+  "frozen_files": {
+    "engine.py": "8f20d82fdea5670d72f72095a2998d2c7aa10da299a92daf898e0df3a3163dc4",
+    "config.json": "41521d784062f5b8594c2fa093dd388c6f3888dd7c0d51edabb2db11f5fefa24",
+    "PROTOCOL.md": "128341ce61ca0a2c5b9bdc2fda70e13d04082981677b0d11941597af8242e905",
+    "fixture.py": "f137a6a8077847179780aa50cdf13b1810d43b1aa0bf1535219b2066e3f964ad",
+    "test_engine.py": "b393079be60642a3eab574f6888f7b523e380dbadf47f74c3ecaea1d91e0f679"
+  },
+  "importer_sha256": "40b4f514fab986b81c7e7dcc0048f4e2aeada850ce333410dccdac020cd4f832",
+  "protocol_sha256": "7ae14d34179e3eeac45e7dc43f4d68fc4eab32b9b088febad0998002d7e5c8ae",
+  "limitations": [
+    "Trade-only screen has no executable quotes or fills.",
+    "This is a feasibility sample, not final untouched validation.",
+    "390 trade minutes is coverage evidence, not independent exchange completeness.",
+    "Capture-time boundaries may omit late-arriving event-time records.",
+    "Fees/margin and actual broker-paper behavior remain unverified."
+  ]
+}

@@ -1,5 +1,8 @@
 # Independent Validator Handoff — Paper Readiness Branch
 
+> **September 22, 2026 orientation:** See the [current project handoff](output/PROJECT_HANDOFF_20260922.md) for all experiments, updated broker/cloud status, LITE opening-dip evidence, and the Claude review prompt. The dated material below retains its original scope; it is not a current status report for every project track. Frozen strategies and historical evidence are unchanged.
+
+
 Audit the exact supplied commit read-only. Do not use credentials, mutate the paper account, place or cancel an order, change files, or accept the builder's test summary without reproducing it.
 
 ## Expected verdict to challenge

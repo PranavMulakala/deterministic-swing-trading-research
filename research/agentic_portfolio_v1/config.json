@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "mode": "PAPER_ONLY_NO_ORDER",
+  "orders_enabled": false,
+  "virtual_accounts": {
+    "stock_swing": {"initial_cash": "1000.00", "ledger": "separate"},
+    "long_options": {"initial_cash": "1000.00", "ledger": "separate"}
+  },
+  "stock": {
+    "strategy": "stock_swing_net10_v1",
+    "universe": ["LITE", "COHR", "CIEN", "FN", "AAOI"],
+    "target_net_return": "0.10",
+    "review_drawdown": "0.10",
+    "scheduled_review_sessions": 21,
+    "missing_review_exit_sessions": 42,
+    "absolute_max_hold_sessions": 126,
+    "entry_cost_bps": "10",
+    "exit_cost_bps": "10"
+  },
+  "options": {
+    "strategy": "long_option_shadow_v2",
+    "underlyings": ["SPY", "QQQ"],
+    "rights": ["CALL", "PUT"],
+    "dte": [14, 30],
+    "contracts": 1,
+    "premium_stop": "0.30",
+    "premium_target": "0.50",
+    "max_hold_sessions": 2,
+    "default_mode": "baseline",
+    "model_calls_enabled": false
+  }
+}

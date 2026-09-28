@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "max_equity_position": "0.20",
+  "max_total_deployed": "0.50",
+  "min_cash_reserve": "0.50",
+  "max_total_option_contractual_loss": "0.05",
+  "daily_realized_loss_pause": "0.02",
+  "high_water_drawdown_pause": "0.05",
+  "max_new_intents_per_strategy_per_day": 1,
+  "unknown_or_stale_marks": "REJECT",
+  "global_kill_switch": "DURABLE"
+}

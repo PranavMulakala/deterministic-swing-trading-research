@@ -1,0 +1,11 @@
+[Unit]
+Description=Thirty-second isolated shadow research observations
+
+[Timer]
+OnBootSec=30s
+OnUnitInactiveSec=30s
+AccuracySec=1s
+Unit=trading-shadow-7500.service
+
+[Install]
+WantedBy=timers.target

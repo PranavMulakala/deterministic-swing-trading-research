@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "package_version": "agentic_paper_runtime_v1",
+  "frozen_at": "2026-09-15T23:30:00-07:00",
+  "change_policy": "new version required",
+  "hash_algorithm": "sha256",
+  "files": {
+    "README.md": "fac10ac6ca83c9117d557cc85ea422726f434e7ca7d30938a762eda68fbb43f7",
+    "__init__.py": "541a2ef4b79079314678b11a2711529014ba7c89b2acc86c2cabf238031f09e4",
+    "config.json": "ae01661962d44eac105c462a3cfebcd91a90b397d06c9cba4b0e65d6a1c930d6",
+    "freeze.py": "6c3b31a8f7e22cd51a5e0e9ef3795b4c215aa99d906eb779f033ee0c5d9acd07",
+    "runner_cli.py": "343df6d9a5184e42105a1bff699b43804984a0886fb09167c76e49b65638ba7c",
+    "runtime.py": "b3c26b3ba6d4859a8c4e00f870db6a7d49c1b537bc37bf729821b7e74d005095"
+  }
+}

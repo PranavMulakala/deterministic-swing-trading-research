@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "calendar_id": "scheduled_macro_v1_2026-09-15",
+  "retrieved_on": "2026-09-15",
+  "timezone": "America/New_York",
+  "coverage_start": "2026-09-15T00:00:00-04:00",
+  "coverage_end_exclusive": "2026-10-31T00:00:00-04:00",
+  "policy": "Context arm abstains for the whole listed ET calendar date or date span; end is 16:00 ET exclusive. Baseline is never consulted against this calendar.",
+  "sources": [
+    "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "https://www.bls.gov/schedule/2026/",
+    "https://www.bea.gov/news/schedule/full"
+  ],
+  "events": [
+    {"id": "FOMC_2026_09", "label": "FOMC meeting", "source_index": 0, "start_inclusive": "2026-09-15T00:00:00-04:00", "end_exclusive": "2026-09-16T16:00:00-04:00"},
+    {"id": "BEA_2026_09_30", "label": "BEA GDP/PCE scheduled release date", "source_index": 2, "start_inclusive": "2026-09-30T00:00:00-04:00", "end_exclusive": "2026-09-30T16:00:00-04:00"},
+    {"id": "BLS_EMPLOYMENT_2026_10_02", "label": "BLS Employment Situation scheduled release date", "source_index": 1, "start_inclusive": "2026-10-02T00:00:00-04:00", "end_exclusive": "2026-10-02T16:00:00-04:00"},
+    {"id": "BLS_CPI_2026_10_14", "label": "BLS CPI scheduled release date", "source_index": 1, "start_inclusive": "2026-10-14T00:00:00-04:00", "end_exclusive": "2026-10-14T16:00:00-04:00"},
+    {"id": "BLS_PPI_2026_10_15", "label": "BLS PPI scheduled release date", "source_index": 1, "start_inclusive": "2026-10-15T00:00:00-04:00", "end_exclusive": "2026-10-15T16:00:00-04:00"},
+    {"id": "FOMC_2026_10", "label": "FOMC meeting", "source_index": 0, "start_inclusive": "2026-10-27T00:00:00-04:00", "end_exclusive": "2026-10-28T16:00:00-04:00"},
+    {"id": "BEA_2026_10_29", "label": "BEA GDP/PCE scheduled release date", "source_index": 2, "start_inclusive": "2026-10-29T00:00:00-04:00", "end_exclusive": "2026-10-29T16:00:00-04:00"}
+  ],
+  "warning": "This is a point-in-time research snapshot. Agencies can revise schedules; no automatic refresh exists."
+}

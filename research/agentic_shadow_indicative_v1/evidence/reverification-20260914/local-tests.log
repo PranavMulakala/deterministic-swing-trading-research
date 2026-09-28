@@ -1,0 +1,6 @@
+..................................................................
+----------------------------------------------------------------------
+Ran 66 tests in 0.585s
+
+OK
+{"evidence_kind":"indicative","observations":1,"orders":false,"real_data_readiness":"BLOCKED: no complete current Alpaca indicative packet has been accepted"}

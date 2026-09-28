@@ -1,0 +1,32 @@
+[Unit]
+Description=Isolated $7500 options shadow research (no network or orders)
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+StateDirectory=trading-shadow-7500
+WorkingDirectory=@RELEASE@
+Environment=PYTHONPATH=@RELEASE@/src:@RELEASE@
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStartPre=/usr/bin/python3 @RELEASE@/verify_release.py
+ExecStart=/usr/bin/python3 -m research.agentic_shadow_v1.run --kind observed --state /var/lib/trading-shadow-7500 --input /var/lib/trading-shadow-7500-inbox/packet.json
+PrivateNetwork=yes
+IPAddressDeny=any
+RestrictAddressFamilies=AF_UNIX
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+InaccessiblePaths=-/etc/trading-collector -/var/lib/trading-collector -/var/lib/trading-research -/root
+MemoryMax=128M
+CPUQuota=10%
+Nice=15
+TimeoutStartSec=20
+UMask=0077

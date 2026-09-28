@@ -1,0 +1,21 @@
+{
+  "id": "orb-stock-selection-v1",
+  "frozen_at_utc": "2026-09-07T17:00:27Z",
+  "scope": "local research specification and observed dataset; no ORB PnL calculated before freeze; not external preregistration",
+  "files": {
+    "spec.json": "ed33a1757a5e3b9831b130aa1cd7f0e9579e0aa22d547c9f3056ff3ff9daa95b",
+    "PROTOCOL.md": "14ecf41f28d8a6cc4b22e14fcbf1c45e60a7593424b3abd6ccce59a85efb9424",
+    "collect.py": "91f1067e885e1e10374d6cda7847cdd41aa080a0d1f327e6b6285671a35628bb",
+    "verify.py": "73ec272fd3a6c5e1761e2ea2bb0be2ae95d66701eb65b25f5385a3a0b876d493"
+  },
+  "local_data_directory": "runs/sip-20260907-02",
+  "data_manifest_sha256": "5de081d38e028cb4de1c68a971d1ebc84fcdb8bae7caf8697c7d9ee9047334d4",
+  "coverage_sha256": "c2e08550245ce2e4c0c0b0fbade839439017b85c95acf5dafca40b315a70fcfd",
+  "known_limitations": [
+    "Finalized historical bars are not original as-received data",
+    "FN has four absent five-minute bars including three warmup bars",
+    "One-minute gaps are retained and do not establish absence of all trading",
+    "Action history, quotes, halts and news text are not validated by this acquisition",
+    "2026 remains development data; no untouched holdout is claimed"
+  ]
+}

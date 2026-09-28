@@ -1,0 +1,22 @@
+{
+  "id": "orb-quote-trade-execution-v2",
+  "parent": "orb-stock-selection-v1",
+  "primary_signal_delay_seconds": 1,
+  "sensitivity_signal_delay_seconds": 2,
+  "exit_latency_ms": 100,
+  "max_exit_wait_seconds": 60,
+  "max_quote_age_seconds": 1,
+  "max_spread_bps": 15,
+  "quote_conditions": ["R"],
+  "stop_trade_conditions_allowed": [" ", "@", "F", "I"],
+  "size_units": "one_provider_unit_as_one_share_conservative_lower_bound",
+  "entry_order_model": "single_IOC_attempt_cancel_unfilled_remainder",
+  "extra_adverse_slippage_bps_per_side": [10, 25],
+  "extra_fee_bps_per_side": 1,
+  "cost_screen": "observed_spread_plus_two_sided_slippage_and_fees_over_entry_minus_stop",
+  "exit_model": "latched_stop_or_target_or_time_then_marketable_sell",
+  "price_mark": "fresh_observed_bid_at_entry_decisions",
+  "max_pages_per_request": 300,
+  "max_snapshot_total_bytes": 2000000000,
+  "evaluation": "2026_development_only_not_broker_validation"
+}

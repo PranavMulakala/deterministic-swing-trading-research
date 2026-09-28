@@ -1,0 +1,99 @@
+{
+  "server": "198.211.113.234",
+  "release_revision": "1127c399b1898472f4c9fd9345ac77106287686be9d3d56301873e80f7b29b49",
+  "uploaded_after_explicit_destination_approval": true,
+  "installed": true,
+  "server_manifest_verified": true,
+  "filesystem_immutable_release": true,
+  "root_import_preserved_manifest": true,
+  "forced_read_only_smoke": {
+    "producer_result": "success",
+    "consumer_result": "success",
+    "symbol": "SPY",
+    "network_requests": 15,
+    "joined_contracts": 302,
+    "orders": false,
+    "subscriptions_changed": false,
+    "full_contracts_archived": 302,
+    "contracts_evaluated_before_compaction": 302,
+    "contracts_stored_in_ledger": 0,
+    "largest_raw_response_bytes": 110517,
+    "packet_bytes": 2184973,
+    "ledger_bytes": 28672,
+    "archive_hash_bound": true,
+    "packet_hash_bound": true,
+    "all_six_data_sections_available": true,
+    "ingestion_error": null
+  },
+  "consumer_isolation": {
+    "packet_readable": true,
+    "credential_blocked": true,
+    "archive_blocked": true,
+    "ip_socket_blocked": true
+  },
+  "second_forced_smoke": {
+    "preferred_symbol": "QQQ",
+    "preferred_symbol_result": "BLOCKED_NONCONSECUTIVE_BARS",
+    "fallback_symbol": "SPY",
+    "fallback_published": true,
+    "chain_underlying_counts": {
+      "QQQ": 146,
+      "SPY": 156
+    },
+    "consumer_observations_after_run": 2,
+    "all_six_data_sections_available": true,
+    "ingestion_error": null
+  },
+  "structural_checkpoint": {
+    "required_sessions": 0,
+    "checkpoint_passed": true,
+    "published_archives_verified": 2,
+    "consumer_events": 2,
+    "issues": []
+  },
+  "actual_secret_value_scan": {
+    "result": "PASS",
+    "files_scanned": 39,
+    "decompressed_archives_scanned": 2,
+    "journal_scanned": true
+  },
+  "scheduled_operation": {
+    "consecutive_post_hardening_runs": 2,
+    "statuses": [
+      "IDLE_OUTSIDE_COLLECTION_WINDOW",
+      "IDLE_OUTSIDE_COLLECTION_WINDOW"
+    ],
+    "total_network_requests": 0,
+    "orders": false,
+    "timer_active": true,
+    "timer_enabled": true,
+    "path_active": true,
+    "path_enabled": true
+  },
+  "original_experiment": {
+    "collector_pid": 74726,
+    "collector_started": "2026-09-11T06:47:55 server-local-time",
+    "timer_active": true,
+    "timer_enabled": true,
+    "service_result": "success",
+    "service_restarts": 0,
+    "original_75_file_local_baseline_byte_identical": true
+  },
+  "rollback": {
+    "prior_release_preserved": true,
+    "prior_state_preserved": true,
+    "rollback_script_manifest_bound": true,
+    "rollback_script_shell_syntax_valid": true
+  },
+  "temporary_credentials_removed": true,
+  "server_staging_removed": true,
+  "five_session_checkpoint": {
+    "complete_sessions": 0,
+    "required_sessions": 5,
+    "issues": [],
+    "status": "HEALTHY_BUT_INCOMPLETE",
+    "automation_id": "verify-indicative-shadow-sessions"
+  },
+  "purpose": "PLUMBING ONLY",
+  "execution_validity": "NOT VALID FOR PROFIT, EXECUTION, OR AGENT-EFFICACY ANALYSIS"
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=One-minute Alpaca indicative packet schedule
+
+[Timer]
+OnBootSec=30s
+OnUnitInactiveSec=60s
+AccuracySec=1s
+Unit=trading-shadow-indicative-producer.service
+
+[Install]
+WantedBy=timers.target
+

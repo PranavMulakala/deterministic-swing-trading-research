@@ -1,0 +1,10 @@
+{
+  "frozen_at": "2026-09-14T22:35:28+00:00",
+  "files": {
+    "config.json": "75a559fa9b33c70790d9dfa02584c0033c7bf72babca2a49f15bf32eab33e5d3",
+    "PROTOCOL.md": "a8c22405e231864f79bcbd9e24db5d9d88abb1a421d55b1f755b5f97bac3f164"
+  },
+  "returns_evaluated": false,
+  "purpose": "plumbing_only",
+  "options_feed": "alpaca-indicative"
+}

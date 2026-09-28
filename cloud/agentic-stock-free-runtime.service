@@ -1,0 +1,27 @@
+[Unit]
+Description=$10,000 free-data stock-only paper lifecycle (no orders)
+After=agentic-stock-free-provider.service
+
+[Service]
+Type=oneshot
+User=trading-collector
+Group=trading-collector
+WorkingDirectory=/opt/agentic-stock-free-v2
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -m research.agentic_stock_paper_free_v2.runner_cli
+StateDirectory=agentic-stock-free-runtime
+UMask=0077
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/var/lib/agentic-stock-free-input
+InaccessiblePaths=/etc/trading-collector
+PrivateNetwork=true
+IPAddressDeny=any
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+CapabilityBoundingSet=
+MemoryMax=512M
+CPUQuota=50%
+TimeoutStartSec=120
+TasksMax=16

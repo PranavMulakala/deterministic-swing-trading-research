@@ -1,0 +1,28 @@
+[Unit]
+Description=Offline paper research and evidence review (no orders)
+After=trading-references.service
+ConditionPathExists=/var/lib/trading-collector/archive.sqlite
+
+[Service]
+Type=oneshot
+User=trading-collector
+Group=trading-collector
+WorkingDirectory=/opt/trading-research-v3-20260915-orb-direct-v1
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -m cloud.research_runner
+StateDirectory=trading-research
+UMask=0077
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/var/lib/trading-collector
+InaccessiblePaths=/etc/trading-collector
+PrivateNetwork=true
+IPAddressDeny=any
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+CapabilityBoundingSet=
+MemoryMax=1000M
+CPUQuota=75%
+TimeoutStartSec=600
+TasksMax=32

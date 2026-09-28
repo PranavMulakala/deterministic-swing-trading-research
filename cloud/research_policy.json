@@ -1,0 +1,50 @@
+{
+  "id": "forward-research-learning-v2",
+  "start": "2026-09-08",
+  "end": "2026-12-31",
+  "mode": "delayed_data_simulation_no_orders",
+  "schedule_minutes": 15,
+  "orb": {"arms": ["A", "B"], "cost_bps": [10, 25], "delay_seconds": [1, 2]},
+  "orb_challenger": {
+    "id": "orb-direct-breakout-prospective-v1",
+    "start": "2026-09-16",
+    "config": "research/orb_direct_breakout_v1/config.json",
+    "arms": ["A", "B"],
+    "cost_bps": [10, 25],
+    "delay_seconds": [1, 2],
+    "rule_change_only": "direct_breakout_instead_of_breakout_then_retest",
+    "promotion": "disabled"
+  },
+  "lite": {"variants": ["dip", "vwap_retest"], "cost_bps": [10, 25], "mode": "whole", "input_label": "SIP_raw_new_data_version_not_original_IEX_all"},
+  "news": {
+    "selection": false,
+    "decision_cutoff": "first_collector_receipt_at_or_before_signal_time",
+    "missing": "unknown_not_neutral",
+    "direct_stream": "news",
+    "context_stream": "sector_news",
+    "context_config": "cloud/news_context_v1.json",
+    "context_start": "2026-09-09"
+  },
+  "lite_forward": {
+    "id": "lite-capital-feasibility-v2",
+    "evaluation_start": "2026-09-09",
+    "parent_rules": "research/lite_reversal_v1/config.json",
+    "capital_arms": [5000, 10000],
+    "variants": ["dip", "vwap_retest"],
+    "cost_bps": [10, 25],
+    "mode": "whole",
+    "rule_changes": "capital_only_no_entry_exit_sizing_formula_or_risk_percentage_change",
+    "broker_ready": false,
+    "promotion": "disabled"
+  },
+  "review": {"minimum_sessions": 20, "minimum_closed_trades_per_arm": 20, "promotion": "disabled", "risk_edits": "forbidden", "llm_calls": false},
+  "max_selected_tick_rows_per_session": 500000,
+  "missing_data": "block_do_not_fill_or_score_as_cash",
+  "unresolved_position": "stop_subsequent_portfolio_replays",
+  "capital": "retain_each_parent_config_no_shared_broker_account",
+  "readiness": {
+    "required_streams": ["bars", "bars5", "news", "sector_news", "LITE:quotes", "LITE:trades", "COHR:quotes", "COHR:trades", "CIEN:quotes", "CIEN:trades", "FN:quotes", "FN:trades", "AAOI:quotes", "AAOI:trades"],
+    "max_checkpoint_lag_seconds": 1800,
+    "minimum_free_bytes": 5368709120
+  }
+}

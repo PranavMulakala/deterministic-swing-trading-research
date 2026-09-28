@@ -1,0 +1,22 @@
+[Unit]
+Description=Personal research calendar and corporate-action snapshot (GET only)
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=/etc/trading-collector/credentials.json
+
+[Service]
+Type=oneshot
+User=trading-collector
+Group=trading-collector
+WorkingDirectory=/opt/trading-collector
+ExecStart=/usr/bin/python3 /opt/trading-collector/reference_data.py
+UMask=0077
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/trading-collector
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+MemoryMax=256M
+TimeoutStartSec=180
+

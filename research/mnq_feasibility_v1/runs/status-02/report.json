@@ -1,0 +1,54 @@
+{
+  "status": "BLOCKED_MISSING_MNQ_DATA_AND_VERIFIED_COSTS",
+  "evidence": "NO_MARKET_DATA",
+  "scenarios": [],
+  "real_signal_fit_percentage": null,
+  "real_net_pnl": null,
+  "real_drawdown": null,
+  "budget_table": [
+    {
+      "scenario": "fee2_slip0",
+      "budget": 12.5,
+      "round_trip_fee": 2,
+      "slippage_ticks_per_side": 0,
+      "max_quote_to_stop_ticks": 21
+    },
+    {
+      "scenario": "fee2_slip1",
+      "budget": 12.5,
+      "round_trip_fee": 2,
+      "slippage_ticks_per_side": 1,
+      "max_quote_to_stop_ticks": 19
+    },
+    {
+      "scenario": "fee2_slip2",
+      "budget": 12.5,
+      "round_trip_fee": 2,
+      "slippage_ticks_per_side": 2,
+      "max_quote_to_stop_ticks": 17
+    },
+    {
+      "scenario": "fee4_slip2",
+      "budget": 12.5,
+      "round_trip_fee": 4,
+      "slippage_ticks_per_side": 2,
+      "max_quote_to_stop_ticks": 13
+    }
+  ],
+  "initial_cash": 5000,
+  "initial_risk_budget": 12.5,
+  "provenance": {
+    "files": {
+      "DATA_CONTRACT.md": "5286777b1e2648942485367f48ae82fad1fd8c376a3f1c7d1368b8a3a2f09132",
+      "PROTOCOL.md": "128341ce61ca0a2c5b9bdc2fda70e13d04082981677b0d11941597af8242e905",
+      "README.md": "12a84daec9f880671374c2b17e6475d937d6711a4d5b61663792d0a481957850",
+      "config.json": "41521d784062f5b8594c2fa093dd388c6f3888dd7c0d51edabb2db11f5fefa24",
+      "engine.py": "8f20d82fdea5670d72f72095a2998d2c7aa10da299a92daf898e0df3a3163dc4",
+      "fixture.py": "f137a6a8077847179780aa50cdf13b1810d43b1aa0bf1535219b2066e3f964ad",
+      "run.py": "6fbd5da8a885a8472a281f77a746dea201492a3b6dd8e602c067a97c1dd93ab9",
+      "test_engine.py": "b393079be60642a3eab574f6888f7b523e380dbadf47f74c3ecaea1d91e0f679"
+    },
+    "input_sha256": null,
+    "input_file": null
+  }
+}

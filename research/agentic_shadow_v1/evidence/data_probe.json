@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-09-14T19:38:26.639584+00:00",
+  "source": "https://data.alpaca.markets/v1beta1/options/snapshots/SPY?feed=opra&limit=1",
+  "method": "GET",
+  "feed": "opra",
+  "orders": false,
+  "subscriptions_changed": false,
+  "status": "BLOCKED",
+  "reason": "existing_credential_loader_rejected_local_env; no network request made"
+}

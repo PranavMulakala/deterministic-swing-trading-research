@@ -1,0 +1,22 @@
+{
+  "id": "orb-stock-selection-v1",
+  "status": "frozen-development-comparison-not-trading-authorization",
+  "symbols": ["LITE", "COHR", "CIEN", "FN", "AAOI"],
+  "controls": ["SPY", "QQQ"],
+  "warmup_start": "2025-11-01",
+  "evaluation_start": "2026-01-01",
+  "evaluation_end": "2026-09-04",
+  "timezone": "America/New_York",
+  "data": {"feed": "sip", "adjustment": "raw", "symbol_asof": "2026-09-04", "stock_minutes": [1, 5], "control_minutes": [5]},
+  "eligibility": {"min_prior_close": 10, "dollar_volume_sessions": 20, "min_median_dollar_volume": 50000000, "atr_sessions": 14, "atr_smoothing": "arithmetic_mean_true_range", "min_atr_fraction": 0.02, "rvol_sessions": 14},
+  "arms": {"A": "all_lagged_eligible", "B": "same_eligible_and_opening_rvol_gte_2"},
+  "selection": {"range_start": "09:30", "range_end_exclusive": "09:35", "rvol_min": 2, "max_candidates": 5, "rank": ["rvol_desc", "lagged_median_dollar_volume_desc", "ticker_asc"]},
+  "pattern": {"type": "long_breakout_then_retest", "opening_candle_must_be_bullish": false, "first_breakout_close_after": "09:35", "last_confirmation_close": "11:00", "retest_max_later_bars": 3, "stop": "opening_range_midpoint_minus_0.01", "target_r_multiple": 2, "entry_limit_fraction_above_confirmation_close": 0.005, "one_attempt_per_symbol_session": true},
+  "portfolio": {"initial_cash": 5000, "whole_shares_only": true, "leverage": 1, "risk_fraction_per_entry": 0.005, "max_aggregate_planned_risk_fraction": 0.01, "max_positions": 2, "daily_realized_loss_halt_fraction": 0.02, "reuse_sale_proceeds": "next_calendar_trading_session_only", "simultaneous_entry_priority": ["lagged_median_dollar_volume_desc", "ticker_asc"]},
+  "bar_proxy": {"entry": "immediately_next_one_minute_bar_open", "entry_expiry_minutes": 1, "primary_slippage_bps_per_side": 10, "stress_slippage_bps_per_side": 25, "additional_fee_bps_per_side": 1, "same_minute_stop_target": "stop_first", "time_exit": "15:55", "early_close_exit_minutes_before_close": 5, "max_modeled_round_trip_cost_to_stop_distance": 0.2, "missing_execution_minute": "unresolved_not_forward_filled"},
+  "quote_validation_gates": {"max_age_seconds": 1, "max_spread_bps": 15, "required_before_execution_claims": true},
+  "news": {"used_for_selection": false, "missing_status": "unknown_not_neutral"},
+  "uncertainty": {"paired_block_bootstrap_sessions": 5, "resamples": 10000, "seed": 20260907, "confidence_level": 0.95},
+  "primary_metric": "B_minus_A_net_portfolio_return_after_identical_cost_assumptions",
+  "evaluation_label": "2026_already_explored_development_data_not_untouched_holdout"
+}

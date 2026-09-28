@@ -1,0 +1,5 @@
+{"checked_at":"2026-09-08T20:30:00+00:00","code_pins_sha256":"2a23b88a61d95b01cca5054229631f0b0320ccaed06e58d2ef826f9ee92be2ab","mode":"delayed_data_simulation_no_orders","orders_enabled":false,"policy":"forward-research-learning-v2","promotion_enabled":false,"provenance":{"days":["2026-09-08"],"pins":"2a23b88a61d95b01cca5054229631f0b0320ccaed06e58d2ef826f9ee92be2ab","references":"46aaffe61d56ac520e3e9b7e42b9598fca129650cad8ec4be1a805aa2c4080e5","source_digest":"12101b6394fb35517074ab05f2fd24ba0f9ab872d2812f58b88845642767a08a"},"run_id":"9e2aaf55679064dbf722767cc60abac629e05b4d5e0b6da1ade02197006d1129","session_readiness":{"checked_at":"2026-09-08T20:30:00+00:00","free_bytes":732676395008,"maximum_checkpoint_lag_seconds":1800,"orders_enabled":false,"reasons":[],"required_streams":14,"status":"READY_FOR_DELAYED_RESEARCH_SESSION"},"status":"REPLAY_COMPLETE_RESEARCH_ONLY"}
+----------------------------------------------------------------------
+Ran 11 tests in 0.997s
+
+OK

@@ -1,0 +1,12 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const node={innerHTML:'',textContent:'',addEventListener(){},classList:{toggle(){}}};
+const c={console,Intl,Date,Number,String,URL,AbortSignal,Promise,setInterval(){},location:{hash:'#overview'},window:{addEventListener(){}},document:{querySelector:()=>node,querySelectorAll:()=>[]},fetch:()=>new Promise(()=>{})};
+vm.createContext(c);vm.runInContext(fs.readFileSync(process.argv[2],'utf8'),c);
+c.fixture={verification:{manifest_matches_deployment:true,pin_mismatches:[],artifact:{index_hash_matches:true,latest_results_match:true}},research:{checked_at:new Date().toISOString(),results:{ok:true}},services:{}};
+assert.equal(vm.runInContext('result(fixture).ok',c),true);
+c.fixture.research.checked_at='2026-01-01T00:00:00Z';
+assert.equal(vm.runInContext('result(fixture)',c),null);
+c.fixture.research.checked_at=new Date().toISOString();
+c.fixture.services['trading-research.service']={Result:'exit-code'};
+assert.equal(vm.runInContext('result(fixture)',c),null);
+console.log('3 renderer freshness checks passed');

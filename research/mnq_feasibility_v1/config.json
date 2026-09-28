@@ -1,0 +1,28 @@
+{
+  "study": "mnq_feasibility_v1",
+  "status": "PILOT_SPECIFICATION_NOT_PROOF_OF_EDGE",
+  "initial_cash": 5000,
+  "tick_size": 0.25,
+  "tick_value": 0.5,
+  "risk_fraction": 0.0025,
+  "daily_loss_fraction": 0.005,
+  "drawdown_fraction": 0.05,
+  "max_entries_per_day": 2,
+  "max_contracts": 1,
+  "entry_delay_ns": 1000000000,
+  "entry_wait_ns": 1000000000,
+  "exit_delay_ns": 100000000,
+  "max_quote_gap_ns": 1000000000,
+  "max_spread_ticks": 4,
+  "stop_buffer_ticks": 2,
+  "minimum_net_reward_risk": 1.5,
+  "cost_status": "ILLUSTRATIVE_SCENARIOS_NOT_VERIFIED_BROKER_FEES",
+  "scenarios": [
+    {"name": "fee2_slip0", "round_trip_fee": 2, "slippage_ticks_per_side": 0},
+    {"name": "fee2_slip1", "round_trip_fee": 2, "slippage_ticks_per_side": 1},
+    {"name": "fee2_slip2", "round_trip_fee": 2, "slippage_ticks_per_side": 2},
+    {"name": "fee4_slip2", "round_trip_fee": 4, "slippage_ticks_per_side": 2}
+  ],
+  "orders_enabled": false,
+  "data_purchase_enabled": false
+}
