@@ -152,7 +152,11 @@ Everything below was read-only unless stated otherwise.
   - mid credit $0.59, below the $0.75 minimum, so a real Monday entry would have been skipped
 - **Entry time lock:** launchd fired once at 13:40 ET, catching up after the Mac woke from sleep. That run was harmless because it had no keys. Entries are now limited to Mondays 10:25–11:30 ET.
 - **First possible rule-based entry:** Mon Oct 5, 10:30 ET.
-- **Backtest:** the owner chose Databento's free credit. The key is saved in `.env.databento` (gitignored). A free cost estimate is running; no data has been purchased.
+- **Backtest:** the owner chose Databento's free credit and approved "both" periods, 2013-04 to 2025-12, up to $64 of the $125 credit (expected about $6.50).
+  - Code: `research/spy_put_spread_backtest_v1/`. `fetch_databento.py` pulls OPRA `cbbo-1m` for the SPY chain at 10:30 ET and the close each trading day, 16 days in parallel, with a $20 estimated-spend guard. `backtest.py` replays the rules under mid and natural fills, with and without the volatility filter.
+  - The pilot (2 days) matched an independent source within a few cents. Parity-derived SPY matched Alpaca's actual prices within $0.01–$0.15.
+  - A download started about 15:30 ET; Databento takes 15–60 s per 1-minute window, so it needs about 3–4 hours. Output goes to `outputs/spy_options_data/` (gitignored).
+  - Results pending.
 
 **Still unverified.**
 - Any paper order or fill, and whether target sells fill.
