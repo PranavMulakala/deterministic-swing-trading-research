@@ -39,6 +39,23 @@ class PaperCliTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "unexpected .env key"):
                 _load_env(path)
 
+    def test_env_skips_other_tools_keys_without_loading_them(self) -> None:
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / ".env"
+            path.write_text(
+                "ALPACA_PAPER_API_KEY=paper-only\nMNQ_RESEARCH_KEY=other-tool\n"
+                "TRADING_REPORT_SMTP_PASSWORD=other-tool\n",
+                encoding="utf-8",
+            )
+            path.chmod(0o600)
+            _load_env(path)
+            self.assertEqual(os.environ["ALPACA_PAPER_API_KEY"], "paper-only")
+            self.assertNotEqual(os.environ.get("MNQ_RESEARCH_KEY"), "other-tool")
+            self.assertNotEqual(os.environ.get("TRADING_REPORT_SMTP_PASSWORD"), "other-tool")
+            path.write_text("MNQ_RESEARCH_KEY=x\nSWINGBOT_KILL_SWITCH=0\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "unexpected .env key at line 2"):
+                _load_env(path)
+
     def test_env_values_are_not_shell_evaluated(self) -> None:
         with TemporaryDirectory() as directory:
             path = Path(directory) / ".env"

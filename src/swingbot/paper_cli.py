@@ -19,6 +19,17 @@ ALLOWED_ENV_KEYS = {
     "ALPACA_PAPER_API_KEY",
     "ALPACA_PAPER_API_SECRET",
 }
+# Other local tools keep these in the shared .env. They are recognized so the
+# paper bot can start, but are never loaded into this process. Any other
+# unknown key, including SWINGBOT_* controls, is still rejected.
+IGNORED_ENV_KEYS = {
+    "MNQ_RESEARCH_KEY",
+    "PAPER_TRADING_APP_KEY",
+    "PAPER_TRADING_APP_SECRET",
+    "TRADING_REPORT_SMTP_USER",
+    "TRADING_REPORT_SMTP_PASSWORD",
+    "TRADING_REPORT_RESEND_API_KEY",
+}
 
 
 def add_paper_parser(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
@@ -164,6 +175,8 @@ def _load_env(path: Path) -> None:
             raise ValueError(f"invalid .env line {line_number}")
         key, value = line.split("=", 1)
         key = key.strip()
+        if key in IGNORED_ENV_KEYS:
+            continue
         if key not in ALLOWED_ENV_KEYS:
             raise ValueError(f"unexpected .env key at line {line_number}: {key}")
         if key not in os.environ:
