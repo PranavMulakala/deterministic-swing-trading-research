@@ -64,7 +64,9 @@ class Databento:
             "start": start.astimezone(timezone.utc).isoformat(), "end": end.astimezone(timezone.utc).isoformat(),
             "encoding": "csv", "compression": "none", "pretty_px": "true", "pretty_ts": "true",
             "map_symbols": "true"}).encode()
-        for attempt in range(5):
+        # Patient retries (about 25 minutes in total) so a short Wi-Fi drop or throttling does not end the run.
+        attempts = 30
+        for attempt in range(attempts):
             request = urllib.request.Request(URL, data=body, method="POST", headers={
                 "Authorization": self._auth, "Content-Type": "application/x-www-form-urlencoded"})
             try:
@@ -72,14 +74,14 @@ class Databento:
                     return response.read().decode()
             except urllib.error.HTTPError as exc:
                 detail = exc.read(600).decode(errors="replace").replace(self._key, "[key]")
-                if exc.code in (429, 500, 502, 503, 504) and attempt < 4:
-                    time.sleep(3 * (attempt + 1))
+                if exc.code in (429, 500, 502, 503, 504) and attempt < attempts - 1:
+                    time.sleep(min(60, 5 * (attempt + 1)))
                     continue
                 raise RuntimeError(f"HTTP {exc.code}: {detail}") from None
             except OSError:
-                if attempt == 4:
+                if attempt == attempts - 1:
                     raise
-                time.sleep(3 * (attempt + 1))
+                time.sleep(min(60, 5 * (attempt + 1)))
 
 
 def parse_osi(symbol):
