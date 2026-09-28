@@ -1,0 +1,24 @@
+[Unit]
+Description=LITE paper dip bot v1 (Alpaca paper trading only)
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+Type=oneshot
+User=lite-bot
+Group=lite-bot
+WorkingDirectory=/opt/lite-paper-bot
+Environment=PYTHONPATH=/opt/lite-paper-bot
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -u -m research.lite_paper_bot_v1.bot
+TimeoutStartSec=20min
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/opt/lite-paper-bot/outputs
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes

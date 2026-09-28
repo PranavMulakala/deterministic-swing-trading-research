@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the LITE paper dip bot at 10:00 New York time, Monday to Friday
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 10:00:00 America/New_York
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target
