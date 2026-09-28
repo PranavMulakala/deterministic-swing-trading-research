@@ -16,7 +16,7 @@ The owner approved these rules, the volatility filter, and a weekday 10:30 ET sc
    - **Break-even exit:** if SPY's last close is below (short strike − credit), close now.
    - **Time exit:** if 5 or fewer trading sessions remain through expiration, close now.
    - Otherwise, re-place the profit-take order if it is missing.
-3. **Open a new spread** only on **Mondays** and only when flat. All of these must hold:
+3. **Open a new spread** only on **Mondays between 10:25 and 11:30 ET**, and only when flat. The window, added Sept 28, enforces "about 10:30": a run macOS launches late, for example after the Mac wakes from sleep, cannot enter. Exits and management still run whenever the market is open. All of these must hold:
    - SPY's last close is above its 50-day average (adjusted daily closes, through the prior session).
    - At-the-money put implied volatility of the chosen expiration is **≥ 1.2 × SPY's 20-day realized volatility** (annualized, from 21 closes).
    - The expiration is 21–35 calendar days away; the one closest to 30 days is used.

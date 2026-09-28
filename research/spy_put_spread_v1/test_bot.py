@@ -180,6 +180,14 @@ class EntryTests(unittest.TestCase):
         self.assertEqual(run(broker, bound(), clock)[0], [])
         self.assertEqual(broker.submits, [])
 
+    def test_catch_up_run_outside_entry_window_does_not_open(self):
+        clock = Clock(hour=13, minute=40)  # e.g. launchd catching up after the Mac woke from sleep
+        broker = FakeBroker(clock)
+        kinds, events = run(broker, bound(), clock)
+        self.assertEqual(kinds, ["NO_ENTRY"])
+        self.assertIn("entry window", events[0]["reason"])
+        self.assertEqual(broker.submits, [])
+
     def test_unfilled_entry_tries_twice_then_cancels(self):
         clock = Clock()
         broker = FakeBroker(clock, fill="none")

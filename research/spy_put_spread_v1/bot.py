@@ -39,6 +39,7 @@ MAX_CONTRACTS = 5
 IV_RV_MIN = Decimal("1.2")
 DTE_MIN, DTE_MAX, DTE_TARGET = 21, 35, 30
 TIME_EXIT_SESSIONS = 5
+ENTRY_WINDOW = (dtime(10, 25), dtime(11, 30))
 PREFIX = "spy-bps-"
 FINAL = {"filled", "canceled", "expired", "rejected"}
 CENT = Decimal("0.01")
@@ -477,6 +478,11 @@ def run(broker, state, now, sleep, log, persist, kill_path):
     view = market_view(broker, today)
     exited = manage(broker, state, view, today, now, sleep, log, persist) if state.get("position") else False
     if today.weekday() != 0:
+        return
+    moment = now().astimezone(NY).time()
+    if not ENTRY_WINDOW[0] <= moment <= ENTRY_WINDOW[1]:
+        log({"type": "NO_ENTRY", "reason": f"outside the {ENTRY_WINDOW[0]:%H:%M}-{ENTRY_WINDOW[1]:%H:%M} ET entry window "
+                                           "(for example, a catch-up run after the Mac woke from sleep)"})
         return
     if exited:
         log({"type": "NO_ENTRY", "reason": "a spread was closed today; no same-day replacement (no rolling)"})
