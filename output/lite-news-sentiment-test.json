@@ -1,0 +1,221 @@
+{
+  "articles": 899,
+  "periods": {
+    "main_2025_2026": {
+      "from": "2025-01-02",
+      "to": "2026-09-28",
+      "sessions": 435,
+      "mornings_with_any_news": 194,
+      "signal_days": 192,
+      "signal_days_with_any_news": 89,
+      "signal_days_skipped_by_filter": 3,
+      "skipped_days": [
+        "2026-06-05",
+        "2026-07-15",
+        "2026-07-28"
+      ],
+      "without_filter": {
+        "sessions": 435,
+        "signals": 192,
+        "buys": 85,
+        "skipped_holding": 107,
+        "sales": 85,
+        "realized_pnl": 115956,
+        "marked_pnl_at_end": 115956,
+        "weeks": 92,
+        "weeks_realized_1000_plus": 48,
+        "weeks_marked_1000_plus": 48,
+        "weeks_marked_minus_1000_or_worse": 23,
+        "worst_marked_week": -7924,
+        "average_realized_per_week": 1260,
+        "longest_run_of_weeks_without_a_sale": 25,
+        "worst_drop_from_peak_marked": -29719,
+        "worst_paper_loss_on_one_holding": {
+          "entry_day": "2025-01-24",
+          "fill": "98.24",
+          "low": "45.65",
+          "percent": -53.5,
+          "dollars": -32080
+        },
+        "longest_hold": {
+          "entry_day": "2025-01-24",
+          "exit_day": "2025-07-17",
+          "sessions": 120
+        },
+        "same_day_sales": 47,
+        "sales_within_5_sessions": 75,
+        "open_at_end": null
+      },
+      "with_filter": {
+        "sessions": 435,
+        "signals": 189,
+        "buys": 84,
+        "skipped_holding": 105,
+        "sales": 84,
+        "realized_pnl": 114760,
+        "marked_pnl_at_end": 114760,
+        "weeks": 92,
+        "weeks_realized_1000_plus": 48,
+        "weeks_marked_1000_plus": 48,
+        "weeks_marked_minus_1000_or_worse": 23,
+        "worst_marked_week": -7924,
+        "average_realized_per_week": 1247,
+        "longest_run_of_weeks_without_a_sale": 25,
+        "worst_drop_from_peak_marked": -29719,
+        "worst_paper_loss_on_one_holding": {
+          "entry_day": "2025-01-24",
+          "fill": "98.24",
+          "low": "45.65",
+          "percent": -53.5,
+          "dollars": -32080
+        },
+        "longest_hold": {
+          "entry_day": "2025-01-24",
+          "exit_day": "2025-07-17",
+          "sessions": 120
+        },
+        "same_day_sales": 46,
+        "sales_within_5_sessions": 74,
+        "open_at_end": null
+      },
+      "descriptive_by_morning_news": {
+        "bearish": {
+          "signal_days": 3,
+          "hit_2pct_within_5_days": "3 of 3",
+          "median_worst_drop_pct": -3.2
+        },
+        "neutral": {
+          "signal_days": 20,
+          "hit_2pct_within_5_days": "20 of 20",
+          "median_worst_drop_pct": -1.7
+        },
+        "bullish": {
+          "signal_days": 66,
+          "hit_2pct_within_5_days": "61 of 66",
+          "median_worst_drop_pct": -1.5
+        },
+        "no news": {
+          "signal_days": 103,
+          "hit_2pct_within_5_days": "90 of 103",
+          "median_worst_drop_pct": -2.2
+        }
+      }
+    },
+    "stress_2022_2024": {
+      "from": "2022-03-01",
+      "to": "2024-12-31",
+      "sessions": 714,
+      "mornings_with_any_news": 13,
+      "signal_days": 215,
+      "signal_days_with_any_news": 3,
+      "signal_days_skipped_by_filter": 1,
+      "skipped_days": [
+        "2023-07-12"
+      ],
+      "without_filter": {
+        "sessions": 714,
+        "signals": 215,
+        "buys": 8,
+        "skipped_holding": 207,
+        "no_data": 2,
+        "sales": 7,
+        "realized_pnl": 8419,
+        "marked_pnl_at_end": 4063,
+        "weeks": 149,
+        "weeks_realized_1000_plus": 6,
+        "weeks_marked_1000_plus": 47,
+        "weeks_marked_minus_1000_or_worse": 53,
+        "worst_marked_week": -9131,
+        "average_realized_per_week": 57,
+        "longest_run_of_weeks_without_a_sale": 119,
+        "worst_drop_from_peak_marked": -36359,
+        "worst_paper_loss_on_one_holding": {
+          "entry_day": "2022-08-24",
+          "fill": "90.79",
+          "low": "35.35",
+          "percent": -61.1,
+          "dollars": -36590
+        },
+        "longest_hold": {
+          "entry_day": "2022-08-24",
+          "exit_day": "2024-12-04",
+          "sessions": 574
+        },
+        "same_day_sales": 1,
+        "sales_within_5_sessions": 4,
+        "open_at_end": {
+          "entry_day": "2024-12-17",
+          "fill": "90.54",
+          "shares": 662,
+          "marked_pnl": -4356
+        }
+      },
+      "with_filter": {
+        "sessions": 714,
+        "signals": 214,
+        "buys": 8,
+        "skipped_holding": 206,
+        "no_data": 2,
+        "sales": 7,
+        "realized_pnl": 8419,
+        "marked_pnl_at_end": 4063,
+        "weeks": 149,
+        "weeks_realized_1000_plus": 6,
+        "weeks_marked_1000_plus": 47,
+        "weeks_marked_minus_1000_or_worse": 53,
+        "worst_marked_week": -9131,
+        "average_realized_per_week": 57,
+        "longest_run_of_weeks_without_a_sale": 119,
+        "worst_drop_from_peak_marked": -36359,
+        "worst_paper_loss_on_one_holding": {
+          "entry_day": "2022-08-24",
+          "fill": "90.79",
+          "low": "35.35",
+          "percent": -61.1,
+          "dollars": -36590
+        },
+        "longest_hold": {
+          "entry_day": "2022-08-24",
+          "exit_day": "2024-12-04",
+          "sessions": 574
+        },
+        "same_day_sales": 1,
+        "sales_within_5_sessions": 4,
+        "open_at_end": {
+          "entry_day": "2024-12-17",
+          "fill": "90.54",
+          "shares": 662,
+          "marked_pnl": -4356
+        }
+      },
+      "descriptive_by_morning_news": {
+        "bearish": {
+          "signal_days": 1,
+          "hit_2pct_within_5_days": "1 of 1",
+          "median_worst_drop_pct": 0.0
+        },
+        "neutral": {
+          "signal_days": 0,
+          "hit_2pct_within_5_days": "0 of 0",
+          "median_worst_drop_pct": null
+        },
+        "bullish": {
+          "signal_days": 2,
+          "hit_2pct_within_5_days": "2 of 2",
+          "median_worst_drop_pct": 0.0
+        },
+        "no news": {
+          "signal_days": 212,
+          "hit_2pct_within_5_days": "156 of 212",
+          "median_worst_drop_pct": -1.7
+        }
+      }
+    }
+  },
+  "pre_declared_checks": {
+    "1_smaller_worst_drop_in_both_periods": false,
+    "2_main_realized_down_no_more_than_10pct": true,
+    "3_stress_marked_end_no_worse": true
+  },
+  "news_filter_helped": false
+}

@@ -19,3 +19,4 @@ outputs/spy_put_spread_bot/
 outputs/spy_options_data/
 outputs/lite_history/
 .env.news
+outputs/lite_news_history/
