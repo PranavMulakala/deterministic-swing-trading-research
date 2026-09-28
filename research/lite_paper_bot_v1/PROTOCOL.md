@@ -1,6 +1,6 @@
 # LITE paper dip bot v1 — frozen September 28, 2026
 
-**Paper trading only.** This bot places orders in a dedicated Alpaca **paper** account ("LITE bot"). It never uses live trading, Robinhood, the ETF bot's paper account, or Joey's material. The owner approved its rules and the weekday 10:00 schedule on September 28, 2026: the dip rule, 7 shares, a +2% target over the actual fill, no automatic stop, no time limit, no averaging down.
+**Paper trading only.** This bot places orders in a dedicated Alpaca **paper** account ("LITE bot"). It never uses live trading, Robinhood, the ETF bot's paper account, or Joey's material. The owner approved its rules and the weekday 10:00 schedule on September 28, 2026: the dip rule, 7 shares, a +2% target over the actual fill, no automatic stop, no time limit, no averaging down. That evening the owner raised the size to 66 shares (see Changes).
 
 ## The rule (checked once per weekday)
 
@@ -13,10 +13,10 @@ If both hold and the bot holds no LITE, it buys. This is the `dip_30` definition
 
 ## Orders
 
-- **Buy:** 7 whole shares; a DAY **limit** order at the reference price +0.1%, rounded to the cent. The reference is the fresh IEX ask (≤30 s old), or else the latest IEX trade (≤60 s old). It must be within 2% of the 09:55 close, or the day is skipped. The buy must be submitted by 10:04:00 ET. Anything unfilled is cancelled at 10:05:00 ET.
+- **Buy:** 66 whole shares (about $60,000 at late-September 2026 prices); a DAY **limit** order at the reference price +0.1%, rounded to the cent. The reference is the fresh IEX ask (≤30 s old), or else the latest IEX trade (≤60 s old). It must be within 2% of the 09:55 close, or the day is skipped. The buy must be submitted by 10:04:00 ET. Anything unfilled is cancelled at 10:05:00 ET.
 - **Sell:** as soon as shares fill, a GTC **limit** sell for exactly the filled shares at **the average fill × 1.02, rounded up to the cent**. It never sells below that price, and it never uses market or stop orders.
 - **One position at a time.** No new buy while holding. There is no same-day re-entry and no averaging down.
-- **Cash only:** the account's cash must cover 7 × limit × 1.01, and each buy is capped at $8,000. Borrowing power is ignored.
+- **Cash only:** the account's cash must cover 66 × limit × 1.01, and each buy is capped at $72,000, so no buy happens above about $1,090 a share. Borrowing power is ignored.
 
 ## Every run also
 
@@ -29,7 +29,11 @@ If both hold and the bot holds no LITE, it buys. This is the `dip_30` definition
 
 ## First run
 
-`--bind` locks the bot to the new paper account after read-only checks: the account is ACTIVE and not blocked, has no positions and no open orders, and holds at least $8,000 cash. Until it is bound, scheduled runs place no orders.
+`--bind` locks the bot to the new paper account after read-only checks: the account is ACTIVE and not blocked, has no positions and no open orders, and holds at least the per-buy cap in cash. The account was bound on September 28 under the original $8,000 cap and holds $100,000 in paper cash. Until it is bound, scheduled runs place no orders.
+
+## Changes
+
+- **September 28, 2026, evening, by the owner:** size raised from 7 to 66 shares and the per-buy cap from $8,000 to $72,000, matching the owner's $50,000–$70,000 budget for this paper test. The rule, the +2% target, no stop and the 10:00 schedule are unchanged. It applies from the 10:00 ET run on September 29; the bot had placed no orders before the change. At this size, each +2% sale makes about $1,200, a 10% drop while holding is a paper loss of about $6,000, and the 2026 replay's worst hold (entered June 16, down 36% at its low) would have been about −$21,900 before it recovered.
 
 ## What this cannot show
 

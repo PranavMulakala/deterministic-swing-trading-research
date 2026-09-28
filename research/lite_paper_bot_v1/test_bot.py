@@ -126,12 +126,12 @@ def run(broker, state, clock, kill=NO_KILL):
 
 def holding(broker, target="100.58"):
     """Prepare a filled position with its resting target sell."""
-    broker.held = Decimal(7)
-    buy = broker._new("buy", 7, Decimal("98.70"), "lite-dip-2026-09-28-buy", "day")
-    buy.update(status="filled", filled_qty="7", filled_avg_price="98.6")
-    sell = broker._new("sell", 7, Decimal(target), "lite-dip-2026-09-28-sell", "gtc")
+    broker.held = Decimal(bot.SHARES)
+    buy = broker._new("buy", bot.SHARES, Decimal("98.70"), "lite-dip-2026-09-28-buy", "day")
+    buy.update(status="filled", filled_qty=str(bot.SHARES), filled_avg_price="98.6")
+    sell = broker._new("sell", bot.SHARES, Decimal(target), "lite-dip-2026-09-28-sell", "gtc")
     broker.calls.clear()
-    return {"entry_date": "2026-09-28", "qty": "7", "avg_fill": "98.6", "target": target,
+    return {"entry_date": "2026-09-28", "qty": str(bot.SHARES), "avg_fill": "98.6", "target": target,
             "buy_order_id": buy["id"], "sell_order_id": sell["id"],
             "sell_client_order_id": "lite-dip-2026-09-28-sell", "sell_replacements": 0}
 
@@ -171,8 +171,8 @@ class DecisionTests(unittest.TestCase):
         kinds, events = run(broker, state, clock)
         self.assertEqual(kinds, ["SIGNAL", "BUY_SUBMITTED", "FILLED_AND_TARGET_PLACED"])
         # Limit = 98.60 ask x 1.001 = 98.6986 -> 98.70; fill 98.60; target 98.60 x 1.02 = 100.572 -> up to 100.58.
-        self.assertEqual(broker.calls[0], ("buy", 7, "98.70", "day", "lite-dip-2026-09-29-buy"))
-        self.assertEqual(broker.calls[1], ("sell", 7, "100.58", "gtc", "lite-dip-2026-09-29-sell"))
+        self.assertEqual(broker.calls[0], ("buy", bot.SHARES, "98.70", "day", "lite-dip-2026-09-29-buy"))
+        self.assertEqual(broker.calls[1], ("sell", bot.SHARES, "100.58", "gtc", "lite-dip-2026-09-29-sell"))
         self.assertEqual(state["position"]["target"], "100.58")
         self.assertIsNone(state["pending_buy"])
         self.assertFalse(events[0]["rebound_learning_only"])
@@ -242,7 +242,7 @@ class HoldingTests(unittest.TestCase):
                 order["status"] = "expired"
         kinds, _ = run(broker, state, clock)
         self.assertEqual(kinds[0], "TARGET_SELL_REPLACED")
-        self.assertEqual(broker.calls[0], ("sell", 7, "100.58", "gtc", "lite-dip-2026-09-28-sell-r1"))
+        self.assertEqual(broker.calls[0], ("sell", bot.SHARES, "100.58", "gtc", "lite-dip-2026-09-28-sell-r1"))
 
     def test_filled_sell_records_realized_profit(self):
         clock = Clock()
@@ -251,14 +251,14 @@ class HoldingTests(unittest.TestCase):
         broker.fill_sell()
         kinds, events = run(broker, state, clock)
         self.assertEqual(kinds[0], "SOLD_AT_TARGET")
-        self.assertEqual(events[0]["realized_pnl"], "13.86")  # 7 x (100.58 - 98.60)
+        self.assertEqual(events[0]["realized_pnl"], f"{bot.SHARES * Decimal('1.98'):.2f}")  # shares x (100.58 - 98.60)
         self.assertIsNone(state["position"])
         self.assertEqual(len(state["closed"]), 1)
 
     def test_unrecorded_shares_or_mismatched_sell_halt(self):
         clock = Clock()
         broker = FakeBroker(clock)
-        broker.held = Decimal(7)
+        broker.held = Decimal(bot.SHARES)
         with self.assertRaises(bot.Halt):
             run(broker, bound(), clock)
         broker = FakeBroker(clock)
@@ -270,14 +270,14 @@ class HoldingTests(unittest.TestCase):
     def test_interrupted_buy_is_adopted_and_gets_its_sell(self):
         clock = Clock()
         broker = FakeBroker(clock)
-        buy = broker._new("buy", 7, Decimal("98.70"), "lite-dip-2026-09-29-buy", "day")
-        buy.update(status="filled", filled_qty="7", filled_avg_price="98.6")
-        broker.held = Decimal(7)
+        buy = broker._new("buy", bot.SHARES, Decimal("98.70"), "lite-dip-2026-09-29-buy", "day")
+        buy.update(status="filled", filled_qty=str(bot.SHARES), filled_avg_price="98.6")
+        broker.held = Decimal(bot.SHARES)
         broker.calls.clear()
         state = bound(pending_buy={"date": "2026-09-29", "client_order_id": "lite-dip-2026-09-29-buy"})
         kinds, _ = run(broker, state, clock)
         self.assertEqual(kinds[:2], ["ADOPTED_INTERRUPTED_BUY", "SIGNAL"])
-        self.assertEqual(broker.calls[0], ("sell", 7, "100.58", "gtc", "lite-dip-2026-09-29-sell"))
+        self.assertEqual(broker.calls[0], ("sell", bot.SHARES, "100.58", "gtc", "lite-dip-2026-09-29-sell"))
         self.assertEqual(kinds[-1], "SIGNAL_SKIPPED_HOLDING")
 
     def test_kill_file_stops_everything(self):
@@ -319,17 +319,17 @@ class ClientGuardTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 client._call(method, base, path)
         with self.assertRaises(ValueError):
-            client.submit_buy(8, Decimal("98.70"), "lite-dip-x")
+            client.submit_buy(bot.SHARES + 1, Decimal("98.70"), "lite-dip-x")
         with self.assertRaises(ValueError):
-            client.submit_buy(7, Decimal("98.705"), "lite-dip-x")
+            client.submit_buy(bot.SHARES, Decimal("98.705"), "lite-dip-x")
         with self.assertRaises(ValueError):
             client.submit_sell(7, Decimal("100.58"), "manual-x")
         self.assertEqual(opener.requests, [])
-        client.submit_buy(7, Decimal("98.70"), "lite-dip-2026-09-29-buy")
+        client.submit_buy(bot.SHARES, Decimal("98.70"), "lite-dip-2026-09-29-buy")
         method, url, data = opener.requests[0]
         body = json.loads(data)
         self.assertEqual((method, url), ("POST", bot.PAPER + "/v2/orders"))
-        self.assertEqual((body["type"], body["time_in_force"], body["qty"], body["symbol"]), ("limit", "day", "7", "LITE"))
+        self.assertEqual((body["type"], body["time_in_force"], body["qty"], body["symbol"]), ("limit", "day", str(bot.SHARES), "LITE"))
 
     def test_credentials_need_a_private_file_with_both_keys(self):
         with tempfile.TemporaryDirectory() as folder:

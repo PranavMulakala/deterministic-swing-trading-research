@@ -30,10 +30,10 @@ KEY_NAMES = ("LITE_PAPER_API_KEY", "LITE_PAPER_API_SECRET")
 PAPER = "https://paper-api.alpaca.markets"
 DATA = "https://data.alpaca.markets"
 SYMBOL = "LITE"
-SHARES = 7
+SHARES = 66  # owner change Sept 28 evening: about $60,000 per trade (paper)
 TARGET_MULTIPLIER = Decimal("1.02")
 BUY_BUFFER = Decimal("1.001")
-MAX_DEBIT = Decimal("8000")
+MAX_DEBIT = Decimal("72000")
 PREFIX = "lite-dip-"
 DECIDE_AT, LAST_SUBMIT, CANCEL_AT = dtime(10, 0, 30), dtime(10, 4), dtime(10, 5)
 FINAL = {"filled", "canceled", "expired", "rejected"}
@@ -150,14 +150,14 @@ class PaperBroker:
 
     def submit_buy(self, qty, limit, client_order_id):
         if qty != SHARES or limit <= 0 or limit != limit.quantize(CENT) or not client_order_id.startswith(PREFIX):
-            raise ValueError("Buy must be exactly 7 LITE shares at a positive cent limit")
+            raise ValueError(f"Buy must be exactly {SHARES} LITE shares at a positive cent limit")
         return self._call("POST", PAPER, "/v2/orders", body={
             "symbol": SYMBOL, "qty": str(qty), "side": "buy", "type": "limit", "time_in_force": "day",
             "limit_price": str(limit), "client_order_id": client_order_id, "extended_hours": False})
 
     def submit_sell(self, qty, limit, client_order_id):
         if not 1 <= qty <= SHARES or limit <= 0 or limit != limit.quantize(CENT) or not client_order_id.startswith(PREFIX):
-            raise ValueError("Sell must be 1-7 LITE shares at a positive cent limit")
+            raise ValueError(f"Sell must be 1-{SHARES} LITE shares at a positive cent limit")
         return self._call("POST", PAPER, "/v2/orders", body={
             "symbol": SYMBOL, "qty": str(qty), "side": "sell", "type": "limit", "time_in_force": "gtc",
             "limit_price": str(limit), "client_order_id": client_order_id, "extended_hours": False})
@@ -268,7 +268,7 @@ def reconcile(broker, state, log, persist=lambda: None):
 
 
 def enter(broker, state, account, now, sleep, log, persist):
-    """At 10:00:30 ET evaluate the dip rule; if flat, buy 7, cancel the rest at 10:05, place the +2% sell."""
+    """At 10:00:30 ET evaluate the dip rule; if flat, buy SHARES, cancel the rest at 10:05, place the +2% sell."""
     today = now().astimezone(NY).date()
     wait = (at(today, DECIDE_AT) - now()).total_seconds()
     if wait > 0:
