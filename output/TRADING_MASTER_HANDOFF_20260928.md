@@ -126,7 +126,7 @@ Everything below was read-only unless stated otherwise.
   - explicit approval for any scheduled job
 
 **LITE paper bot v1: built and scheduled (10:40 ET).** The owner approved a +2% target and "install the 10:00 paper job".
-- Code: `research/lite_paper_bot_v1/` ([rules](../research/lite_paper_bot_v1/PROTOCOL.md)). It trades 7 shares on the dip rule, buys with a DAY limit order at 10:00:30 and cancels at 10:05, then rests a GTC limit sell at the fill × 1.02 rounded up. There is no stop and no time limit. It uses the LITE paper keys in `.env.lite` (owner-only, gitignored) through a LITE-only client that allows only listed requests.
+- Code: `research/lite_paper_bot_v1/` ([rules](../research/lite_paper_bot_v1/PROTOCOL.md)). It trades 66 shares on the dip rule (7 until the owner raised it on the evening of Sept 28, with a $72,000 per-buy cap), buys with a DAY limit order at 10:00:30 and cancels at 10:05, then rests a GTC limit sell at the fill × 1.02 rounded up. There is no stop and no time limit. It uses the LITE paper keys in `.env.lite` (owner-only, gitignored) through a LITE-only client that allows only listed requests.
 - Safeguards: it halts to `outputs/lite_paper_bot/KILL` on any unexpected state, and it recovers an interrupted buy.
 - Tests: 16 offline tests pass.
 - Schedule: launchd `com.pranav.lite-paper-bot`, Mon–Fri 10:00.
@@ -164,3 +164,19 @@ Everything below was read-only unless stated otherwise.
 - The next earnings date.
 - Cloud journals for direct breakout and the free-stock bot (not checked).
 - Robinhood balances beyond the owner's screenshot.
+
+## September 28 evening update (about 17:50 ET)
+
+- **LITE paper bot raised to 66 shares** at the owner's request ("set the paper bot to 66 shares").
+  - Changes: the per-buy cap went from $8,000 to $72,000, so there is no buy above about $1,090. PROTOCOL has a Changes note, the tests follow `SHARES`, and 16 tests pass (commit 4eb55c0).
+  - `--status`: bound account matches, $100,000 cash, no positions or orders, no KILL, no trades yet.
+  - It applies from the Tue Sept 29, 10:00 ET run.
+- **History check of the dip rule at $60,000 per buy** (commit ea955aa): `research/lite_dip_history_v1/`, results in [LITE_DIP_BOT_HISTORY_20260928.md](LITE_DIP_BOT_HISTORY_20260928.md).
+  - The owner argued for judging on 2025–2026 only because LITE's growth changed its behavior. That is the main result; 2022–2024 is kept as a stress test.
+  - SIP signals are primary because IEX lacked complete mornings on 445 of 753 days in 2022–2024.
+  - 2026: 59 sales, +$79,946, $1,000+ weeks in 31 of 40, worst paper loss −$21,658.
+  - 2025: +$38,403, 18 of 53 weeks, a 25-week gap with no sale, −$32,080 paper loss.
+  - 2022–2024: a Jan 18, 2022 buy at $104.90 was stuck until Jul 28, 2025, at worst −$39,713 (−66%).
+- **The real position:** LITE's official close was $921.32, so the owner's 33.034698 shares were about +$435 at 4 PM. The owner saw $500+ including after-hours.
+- **News sentiment:** the owner wants news (China/Iran/US, bonds) factored in. It is untested: there is no point-in-time LITE news history in the repo. It was offered only as a learning-only log, pending approval.
+
