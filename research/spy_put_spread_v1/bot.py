@@ -504,12 +504,15 @@ def plumbing_test(broker, state, now, sleep, log, persist, kill_path):
     close_spread(broker, state, now, sleep, log, persist, "plumbing_test")
 
 
-def bind(broker, state, now, other_keys):
+def bind(broker, state, now, other_keys, other_accounts=frozenset()):
     if state.get("account_id"):
         raise SystemExit("Already bound to a paper account; not rebinding")
     if other_keys:
         raise SystemExit(".env.options reuses another bot's paper key; use the separate Options bot account")
     account = broker.account()
+    if account.get("id") in other_accounts:
+        raise SystemExit("These keys open another bot's paper account (LITE or ETF). Select the Options bot "
+                         "account in Alpaca before generating keys.")
     problems = []
     if account.get("status") != "ACTIVE" or account.get("trading_blocked") or account.get("account_blocked"):
         problems.append("account not active or blocked")
@@ -570,6 +573,21 @@ def other_bot_keys(key):
     return key in found
 
 
+def other_bot_accounts():
+    """Account IDs this bot must never bind to: the LITE bot's bound account and the ETF/research account."""
+    ids = set()
+    try:
+        ids.add(json.loads((ROOT / "outputs/lite_paper_bot/state.json").read_text())["account_id"])
+    except Exception:
+        pass
+    try:
+        from research.lite_volume_rebound_v1.refresh import credentials as etf_credentials
+        ids.add(PaperBroker(*etf_credentials()).account()["id"])
+    except Exception:
+        pass
+    return ids
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
@@ -584,7 +602,7 @@ def main():
         key, secret = credentials()
         broker = PaperBroker(key, secret)
         if args.bind:
-            state = bind(broker, state, now(), other_bot_keys(key))
+            state = bind(broker, state, now(), other_bot_keys(key), other_bot_accounts())
             save_state(state, state_path)
             print(json.dumps({"bound": True, "bound_at": state["bound_at"]}))
         else:

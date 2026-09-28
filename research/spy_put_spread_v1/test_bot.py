@@ -343,6 +343,13 @@ class ClientGuardTests(unittest.TestCase):
         self.assertEqual([(leg["symbol"], leg["side"], leg["position_intent"]) for leg in body["legs"]],
                          [(s, "sell", "sell_to_open"), (l, "buy", "buy_to_open")])
 
+    def test_bind_refuses_another_bots_account(self):
+        clock = Clock()
+        broker = FakeBroker(clock)
+        with self.assertRaisesRegex(SystemExit, "another bot's paper account"):
+            bot.bind(broker, {}, clock.now(), False, {"acct-opt"})
+        self.assertEqual(bot.bind(broker, {}, clock.now(), False, {"acct-lite"})["account_id"], "acct-opt")
+
     def test_credentials_need_a_private_file_with_both_keys(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / ".env.options"
