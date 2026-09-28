@@ -16,3 +16,4 @@ outputs/real_position_alert/
 .env.options
 outputs/spy_put_spread_bot/
 .env.databento
+outputs/spy_options_data/
