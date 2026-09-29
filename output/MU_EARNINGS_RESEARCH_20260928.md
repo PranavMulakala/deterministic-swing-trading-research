@@ -88,3 +88,13 @@ On $200,000, declines like these mean paper losses of **$60,000–$116,000**.
 - **Unverified or snippet-only, and left out of the page:** HBM market share, the China exit, and the "best Nasdaq-100 stock" claim, which traces to a social-media post.
 
 **Page for the owner's father:** "Micron Before Earnings", https://claude.ai/artifact/UWxkpyMGkEd5YCMPiHqAFW. It is private until the owner shares it.
+
+## Online claims the owner shared (reviewed Sept 29, about 00:30 ET)
+- **D.A. Davidson (Gil Luria): $2,000 target**, Sept 28. Confirmed on Yahoo Finance; the article lists no risks.
+- **Baird (Tristan Gerra): target raised to $1,520 from $1,280**, Sept 28. Confirmed.
+- **"Up 17% in nine days on no company news"** (reply on X). Confirmed: $926.9 on Sept 16 to $1,082.28 on Sept 25, +16.8%.
+- **"Beat EPS eight quarters running, yet fell the next day after most"** (reply on X). The repo count: 8 straight beats, down the next day 5 of the last 8 and 6 of the last 10.
+- **"Zero run-up"** (Reddit). Half true: −8% from Jun 29, but +17% over Sept 16–25.
+- **Teng Yan: 80% chance revenue exceeds $52B, base case $56.2B.** Guidance is $49–51B and consensus about $51B, so the unofficial bar sits above consensus.
+- **CoinForge: a 40-year trend line points to about $300 in 2027.** A chart drawing, not evidence.
+- **Headline: Anthropic to spend $518B "in 2027".** Search summaries of Reuters' Sept 28 story call it about $518B of future obligations over several years; the article could not be opened (blocked or timed out three times). The 2025 net loss was about $42B. Claude, the author, is made by Anthropic.
