@@ -196,3 +196,11 @@ Everything below was read-only unless stated otherwise.
 - **Paper test plan:** [PAPER_TEST_PLAN_20260929.md](PAPER_TEST_PLAN_20260929.md). It has an 8-week LITE paper test, a weekly scorecard, and proposed checkpoints: −$15,000 open paper loss, six weeks without a sale, or any HALTED/ERROR email or missing email.
 - **Pre-flight (read-only):** both launchd jobs are loaded; the ETF job is disabled. The Mac sleeps after 1 minute idle, and today's 10:00 run was missed because it was asleep. The owner should keep it plugged in, lid open, with no sleep on power, or deploy to the cloud.
 - **Visual summary for the owner** (private artifact): https://claude.ai/artifact/8cqznZXa4FrbTTqpxLeKy8. It shows weekly profit and the running total for 2025–2026 and 2022–2024, the news test, the options holdout, and tomorrow's checklist.
+
+## September 29 update (MNQ revived, about 09:30 ET)
+- **MNQ paper bot (cloud, IBKR):** it had been stuck since about Sept 22 on `GATEWAY_LOGIN_OR_API_REQUIRED`, with 0 events. The owner asked to revive it as-is.
+  - Claude opened a loopback SSH tunnel to the server's private noVNC console on port 6081.
+  - The owner logged into the paper Gateway and personally clicked IBKR's paper-account notice ("I understand and accept").
+  - At 13:30 UTC the collector reported `COLLECTING_REALTIME` with market data type 1 (real-time). No code or config changed. Claude closed the tunnel afterwards.
+- **Future logouts:** IBKR expires Gateway sessions, so this login must be repeated. The server's SSH firewall allows only the owner's home IPs.
+
