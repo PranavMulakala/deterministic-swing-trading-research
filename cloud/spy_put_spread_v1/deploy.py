@@ -86,7 +86,7 @@ else:
 
 TEST_RUN = r"""set -euo pipefail
 systemctl start spy-put-spread-bot.service || true
-journalctl -u spy-put-spread-bot.service -n 1 -o cat --no-pager
+journalctl -u spy-put-spread-bot.service -n 20 -o cat --no-pager
 """
 
 ENABLE = r"""set -euo pipefail
@@ -132,11 +132,12 @@ def refuse_now(now):
     return None
 
 
-def clean(printed):
-    """The service prints {"headline", "events"} last; the test run is clean only if nothing traded or failed."""
+def clean(journal):
+    """The bot prints one {"headline", "events"} line per run; the test run is clean only if nothing traded or failed."""
+    lines = [line for line in journal.splitlines() if line.startswith('{"headline"')]
     try:
-        result = json.loads(printed)
-    except ValueError:
+        result = json.loads(lines[-1])
+    except (IndexError, ValueError):
         return False, "no summary line from the server run"
     bad = sorted(set(result.get("events", [])) & UNCLEAN)
     return not bad, result.get("headline", "?") + (f" (blocked: {', '.join(bad)})" if bad else "")
@@ -173,7 +174,7 @@ def main():
     print("1/5 install:", remote(INSTALL, archive).replace("\n", " | "))
     payload = json.dumps({"key": key, "secret": secret, "resend": resend, "state": state}).encode()
     print("2/5 keys:", remote("python3 -c " + shlex.quote(SECRETS), payload))
-    ok, detail = clean((remote(TEST_RUN).splitlines() or [""])[-1])
+    ok, detail = clean(remote(TEST_RUN))
     print("3/5 server test run:", detail)
     if not ok:
         raise SystemExit("Server test run was not clean; the Mac job stays active and the server timer is NOT enabled")

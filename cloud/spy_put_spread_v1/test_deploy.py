@@ -20,6 +20,8 @@ class DeployGuardTests(unittest.TestCase):
         self.assertFalse(deploy.clean('{"headline": "Error", "events": ["ERROR"]}')[0])
         self.assertFalse(deploy.clean('{"headline": "Spread Opened", "events": ["OPEN_SUBMITTED", "SPREAD_OPENED"]}')[0])
         self.assertFalse(deploy.clean("not json")[0])
+        journal = "Starting spy-put-spread-bot.service...\n{\"headline\": \"No Events\", \"events\": []}\nFinished spy-put-spread-bot.service."
+        self.assertEqual(deploy.clean(journal), (True, "No Events"))
 
 
 if __name__ == "__main__":
