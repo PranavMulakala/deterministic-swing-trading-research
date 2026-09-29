@@ -212,5 +212,4 @@ Everything below was read-only unless stated otherwise.
     - Mac job disabled, with a local `outputs/lite_paper_bot/KILL`;
     - timer `Mon..Fri 10:00 America/New_York`, so the time stays right across clock changes.
   - First cloud run: Wed Sept 30, 10:00 ET. Server state lives in `/opt/lite-paper-bot/outputs/lite_paper_bot/`.
-- **Options bot:** it stays on the Mac (launchd) and also did not fire today. It enters only on Mondays; a fix or cloud kit is needed before Mon Oct 5.
-
+- **Options bot moved to the cloud (Sept 29, 11:14 ET),** at the owner's request ("move the options bot to the cloud too"). New kit: `cloud/spy_put_spread_v1/` (commits 2d6f2db and the journal fix), with its own `options-bot` user in `/opt/spy-put-spread-bot`. The first attempt was stopped by the clean-run check, which was reading systemd's last journal line; after the fix, all 5 steps passed. Server test run: No Events (Tuesday). The Mac job is disabled and a local KILL is written. Timer: Mon..Fri 10:30 America/New_York. First cloud run Wed Sept 30; first possible entry Mon Oct 5.
