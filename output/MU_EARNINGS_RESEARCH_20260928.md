@@ -98,3 +98,20 @@ On $200,000, declines like these mean paper losses of **$60,000–$116,000**.
 - **Teng Yan: 80% chance revenue exceeds $52B, base case $56.2B.** Guidance is $49–51B and consensus about $51B, so the unofficial bar sits above consensus.
 - **CoinForge: a 40-year trend line points to about $300 in 2027.** A chart drawing, not evidence.
 - **Headline: Anthropic to spend $518B "in 2027".** Search summaries of Reuters' Sept 28 story call it about $518B of future obligations over several years; the article could not be opened (blocked or timed out three times). The 2025 net loss was about $42B. Claude, the author, is made by Anthropic.
+
+## Long-term view: the father plans to hold for years (added Sept 29, about 01:00 ET)
+Source: Alpha Vantage monthly adjusted prices, December 1999 to Sept 2026.
+- **The long run:** $38.09 at the end of 1999 became $83.83 at the end of 2024, 2.2× in 25 years (about 3% a year). Then it went to $1,053.98 by Sept 28, 2026: 12.6× in 21 months.
+- **Tripled within 12 months: two earlier episodes in this data.**
+  - **December 2009** ($10.30, 4.0× in 12 months): −24% after 1 year, −40% after 2 and 3 years, and −52% at the worst month-end (Sept 2011).
+  - **October 2013 to January 2014** ($17.24–$22.46): +27% to +87% after 1 year, then −41% to −55% at the March 2016 low, and −3% to +5% after 3 years.
+- **Now:** 6.3× in 12 months (from the Sept 2025 month-end).
+- **Declines of about 50% or more since 2000:**
+  - 2000–08: −98%
+  - 2006–08: about −85%, month-end
+  - 2011: −56%, month-end
+  - 2014–16: −71%, month-end
+  - 2018: −54%
+  - 2022: −50%
+  - 2024–25: −58%
+- **Added to the father's page:** a "Holding for years" section with a long-run price chart, plus a comparison table: all at Tuesday's open, wait until after the report, split over weeks, or a smaller amount.
