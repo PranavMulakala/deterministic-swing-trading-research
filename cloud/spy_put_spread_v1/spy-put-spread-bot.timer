@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the SPY bull put spread paper bot at 10:30 New York time, Monday to Friday
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 10:30:00 America/New_York
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target
