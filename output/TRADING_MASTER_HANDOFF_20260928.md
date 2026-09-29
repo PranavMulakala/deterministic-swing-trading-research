@@ -203,4 +203,14 @@ Everything below was read-only unless stated otherwise.
   - The owner logged into the paper Gateway and personally clicked IBKR's paper-account notice ("I understand and accept").
   - At 13:30 UTC the collector reported `COLLECTING_REALTIME` with market data type 1 (real-time). No code or config changed. Claude closed the tunnel afterwards.
 - **Future logouts:** IBKR expires Gateway sessions, so this login must be repeated. The server's SSH firewall allows only the owner's home IPs.
+- **LITE bot moved to the cloud (Sept 29, 10:55 ET).**
+  - Why: the Mac's launchd calendar jobs did not fire at 10:00 or 10:30 even though the Mac was awake (runs=1 for both). That day's rule result would have been NO_SIGNAL (dip −0.94%, 9:55 close $994.58 vs open $946.19).
+  - The owner approved the move ("yes deploy it to the cloud"). `cloud/lite_paper_bot_v1/deploy.py` passed all 5 steps:
+    - installed at commit 90264af, NTP in sync;
+    - keys written, including `.env.news`;
+    - server test run LATE_START and news reading OK;
+    - Mac job disabled, with a local `outputs/lite_paper_bot/KILL`;
+    - timer `Mon..Fri 10:00 America/New_York`, so the time stays right across clock changes.
+  - First cloud run: Wed Sept 30, 10:00 ET. Server state lives in `/opt/lite-paper-bot/outputs/lite_paper_bot/`.
+- **Options bot:** it stays on the Mac (launchd) and also did not fire today. It enters only on Mondays; a fix or cloud kit is needed before Mon Oct 5.
 
