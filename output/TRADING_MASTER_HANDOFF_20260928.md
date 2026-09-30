@@ -260,3 +260,7 @@ Everything below was read-only unless stated otherwise.
 - **New free data on disk (gitignored):**
   - `outputs/breakout_data/BTCUSD.csv.gz` (Alpaca, 2021 onward)
   - `outputs/breakout_data/BTCUSD_BITSTAMP.csv.gz` (Bitstamp public API, 2014 onward)
+- **Update, Sept 30 morning:** the owner said **yes to all three goal parts.**
+  - They report about $95k cash in Robinhood and about $55–60k of 2026 LITE profit, and asked for a tax estimate.
+  - Tool: `research/tax_estimate_2026/estimate.py`, using 2026 IRS and Georgia DOR figures.
+  - The exact number still needs realized gains, holding periods, 401(k) type, and withholding.
