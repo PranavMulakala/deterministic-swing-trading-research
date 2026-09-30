@@ -21,3 +21,4 @@ outputs/lite_history/
 .env.news
 outputs/lite_news_history/
 outputs/mu_research/
+outputs/breakout_data/
