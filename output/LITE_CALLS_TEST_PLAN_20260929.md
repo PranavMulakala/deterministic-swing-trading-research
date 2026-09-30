@@ -1,3 +1,5 @@
+> **Parked by the owner on Sept 29 before any download** ("let's not do options for Lumentum... we'll look at it later"). Free cost estimate: about $3.95 for 1,188 days. The rules above stay locked for when it resumes.
+
 # Would buying LITE calls on dip days beat buying the stock? Pre-declared test (September 29, 2026)
 
 Written and committed **before** any historical LITE options data was downloaded or viewed. The owner asked whether LITE options could make more from the same dips ("set up the test please 100%"). Research only: no orders of any kind.
