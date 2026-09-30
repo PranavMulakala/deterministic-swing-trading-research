@@ -264,3 +264,7 @@ Everything below was read-only unless stated otherwise.
   - They report about $95k cash in Robinhood and about $55–60k of 2026 LITE profit, and asked for a tax estimate.
   - Tool: `research/tax_estimate_2026/estimate.py`, using 2026 IRS and Georgia DOR figures.
   - The exact number still needs realized gains, holding periods, 401(k) type, and withholding.
+- **MNQ 8-week paper plan drafted (Sept 30, about 09:20 ET), awaiting the owner's approval:** [MNQ_PAPER_PLAN_8WEEK_DRAFT_20260930.md](MNQ_PAPER_PLAN_8WEEK_DRAFT_20260930.md).
+  - **Server finding (read-only check):** the IBKR Gateway exited cleanly at 23:45 UTC on Sept 29 (its daily auto-logoff). The service has `Restart=on-failure`, so it stays down after a clean exit.
+  - **Fix, not yet made (needs the owner):** set the Gateway to "Auto restart", and make the service restart on any exit.
+  - LITE and SPY put-spread timers are set for 14:00 and 14:30 UTC today.
