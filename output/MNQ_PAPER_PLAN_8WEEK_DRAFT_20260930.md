@@ -1,6 +1,6 @@
 # MNQ paper-trading plan: 8 weeks (DRAFT for your review, September 30, 2026)
 
-**Status: draft. Nothing starts until you approve it.** Paper money only. No real-money step can come out of this plan, whatever the result.
+**Status: APPROVED by the owner on Sept 30, 2026 at about 9:50 AM ET, with Option A (the existing frozen rule).** It starts Oct 5 if Step 0 holds. Paper money only. No real-money step can come out of this plan, whatever the result.
 
 **Why we're doing it:** goal part 2, which you approved on Sept 30: "paper-trade MNQ for 8 weeks with rules written first, judged against SPY." It's for learning how futures trading actually behaves. It isn't an income plan.
 
@@ -125,3 +125,17 @@ The mirror image at **yesterday's low** is a buy.
 ## Costs
 - **New spending: $0.** Paper account, existing server, existing market-data subscription.
 - **Real money at risk: $0.**
+
+## Approval and Step 0 log (Sept 30, 2026)
+- **Approved:** the owner said "Yes" to the plan and chose Option A.
+- **Step 0 diagnosis, corrected:**
+  - "Auto restart" was already on in the Gateway.
+  - At 23:45 UTC the Gateway writes its restart file, starts a fresh copy of itself and exits.
+  - The service's `KillMode=control-group` then killed that fresh copy along with the old process.
+  - The same thing happened on Sept 21, which caused the Sept 22 outage.
+- **Fix applied at 10:03 ET (owner approved; the owner logged in again at 10:04):**
+  - The service now runs a small wrapper. It stays alive while any Gateway java process is running, so the fresh copy survives.
+  - If no Gateway process is left, the service restarts to a login screen (`Restart=always`).
+  - The change is in `cloud/ibkr_paper_v1/install_gateway.sh` and in a drop-in on the server.
+- **Open question:** the Gateway's log still prints "Daily auto-restart is not enabled" at login. What that line means isn't confirmed.
+- **Still to verify:** the first overnight restart, tonight at 23:45 UTC (7:45 PM ET). Step 0 is done only if the collector is still `COLLECTING_REALTIME` tomorrow morning without a new login.
