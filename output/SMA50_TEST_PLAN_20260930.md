@@ -55,7 +55,8 @@ Buy at the open of the same first day the rule could first trade (the day after 
    - **a daily-returns calculation:** position each day × SPY's daily return, minus costs on switch days.
 
    Their ending values must match to within **$1**.
-3. **Data consistency:** buy and hold from Jan 4, 2016 must match the SPY figure used in the earlier tests (+348.6% in the pullback test, same data file).
+3. **Data consistency:** SPY's close-to-close change over the pullback test's own date range (from its first equity-curve day to Sept 28, 2026) must reproduce that test's +348.6% figure. It's the same data file, so this confirms we're reading it the same way.
+   - *Correction made before any result was computed:* the first version of this plan said "from Jan 4, 2016". That was wrong, because the pullback test's figure started after its 200-day warm-up.
 
 ## Nothing will be tuned afterwards
 - No other lengths (20, 100, 200 days), no other markets, no stops, no filters, no other windows.
