@@ -41,3 +41,11 @@ The SPY bull put spread rules **failed** their pre-declared holdout: the candida
 - **Keep the Mac awake at 10:00 ET.** Plugged in and lid open, with sleep turned off while on power (System Settings → Battery → Options). Otherwise the bot runs late and skips the day. The cloud server avoids this; it can be deployed from home Wi-Fi.
 - **Alpha Vantage key:** paste it into `.env.news` (`open -e .env.news`) to turn on the news reading.
 - **Expect two emails:** LITE bot at about 10:00–10:05 ET, and the options bot at about 10:30 ET. The options bot enters only on Mondays, so on Tuesday it just checks and reports.
+
+## Added Sept 30: "bigger dip, bigger buy" shadow bot
+- **What it is:** the second paper bot the owner asked for, built as a shadow ledger: [research/lite_sized_shadow_v1](../research/lite_sized_shadow_v1/README.md).
+- **How it works:** it re-sizes each real paper trade by that morning's dip ($40k / $60k / $80k). It uses the running bot's actual fill and sale prices.
+- **The running bot is unchanged.**
+- **Scorecard:** each weekly row also gets **Shadow realized** and **Shadow open paper loss**.
+- **First trade (Sept 30):** the dip was −3.31%, which is the $80,000 tier. The shadow holds **83 shares** at $959.99; the bot holds 66. If the $979.19 sale fills: shadow +$1,594, bot +$1,267. Each $10 drop costs the shadow $830 and the bot $660.
+- **Same checkpoints, scaled for the shadow:** its open paper loss reaching **−$20,000** (25% of $80,000) is a stop-and-rethink point.
