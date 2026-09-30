@@ -39,4 +39,4 @@ It lost badly: $100,000 → $22,800, with a profit factor of 0.77. Betting again
 - **One fixed reading of a teaching example.** The instructor said himself that he had no idea whether it's profitable. The judgement calls he adds (old support, slowing candles, Fibonacci, round numbers) weren't tested because they can't be applied objectively.
 - **It was tested on stocks, not the currencies he trades.**
 - **Nothing will be tuned** on this data. The rules as written showed no edge.
-- **Pattern across three tests:** this is the third pre-declared chart strategy to fail, after the SPY put spread holdout and the TikTok breakout. Simple chart rules like these don't beat holding the index after costs.
+- **Pattern across four tests:** this is the fourth pre-declared test in a row to fail, after the SPY put spread holdout, the LITE news filter and the TikTok breakout. Simple chart rules like these have not beaten holding the index after costs.
