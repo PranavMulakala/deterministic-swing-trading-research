@@ -232,3 +232,31 @@ Everything below was read-only unless stated otherwise.
 - **Pattern:** four pre-declared tests in a row have failed (options holdout, news filter, breakout, pullback). Simple chart rules have not beaten holding SPY after costs.
 - **Reusable video tool:** `research/video_study_v1/study_video.py`, tested on a 90-second clip. It produces audio, a chunked resumable Whisper transcript, and screenshot contact sheets.
 - **Next:** two more videos from the owner, one from Iman Trading and one on trading futures. Before that, check the first cloud bot runs (Wed Sept 30, 10:00 and 10:30 ET).
+
+## September 29–30 overnight update (about 01:00 ET, Sept 30)
+- **First thing next session:** check the first cloud bot runs, Wed Sept 30 at 10:00 ET (LITE) and 10:30 ET (SPY put spread): the emails and the server journals.
+- **Three videos studied.** Each got a full Whisper transcript and every screenshot sheet was viewed:
+  1. **Iman Trading, "My Final Trading Guide"** (93 min): [notes](IMAN_TRADING_JOURNEY_NOTES_20260929.md).
+     - An honest journey video: 24 prop payouts totalling $25,191 over about 20 months, roughly $290 a week.
+     - No exact rules, so nothing to test.
+  2. **Mind Math Money, "AI Trading Full Course"** (70 min; the file was `videoplayback.mp4`, not a futures video): [notes](AI_TRADING_CLAUDE_TRADINGVIEW_NOTES_20260930.md).
+     - Claude connected to TradingView through an unofficial add-on. Nothing was installed.
+  3. **Brad Goh / 1% Club, "ULTIMATE Futures Trading Course"** (67 min): [notes](FUTURES_COURSE_NOTES_20260930.md).
+     - The contract-spec half is correct. The "mechanical" smart-money strategy isn't mechanical. The "+58% backtest" is a typed-in 45% win rate. A heavy sales pitch.
+- **Fifth pre-declared test: the 50-day moving-average rule on SPY** (plan 5d1bd47 plus a pre-result correction 0d8e134; results 77612c2 and 17d3a49): [results](SMA50_TEST_RESULTS_20260930.md).
+  - It **passed the old bar** (PF 1.88, both halves profitable, drawdown −19.7%) but **failed the new bar B**, judged against SPY.
+  - $100k became $191k, against $446k for holding SPY.
+  - From now on, judge every test against holding SPY.
+  - **Bitcoin code check:** our code reproduces the video's 100 trades, 29% win rate and PF 2.12 on Bitstamp data (May 2015 to July 9, 2026).
+- **Futures evidence research:** [FUTURES_STRATEGY_EVIDENCE_20260930.md](FUTURES_STRATEGY_EVIDENCE_20260930.md).
+  - The "90% of futures trading is trend / breakout / ORB" claim has no source.
+  - Futures volume is mostly automated market makers.
+  - Published ORB results fail after realistic costs.
+  - About 97–99% of retail day traders don't make money.
+- **Goal proposed to the owner, awaiting their answer:**
+  1. **Money goal:** the salary and steady investing are the engine. $52k a year takes roughly $350k–740k invested.
+  2. **Trading as learning:** 8 weeks of MNQ paper trading, with rules written first, judged against SPY.
+  3. **Research:** test only ideas with independent evidence, with a stop rule after a set number of failures.
+- **New free data on disk (gitignored):**
+  - `outputs/breakout_data/BTCUSD.csv.gz` (Alpaca, 2021 onward)
+  - `outputs/breakout_data/BTCUSD_BITSTAMP.csv.gz` (Bitstamp public API, 2014 onward)
