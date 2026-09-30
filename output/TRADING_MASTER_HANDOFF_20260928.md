@@ -268,3 +268,11 @@ Everything below was read-only unless stated otherwise.
   - **Server finding (read-only check):** the IBKR Gateway exited cleanly at 23:45 UTC on Sept 29 (its daily auto-logoff). The service has `Restart=on-failure`, so it stays down after a clean exit.
   - **Fix, not yet made (needs the owner):** set the Gateway to "Auto restart", and make the service restart on any exit.
   - LITE and SPY put-spread timers are set for 14:00 and 14:30 UTC today.
+- **Sept 30, about 10:20 ET:**
+  - **MNQ plan approved** with Option A.
+  - **Gateway fix applied:** a wrapper keeps the service alive across the Gateway's self-restart; the owner re-logged in at 10:04. Verify tomorrow morning that it survived the 23:45 UTC restart without a login.
+  - **LITE paper bot's first cloud run:** bought 66 shares at $959.99, with the sell order at $979.19.
+  - **Sixth pre-declared test, LITE dynamic rules** (plan a8f2e3a): [results](LITE_DYNAMIC_TEST_RESULTS_20260930.md).
+    - "Watch the first hour", "let winners run" and "all three together" failed.
+    - "Bigger dip, bigger buy" passed narrowly (+$765 in 2025, +$12,873 in 2026). It's a candidate for a second paper bot, and that's the owner's call.
+  - **Formula agreement (owner agreed):** no new LITE formula tests until the 8-week paper test ends. New ideas go on the parked list in the results doc.

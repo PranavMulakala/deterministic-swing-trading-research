@@ -1,0 +1,846 @@
+{
+ "plan": "output/LITE_DYNAMIC_TEST_PLAN_20260930.md",
+ "windows": {
+  "boom_2025_2026": {
+   "from": "2025-01-02",
+   "to": "2026-09-28",
+   "hold_60k_LITE_pnl": 586627,
+   "hold_60k_SPY_pnl": 19473
+  },
+  "year_2025": {
+   "from": "2025-01-02",
+   "to": "2025-12-31",
+   "hold_60k_LITE_pnl": 198437,
+   "hold_60k_SPY_pnl": 10234
+  },
+  "year_2026": {
+   "from": "2026-01-02",
+   "to": "2026-09-28",
+   "hold_60k_LITE_pnl": 85433,
+   "hold_60k_SPY_pnl": 7518
+  },
+  "stress_2022_2024": {
+   "from": "2022-01-03",
+   "to": "2024-12-31",
+   "hold_60k_LITE_pnl": -12363,
+   "hold_60k_SPY_pnl": 17143
+  }
+ },
+ "versions": {
+  "0_baseline": {
+   "boom_2025_2026": {
+    "sessions": 435,
+    "signals": 192,
+    "buys": 85,
+    "skipped_holding": 107,
+    "sales": 85,
+    "realized_pnl": 115956,
+    "marked_pnl_at_end": 115956,
+    "weeks": 92,
+    "weeks_realized_1000_plus": 48,
+    "weeks_marked_1000_plus": 48,
+    "weeks_marked_minus_1000_or_worse": 23,
+    "worst_marked_week": -7924,
+    "average_realized_per_week": 1260,
+    "longest_run_of_weeks_without_a_sale": 25,
+    "worst_drop_from_peak_marked": -29719,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.24",
+     "low": "45.65",
+     "percent": -53.5,
+     "dollars": -32080
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 47,
+    "sales_within_5_sessions": 75,
+    "open_at_end": null,
+    "marked_pnl_per_1000_dollar_days": 7.422,
+    "strict_sale_marked_pnl_at_end": 112945
+   },
+   "year_2025": {
+    "sessions": 250,
+    "signals": 99,
+    "buys": 29,
+    "skipped_holding": 70,
+    "sales": 28,
+    "realized_pnl": 38403,
+    "marked_pnl_at_end": 34536,
+    "weeks": 53,
+    "weeks_realized_1000_plus": 18,
+    "weeks_marked_1000_plus": 23,
+    "weeks_marked_minus_1000_or_worse": 16,
+    "worst_marked_week": -7924,
+    "average_realized_per_week": 725,
+    "longest_run_of_weeks_without_a_sale": 25,
+    "worst_drop_from_peak_marked": -29719,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.24",
+     "low": "45.65",
+     "percent": -53.5,
+     "dollars": -32080
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 11,
+    "sales_within_5_sessions": 23,
+    "open_at_end": {
+     "entry_day": "2025-12-26",
+     "fill": "393.80",
+     "shares": 152,
+     "marked_pnl": -3867
+    },
+    "marked_pnl_per_1000_dollar_days": 3.39,
+    "strict_sale_marked_pnl_at_end": 34536
+   },
+   "year_2026": {
+    "sessions": 185,
+    "signals": 93,
+    "buys": 59,
+    "skipped_holding": 34,
+    "sales": 59,
+    "realized_pnl": 79946,
+    "marked_pnl_at_end": 79946,
+    "weeks": 40,
+    "weeks_realized_1000_plus": 31,
+    "weeks_marked_1000_plus": 26,
+    "weeks_marked_minus_1000_or_worse": 8,
+    "worst_marked_week": -5485,
+    "average_realized_per_week": 1999,
+    "longest_run_of_weeks_without_a_sale": 7,
+    "worst_drop_from_peak_marked": -21185,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2026-06-16",
+     "fill": "933.24",
+     "low": "594.84",
+     "percent": -36.3,
+     "dollars": -21658
+    },
+    "longest_hold": {
+     "entry_day": "2026-06-16",
+     "exit_day": "2026-08-12",
+     "sessions": 40
+    },
+    "same_day_sales": 39,
+    "sales_within_5_sessions": 55,
+    "open_at_end": null,
+    "marked_pnl_per_1000_dollar_days": 15.211,
+    "strict_sale_marked_pnl_at_end": 76934
+   },
+   "stress_2022_2024": {
+    "sessions": 753,
+    "signals": 224,
+    "buys": 2,
+    "skipped_holding": 222,
+    "no_data": 2,
+    "sales": 1,
+    "realized_pnl": 1200,
+    "marked_pnl_at_end": -10757,
+    "weeks": 157,
+    "weeks_realized_1000_plus": 1,
+    "weeks_marked_1000_plus": 45,
+    "weeks_marked_minus_1000_or_worse": 55,
+    "worst_marked_week": -7900,
+    "average_realized_per_week": 8,
+    "longest_run_of_weeks_without_a_sale": 156,
+    "worst_drop_from_peak_marked": -39302,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2022-01-18",
+     "fill": "104.90",
+     "low": "35.35",
+     "percent": -66.3,
+     "dollars": -39713
+    },
+    "longest_hold": {
+     "entry_day": "2022-01-18",
+     "exit_day": "still open",
+     "sessions": 743
+    },
+    "same_day_sales": 0,
+    "sales_within_5_sessions": 1,
+    "open_at_end": {
+     "entry_day": "2022-01-18",
+     "fill": "104.90",
+     "shares": 571,
+     "marked_pnl": -11957
+    },
+    "marked_pnl_per_1000_dollar_days": -0.241,
+    "strict_sale_marked_pnl_at_end": -10757
+   }
+  },
+  "1_first_hour": {
+   "boom_2025_2026": {
+    "sessions": 435,
+    "signals": 177,
+    "buys": 61,
+    "skipped_holding": 116,
+    "sales": 60,
+    "realized_pnl": 82163,
+    "marked_pnl_at_end": 80611,
+    "weeks": 92,
+    "weeks_realized_1000_plus": 37,
+    "weeks_marked_1000_plus": 47,
+    "weeks_marked_minus_1000_or_worse": 24,
+    "worst_marked_week": -9649,
+    "average_realized_per_week": 893,
+    "longest_run_of_weeks_without_a_sale": 24,
+    "worst_drop_from_peak_marked": -29877,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.74",
+     "low": "45.65",
+     "percent": -53.8,
+     "dollars": -32226
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 33,
+    "sales_within_5_sessions": 49,
+    "open_at_end": {
+     "entry_day": "2026-09-23",
+     "fill": "946.30",
+     "shares": 63,
+     "marked_pnl": -1552
+    },
+    "marked_pnl_per_1000_dollar_days": 4.81,
+    "strict_sale_marked_pnl_at_end": 82638
+   },
+   "year_2025": {
+    "sessions": 250,
+    "signals": 95,
+    "buys": 25,
+    "skipped_holding": 70,
+    "sales": 24,
+    "realized_pnl": 35357,
+    "marked_pnl_at_end": 31345,
+    "weeks": 53,
+    "weeks_realized_1000_plus": 15,
+    "weeks_marked_1000_plus": 23,
+    "weeks_marked_minus_1000_or_worse": 15,
+    "worst_marked_week": -7885,
+    "average_realized_per_week": 667,
+    "longest_run_of_weeks_without_a_sale": 24,
+    "worst_drop_from_peak_marked": -29877,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.74",
+     "low": "45.65",
+     "percent": -53.8,
+     "dollars": -32226
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 11,
+    "sales_within_5_sessions": 19,
+    "open_at_end": {
+     "entry_day": "2025-12-26",
+     "fill": "394.93",
+     "shares": 151,
+     "marked_pnl": -4012
+    },
+    "marked_pnl_per_1000_dollar_days": 2.989,
+    "strict_sale_marked_pnl_at_end": 31345
+   },
+   "year_2026": {
+    "sessions": 185,
+    "signals": 82,
+    "buys": 43,
+    "skipped_holding": 39,
+    "sales": 42,
+    "realized_pnl": 53478,
+    "marked_pnl_at_end": 51926,
+    "weeks": 40,
+    "weeks_realized_1000_plus": 25,
+    "weeks_marked_1000_plus": 25,
+    "weeks_marked_minus_1000_or_worse": 9,
+    "worst_marked_week": -9649,
+    "average_realized_per_week": 1337,
+    "longest_run_of_weeks_without_a_sale": 8,
+    "worst_drop_from_peak_marked": -21932,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2026-06-16",
+     "fill": "950.35",
+     "low": "594.84",
+     "percent": -37.4,
+     "dollars": -22397
+    },
+    "longest_hold": {
+     "entry_day": "2026-06-16",
+     "exit_day": "2026-08-17",
+     "sessions": 43
+    },
+    "same_day_sales": 27,
+    "sales_within_5_sessions": 37,
+    "open_at_end": {
+     "entry_day": "2026-09-23",
+     "fill": "946.30",
+     "shares": 63,
+     "marked_pnl": -1552
+    },
+    "marked_pnl_per_1000_dollar_days": 9.445,
+    "strict_sale_marked_pnl_at_end": 53952
+   },
+   "stress_2022_2024": {
+    "sessions": 753,
+    "signals": 245,
+    "buys": 2,
+    "skipped_holding": 243,
+    "sales": 1,
+    "realized_pnl": 1204,
+    "marked_pnl_at_end": -10840,
+    "weeks": 157,
+    "weeks_realized_1000_plus": 1,
+    "weeks_marked_1000_plus": 44,
+    "weeks_marked_minus_1000_or_worse": 55,
+    "worst_marked_week": -7886,
+    "average_realized_per_week": 8,
+    "longest_run_of_weeks_without_a_sale": 155,
+    "worst_drop_from_peak_marked": -39341,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2022-01-18",
+     "fill": "105.09",
+     "low": "35.35",
+     "percent": -66.4,
+     "dollars": -39752
+    },
+    "longest_hold": {
+     "entry_day": "2022-01-18",
+     "exit_day": "still open",
+     "sessions": 743
+    },
+    "same_day_sales": 0,
+    "sales_within_5_sessions": 1,
+    "open_at_end": {
+     "entry_day": "2022-01-18",
+     "fill": "105.09",
+     "shares": 570,
+     "marked_pnl": -12044
+    },
+    "marked_pnl_per_1000_dollar_days": -0.243,
+    "strict_sale_marked_pnl_at_end": -10840
+   }
+  },
+  "2_let_winners_run": {
+   "boom_2025_2026": {
+    "sessions": 435,
+    "signals": 192,
+    "buys": 85,
+    "skipped_holding": 107,
+    "sales": 84,
+    "realized_pnl": 118461,
+    "marked_pnl_at_end": 119589,
+    "weeks": 92,
+    "weeks_realized_1000_plus": 39,
+    "weeks_marked_1000_plus": 46,
+    "weeks_marked_minus_1000_or_worse": 23,
+    "worst_marked_week": -7924,
+    "average_realized_per_week": 1288,
+    "longest_run_of_weeks_without_a_sale": 25,
+    "worst_drop_from_peak_marked": -29719,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.24",
+     "low": "45.65",
+     "percent": -53.5,
+     "dollars": -32080
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 45,
+    "sales_within_5_sessions": 74,
+    "open_at_end": {
+     "entry_day": "2026-09-28",
+     "fill": "904.57",
+     "shares": 66,
+     "marked_pnl": 1128
+    },
+    "marked_pnl_per_1000_dollar_days": 7.596,
+    "strict_sale_marked_pnl_at_end": 119589
+   },
+   "year_2025": {
+    "sessions": 250,
+    "signals": 99,
+    "buys": 29,
+    "skipped_holding": 70,
+    "sales": 28,
+    "realized_pnl": 35391,
+    "marked_pnl_at_end": 31524,
+    "weeks": 53,
+    "weeks_realized_1000_plus": 16,
+    "weeks_marked_1000_plus": 22,
+    "weeks_marked_minus_1000_or_worse": 16,
+    "worst_marked_week": -7924,
+    "average_realized_per_week": 668,
+    "longest_run_of_weeks_without_a_sale": 25,
+    "worst_drop_from_peak_marked": -29719,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.24",
+     "low": "45.65",
+     "percent": -53.5,
+     "dollars": -32080
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 10,
+    "sales_within_5_sessions": 23,
+    "open_at_end": {
+     "entry_day": "2025-12-26",
+     "fill": "393.80",
+     "shares": 152,
+     "marked_pnl": -3867
+    },
+    "marked_pnl_per_1000_dollar_days": 3.076,
+    "strict_sale_marked_pnl_at_end": 31524
+   },
+   "year_2026": {
+    "sessions": 185,
+    "signals": 93,
+    "buys": 59,
+    "skipped_holding": 34,
+    "sales": 58,
+    "realized_pnl": 85911,
+    "marked_pnl_at_end": 87039,
+    "weeks": 40,
+    "weeks_realized_1000_plus": 25,
+    "weeks_marked_1000_plus": 25,
+    "weeks_marked_minus_1000_or_worse": 8,
+    "worst_marked_week": -5485,
+    "average_realized_per_week": 2148,
+    "longest_run_of_weeks_without_a_sale": 7,
+    "worst_drop_from_peak_marked": -21185,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2026-06-16",
+     "fill": "933.24",
+     "low": "594.84",
+     "percent": -36.3,
+     "dollars": -21658
+    },
+    "longest_hold": {
+     "entry_day": "2026-06-16",
+     "exit_day": "2026-08-12",
+     "sessions": 40
+    },
+    "same_day_sales": 38,
+    "sales_within_5_sessions": 54,
+    "open_at_end": {
+     "entry_day": "2026-09-28",
+     "fill": "904.57",
+     "shares": 66,
+     "marked_pnl": 1128
+    },
+    "marked_pnl_per_1000_dollar_days": 16.375,
+    "strict_sale_marked_pnl_at_end": 87039
+   },
+   "stress_2022_2024": {
+    "sessions": 753,
+    "signals": 224,
+    "buys": 2,
+    "skipped_holding": 222,
+    "no_data": 2,
+    "sales": 1,
+    "realized_pnl": 1041,
+    "marked_pnl_at_end": -10915,
+    "weeks": 157,
+    "weeks_realized_1000_plus": 1,
+    "weeks_marked_1000_plus": 45,
+    "weeks_marked_minus_1000_or_worse": 55,
+    "worst_marked_week": -7900,
+    "average_realized_per_week": 7,
+    "longest_run_of_weeks_without_a_sale": 156,
+    "worst_drop_from_peak_marked": -39302,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2022-01-18",
+     "fill": "104.90",
+     "low": "35.35",
+     "percent": -66.3,
+     "dollars": -39713
+    },
+    "longest_hold": {
+     "entry_day": "2022-01-18",
+     "exit_day": "still open",
+     "sessions": 743
+    },
+    "same_day_sales": 0,
+    "sales_within_5_sessions": 1,
+    "open_at_end": {
+     "entry_day": "2022-01-18",
+     "fill": "104.90",
+     "shares": 571,
+     "marked_pnl": -11957
+    },
+    "marked_pnl_per_1000_dollar_days": -0.245,
+    "strict_sale_marked_pnl_at_end": -10915
+   }
+  },
+  "3_bigger_dip_bigger_buy": {
+   "boom_2025_2026": {
+    "sessions": 435,
+    "signals": 192,
+    "buys": 85,
+    "skipped_holding": 107,
+    "sales": 85,
+    "realized_pnl": 127493,
+    "marked_pnl_at_end": 127493,
+    "weeks": 92,
+    "weeks_realized_1000_plus": 44,
+    "weeks_marked_1000_plus": 49,
+    "weeks_marked_minus_1000_or_worse": 24,
+    "worst_marked_week": -7924,
+    "average_realized_per_week": 1386,
+    "longest_run_of_weeks_without_a_sale": 25,
+    "worst_drop_from_peak_marked": -29719,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.24",
+     "low": "45.65",
+     "percent": -53.5,
+     "dollars": -32080
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 47,
+    "sales_within_5_sessions": 75,
+    "open_at_end": null,
+    "marked_pnl_per_1000_dollar_days": 8.347,
+    "strict_sale_marked_pnl_at_end": 124481
+   },
+   "year_2025": {
+    "sessions": 250,
+    "signals": 99,
+    "buys": 29,
+    "skipped_holding": 70,
+    "sales": 28,
+    "realized_pnl": 37870,
+    "marked_pnl_at_end": 35301,
+    "weeks": 53,
+    "weeks_realized_1000_plus": 16,
+    "weeks_marked_1000_plus": 24,
+    "weeks_marked_minus_1000_or_worse": 17,
+    "worst_marked_week": -7924,
+    "average_realized_per_week": 715,
+    "longest_run_of_weeks_without_a_sale": 25,
+    "worst_drop_from_peak_marked": -29719,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.24",
+     "low": "45.65",
+     "percent": -53.5,
+     "dollars": -32080
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 11,
+    "sales_within_5_sessions": 23,
+    "open_at_end": {
+     "entry_day": "2025-12-26",
+     "fill": "393.80",
+     "shares": 101,
+     "marked_pnl": -2569
+    },
+    "marked_pnl_per_1000_dollar_days": 3.615,
+    "strict_sale_marked_pnl_at_end": 35301
+   },
+   "year_2026": {
+    "sessions": 185,
+    "signals": 93,
+    "buys": 59,
+    "skipped_holding": 34,
+    "sales": 59,
+    "realized_pnl": 92819,
+    "marked_pnl_at_end": 92819,
+    "weeks": 40,
+    "weeks_realized_1000_plus": 28,
+    "weeks_marked_1000_plus": 25,
+    "weeks_marked_minus_1000_or_worse": 8,
+    "worst_marked_week": -5485,
+    "average_realized_per_week": 2320,
+    "longest_run_of_weeks_without_a_sale": 7,
+    "worst_drop_from_peak_marked": -21185,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2026-06-16",
+     "fill": "933.24",
+     "low": "594.84",
+     "percent": -36.3,
+     "dollars": -21658
+    },
+    "longest_hold": {
+     "entry_day": "2026-06-16",
+     "exit_day": "2026-08-12",
+     "sessions": 40
+    },
+    "same_day_sales": 39,
+    "sales_within_5_sessions": 55,
+    "open_at_end": null,
+    "marked_pnl_per_1000_dollar_days": 17.224,
+    "strict_sale_marked_pnl_at_end": 89807
+   },
+   "stress_2022_2024": {
+    "sessions": 753,
+    "signals": 224,
+    "buys": 2,
+    "skipped_holding": 222,
+    "no_data": 2,
+    "sales": 1,
+    "realized_pnl": 799,
+    "marked_pnl_at_end": -7179,
+    "weeks": 157,
+    "weeks_realized_1000_plus": 0,
+    "weeks_marked_1000_plus": 34,
+    "weeks_marked_minus_1000_or_worse": 34,
+    "worst_marked_week": -5271,
+    "average_realized_per_week": 5,
+    "longest_run_of_weeks_without_a_sale": 156,
+    "worst_drop_from_peak_marked": -26224,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2022-01-18",
+     "fill": "104.90",
+     "low": "35.35",
+     "percent": -66.3,
+     "dollars": -26499
+    },
+    "longest_hold": {
+     "entry_day": "2022-01-18",
+     "exit_day": "still open",
+     "sessions": 743
+    },
+    "same_day_sales": 0,
+    "sales_within_5_sessions": 1,
+    "open_at_end": {
+     "entry_day": "2022-01-18",
+     "fill": "104.90",
+     "shares": 381,
+     "marked_pnl": -7978
+    },
+    "marked_pnl_per_1000_dollar_days": -0.241,
+    "strict_sale_marked_pnl_at_end": -7179
+   }
+  },
+  "4_all_three": {
+   "boom_2025_2026": {
+    "sessions": 435,
+    "signals": 177,
+    "buys": 61,
+    "skipped_holding": 116,
+    "sales": 60,
+    "realized_pnl": 87772,
+    "marked_pnl_at_end": 86737,
+    "weeks": 92,
+    "weeks_realized_1000_plus": 34,
+    "weeks_marked_1000_plus": 46,
+    "weeks_marked_minus_1000_or_worse": 24,
+    "worst_marked_week": -13327,
+    "average_realized_per_week": 954,
+    "longest_run_of_weeks_without_a_sale": 24,
+    "worst_drop_from_peak_marked": -29877,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.74",
+     "low": "45.65",
+     "percent": -53.8,
+     "dollars": -32226
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 31,
+    "sales_within_5_sessions": 49,
+    "open_at_end": {
+     "entry_day": "2026-09-23",
+     "fill": "946.30",
+     "shares": 42,
+     "marked_pnl": -1035
+    },
+    "marked_pnl_per_1000_dollar_days": 5.073,
+    "strict_sale_marked_pnl_at_end": 86737
+   },
+   "year_2025": {
+    "sessions": 250,
+    "signals": 95,
+    "buys": 25,
+    "skipped_holding": 70,
+    "sales": 24,
+    "realized_pnl": 34548,
+    "marked_pnl_at_end": 31864,
+    "weeks": 53,
+    "weeks_realized_1000_plus": 13,
+    "weeks_marked_1000_plus": 22,
+    "weeks_marked_minus_1000_or_worse": 16,
+    "worst_marked_week": -7885,
+    "average_realized_per_week": 652,
+    "longest_run_of_weeks_without_a_sale": 24,
+    "worst_drop_from_peak_marked": -29877,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2025-01-24",
+     "fill": "98.74",
+     "low": "45.65",
+     "percent": -53.8,
+     "dollars": -32226
+    },
+    "longest_hold": {
+     "entry_day": "2025-01-24",
+     "exit_day": "2025-07-17",
+     "sessions": 120
+    },
+    "same_day_sales": 10,
+    "sales_within_5_sessions": 19,
+    "open_at_end": {
+     "entry_day": "2025-12-26",
+     "fill": "394.93",
+     "shares": 101,
+     "marked_pnl": -2684
+    },
+    "marked_pnl_per_1000_dollar_days": 3.016,
+    "strict_sale_marked_pnl_at_end": 31864
+   },
+   "year_2026": {
+    "sessions": 185,
+    "signals": 82,
+    "buys": 43,
+    "skipped_holding": 39,
+    "sales": 42,
+    "realized_pnl": 60567,
+    "marked_pnl_at_end": 59532,
+    "weeks": 40,
+    "weeks_realized_1000_plus": 23,
+    "weeks_marked_1000_plus": 25,
+    "weeks_marked_minus_1000_or_worse": 8,
+    "worst_marked_week": -13327,
+    "average_realized_per_week": 1514,
+    "longest_run_of_weeks_without_a_sale": 8,
+    "worst_drop_from_peak_marked": -21932,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2026-06-16",
+     "fill": "950.35",
+     "low": "594.84",
+     "percent": -37.4,
+     "dollars": -22397
+    },
+    "longest_hold": {
+     "entry_day": "2026-06-16",
+     "exit_day": "2026-08-17",
+     "sessions": 43
+    },
+    "same_day_sales": 26,
+    "sales_within_5_sessions": 37,
+    "open_at_end": {
+     "entry_day": "2026-09-23",
+     "fill": "946.30",
+     "shares": 42,
+     "marked_pnl": -1035
+    },
+    "marked_pnl_per_1000_dollar_days": 9.522,
+    "strict_sale_marked_pnl_at_end": 59532
+   },
+   "stress_2022_2024": {
+    "sessions": 753,
+    "signals": 245,
+    "buys": 2,
+    "skipped_holding": 243,
+    "sales": 1,
+    "realized_pnl": 453,
+    "marked_pnl_at_end": -7576,
+    "weeks": 157,
+    "weeks_realized_1000_plus": 0,
+    "weeks_marked_1000_plus": 34,
+    "weeks_marked_minus_1000_or_worse": 34,
+    "worst_marked_week": -5257,
+    "average_realized_per_week": 3,
+    "longest_run_of_weeks_without_a_sale": 155,
+    "worst_drop_from_peak_marked": -26566,
+    "worst_paper_loss_on_one_holding": {
+     "entry_day": "2022-01-18",
+     "fill": "105.09",
+     "low": "35.35",
+     "percent": -66.4,
+     "dollars": -26501
+    },
+    "longest_hold": {
+     "entry_day": "2022-01-18",
+     "exit_day": "still open",
+     "sessions": 743
+    },
+    "same_day_sales": 0,
+    "sales_within_5_sessions": 1,
+    "open_at_end": {
+     "entry_day": "2022-01-18",
+     "fill": "105.09",
+     "shares": 380,
+     "marked_pnl": -8029
+    },
+    "marked_pnl_per_1000_dollar_days": -0.255,
+    "strict_sale_marked_pnl_at_end": -7576
+   }
+  }
+ },
+ "engine_checks": {
+  "1a_original_replay_matches_published": {
+   "year_2026": true,
+   "year_2025": true
+  },
+  "1b_version_0_matches_original_replay": {
+   "boom_2025_2026": true,
+   "year_2025": true,
+   "year_2026": true,
+   "stress_2022_2024": true
+  }
+ },
+ "verdicts": {
+  "1_first_hour": {
+   "1_more_profit_2025": false,
+   "2_more_profit_2026": false,
+   "3_worst_drop_within_10pct": true,
+   "4_stress_within_5000": true,
+   "beats_baseline": false
+  },
+  "2_let_winners_run": {
+   "1_more_profit_2025": false,
+   "2_more_profit_2026": true,
+   "3_worst_drop_within_10pct": true,
+   "4_stress_within_5000": true,
+   "beats_baseline": false
+  },
+  "3_bigger_dip_bigger_buy": {
+   "1_more_profit_2025": true,
+   "2_more_profit_2026": true,
+   "3_worst_drop_within_10pct": true,
+   "4_stress_within_5000": true,
+   "beats_baseline": true
+  },
+  "4_all_three": {
+   "1_more_profit_2025": false,
+   "2_more_profit_2026": false,
+   "3_worst_drop_within_10pct": true,
+   "4_stress_within_5000": true,
+   "beats_baseline": false
+  }
+ }
+}
