@@ -276,3 +276,13 @@ Everything below was read-only unless stated otherwise.
     - "Watch the first hour", "let winners run" and "all three together" failed.
     - "Bigger dip, bigger buy" passed narrowly (+$765 in 2025, +$12,873 in 2026). It's a candidate for a second paper bot, and that's the owner's call.
   - **Formula agreement (owner agreed):** no new LITE formula tests until the 8-week paper test ends. New ideas go on the parked list in the results doc.
+- **Sept 30, late morning:**
+  - **Second LITE bot built as a shadow ledger** (`research/lite_sized_shadow_v1/`). Its first trade is tracked at 83 shares, against the bot's 66.
+  - **SPY bot's 10:30 run:** clean ("No Events").
+  - **MNQ:** collecting. 145 software tests pass. `AutoRestart=1` is confirmed in the Gateway's settings. An offered live restart test is not yet done.
+  - **Lumentum insider-trading policy** (SEC Exhibit 19.1, dated Nov 2023) reviewed, because the owner's father works there.
+    - For all employees and covered family: no trading on inside information, no shorts, no options on LITE, no margin accounts; limit orders are discouraged.
+    - Blackouts and pre-clearance apply only to Section 16 Insiders and notified "Access Persons".
+    - The owner lives in Atlanta, outside the father's household, but trades they discuss together could count as "influenced".
+    - An email summarizing this was **sent to the father** (mulakalav@gmail.com) on the owner's explicit "yes". It does not say trading is "okay"; it says only the compliance officer can confirm that.
+    - **Implication for research:** the parked LITE options (calls) test would conflict with the policy if the owner is a covered family member.
