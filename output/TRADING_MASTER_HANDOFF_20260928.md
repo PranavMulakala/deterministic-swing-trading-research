@@ -213,3 +213,22 @@ Everything below was read-only unless stated otherwise.
     - timer `Mon..Fri 10:00 America/New_York`, so the time stays right across clock changes.
   - First cloud run: Wed Sept 30, 10:00 ET. Server state lives in `/opt/lite-paper-bot/outputs/lite_paper_bot/`.
 - **Options bot moved to the cloud (Sept 29, 11:14 ET),** at the owner's request ("move the options bot to the cloud too"). New kit: `cloud/spy_put_spread_v1/` (commits 2d6f2db and the journal fix), with its own `options-bot` user in `/opt/spy-put-spread-bot`. The first attempt was stopped by the clean-run check, which was reading systemd's last journal line; after the fix, all 5 steps passed. Server test run: No Events (Tuesday). The Mac job is disabled and a local KILL is written. Timer: Mon..Fri 10:30 America/New_York. First cloud run Wed Sept 30; first possible entry Mon Oct 5.
+
+## September 29 afternoon and evening update (about 23:30 ET)
+- **Resume prompt for the next chat:** [CLAUDE_RESUME_PROMPT_20260929.md](CLAUDE_RESUME_PROMPT_20260929.md). It replaces the Sept 28 PM prompt.
+- **LITE calls-on-dips test: parked.** The plan was committed (822cb5b), then parked before any download (3b6212d). The owner said "let's not do options for Lumentum... we'll look at it later".
+- **Three TikToks transcribed and taught back:** [TIKTOK_TRANSCRIPTS_20260929.md](TIKTOK_TRANSCRIPTS_20260929.md). The videos covered breakouts, a same-day QQQ call with a trailing stop, and cash-secured puts and covered calls.
+- **Video 1's breakout rules were tested** (plan e222f26, results 3ebfcd0): [results](BREAKOUT_TEST_RESULTS_20260929.md).
+  - **Failed all three checks:** PF 0.94, $100k → $81.8k, max drawdown −40.7%, while SPY returned +336%.
+  - Data: 5,259 US stocks, daily SIP bars 2016–2026, in `outputs/breakout_data/`. Reusable.
+- **Course video "Trading for Beginners Part 1"** (2h27m) was transcribed with Whisper medium and reviewed through 293 screenshots, one every 30 s.
+  - [Teach-back notes](COURSE_BEGINNERS_PART1_NOTES_20260929.md) and [sectioned transcript](COURSE_BEGINNERS_PART1_TRANSCRIPT_20260929.md).
+  - **Kept:** 1% risk sized from the stop, entry/stop/target set first, backtest → demo → small live, and the expectancy formula.
+  - **Rejected as hype:** 2–6% a month, hindsight examples, and the paid 30-day challenge.
+- **The course's pullback strategy was tested** (plan 07630a1, results 1019ef2): [results](PULLBACK_TEST_RESULTS_20260929.md).
+  - **The long side failed all three checks:** PF 0.97, $100k → $83.2k, drawdown −42.0%, expectancy −0.02.
+  - **Short side (information only):** $100k → $22.8k.
+  - **Code:** `research/pullback_test_v1/` (13 tests). The short side reuses the long code on mirrored prices.
+- **Pattern:** four pre-declared tests in a row have failed (options holdout, news filter, breakout, pullback). Simple chart rules have not beaten holding SPY after costs.
+- **Reusable video tool:** `research/video_study_v1/study_video.py`, tested on a 90-second clip. It produces audio, a chunked resumable Whisper transcript, and screenshot contact sheets.
+- **Next:** two more videos from the owner, one from Iman Trading and one on trading futures. Before that, check the first cloud bot runs (Wed Sept 30, 10:00 and 10:30 ET).
