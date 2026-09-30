@@ -79,3 +79,29 @@
 - **Verdict A alone was too easy to misread.** A rule can make money, have a good profit factor and small drops, and still leave $255,000 on the table next to doing nothing. From now on, every test should be judged against holding SPY, not just against zero.
 - **The video's own lesson held up on SPY:** "moving averages are often better used to avoid downside than to maximize upside." It did avoid downside. It just wasn't a good deal, because in 2016–2026 upside was what mattered.
 - **Nothing will be tuned.** No 200-day version, no other markets, no added filters. This result stands as one run.
+
+## Update: Bitcoin code check (owner approved, Sept 30)
+**Question:** does our backtest code reproduce the video's own Bitcoin numbers? This checks the code only; it isn't part of any verdict.
+
+**Data:**
+- Alpaca's free crypto history only starts in 2021.
+- So we used Bitstamp's free public daily bars, the same feed as the video's TradingView chart (`research/sma50_test_v1/fetch_bitstamp.py`).
+- The window runs from May 15, 2015 to July 9, 2026. On July 9, our Bitstamp close was $63,185.92; the video read the live price as $63,187.
+- Code: `research/sma50_test_v1/bitcoin_check.py`. Results: `output/sma50-bitcoin-check.json`.
+
+| $10k from May 15, 2015 | Video (TradingView) | Our code |
+|---|---|---|
+| Trades | 100, flat at the end | **100, flat at the end** |
+| Net profit, 0.1% cost | $4,796,186 | $4,910,845 (+2.4%) |
+| Net profit, no cost | $5,854,816 | $6,000,335 (+2.5%) |
+| Win rate, 0.1% / none | 29% / 30% | **29.0% / 30.0%** |
+| Profit factor, 0.1% / none | 2.12 / 2.28 | **2.12 / 2.27** |
+| Worst drop | −53.7% | −61.2% |
+
+**Verdict: the code matches.** Trade count, win rate and profit factor are the same.
+
+**Remaining gaps, and why:**
+- **Profit (~2% off):** small differences in daily prices or bar timing between the data sources.
+- **Worst drop:** we measure it on every daily close while holding. TradingView's figure is measured differently, and ours is the harsher one.
+
+**What this means for the SPY result:** it came from code that reproduces a known outside result. The SPY rule really did turn $100k into about $191k while holding SPY turned it into about $446k.
