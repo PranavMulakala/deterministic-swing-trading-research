@@ -51,7 +51,9 @@ Environment=DISPLAY=:91
 Environment=XAUTHORITY=/var/lib/ibkr-paper/.Xauthority
 Environment=HOME=/var/lib/ibkr-paper
 WorkingDirectory=/var/lib/ibkr-paper
-ExecStart=/opt/ibkr-paper-v1/gateway/ibgateway
+# The Gateway's daily auto-restart starts a fresh copy and then exits. Keep the unit alive while any Gateway
+# java process runs, so systemd does not kill that fresh copy along with the old main process.
+ExecStart=/bin/sh -c '/opt/ibkr-paper-v1/gateway/ibgateway; sleep 15; while pgrep -u ibkr-paper -x java >/dev/null; do sleep 10; done'
 Restart=always
 RestartSec=30
 TimeoutStopSec=30
