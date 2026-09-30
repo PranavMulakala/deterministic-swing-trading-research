@@ -52,7 +52,7 @@ Environment=XAUTHORITY=/var/lib/ibkr-paper/.Xauthority
 Environment=HOME=/var/lib/ibkr-paper
 WorkingDirectory=/var/lib/ibkr-paper
 ExecStart=/opt/ibkr-paper-v1/gateway/ibgateway
-Restart=on-failure
+Restart=always
 RestartSec=30
 TimeoutStopSec=30
 KillMode=control-group
