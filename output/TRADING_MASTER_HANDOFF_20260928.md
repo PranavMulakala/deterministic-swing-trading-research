@@ -293,3 +293,9 @@ Everything below was read-only unless stated otherwise.
   - **LITE paper sell at $979.19 still open:** after 10:00 the high was $975.
   - **Timers for Oct 1** are set for 14:00 and 14:30 UTC.
   - **Owner's real Robinhood account:** no stock, about $95k cash. The $940 LITE limit never filled.
+- **Oct 1 afternoon:**
+  - **Ross Cameron studied:** [notes](ROSS_CAMERON_NOTES_20261001.md), [transcript](ROSS_CAMERON_SMALL_ACCOUNT_TRANSCRIPT_20261001.md).
+  - **Paper small-cap scanner built** (`research/smallcap_scanner_v1/`, 7 tests). It checks Ross's 5 pillars on free Alpaca and Alpha Vantage data.
+    - **Cloud kit:** `cloud/smallcap_scanner_v1/`, owner approved ("schedule it on the cloud... i dont want to touch it").
+    - **Schedule:** scans every 5 min 07:00–10:00 ET, watch-list email at 10:05, review email at 16:15, Mon–Fri.
+    - **Not deployed yet:** the server's SSH firewall blocks the current network (128.61.222.183). A background loop in this session retries every 5 min for 18 h and deploys when reachable. If the session ends first, run `.venv/bin/python cloud/smallcap_scanner_v1/deploy.py` from home.
