@@ -1,0 +1,11 @@
+[Unit]
+Description=Paper small-cap scan every 5 minutes, 07:00-10:00 New York time, Monday to Friday
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 07..09:00/5:00 America/New_York
+OnCalendar=Mon..Fri *-*-* 10:00:00 America/New_York
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target

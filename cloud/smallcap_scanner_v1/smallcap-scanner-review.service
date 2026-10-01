@@ -1,0 +1,24 @@
+[Unit]
+Description=Paper small-cap scanner: 16:15 review email (read-only market data, no orders)
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+Type=oneshot
+User=scanner-bot
+Group=scanner-bot
+WorkingDirectory=/opt/smallcap-scanner
+Environment=PYTHONPATH=/opt/smallcap-scanner
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -u -m research.smallcap_scanner_v1.scanner --review-email
+TimeoutStartSec=4min
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/opt/smallcap-scanner/outputs
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes

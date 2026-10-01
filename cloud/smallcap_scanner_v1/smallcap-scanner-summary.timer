@@ -1,0 +1,10 @@
+[Unit]
+Description=Paper small-cap scanner watch-list email at 10:05 New York time, Monday to Friday
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 10:05:00 America/New_York
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target

@@ -47,12 +47,13 @@ class NewsTests(unittest.TestCase):
 
 class FakeData:
     def candidates(self):
-        return {"AAA": {}, "BBB": {}, "CCC": {}, "DDDW": {}}
+        return {"AAA": {}, "BBB": {}, "CCC": {}, "DDDW": {}, "EEE": {}}
 
     def snapshots(self, symbols):
-        snap = lambda p, prev, v: {"latestTrade": {"p": p}, "prevDailyBar": {"c": prev}, "dailyBar": {"v": v}}
+        snap = lambda p, prev, v, t="2026-10-01T12:29:00Z": {"latestTrade": {"p": p, "t": t},
+                                                             "prevDailyBar": {"c": prev}, "dailyBar": {"v": v}}
         return {"AAA": snap(8.0, 5.0, 60_000), "BBB": snap(30.0, 20.0, 1), "CCC": snap(5.0, 4.9, 1),
-                "DDDW": snap(3.0, 1.0, 1)}
+                "DDDW": snap(3.0, 1.0, 1), "EEE": snap(6.0, 4.0, 60_000, "2026-09-30T19:59:00Z")}
 
     def asset(self, symbol):
         return {"exchange": "NASDAQ", "tradable": True, "class": "us_equity", "symbol": symbol,
@@ -71,11 +72,31 @@ class ScanTests(unittest.TestCase):
             with mock.patch.object(sc, "OUT", Path(tmp)), \
                  mock.patch.object(sc, "float_shares", return_value={"AAA": 3_000_000}):
                 rec = sc.scan(FakeData(), datetime(2026, 10, 1, 8, 30, tzinfo=sc.NY))
-            self.assertEqual([r["symbol"] for r in rec["results"]], ["AAA"])  # BBB too pricey, CCC +2%, DDDW warrant
+            # BBB too pricey, CCC +2%, DDDW warrant, EEE last traded yesterday
+            self.assertEqual([r["symbol"] for r in rec["results"]], ["AAA"])
             a = rec["results"][0]
             self.assertEqual((a["change_pct"], a["rvol"], a["grade"]), (60.0, 6.0, "A"))
             self.assertEqual(len((Path(tmp) / "scans.jsonl").read_text().splitlines()), 1)
             self.assertIn("AAA", sc.table(rec))
+            with mock.patch.object(sc, "OUT", Path(tmp)):
+                text = sc.summary_text("2026-10-01")
+            self.assertIn("AAA", text)
+            self.assertIn("first seen 08:30 ET at $8.00", text)
+            self.assertIn("Closed above the first-seen price: 1 of 1", sc.review_text("2026-10-01", [
+                {"grade": "A", "symbol": "AAA", "at": "2026-10-01T08:30:00-04:00", "price": 8.0,
+                 "max_up_pct": 20.0, "max_down_pct": -5.0, "close_pct": 3.0}]))
+
+
+class FloatBudgetTests(unittest.TestCase):
+    def test_daily_cap_and_cache(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp) / "c.json"
+            from datetime import date
+            cache.write_text(json.dumps({"_calls": {date.today().isoformat(): 20},
+                                         "OLD": {"float": 1_000_000, "on": date.today().isoformat()}}))
+            with mock.patch.object(sc, "av_key", return_value="k"):
+                out = sc.float_shares(["OLD", "NEW"], cache_path=cache, opener=object())
+            self.assertEqual(out, {"OLD": 1_000_000, "NEW": None})  # cached hit; NEW refused at the daily cap
 
 
 if __name__ == "__main__":
