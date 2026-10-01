@@ -286,3 +286,10 @@ Everything below was read-only unless stated otherwise.
     - The owner lives in Atlanta, outside the father's household, but trades they discuss together could count as "influenced".
     - An email summarizing this was **sent to the father** (mulakalav@gmail.com) on the owner's explicit "yes". It does not say trading is "okay"; it says only the compliance officer can confirm that.
     - **Implication for research:** the parked LITE options (calls) test would conflict with the policy if the owner is a covered family member.
+- **Sept 30, 11:15 PM ET check:**
+  - **Gateway fix verified.** At 23:45 UTC the Gateway self-restarted, logging "Running in auto-restart mode: restoring session token". The new java process survived under the wrapper, with no login needed.
+  - **The MNQ collector reconnected** to the API at about 23:47 UTC. It subscribes to quotes only from 09:15 ET, so zero quotes overnight is by design.
+  - **First complete session should be Oct 1;** strategy entries are eligible from Oct 2. A fresh IBKR login will likely be needed weekly (after the weekend).
+  - **LITE paper sell at $979.19 still open:** after 10:00 the high was $975.
+  - **Timers for Oct 1** are set for 14:00 and 14:30 UTC.
+  - **Owner's real Robinhood account:** no stock, about $95k cash. The $940 LITE limit never filled.
