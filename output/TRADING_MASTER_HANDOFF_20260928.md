@@ -323,3 +323,15 @@ Everything below was read-only unless stated otherwise.
   - Record: [REAL_POSITION_MU_20261002.md](REAL_POSITION_MU_20261002.md). Sell note filled in: [MU_SELL_NOTE.md](MU_SELL_NOTE.md) (+25% at $1,348.85, −20% at $863.26).
   - Combined with Plan B LITE (15 shares), the bad case is about −$31k, inside the ~$38k limit.
   - Cash left is about $40k (about $16k of it for taxes) until Dad's $95k arrives Monday.
+- **Oct 2, about 2:45 PM: daily market brief built, not scheduled.** The owner asked how to stay informed every day and spot trouble early. Code: `research/market_brief_v1/` (5 unit tests). It reads the owner's positions and checks them against the sell notes, plus peers, chips, the market, Alpaca headlines, and the next two weeks from `calendar.json`. Every warning flag uses a threshold fixed in advance.
+  - It ran once locally (print only, no email). Deploying it as a 4:30 PM ET weekday server email is a **new persistent job and needs the owner's yes**.
+  - **DRAM prices:** TrendForce's terms forbid automated collection, so the brief links the free page for the owner to check by hand.
+  - **Key dates** (in `calendar.json`):
+    - Samsung preliminary results, about Oct 7–8 (typical timing);
+    - TSMC Oct 15 (estimated);
+    - Fed Oct 28;
+    - big-tech earnings Oct 27–29 (estimated);
+    - LITE earnings Nov 10, before the open (one listing said Nov 3);
+    - NVDA Nov 25 (estimated);
+    - **Dec 9: MU buyback limit ends, plus the Fed decision**;
+    - MU earnings mid/late Dec.

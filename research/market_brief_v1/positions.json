@@ -1,0 +1,7 @@
+{
+  "_note": "The owner's real positions, as they report them. Update after every real buy or sell. Sell-note levels come from output/*_SELL_NOTE.md.",
+  "positions": [
+    {"symbol": "MU", "shares": 50.96, "cost": 1079.08, "opened": "2026-10-02", "target_pct": 25, "limit_pct": -20}
+  ],
+  "combined_limit_usd": 38000
+}
