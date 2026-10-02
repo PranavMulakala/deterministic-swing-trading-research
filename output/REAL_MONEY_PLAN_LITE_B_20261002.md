@@ -11,7 +11,7 @@
 5. **No automatic stop.** My −20% check comes from my sell note: I decide that evening.
 
 ## Size
-- **Start:** **15 shares** (about $16,000 at today's price). Changeable to 10–20 before my first buy, then fixed for the first 4 weeks.
+- **Start:** **15 shares** (about $16,000 at today's price), confirmed Oct 2. Fixed for the first **3 weeks** (starts Mon Oct 5).
 - **What that means in dollars** (15/66 of the paper bot's $60k history):
 
 | | 15 shares |
@@ -42,7 +42,7 @@
 |---|---|---|---|---|---|---|
 
 ## When I change the size: decided now, not in the moment
-- **Scale up (for example to 30 shares) only if all of these hold after 4 weeks:**
+- **Scale up (for example to 30 shares) only if all of these hold after 3 weeks:**
   - I followed the rule every time (no skipped signals, no extra trades);
   - my real results match the paper bot's within about 0.5% per trade;
   - no position is down 10% or more.
