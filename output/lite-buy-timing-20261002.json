@@ -1,0 +1,401 @@
+{
+  "generated_utc": "2026-10-02T15:05:24+00:00",
+  "last_full_session": "2026-10-01",
+  "last_close": 1045.78,
+  "close_52wk_high": 1053.09,
+  "last_close_vs_52wk_high_pct": -0.7,
+  "today_1min_delayed_16min": {
+    "bars": 80,
+    "first": "09:30",
+    "last": 1083.83,
+    "open": 1053.26,
+    "high": 1084.3,
+    "high_at": "10:49",
+    "low": 1037.2444,
+    "low_at": "09:55",
+    "vwap": 1062.39,
+    "volume": 1615551,
+    "last_vs_open_pct": 2.9,
+    "range_pct": 4.5
+  },
+  "waiting_for_dip": {
+    "boom_2025_26_within_20d": {
+      "-3%": {
+        "start_days": 418,
+        "dip_came_pct": 80.9,
+        "median_days_to_dip": 1.0,
+        "when_missed_median_lite_move_pct": 24.6,
+        "buy_now_avg_return_pct": 14.4,
+        "wait_avg_return_pct": 10.9,
+        "wait_beat_buy_now_pct_of_days": 80.9
+      },
+      "-5%": {
+        "start_days": 418,
+        "dip_came_pct": 72.7,
+        "median_days_to_dip": 2.0,
+        "when_missed_median_lite_move_pct": 22.7,
+        "buy_now_avg_return_pct": 14.4,
+        "wait_avg_return_pct": 10.2,
+        "wait_beat_buy_now_pct_of_days": 72.7
+      },
+      "-10%": {
+        "start_days": 418,
+        "dip_came_pct": 46.4,
+        "median_days_to_dip": 4.0,
+        "when_missed_median_lite_move_pct": 22.2,
+        "buy_now_avg_return_pct": 14.4,
+        "wait_avg_return_pct": 4.2,
+        "wait_beat_buy_now_pct_of_days": 47.4
+      },
+      "-15%": {
+        "start_days": 418,
+        "dip_came_pct": 32.1,
+        "median_days_to_dip": 7.0,
+        "when_missed_median_lite_move_pct": 20.2,
+        "buy_now_avg_return_pct": 14.4,
+        "wait_avg_return_pct": 3.3,
+        "wait_beat_buy_now_pct_of_days": 40.0
+      },
+      "-20%": {
+        "start_days": 418,
+        "dip_came_pct": 21.1,
+        "median_days_to_dip": 10.5,
+        "when_missed_median_lite_move_pct": 18.0,
+        "buy_now_avg_return_pct": 14.4,
+        "wait_avg_return_pct": 2.3,
+        "wait_beat_buy_now_pct_of_days": 34.7
+      }
+    },
+    "boom_2025_26_within_60d": {
+      "-3%": {
+        "start_days": 378,
+        "dip_came_pct": 80.2,
+        "median_days_to_dip": 1,
+        "when_missed_median_lite_move_pct": 88.2,
+        "buy_now_avg_return_pct": 57.0,
+        "wait_avg_return_pct": 42.4,
+        "wait_beat_buy_now_pct_of_days": 80.2
+      },
+      "-5%": {
+        "start_days": 378,
+        "dip_came_pct": 72.2,
+        "median_days_to_dip": 2,
+        "when_missed_median_lite_move_pct": 85.3,
+        "buy_now_avg_return_pct": 57.0,
+        "wait_avg_return_pct": 37.0,
+        "wait_beat_buy_now_pct_of_days": 72.2
+      },
+      "-10%": {
+        "start_days": 378,
+        "dip_came_pct": 48.1,
+        "median_days_to_dip": 5.0,
+        "when_missed_median_lite_move_pct": 84.8,
+        "buy_now_avg_return_pct": 57.0,
+        "wait_avg_return_pct": 16.9,
+        "wait_beat_buy_now_pct_of_days": 48.1
+      },
+      "-15%": {
+        "start_days": 378,
+        "dip_came_pct": 39.9,
+        "median_days_to_dip": 10,
+        "when_missed_median_lite_move_pct": 86.9,
+        "buy_now_avg_return_pct": 57.0,
+        "wait_avg_return_pct": 10.9,
+        "wait_beat_buy_now_pct_of_days": 40.2
+      },
+      "-20%": {
+        "start_days": 378,
+        "dip_came_pct": 33.1,
+        "median_days_to_dip": 16,
+        "when_missed_median_lite_move_pct": 84.3,
+        "buy_now_avg_return_pct": 57.0,
+        "wait_avg_return_pct": 7.3,
+        "wait_beat_buy_now_pct_of_days": 33.9
+      }
+    },
+    "boom_2025_26_near_52wk_high_within_20d": {
+      "-3%": {
+        "start_days": 117,
+        "dip_came_pct": 82.1,
+        "median_days_to_dip": 2.0,
+        "when_missed_median_lite_move_pct": 27.8,
+        "buy_now_avg_return_pct": 15.8,
+        "wait_avg_return_pct": 12.7,
+        "wait_beat_buy_now_pct_of_days": 82.1
+      },
+      "-5%": {
+        "start_days": 117,
+        "dip_came_pct": 70.9,
+        "median_days_to_dip": 2,
+        "when_missed_median_lite_move_pct": 23.4,
+        "buy_now_avg_return_pct": 15.8,
+        "wait_avg_return_pct": 11.7,
+        "wait_beat_buy_now_pct_of_days": 70.9
+      },
+      "-10%": {
+        "start_days": 117,
+        "dip_came_pct": 47.0,
+        "median_days_to_dip": 4,
+        "when_missed_median_lite_move_pct": 21.9,
+        "buy_now_avg_return_pct": 15.8,
+        "wait_avg_return_pct": 7.8,
+        "wait_beat_buy_now_pct_of_days": 47.9
+      },
+      "-15%": {
+        "start_days": 117,
+        "dip_came_pct": 25.6,
+        "median_days_to_dip": 5.0,
+        "when_missed_median_lite_move_pct": 19.6,
+        "buy_now_avg_return_pct": 15.8,
+        "wait_avg_return_pct": 4.2,
+        "wait_beat_buy_now_pct_of_days": 35.0
+      },
+      "-20%": {
+        "start_days": 117,
+        "dip_came_pct": 9.4,
+        "median_days_to_dip": 5,
+        "when_missed_median_lite_move_pct": 16.3,
+        "buy_now_avg_return_pct": 15.8,
+        "wait_avg_return_pct": 1.1,
+        "wait_beat_buy_now_pct_of_days": 27.4
+      }
+    },
+    "stress_2016_24_within_20d": {
+      "-3%": {
+        "start_days": 2264,
+        "dip_came_pct": 77.3,
+        "median_days_to_dip": 3.0,
+        "when_missed_median_lite_move_pct": 12.7,
+        "buy_now_avg_return_pct": 2.1,
+        "wait_avg_return_pct": 1.4,
+        "wait_beat_buy_now_pct_of_days": 77.9
+      },
+      "-5%": {
+        "start_days": 2264,
+        "dip_came_pct": 66.2,
+        "median_days_to_dip": 5.0,
+        "when_missed_median_lite_move_pct": 11.0,
+        "buy_now_avg_return_pct": 2.1,
+        "wait_avg_return_pct": 1.4,
+        "wait_beat_buy_now_pct_of_days": 69.5
+      },
+      "-10%": {
+        "start_days": 2264,
+        "dip_came_pct": 41.0,
+        "median_days_to_dip": 9,
+        "when_missed_median_lite_move_pct": 7.5,
+        "buy_now_avg_return_pct": 2.1,
+        "wait_avg_return_pct": 1.1,
+        "wait_beat_buy_now_pct_of_days": 54.0
+      },
+      "-15%": {
+        "start_days": 2264,
+        "dip_came_pct": 20.5,
+        "median_days_to_dip": 12,
+        "when_missed_median_lite_move_pct": 4.1,
+        "buy_now_avg_return_pct": 2.1,
+        "wait_avg_return_pct": 0.6,
+        "wait_beat_buy_now_pct_of_days": 47.9
+      },
+      "-20%": {
+        "start_days": 2264,
+        "dip_came_pct": 8.2,
+        "median_days_to_dip": 13,
+        "when_missed_median_lite_move_pct": 2.3,
+        "buy_now_avg_return_pct": 2.1,
+        "wait_avg_return_pct": 0.3,
+        "wait_beat_buy_now_pct_of_days": 46.3
+      }
+    },
+    "stress_2016_24_near_52wk_high_within_20d": {
+      "-3%": {
+        "start_days": 279,
+        "dip_came_pct": 75.6,
+        "median_days_to_dip": 3,
+        "when_missed_median_lite_move_pct": 11.4,
+        "buy_now_avg_return_pct": 0.9,
+        "wait_avg_return_pct": 0.2,
+        "wait_beat_buy_now_pct_of_days": 76.0
+      },
+      "-5%": {
+        "start_days": 279,
+        "dip_came_pct": 64.5,
+        "median_days_to_dip": 5.0,
+        "when_missed_median_lite_move_pct": 9.9,
+        "buy_now_avg_return_pct": 0.9,
+        "wait_avg_return_pct": 0.6,
+        "wait_beat_buy_now_pct_of_days": 68.1
+      },
+      "-10%": {
+        "start_days": 279,
+        "dip_came_pct": 36.9,
+        "median_days_to_dip": 8,
+        "when_missed_median_lite_move_pct": 7.6,
+        "buy_now_avg_return_pct": 0.9,
+        "wait_avg_return_pct": -0.3,
+        "wait_beat_buy_now_pct_of_days": 50.5
+      },
+      "-15%": {
+        "start_days": 279,
+        "dip_came_pct": 22.2,
+        "median_days_to_dip": 14.0,
+        "when_missed_median_lite_move_pct": 6.3,
+        "buy_now_avg_return_pct": 0.9,
+        "wait_avg_return_pct": -0.0,
+        "wait_beat_buy_now_pct_of_days": 47.7
+      },
+      "-20%": {
+        "start_days": 279,
+        "dip_came_pct": 10.8,
+        "median_days_to_dip": 15.0,
+        "when_missed_median_lite_move_pct": 3.1,
+        "buy_now_avg_return_pct": 0.9,
+        "wait_avg_return_pct": 0.1,
+        "wait_beat_buy_now_pct_of_days": 47.3
+      }
+    }
+  },
+  "opening_shape": {
+    "all_days_2022_26": {
+      "days": 1186,
+      "rest_of_day_up_pct": 50.0,
+      "rest_of_day_median_pct": 0.0,
+      "fell_2pct_below_11am_price_later_that_day_pct": 24.0,
+      "next_day_up_pct": 51.6,
+      "next_day_median_pct": 0.2,
+      "five_day_up_pct": 53.0,
+      "five_day_median_pct": 0.6
+    },
+    "all_days_2025_26": {
+      "days": 433,
+      "rest_of_day_up_pct": 51.3,
+      "rest_of_day_median_pct": 0.1,
+      "fell_2pct_below_11am_price_later_that_day_pct": 35.3,
+      "next_day_up_pct": 56.4,
+      "next_day_median_pct": 0.8,
+      "five_day_up_pct": 60.5,
+      "five_day_median_pct": 3.0
+    },
+    "today_shape_2022_26": {
+      "days": 129,
+      "rest_of_day_up_pct": 57.4,
+      "rest_of_day_median_pct": 0.2,
+      "fell_2pct_below_11am_price_later_that_day_pct": 34.9,
+      "next_day_up_pct": 59.7,
+      "next_day_median_pct": 1.2,
+      "five_day_up_pct": 62.8,
+      "five_day_median_pct": 2.4
+    },
+    "today_shape_2025_26": {
+      "days": 94,
+      "rest_of_day_up_pct": 60.6,
+      "rest_of_day_median_pct": 0.5,
+      "fell_2pct_below_11am_price_later_that_day_pct": 35.1,
+      "next_day_up_pct": 60.6,
+      "next_day_median_pct": 1.3,
+      "five_day_up_pct": 64.9,
+      "five_day_median_pct": 3.3
+    },
+    "today_shape_dates_2025_26": [
+      "2025-01-02",
+      "2025-01-13",
+      "2025-02-03",
+      "2025-02-05",
+      "2025-02-07",
+      "2025-02-12",
+      "2025-03-07",
+      "2025-03-11",
+      "2025-04-03",
+      "2025-04-07",
+      "2025-04-09",
+      "2025-04-22",
+      "2025-05-21",
+      "2025-06-09",
+      "2025-06-17",
+      "2025-06-23",
+      "2025-07-07",
+      "2025-07-09",
+      "2025-07-21",
+      "2025-07-23",
+      "2025-07-25",
+      "2025-08-04",
+      "2025-08-06",
+      "2025-08-14",
+      "2025-09-02",
+      "2025-09-12",
+      "2025-09-17",
+      "2025-09-25",
+      "2025-10-07",
+      "2025-10-13",
+      "2025-10-14",
+      "2025-10-22",
+      "2025-10-27",
+      "2025-10-28",
+      "2025-10-29",
+      "2025-11-04",
+      "2025-11-05",
+      "2025-11-07",
+      "2025-11-11",
+      "2025-11-19",
+      "2025-11-21",
+      "2025-11-26",
+      "2025-12-01",
+      "2025-12-04",
+      "2025-12-05",
+      "2025-12-09",
+      "2025-12-15",
+      "2025-12-22",
+      "2026-01-02",
+      "2026-01-13",
+      "2026-01-15",
+      "2026-01-20",
+      "2026-01-26",
+      "2026-02-04",
+      "2026-02-05",
+      "2026-02-06",
+      "2026-02-10",
+      "2026-02-17",
+      "2026-02-23",
+      "2026-03-05",
+      "2026-03-11",
+      "2026-03-16",
+      "2026-03-17",
+      "2026-03-19",
+      "2026-03-27",
+      "2026-03-31",
+      "2026-04-07",
+      "2026-04-10",
+      "2026-04-23",
+      "2026-04-28",
+      "2026-05-05",
+      "2026-05-08",
+      "2026-05-12",
+      "2026-05-19",
+      "2026-05-21",
+      "2026-06-01",
+      "2026-06-11",
+      "2026-06-23",
+      "2026-06-24",
+      "2026-07-01",
+      "2026-07-06",
+      "2026-07-07",
+      "2026-07-21",
+      "2026-07-30",
+      "2026-08-03",
+      "2026-08-06",
+      "2026-08-17",
+      "2026-08-21",
+      "2026-09-04",
+      "2026-09-08",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-21",
+      "2026-09-24"
+    ]
+  },
+  "notes": [
+    "Entry price in the dip tables is each day's close; 'wait' buys exactly at the dip price the first day the low touches it and holds to the horizon, otherwise stays in cash (0%).",
+    "Overlapping start days: these are not independent samples.",
+    "Descriptive only. Not a rule, not a recommendation."
+  ]
+}

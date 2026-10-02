@@ -306,3 +306,12 @@ Everything below was read-only unless stated otherwise.
   - **Rule for the owner:** never log into this paper username elsewhere while the bot runs.
   - **Effect on the test:** Oct 2 is incomplete (opening quotes missed), so MNQ entries need a complete Oct 5 session. The 8-week test's first eligible trading day moves to Tue Oct 6.
   - **LITE-like screen:** [LITE_LIKE_SCREEN_20261002.md](LITE_LIKE_SCREEN_20261002.md).
+- **Oct 2 midday (about 11:10 ET):**
+  - **Bot check:** LITE bot NO_SIGNAL (dip −1.44%, 9:55 price back above the open). SPY spread: No Events. Scanner 10:05 email sent (AMOD grade A).
+  - **MNQ:** a 10:23 STALE_COLLECTOR_HEARTBEAT alert was a short blip. At 11:03 the collector was COLLECTING_REALTIME with quotes 0.2 s old. The gate is still PREVIOUS_SESSION_INCOMPLETE, as expected.
+  - **SSH note:** plain `ssh root@…` fails host-key verification. Use the project known-hosts file the deploy scripts use: `-o UserKnownHostsFile=research/agentic_shadow_v1/deployment/personal-cloud-known-hosts`.
+  - **Found, not fixed:** the old `trading-collector.service` (a delayed LITE/COHR/CIEN/FN/AAOI collector) has returned HTTP 401 on every call since about Sept 28, 18:50 UTC, so its key is no longer valid. No current bot depends on it. Disable it, or re-key it? That's the owner's call.
+  - **"Buy LITE now or wait?" answered with evidence only:** [LITE_BUY_NOW_OR_WAIT_20261002.md](LITE_BUY_NOW_OR_WAIT_20261002.md) (code: `research/lite_buy_timing_v1/`). LITE was at $1,067.53, above its 52-week closing high.
+    - The waiting stats reproduce: −5% came 73% of the time and −10% 46%; on a miss, LITE was +22% higher.
+    - Waiting lost to buying now on average in 2025–26, and the two came out about even in 2016–24.
+    - Today's opening shape is within noise of an ordinary day.
