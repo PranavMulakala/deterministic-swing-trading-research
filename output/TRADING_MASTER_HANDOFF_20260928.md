@@ -319,3 +319,7 @@ Everything below was read-only unless stated otherwise.
   - A +2% move existed in hindsight on 98% of boom days. But buying at 10:00 reached +2% the same day only 53% of the time (27% in 2022–24).
   - "Buy daily, hold to +2%": 113 sales with a worst dip of −55% in 2025–26; 1 sale and −67% in 2022–24.
   - Plan B (15 shares, starts Mon Oct 5) is unchanged.
+- **Oct 2, about 1:40 PM: the owner's real MU buy.** 50.96 shares at $1,079.08 ($54,989.92), in Robinhood, with cash. The owner decided this; Claude gave evidence only.
+  - Record: [REAL_POSITION_MU_20261002.md](REAL_POSITION_MU_20261002.md). Sell note filled in: [MU_SELL_NOTE.md](MU_SELL_NOTE.md) (+25% at $1,348.85, −20% at $863.26).
+  - Combined with Plan B LITE (15 shares), the bad case is about −$31k, inside the ~$38k limit.
+  - Cash left is about $40k (about $16k of it for taxes) until Dad's $95k arrives Monday.

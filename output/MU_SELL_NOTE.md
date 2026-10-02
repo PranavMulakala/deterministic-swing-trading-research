@@ -2,21 +2,21 @@
 
 Written by me, while calm, before I buy. I sell myself. Nobody and no order sells for me. This note is what I promised myself.
 
-## My position (fill in after the buy fills)
-- Shares: ______
-- Average price: $______
-- Total cost: $______
-- Date bought: ______
+## My position
+- Shares: **50.96** (fractional)
+- Average price: **$1,079.08**
+- Total cost: **$54,989.92**
+- Date bought: **Fri Oct 2, 2026, about 1:40 PM ET** (Robinhood, cash)
 
 ## My rules (target +25%, limit −20%)
 
 | If MU closes at… | That's… | I will… |
 |---|---|---|
-| **+25%** ($______) | my target | **Sell**, or at least sell half and write down why I'm keeping the rest |
-| +10% ($______) | doing well | Nothing. Don't move the target up because it feels good |
-| −10% ($______) | a normal MU week (it moved $74 in one day on Oct 1) | Nothing. Re-read this note |
-| **−20%** ($______) | **my limit** | **Stop and decide that evening:** sell, or write one sentence explaining why I'm holding. "It'll come back" doesn't count |
-| −30% ($______) | past my limit | Sell, unless the sentence I wrote at −20% is still true |
+| **+25%** ($1,348.85) | my target | **Sell**, or at least sell half and write down why I'm keeping the rest |
+| +10% ($1,186.99) | doing well | Nothing. Don't move the target up because it feels good |
+| −10% ($971.17) | a normal MU week (it moved $74 in one day on Oct 1) | Nothing. Re-read this note |
+| **−20%** ($863.26) | **my limit** | **Stop and decide that evening:** sell, or write one sentence explaining why I'm holding. "It'll come back" doesn't count |
+| −30% ($755.36) | past my limit | Sell, unless the sentence I wrote at −20% is still true |
 
 ## Habits
 1. **I decide on the closing price,** not mid-day swings.
@@ -40,17 +40,22 @@ For comparison:
 - **A +20% target** hit first 65% of the time in 2021–26 (about 36 days).
 - **A +30% target** hit first 55% of the time (about 59 days).
 
-## Worked example (not a recommendation): bought at $1,098.15 (the Oct 1 close)
+## My real numbers: 50.96 shares at $1,079.08 ($54,989.92)
 
-| Level | Price | 50 shares ($54,908) | 90 shares ($98,834) |
+| Level (closing price) | Price | My gain / loss | After about 29% tax |
 |---|---|---|---|
-| +25% | $1,372.69 | **+$13,727** (about +$9,700 after tax) | **+$24,708** (about +$17,500 after tax) |
-| +10% | $1,207.97 | +$5,491 | +$9,883 |
-| −10% | $988.34 | −$5,491 | −$9,883 |
-| **−20%** | **$878.52** | **−$10,982** | **−$19,767** |
-| −30% | $768.71 | −$16,472 | −$29,650 |
-| −41% (this summer's 5-week drop) | $647.91 | −$22,512 | **−$40,522** (over my ~$38k limit) |
+| **+25% target** | **$1,348.85** | **+$13,747** | about +$9,760 |
+| +10% | $1,186.99 | +$5,499 | about +$3,904 |
+| −10% | $971.17 | −$5,499 | |
+| **−20% limit** | **$863.26** | **−$10,998** | |
+| −30% | $755.36 | −$16,497 | |
+| −41% (MU's worst 2025–26 drop) | $636.66 | −$22,546 | |
 
-**If I also own LITE:**
-- 50 MU plus 50 LITE both falling 20% would be about **−$21,400**.
-- Both falling like their summer drops (MU −41%, LITE −43%) would be about **−$45,000**, over my ~$38k limit.
+Each $10 move in MU = about **$510** for me.
+
+**Bought on a day when:** MU was −1.5%, pulled down by a hard-drive selloff (Toshiba doubling HDD output: Seagate −12%, WD −11%) while the chip index was +1.9%. It was two days after a record quarter; see `MU_AFTER_EARNINGS_20261002.md`.
+
+**Together with my LITE plan (Plan B, 15 shares, about $16k, from Oct 5):**
+- Both at −20%: about −$11,000 MU + −$3,200 LITE = **−$14,200**.
+- MU −41% and LITE at its worst replayed hold (−55%, about −$8,800): about **−$31,300**. That's inside my ~$38k limit, with about $7k to spare.
+- **Adding more MU or LITE eats that room.** I decide that while calm, not mid-day.
