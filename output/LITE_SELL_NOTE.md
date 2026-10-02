@@ -1,41 +1,56 @@
-# My LITE sell note
+# My LITE sell note (updated Oct 2, 2026: quick-profit version)
 
-Written by me, while calm, before I buy. I sell myself. Nobody and no order sells for me. This note is what I promised myself.
+Written by me, while calm, before I buy. I sell myself. Nobody and no automatic stop sells for me. This note is what I promised myself.
+
+**My plan:** take small, frequent profits. Sell at **+2% to +3%** over my buy price.
 
 ## My position (fill in after the buy fills)
 - Shares: ______
 - Average price: $______
 - Total cost: $______
-- Date bought: ______
+- Date and time bought: ______
 
 ## My rules
 
-| If LITE closes at… | That's… | I will… |
+| If LITE reaches… | That's… | I will… |
 |---|---|---|
-| **+20%** ($______) | my target | **Sell**, or at least sell half and write down why I'm keeping the rest |
-| **+10%** ($______) | doing well | Nothing. Don't move the target up because it feels good |
-| **−10%** ($______) | a normal LITE week | Nothing. Re-read this note |
+| **+3%** ($______) | my stretch target | **Sell everything** |
+| **+2%** ($______) | my main target | **Sell**, or sell at least half and hold the rest only to +3% |
+| −5% ($______) | a normal LITE day | Nothing. Re-read this note |
+| −10% ($______) | about 1 in 10 buys get here first (2025–26) | Nothing new. **Don't buy more.** Write down my plan |
 | **−20%** ($______) | **my limit** | **Stop and decide that evening:** sell, or write one sentence explaining why I'm holding. "It'll come back" doesn't count |
-| **−30%** ($______) | past my limit | Sell, unless the sentence I wrote at −20% is still true |
+| −30% ($______) | past my limit | Sell, unless the sentence I wrote at −20% is still true |
 
 ## Habits
-1. **I decide on the closing price, not mid-day swings.** LITE moves 5% in an hour.
+1. **I place my own sell order** right after the buy fills: a limit sell at +2% (or +3%). This is my order, placed by me. Lumentum's policy "discourages" limit orders for employees and family; it doesn't ban them.
 2. **I don't buy more** to "average down" while it's below my price.
-3. **After I sell, I don't buy back the same day.**
+3. **After I sell, I wait for the money to settle** (next business day) before buying LITE again with it. That avoids "good faith violations" in a cash account.
 4. **No margin, no options, no shorting on LITE** (my dad works at Lumentum).
-5. **Taxes:** profit on shares held under a year is taxed like salary (about 29% for me). I keep that money aside.
+5. **Taxes:** each quick profit is a short-term gain, taxed like salary (about 29% for me). I set that aside after every sale.
+6. **One position at a time.** I don't add a second LITE buy until the first one is sold.
 
 ---
 
-## Worked example (not a recommendation): bought at $1,045.67 (the Oct 1 close)
+## Worked example (not a recommendation): 89 shares at $1,066.92 ($94,956)
 
-| Level | Price | 50 shares ($52,284) | 70 shares ($73,197) |
-|---|---|---|---|
-| +20% | $1,254.80 | **+$10,457** (about +$7,400 after tax) | **+$14,639** (about +$10,400 after tax) |
-| +10% | $1,150.24 | +$5,228 | +$7,320 |
-| −10% | $941.10 | −$5,228 | −$7,320 |
-| **−20%** | **$836.54** | **−$10,457** | **−$14,639** |
-| −30% | $731.97 | −$15,685 | −$21,959 |
-| −43% (this year's May–July drop) | $596.03 | −$22,482 | −$31,475 |
+| Level | Price | Profit / loss |
+|---|---|---|
+| **+3%** | **$1,098.93** | **+$2,849** (about +$2,020 after tax) |
+| **+2%** | **$1,088.26** | **+$1,899** (about +$1,350 after tax) |
+| −5% | $1,013.57 | −$4,748 |
+| −10% | $960.23 | −$9,496 |
+| **−20%** | **$853.54** | **−$18,991** |
+| −30% | $746.84 | −$28,487 |
+| −43% (this year's May–July drop) | $608.14 | −$40,831 |
 
-My limit of 20% of about $190k is about **$38,000**. Both examples stay inside it at −20%. At 70 shares, the −43% case is close to that limit.
+## What history says about +2% / +3% (buying LITE at 11:00 on any day)
+
+| | 2025–26 | 2022–24 |
+|---|---|---|
+| Hit +2% the same day | 40% | 18% |
+| Typical wait for +2% | 1 day | 2 days |
+| 1 in 10 times, the dip before +2% went below | −11.7% | −23% |
+| Worst dip before +2% | −54% | −67% (waited over a year) |
+| Typical wait for +3% | 1 day | 4 days |
+
+**Most buys reach the target fast. The rare bad one is the one this note exists for.**
