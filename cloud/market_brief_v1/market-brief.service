@@ -1,0 +1,23 @@
+[Unit]
+Description=Daily market brief email at 16:30 ET (read-only market data and headlines, no orders)
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+Type=oneshot
+User=brief-bot
+Group=brief-bot
+WorkingDirectory=/opt/market-brief
+Environment=PYTHONPATH=/opt/market-brief
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -u -m research.market_brief_v1.brief --email
+TimeoutStartSec=4min
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes

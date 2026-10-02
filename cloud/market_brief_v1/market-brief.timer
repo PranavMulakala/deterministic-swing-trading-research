@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily market brief at 16:30 New York time, Monday to Friday
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 16:30:00 America/New_York
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target
