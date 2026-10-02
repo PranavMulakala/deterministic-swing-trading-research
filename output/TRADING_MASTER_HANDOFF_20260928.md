@@ -299,3 +299,10 @@ Everything below was read-only unless stated otherwise.
     - **Cloud kit:** `cloud/smallcap_scanner_v1/`, owner approved ("schedule it on the cloud... i dont want to touch it").
     - **Schedule:** scans every 5 min 07:00–10:00 ET, watch-list email at 10:05, review email at 16:15, Mon–Fri.
     - **Not deployed yet:** the server's SSH firewall blocks the current network (128.61.222.183). A background loop in this session retries every 5 min for 18 h and deploys when reachable. If the session ends first, run `.venv/bin/python cloud/smallcap_scanner_v1/deploy.py` from home.
+- **Oct 2 morning:**
+  - **Scanner deployed to the cloud** at 08:42 ET. First 10:05 email sent: AMOD was grade A.
+  - **Scanner bug fixed and redeployed:** at the open the snapshot's daily bar was still yesterday's, so BIRD and LONA showed a two-day gain.
+  - **MNQ outage:** the 23:45 UTC self-restart worked, but from about 00:01 UTC a competing login (the owner on the IBKR app or web) kicked the Gateway about 30 times. The owner logged out of the other session and re-logged at about 10:05 ET. The collector was `COLLECTING_REALTIME` by 10:08.
+  - **Rule for the owner:** never log into this paper username elsewhere while the bot runs.
+  - **Effect on the test:** Oct 2 is incomplete (opening quotes missed), so MNQ entries need a complete Oct 5 session. The 8-week test's first eligible trading day moves to Tue Oct 6.
+  - **LITE-like screen:** [LITE_LIKE_SCREEN_20261002.md](LITE_LIKE_SCREEN_20261002.md).
