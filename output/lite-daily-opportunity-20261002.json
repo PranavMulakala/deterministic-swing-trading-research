@@ -1,0 +1,61 @@
+{
+  "generated_utc": "2026-10-02T17:27:28+00:00",
+  "boom_2025_26": {
+    "sessions": 435,
+    "hindsight_best_move_2pct_plus": 97.7,
+    "hindsight_best_move_3pct_plus": 83.9,
+    "hindsight_best_move_median": 4.9,
+    "open_reached_plus2": 60.5,
+    "open_reached_plus3": 43.2,
+    "from_1000_reached_plus2_same_day": 52.9,
+    "from_1000_reached_plus3_same_day": 32.6,
+    "from_1000_plus2_came_before_minus2": 44.4,
+    "when_plus2_missed_median_close_vs_1000": -1.4,
+    "when_plus2_missed_worst_close_vs_1000": -16.7
+  },
+  "stress_2022_24": {
+    "sessions": 747,
+    "hindsight_best_move_2pct_plus": 66.7,
+    "hindsight_best_move_3pct_plus": 34.7,
+    "hindsight_best_move_median": 2.5,
+    "open_reached_plus2": 34.5,
+    "open_reached_plus3": 20.5,
+    "from_1000_reached_plus2_same_day": 26.8,
+    "from_1000_reached_plus3_same_day": 11.3,
+    "from_1000_plus2_came_before_minus2": 26.3,
+    "when_plus2_missed_median_close_vs_1000": -0.5,
+    "when_plus2_missed_worst_close_vs_1000": -8.6
+  },
+  "buy_every_day_hold_to_plus2_2025_26": {
+    "sales": 113,
+    "sessions": 435,
+    "sales_per_week": 1.3,
+    "median_sessions_held": 1,
+    "longest_sessions_held": 122,
+    "worst_dip_while_holding_pct": -55.2,
+    "still_holding_at_end": false
+  },
+  "buy_every_day_hold_to_plus2_2022_24": {
+    "sales": 1,
+    "sessions": 747,
+    "sales_per_week": 0.01,
+    "median_sessions_held": 2,
+    "longest_sessions_held": 745,
+    "worst_dip_while_holding_pct": -67.1,
+    "still_holding_at_end": true
+  },
+  "today_so_far": {
+    "day": "2026-10-02",
+    "hindsight_best": 0.052413490976668475,
+    "open_to_high": 0.03641076277462352,
+    "entry_1000": 1053.01,
+    "from_1000_high": 0.036656821872536716,
+    "up2_before_down2": true,
+    "close_vs_1000": 0.02939668189285949
+  },
+  "notes": [
+    "Hindsight best move needs knowing the day's low and high in advance; nobody can trade it.",
+    "10:00 entry = close of the 9:55 five-minute bar. No fees or slippage.",
+    "Descriptive only. Turning any of this into a rule would be a new formula (parked until late Nov)."
+  ]
+}

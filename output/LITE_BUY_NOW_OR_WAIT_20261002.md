@@ -68,3 +68,28 @@ That's only a few points better than an ordinary LITE day, on overlapping sample
 - **Lumentum policy:** cash shares only. No options, no shorting, no margin; limit orders are "discouraged" (my dad works there).
 - **My sell note** (`LITE_SELL_NOTE.md`) applies from my real fill price: +20% target, −20% limit, decided on closing prices.
 - **Over 10 years, holding the index beat every rule we tested.** A single stock that has risen 12× is the opposite of that, so the position size matters more than the entry price.
+
+---
+
+## Follow-up (1:30 PM): does LITE offer +2–3% every day?
+Code: `research/lite_buy_timing_v1/daily_opportunity.py`; numbers: `output/lite-daily-opportunity-20261002.json`. Uses 5-minute SIP bars; no fees or slippage.
+
+| Share of trading days where… | 2025–26 boom (435 days) | 2022–24 (747 days) |
+|---|---|---|
+| A +2% move existed **in hindsight** (buy the low, sell a later high) | 98% | 67% |
+| …the same with +3% | 84% | 35% |
+| The high reached the **open +2%** | 61% | 35% |
+| Buying at **10:00**, it reached +2% later that day | 53% | 27% |
+| …reached +3% | 33% | 11% |
+| From 10:00, +2% came **before** −2% | 44% | 26% |
+| On days +2% never came: close vs the 10:00 price | median −1.4%, worst −16.7% | median −0.5%, worst −8.6% |
+
+**"Buy at 10:00 whenever flat, hold until +2%"** (one position at a time):
+- **2025–26:** 113 sales, about 1.3 a week. The longest hold was 122 trading days, and the worst dip while holding was **−55%**.
+- **2022–24:** **1 sale in 3 years.** It bought in Jan 2022, fell as far as **−67%**, and was still holding at the end of 2024.
+
+**Today:** buying at 10:00 ($1,053) would have reached +3.7% by 10:49. But the dip rule didn't fire, and on about half of boom days the same buy didn't reach +2% at all.
+
+**Dollars at 15 shares (about $16k):** +2% = $320. Every day for a year would be $80k, but that isn't what the history shows. In the boom, the pace was about $420 a week before tax, with months stuck in a −55% hole. In 2022–24, it was one $320 sale and then a −$10,700 hole lasting years.
+
+Descriptive only. A "buy every day" rule would be a new formula, so it goes on the parked list (freeze until late Nov).

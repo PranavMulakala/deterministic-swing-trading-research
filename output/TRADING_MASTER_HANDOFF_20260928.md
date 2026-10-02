@@ -315,3 +315,7 @@ Everything below was read-only unless stated otherwise.
     - The waiting stats reproduce: −5% came 73% of the time and −10% 46%; on a miss, LITE was +22% higher.
     - Waiting lost to buying now on average in 2025–26, and the two came out about even in 2016–24.
     - Today's opening shape is within noise of an ordinary day.
+- **Oct 2, about 1:30 PM:** the owner asked whether "+2–3% every day" is viable. Answer: a follow-up section in [LITE_BUY_NOW_OR_WAIT_20261002.md](LITE_BUY_NOW_OR_WAIT_20261002.md) (code: `research/lite_buy_timing_v1/daily_opportunity.py`).
+  - A +2% move existed in hindsight on 98% of boom days. But buying at 10:00 reached +2% the same day only 53% of the time (27% in 2022–24).
+  - "Buy daily, hold to +2%": 113 sales with a worst dip of −55% in 2025–26; 1 sale and −67% in 2022–24.
+  - Plan B (15 shares, starts Mon Oct 5) is unchanged.
