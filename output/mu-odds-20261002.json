@@ -1,0 +1,141 @@
+{
+  "generated_utc": "2026-10-02T18:17:27+00:00",
+  "spot": 1076.89,
+  "buy": 1079.08,
+  "target": 1200.0,
+  "history": {
+    "to_dec_9": {
+      "boom_2025_26": {
+        "start_days": 391,
+        "needed_rise_pct": 11.4,
+        "touched_target_pct": 85.4,
+        "closed_above_target_at_end_pct": 68.0,
+        "touched_minus10_pct": 52.2,
+        "touched_minus20_pct": 31.2,
+        "target_before_minus20_pct": 79.0,
+        "median_worst_dip_pct": -12.1,
+        "end_return_p10_p50_p90_pct": [
+          -11.9,
+          29.8,
+          93.0
+        ]
+      },
+      "stress_2016_24": {
+        "start_days": 2264,
+        "needed_rise_pct": 11.4,
+        "touched_target_pct": 63.3,
+        "closed_above_target_at_end_pct": 37.5,
+        "touched_minus10_pct": 47.5,
+        "touched_minus20_pct": 17.1,
+        "target_before_minus20_pct": 62.9,
+        "median_worst_dip_pct": -9.4,
+        "end_return_p10_p50_p90_pct": [
+          -16.8,
+          6.2,
+          29.1
+        ]
+      },
+      "all_2016_26": {
+        "start_days": 2655,
+        "needed_rise_pct": 11.4,
+        "touched_target_pct": 66.5,
+        "closed_above_target_at_end_pct": 42.0,
+        "touched_minus10_pct": 48.2,
+        "touched_minus20_pct": 19.2,
+        "target_before_minus20_pct": 65.3,
+        "median_worst_dip_pct": -9.5,
+        "end_return_p10_p50_p90_pct": [
+          -16.5,
+          8.0,
+          37.9
+        ]
+      }
+    },
+    "to_dec_17": {
+      "boom_2025_26": {
+        "start_days": 385,
+        "needed_rise_pct": 11.4,
+        "touched_target_pct": 88.8,
+        "closed_above_target_at_end_pct": 68.1,
+        "touched_minus10_pct": 52.2,
+        "touched_minus20_pct": 32.2,
+        "target_before_minus20_pct": 80.8,
+        "median_worst_dip_pct": -12.1,
+        "end_return_p10_p50_p90_pct": [
+          -9.6,
+          38.7,
+          102.7
+        ]
+      },
+      "stress_2016_24": {
+        "start_days": 2264,
+        "needed_rise_pct": 11.4,
+        "touched_target_pct": 66.0,
+        "closed_above_target_at_end_pct": 39.7,
+        "touched_minus10_pct": 48.7,
+        "touched_minus20_pct": 19.3,
+        "target_before_minus20_pct": 65.3,
+        "median_worst_dip_pct": -9.7,
+        "end_return_p10_p50_p90_pct": [
+          -17.6,
+          7.1,
+          32.5
+        ]
+      },
+      "all_2016_26": {
+        "start_days": 2649,
+        "needed_rise_pct": 11.4,
+        "touched_target_pct": 69.3,
+        "closed_above_target_at_end_pct": 43.8,
+        "touched_minus10_pct": 49.2,
+        "touched_minus20_pct": 21.2,
+        "target_before_minus20_pct": 67.5,
+        "median_worst_dip_pct": -9.8,
+        "end_return_p10_p50_p90_pct": [
+          -17.3,
+          8.7,
+          42.4
+        ]
+      }
+    }
+  },
+  "options": {
+    "2026-11-20": {
+      "expiry": "2026-11-20",
+      "atm_strike": 1080.0,
+      "atm_iv_pct": 51.2,
+      "straddle_implied_move_pct": 15.0,
+      "one_sigma_range": [
+        893,
+        1299
+      ],
+      "finish_above_1200_pct": 27.2,
+      "touch_1200_approx_pct": 54.4,
+      "finish_below_buy_minus10_pct": 29.8,
+      "touch_buy_minus10_approx_pct": 59.6,
+      "finish_below_buy_minus20_pct": 11.9,
+      "touch_buy_minus20_approx_pct": 23.8
+    },
+    "2026-12-18": {
+      "expiry": "2026-12-18",
+      "atm_strike": 1080.0,
+      "atm_iv_pct": 52.4,
+      "straddle_implied_move_pct": 19.1,
+      "one_sigma_range": [
+        846,
+        1370
+      ],
+      "finish_above_1200_pct": 27.4,
+      "touch_1200_approx_pct": 54.9,
+      "finish_below_buy_minus10_pct": 27.7,
+      "touch_buy_minus10_approx_pct": 55.3,
+      "finish_below_buy_minus20_pct": 18.7,
+      "touch_buy_minus20_approx_pct": 37.3
+    }
+  },
+  "notes": [
+    "History: overlapping start days, not independent samples; the boom window is one long rally.",
+    "Options: Dec 18 expiry comes after Micron's mid-December earnings, so it includes that move.",
+    "Descriptive only. Not a forecast, not advice."
+  ]
+}
