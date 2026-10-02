@@ -175,14 +175,20 @@ def scan(data=None, now=None):
     keep = []
     for sym in sorted(rows):
         s = snaps.get(sym) or {}
-        trade = s.get("latestTrade") or {}
-        price, prev = trade.get("p"), (s.get("prevDailyBar") or {}).get("c")
-        if not price or not prev or not traded_today(trade.get("t"), now):
+        trade, daily = s.get("latestTrade") or {}, s.get("dailyBar") or {}
+        if not traded_today(trade.get("t"), now):
+            continue
+        # Right after the open the snapshot's daily bar can still be yesterday's; then yesterday's close is the
+        # reference and today's volume is unknown (0), instead of comparing with the close from two days ago.
+        daily_is_today = traded_today(daily.get("t"), now)
+        price = trade.get("p")
+        prev = (s.get("prevDailyBar") or {}).get("c") if daily_is_today else daily.get("c")
+        if not price or not prev:
             continue
         change = 100 * (price / prev - 1)
         if PRICE_MIN <= price <= PRICE_MAX and change >= GAIN_MIN:  # cheap pre-filter before slower lookups
             keep.append({"symbol": sym, "price": price, "prev_close": prev, "change_pct": round(change, 1),
-                         "volume_iex": (s.get("dailyBar") or {}).get("v", 0)})
+                         "volume_iex": daily.get("v", 0) if daily_is_today else 0})
     keep = [k for k in keep if is_common_stock(data.asset(k["symbol"]))]
     symbols = [k["symbol"] for k in keep]
     avg, news = data.avg_volume(symbols, now.date()), data.news(symbols, now)

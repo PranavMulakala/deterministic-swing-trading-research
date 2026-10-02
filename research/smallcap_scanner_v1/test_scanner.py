@@ -47,13 +47,17 @@ class NewsTests(unittest.TestCase):
 
 class FakeData:
     def candidates(self):
-        return {"AAA": {}, "BBB": {}, "CCC": {}, "DDDW": {}, "EEE": {}}
+        return {"AAA": {}, "BBB": {}, "CCC": {}, "DDDW": {}, "EEE": {}, "FFF": {}}
 
     def snapshots(self, symbols):
-        snap = lambda p, prev, v, t="2026-10-01T12:29:00Z": {"latestTrade": {"p": p, "t": t},
-                                                             "prevDailyBar": {"c": prev}, "dailyBar": {"v": v}}
+        snap = lambda p, prev, v, t="2026-10-01T12:29:00Z": {
+            "latestTrade": {"p": p, "t": t}, "prevDailyBar": {"c": prev, "t": "2026-09-30T04:00:00Z"},
+            "dailyBar": {"v": v, "c": p, "t": "2026-10-01T04:00:00Z"}}
+        stale = {"latestTrade": {"p": 3.5, "t": "2026-10-01T13:30:05Z"},  # yesterday's bar still current at the open
+                 "prevDailyBar": {"c": 2.63, "t": "2026-09-29T04:00:00Z"},
+                 "dailyBar": {"v": 9_000, "c": 3.48, "t": "2026-09-30T04:00:00Z"}}
         return {"AAA": snap(8.0, 5.0, 60_000), "BBB": snap(30.0, 20.0, 1), "CCC": snap(5.0, 4.9, 1),
-                "DDDW": snap(3.0, 1.0, 1), "EEE": snap(6.0, 4.0, 60_000, "2026-09-30T19:59:00Z")}
+                "DDDW": snap(3.0, 1.0, 1), "EEE": snap(6.0, 4.0, 60_000, "2026-09-30T19:59:00Z"), "FFF": stale}
 
     def asset(self, symbol):
         return {"exchange": "NASDAQ", "tradable": True, "class": "us_equity", "symbol": symbol,
@@ -72,7 +76,7 @@ class ScanTests(unittest.TestCase):
             with mock.patch.object(sc, "OUT", Path(tmp)), \
                  mock.patch.object(sc, "float_shares", return_value={"AAA": 3_000_000}):
                 rec = sc.scan(FakeData(), datetime(2026, 10, 1, 8, 30, tzinfo=sc.NY))
-            # BBB too pricey, CCC +2%, DDDW warrant, EEE last traded yesterday
+            # BBB too pricey, CCC +2%, DDDW warrant, EEE last traded yesterday, FFF only +0.6% vs yesterday's close
             self.assertEqual([r["symbol"] for r in rec["results"]], ["AAA"])
             a = rec["results"][0]
             self.assertEqual((a["change_pct"], a["rvol"], a["grade"]), (60.0, 6.0, "A"))
