@@ -336,3 +336,6 @@ Everything below was read-only unless stated otherwise.
     - **Dec 9: MU buyback limit ends, plus the Fed decision**;
     - MU earnings mid/late Dec.
 - **Oct 2, 4:17 PM: market brief NOT deployed yet.** The owner approved it ("yes go ahead and scehudle it"). The 2-hour retry ended without reaching the server: the Mac's IP was 46.248.151.234 (not home; possibly a VPN), so the SSH firewall blocked it. Next step, from home with any VPN off: `.venv/bin/python cloud/market_brief_v1/deploy.py`. It installs, runs a print-only test, and enables the 16:30 ET Mon–Fri timer.
+- **Oct 3: Joey's two emails broken down** (hedge monitor, MU covered call, MU put diagonal): [JOEY_HEDGE_MONITOR_AND_MU_TRADES_20261003.md](JOEY_HEDGE_MONITOR_AND_MU_TRADES_20261003.md).
+  - **Reply sent to Joey** on the owner's explicit "yes send it", in the "Re: Micron Covered Call and Diagonal" thread (message 1a103f3ec77954a4).
+  - The reply asks about comparing the hedge to just selling, about rolling the calls, and about when he rolls the short put. It mentions the owner's roughly 51 MU shares.
