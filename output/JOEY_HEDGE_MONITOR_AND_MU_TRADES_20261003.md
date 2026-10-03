@@ -25,11 +25,11 @@ Private: Joey's material. Two emails (8:56 and 8:59 AM ET, Oct 3) with three scr
 |---|---|---|---|
 | Oct 30 $1,000 | $2,548 | −$6,578 | smaller |
 | Nov 20 $1,000 | $4,130 | −$8,160 | smaller |
-| Nov 20 $950 | $2,539 | −$9,121 | slightly smaller |
+| Nov 20 $950 | $2,539 | −$9,117 | slightly smaller |
 | Dec 18 $1,000 (includes earnings) | $5,896 | −$9,926 | slightly smaller |
 | Dec 18 $900 | $2,692 | −$11,818 | **bigger** |
 
-Insurance for ~7 weeks costs about 4–7.5% of the position's $55k value. Below the strike, the extra 49 shares' worth of put coverage gains money (a net short).
+The Nov 20 puts cost about 4.6–7.5% of the position's $55k value for ~7 weeks. Below the strike, the extra 49 shares' worth of put coverage gains money (a net short).
 
 ## 2. Joey's MU covered call (200 shares)
 | | |
@@ -67,4 +67,4 @@ At Monday's close (from his chart):
 ## What this means for me
 - **Policy:** options on **LITE** are banned for me (the Lumentum policy). MU options are allowed.
 - **Evidence so far:** our only pre-declared options test (SPY put spread) **failed** its holdout. None of Joey's three structures has been tested here.
-- **Simplest equivalents for my 50.96 MU shares:** my sell note (−20% limit) is free and needs no contracts. A put sets a hard floor, but costs about 4–7.5% per ~7 weeks.
+- **Simplest equivalents for my 50.96 MU shares:** my sell note (−20% limit) is free and needs no contracts. A put sets a hard floor, but the Nov 20 ones cost about 4.6–7.5% of the position for ~7 weeks.
