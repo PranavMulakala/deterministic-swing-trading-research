@@ -24,3 +24,6 @@ outputs/mu_research/
 outputs/breakout_data/
 outputs/smallcap_scanner/
 research/earnings_straddle_v1/qc_copy.html
+.env.reddit
+outputs/reddit/
+inbox/
