@@ -1,0 +1,36 @@
+//@version=6
+indicator("Plan B helper: LITE dip rule + my levels", shorttitle="PlanB", overlay=true)
+// Read-only chart helper; it places no orders. The paper bot's 10:00 email decides. This only draws the same rule.
+// Rule (LITE bot v1): between 9:30 and 10:00 New York time LITE trades at least 1% below the 9:30 open,
+// AND the 10:00 price (close of the 9:55-10:00 bar) is still below the open.
+// TradingView's data feed differs slightly from the bot's IEX feed, so a borderline day can disagree.
+// Daily charts: plots the 50-day average instead (so this one script replaces the built-in SMA).
+// Written flat (no indented blocks) so it survives being typed into the editor.
+fillPrice = input.float(0.0, "My LITE fill price (0 = no position)", minval=0.0, step=0.01)
+targetPct = input.float(2.0, "Sell target, % above fill", minval=0.1, step=0.5)
+checkPct = input.float(20.0, "Check level, % below fill", minval=1.0, step=1.0)
+tz = "America/New_York"
+intra = timeframe.isintraday and timeframe.in_seconds() <= 1800
+startMin = hour(time, tz) * 60 + minute(time, tz)
+endMin = hour(time_close, tz) * 60 + minute(time_close, tz)
+newDay = dayofmonth(time, tz) != dayofmonth(time[1], tz)
+openBar = intra and startMin == 570
+inWindow = intra and startMin >= 570 and startMin < 600
+decisionBar = inWindow and endMin == 600
+var float dayOpen = na
+var float winLow = na
+dayOpen := newDay ? na : dayOpen
+winLow := newDay ? na : winLow
+dayOpen := openBar ? open : dayOpen
+winLow := openBar ? low : inWindow and not na(winLow) ? math.min(winLow, low) : winLow
+fired = decisionBar and not na(dayOpen) and winLow <= dayOpen * 0.99 and close < dayOpen
+noFire = decisionBar and not na(dayOpen) and not fired
+plot(intra ? dayOpen : na, "Today's 9:30 open", color.new(color.gray, 0), 1, plot.style_linebr)
+plot(intra ? dayOpen * 0.99 : na, "Open -1% (dip line)", color.new(color.orange, 0), 1, plot.style_linebr)
+plotshape(fired, "Dip rule SIGNAL", shape.labelup, location.belowbar, color.new(color.green, 0), text="SIGNAL", textcolor=color.white, size=size.small)
+plotshape(noFire, "No signal", shape.circle, location.abovebar, color.new(color.gray, 40), size=size.tiny)
+plot(timeframe.isdaily ? ta.sma(close, 50) : na, "50-day average", color.new(color.blue, 0), 2)
+hasFill = syminfo.ticker == "LITE" and fillPrice > 0
+plot(hasFill ? fillPrice : na, "My fill", color.new(color.blue, 0), 1)
+plot(hasFill ? fillPrice * (1 + targetPct / 100) : na, "Sell target", color.new(color.green, 0), 2)
+plot(hasFill ? fillPrice * (1 - checkPct / 100) : na, "Check level", color.new(color.red, 0), 2)

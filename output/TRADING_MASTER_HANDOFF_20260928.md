@@ -353,3 +353,9 @@ Everything below was read-only unless stated otherwise.
   - **3 active price alerts** (all the free plan allows) at $1,348.85, $971.17 and $863.26, by app, toast and email, with sell-note instructions. **They expire Nov 3, 2026, so renew them then.** Alerts on drawings are "technical alerts" (0 on free); an upgrade prompt was closed without buying.
   - The same layout also shows LITE (no lines; no position yet).
   - **Finviz:** the owner pasted an Elite export link containing their API key in chat. It wasn't used or stored. The owner was advised to reset it, and that the 7-day Elite trial likely converts to about $39.50/mo unless cancelled.
+- **Oct 4 (later): TradingView additions.**
+  - **Watchlist:** MU, LITE, SNDK, WDC, STX, SMH, NVDA, COHR, AVGO.
+  - **Custom Pine script "Plan B helper"** (`research/tradingview_v1/`) added; it replaced the built-in SMA. It matched the bot on Sept 29 – Oct 2.
+  - **Comparison asked by the owner (1 year to Oct 2):**
+    - LITE +533%, COHR +194%, AVGO +7%, MU +491%.
+    - Correlation with LITE: COHR 0.79, AVGO 0.45. On LITE's −5% days, COHR averaged −6.6% and AVGO −2.4%.
