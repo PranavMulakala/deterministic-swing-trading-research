@@ -11,16 +11,20 @@
 5. **No automatic stop.** My −20% check comes from my sell note: I decide that evening.
 
 ## Size
-- **Start:** **15 shares** (about $16,000 at today's price), confirmed Oct 2. Fixed for the first **3 weeks** (starts Mon Oct 5).
-- **What that means in dollars** (15/66 of the paper bot's $60k history):
+- **Start: 30 shares** (about $32,600 at Friday's $1,085.42 close). I changed this on Sun Oct 4, before trading began, from the 15 shares confirmed Oct 2. Fixed for the first **3 weeks** (starts Mon Oct 5).
+- **What that means in dollars** (30/66 of the paper bot's $60k history):
 
-| | 15 shares |
+| | 30 shares |
 |---|---|
-| Each +2% sale | about +$320 (about +$230 after tax) |
-| 2026 replay, scaled | about +$18,000 over 9 months, 59 sales |
-| Worst holding in 2026 (−36%) | about −$5,800 on paper before it recovered |
-| Worst in 2025 (−53%) | about −$8,500 |
-| 2022–24-style fall (−66%) | about −$10,600, possibly for years |
+| Each +2% sale | about +$650 (about +$460 after tax) |
+| 2026 replay, scaled | about +$36,000 over 9 months, 59 sales |
+| 2025 replay, scaled | about +$17,500 |
+| Worst holding in 2026 (−36%) | about −$11,700 on paper before it recovered |
+| Worst in 2025 (−53%) | about −$17,300 |
+| 2022–24-style fall (−66%) | about −$21,500, possibly for years |
+
+- **Against my ~$38,000 combined limit:** LITE's worst replayed hold (−55%, about −$17,900) plus MU's worst 2025–26 drop (−41%, about −$22,550) comes to about **−$40,500, about $2,500 over my limit.** 25 shares would stay inside (about −$37,500). **I chose 30 knowing this.** If both fall together, I re-read this note before adding anything.
+- **Cash only, no margin.** Robinhood showed buying power below cash on Oct 4, so the account isn't using margin.
 
 ## Money rules
 - **Cash only, no margin** (my dad's company policy, and good sense).
@@ -42,7 +46,7 @@
 |---|---|---|---|---|---|---|
 
 ## When I change the size: decided now, not in the moment
-- **Scale up (for example to 30 shares) only if all of these hold after 3 weeks:**
+- **Scale up (for example to 45 shares) only if all of these hold after 3 weeks:**
   - I followed the rule every time (no skipped signals, no extra trades);
   - my real results match the paper bot's within about 0.5% per trade;
   - no position is down 10% or more.
