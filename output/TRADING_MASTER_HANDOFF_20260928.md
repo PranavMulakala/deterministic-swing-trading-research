@@ -348,3 +348,8 @@ Everything below was read-only unless stated otherwise.
   - 1,116 events from 2012 to Jul 2026: −4.68% per event at bid/ask (t −9), but +1.81% at mid. The effect exists, but the spread eats it.
   - Sleeve: −7.1% CAGR, −66% drawdown, against SPY's +15.0% / −33.7%.
   - Run in the owner's free QuantConnect account through the Browser pane, with no charges. QuantConnect needed a card for verification; the owner added it. Auto-reload of credits is off.
+- **Oct 4: TradingView (owner's free account) set up through the Browser pane,** with the owner's full permission.
+  - **MU daily chart:** Volume + SMA 50, and four labeled horizontal lines (target $1,348.85, buy $1,079.08, −10% $971.17, −20% limit $863.26).
+  - **3 active price alerts** (all the free plan allows) at $1,348.85, $971.17 and $863.26, by app, toast and email, with sell-note instructions. **They expire Nov 3, 2026, so renew them then.** Alerts on drawings are "technical alerts" (0 on free); an upgrade prompt was closed without buying.
+  - The same layout also shows LITE (no lines; no position yet).
+  - **Finviz:** the owner pasted an Elite export link containing their API key in chat. It wasn't used or stored. The owner was advised to reset it, and that the 7-day Elite trial likely converts to about $39.50/mo unless cancelled.
