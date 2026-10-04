@@ -72,4 +72,8 @@ Profit means realized profit plus the value of any position still open at the en
 - **Nothing will be tuned:** no other tiers, percentages, trail widths or time windows.
 
 ## Parked ideas (reviewed once, when the paper test ends)
-- None yet.
+- **Wait for the close on signal days that keep falling** (owner, Oct 4). Descriptive look, 2025–26: on 67 signal days where LITE fell 1%+ further from 10:00 into the close, buying at the close instead of 10:00 reached +2% within 5 days 94% of the time (vs 85%), with a median 5-day result of +6.0% (vs +0.8%). In 2022–24 (57 days) it was 82% vs 56%, and +0.2% vs −1.3%. **Caveat:** this only looks at days that kept falling. A fair test must include every signal day (the late buyer skips or pays more on days that rally after 10:00). It's also "buying lower later", which the sell note forbids once a position is open (no averaging down).
+- **Buy every day at 10:00, hold to +2%** (owner, Oct 2). Descriptive look: 113 sales and a −55% worst dip in 2025–26; 1 sale and −67% in 2022–24.
+- **Skip signals near LITE earnings** (raised Oct 4; next report Nov 10).
+- **Market filter: QQQ's move before 10:00** (from Sept 28).
+- **The bot's learning-only fields** (`rebound_learning_only`, `volume_ratio_learning_only`): check them on the 8 weeks of forward data.
