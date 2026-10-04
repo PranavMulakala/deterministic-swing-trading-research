@@ -4,7 +4,7 @@
 
 | Field | Value |
 | --- | --- |
-| Shares | 50.96 (fractional) |
+| Shares | 50.97 (fractional; Robinhood shows 50.97 on Oct 4, chat said 50.96) |
 | Average cost | $1,079.08 |
 | Cost | $54,989.92 |
 | Funding | Cash (owner-reported; confirm no margin) |
@@ -35,3 +35,4 @@
 | Date | Event | MU close | Gain / loss |
 | --- | --- | ---: | ---: |
 | 2026-10-02 | Bought 50.96 @ $1,079.08 | (pending) | |
+| 2026-10-04 | Robinhood read (owner logged in, read-only): 50.97 shares; account total $144,913.62; buying power $90,418.22; cash $95,418.22 | $1,069.18 (shown) | |
