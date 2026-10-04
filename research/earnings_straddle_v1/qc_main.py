@@ -131,9 +131,9 @@ class EarningsStraddleTest(QCAlgorithm):
         counts = {}
         for e in self.events:
             counts[e["status"]] = counts.get(e["status"], 0) + 1
-        self.log("STATUS " + ", ".join(f"{k}={v}" for k, v in sorted(counts.items())))
+        self.debug("STATUS " + ", ".join(f"{k}={v}" for k, v in sorted(counts.items())))
         if len(done) < 2:
-            self.log("RESULT not enough valid events")
+            self.debug("RESULT not enough valid events")
             return
         rets = [e["ret"] for e in done]
         mean, sd = statistics.mean(rets), statistics.stdev(rets)
@@ -152,21 +152,21 @@ class EarningsStraddleTest(QCAlgorithm):
             "5_bar_b_vs_spy": (spy_dd - sleeve_dd >= 0.05) and (sleeve_dd > 0 and spy_dd > 0
                               and sleeve_cagr / sleeve_dd > spy_cagr / spy_dd),
         }
-        self.log(f"RESULT events={len(done)} mean_bidask={mean:.4f} t={t_stat:.2f} median={statistics.median(rets):.4f} "
+        self.debug(f"RESULT events={len(done)} mean_bidask={mean:.4f} t={t_stat:.2f} median={statistics.median(rets):.4f} "
                  f"win_rate={sum(r > 0 for r in rets) / len(rets):.3f} mean_mid={statistics.mean(e['ret_mid'] for e in done):.4f}")
-        self.log(f"RESULT halves 2012-18 mean={statistics.mean(first) if first else float('nan'):.4f} n={len(first)} | "
+        self.debug(f"RESULT halves 2012-18 mean={statistics.mean(first) if first else float('nan'):.4f} n={len(first)} | "
                  f"2019-26 mean={statistics.mean(second) if second else float('nan'):.4f} n={len(second)} | "
                  f"trimmed mean={statistics.mean(trimmed):.4f}")
-        self.log(f"RESULT sleeve CAGR={sleeve_cagr:.4f} maxDD={sleeve_dd:.4f} | SPY CAGR={spy_cagr:.4f} maxDD={spy_dd:.4f}")
+        self.debug(f"RESULT sleeve CAGR={sleeve_cagr:.4f} maxDD={sleeve_dd:.4f} | SPY CAGR={spy_cagr:.4f} maxDD={spy_dd:.4f}")
         for timing in ("p", "a"):
             sub = [e["ret"] for e in done if e["timing"] == timing]
             if sub:
-                self.log(f"INFO timing={timing} n={len(sub)} mean={statistics.mean(sub):.4f}")
+                self.debug(f"INFO timing={timing} n={len(sub)} mean={statistics.mean(sub):.4f}")
         for ticker in sorted({e["ticker"] for e in done}):
             sub = [e["ret"] for e in done if e["ticker"] == ticker]
-            self.log(f"INFO {ticker} n={len(sub)} mean={statistics.mean(sub):.4f}")
-        self.log("CHECKS " + ", ".join(f"{k}={'PASS' if v else 'FAIL'}" for k, v in checks.items()))
-        self.log("VERDICT " + ("PASS (all five)" if all(checks.values()) else "FAIL"))
+            self.debug(f"INFO {ticker} n={len(sub)} mean={statistics.mean(sub):.4f}")
+        self.debug("CHECKS " + ", ".join(f"{k}={'PASS' if v else 'FAIL'}" for k, v in checks.items()))
+        self.debug("VERDICT " + ("PASS (all five)" if all(checks.values()) else "FAIL"))
         self.set_summary_statistic("Test7 verdict", "PASS" if all(checks.values()) else "FAIL")
         self.set_summary_statistic("Test7 events", str(len(done)))
         self.set_summary_statistic("Test7 mean bid/ask return", f"{mean:.4f}")
@@ -175,11 +175,11 @@ class EarningsStraddleTest(QCAlgorithm):
                 for e in done]
         try:
             self.object_store.save("test7_events.csv", "ticker,E,L,timing,strike,expiry,ret_bidask,ret_mid\n" + "\n".join(rows))
-            self.log("SAVED test7_events.csv to the Object Store")
+            self.debug("SAVED test7_events.csv to the Object Store")
         except Exception as error:
-            self.log(f"Object Store save failed: {error}")
+            self.debug(f"Object Store save failed: {error}")
         for row in rows:  # last, so a log cap can only cut these
-            self.log("EV," + row)
+            self.debug("EV," + row)
 
     def sleeve(self, done):
         """Spend 2% of equity (marked at cost) on each straddle at entry; add the bid proceeds at exit."""

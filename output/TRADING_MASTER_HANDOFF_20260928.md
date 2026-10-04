@@ -344,3 +344,7 @@ Everything below was read-only unless stated otherwise.
   - Earnings dates and timing come from Alpha Vantage; entry/exit days from the NYSE calendar.
   - The single-file QuantConnect algorithm is `research/earnings_straddle_v1/qc_main.py`, built from `qc_template.py` + `schedule.json`. It places no orders: it reads quotes, buying at the ask and selling at the bid.
   - The owner created a free QuantConnect account and will paste the file and run it there. Waiting for the owner to send back the STATUS/RESULT/CHECKS/VERDICT log lines. The code hasn't been run on QuantConnect yet, so expect a fix round.
+- **Oct 3: test #7 (pre-earnings straddle) FAILED:** [results](EARNINGS_STRADDLE_TEST_RESULTS_20261003.md).
+  - 1,116 events from 2012 to Jul 2026: −4.68% per event at bid/ask (t −9), but +1.81% at mid. The effect exists, but the spread eats it.
+  - Sleeve: −7.1% CAGR, −66% drawdown, against SPY's +15.0% / −33.7%.
+  - Run in the owner's free QuantConnect account through the Browser pane, with no charges. QuantConnect needed a card for verification; the owner added it. Auto-reload of credits is off.
