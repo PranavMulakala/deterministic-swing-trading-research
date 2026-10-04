@@ -339,3 +339,8 @@ Everything below was read-only unless stated otherwise.
 - **Oct 3: Joey's two emails broken down** (hedge monitor, MU covered call, MU put diagonal): [JOEY_HEDGE_MONITOR_AND_MU_TRADES_20261003.md](JOEY_HEDGE_MONITOR_AND_MU_TRADES_20261003.md).
   - **Reply sent to Joey** on the owner's explicit "yes send it", in the "Re: Micron Covered Call and Diagonal" thread (message 1a103f3ec77954a4).
   - The reply asks about comparing the hedge to just selling, about rolling the calls, and about when he rolls the short put. It mentions the owner's roughly 51 MU shares.
+- **Oct 3: test #7 pre-declared and built: pre-earnings straddle** ([plan](EARNINGS_STRADDLE_TEST_PLAN_20261003.md), committed before any option data).
+  - 20 large caps (no LITE); 1,179 events, 2012–2026.
+  - Earnings dates and timing come from Alpha Vantage; entry/exit days from the NYSE calendar.
+  - The single-file QuantConnect algorithm is `research/earnings_straddle_v1/qc_main.py`, built from `qc_template.py` + `schedule.json`. It places no orders: it reads quotes, buying at the ask and selling at the bid.
+  - The owner created a free QuantConnect account and will paste the file and run it there. Waiting for the owner to send back the STATUS/RESULT/CHECKS/VERDICT log lines. The code hasn't been run on QuantConnect yet, so expect a fix round.
