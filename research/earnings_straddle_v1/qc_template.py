@@ -6,15 +6,21 @@ from AlgorithmImports import *
 import math
 import statistics
 
-# symbol,entry_day(E),last_close_before_report(L),timing (p = pre-market, a = after close)
-SCHEDULE = """__SCHEDULE__"""
+# Events packed to fit QuantConnect's 32,000-character file limit (built by build_qc.py from schedule.json).
+# Per stock: 5-character tokens = L as base-36 days after 2012-01-01 (3 chars), calendar days from E to L (1 digit),
+# timing (p = pre-market report, a = after the close). L = last close before the report; E = entry day.
+SCHEDULE = __SCHEDULE__
 SPREAD_MAX = 0.20      # skip if either leg's bid/ask gap is wider than 20% of its mid at entry
 SLEEVE_SPEND = 0.02    # sleeve spends 2% of current equity on each straddle
 SLEEVE_START = 100000.0
 
 
-def day(text):
-    return datetime(int(text[:4]), int(text[4:6]), int(text[6:8])).date()
+def unpack(packed):
+    base = datetime(2012, 1, 1).date()
+    for ticker, tokens in packed.items():
+        for token in tokens.split():
+            last = base + timedelta(days=int(token[:3], 36))
+            yield ticker, last - timedelta(days=int(token[3])), last, token[4]
 
 
 class EarningsStraddleTest(QCAlgorithm):
@@ -23,10 +29,8 @@ class EarningsStraddleTest(QCAlgorithm):
         self.set_end_date(2026, 10, 1)
         self.set_cash(SLEEVE_START)
         self.events = []
-        for line in SCHEDULE.strip().splitlines():
-            symbol, entry, last, timing = line.split(",")
-            self.events.append({"ticker": symbol, "E": day(entry), "L": day(last), "timing": timing,
-                                "status": "waiting"})
+        for symbol, entry, last, timing in unpack(SCHEDULE):
+            self.events.append({"ticker": symbol, "E": entry, "L": last, "timing": timing, "status": "waiting"})
         self.stocks = {}
         for ticker in sorted({e["ticker"] for e in self.events}):
             equity = self.add_equity(ticker, Resolution.HOUR, data_normalization_mode=DataNormalizationMode.RAW)
