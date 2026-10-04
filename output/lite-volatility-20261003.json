@@ -1,0 +1,330 @@
+{
+  "generated_utc": "2026-10-04T03:37:12+00:00",
+  "part_a_rank": {
+    "data_through": "2026-09-28",
+    "lite": {
+      "symbol": "LITE",
+      "sp500": true,
+      "price": 921.32,
+      "last_date": "2026-09-28",
+      "dollar_vol_m": 3891.05,
+      "avg_abs_daily_pct": 4.91,
+      "annual_vol_pct": 97.48,
+      "avg_range_pct": 8.06,
+      "days_move_5pct_plus": 109
+    },
+    "sp500_by_avg_abs_daily": {
+      "rank": 3,
+      "of": 306,
+      "top_15": [
+        [
+          "SNDK",
+          5.7
+        ],
+        [
+          "BE",
+          5.4
+        ],
+        [
+          "LITE",
+          4.9
+        ],
+        [
+          "MRNA",
+          4.2
+        ],
+        [
+          "COHR",
+          4.1
+        ],
+        [
+          "SMCI",
+          4.0
+        ],
+        [
+          "WDC",
+          3.9
+        ],
+        [
+          "MU",
+          3.9
+        ],
+        [
+          "STX",
+          3.7
+        ],
+        [
+          "MRVL",
+          3.6
+        ],
+        [
+          "INTC",
+          3.6
+        ],
+        [
+          "TER",
+          3.5
+        ],
+        [
+          "COIN",
+          3.5
+        ],
+        [
+          "CIEN",
+          3.5
+        ],
+        [
+          "HOOD",
+          3.5
+        ]
+      ],
+      "median": 1.46
+    },
+    "sp500_by_annual_vol": {
+      "rank": 4,
+      "of": 306,
+      "top_15": [
+        [
+          "MRNA",
+          192.5
+        ],
+        [
+          "SNDK",
+          116.4
+        ],
+        [
+          "BE",
+          113.9
+        ],
+        [
+          "LITE",
+          97.5
+        ],
+        [
+          "SMCI",
+          92.6
+        ],
+        [
+          "COHR",
+          85.9
+        ],
+        [
+          "MU",
+          81.4
+        ],
+        [
+          "WDC",
+          80.4
+        ],
+        [
+          "MRVL",
+          79.2
+        ],
+        [
+          "INTC",
+          77.4
+        ],
+        [
+          "TER",
+          76.7
+        ],
+        [
+          "DELL",
+          75.6
+        ],
+        [
+          "STX",
+          75.0
+        ],
+        [
+          "APP",
+          73.6
+        ],
+        [
+          "HOOD",
+          73.0
+        ]
+      ],
+      "median": 31.97
+    },
+    "big_liquid_by_avg_abs_daily": {
+      "rank": 10,
+      "of": 387,
+      "top_15": [
+        [
+          "AXTI",
+          7.7
+        ],
+        [
+          "AAOI",
+          6.7
+        ],
+        [
+          "SNDK",
+          5.7
+        ],
+        [
+          "ASTS",
+          5.5
+        ],
+        [
+          "IREN",
+          5.4
+        ],
+        [
+          "BE",
+          5.4
+        ],
+        [
+          "HUT",
+          5.2
+        ],
+        [
+          "NBIS",
+          5.2
+        ],
+        [
+          "APLD",
+          4.9
+        ],
+        [
+          "LITE",
+          4.9
+        ],
+        [
+          "CRDO",
+          4.8
+        ],
+        [
+          "OKLO",
+          4.8
+        ],
+        [
+          "ALAB",
+          4.7
+        ],
+        [
+          "BMNR",
+          4.6
+        ],
+        [
+          "IONQ",
+          4.6
+        ]
+      ],
+      "median": 1.63
+    },
+    "spy_qqq": {
+      "SPY": 0.63
+    }
+  },
+  "part_b_intraday": {
+    "sessions": 249,
+    "by_half_hour": {
+      "09:30": {
+        "avg_abs_move_pct": 2.8,
+        "avg_range_pct": 5.4,
+        "share_of_day_volume_pct": 21.6,
+        "day_high_here_pct": 49.4,
+        "day_low_here_pct": 43.8
+      },
+      "10:00": {
+        "avg_abs_move_pct": 1.5,
+        "avg_range_pct": 3.0,
+        "share_of_day_volume_pct": 11.7,
+        "day_high_here_pct": 7.6,
+        "day_low_here_pct": 10.8
+      },
+      "10:30": {
+        "avg_abs_move_pct": 1.3,
+        "avg_range_pct": 2.4,
+        "share_of_day_volume_pct": 9.1,
+        "day_high_here_pct": 5.6,
+        "day_low_here_pct": 10.0
+      },
+      "11:00": {
+        "avg_abs_move_pct": 1.0,
+        "avg_range_pct": 2.0,
+        "share_of_day_volume_pct": 7.2,
+        "day_high_here_pct": 3.6,
+        "day_low_here_pct": 3.6
+      },
+      "11:30": {
+        "avg_abs_move_pct": 0.7,
+        "avg_range_pct": 1.6,
+        "share_of_day_volume_pct": 6.0,
+        "day_high_here_pct": 0.8,
+        "day_low_here_pct": 4.4
+      },
+      "12:00": {
+        "avg_abs_move_pct": 0.7,
+        "avg_range_pct": 1.5,
+        "share_of_day_volume_pct": 5.2,
+        "day_high_here_pct": 2.4,
+        "day_low_here_pct": 2.4
+      },
+      "12:30": {
+        "avg_abs_move_pct": 0.7,
+        "avg_range_pct": 1.4,
+        "share_of_day_volume_pct": 4.7,
+        "day_high_here_pct": 2.0,
+        "day_low_here_pct": 2.0
+      },
+      "13:00": {
+        "avg_abs_move_pct": 0.7,
+        "avg_range_pct": 1.3,
+        "share_of_day_volume_pct": 4.4,
+        "day_high_here_pct": 1.2,
+        "day_low_here_pct": 2.8
+      },
+      "13:30": {
+        "avg_abs_move_pct": 0.6,
+        "avg_range_pct": 1.2,
+        "share_of_day_volume_pct": 4.1,
+        "day_high_here_pct": 3.6,
+        "day_low_here_pct": 3.2
+      },
+      "14:00": {
+        "avg_abs_move_pct": 0.6,
+        "avg_range_pct": 1.2,
+        "share_of_day_volume_pct": 4.3,
+        "day_high_here_pct": 2.4,
+        "day_low_here_pct": 2.0
+      },
+      "14:30": {
+        "avg_abs_move_pct": 0.5,
+        "avg_range_pct": 1.2,
+        "share_of_day_volume_pct": 4.4,
+        "day_high_here_pct": 4.8,
+        "day_low_here_pct": 3.2
+      },
+      "15:00": {
+        "avg_abs_move_pct": 0.6,
+        "avg_range_pct": 1.2,
+        "share_of_day_volume_pct": 5.0,
+        "day_high_here_pct": 4.0,
+        "day_low_here_pct": 3.6
+      },
+      "15:30": {
+        "avg_abs_move_pct": 0.7,
+        "avg_range_pct": 1.5,
+        "share_of_day_volume_pct": 12.1,
+        "day_high_here_pct": 12.4,
+        "day_low_here_pct": 8.0
+      }
+    },
+    "first_3_hours": {
+      "median_high_low_swing_pct": 6.9,
+      "swing_2pct_plus_days_pct": 100.0,
+      "swing_3pct_plus_days_pct": 98.0,
+      "swing_5pct_plus_days_pct": 81.1,
+      "buy_1000_hit_plus2_by_1230_pct": 47.0,
+      "buy_1000_hit_plus3_by_1230_pct": 31.3,
+      "buy_1000_hit_minus2_first_pct": 45.0,
+      "buy_1000_neither_by_1230_pct": 14.1
+    }
+  },
+  "notes": [
+    "Descriptive only. A time-of-day trading rule for LITE would be a new formula: parked until the paper test ends (formula freeze)."
+  ]
+}
