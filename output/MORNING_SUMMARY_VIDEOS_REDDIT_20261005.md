@@ -64,3 +64,9 @@ Written in plain words for Pranav. Nothing here changes Plan B, the bots or the 
 - **It wins about 60% of trades, but the average loss is about twice the average win.** You buy close to the target and put the stop far below.
 - **$100k → $73.9k (QQQ) and $87.8k (SPY).** Even with zero trading costs it only breaks even on SPY and loses on QQQ.
 - **Both CRT versions (15-minute and 1-hour) are now tested; both lose.** Score: 9 tests, none beat holding SPY.
+
+## Update, Oct 5 9:10 AM: test #10, monthly SPY cash-secured puts (`CSP_SPY_TEST_RESULTS_20261005.md`)
+- **82% of puts made money, and it passed all of bar A,** the first options idea that did. **But it didn't beat holding SPY.**
+- **$100k (2016–2025): $154.6k selling puts vs $396.4k holding SPY vs $125.3k in T-bills.** Worst drop −22% vs SPY −34%.
+- **About half of its profit was just interest on the cash.** Selling puts added about $2,500 a year on $100k, and one month (March 2020) lost $26k.
+- **Plain take:** a real, calmer tool for buying something you'd want anyway at a lower price. Not a way to beat the market.

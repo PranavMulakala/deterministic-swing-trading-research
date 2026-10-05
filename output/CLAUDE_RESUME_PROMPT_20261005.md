@@ -119,6 +119,13 @@ This file replaces `CLAUDE_RESUME_PROMPT_20261002.md`. The older one is still co
   - $100k → $73.9k QQQ / $87.8k SPY. Before costs: SPY profit factor 1.04, QQQ 0.84.
   - Verifier matched all 2,960 trades.
 - **Test record: 9 pre-declared tests, none beat holding SPY.** Both CRT timeframes are done; don't re-test CRT variants without new independent evidence.
+- **Test #10, monthly SPY cash-secured puts (~30 delta, ~30 days, sold at the bid, fully cash-secured), 2016–2025, run Oct 5 9:09 AM: did NOT beat SPY** (`CSP_SPY_TEST_RESULTS_20261005.md`, code `research/csp_spy_test_v1/`).
+  - Passed all of bar A (profit factor 1.39, both halves positive, drawdown −22.2%) and B1. Failed B2 (CAGR ÷ drawdown 0.20 vs SPY 0.44).
+  - $100k → $154.6k, vs SPY $396.4k and T-bills $125.3k.
+  - 82% of puts won; average win $1,004 vs average loss $3,295; March 2020 put −$26k.
+  - Half the profit was T-bill interest. Midpoint fills only add ~$4.6k.
+  - Verifier: sale prices exact, 0 outcome flips vs actual closes; cash reconciled including one put open at year-end.
+- **Test record now: 10 tests, none beat holding SPY; 2 passed bar A** (SMA50, cash-secured puts).
 - **Recurring themes:** breakouts, opening range, sweep-and-reclaim, and option selling. The useful takeaways were habits (plan first, exit known before entry, journal, paper/small money, broker-side stop, trailing stop), and the owner already does most of them.
 - **Ideas offered for the morning talk, all optional and none touching Plan B, the bots or MNQ:**
   - paper-practice a cash-secured put on SPY;

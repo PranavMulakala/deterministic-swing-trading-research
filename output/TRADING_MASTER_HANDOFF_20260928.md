@@ -383,3 +383,6 @@ Everything below was read-only unless stated otherwise.
   - **`~/.ssh/config`** (backup `~/.ssh/config.bak-20261005`): a `Match originalhost 198.211.113.234 exec "nc -z -G 2 100.119.202.31 22"` block sets `HostName 100.119.202.31` + `HostKeyAlias 198.211.113.234`. Every deploy script and command that uses `root@198.211.113.234` therefore goes over Tailscale when it's on and falls back to the public IP when it's off. Host key verification is unchanged. Verified: client seen as 100.65.102.85. A second `Match originalhost 198.211.113.234` block pins `IdentityFile ~/.ssh/personal_trading_cloud` + `IdentitiesOnly yes` (after the app restart the agent was empty and the default key was refused).
   - All bots checked healthy after the install (same 2 old failed units only).
   - **To do:** the owner should turn off **key expiry** for `trading-server` in the Tailscale admin console (otherwise it needs re-login in about 180 days). Test with the work VPN on.
+- **Oct 5, 9:09 AM: pre-declared test #10, monthly SPY cash-secured puts: did not beat SPY** (`CSP_SPY_TEST_RESULTS_20261005.md`).
+  - Passed bar A + B1, failed B2. $100k → $154.6k vs SPY $396.4k / T-bills $125.3k; 82% winners; March 2020 −$26k.
+  - The first queued run (wait-until-10:01) was stopped by a session restart before starting; the owner then asked to run it immediately.
