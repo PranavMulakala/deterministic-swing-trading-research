@@ -88,3 +88,10 @@ If any fail, the setup isn't shown to work for us. **Nothing will be tuned after
 | 5-minute bars for 7,330 gap days | Alpaca (same as test #15) | 7,330 requests, about 1 hour, about 15 MB compressed | Free |
 
 **SEC's fair-access rules require a name and contact email in each request's header.** That needs the owner's OK (and which email).
+
+## Corrections before any data (Oct 5, ~3:45 PM, after the owner approved both downloads)
+1. **Earnings window:** an 8-K with Item 2.02 accepted after the previous session's 4:00 PM close and **before 10:30 AM** on the gap day (was 9:30). Some companies issue the press release before the open but file the 8-K just after it. 10:30 is the earliest possible entry, so the rule still only uses what a trader could know when buying. Gap days whose earnings 8-K came later that day are counted and reported.
+2. **Download superset:** candidate days use full-day volume ≥ **0.8×** the 20-day average (was 1.0×). That leaves margin for small differences between daily and intraday volume counts. The rule itself is unchanged (9:30–10:00 volume ≥ 1.0×).
+   - The count is now **7,647 candidate days on 1,932 dates in 2,073 stocks.**
+   - The 5-minute bars are fetched one request per date.
+3. **SEC timestamps:** EDGAR's `acceptanceDateTime` time zone is checked on the pilot (Apple's after-close filings) before the backtest code is finalized.
