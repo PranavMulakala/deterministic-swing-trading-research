@@ -14,7 +14,9 @@ from pathlib import Path
 import time
 from zoneinfo import ZoneInfo
 
-from research.lite_buy_timing_v1.run import bars
+import urllib.parse
+
+from research.lite_dip_history_v1.run import DATA, fetch
 from research.lite_paper_bot_v1.bot import credentials
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -22,6 +24,29 @@ CACHE = ROOT / "outputs/dip_many_data"
 HERE = Path(__file__).resolve().parent
 NY = ZoneInfo("America/New_York")
 START, END = "2022-01-03T00:00:00Z", "2026-10-01T00:00:00Z"
+
+
+def paged_bars(symbol, key, secret, pause=0.32):
+    """All 30-minute bars, retrying a failed page (not the whole symbol) with backoff; paced under ~190 requests/min."""
+    query = {"timeframe": "30Min", "feed": "sip", "adjustment": "all", "sort": "asc", "limit": 10000,
+             "start": START, "end": END}
+    rows, token = [], None
+    while True:
+        if token:
+            query["page_token"] = token
+        for attempt in range(8):
+            try:
+                page = fetch(f"{DATA}/v2/stocks/{symbol}/bars?{urllib.parse.urlencode(query)}", key, secret)
+                break
+            except Exception:
+                time.sleep(3 * (attempt + 1))
+        else:
+            raise RuntimeError(f"page failed 8 times for {symbol}")
+        rows += page.get("bars") or []
+        token = page.get("next_page_token")
+        time.sleep(pause)
+        if not token:
+            return rows
 
 
 def path_for(symbol):
@@ -50,7 +75,7 @@ def main():
             continue
         for attempt in range(5):
             try:
-                rows = regular(bars(s, "30Min", START, END, key, secret, adjustment="all"))
+                rows = regular(paged_bars(s, key, secret))
                 with gzip.open(path_for(s), "wt") as f:
                     json.dump(rows, f)
                 done += 1
@@ -60,8 +85,7 @@ def main():
                 time.sleep(10 * (attempt + 1))
         else:
             failed.append([s, err])
-        time.sleep(0.5)
-        if done % 20 == 0:
+        if done % 10 == 0:
             print(json.dumps({"done": done, "of": len(symbols)}), flush=True)
     print(json.dumps({"done": done, "of": len(symbols), "failed": failed}))
 
