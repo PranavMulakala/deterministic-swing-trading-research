@@ -74,3 +74,9 @@ Written in plain words for Pranav. Nothing here changes Plan B, the bots or the 
 ## Update: 65% SPY / 35% T-bills check (`MIX_65_35_CHECK_RESULTS_20261005.md`)
 - **$100k (2016–2025): $273k, 10.6% a year, worst drop −22.6%.** Same calm as selling puts ($155k, −22.2%), but $118k more.
 - **Slightly better growth per unit of pain than SPY alone** (0.47 vs 0.44). It just grew less in total than all-SPY ($396k).
+
+## Update: test #11, Kevin's "95% Fibonacci rule" (`FIB_95_RULE_TEST_RESULTS_20261005.md`)
+- **The 95% number is roughly right, but automatic.** About 3 in 4 signals came after price had already passed the start of the move. Made-up levels (85%, 90%) score the same as 88.7%.
+- **Trading it makes about $0:** tiny wins (+0.2%), big losses (−2.5%).
+- **The "Faker level" is backwards:** a close beyond 76.4% snapped back only 22–28% of the time.
+- Kevin Trades Whop trial: cancelled by the owner on Oct 5. Check the card around Oct 12 for no $99.99 charge.

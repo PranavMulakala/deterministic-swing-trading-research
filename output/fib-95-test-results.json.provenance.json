@@ -1,0 +1,35 @@
+{
+  "created_utc": "2026-10-05T15:50:52+00:00",
+  "git_commit": "92214f1b669bf8d89de68586b4af39e876589a5e",
+  "code_uncommitted": true,
+  "params": {
+    "k": 5,
+    "horizon": 120,
+    "min_move": {
+      "1h": 0.01,
+      "daily": 0.05
+    }
+  },
+  "files": {
+    "research/fib_95_test_v1/run.py": {
+      "kind": "code",
+      "bytes": 9058,
+      "sha256": "cccb6c43b242c5ada4b03f6da227483b4032f51e07d936da13f5158ff8d41d7f"
+    },
+    "research/crt_1h_test_v1/backtest.py": {
+      "kind": "code",
+      "bytes": 6951,
+      "sha256": "e88aca14d6c90a9ae8863f9b3f4f8ec1b515a77cdfa941062ef7e0435cf6157f"
+    },
+    "outputs/crt_sweep_data/QQQ_5min_sip_2016-01-01_2026-10-02.json.gz": {
+      "kind": "data",
+      "bytes": 10880485,
+      "sha256": "e6ade5e9139da4b4a6252e65aeb9c6115bb466ae5adeec678217fa3087c63204"
+    },
+    "outputs/crt_sweep_data/SPY_5min_sip_2016-01-01_2026-10-02.json.gz": {
+      "kind": "data",
+      "bytes": 11251469,
+      "sha256": "2aae8dc4f5d5595540f7712059d0a8e857e2f9a44e6806219d8340a1b3f2e6a3"
+    }
+  }
+}

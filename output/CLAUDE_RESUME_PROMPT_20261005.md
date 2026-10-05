@@ -126,6 +126,10 @@ This file replaces `CLAUDE_RESUME_PROMPT_20261002.md`. The older one is still co
   - Half the profit was T-bill interest. Midpoint fills only add ~$4.6k.
   - Verifier: sale prices exact, 0 outcome flips vs actual closes; cash reconciled including one put open at year-end.
 - **Test record now: 10 tests, none beat holding SPY; 2 passed bar A** (SMA50, cash-secured puts).
+- **Test #11, Kevin Trades "95% Fibonacci rule" (owner pasted a Discord post; Whop trial $99.99/mo cancelled the same day; check the card ~Oct 12): NOT supported** (`FIB_95_RULE_TEST_RESULTS_20261005.md`).
+  - A ✓ (95–100% reversal), B ✗ (88.7% = placebo levels, +0.16 points), C ✗ (Faker 76.4% snap-back only 22–28%, −0.41 points vs placebo).
+  - About 3/4 of 1-hour signals came after price had already passed the move's start. The counter-trend trade nets about 0% per trade.
+  - **Test record: 11 tests, none beat SPY.**
 - **65% SPY / 35% T-bills comparison check (owner asked, Oct 5):** `MIX_65_35_CHECK_RESULTS_20261005.md`.
   - Monthly rebalance: $100k → $273k, 10.6%/yr, worst drop −22.6%, growth ÷ drop 0.47 (SPY alone 0.44).
   - Same drop as the cash-secured puts but $118k more. A benchmark, not a strategy test.

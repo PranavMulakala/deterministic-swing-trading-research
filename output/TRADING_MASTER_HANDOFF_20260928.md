@@ -396,3 +396,7 @@ Everything below was read-only unless stated otherwise.
   - Replay of all past Plan B signal days (5-min SIP, buy at the 10:00 price × 1.001): +2% the same day 58% (2025–26, n=192) / 27% (2022–24, n=225); within 5 trading days 90% / 72%; a −10% touch within the week 13% / 4%; −20% 3/192 and 3/225.
   - **MNQ:** the 9:31 "STALE_EXECUTION_SUPERVISOR" email was transient. By 10:45 the supervisor was writing `execution-health.json` every 30 s (status `DATA_OR_RISK_BLOCKED`, `PREVIOUS_SESSION_INCOMPLETE`, as expected; no restarts; the memory cap is hit often but pressure is negligible). The collector is `COLLECTING_REALTIME` with market events in **every minute since 9:30:00** (1.8M quotes), so today should count as a complete session and Tue Oct 6 eligibility stands. Cause of the 9:31 gap is unknown (no supervisor logs); watch for a repeat at tomorrow's open.
   - **Tailscale with FortiClient (work VPN):** they coexist, but Tailscale stopped on its own twice. Restart from the Mac with `/Applications/Tailscale.app/Contents/MacOS/Tailscale up --accept-dns=false --accept-routes` (all prefs must be restated). It connected via DERP relay "nyc".
+- **Oct 5 (late morning):**
+  - **65/35 SPY/T-bill check:** $273k, 10.6%/yr, −22.6% drawdown.
+  - **Kevin Trades Whop** (wheel strategy, $99.99/mo, 5 members, 0 reviews): the owner took the trial and cancelled immediately.
+  - **Pre-declared test #11, his "95% Fibonacci rule": not supported** (`FIB_95_RULE_TEST_RESULTS_20261005.md`). 88.7% is no better than placebo levels; the Faker level is backwards.

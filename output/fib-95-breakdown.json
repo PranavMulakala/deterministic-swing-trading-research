@@ -1,0 +1,118 @@
+{
+ "QQQ_1h": {
+  "0.85": {
+   "signals_already_beyond_start": 430,
+   "genuine_signals": 186,
+   "genuine_reversal_rate_pct": 89.2,
+   "trade_avg_pct_before_costs": -0.042,
+   "trade_avg_pct_after_costs": -0.062,
+   "trade_avg_win_pct": 0.277,
+   "trade_avg_loss_pct": -2.69
+  },
+  "0.887": {
+   "signals_already_beyond_start": 458,
+   "genuine_signals": 146,
+   "genuine_reversal_rate_pct": 92.5,
+   "trade_avg_pct_before_costs": 0.003,
+   "trade_avg_pct_after_costs": -0.017,
+   "trade_avg_win_pct": 0.211,
+   "trade_avg_loss_pct": -2.545
+  },
+  "0.9": {
+   "signals_already_beyond_start": 470,
+   "genuine_signals": 131,
+   "genuine_reversal_rate_pct": 93.1,
+   "trade_avg_pct_before_costs": 0.01,
+   "trade_avg_pct_after_costs": -0.01,
+   "trade_avg_win_pct": 0.185,
+   "trade_avg_loss_pct": -2.363
+  }
+ },
+ "QQQ_daily": {
+  "0.85": {
+   "signals_already_beyond_start": 35,
+   "genuine_signals": 32,
+   "genuine_reversal_rate_pct": 90.6,
+   "trade_avg_pct_before_costs": -0.202,
+   "trade_avg_pct_after_costs": -0.222,
+   "trade_avg_win_pct": 0.666,
+   "trade_avg_loss_pct": -8.593
+  },
+  "0.887": {
+   "signals_already_beyond_start": 36,
+   "genuine_signals": 30,
+   "genuine_reversal_rate_pct": 90.0,
+   "trade_avg_pct_before_costs": -0.329,
+   "trade_avg_pct_after_costs": -0.349,
+   "trade_avg_win_pct": 0.589,
+   "trade_avg_loss_pct": -8.593
+  },
+  "0.9": {
+   "signals_already_beyond_start": 39,
+   "genuine_signals": 27,
+   "genuine_reversal_rate_pct": 88.9,
+   "trade_avg_pct_before_costs": -0.443,
+   "trade_avg_pct_after_costs": -0.463,
+   "trade_avg_win_pct": 0.576,
+   "trade_avg_loss_pct": -8.593
+  }
+ },
+ "SPY_1h": {
+  "0.85": {
+   "signals_already_beyond_start": 323,
+   "genuine_signals": 189,
+   "genuine_reversal_rate_pct": 90.5,
+   "trade_avg_pct_before_costs": -0.034,
+   "trade_avg_pct_after_costs": -0.054,
+   "trade_avg_win_pct": 0.211,
+   "trade_avg_loss_pct": -2.363
+  },
+  "0.887": {
+   "signals_already_beyond_start": 354,
+   "genuine_signals": 142,
+   "genuine_reversal_rate_pct": 94.4,
+   "trade_avg_pct_before_costs": 0.036,
+   "trade_avg_pct_after_costs": 0.016,
+   "trade_avg_win_pct": 0.162,
+   "trade_avg_loss_pct": -2.062
+  },
+  "0.9": {
+   "signals_already_beyond_start": 362,
+   "genuine_signals": 127,
+   "genuine_reversal_rate_pct": 96.9,
+   "trade_avg_pct_before_costs": 0.069,
+   "trade_avg_pct_after_costs": 0.049,
+   "trade_avg_win_pct": 0.148,
+   "trade_avg_loss_pct": -2.374
+  }
+ },
+ "SPY_daily": {
+  "0.85": {
+   "signals_already_beyond_start": 21,
+   "genuine_signals": 22,
+   "genuine_reversal_rate_pct": 95.5,
+   "trade_avg_pct_before_costs": 0.333,
+   "trade_avg_pct_after_costs": 0.313,
+   "trade_avg_win_pct": 0.846,
+   "trade_avg_loss_pct": -10.447
+  },
+  "0.887": {
+   "signals_already_beyond_start": 26,
+   "genuine_signals": 16,
+   "genuine_reversal_rate_pct": 100.0,
+   "trade_avg_pct_before_costs": 0.612,
+   "trade_avg_pct_after_costs": 0.592,
+   "trade_avg_win_pct": 0.612,
+   "trade_avg_loss_pct": null
+  },
+  "0.9": {
+   "signals_already_beyond_start": 27,
+   "genuine_signals": 15,
+   "genuine_reversal_rate_pct": 100.0,
+   "trade_avg_pct_before_costs": 0.597,
+   "trade_avg_pct_after_costs": 0.577,
+   "trade_avg_win_pct": 0.597,
+   "trade_avg_loss_pct": null
+  }
+ }
+}

@@ -1,0 +1,396 @@
+{
+ "plan": "output/FIB_95_RULE_TEST_PLAN_20261005.md",
+ "combos": {
+  "QQQ_1h": {
+   "candles": 16194,
+   "claim1": {
+    "0.8": {
+     "2": {
+      "reversal": 602,
+      "continuation": 28,
+      "unresolved": 1,
+      "ambiguous": 1,
+      "reversal_rate_pct": 95.6
+     },
+     "3": {
+      "reversal": 586,
+      "continuation": 21,
+      "unresolved": 1,
+      "reversal_rate_pct": 96.5
+     }
+    },
+    "0.85": {
+     "2": {
+      "reversal": 592,
+      "continuation": 23,
+      "unresolved": 1,
+      "ambiguous": 1,
+      "reversal_rate_pct": 96.3
+     },
+     "3": {
+      "reversal": 573,
+      "continuation": 11,
+      "unresolved": 1,
+      "reversal_rate_pct": 98.1
+     }
+    },
+    "0.887": {
+     "2": {
+      "reversal": 589,
+      "continuation": 14,
+      "unresolved": 1,
+      "ambiguous": 1,
+      "reversal_rate_pct": 97.7
+     },
+     "3": {
+      "reversal": 570,
+      "continuation": 9,
+      "unresolved": 1,
+      "reversal_rate_pct": 98.4
+     }
+    },
+    "0.9": {
+     "2": {
+      "reversal": 588,
+      "continuation": 12,
+      "unresolved": 1,
+      "ambiguous": 1,
+      "reversal_rate_pct": 98.0
+     },
+     "3": {
+      "reversal": 568,
+      "continuation": 9,
+      "unresolved": 1,
+      "reversal_rate_pct": 98.4
+     }
+    },
+    "0.95": {
+     "2": {
+      "reversal": 579,
+      "continuation": 4,
+      "ambiguous": 1,
+      "reversal_rate_pct": 99.3
+     },
+     "3": {
+      "reversal": 556,
+      "continuation": 5,
+      "reversal_rate_pct": 99.1
+     }
+    }
+   },
+   "claim2": {
+    "0.7": {
+     "invalid": 524,
+     "snap": 214,
+     "snap_rate_pct": 29.0
+    },
+    "0.764": {
+     "invalid": 547,
+     "snap": 154,
+     "snap_rate_pct": 22.0
+    },
+    "0.8": {
+     "invalid": 558,
+     "snap": 119,
+     "snap_rate_pct": 17.6
+    }
+   },
+   "median_candles_to_resolve_887": 1.0,
+   "info_trade_887": {
+    "trades": 604,
+    "win_pct": 97.4,
+    "avg_pct_per_trade_before_costs": 0.532
+   },
+   "vs_placebo_line_pts": {
+    "claim1_887": 0.14,
+    "claim2_764": 0.3
+   }
+  },
+  "QQQ_daily": {
+   "candles": 2703,
+   "claim1": {
+    "0.8": {
+     "2": {
+      "reversal": 65,
+      "continuation": 5,
+      "reversal_rate_pct": 92.9
+     },
+     "3": {
+      "reversal": 63,
+      "continuation": 2,
+      "reversal_rate_pct": 96.9
+     }
+    },
+    "0.85": {
+     "2": {
+      "reversal": 64,
+      "continuation": 3,
+      "reversal_rate_pct": 95.5
+     },
+     "3": {
+      "reversal": 62,
+      "continuation": 2,
+      "reversal_rate_pct": 96.9
+     }
+    },
+    "0.887": {
+     "2": {
+      "reversal": 63,
+      "continuation": 3,
+      "reversal_rate_pct": 95.5
+     },
+     "3": {
+      "reversal": 61,
+      "continuation": 1,
+      "reversal_rate_pct": 98.4
+     }
+    },
+    "0.9": {
+     "2": {
+      "reversal": 63,
+      "continuation": 3,
+      "reversal_rate_pct": 95.5
+     },
+     "3": {
+      "reversal": 61,
+      "continuation": 1,
+      "reversal_rate_pct": 98.4
+     }
+    },
+    "0.95": {
+     "2": {
+      "reversal": 62,
+      "continuation": 3,
+      "reversal_rate_pct": 95.4
+     },
+     "3": {
+      "reversal": 60,
+      "continuation": 1,
+      "reversal_rate_pct": 98.4
+     }
+    }
+   },
+   "claim2": {
+    "0.7": {
+     "invalid": 53,
+     "snap": 29,
+     "snap_rate_pct": 35.4
+    },
+    "0.764": {
+     "invalid": 57,
+     "snap": 20,
+     "snap_rate_pct": 26.0
+    },
+    "0.8": {
+     "invalid": 58,
+     "snap": 16,
+     "snap_rate_pct": 21.6
+    }
+   },
+   "median_candles_to_resolve_887": 1.0,
+   "info_trade_887": {
+    "trades": 66,
+    "win_pct": 95.5,
+    "avg_pct_per_trade_before_costs": 0.726
+   },
+   "vs_placebo_line_pts": {
+    "claim1_887": 0.0,
+    "claim2_764": -0.57
+   }
+  },
+  "SPY_1h": {
+   "candles": 16214,
+   "claim1": {
+    "0.8": {
+     "2": {
+      "reversal": 495,
+      "continuation": 33,
+      "unresolved": 1,
+      "reversal_rate_pct": 93.8
+     },
+     "3": {
+      "reversal": 474,
+      "continuation": 26,
+      "unresolved": 1,
+      "reversal_rate_pct": 94.8
+     }
+    },
+    "0.85": {
+     "2": {
+      "reversal": 489,
+      "continuation": 23,
+      "unresolved": 1,
+      "reversal_rate_pct": 95.5
+     },
+     "3": {
+      "reversal": 465,
+      "continuation": 17,
+      "reversal_rate_pct": 96.5
+     }
+    },
+    "0.887": {
+     "2": {
+      "reversal": 483,
+      "continuation": 13,
+      "reversal_rate_pct": 97.4
+     },
+     "3": {
+      "reversal": 459,
+      "continuation": 11,
+      "reversal_rate_pct": 97.7
+     }
+    },
+    "0.9": {
+     "2": {
+      "reversal": 480,
+      "continuation": 9,
+      "reversal_rate_pct": 98.2
+     },
+     "3": {
+      "reversal": 455,
+      "continuation": 8,
+      "reversal_rate_pct": 98.3
+     }
+    },
+    "0.95": {
+     "2": {
+      "reversal": 464,
+      "continuation": 7,
+      "unresolved": 1,
+      "reversal_rate_pct": 98.5
+     },
+     "3": {
+      "reversal": 440,
+      "continuation": 4,
+      "reversal_rate_pct": 99.1
+     }
+    }
+   },
+   "claim2": {
+    "0.7": {
+     "snap": 204,
+     "invalid": 397,
+     "snap_rate_pct": 33.9
+    },
+    "0.764": {
+     "snap": 151,
+     "invalid": 426,
+     "snap_rate_pct": 26.2
+    },
+    "0.8": {
+     "snap": 123,
+     "invalid": 440,
+     "snap_rate_pct": 21.8
+    }
+   },
+   "median_candles_to_resolve_887": 1.0,
+   "info_trade_887": {
+    "trades": 496,
+    "win_pct": 97.2,
+    "avg_pct_per_trade_before_costs": 0.405
+   },
+   "vs_placebo_line_pts": {
+    "claim1_887": -0.1,
+    "claim2_764": 0.04
+   }
+  },
+  "SPY_daily": {
+   "candles": 2703,
+   "claim1": {
+    "0.8": {
+     "2": {
+      "reversal": 42,
+      "continuation": 3,
+      "reversal_rate_pct": 93.3
+     },
+     "3": {
+      "reversal": 42,
+      "reversal_rate_pct": 100.0
+     }
+    },
+    "0.85": {
+     "2": {
+      "reversal": 42,
+      "continuation": 1,
+      "reversal_rate_pct": 97.7
+     },
+     "3": {
+      "reversal": 42,
+      "reversal_rate_pct": 100.0
+     }
+    },
+    "0.887": {
+     "2": {
+      "reversal": 42,
+      "reversal_rate_pct": 100.0
+     },
+     "3": {
+      "reversal": 41,
+      "reversal_rate_pct": 100.0
+     }
+    },
+    "0.9": {
+     "2": {
+      "reversal": 42,
+      "reversal_rate_pct": 100.0
+     },
+     "3": {
+      "reversal": 41,
+      "reversal_rate_pct": 100.0
+     }
+    },
+    "0.95": {
+     "2": {
+      "reversal": 42,
+      "reversal_rate_pct": 100.0
+     },
+     "3": {
+      "reversal": 40,
+      "reversal_rate_pct": 100.0
+     }
+    }
+   },
+   "claim2": {
+    "0.7": {
+     "snap": 18,
+     "invalid": 34,
+     "snap_rate_pct": 34.6
+    },
+    "0.764": {
+     "snap": 14,
+     "invalid": 36,
+     "snap_rate_pct": 28.0
+    },
+    "0.8": {
+     "snap": 13,
+     "invalid": 36,
+     "snap_rate_pct": 26.5
+    }
+   },
+   "median_candles_to_resolve_887": 1.0,
+   "info_trade_887": {
+    "trades": 42,
+    "win_pct": 100.0,
+    "avg_pct_per_trade_before_costs": 1.356
+   },
+   "vs_placebo_line_pts": {
+    "claim1_887": 0.6,
+    "claim2_764": -1.42
+   }
+  }
+ },
+ "counted_combos": [
+  "QQQ_1h",
+  "QQQ_daily",
+  "SPY_1h",
+  "SPY_daily"
+ ],
+ "verdict": {
+  "A_rate_at_least_90_everywhere": true,
+  "B_887_beats_placebo_line_by_2pts": false,
+  "B_avg_gap_pts": 0.16,
+  "C_764_beats_placebo_line_by_2pts": false,
+  "C_avg_gap_pts": -0.41,
+  "supported": false
+ }
+}
