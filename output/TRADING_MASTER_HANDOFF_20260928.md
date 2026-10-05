@@ -432,3 +432,12 @@ Everything below was read-only unless stated otherwise.
   - **Info "any 10% gap":** 84 trades, PF 1.74, 39% winners, top 10% of trades = 76% of the profit, $140.8k; it fails only B2.
   - **Bug found after the first run:** stop-at-open exits were missing from the trade stats. Fixed (d7e3ddf, unit test + count assertion); equity was unaffected; the main PF went 1.68 → 1.29. The verifier matched 10/10 trades and 10/10 rejections.
   - **Offered:** a forward paper EP watch-list (needs a yes), or stop.
+- **Oct 5, ~5:05 PM: EP forward paper watch deployed** (owner: "yes set up the forward paper watch").
+  - **Plan:** `EP_FORWARD_WATCH_PLAN_20261005.md` (975fdd5), committed before any forward data.
+  - **Code:** `research/ep_watch_v1/`. 7 tests, including an end-to-end evening run that must equal the test #16 code's answer on the same data.
+  - **Kit:** `cloud/ep_watch_v1/` (0fc1a47).
+  - **Server:** `/opt/ep-watch`, user `ep-watch`; the server tests passed; a live print-only check on Oct 5 found 18 gap-ups (1 with earnings), matching the local run.
+  - **Emails:** 10:50 ET watch list and 17:05 ET paper ledger, Mon–Fri. The ledger is rebuilt nightly with test #16's exact functions.
+  - **Dates:** events Oct 6, 2026 – Jan 8, 2027; tracking until Feb 12, 2027, then one "finished" email. **Then disable the timers** and write the final results doc.
+  - **Honest note given to the owner:** the exact rule trades about twice a year, so the forward event log (every liquid 10%+ gap-up, 10:30 price → day-5/day-20 vs SPY) is the real measurement.
+  - **Tailscale again:** it dropped and recovered (the relay switched to a direct path). If SSH hangs, use `-o ServerAliveInterval=5`.

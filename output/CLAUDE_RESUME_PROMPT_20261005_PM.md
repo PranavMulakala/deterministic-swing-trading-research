@@ -79,6 +79,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
 | **MNQ (IBKR paper)** | The owner logged in Oct 5 ~8:30 AM (Gateway restarted 12:27 UTC to clear a stale "competing session"). A **stale calendar** then caused `ValueError` until another session refreshed the calendar copy (~9:14). **The calendar expires Mon Oct 12 ~9:09 AM.** It needs a permanent fix (the old `trading-references.service` fails with HTTP errors because it uses the dead trading-collector key): a new read-only key or another calendar source. First trade eligible Tue Oct 6. Never log into that paper user elsewhere; re-login uses the noVNC tunnel on port 6081 |
 | Small-cap scanner | 10:05 + 16:15 emails |
 | Daily market brief | 16:30 ET Mon–Fri. **Calendar updated + deployed Oct 5:** FOMC minutes Oct 7 2 PM, CPI ~Oct 14, Plan B 30 sh. **A 200-day signal was added, then reverted at the owner's request (never deployed)** |
+| **EP forward paper watch** (new Oct 5, owner: "yes set up the forward paper watch") | `/opt/ep-watch`, user `ep-watch`, deployed at 0fc1a47. Emails at 10:50 (earnings gap-up watch list) and 17:05 ET (paper ledger: test #16's exact rule + "all catalysts" + a forward event log of every liquid 10%+ gap-up, day-5/day-20 return vs SPY). Plan `EP_FORWARD_WATCH_PLAN_20261005.md`. Events Oct 6, 2026 – Jan 8, 2027; tracking until Feb 12, 2027, then it emails "finished" once: **then disable the `ep-watch-*` timers** and write the final results doc. Expect 0–1 main-rule trades; the event log (~60–100 earnings gaps) is the real measurement (drift shown only if the day-20 average excess > 0 with t ≥ 2) |
 | Old `trading-collector.service` / `trading-references.service` | Failing (dead key). Re-key or disable is the owner's call; it's tied to the MNQ calendar fix above |
 
 ## 4. Every strategy test so far (pre-declared; none beat simply holding SPY on a modern window)
@@ -194,7 +195,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
 3. ~~MNQ calendar permanent fix~~ **Done Oct 5 ~3:06 PM:** trading-references re-keyed with the LITE paper key; old trading-collector disabled. Calendar auto-refreshes every 6 h.
 4. **Collective2 tracking:** weekly check of ares + US Stock Momentum (§5).
 5. **Kevin Whop card check ~Oct 12.** Finviz trial cancel + key reset ~Oct 11.
-6. ~~Test #16 (EP)~~ **Done Oct 5 ~4:20 PM: failed (too few trades).** See §4 and the results doc. Offered next (owner's choice): a forward paper watch-list of earnings gap-ups logged against the same rules (a new persistent job: needs a yes), or stop here.
+6. ~~Test #16 (EP)~~ **Done: failed (too few trades).** The owner then chose the **forward paper watch**: deployed Oct 5 ~5:05 PM, first emails Tue Oct 6 (see the §3 table). Add one line per weekend scorecard (both ledgers vs SPY, event-log averages).
 7. The Dad's $95k plan comparison (offered). Weekend scorecard Oct 10–11. Taxes (needs the Robinhood realized-gains screen + pay stub).
 8. TradingView alerts expire Nov 3. Confirm the Schwab transfer-out. The Robinhood joint-account info request.
 9. **Options learning path:** Options 101 lectures as they post, OIC, paper practice. Revisit LITE earnings handling before Nov 10.
