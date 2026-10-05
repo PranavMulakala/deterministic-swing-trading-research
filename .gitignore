@@ -23,6 +23,7 @@ outputs/lite_news_history/
 outputs/mu_research/
 outputs/breakout_data/
 outputs/crt_sweep_data/
+outputs/oi_levels_data/
 outputs/smallcap_scanner/
 research/earnings_straddle_v1/qc_copy.html
 .env.reddit
