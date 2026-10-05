@@ -182,7 +182,7 @@ def saved_feed_url(path=FEED_FILE):
         raise SystemExit("Owner-only .env.reddit_feed required (see the save command Claude gave you)")
     for line in path.read_text(encoding="utf-8").splitlines():
         name, _, value = line.strip().partition("=")
-        if name.strip() == "REDDIT_SAVED_FEED" and value.strip().startswith("https://www.reddit.com/"):
+        if name.strip() == "REDDIT_SAVED_FEED" and re.match(r"https://(www\.|old\.)?reddit\.com/", value.strip()):
             return value.strip()
     raise SystemExit(".env.reddit_feed needs REDDIT_SAVED_FEED=https://www.reddit.com/saved.rss?...")
 
