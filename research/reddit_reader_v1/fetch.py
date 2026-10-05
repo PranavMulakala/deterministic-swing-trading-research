@@ -1,4 +1,9 @@
-"""Read Reddit threads (post + top comments) through the official Reddit API, read-only. No PRAW install needed.
+"""Read Reddit threads (post + top comments), read-only. No PRAW install needed.
+
+Two modes, picked automatically:
+- No .env.reddit (default today): Reddit's public RSS feed per thread (post + ~50 comments, flat), one thread every
+  10 s. RSS is what Reddit offers feed readers; no key, no login, no browser impersonation.
+- With .env.reddit (only after Reddit approves an API request): the official OAuth API, with nested replies.
 
   PYTHONPATH=src:. .venv/bin/python -m research.reddit_reader_v1.fetch                 # every link in inbox/reddit_links.txt
   PYTHONPATH=src:. .venv/bin/python -m research.reddit_reader_v1.fetch <link> [<link>]  # specific links
@@ -103,21 +108,71 @@ def fetch(post_id, bearer, values):
     return post, "\n".join(lines) + "\n"
 
 
+RSS_AGENT = "personal-feed-reader/0.1 (read-only, low volume)"
+RSS_PAUSE = 10  # seconds between threads; Reddit's public feeds rate-limit fast clients (HTTP 429)
+ATOM = {"a": "http://www.w3.org/2005/Atom"}
+
+
+def fetch_rss(post_id):
+    """Reddit's public RSS/Atom feed for a thread: the post plus about 50 comments in Reddit's default order.
+    This is the feed Reddit offers to feed readers; no key needed. Comments come flat (no reply nesting)."""
+    import html
+    import xml.etree.ElementTree as ET
+    import urllib.error
+    request = Request(f"https://www.reddit.com/comments/{post_id}/.rss", headers={"User-Agent": RSS_AGENT})
+    for attempt in range(4):  # back off politely when Reddit says "too many requests"
+        try:
+            with build_opener(ProxyHandler({})).open(request, timeout=30) as reply:
+                root = ET.fromstring(reply.read())
+            break
+        except urllib.error.HTTPError as error:
+            if error.code != 429 or attempt == 3:
+                raise
+            time.sleep(30 * (attempt + 1))
+
+    def text(entry):
+        content = entry.find("a:content", ATOM)
+        raw = html.unescape(content.text or "") if content is not None else ""
+        raw = re.sub(r"<br\s*/?>|</p>", "\n", raw)
+        return re.sub(r"\n{3,}", "\n\n", re.sub(r"<[^>]+>", "", raw)).strip()
+
+    entries = root.findall("a:entry", ATOM)
+    if not entries:
+        raise ValueError("empty feed")
+    post, comments = entries[0], entries[1:]
+    author = lambda e: (e.findtext("a:author/a:name", "?", ATOM) or "?").replace("/u/", "")
+    link = post.find("a:link", ATOM).get("href", "")
+    match = re.search(r"/r/([^/]+)/", link)
+    subreddit = f"r/{match[1]}" if match else ""
+    lines = [f"# {post.findtext('a:title', '', ATOM)}", "", f"{subreddit} · u/{author(post)} · {link}", "",
+             text(post), "", f"## Comments ({len(comments)}, Reddit's default order, replies not nested)", ""]
+    lines += [f"- **{author(c)}**: {text(c)}".replace("\n", "\n  ") for c in comments]
+    return {"subreddit": subreddit, "title": post.findtext("a:title", "", ATOM)}, "\n".join(lines) + "\n"
+
+
 def main():
-    values = keys()
     links = sys.argv[1:] or [l.strip() for l in LINKS.read_text().splitlines() if l.strip() and not l.startswith("#")]
-    bearer = token(values)
+    use_api = KEY_FILE.exists()
+    values = keys() if use_api else {}
+    bearer = token(values) if use_api else None
     OUT.mkdir(parents=True, exist_ok=True)
-    for link in links:
-        post_id = thread_id(link, values)
+    for n, link in enumerate(links):
+        post_id = thread_id(link, values if use_api else {"REDDIT_USERNAME": ""})
         if not post_id:
             print("SKIP (no thread id):", link)
             continue
-        post, text = fetch(post_id, bearer, values)
+        if n and not use_api:
+            time.sleep(RSS_PAUSE)
+        try:
+            post, text = fetch(post_id, bearer, values) if use_api else fetch_rss(post_id)
+        except Exception as error:
+            print(f"FAIL {post_id}: {type(error).__name__} {error}")
+            continue
         path = OUT / f"{post_id}.md"
         path.write_text(text, encoding="utf-8")
-        print(f"OK {post_id}: r/{post['subreddit']} | {post['title'][:80]} -> {path.relative_to(ROOT)}")
-        time.sleep(1)
+        print(f"OK {post_id} ({'api' if use_api else 'rss'}): {post['subreddit']} | {post['title'][:80]} -> {path.relative_to(ROOT)}")
+        if use_api:
+            time.sleep(1)
 
 
 if __name__ == "__main__":
