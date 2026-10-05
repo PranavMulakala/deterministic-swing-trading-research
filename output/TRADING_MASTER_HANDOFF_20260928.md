@@ -403,3 +403,12 @@ Everything below was read-only unless stated otherwise.
 - **Oct 5 (afternoon): pre-declared test #12, Options Insider premarket levels: no edge** (`OPTIONS_INSIDER_LEVELS_TEST_RESULTS_20261005.md`).
   - 20 streams, 513 calls, 499 scored; success 26.1% vs 28.0% for placebo levels.
   - Spot-check of 5 random calls: all correct.
+- **Oct 5 (afternoon/evening):**
+  - **The owner dropped the 200-day idea.** The brief change was reverted (never deployed).
+  - **Collective2 reviewed;** tracking "ares" + "US Stock Momentum" (`ARES_TRACKING_20261005.md`).
+  - **Community answer given** (OIC, Options 101, tastylive, Collective2).
+  - **Options 101** lectures 1–2 + the lecture-1 video noted.
+  - **r/options 42-strategy ranking** noted.
+  - **Qullamaggie reviewed** (`QULLAMAGGIE_REVIEW_20261005.md`; the EP setup is the best next test candidate).
+  - **Test #15 (Plan B rule on the 100 most volatile stocks as of 2021):** plan and code committed; the download was in progress (62/113 at 14:37).
+  - **New full resume prompt:** `output/CLAUDE_RESUME_PROMPT_20261005_PM.md`.
