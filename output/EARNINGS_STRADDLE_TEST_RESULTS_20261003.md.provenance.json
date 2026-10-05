@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-10-05T04:10:58+00:00",
+  "git_commit": "b73e7df68af330f5e97139edc03df58a67498d82",
+  "code_uncommitted": false,
+  "params": {
+    "entry": "3 trading days before last pre-report close",
+    "fills": "ask in, bid out",
+    "spread_max": 0.2,
+    "note": "option quotes live in QuantConnect (AlgoSeek); not hashable locally"
+  },
+  "files": {
+    "research/earnings_straddle_v1/qc_template.py": {
+      "kind": "code",
+      "bytes": 10218,
+      "sha256": "3b46b4172ee1c359a42fe7dcf631d424c88033208a4816ecad43ff90e36dfcbf"
+    },
+    "research/earnings_straddle_v1/build_qc.py": {
+      "kind": "code",
+      "bytes": 1349,
+      "sha256": "44ed7ce24429f186dc090e865ae3a3d85f52cfc036847941625e90fef22928b8"
+    },
+    "research/earnings_straddle_v1/schedule.py": {
+      "kind": "code",
+      "bytes": 1367,
+      "sha256": "dd8dd3c966cf7ba449814b414c640563ae8dea1b3e3ee82af4976e0a30a66a39"
+    },
+    "research/earnings_straddle_v1/events.json": {
+      "kind": "data",
+      "bytes": 42503,
+      "sha256": "3facf5d99e6f6c81f8014383f5c11165c7f33933e38c4d1cec77767d697439a6"
+    },
+    "research/earnings_straddle_v1/schedule.json": {
+      "kind": "data",
+      "bytes": 70169,
+      "sha256": "8ebcf6cca1cc4d8bc3904341c0832a00e809c841bbbb335b2b31a3d486bf8409"
+    }
+  }
+}
