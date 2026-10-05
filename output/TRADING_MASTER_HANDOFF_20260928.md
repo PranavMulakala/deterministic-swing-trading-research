@@ -359,3 +359,12 @@ Everything below was read-only unless stated otherwise.
   - **Comparison asked by the owner (1 year to Oct 2):**
     - LITE +533%, COHR +194%, AVGO +7%, MU +491%.
     - Correlation with LITE: COHR 0.79, AVGO 0.45. On LITE's −5% days, COHR averaged −6.6% and AVGO −2.4%.
+- **Oct 5 (overnight, ~00:00–01:15 ET):** TikTok batches 2 and 3 studied.
+  - **Batch 2:** `TIKTOK_BATCH2_NOTES_20261005.md`. Videos #6/#7/#8 are repeats of Sept 29's videos; #7 is the system test #3 already failed, so the earlier "test #8 = swing system" idea was withdrawn.
+  - **Batch 3:** `TIKTOK_BATCH3_NOTES_20261005.md`. 7 sent, 2 repeats, 5 new.
+  - **Pre-declared test #8**, the 15-minute sweep-and-reclaim (CRT), on QQQ/SPY 5-minute bars 2016–2026: **FAILED** (`CRT_SWEEP_TEST_RESULTS_20261005.md`).
+    - Target hit 54%, not the 85–90% claimed.
+    - $100k → $32k/$36k; profit factor 0.48–0.56 after costs, 0.82 with zero costs.
+    - Verifier matched all 14,539 trades.
+  - **Plain-words summary for the owner:** `MORNING_SUMMARY_VIDEOS_REDDIT_20261005.md`.
+  - **Nothing touched** Plan B, the bots or MNQ.

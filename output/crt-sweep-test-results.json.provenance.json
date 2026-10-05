@@ -1,0 +1,32 @@
+{
+  "created_utc": "2026-10-05T04:40:55+00:00",
+  "git_commit": "bda086ad89e5c02f76ac0f8b663c9abf8b65d0da",
+  "code_uncommitted": true,
+  "params": {
+    "slip": 0.0001,
+    "risk": 0.01,
+    "expiry_min": 30
+  },
+  "files": {
+    "research/crt_sweep_test_v1/backtest.py": {
+      "kind": "code",
+      "bytes": 10609,
+      "sha256": "3cb069b802e26b961e0a0afa3c6cdc455cae13725dae419c2ef9159255bb1676"
+    },
+    "research/crt_sweep_test_v1/fetch.py": {
+      "kind": "code",
+      "bytes": 1352,
+      "sha256": "4eff1983ad257134424b37781b84a2f5fbba9936d88f986edda35245b70208ce"
+    },
+    "outputs/crt_sweep_data/QQQ_5min_sip_2016-01-01_2026-10-02.json.gz": {
+      "kind": "data",
+      "bytes": 10880485,
+      "sha256": "e6ade5e9139da4b4a6252e65aeb9c6115bb466ae5adeec678217fa3087c63204"
+    },
+    "outputs/crt_sweep_data/SPY_5min_sip_2016-01-01_2026-10-02.json.gz": {
+      "kind": "data",
+      "bytes": 11251469,
+      "sha256": "2aae8dc4f5d5595540f7712059d0a8e857e2f9a44e6806219d8340a1b3f2e6a3"
+    }
+  }
+}
