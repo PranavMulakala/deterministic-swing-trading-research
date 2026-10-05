@@ -50,7 +50,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
   - Record: `output/REAL_POSITION_MU_20261002.md`.
   - Next earnings mid/late Dec; buyback limit ends Dec 9.
   - Pre-market Oct 5 it was ~$1,070.
-- **LITE (real), Plan B:** `output/REAL_MONEY_PLAN_LITE_B_20261002.md`. **30 shares**, fixed 3 weeks from Mon Oct 5.
+- **LITE (real), Plan B:** `output/REAL_MONEY_PLAN_LITE_B_20261002.md`. The plan says **30 shares**, fixed 3 weeks from Mon Oct 5. **Day 1 (Oct 5) actual: the owner bought $50,000 by market order = 46.127588 sh @ $1,083.95** (record `REAL_POSITION_LITE_PLANB_20261005.md`, sell note `LITE_SELL_NOTE.md`, brief `positions.json` already updated + redeployed). GTC limit sell 46 sh @ $1,105.63; −20% check $867.16. Bad case with MU ≈ −$50k vs the $38k limit (owner chose to keep all 46).
   - **Rule:**
     - **Signal:** LITE ≥1% below the 9:30 open by 10:00 AND the 10:00 price is below the open.
     - **Buy:** a limit at ~price +0.1%, good for the day; cancel if not filled by 10:05.
@@ -58,7 +58,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
     - **No stop:** a −20% check on closes; one position at a time.
   - The bad case with MU is ~−$40.5k, $2.5k over my limit, accepted knowingly.
   - Review ~Oct 26. **Decide before LITE earnings Nov 10** about skipping signals near earnings.
-  - **Oct 5 (day 1) outcome was never reported in chat: ask me.**
+  - **Day 1 corrected (Oct 5, ~3 PM):** the fill above was already recorded at 10:05 (commit aacac82); this prompt originally said "ask me", which was stale. As of 2:20 PM the $1,105.63 sell had NOT filled (post-10:05 high $1,098.55; the $1,124 high was in the first 5 minutes, before the buy).
 - **After each real fill:**
   - update the sell note and position record;
   - add it to `research/market_brief_v1/positions.json` and redeploy (`.venv/bin/python cloud/market_brief_v1/deploy.py`);
@@ -189,7 +189,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
 
 ## 8. Open items
 1. **Test #15:** finish the download, then the results (§6).
-2. **Ask about Plan B day 1 (Oct 5):** did it signal or fill? If filled, do the after-fill steps.
+2. **Plan B day 1 is recorded (46.13 sh @ $1,083.95).** Ask the owner whether the $1,105.63 GTC sell has filled; when it does, do the after-fill steps (sell note, position record, `positions.json` + redeploy). The 0.127588 fractional share may need selling by hand.
 3. **MNQ calendar permanent fix before Mon Oct 12 ~9:09 AM** (§3).
 4. **Collective2 tracking:** weekly check of ares + US Stock Momentum (§5).
 5. **Kevin Whop card check ~Oct 12.** Finviz trial cancel + key reset ~Oct 11.
