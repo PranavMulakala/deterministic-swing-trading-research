@@ -109,7 +109,7 @@ These are approximate S&P 500 levels **from memory. They have not been checked a
 - Joey himself said "not necessarily buying".
 - One real plus: these are consumer names, so they would diversify away from your MU/LITE AI-hardware concentration.
 
-## 5. Draft reply to Joey (not sent; needs "yes send it")
+## 5. Reply to Joey: SENT Oct 5 on the owner's "yes send it" (message 1a10d97c0755d5d7, same thread)
 Subject: Re: Micron Covered Call and Diagonal
 
 > Hey Joey,
