@@ -191,6 +191,7 @@ def portfolio(events, daily, calendar):
     for e in events:
         by_day[e["day"]].append(e)
     cash, equity_prev, held, trades, curve, skipped, last_close = START_CASH, START_CASH, {}, [], [], Counter(), {}
+    entered = 0
 
     def settle(p, d, at_open_only):
         """Cash from this position's parts dated d; returns (cash, fully exited)."""
@@ -209,7 +210,7 @@ def portfolio(events, daily, calendar):
             got, done = settle(p, d, True)
             cash += got
             if done:
-                del held[s]
+                trades.append(finish(held.pop(s), open_=False))
         for e in by_day.get(d, []):                # 2. entries in breakout-time order
             if e["symbol"] in held:
                 skipped["already_held"] += 1
@@ -219,6 +220,7 @@ def portfolio(events, daily, calendar):
                 skipped["no_cash"] += 1
                 continue
             cash -= value
+            entered += 1
             held[e["symbol"]] = {**e, "shares": value / e["fill"], "left": 1.0, "cost_basis": value, "proceeds": 0.0}
         for s, p in list(held.items()):            # 3. every other sale today frees cash after entries
             got, done = settle(p, d, False)
@@ -237,6 +239,7 @@ def portfolio(events, daily, calendar):
         equity_prev = equity
     for s, p in held.items():
         trades.append(finish(p, open_=True, mark=last_close.get(s, p["fill"])))
+    assert len(trades) == entered, f"{entered} positions entered but {len(trades)} trades recorded"
     return trades, curve, skipped
 
 

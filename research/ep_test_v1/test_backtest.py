@@ -131,5 +131,16 @@ class PortfolioTest(unittest.TestCase):
         self.assertAlmostEqual(curve[-1][1], 250 * 99 * (1 - COST) + 3 * 250 * 110.0, places=4)
 
 
+    def test_stop_at_the_open_is_recorded_as_a_trade(self):
+        events = [{"symbol": "A", "day": "d1", "minute": 630, "gap": 0.2, "fill": 100.0, "stop": 99.0,
+                   "ambiguous": False, "adv_usd": 1e8, "prior63": 0.1, "parts": [("d2", 95.0, 1.0, "stop_open")]}]
+        data = {"A": {"date": ["d1", "d2"], "close": [100.0, 96.0], "_idx": {"d1": 0, "d2": 1}}}
+        trades, curve, _ = portfolio(events, data, ["d1", "d2"])
+        self.assertEqual(len(trades), 1)
+        self.assertEqual(trades[0]["exit_kind"], "stop_open")
+        self.assertAlmostEqual(trades[0]["pnl"], 250 * 95.0 - 25_000)
+        self.assertAlmostEqual(curve[-1][1], 75_000 + 250 * 95.0)
+
+
 if __name__ == "__main__":
     unittest.main()
