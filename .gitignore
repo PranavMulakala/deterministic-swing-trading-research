@@ -27,3 +27,4 @@ research/earnings_straddle_v1/qc_copy.html
 .env.reddit
 outputs/reddit/
 inbox/
+.env.reddit_feed

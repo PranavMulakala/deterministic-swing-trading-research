@@ -119,7 +119,7 @@ def fetch_rss(post_id):
     import html
     import xml.etree.ElementTree as ET
     import urllib.error
-    request = Request(f"https://www.reddit.com/comments/{post_id}/.rss", headers={"User-Agent": RSS_AGENT})
+    request = Request(f"https://www.reddit.com/comments/{post_id}/.rss?limit=100", headers={"User-Agent": RSS_AGENT})
     for attempt in range(4):  # back off politely when Reddit says "too many requests"
         try:
             with build_opener(ProxyHandler({})).open(request, timeout=30) as reply:
@@ -150,8 +150,62 @@ def fetch_rss(post_id):
     return {"subreddit": subreddit, "title": post.findtext("a:title", "", ATOM)}, "\n".join(lines) + "\n"
 
 
+FEED_FILE = ROOT / ".env.reddit_feed"
+
+
+def feed_links(url):
+    """Thread links from any Reddit RSS listing (your private Saved feed, or a subreddit's hot/top/new feed)."""
+    import urllib.error
+    import xml.etree.ElementTree as ET
+    request = Request(url, headers={"User-Agent": RSS_AGENT})
+    for attempt in range(4):
+        try:
+            with build_opener(ProxyHandler({})).open(request, timeout=30) as reply:
+                root = ET.fromstring(reply.read())
+            break
+        except urllib.error.HTTPError as error:
+            if error.code != 429 or attempt == 3:
+                raise
+            time.sleep(30 * (attempt + 1))
+    links = []
+    for entry in root.findall("a:entry", ATOM):
+        link = entry.find("a:link", ATOM)
+        href = link.get("href", "") if link is not None else ""
+        if "/comments/" in href and href not in links:  # saved comments point inside a thread; keep the thread
+            links.append(href)
+    return links
+
+
+def saved_feed_url(path=FEED_FILE):
+    """The owner's private Saved-posts RSS link (contains a private feed key; never printed)."""
+    if path.is_symlink() or not path.is_file() or path.stat().st_mode & 0o077:
+        raise SystemExit("Owner-only .env.reddit_feed required (see the save command Claude gave you)")
+    for line in path.read_text(encoding="utf-8").splitlines():
+        name, _, value = line.strip().partition("=")
+        if name.strip() == "REDDIT_SAVED_FEED" and value.strip().startswith("https://www.reddit.com/"):
+            return value.strip()
+    raise SystemExit(".env.reddit_feed needs REDDIT_SAVED_FEED=https://www.reddit.com/saved.rss?...")
+
+
 def main():
-    links = sys.argv[1:] or [l.strip() for l in LINKS.read_text().splitlines() if l.strip() and not l.startswith("#")]
+    import argparse
+    parser = argparse.ArgumentParser(description="Read Reddit threads read-only (RSS by default).")
+    parser.add_argument("links", nargs="*", help="thread links; default: inbox/reddit_links.txt")
+    parser.add_argument("--saved", type=int, metavar="N", help="read my newest N saved posts (private feed)")
+    parser.add_argument("--sub", metavar="NAME", help="read top posts of a community, e.g. --sub stocks")
+    parser.add_argument("--sort", default="top", choices=["top", "hot", "new"])
+    parser.add_argument("--t", default="week", choices=["day", "week", "month", "year", "all"])
+    parser.add_argument("--n", type=int, default=10, help="how many posts for --sub (default 10)")
+    args = parser.parse_args()
+    if args.saved:
+        url = saved_feed_url()
+        links = feed_links(url + ("&" if "?" in url else "?") + "limit=100")[:args.saved]
+    elif args.sub:
+        name = re.sub(r"[^A-Za-z0-9_]", "", args.sub.removeprefix("r/"))
+        links = feed_links(f"https://www.reddit.com/r/{name}/{args.sort}/.rss?t={args.t}&limit={args.n}")[:args.n]
+    else:
+        links = args.links or [l.strip() for l in LINKS.read_text().splitlines() if l.strip() and not l.startswith("#")]
+    print(f"{len(links)} thread(s) to read")
     use_api = KEY_FILE.exists()
     values = keys() if use_api else {}
     bearer = token(values) if use_api else None
@@ -161,7 +215,7 @@ def main():
         if not post_id:
             print("SKIP (no thread id):", link)
             continue
-        if n and not use_api:
+        if not use_api:
             time.sleep(RSS_PAUSE)
         try:
             post, text = fetch(post_id, bearer, values) if use_api else fetch_rss(post_id)
