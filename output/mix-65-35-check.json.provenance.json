@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-10-05T15:07:49+00:00",
+  "git_commit": "a99b796198a0bbe947534f115855a5000956f048",
+  "code_uncommitted": true,
+  "params": {
+    "spy_weight": 0.65
+  },
+  "files": {
+    "research/mix_65_35_v1/run.py": {
+      "kind": "code",
+      "bytes": 3694,
+      "sha256": "a5df8628c81017d112989b952027c2fa8e4ca9f03ef512b3c6ef2838d3dce054"
+    },
+    "outputs/breakout_data/SPY.csv.gz": {
+      "kind": "data",
+      "bytes": 49315,
+      "sha256": "f8833f1a6d8cca655eb6d9bc5a8cdb8c2d20be6111b005838267921c24574759"
+    },
+    "research/spy_put_spread_backtest_v1/tbill_3m_monthly.csv": {
+      "kind": "data",
+      "bytes": 2043,
+      "sha256": "5ee27b853ee4215f3a700abd92789f0bbc496ed4e201a0908bc398f2bc760d76"
+    },
+    "output/csp-spy-test-results.json": {
+      "kind": "data",
+      "bytes": 171848,
+      "sha256": "fcfff8eea57f62cb52971f363ced2063bb55a8ad33aa46fec6b5a7fe87c0846e"
+    }
+  }
+}

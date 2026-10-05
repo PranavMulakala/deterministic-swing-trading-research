@@ -1,0 +1,95 @@
+{
+ "plan": "output/MIX_65_35_CHECK_PLAN_20261005.md",
+ "first": "2016-01-04",
+ "last": "2025-12-31",
+ "days": 2514,
+ "spy_missing_days": [],
+ "results": {
+  "mix_65_35_monthly": {
+   "total_return_pct": 173.0,
+   "cagr_pct": 10.59,
+   "max_drawdown_pct": -22.6,
+   "cagr_over_dd": 0.469,
+   "final_value": 272990,
+   "halves_return_pct": {
+    "2016-2020": 64.7,
+    "2021-2025": 65.8
+   },
+   "return_by_year_pct": {
+    "2016": 8.5,
+    "2017": 14.1,
+    "2018": -2.3,
+    "2019": 20.4,
+    "2020": 13.1,
+    "2021": 18.0,
+    "2022": -11.1,
+    "2023": 18.8,
+    "2024": 17.8,
+    "2025": 13.0
+   }
+  },
+  "mix_65_35_yearly": {
+   "total_return_pct": 175.4,
+   "cagr_pct": 10.69,
+   "max_drawdown_pct": -22.2,
+   "cagr_over_dd": 0.481,
+   "final_value": 275414,
+   "halves_return_pct": {
+    "2016-2020": 64.4,
+    "2021-2025": 67.5
+   },
+   "return_by_year_pct": {
+    "2016": 8.6,
+    "2017": 14.5,
+    "2018": -2.5,
+    "2019": 21.0,
+    "2020": 12.1,
+    "2021": 18.6,
+    "2022": -11.0,
+    "2023": 19.0,
+    "2024": 18.0,
+    "2025": 13.0
+   }
+  },
+  "mix_65_35_never": {
+   "total_return_pct": 201.5,
+   "cagr_pct": 11.7,
+   "max_drawdown_pct": -25.7,
+   "cagr_over_dd": 0.456,
+   "final_value": 301511,
+   "halves_return_pct": {
+    "2016-2020": 69.1,
+    "2021-2025": 78.3
+   },
+   "return_by_year_pct": {
+    "2016": 8.6,
+    "2017": 15.0,
+    "2018": -3.0,
+    "2019": 22.5,
+    "2020": 14.0,
+    "2021": 22.3,
+    "2022": -14.5,
+    "2023": 21.7,
+    "2024": 21.3,
+    "2025": 15.6
+   }
+  },
+  "spy_only": {
+   "total_return_pct": 296.4,
+   "cagr_pct": 14.8,
+   "max_drawdown_pct": -33.8,
+   "cagr_over_dd": 0.438,
+   "final_value": 396414
+  },
+  "cash_secured_puts_test10": {
+   "final_equity": 154556,
+   "cagr_pct": 4.46,
+   "max_drawdown_pct": -22.2,
+   "cagr_over_dd": 0.201,
+   "halves_return_pct": {
+    "2016-2020": 5.9,
+    "2021-2025": 45.9
+   }
+  }
+ }
+}

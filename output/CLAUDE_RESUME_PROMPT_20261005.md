@@ -126,6 +126,9 @@ This file replaces `CLAUDE_RESUME_PROMPT_20261002.md`. The older one is still co
   - Half the profit was T-bill interest. Midpoint fills only add ~$4.6k.
   - Verifier: sale prices exact, 0 outcome flips vs actual closes; cash reconciled including one put open at year-end.
 - **Test record now: 10 tests, none beat holding SPY; 2 passed bar A** (SMA50, cash-secured puts).
+- **65% SPY / 35% T-bills comparison check (owner asked, Oct 5):** `MIX_65_35_CHECK_RESULTS_20261005.md`.
+  - Monthly rebalance: $100k → $273k, 10.6%/yr, worst drop −22.6%, growth ÷ drop 0.47 (SPY alone 0.44).
+  - Same drop as the cash-secured puts but $118k more. A benchmark, not a strategy test.
 - **Recurring themes:** breakouts, opening range, sweep-and-reclaim, and option selling. The useful takeaways were habits (plan first, exit known before entry, journal, paper/small money, broker-side stop, trailing stop), and the owner already does most of them.
 - **Ideas offered for the morning talk, all optional and none touching Plan B, the bots or MNQ:**
   - paper-practice a cash-secured put on SPY;

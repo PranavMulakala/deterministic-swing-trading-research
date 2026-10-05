@@ -70,3 +70,7 @@ Written in plain words for Pranav. Nothing here changes Plan B, the bots or the 
 - **$100k (2016–2025): $154.6k selling puts vs $396.4k holding SPY vs $125.3k in T-bills.** Worst drop −22% vs SPY −34%.
 - **About half of its profit was just interest on the cash.** Selling puts added about $2,500 a year on $100k, and one month (March 2020) lost $26k.
 - **Plain take:** a real, calmer tool for buying something you'd want anyway at a lower price. Not a way to beat the market.
+
+## Update: 65% SPY / 35% T-bills check (`MIX_65_35_CHECK_RESULTS_20261005.md`)
+- **$100k (2016–2025): $273k, 10.6% a year, worst drop −22.6%.** Same calm as selling puts ($155k, −22.2%), but $118k more.
+- **Slightly better growth per unit of pain than SPY alone** (0.47 vs 0.44). It just grew less in total than all-SPY ($396k).
