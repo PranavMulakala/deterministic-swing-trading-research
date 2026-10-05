@@ -80,3 +80,8 @@ Written in plain words for Pranav. Nothing here changes Plan B, the bots or the 
 - **Trading it makes about $0:** tiny wins (+0.2%), big losses (−2.5%).
 - **The "Faker level" is backwards:** a close beyond 76.4% snapped back only 22–28% of the time.
 - Kevin Trades Whop trial: cancelled by the owner on Oct 5. Check the card around Oct 12 for no $99.99 charge.
+
+## Update: test #12, Options Insider's levels from 20 streams (`OPTIONS_INSIDER_LEVELS_TEST_RESULTS_20261005.md`)
+- **513 calls pulled from 20 free premarket streams; 499 scored on 5-minute prices.**
+- **His calls hit their target 26% of the time when they set up. Made-up levels nearby: 28%.** No edge. 59% of his calls never set up at all.
+- **Good for market commentary and learning; not a source of tradable levels.**

@@ -1,0 +1,126 @@
+{
+  "created_utc": "2026-10-05T16:22:43+00:00",
+  "git_commit": "4f8226bfad311e7fd676103d9b1f6fe7eb3205ee",
+  "code_uncommitted": false,
+  "params": {
+    "stock_shifts": [
+      -0.015,
+      -0.0075,
+      0.0075,
+      0.015
+    ],
+    "index_shifts": [
+      -0.0075,
+      -0.00375,
+      0.00375,
+      0.0075
+    ]
+  },
+  "files": {
+    "research/oi_levels_test_v1/score.py": {
+      "kind": "code",
+      "bytes": 10635,
+      "sha256": "f358efcb08eae4075d2bf3031a67d7e3a5b998e43608ce20a9f535e3835574aa"
+    },
+    "outputs/tmp/oi_streams/9xTKzTR0FKI_calls.json": {
+      "kind": "data",
+      "bytes": 9721,
+      "sha256": "4008d11a2c7b4b15f1848e9749ba35bd9973dcd577d335f30b030b293ae7df58"
+    },
+    "outputs/tmp/oi_streams/AoXfHxkqkBQ_calls.json": {
+      "kind": "data",
+      "bytes": 13395,
+      "sha256": "7d72a6983bf16e180436c1cae21bd55645eff6183b4faa3b183be2e379ffba46"
+    },
+    "outputs/tmp/oi_streams/CRtB7eS_N8c_calls.json": {
+      "kind": "data",
+      "bytes": 11106,
+      "sha256": "6eed87828ceaa61820fa8d86ef6194de6b25f05c04990f04254c9f28e3dc02ab"
+    },
+    "outputs/tmp/oi_streams/E5vAuQgG-MQ_calls.json": {
+      "kind": "data",
+      "bytes": 12556,
+      "sha256": "eda820b94a93f7b283326c84a7ca011ce1b01f923bbb925e9446404992409e97"
+    },
+    "outputs/tmp/oi_streams/FHdO3T3FqUY_calls.json": {
+      "kind": "data",
+      "bytes": 7241,
+      "sha256": "6a85d1cb3b67bcbbebf7d18ae8ef7387a9a98a3ee52074177bd1464ee72c56ea"
+    },
+    "outputs/tmp/oi_streams/HyCr80lQCcI_calls.json": {
+      "kind": "data",
+      "bytes": 11230,
+      "sha256": "096ceafd423755263d917ce9d94f17e6712f8b43b4f31c154a791a74f0c32983"
+    },
+    "outputs/tmp/oi_streams/QdDX5Cq8luc_calls.json": {
+      "kind": "data",
+      "bytes": 11748,
+      "sha256": "fd6d1048dfb15e43d88f2194ab4d88a1ac6be27d9b59f77260e1664b64066358"
+    },
+    "outputs/tmp/oi_streams/RU8IbrGlo2w_calls.json": {
+      "kind": "data",
+      "bytes": 10852,
+      "sha256": "70fa9810f116d655032fb4f23317382c29b0811624e9daef4b969f926ec89709"
+    },
+    "outputs/tmp/oi_streams/UFNzbml1XqU_calls.json": {
+      "kind": "data",
+      "bytes": 12593,
+      "sha256": "84f002f66336b83d03370c65b35701443e8462032145d84fca2a04c270a155a4"
+    },
+    "outputs/tmp/oi_streams/YALhjgUnIv8_calls.json": {
+      "kind": "data",
+      "bytes": 11731,
+      "sha256": "04b56d31a7b39a62ccd21ce0dbf0768235dbf781c582068886f21c18bbad07b3"
+    },
+    "outputs/tmp/oi_streams/ccJBkGmrHWg_calls.json": {
+      "kind": "data",
+      "bytes": 11360,
+      "sha256": "a2a4a6b3bdfaa7ff5809e7c8c361e2244d84746677e69137a79653e646b97f47"
+    },
+    "outputs/tmp/oi_streams/diFp-S8FXjQ_calls.json": {
+      "kind": "data",
+      "bytes": 13417,
+      "sha256": "ca039a77aa9c83ec996e0a07f71c66d7f7a42f2d54b7a5915d78ad346ff8644b"
+    },
+    "outputs/tmp/oi_streams/jF7lxEEVtnA_calls.json": {
+      "kind": "data",
+      "bytes": 10115,
+      "sha256": "2c8b9ef8333feb5179827656175c44e62f17ea9a0a39ee2eeb3e0b1b1f3d437e"
+    },
+    "outputs/tmp/oi_streams/jLgW35b9LQU_calls.json": {
+      "kind": "data",
+      "bytes": 7382,
+      "sha256": "9b19d3fce5fabdc37f8a23fb897992cae56c96a6af4bdbac6b03cf32165242df"
+    },
+    "outputs/tmp/oi_streams/kcUkPZBzTiE_calls.json": {
+      "kind": "data",
+      "bytes": 14394,
+      "sha256": "d05750e0bc8989f49c59b67e8684487209225a524a3a453af84e05404ad12fea"
+    },
+    "outputs/tmp/oi_streams/oV2m0yOBcYc_calls.json": {
+      "kind": "data",
+      "bytes": 14668,
+      "sha256": "794f70683512383d0c9a2a5f389e568f210a07236f4ac3416435975ee49d916d"
+    },
+    "outputs/tmp/oi_streams/pL5RfQ54i4g_calls.json": {
+      "kind": "data",
+      "bytes": 12542,
+      "sha256": "383109fab7806f19c57e07512ea43bcda50df4e172854bdd737f7904eee253ea"
+    },
+    "outputs/tmp/oi_streams/sEgraGdo1QU_calls.json": {
+      "kind": "data",
+      "bytes": 8401,
+      "sha256": "725a88d70c7e59341821bf7f8a27148beb279d07e8d625f0164d0a470f7b8756"
+    },
+    "outputs/tmp/oi_streams/ukihNSG2quI_calls.json": {
+      "kind": "data",
+      "bytes": 9241,
+      "sha256": "3619b10814c490daceac81dcb95bd21f11ce2b0d8f0d09a6ec3e8da488cb44bd"
+    },
+    "outputs/tmp/oi_streams/wtv8j8866p8_calls.json": {
+      "kind": "data",
+      "bytes": 9374,
+      "sha256": "6041452a00a184b7ee52e23cf9a11056e67f21c800bfda906654e66881fa1b02"
+    }
+  }
+}

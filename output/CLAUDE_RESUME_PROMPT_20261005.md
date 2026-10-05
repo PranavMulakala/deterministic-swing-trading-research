@@ -130,6 +130,12 @@ This file replaces `CLAUDE_RESUME_PROMPT_20261002.md`. The older one is still co
   - A ✓ (95–100% reversal), B ✗ (88.7% = placebo levels, +0.16 points), C ✗ (Faker 76.4% snap-back only 22–28%, −0.41 points vs placebo).
   - About 3/4 of 1-hour signals came after price had already passed the move's start. The counter-trend trade nets about 0% per trade.
   - **Test record: 11 tests, none beat SPY.**
+- **Options Insider (Vincent "Desi" Desiano, whop.com/options-insider):**
+  - $199/mo, no refunds, no trial. The free YouTube premarket streams are at @VincentDesiano. Oct 2 stream notes: `OPTIONS_INSIDER_STREAM_20261002_NOTES.md`.
+  - **Test #12, his levels from 20 premarket streams (Aug 25 – Oct 2), 513 calls blind-extracted by 4 agents, 499 scored: NO EDGE** (`OPTIONS_INSIDER_LEVELS_TEST_RESULTS_20261005.md`).
+  - 26.1% success vs 28.0% for made-up shifted levels (CI −6.9 to +3.3); sensitivity −0.9. 59% of calls never triggered.
+  - Code `research/oi_levels_test_v1/`; call lists in `outputs/tmp/oi_streams/` (local, gitignored); bar cache `outputs/oi_levels_data/`.
+  - **Test record: 12 tests.**
 - **65% SPY / 35% T-bills comparison check (owner asked, Oct 5):** `MIX_65_35_CHECK_RESULTS_20261005.md`.
   - Monthly rebalance: $100k → $273k, 10.6%/yr, worst drop −22.6%, growth ÷ drop 0.47 (SPY alone 0.44).
   - Same drop as the cash-secured puts but $118k more. A benchmark, not a strategy test.

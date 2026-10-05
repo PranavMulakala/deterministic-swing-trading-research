@@ -400,3 +400,6 @@ Everything below was read-only unless stated otherwise.
   - **65/35 SPY/T-bill check:** $273k, 10.6%/yr, −22.6% drawdown.
   - **Kevin Trades Whop** (wheel strategy, $99.99/mo, 5 members, 0 reviews): the owner took the trial and cancelled immediately.
   - **Pre-declared test #11, his "95% Fibonacci rule": not supported** (`FIB_95_RULE_TEST_RESULTS_20261005.md`). 88.7% is no better than placebo levels; the Faker level is backwards.
+- **Oct 5 (afternoon): pre-declared test #12, Options Insider premarket levels: no edge** (`OPTIONS_INSIDER_LEVELS_TEST_RESULTS_20261005.md`).
+  - 20 streams, 513 calls, 499 scored; success 26.1% vs 28.0% for placebo levels.
+  - Spot-check of 5 random calls: all correct.
