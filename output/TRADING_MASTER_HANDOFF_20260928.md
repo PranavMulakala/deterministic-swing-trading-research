@@ -371,3 +371,8 @@ Everything below was read-only unless stated otherwise.
 - **Oct 5 morning:**
   - **Status:** server healthy; MNQ is CONNECTING and needs the owner's Gateway login. LITE pre-market ~$1,085, flat (Stifel price target $1,232). MU ~$1,070. The $25k Robinhood deposit completed; a Schwab transfer-out is in progress.
   - **Pre-declared test #9, 1-hour CRT: FAILED** (`CRT_1H_TEST_RESULTS_20261005.md`). $100k → $73.9k QQQ / $87.8k SPY; 60% winners, but losses are 2× wins.
+- **Oct 5, about 8:10–8:37 AM ET: MNQ Gateway fixed and logged in.**
+  - Since Sat Oct 3, 8:01 PM ET (00:01 UTC, 16 minutes after the Gateway's nightly self-restart), IBKR kicked the Gateway with "Disconnect all farms due to competing session" 184 times. The owner's manual re-logins at 8:15 were kicked within a second.
+  - Checked: no IBKR app or tab open on the Mac (TWS is installed but wasn't running; Chrome had no IBKR tabs), only one Gateway on the server, and the owner wasn't on the phone. **So the Oct 2 outage, which also started at exactly 00:01 UTC, was probably this same stale session after the self-restart, not the owner's phone or web login.**
+  - Fix, approved by the owner: `systemctl restart ibkr-paper-gateway` at 12:27 UTC, which brought up a fresh login window; the owner logged in at 12:30. As of 12:36 UTC: all farms green, API client connected, `market_data_type` 1, MNQZ6, health `OUTSIDE_RESEARCH_SESSION` (waiting for the session), 0 competing-session kicks. Tunnel closed afterwards.
+  - **If it happens again:** check `/var/lib/ibkr-paper/Jts/launcher.log` for "competing session". If no other device is logged in, restart the Gateway service and have the owner log in fresh. Watch whether it comes back after tonight's 23:45 UTC self-restart.
