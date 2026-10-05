@@ -1,17 +1,89 @@
 {
   "_note": "Dates checked on the web on 2026-10-02. 'confirmed' = company/Fed statement or a confirmed listing; 'estimated' = a calendar site's estimate; 'typical' = usual timing, not checked. Update when companies announce.",
   "events": [
-    {"date": "2026-10-05", "what": "Plan B starts: real LITE, 15 shares, signal days only", "why": "your own plan", "status": "confirmed"},
-    {"date": "2026-10-07", "what": "Samsung preliminary Q3 results (about Oct 7-8)", "why": "first read on memory prices and profits this quarter", "status": "typical"},
-    {"date": "2026-10-15", "what": "TSMC Q3 earnings", "why": "AI chip demand; sets the tone for chip stocks", "status": "estimated"},
-    {"date": "2026-10-23", "what": "Plan B 3-week review (week of Oct 26)", "why": "scale-up check: rules followed, matches the bot, nothing down 10%+", "status": "confirmed"},
-    {"date": "2026-10-27", "what": "Alphabet earnings (after close); Fed meeting starts", "why": "AI spending plans = demand for memory and optics", "status": "estimated"},
-    {"date": "2026-10-28", "what": "Fed rate decision 2:00 PM; Microsoft and Meta earnings (after close)", "why": "rates move the whole market; AI capex guidance", "status": "estimated"},
-    {"date": "2026-10-29", "what": "Amazon earnings; MU $0.15 dividend paid", "why": "AI capex guidance; dividend about $7.64 to you", "status": "estimated"},
-    {"date": "2026-10-29", "what": "SK Hynix Q3 earnings (late Oct)", "why": "Micron's closest rival; HBM and DRAM pricing", "status": "typical"},
-    {"date": "2026-11-10", "what": "Lumentum (LITE) earnings, before the open", "why": "biggest scheduled jump risk for LITE (one listing said Nov 3; confirm)", "status": "confirmed"},
-    {"date": "2026-11-25", "what": "Nvidia earnings", "why": "the AI demand bellwether for MU and LITE", "status": "estimated"},
-    {"date": "2026-12-09", "what": "MU buyback limit ends; Fed rate decision + projections", "why": "Micron said capital returns increase from Dec 9; two market events on one day", "status": "confirmed"},
-    {"date": "2026-12-17", "what": "Micron FQ1 2027 earnings (mid/late Dec)", "why": "next report; past moves about +/-9% the next day. Decide before: hold through it or not", "status": "estimated"}
+    {
+      "date": "2026-10-05",
+      "what": "Plan B starts: real LITE, 30 shares, signal days only",
+      "why": "your own plan",
+      "status": "confirmed"
+    },
+    {
+      "date": "2026-10-07",
+      "what": "Samsung preliminary Q3 results (about Oct 7-8)",
+      "why": "first read on memory prices and profits this quarter",
+      "status": "typical"
+    },
+    {
+      "date": "2026-10-07",
+      "what": "Fed (FOMC) minutes of the September meeting, 2:00 PM ET",
+      "why": "notes from the last Fed meeting, not a rate decision; usually a small market mover",
+      "status": "confirmed"
+    },
+    {
+      "date": "2026-10-14",
+      "what": "September CPI inflation report, 8:30 AM ET (about Oct 14-15)",
+      "why": "one of the biggest scheduled market movers; feeds the Oct 28 Fed decision",
+      "status": "estimated"
+    },
+    {
+      "date": "2026-10-15",
+      "what": "TSMC Q3 earnings",
+      "why": "AI chip demand; sets the tone for chip stocks",
+      "status": "estimated"
+    },
+    {
+      "date": "2026-10-23",
+      "what": "Plan B 3-week review (week of Oct 26)",
+      "why": "scale-up check: rules followed, matches the bot, nothing down 10%+",
+      "status": "confirmed"
+    },
+    {
+      "date": "2026-10-27",
+      "what": "Alphabet earnings (after close); Fed meeting starts",
+      "why": "AI spending plans = demand for memory and optics",
+      "status": "estimated"
+    },
+    {
+      "date": "2026-10-28",
+      "what": "Fed rate decision 2:00 PM; Microsoft and Meta earnings (after close)",
+      "why": "rates move the whole market; AI capex guidance",
+      "status": "estimated"
+    },
+    {
+      "date": "2026-10-29",
+      "what": "Amazon earnings; MU $0.15 dividend paid",
+      "why": "AI capex guidance; dividend about $7.64 to you",
+      "status": "estimated"
+    },
+    {
+      "date": "2026-10-29",
+      "what": "SK Hynix Q3 earnings (late Oct)",
+      "why": "Micron's closest rival; HBM and DRAM pricing",
+      "status": "typical"
+    },
+    {
+      "date": "2026-11-10",
+      "what": "Lumentum (LITE) earnings, before the open",
+      "why": "biggest scheduled jump risk for LITE (one listing said Nov 3; confirm)",
+      "status": "confirmed"
+    },
+    {
+      "date": "2026-11-25",
+      "what": "Nvidia earnings",
+      "why": "the AI demand bellwether for MU and LITE",
+      "status": "estimated"
+    },
+    {
+      "date": "2026-12-09",
+      "what": "MU buyback limit ends; Fed rate decision + projections",
+      "why": "Micron said capital returns increase from Dec 9; two market events on one day",
+      "status": "confirmed"
+    },
+    {
+      "date": "2026-12-17",
+      "what": "Micron FQ1 2027 earnings (mid/late Dec)",
+      "why": "next report; past moves about +/-9% the next day. Decide before: hold through it or not",
+      "status": "estimated"
+    }
   ]
 }
