@@ -426,3 +426,9 @@ Everything below was read-only unless stated otherwise.
   - **Found after the results (info only):** the $20 filter used split-adjusted prices, letting 7 reverse-split stocks in (PHUN, FCEL, TLRY, BKKT, LGVN, SPCE, CHPT), which works against the rule. Without them: $115,311, a −47% drop, still failing 4 of 5. The verdict stands. **For future universes, apply price filters to raw (unadjusted) prices.**
   - Steps 2–3 don't proceed. Nothing changed in Plan B, the bots or MNQ.
   - **The owner then asked to plan the EP test** (Qullamaggie's earnings gap-up): see `EP_EARNINGS_GAP_TEST_PLAN_20261005.md`.
+- **Oct 5, ~4:20 PM: pre-declared test #16, Qullamaggie's episodic pivot: FAILED A1 and B2, mostly for lack of trades** (`EP_EARNINGS_GAP_TEST_RESULTS_20261005.md`).
+  - **Downloads (owner-approved, free):** Alpaca 5-min bars for 7,647 gap days (12 MB); SEC EDGAR 8-K Item 2.02 times for 2,073 stocks (2,534 requests, 56 MB transferred, 4.6 MB kept; the User-Agent used pranavm1104@gmail.com with the owner's OK).
+  - **Result:** only 15 trades in 2016–2026, $100k → $101.5k vs SPY $465k, profit factor 1.29. The hard 1.0× first-30-minute volume cutoff (my wording of his "often") excluded NVDA May 2023 (0.91×), META Feb 2023 (0.91×) and LITE Nov 2025 (0.86×).
+  - **Info "any 10% gap":** 84 trades, PF 1.74, 39% winners, top 10% of trades = 76% of the profit, $140.8k; it fails only B2.
+  - **Bug found after the first run:** stop-at-open exits were missing from the trade stats. Fixed (d7e3ddf, unit test + count assertion); equity was unaffected; the main PF went 1.68 → 1.29. The verifier matched 10/10 trades and 10/10 rejections.
+  - **Offered:** a forward paper EP watch-list (needs a yes), or stop.

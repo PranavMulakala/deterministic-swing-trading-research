@@ -99,6 +99,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
 | 13 | SPY covered calls | Trailed SPY ($255k vs $396k) |
 | 14 | 2× above the 200-day, else T-bills (1927–2026) | **Passed all checks (17.1% vs 10.2%)**, but **since 2000 it only tied the market** with deeper drops. **The owner chose not to pursue it** |
 | 15 | Plan B dip rule on 100 volatile stocks chosen as of 2021 | **Failed all 5** ($100k → $93k vs SPY $171k; 96% winners but 10 stuck buys −$64k; −49.6% drop). Info-only fix of a split-adjusted price filter: $115k, still fails 4 of 5. Hindsight list $250k but −44% drop. `DIP_RULE_MANY_STOCKS_TEST_RESULTS_20261005.md` |
+| 16 | Qullamaggie's episodic pivot (earnings gap-up ≥10%, first-30-min volume ≥ a full day's average, break of the 1st-hour high, stop at the day's low, half on day 3, 10-day trail; 2016–2026) | **Failed A1+B2:** only 15 trades in 10.7 yrs (the 1.0× volume cutoff missed NVDA/META/LITE gaps by a hair), $100k → $101.5k vs SPY $465k. Info: "any 10% gap" 84 trades, PF 1.74, top 10% of trades = 76% of profit, but only $141k. A post-run bookkeeping bug (stop-at-open trades missing from stats) was fixed. `EP_EARNINGS_GAP_TEST_RESULTS_20261005.md` |
 
 - **Results files** are in `output/*_TEST_RESULTS_*.md`.
 - **Comparison check (not a test): 65% SPY / 35% T-bills:** $273k, 10.6%/yr, −22.6% drop.
@@ -193,7 +194,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
 3. ~~MNQ calendar permanent fix~~ **Done Oct 5 ~3:06 PM:** trading-references re-keyed with the LITE paper key; old trading-collector disabled. Calendar auto-refreshes every 6 h.
 4. **Collective2 tracking:** weekly check of ares + US Stock Momentum (§5).
 5. **Kevin Whop card check ~Oct 12.** Finviz trial cancel + key reset ~Oct 11.
-6. **Test #16, Qullamaggie's episodic pivot (EP): in progress.** Plan `output/EP_EARNINGS_GAP_TEST_PLAN_20261005.md` (6c45b08 + pre-data corrections 413ba68). The owner approved both downloads and their Gmail (pranavm1104@gmail.com) in the SEC User-Agent. Code + 13 unit tests + verifier committed (22b5709) before any result. Downloads were running at 3:45 PM: `PYTHONPATH=src:. .venv/bin/python -m research.ep_test_v1.fetch_intraday` and `... -m research.ep_test_v1.fetch_edgar` (both resumable; EDGAR writes `outputs/ep_data/edgar_item_202.json` only when complete). Then run `-m research.ep_test_v1.backtest` and `-m research.ep_test_v1.verify`, write `EP_EARNINGS_GAP_TEST_RESULTS_20261005.md`, and update docs + memory.
+6. ~~Test #16 (EP)~~ **Done Oct 5 ~4:20 PM: failed (too few trades).** See §4 and the results doc. Offered next (owner's choice): a forward paper watch-list of earnings gap-ups logged against the same rules (a new persistent job: needs a yes), or stop here.
 7. The Dad's $95k plan comparison (offered). Weekend scorecard Oct 10–11. Taxes (needs the Robinhood realized-gains screen + pay stub).
 8. TradingView alerts expire Nov 3. Confirm the Schwab transfer-out. The Robinhood joint-account info request.
 9. **Options learning path:** Options 101 lectures as they post, OIC, paper practice. Revisit LITE earnings handling before Nov 10.
