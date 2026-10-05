@@ -96,11 +96,15 @@ This file replaces `CLAUDE_RESUME_PROMPT_20261002.md`. The older one is still co
 - **Finviz:** an Elite 7-day trial key was pasted in chat on Oct 4. **Reset it, and cancel the trial before ~Oct 11** to avoid ~$39.50/mo. Not needed.
 - **Schwab:** account exists. thinkorswim paperMoney is available for practice.
 
-## In progress at the time of writing
-- **TikTok batch 2 (9 videos)** is being transcribed. Outputs are in `outputs/tmp/tiktok_b2/t1..t9/` (`transcript.txt`, `sheets/`), from `~/Downloads/v1*.MP4`.
-- Topics per the owner: CRT (Candle Range Theory), EMA, options/puts strategies. **Give a fair end-to-end take on each**; propose a pre-declared test only if the rules are clear and there's independent evidence.
-- The owner will send a 10-minute video + more mini videos next.
-- **Write the results to `output/TIKTOK_BATCH2_NOTES_20261005.md` and update this resume prompt.**
+## TikTok batch 2 (done Oct 5): `output/TIKTOK_BATCH2_NOTES_20261005.md`
+- Nine videos: 8 AM candle, 15-min sweep-and-reclaim (CRT-style), CRT recap, S/R channel, ORB + Fibonacci retest, QQQ 0DTE call with a trailing stop, **full swing-breakout system (SPY 10/20/50 filter, Finviz leading sector, high-tight flag, 1% risk, trim + 10-SMA trail)**, cash-secured puts/covered calls basics, full CRT.
+- **Top test candidates:**
+  - **#8: the swing-breakout system** (daily data on disk);
+  - **#9: the 15-min sweep-and-reclaim** (QuantConnect minute data; check the "85–90%" claim).
+- Waiting for the owner to pick before writing a plan.
+- Transcripts and sheets: `outputs/tmp/tiktok_b2/t1..t9/`.
+- **Next from the owner:** a 10-minute video + more mini videos. Process them with `outputs/tmp/whisper-venv/bin/python research/video_study_v1/study_video.py "<mp4>" outputs/tmp/<dir> --every 5 < /dev/null`.
+- **Shell gotchas:** never name a zsh variable `path`; redirect stdin from /dev/null inside `while read` loops, because ffmpeg eats stdin.
 
 ## Open items
 1. **Mon Oct 5 (Plan B day 1):**
