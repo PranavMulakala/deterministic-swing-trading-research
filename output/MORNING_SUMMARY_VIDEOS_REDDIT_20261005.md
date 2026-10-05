@@ -85,3 +85,8 @@ Written in plain words for Pranav. Nothing here changes Plan B, the bots or the 
 - **513 calls pulled from 20 free premarket streams; 499 scored on 5-minute prices.**
 - **His calls hit their target 26% of the time when they set up. Made-up levels nearby: 28%.** No edge. 59% of his calls never set up at all.
 - **Good for market commentary and learning; not a source of tradable levels.**
+
+## Update: test #13, SPY covered calls (`COVERED_CALL_SPY_TEST_RESULTS_20261005.md`)
+- **$100k (2016–2025): $255k with covered calls vs $396k holding SPY.** The calls paid $110k in premium but gave up $174k of upside.
+- **It still fell −32% in COVID (SPY −34%).** The premium barely cushions a crash.
+- **With COVID-type shocks removed from both, it's about as smooth as SPY per unit of risk, but still grows ~5 points/yr slower.**

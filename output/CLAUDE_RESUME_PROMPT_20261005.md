@@ -136,6 +136,11 @@ This file replaces `CLAUDE_RESUME_PROMPT_20261002.md`. The older one is still co
   - 26.1% success vs 28.0% for made-up shifted levels (CI −6.9 to +3.3); sensitivity −0.9. 59% of calls never triggered.
   - Code `research/oi_levels_test_v1/`; call lists in `outputs/tmp/oi_streams/` (local, gitignored); bar cache `outputs/oi_levels_data/`.
   - **Test record: 12 tests.**
+- **Test #13, monthly SPY covered calls (~0.30 delta, ~30 days, bid fills, dividends included), 2016–2025: did NOT beat SPY** (`COVERED_CALL_SPY_TEST_RESULTS_20261005.md`).
+  - $100k → $254.8k vs SPY $396.4k; 9.8%/yr; worst drop −32% vs −34%.
+  - Premium $110k but upside given up $174k.
+  - The owner asked to exclude COVID-type shocks: with those windows removed from both, growth ÷ drop is about equal to SPY (0.69 vs 0.67), but it still grows ~5 points/yr less.
+  - **Test record: 13 tests.**
 - **65% SPY / 35% T-bills comparison check (owner asked, Oct 5):** `MIX_65_35_CHECK_RESULTS_20261005.md`.
   - Monthly rebalance: $100k → $273k, 10.6%/yr, worst drop −22.6%, growth ÷ drop 0.47 (SPY alone 0.44).
   - Same drop as the cash-secured puts but $118k more. A benchmark, not a strategy test.
