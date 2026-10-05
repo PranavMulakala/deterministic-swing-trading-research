@@ -66,3 +66,8 @@
 - **The EP (earnings gap-up) is the one with real independent evidence.**
   - Academic research has long found that stocks with big positive earnings surprises, and large gap-ups on earnings, tend to keep drifting up for weeks ("post-earnings announcement drift").
   - **It's the most promising of his three to test properly,** with our 5,259-stock daily data plus earnings dates. It's long-only, so it fits a cash account.
+
+## Caveat added Oct 5 evening: the EP evidence is mostly old
+- The academic support for "earnings surprises keep drifting" (post-earnings announcement drift) is real but dated. **Martineau, "Rest in Peace Post-Earnings Announcement Drift" (Critical Finance Review, 2021)** finds the drift has been **non-existent for large stocks since about 2006**, and has disappeared more recently for microcaps too: prices now absorb earnings news on the announcement day.
+- His EP adds filters plain drift studies don't use (a 10%+ gap, big early volume, "hadn't already run up", entry above the opening-range high, a trailing exit). So it's still a fair pre-declared test, but **expect modest results**; it's not a strategy with strong modern evidence behind it.
+- Source: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3111607

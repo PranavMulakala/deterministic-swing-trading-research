@@ -125,7 +125,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
   - **Who:** a real, free-content Swedish trader. A self-reported ~$9k → ~$80M+ (2013–21), unaudited but Swedish tax records support it, and a large 2022 giveback.
   - **3 setups:** breakouts (≈ our failed test #3), episodic pivots, parabolic shorts (can't short).
   - **He avoids options.**
-  - **The EP (10%+ earnings gap-up, big volume) has independent academic support** (post-earnings drift). **It's the best next test candidate.**
+  - **The EP (10%+ earnings gap-up, big volume) has independent academic support** (post-earnings drift), **but it is mostly pre-2006** (Martineau 2021: gone for large stocks since ~2006). Still the best next test candidate; expect modest results.
 - **Legit communities (answer given Oct 5):**
   - **Free and trustworthy:** OIC (optionseducation.org), Options 101.
   - **Watch live:** tastylive (broker-affiliated, so it's an incentive to trade).
