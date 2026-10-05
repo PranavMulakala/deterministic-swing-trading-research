@@ -66,3 +66,12 @@ Also reported, information only:
 - Extraction from speech involves judgment. Every call carries a timestamp and quote so it can be audited, and a sample will be spot-checked against the transcript.
 - He often gives futures levels (NQ/ES), which can't be scored here. Only stock and ETF calls count.
 - 20 streams is about one month; the result covers Sept–Oct 2026 only.
+
+## Addendum (written after extraction, before any scoring or price lookup)
+- **513 calls were extracted** from all 20 streams.
+- **30 calls are typed SUPPORT_BOUNCE although their wording is "hold"-style** ("if it holds 227–228", "must hold"). That wording can mean "stay above" (LONG_IF_ABOVE) or "buy the dip at support" (SUPPORT_BOUNCE), and the agents read it differently. **Decision:**
+  - The **main verdict** uses the blind extraction as recorded.
+  - A **sensitivity version** recodes exactly those 30 calls (listed in `research/oi_levels_test_v1/sensitivity_recode.json`, selected mechanically: SUPPORT_BOUNCE whose quote contains hold / break-and-retest / above but no pullback / demand / bounce / dip) to LONG_IF_ABOVE.
+  - Both are reported, and any disagreement in the verdict will be stated.
+- **Quote length:** two audit quotes longer than 15 words were trimmed.
+- **Symbols without Alpaca data** ("SPACEX", which has no ticker, and possibly "SKHY") are dropped and counted, as the plan's "no data" handling.

@@ -1,0 +1,152 @@
+[
+ {
+  "id": "9xTKzTR0FKI",
+  "ts": "36:39",
+  "symbol": "HOOD"
+ },
+ {
+  "id": "AoXfHxkqkBQ",
+  "ts": "38:35",
+  "symbol": "DRAM"
+ },
+ {
+  "id": "AoXfHxkqkBQ",
+  "ts": "39:26",
+  "symbol": "IGV"
+ },
+ {
+  "id": "AoXfHxkqkBQ",
+  "ts": "56:42",
+  "symbol": "TEM"
+ },
+ {
+  "id": "CRtB7eS_N8c",
+  "ts": "28:13",
+  "symbol": "SPY"
+ },
+ {
+  "id": "CRtB7eS_N8c",
+  "ts": "42:32",
+  "symbol": "AAPL"
+ },
+ {
+  "id": "E5vAuQgG-MQ",
+  "ts": "8:43",
+  "symbol": "QQQ"
+ },
+ {
+  "id": "E5vAuQgG-MQ",
+  "ts": "35:43",
+  "symbol": "IBM"
+ },
+ {
+  "id": "HyCr80lQCcI",
+  "ts": "30:37",
+  "symbol": "AMD"
+ },
+ {
+  "id": "HyCr80lQCcI",
+  "ts": "42:28",
+  "symbol": "JNJ"
+ },
+ {
+  "id": "QdDX5Cq8luc",
+  "ts": "26:47",
+  "symbol": "SPY"
+ },
+ {
+  "id": "QdDX5Cq8luc",
+  "ts": "33:48",
+  "symbol": "SMH"
+ },
+ {
+  "id": "QdDX5Cq8luc",
+  "ts": "50:31",
+  "symbol": "PLTR"
+ },
+ {
+  "id": "RU8IbrGlo2w",
+  "ts": "42:16",
+  "symbol": "NVDA"
+ },
+ {
+  "id": "RU8IbrGlo2w",
+  "ts": "54:42",
+  "symbol": "IGV"
+ },
+ {
+  "id": "UFNzbml1XqU",
+  "ts": "41:43",
+  "symbol": "NVDA"
+ },
+ {
+  "id": "YALhjgUnIv8",
+  "ts": "48:08",
+  "symbol": "MSTR"
+ },
+ {
+  "id": "ccJBkGmrHWg",
+  "ts": "13:03",
+  "symbol": "QQQ"
+ },
+ {
+  "id": "diFp-S8FXjQ",
+  "ts": "19:16",
+  "symbol": "QQQ"
+ },
+ {
+  "id": "diFp-S8FXjQ",
+  "ts": "42:13",
+  "symbol": "NVDA"
+ },
+ {
+  "id": "jF7lxEEVtnA",
+  "ts": "38:13",
+  "symbol": "NVDA"
+ },
+ {
+  "id": "jF7lxEEVtnA",
+  "ts": "40:28",
+  "symbol": "IGV"
+ },
+ {
+  "id": "kcUkPZBzTiE",
+  "ts": "48:36",
+  "symbol": "HOOD"
+ },
+ {
+  "id": "oV2m0yOBcYc",
+  "ts": "44:15",
+  "symbol": "TSLA"
+ },
+ {
+  "id": "sEgraGdo1QU",
+  "ts": "19:36",
+  "symbol": "SPY"
+ },
+ {
+  "id": "sEgraGdo1QU",
+  "ts": "26:28",
+  "symbol": "IGV"
+ },
+ {
+  "id": "sEgraGdo1QU",
+  "ts": "32:05",
+  "symbol": "SMCI"
+ },
+ {
+  "id": "ukihNSG2quI",
+  "ts": "40:53",
+  "symbol": "META"
+ },
+ {
+  "id": "ukihNSG2quI",
+  "ts": "41:09",
+  "symbol": "NBIS"
+ },
+ {
+  "id": "wtv8j8866p8",
+  "ts": "20:50",
+  "symbol": "SPY"
+ }
+]
