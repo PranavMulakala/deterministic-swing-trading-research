@@ -1,0 +1,9 @@
+{"strategy": "ares", "url": "https://collective2.com/details/131145247", "taken": "2026-10-05 ~14:00 ET",
+ "stats": {"annual_pct": 32.6, "max_drawdown_pct": -14.1, "closed_trades": 763, "live_autotraders": 72,
+           "following_usd": "9.9M", "trades_in_real_accounts": 1083, "price": "$100/mo", "started": "2020-09"},
+ "yearly_pct": {"2020_partial": 13.3, "2021": 17.8, "2022": 76.4, "2023": 17.8, "2024": 70.1, "2025": 5.0, "2026_ytd": 12.1},
+ "monthly_2026_pct": {"Jan": -2.6, "Feb": 17.8, "Mar": -6.5, "Apr": 1.5, "May": 0.3, "Jun": 3.5, "Jul": 0.6, "Aug": -2.6, "Sep": 2.3, "Oct_partial": -1.0},
+ "last_closed_trade": {"date": "2026-10-02", "contract": "MNQ Z6", "side": "long", "qty": 6, "entry_et": "10:02", "exit_et": "10:54",
+                       "entry": 31229.07, "exit": 31156.56, "pnl_usd": -876},
+ "recent_30_closed_trades_summary": "Jul 13 - Oct 2, 2026: 30 trades, 8 winners (largest +$4,920 on Sep 21), many ~1R losses of $700-1,060; all intraday, exits by 15:55",
+ "note": "Collective2 labels results hypothetical; tracked go-forward since Sep 2020 with live AutoTrader fills."}
