@@ -36,3 +36,19 @@
 - **Why the "75% chance of profit" credit spread from TikTok is about break-even:** "chance of profit" comes from option prices, which already price the distribution.
 - **Why LITE options would be expensive:** LITE's ~4.9% daily moves (very high volatility) make its options pricey, on top of the Lumentum policy banning them for the owner.
 - **Worth following as the next lectures are posted,** especially implied volatility and the Greeks (lectures 6–8). Those explain the numbers on Robinhood's options screen.
+
+## Extra points from the Lecture 1 video (transcript pasted by the owner; my summary)
+- **Who he is:** an electrical engineer who later ran Jane Street's London options desk (Europe, Eastern Europe, Africa). The course is adapted from how Jane Street trains its interns and new hires.
+- **Prior trading "knowledge" can be a negative:** there's so much bad information online that it has to be unlearned.
+- **The simple arbitrages** (e.g. a lower-strike call priced below a higher-strike one) **really were free money until the late 1970s / early 80s.** Today they essentially never appear in real markets.
+- **Selling options "is free money"** (said sarcastically): it works out about 98% of the time, and the other 2% really hurts. *That's test #10 in one sentence.*
+- **Options trading is negative-sum:** one side's gain is the other's loss, and the exchange and broker take fees on top.
+- **A stock is like a call with a strike of zero:** shareholders get wiped out in bankruptcy but never owe more.
+- **Sunk-cost lesson:** if your call is worth something at expiry, exercise it (or sell it) even if you lost money overall. The premium you already paid shouldn't affect today's decision.
+- **Mechanics:**
+  - **Bid and ask:** there are always two prices; you buy at the ask and sell at the bid.
+  - **Separate markets:** every strike and expiry is its own market.
+  - **Auto-exercise:** options that finish in the money are exercised automatically at expiry unless you instruct otherwise.
+  - **Margin:** if you *sell* an option, the broker requires margin (extra cash) and can close you out. If you *buy* one, the most you can lose is what you paid.
+  - **The clearing house:** it guarantees trades between brokers; your broker guarantees you.
+- **His warning about "buy now, pay later"-style products:** companies increasingly embed options because people don't know how to value them.
