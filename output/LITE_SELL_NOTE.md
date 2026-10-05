@@ -5,21 +5,21 @@ Written by me, while calm, before I buy. I sell myself. Nobody and no automatic 
 **My plan:** take small, frequent profits. Sell at **+2% to +3%** over my buy price.
 
 ## My position (fill in after the buy fills)
-- Shares: ______
-- Average price: $______
-- Total cost: $______
-- Date and time bought: ______
+- Shares: 46.127588 (Plan B; planned 30, bought $50,000 by market order)
+- Average price: $1,083.95
+- Total cost: $50,000.00
+- Date and time bought: Mon Oct 5, 2026, ~10:01 ET (Plan B day 1 signal)
 
 ## My rules
 
 | If LITE reaches… | That's… | I will… |
 |---|---|---|
-| **+3%** ($______) | my stretch target | **Sell everything** |
-| **+2%** ($______) | my main target | **Sell**, or sell at least half and hold the rest only to +3% |
-| −5% ($______) | a normal LITE day | Nothing. Re-read this note |
-| −10% ($______) | about 1 in 10 buys get here first (2025–26) | Nothing new. **Don't buy more.** Write down my plan |
-| **−20%** ($______) | **my limit** | **Stop and decide that evening:** sell, or write one sentence explaining why I'm holding. "It'll come back" doesn't count |
-| −30% ($______) | past my limit | Sell, unless the sentence I wrote at −20% is still true |
+| **+3%** ($1,116.47) | my stretch target | **Sell everything** |
+| **+2%** ($1,105.63) | my main target | **Sell**, or sell at least half and hold the rest only to +3% |
+| −5% ($1,029.75) | a normal LITE day | Nothing. Re-read this note |
+| −10% ($975.56) | about 1 in 10 buys get here first (2025–26) | Nothing new. **Don't buy more.** Write down my plan |
+| **−20%** ($867.16) | **my limit** | **Stop and decide that evening:** sell, or write one sentence explaining why I'm holding. "It'll come back" doesn't count |
+| −30% ($758.76) | past my limit | Sell, unless the sentence I wrote at −20% is still true |
 
 ## Habits
 1. **I place my own sell order** right after the buy fills: a limit sell at +2% (or +3%). This is my order, placed by me. Lumentum's policy "discourages" limit orders for employees and family; it doesn't ban them.

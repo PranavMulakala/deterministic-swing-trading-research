@@ -1,7 +1,22 @@
 {
   "_note": "The owner's real positions, as they report them. Update after every real buy or sell. Sell-note levels come from output/*_SELL_NOTE.md.",
   "positions": [
-    {"symbol": "MU", "shares": 50.97, "cost": 1079.08, "opened": "2026-10-02", "target_pct": 25, "limit_pct": -20}
+    {
+      "symbol": "MU",
+      "shares": 50.97,
+      "cost": 1079.08,
+      "opened": "2026-10-02",
+      "target_pct": 25,
+      "limit_pct": -20
+    },
+    {
+      "symbol": "LITE",
+      "shares": 46.127588,
+      "cost": 1083.95,
+      "opened": "2026-10-05",
+      "target_pct": 2,
+      "limit_pct": -20
+    }
   ],
   "combined_limit_usd": 38000
 }
