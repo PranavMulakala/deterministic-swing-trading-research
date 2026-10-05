@@ -183,7 +183,7 @@ def saved_feed_url(path=FEED_FILE):
     for line in path.read_text(encoding="utf-8").splitlines():
         name, _, value = line.strip().partition("=")
         if name.strip() == "REDDIT_SAVED_FEED" and re.match(r"https://(www\.|old\.)?reddit\.com/", value.strip()):
-            return value.strip()
+            return value.strip().replace("&amp;", "&")  # links copied from page source arrive HTML-escaped
     raise SystemExit(".env.reddit_feed needs REDDIT_SAVED_FEED=https://www.reddit.com/saved.rss?...")
 
 
