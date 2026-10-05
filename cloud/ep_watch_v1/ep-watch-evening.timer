@@ -1,0 +1,10 @@
+[Unit]
+Description=EP forward paper watch: paper-ledger email at 17:05 New York time, Monday to Friday
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 17:05:00 America/New_York
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target
