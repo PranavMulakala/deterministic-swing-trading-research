@@ -133,6 +133,17 @@ def bootstrap(rows, n=10_000, seed=12):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--sensitivity", action="store_true",
+                        help="recode the 30 'hold'-worded calls in sensitivity_recode.json to LONG_IF_ABOVE")
+    args = parser.parse_args()
+    global OUT
+    recode = set()
+    if args.sensitivity:
+        OUT = ROOT / "output/oi-levels-test-results-sensitivity.json"
+        recode = {(r["id"], r["ts"], r["symbol"]) for r in
+                  json.loads((Path(__file__).parent / "sensitivity_recode.json").read_text())}
     from research.lite_paper_bot_v1.bot import credentials
     key, secret = credentials()
     files = sorted(glob.glob(str(CALLS / "*_calls.json")))
@@ -144,6 +155,8 @@ def main():
         for e in s["excluded"]:
             excluded[e["reason"].split()[0].lower()] += 1
         for c in s["calls"]:
+            if (s["id"], c["ts"], c["symbol"]) in recode:
+                c = {**c, "type": "LONG_IF_ABOVE"}
             c = {**c, "id": s["id"], "date_et": s["date_et"], "symbol": c["symbol"].upper().lstrip("$")}
             if c["type"] not in TYPES or c.get("level_low") is None or c.get("level_high") is None:
                 dropped["bad_fields"] += 1
