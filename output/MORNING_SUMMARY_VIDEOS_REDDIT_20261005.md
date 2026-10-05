@@ -59,3 +59,8 @@ Written in plain words for Pranav. Nothing here changes Plan B, the bots or the 
   - **holding good investments for the long run**;
   - **your salary + steady investing**;
   - **a few simple, pre-planned trades** (Plan B), measured honestly.
+
+## Update, Oct 5 morning: test #9, the 1-hour CRT, also FAILED (`CRT_1H_TEST_RESULTS_20261005.md`)
+- **It wins about 60% of trades, but the average loss is about twice the average win.** You buy close to the target and put the stop far below.
+- **$100k → $73.9k (QQQ) and $87.8k (SPY).** Even with zero trading costs it only breaks even on SPY and loses on QQQ.
+- **Both CRT versions (15-minute and 1-hour) are now tested; both lose.** Score: 9 tests, none beat holding SPY.

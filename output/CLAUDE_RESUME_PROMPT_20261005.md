@@ -114,7 +114,11 @@ This file replaces `CLAUDE_RESUME_PROMPT_20261002.md`. The older one is still co
   - The target was hit 54% of the time (claim: 85–90%). Median target 0.07% away vs a 0.10% stop.
   - $100k → $32k (QQQ long) and $36k (SPY long), losing every year. Profit factor 0.82 even with zero costs.
   - The independent verifier matched all 14,539 trades. Provenance manifest written.
-- **Test record: 8 pre-declared tests, none beat holding SPY.**
+- **Test #9, 1-hour CRT (Oct 5 morning, owner asked): FAILED** (`CRT_1H_TEST_RESULTS_20261005.md`, code `research/crt_1h_test_v1/`).
+  - 60% winners, but the average loss is 2× the average win (target 0.12–0.18% away, stop 0.33–0.44%).
+  - $100k → $73.9k QQQ / $87.8k SPY. Before costs: SPY profit factor 1.04, QQQ 0.84.
+  - Verifier matched all 2,960 trades.
+- **Test record: 9 pre-declared tests, none beat holding SPY.** Both CRT timeframes are done; don't re-test CRT variants without new independent evidence.
 - **Recurring themes:** breakouts, opening range, sweep-and-reclaim, and option selling. The useful takeaways were habits (plan first, exit known before entry, journal, paper/small money, broker-side stop, trailing stop), and the owner already does most of them.
 - **Ideas offered for the morning talk, all optional and none touching Plan B, the bots or MNQ:**
   - paper-practice a cash-secured put on SPY;

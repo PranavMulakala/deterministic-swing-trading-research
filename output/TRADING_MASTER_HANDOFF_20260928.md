@@ -368,3 +368,6 @@ Everything below was read-only unless stated otherwise.
     - Verifier matched all 14,539 trades.
   - **Plain-words summary for the owner:** `MORNING_SUMMARY_VIDEOS_REDDIT_20261005.md`.
   - **Nothing touched** Plan B, the bots or MNQ.
+- **Oct 5 morning:**
+  - **Status:** server healthy; MNQ is CONNECTING and needs the owner's Gateway login. LITE pre-market ~$1,085, flat (Stifel price target $1,232). MU ~$1,070. The $25k Robinhood deposit completed; a Schwab transfer-out is in progress.
+  - **Pre-declared test #9, 1-hour CRT: FAILED** (`CRT_1H_TEST_RESULTS_20261005.md`). $100k → $73.9k QQQ / $87.8k SPY; 60% winners, but losses are 2× wins.
