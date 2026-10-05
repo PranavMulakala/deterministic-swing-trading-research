@@ -1,0 +1,361 @@
+{
+ "note": "INFORMATION ONLY, written after the official results; the pre-declared verdict stands",
+ "candidates_split_invariant": 359,
+ "missing_raw_price": [],
+ "eligible_with_raw_price_filter": 343,
+ "tested_but_raw_price_under_20": [
+  {
+   "symbol": "PHUN",
+   "adj_close": 131.5,
+   "raw_close": 2.63
+  },
+  {
+   "symbol": "LGVN",
+   "adj_close": 1207.0,
+   "raw_close": 12.07
+  },
+  {
+   "symbol": "BKKT",
+   "adj_close": 212.75,
+   "raw_close": 8.51
+  },
+  {
+   "symbol": "FCEL",
+   "adj_close": 156.0,
+   "raw_close": 5.2
+  },
+  {
+   "symbol": "TLRY",
+   "adj_close": 70.3,
+   "raw_close": 7.03
+  },
+  {
+   "symbol": "CHPT",
+   "adj_close": 381.0,
+   "raw_close": 19.05
+  },
+  {
+   "symbol": "SPCE",
+   "adj_close": 267.6,
+   "raw_close": 13.38
+  }
+ ],
+ "corrected_top100_dropped": [
+  "PHUN",
+  "LGVN",
+  "BKKT",
+  "FCEL",
+  "TLRY",
+  "CHPT",
+  "SPCE"
+ ],
+ "corrected_top100_added": [
+  {
+   "symbol": "BEKE",
+   "adj_close": 18.88,
+   "raw_close": 20.12,
+   "avg_range_pct": 7.39
+  },
+  {
+   "symbol": "CCL",
+   "adj_close": 19.8,
+   "raw_close": 20.12,
+   "avg_range_pct": 4.54
+  },
+  {
+   "symbol": "SPOT",
+   "adj_close": 234.03,
+   "raw_close": 234.03,
+   "avg_range_pct": 3.73
+  },
+  {
+   "symbol": "F",
+   "adj_close": 15.32,
+   "raw_close": 20.77,
+   "avg_range_pct": 3.7
+  },
+  {
+   "symbol": "CPNG",
+   "adj_close": 29.38,
+   "raw_close": 29.38,
+   "avg_range_pct": 3.69
+  },
+  {
+   "symbol": "MTCH",
+   "adj_close": 126.98,
+   "raw_close": 132.25,
+   "avg_range_pct": 3.68
+  },
+  {
+   "symbol": "NTES",
+   "adj_close": 91.47,
+   "raw_close": 101.78,
+   "avg_range_pct": 3.68
+  }
+ ],
+ "corrected_top100": [
+  "DJT",
+  "FLNA",
+  "CAR",
+  "MARA",
+  "LCID",
+  "RIOT",
+  "AMC",
+  "FUTU",
+  "NVAX",
+  "UPST",
+  "ASAN",
+  "QS",
+  "AFRM",
+  "BEKE",
+  "GME",
+  "DOCN",
+  "RBLX",
+  "PLUG",
+  "PTON",
+  "BNTX",
+  "NET",
+  "MRNA",
+  "APPS",
+  "RUN",
+  "XPEV",
+  "U",
+  "BILL",
+  "DKNG",
+  "APP",
+  "PDD",
+  "NIO",
+  "TTD",
+  "BILI",
+  "LI",
+  "COIN",
+  "ENPH",
+  "PENN",
+  "M",
+  "WOLF",
+  "TDOC",
+  "DASH",
+  "DDOG",
+  "MSTR",
+  "BYND",
+  "ETSY",
+  "SE",
+  "PATH",
+  "CHWY",
+  "ROKU",
+  "RNG",
+  "PINS",
+  "Z",
+  "MDB",
+  "W",
+  "NCLH",
+  "TSLA",
+  "AA",
+  "SEDG",
+  "SNAP",
+  "GTM",
+  "CHGG",
+  "HUBS",
+  "LYFT",
+  "CRWD",
+  "CCL",
+  "SHOP",
+  "AMD",
+  "NVDA",
+  "TWLO",
+  "APA",
+  "CROX",
+  "CVNA",
+  "SNOW",
+  "DOCU",
+  "CZR",
+  "CLF",
+  "XYZ",
+  "UBER",
+  "FIVN",
+  "GNRC",
+  "ZM",
+  "ABNB",
+  "FANG",
+  "DVN",
+  "ZS",
+  "MELI",
+  "OKTA",
+  "WYNN",
+  "OXY",
+  "DKS",
+  "RCL",
+  "TEAM",
+  "LVS",
+  "UAL",
+  "NUE",
+  "SPOT",
+  "F",
+  "CPNG",
+  "MTCH",
+  "NTES"
+ ],
+ "subset_backtest": {
+  "stocks": 93,
+  "portfolio": {
+   "final": 115311,
+   "total_return_pct": 15.3,
+   "cagr_pct": 3.06,
+   "max_drawdown_pct": -47.0,
+   "cagr_over_dd": 0.065,
+   "halves_return_pct": {
+    "2022-2023": -2.4,
+    "2024-2026": 18.1
+   },
+   "trades": 315,
+   "closed": 305,
+   "still_open_at_end": 10,
+   "profit_factor_incl_open": 1.33,
+   "win_rate_pct": 96.8,
+   "median_days_held_closed": 0,
+   "max_days_held_closed": 687,
+   "open_positions_loss_usd": -46364,
+   "worst_trade_pct": -98.4,
+   "worst_trade": {
+    "entry_date": "2022-02-11",
+    "entry": 54.053999999999995,
+    "target": 55.135079999999995,
+    "shares": 185.000185000185,
+    "dip": 0.06,
+    "symbol": "FLNA",
+    "exit_date": "2026-09-30",
+    "exit": 0.8824,
+    "open": true
+   },
+   "stocks_in_universe": 93
+  },
+  "checks": {
+   "A1_profit_factor_incl_open_at_least_1.3": true,
+   "A2_profitable_in_both_halves": false,
+   "A3_max_drawdown_at_most_25pct": false,
+   "B1_drawdown_5pts_smaller_than_spy": false,
+   "B2_cagr_over_dd_beats_spy": false
+  },
+  "passes": false,
+  "spy": {
+   "final": 171081,
+   "total_return_pct": 71.1,
+   "cagr_pct": 12.04,
+   "max_drawdown_pct": -24.5,
+   "cagr_over_dd": 0.492
+  },
+  "profitable": "37 of 93",
+  "stuck_at_end": [
+   {
+    "entry_date": "2022-01-03",
+    "entry": 358.7284,
+    "target": 365.9029,
+    "shares": 27.8762,
+    "dip": 0.063,
+    "symbol": "TEAM",
+    "exit_date": "2026-09-30",
+    "exit": 179.17,
+    "open": true
+   },
+   {
+    "entry_date": "2022-01-03",
+    "entry": 98.0998,
+    "target": 100.0618,
+    "shares": 101.937,
+    "dip": 0.0594,
+    "symbol": "AFRM",
+    "exit_date": "2026-09-30",
+    "exit": 69.21,
+    "open": true
+   },
+   {
+    "entry_date": "2022-02-11",
+    "entry": 54.054,
+    "target": 55.1351,
+    "shares": 185.0002,
+    "dip": 0.06,
+    "symbol": "FLNA",
+    "exit_date": "2026-09-30",
+    "exit": 0.8824,
+    "open": true
+   },
+   {
+    "entry_date": "2024-04-01",
+    "entry": 56.3062,
+    "target": 57.4324,
+    "shares": 177.6002,
+    "dip": 0.0682,
+    "symbol": "DJT",
+    "exit_date": "2026-09-30",
+    "exit": 9.06,
+    "open": true
+   },
+   {
+    "entry_date": "2024-12-18",
+    "entry": 2.1419,
+    "target": 2.1848,
+    "shares": 4668.6653,
+    "dip": 0.0364,
+    "symbol": "CHGG",
+    "exit_date": "2026-09-30",
+    "exit": 0.7174,
+    "open": true
+   },
+   {
+    "entry_date": "2025-11-11",
+    "entry": 150.7756,
+    "target": 153.7911,
+    "shares": 66.3237,
+    "dip": 0.0612,
+    "symbol": "SE",
+    "exit_date": "2026-09-30",
+    "exit": 97.39,
+    "open": true
+   },
+   {
+    "entry_date": "2026-04-21",
+    "entry": 39.7897,
+    "target": 40.5855,
+    "shares": 251.321,
+    "dip": 0.1151,
+    "symbol": "BYND",
+    "exit_date": "2026-09-30",
+    "exit": 8.305,
+    "open": true
+   },
+   {
+    "entry_date": "2026-09-17",
+    "entry": 212.9678,
+    "target": 217.2271,
+    "shares": 46.9555,
+    "dip": 0.0754,
+    "symbol": "GNRC",
+    "exit_date": "2026-09-30",
+    "exit": 206.93,
+    "open": true
+   },
+   {
+    "entry_date": "2026-09-22",
+    "entry": 13.2983,
+    "target": 13.5643,
+    "shares": 751.9767,
+    "dip": 0.0481,
+    "symbol": "PATH",
+    "exit_date": "2026-09-30",
+    "exit": 12.83,
+    "open": true
+   },
+   {
+    "entry_date": "2026-09-22",
+    "entry": 49.5695,
+    "target": 50.5609,
+    "shares": 201.7369,
+    "dip": 0.0448,
+    "symbol": "RBLX",
+    "exit_date": "2026-09-30",
+    "exit": 42.4,
+    "open": true
+   }
+  ]
+ }
+}

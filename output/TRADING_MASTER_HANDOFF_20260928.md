@@ -418,3 +418,11 @@ Everything below was read-only unless stated otherwise.
   - **Tailscale stopped on its own twice more** (work VPN on, IP 46.248.151.234); restarted with `Tailscale up --accept-dns=false --accept-routes`.
   - **The resume prompt's "ask me" about Plan B day 1 was stale:** the fill (46.127588 sh @ $1,083.95) had been recorded at 10:05. The $1,105.63 GTC sell had not filled by 2:20 PM (post-10:05 high $1,098.55).
   - **Finviz reminder** on the owner's Google Calendar: Sat Oct 10, 10:00 ET (popup + email the day before). Gmail has no Finviz trial or receipt email, only "Welcome" (Oct 4), so the billing state must be checked on finviz.com.
+- **Oct 5, ~3:40 PM: pre-declared test #15 (Plan B dip rule on 100 volatile stocks chosen as of 2021): FAILED all 5 checks** (`DIP_RULE_MANY_STOCKS_TEST_RESULTS_20261005.md`).
+  - $100k → $93,060 vs SPY $171,081; worst drop −49.6% vs −24.5%; profit factor 0.89 including open positions.
+  - 96% winners (all 260 closed trades were +2% sales), but 10 buys never recovered (−$64,329). All 10 slots were full on 87% of days.
+  - 37 of 100 stocks profitable. Hindsight list (MU, LITE, …): $249,906 but a −43.9% drop and −18% in 2022–23; it still fails 4 checks.
+  - Independent recount: 5/5 random stocks match.
+  - **Found after the results (info only):** the $20 filter used split-adjusted prices, letting 7 reverse-split stocks in (PHUN, FCEL, TLRY, BKKT, LGVN, SPCE, CHPT), which works against the rule. Without them: $115,311, a −47% drop, still failing 4 of 5. The verdict stands. **For future universes, apply price filters to raw (unadjusted) prices.**
+  - Steps 2–3 don't proceed. Nothing changed in Plan B, the bots or MNQ.
+  - **The owner then asked to plan the EP test** (Qullamaggie's earnings gap-up): see `EP_EARNINGS_GAP_TEST_PLAN_20261005.md`.

@@ -98,7 +98,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
 | 12 | Options Insider levels (513 calls, 20 streams) | No edge (26% vs 28% placebo) |
 | 13 | SPY covered calls | Trailed SPY ($255k vs $396k) |
 | 14 | 2× above the 200-day, else T-bills (1927–2026) | **Passed all checks (17.1% vs 10.2%)**, but **since 2000 it only tied the market** with deeper drops. **The owner chose not to pursue it** |
-| 15 | Plan B dip rule on 100 stocks | **In progress** (see §6) |
+| 15 | Plan B dip rule on 100 volatile stocks chosen as of 2021 | **Failed all 5** ($100k → $93k vs SPY $171k; 96% winners but 10 stuck buys −$64k; −49.6% drop). Info-only fix of a split-adjusted price filter: $115k, still fails 4 of 5. Hindsight list $250k but −44% drop. `DIP_RULE_MANY_STOCKS_TEST_RESULTS_20261005.md` |
 
 - **Results files** are in `output/*_TEST_RESULTS_*.md`.
 - **Comparison check (not a test): 65% SPY / 35% T-bills:** $273k, 10.6%/yr, −22.6% drop.
@@ -140,7 +140,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
   - **Decision after 4–8 weeks.**
 - **The most-followed strategy answer:** index buy-and-hold (most active managers trail it over 10–15 years, per SPIVA), DCA, covered-call income funds, the wheel, momentum.
 
-## 6. In progress: test #15 (the owner asked to wait for 100% of the download, then results)
+## 6. Test #15: DONE Oct 5, ~3:40 PM: FAILED (see results doc). Steps 2–3 (calls, paper trading) do not proceed.
 - **Plan:** `output/DIP_RULE_MANY_STOCKS_TEST_PLAN_20261005.md` (82e461b).
 - **What it tests:** the **unchanged Plan B rule** on the **100 most volatile big stocks chosen with only data up to Dec 31, 2021** (hindsight-free), Jan 2022 – Sep 2026, plus the hindsight LITE-like list for information.
 - **Portfolio:** $100k, $10k per buy, max 10. Bars A and B vs SPY.
@@ -188,12 +188,12 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
 - **Shell gotchas:** never name a zsh variable `path`; use `< /dev/null` in `while read` loops; there's no `timeout` command on this Mac.
 
 ## 8. Open items
-1. **Test #15:** finish the download, then the results (§6).
+1. ~~Test #15~~ **Done: failed** (§4, §6). Next: the EP test (item 6), plan written; downloads await the owner's OK.
 2. **Plan B day 1 is recorded (46.13 sh @ $1,083.95).** Ask the owner whether the $1,105.63 GTC sell has filled; when it does, do the after-fill steps (sell note, position record, `positions.json` + redeploy). The 0.127588 fractional share may need selling by hand.
 3. ~~MNQ calendar permanent fix~~ **Done Oct 5 ~3:06 PM:** trading-references re-keyed with the LITE paper key; old trading-collector disabled. Calendar auto-refreshes every 6 h.
 4. **Collective2 tracking:** weekly check of ares + US Stock Momentum (§5).
 5. **Kevin Whop card check ~Oct 12.** Finviz trial cancel + key reset ~Oct 11.
-6. **Optional next test** if the owner wants: Qullamaggie's **episodic pivot** (earnings gap-up ≥10% on big volume, long-only), pre-declared, on the 5,259-stock daily data + earnings dates.
+6. **Next test: Qullamaggie's episodic pivot (EP).** The owner said "yes plan the EP test" (Oct 5). Plan: `output/EP_EARNINGS_GAP_TEST_PLAN_20261005.md`. Downloads (SEC EDGAR earnings dates, Alpaca 5-min bars on gap days) need the owner's OK first, including whether their email may go in the SEC request header.
 7. The Dad's $95k plan comparison (offered). Weekend scorecard Oct 10–11. Taxes (needs the Robinhood realized-gains screen + pay stub).
 8. TradingView alerts expire Nov 3. Confirm the Schwab transfer-out. The Robinhood joint-account info request.
 9. **Options learning path:** Options 101 lectures as they post, OIC, paper practice. Revisit LITE earnings handling before Nov 10.
