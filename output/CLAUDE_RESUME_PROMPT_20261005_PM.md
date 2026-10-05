@@ -190,7 +190,7 @@ Older prompts (`CLAUDE_RESUME_PROMPT_20261005.md`, `_20261002.md`) are supersede
 ## 8. Open items
 1. **Test #15:** finish the download, then the results (§6).
 2. **Plan B day 1 is recorded (46.13 sh @ $1,083.95).** Ask the owner whether the $1,105.63 GTC sell has filled; when it does, do the after-fill steps (sell note, position record, `positions.json` + redeploy). The 0.127588 fractional share may need selling by hand.
-3. **MNQ calendar permanent fix before Mon Oct 12 ~9:09 AM** (§3).
+3. ~~MNQ calendar permanent fix~~ **Done Oct 5 ~3:06 PM:** trading-references re-keyed with the LITE paper key; old trading-collector disabled. Calendar auto-refreshes every 6 h.
 4. **Collective2 tracking:** weekly check of ares + US Stock Momentum (§5).
 5. **Kevin Whop card check ~Oct 12.** Finviz trial cancel + key reset ~Oct 11.
 6. **Optional next test** if the owner wants: Qullamaggie's **episodic pivot** (earnings gap-up ≥10% on big volume, long-only), pre-declared, on the 5,259-stock daily data + earnings dates.
