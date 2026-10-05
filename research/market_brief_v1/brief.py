@@ -10,7 +10,6 @@ What it does, after the close:
     not "something will happen"; nothing here predicts the future.
   - headlines from the last 24 hours (Alpaca's free news feed, so the Alpha Vantage quota stays with the bots)
   - the next two weeks from calendar.json
-  - the 200-day trend signal from test #14 (output/LEVERAGE_TREND_TEST_RESULTS_20261005.md), information only
 DRAM prices are linked, not read: TrendForce's terms forbid automated collection, so the owner checks that page by hand.
 
 Data: Alpaca SIP daily bars (free plan, 16+ minutes delayed) with the LITE paper account's read-only keys.
@@ -47,8 +46,6 @@ MARKET_DAY_DROP = -2.0       # SPY -2% or worse
 FROM_HIGH_DROP = -20.0       # a position closes 20%+ below its 52-week closing high
 NEAR_LEVEL_PCT = 3.0         # within 3% of a sell-note level
 EVENT_HEADS_UP_DAYS = 3      # calendar events in the next 3 days
-TREND_DAYS = 200             # test #14: above the 200-day average = "up" (2x in the tested rule), below = T-bills
-TREND_SYMBOLS = ("SPY", "QQQ")  # SPY is the tested market proxy; QQQ is information only
 
 
 def daily_bars(symbols, key, secret, end):
@@ -129,33 +126,6 @@ def market_flags(prices):
     return flags
 
 
-def trend_signal(rows, n=TREND_DAYS):
-    """Close vs its n-day simple average today and yesterday (dividend-adjusted closes). None if too little data."""
-    closes = [r["c"] for r in rows]
-    if len(closes) < n + 1:
-        return None
-    today_avg, prev_avg = sum(closes[-n:]) / n, sum(closes[-n - 1:-1]) / n
-    up, was_up = closes[-1] > today_avg, closes[-2] > prev_avg
-    return {"close": closes[-1], "avg": today_avg, "gap_pct": 100 * (closes[-1] / today_avg - 1),
-            "up": up, "flipped": up != was_up}
-
-
-def trend_lines(signals):
-    lines, flags = [], []
-    for symbol, t in signals.items():
-        if not t:
-            lines.append(f"{symbol}: not enough history")
-            continue
-        state = "UP (above)" if t["up"] else "DOWN (below)"
-        rule = "rule would hold 2x from tomorrow" if t["up"] else "rule would hold T-bills from tomorrow"
-        lines.append(f"{symbol}: {state} its 200-day average: close ${t['close']:,.2f} vs avg ${t['avg']:,.2f} "
-                     f"({t['gap_pct']:+.1f}%) -> {rule}")
-        if t["flipped"]:
-            flags.append(("HEADS-UP", f"{symbol} crossed {'above' if t['up'] else 'below'} its 200-day average today "
-                                      "(test #14 signal changed; information only)."))
-    return lines, flags
-
-
 def upcoming(events, today, days=14):
     end = today + timedelta(days=days)
     rows = [e for e in events if today <= date.fromisoformat(e["date"]) <= end]
@@ -178,14 +148,11 @@ def build(now=None):
     events = json.loads((HERE / "calendar.json").read_text())["events"]
     symbols = sorted({s for group in GROUPS.values() for s in group} | {p["symbol"] for p in book["positions"]})
     end = (now - timedelta(minutes=16)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    bars = daily_bars(symbols, key, secret, end)
-    prices = {s: st for s, rows in bars.items() if (st := stats(rows))}
-    trend, trend_flags = trend_lines({s: trend_signal(bars.get(s, [])) for s in TREND_SYMBOLS})
+    prices = {s: st for s, rows in daily_bars(symbols, key, secret, end).items() if (st := stats(rows))}
     today = now.astimezone(NY).date()
 
     pos_lines, flags = position_lines(book["positions"], prices)
     flags += market_flags(prices)
-    flags += trend_flags
     soon, event_flags = upcoming(events, today)
     flags += event_flags
     news = headlines(key, secret, ["MU", "LITE", "SNDK", "WDC", "STX", "NVDA"],
@@ -212,9 +179,6 @@ def build(now=None):
                 p = prices[s]
                 out.append(f"  {s:5} ${p['close']:>9,.2f}  {p['day_pct']:+6.1f}%  {p['five_day_pct']:+6.1f}%  "
                            f"{p['from_high_pct']:+6.1f}%")
-    out += ["", "== 200-day trend signal (test #14; information, not an instruction) =="] + trend
-    out += ["Tested rule: 2x the market while above the 200-day average, T-bills while below. 1927-2026: 17.1%/yr vs",
-            "10.2% holding, but since 2000 only a tie (8.6% vs 8.6%) with deeper drops; ~5-6 switches/yr; taxes not counted."]
     out += ["", "== Headlines (last 24 h) =="]
     out += [f"- {n['created_at'][5:16].replace('T', ' ')} UTC [{','.join(n['symbols'][:3])}] {n['headline']}"
             for n in news] or ["(none)"]

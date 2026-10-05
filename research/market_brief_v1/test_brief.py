@@ -2,7 +2,7 @@
 from datetime import date
 import unittest
 
-from research.market_brief_v1.brief import market_flags, position_lines, trend_lines, trend_signal, upcoming
+from research.market_brief_v1.brief import market_flags, position_lines, upcoming
 
 MU = {"symbol": "MU", "shares": 10, "cost": 100.0, "target_pct": 25, "limit_pct": -20}
 
@@ -41,16 +41,6 @@ class BriefTest(unittest.TestCase):
                   {"date": "2026-11-30", "what": "c", "why": "", "status": "estimated"}]
         rows, flags = upcoming(events, date(2026, 10, 2))
         assert [e["what"] for e in rows] == ["a", "b"] and len(flags) == 1
-
-    def test_trend_signal_up_and_flip(self):
-        rows = [{"c": 100.0}] * 200 + [{"c": 99.0}, {"c": 102.0}]   # yesterday below, today above the average
-        t = trend_signal(rows)
-        assert t["up"] and t["flipped"] and t["gap_pct"] > 0
-        lines, flags = trend_lines({"SPY": t})
-        assert "UP" in lines[0] and flags and flags[0][0] == "HEADS-UP"
-
-    def test_trend_signal_needs_history(self):
-        assert trend_signal([{"c": 1.0}] * 150) is None
 
 
 if __name__ == "__main__":
