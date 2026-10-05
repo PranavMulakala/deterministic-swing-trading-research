@@ -1,0 +1,9 @@
+{"strategy": "US Stock Momentum", "url": "https://collective2.com/details/151894080", "taken": "2026-10-05 ~14:40 ET",
+ "what_it_does": "Unleveraged: top 10 S&P 500 stocks by momentum with an uptrend filter and a sector overlay; rebalanced monthly at the open (per its page)",
+ "stats": {"annual_pct_shown": 107.8, "max_drawdown_pct": -39.2, "closed_trades": 139, "win_pct": 60, "profit_factor": 2.2,
+           "live_autotraders": 31, "subscribers": 46, "following_usd": "2.9M", "price": "$99/mo", "started": "2025-06"},
+ "monthly_pct": {"2025": {"Jun": 0.5, "Jul": -0.6, "Aug": 1.2, "Sep": 10.5, "Oct": 12.5, "Nov": -4.8, "Dec": 6.8, "YTD": 27.6},
+                 "2026": {"Jan": 27.6, "Feb": -2.2, "Mar": 11.4, "Apr": 35.8, "May": 14.3, "Jun": 7.6, "Jul": -30.5, "Aug": 8.8, "Sep": 16.1, "Oct": 1.8, "YTD": 107.3}},
+ "recent_holdings_seen": ["GEV", "UNH", "CSCO", "AMAT", "INTC", "GLW", "STX", "LITE", "MRVL", "WDC", "SNDK", "ON"],
+ "notable_losses": "Jun-Sep 2026: SNDK -$3,087, WDC -$2,464, an XSP option that expired worthless -$4,162 (so it is not purely shares)",
+ "overlap_warning": "Holds the same AI-hardware/memory names as the owner's MU and LITE (LITE, SNDK, WDC, STX, MRVL); July 2026 was -30.5% in one month"}

@@ -1,4 +1,4 @@
-# Tracking Collective2 "ares" (MNQ intraday) alongside our tests: started October 5, 2026
+# Tracking Collective2 strategies alongside our tests: "ares" and "US Stock Momentum" (started October 5, 2026)
 
 **Baseline snapshot:** `research/ares_tracking/snapshot_20261005.json`, taken from its public page on Oct 5.
 - **Stats:** +32.6%/yr since Sep 2020, worst drop −14.1%, 763 closed trades, 72 live AutoTraders, $9.9M following.
@@ -11,3 +11,14 @@
 - **Weekly:** in each session, re-read its page and record new trades and the month's result vs the claims.
 - **Independent price check:** our own IBKR paper collector records live MNQ prices from Oct 6. Each week, ares' entry and exit prices can be compared with our recorded MNQ quotes at the same minutes. This is a check Collective2's marketing can't fake.
 - **Decision point:** after about 4–8 weeks of matching fills and results in line with its history, decide whether paying ($100/mo, a supported futures broker needed) makes sense. Robinhood isn't on Collective2's broker list.
+
+## Added Oct 5: US Stock Momentum (`research/ares_tracking/us_stock_momentum_snapshot_20261005.json`)
+- **What it does** (its page): the top 10 S&P 500 stocks by momentum, with an uptrend filter, rebalanced monthly. It is mostly shares, but it also bought an XSP option that expired worthless (−$4,162).
+- **Results:**
+  - **2025 (from Jun):** +27.6%.
+  - **2026 so far:** +107.3%.
+  - **Worst drop:** −39.2%.
+  - **July 2026:** −30.5% in one month.
+  - **Following:** 31 live AutoTraders, $2.9M. Price $99/mo.
+- **Overlap warning:** its recent holdings are the owner's same bet: LITE, SNDK, WDC, STX, MRVL, INTC, AMAT. Following it would add more exposure to AI hardware and memory on top of MU and LITE, not spread it out.
+- **Tracking:** record the monthly result vs the claims each session. Watch how it behaves in the next tech pullback.
