@@ -151,7 +151,11 @@ def main():
             calls.append(c)
     rows = []
     for c in calls:
-        day = fetch_day(c["symbol"], c["date_et"], key, secret)
+        try:
+            day = fetch_day(c["symbol"], c["date_et"], key, secret)
+        except Exception:  # e.g. a symbol Alpaca doesn't list ("SPACEX" placeholder): dropped and counted
+            dropped[f"no_data:{c['symbol']}"] += 1
+            continue
         if not day["bars"]:
             dropped["no_bars"] += 1
             continue
