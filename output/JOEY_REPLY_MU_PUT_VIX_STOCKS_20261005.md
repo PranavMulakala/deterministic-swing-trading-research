@@ -138,3 +138,31 @@ Subject: Re: Micron Covered Call and Diagonal
 **Edit before sending:**
 - the put paragraph, so it reflects whatever you actually decide;
 - the robots line, if you want it stronger or softer.
+
+## 6. Joey's replies (Oct 5, 4:10 and 4:16 PM) and the math check
+**What he said:**
+- **VIX:** "start paying attention above 30", "the higher the better" (April 2025 tariffs), and most retail investors have no spare cash when these events happen.
+- **The MU put:** the bear (put) spread is "a good idea and less expensive". If buying a put, go **in the money, about 30 days out**, and only when MU looks "truly bearish". You can sell it back early.
+- **His deep-ITM point:** "your max loss is the extrinsic value". He compares the $995 put (ask $28.45, extrinsic $27.38) with the $1,100 put (ask $80.05, extrinsic $38.77). He says the 1100 put "actually make[s] money using 50 shares", and that "if Micron sold off to 1000 tomorrow you could exit profitable".
+- **The four stocks:** oversold on **weekly** charts (rarer, so more meaningful). Wait for RSI to cross back up (he said "above the 20 line") before entering. Also check P/E vs its history and margin of safety.
+
+**Checked:** his chain matches the **Nov 6** expiration (about 32 days). Live Nov 6 asks were $1,100 at $79.39 and $995 at $29.52; MU was about $1,058.7 in his screenshot.
+
+**Your 50.97 shares (cost $1,079.08) + one Nov 6 $1,100 put at $80.05 ($8,005), at Nov 6:**
+| MU | Shares only | Shares + 1100 put |
+|---|---|---|
+| $1,349 | +$13,758 | +$5,753 |
+| $1,200 | +$6,163 | −$1,842 |
+| $1,100 (**worst**) | +$1,066 | **−$6,939** |
+| $1,059 (flat) | −$1,038 | −$4,915 |
+| $1,000 | −$4,031 | −$2,036 |
+| $950 | −$6,579 | +$416 |
+| $863 | −$11,014 | +$4,681 |
+
+- **"Max loss = extrinsic" is true for 100 shares + 1 put.** With 51 shares it isn't. From today's price, the worst case is about −$5,900 (at $1,100), vs extrinsic of about $3,900. The reason: when MU rises, the put loses $100 per $1 but your shares only gain $51.
+- **The 1100 put makes you roughly flat on MU.** The put's delta is about −0.56 × 100 = −56 shares, against your +51. That's why a drop to $1,000 tomorrow makes about +$780 and a rise to $1,150 makes about +$460: almost nothing moves either way. The hedge tool's own footnote said deep ITM "acts more like selling".
+- **So, compared with simply selling the 51 shares** (free; currently a ~$1,000 loss, so there's no tax gain to worry about), the 1100 put costs about **$3,900 in time value for one month** to get nearly the same flat position.
+- **The 995 "$100 of real value"** is most likely the gap between the ask ($28.45) and the mid price his platform uses to compute extrinsic. That put is out of the money, so all of its price is time value. Minor point.
+- **The 995 put** (about $2,845) is cheaper insurance but only helps below about $900 by expiry.
+
+**Weekly RSI** (14-week, Wilder, as of the week of Oct 5): MCD 25, NKE 27, LOW 29, SBUX 42. All of these except SBUX are their lowest since 2023. None is below 20 on standard settings, so his "20 line" may use a different setting. His "wait until it turns back up" rule is sensible discipline but untested here.
