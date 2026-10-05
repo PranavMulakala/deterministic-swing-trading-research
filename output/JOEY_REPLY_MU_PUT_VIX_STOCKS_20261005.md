@@ -166,3 +166,5 @@ Subject: Re: Micron Covered Call and Diagonal
 - **The 995 put** (about $2,845) is cheaper insurance but only helps below about $900 by expiry.
 
 **Weekly RSI** (14-week, Wilder, as of the week of Oct 5): MCD 25, NKE 27, LOW 29, SBUX 42. All of these except SBUX are their lowest since 2023. None is below 20 on standard settings, so his "20 line" may use a different setting. His "wait until it turns back up" rule is sensible discipline but untested here.
+
+**Second reply SENT Oct 5** on the owner's "yes send it" (simpler wording; message 1a10df197e7d7bde, same thread). It asks: is selling simpler than a deep-ITM put if bearish; is the put spread the cheaper hedge; how he spots a real downturn; what RSI setting his "20 line" uses.
