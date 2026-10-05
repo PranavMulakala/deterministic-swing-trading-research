@@ -43,17 +43,27 @@ def signal(day_bars):
     return None
 
 
-def exit_price(day_bars, target, entry_day):
-    """Price the +2% limit fills at on this day, or None. On the entry day only bars after 10:00 count."""
+def exit_fill(day_bars, target, entry_day):
+    """(price, bar minute) the +2% limit fills at on this day, or None. On the entry day only bars after 10:00 count."""
     bars = [b for b in day_bars if b["m"] >= 600] if entry_day else day_bars
     if not bars:
         return None
     if not entry_day and bars[0]["o"] >= target:
-        return bars[0]["o"]
+        return bars[0]["o"], bars[0]["m"]
     for b in bars:
         if b["h"] >= target:
-            return target
+            return target, b["m"]
     return None
+
+
+def exit_price(day_bars, target, entry_day):
+    fill = exit_fill(day_bars, target, entry_day)
+    return fill[0] if fill else None
+
+
+def sold_before_10(fill):
+    """A sale frees the stock (and its cash) for that day's 10:00 signal only if it happened in the 9:30-10:00 bar."""
+    return fill[1] < 600
 
 
 def per_stock_trades(days):
@@ -61,12 +71,14 @@ def per_stock_trades(days):
     trades, pos = [], None
     for d in sorted(days):
         bars = days[d]
+        free_at_10 = True
         if pos:
-            px = exit_price(bars, pos["target"], False)
-            if px:
-                trades.append({**pos, "exit_date": d, "exit": px * (1 - SELL_COST), "open": False})
+            fill = exit_fill(bars, pos["target"], False)
+            if fill:
+                trades.append({**pos, "exit_date": d, "exit": fill[0] * (1 - SELL_COST), "open": False})
                 pos = None
-        if not pos:
+                free_at_10 = sold_before_10(fill)
+        if not pos and free_at_10:
             sig = signal(bars)
             if sig:
                 entry = sig[0]
@@ -84,25 +96,31 @@ def per_stock_trades(days):
 def portfolio(data, calendar):
     cash, positions, trades, curve, last_close = START_CASH, {}, [], [], {}
     for d in calendar:
+        later_cash, sold_after_10 = 0.0, set()   # sales after 10:00 still hold their slot and cash at the 10:00 decision
         for sym in list(positions):
             bars = data[sym].get(d)
             if not bars:
                 continue
             p = positions[sym]
-            px = exit_price(bars, p["target"], False)
-            if px:
-                cash += p["shares"] * px * (1 - SELL_COST)
-                trades.append({**p, "symbol": sym, "exit_date": d, "exit": px * (1 - SELL_COST), "open": False})
+            fill = exit_fill(bars, p["target"], False)
+            if fill:
+                proceeds = p["shares"] * fill[0] * (1 - SELL_COST)
+                if sold_before_10(fill):
+                    cash += proceeds
+                else:
+                    later_cash += proceeds
+                    sold_after_10.add(sym)
+                trades.append({**p, "symbol": sym, "exit_date": d, "exit": fill[0] * (1 - SELL_COST), "open": False})
                 del positions[sym]
         cands = []
         for sym, days in data.items():
-            if sym in positions or d not in days:
+            if sym in positions or sym in sold_after_10 or d not in days:
                 continue
             sig = signal(days[d])
             if sig:
                 cands.append((sig[1], sym, sig[0]))
         for dip, sym, entry in sorted(cands, reverse=True):
-            if len(positions) >= MAX_POS or cash < SLOT:
+            if len(positions) + len(sold_after_10) >= MAX_POS or cash < SLOT:
                 break
             positions[sym] = {"entry_date": d, "entry": entry, "target": entry * (1 + TARGET), "shares": SLOT / entry,
                               "dip": round(dip, 4)}
@@ -110,8 +128,10 @@ def portfolio(data, calendar):
             px = exit_price(data[sym][d], positions[sym]["target"], True)
             if px:
                 p = positions.pop(sym)
-                cash += p["shares"] * px * (1 - SELL_COST)
+                later_cash += p["shares"] * px * (1 - SELL_COST)
+                sold_after_10.add(sym)
                 trades.append({**p, "symbol": sym, "exit_date": d, "exit": px * (1 - SELL_COST), "open": False})
+        cash += later_cash
         for sym, days in data.items():
             if d in days:
                 last_close[sym] = days[d][-1]["c"]

@@ -30,5 +30,13 @@ class DipRuleTest(unittest.TestCase):
         self.assertEqual(tr[0]["exit"], 96)
 
 
+    def test_no_rebuy_at_10_when_sold_later_that_day(self):
+        days = {"2022-01-03": [b(570, 100, 100, 98, 99), b(600, 99, 99.5, 97, 97)],
+                "2022-01-04": [b(570, 100, 100, 98, 99), b(840, 99, 101.5, 99, 101)]}   # signal again, sells at 14:00
+        tr = per_stock_trades(days)
+        self.assertEqual(len(tr), 1)          # the Jan 4 10:00 signal is skipped: still held then
+        self.assertFalse(tr[0]["open"])
+
+
 if __name__ == "__main__":
     unittest.main()

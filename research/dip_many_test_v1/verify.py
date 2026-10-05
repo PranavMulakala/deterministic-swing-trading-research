@@ -22,15 +22,18 @@ def recount(symbol):
     trades, holding = [], None
     for d in sorted(by_day):
         bars = sorted(by_day[d])
+        can_buy_at_10 = True
         if holding:
             target = holding * 1.02
+            hits = [b[0] for b in bars if b[2] >= target]
             if bars[0][1] >= target:
                 trades.append((bars[0][1] * 0.9995 / holding - 1, False))
                 holding = None
-            elif any(b[2] >= target for b in bars):
+            elif hits:
                 trades.append((target * 0.9995 / holding - 1, False))
                 holding = None
-        if not holding and bars[0][0] == 570:
+                can_buy_at_10 = hits[0] < 600   # still held at 10:00 if it sold later in the day
+        if not holding and can_buy_at_10 and bars[0][0] == 570:
             m, o, h, l, c = bars[0]
             if l <= o * 0.99 and c < o:
                 holding = c * 1.001

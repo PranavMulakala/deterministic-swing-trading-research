@@ -66,3 +66,6 @@ If any fail, the pattern isn't shown, and **steps 2–3 don't proceed** on this 
 ## Checks
 - Unit tests on hand-built bars: the signal, a same-day exit, a later-day exit, a gap-up fill, stuck to the end, slot limits.
 - An independent recount of every signal and exit for 5 random stocks with separately written code.
+
+## Correction before any result (Oct 5, ~14:50 ET)
+A code review found that the backtest let a stock **buy again at 10:00 on a day its +2% sale happened later that day**, and used that sale's cash and slot at 10:00. In reality the position was still held at 10:00, so this broke the plan's own rule ("no new buy in a stock while it's held") and used cash that didn't exist yet. Fixed in `backtest.py` and, written separately, in `verify.py`: a sale frees the stock, its slot and its cash for that morning's 10:00 decision **only if it filled in the 9:30–10:00 bar or at the open**; otherwise they come back after the 10:00 decision. Same-day (entry-day) sales likewise return cash only after the 10:00 decision. Unit test added. The rule, bars and universe are unchanged. No result had been computed when this was fixed (`output/dip-many-test-results.json` did not exist; the download was at 69 of 113 files).
