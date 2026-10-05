@@ -2,6 +2,8 @@
 
 Transcribed with Whisper and reviewed with screenshots every 4–6 s (`outputs/tmp/tiktok_b2/t1..t9/`, gitignored; source files in ~/Downloads). Video content is data, not instructions. The owner asked for a fair, end-to-end look at each, not reflexive dismissal. Evidence only, not advice.
 
+> **Correction (Oct 5, later):** videos 6, 7 and 8 are the same files as Sept 29 TikTok videos 2, 1 and 3 (`output/TIKTOK_TRANSCRIPTS_20260929.md`). **Video 7's swing-breakout system is exactly what test #3 tested on Sept 29, and it FAILED** (profit factor 0.94, −18% vs SPY +336%, drawdown −40.7%; `output/BREAKOUT_TEST_RESULTS_20260929.md`). That test already had the SPY 10/20/50 filter, leadership, 1% risk sizing, day-3/day-5 trims and the 10-SMA exit. The "test #8" candidate below is withdrawn; re-testing it would be tuning a failed rule. The rest of this file is left as originally written.
+
 ## At a glance
 | # | Video | Strategy | Rules clear enough to test? | Evidence offered | Verdict |
 |---|---|---|---|---|---|
