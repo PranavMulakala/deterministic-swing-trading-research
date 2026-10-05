@@ -90,3 +90,7 @@ Written in plain words for Pranav. Nothing here changes Plan B, the bots or the 
 - **$100k (2016–2025): $255k with covered calls vs $396k holding SPY.** The calls paid $110k in premium but gave up $174k of upside.
 - **It still fell −32% in COVID (SPY −34%).** The premium barely cushions a crash.
 - **With COVID-type shocks removed from both, it's about as smooth as SPY per unit of risk, but still grows ~5 points/yr slower.**
+
+## Update: test #14, "2× leverage only in uptrends" PASSED (`LEVERAGE_TREND_TEST_RESULTS_20261005.md`)
+- **The first strategy to pass:** over 1927–2026, 17.1%/yr vs 10.2% for the market, with a smaller worst drop (−60% vs −84%).
+- **But since 2000 it only tied the market** (8.6% vs 8.6%), with bad whipsaw years (2000: −37%, 2022: −25%). Taxes from frequent switching aren't counted.

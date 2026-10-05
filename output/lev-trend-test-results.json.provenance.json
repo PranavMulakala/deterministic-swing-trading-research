@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-10-05T17:10:39+00:00",
+  "git_commit": "ebedc90713fa5584ff7769127b2cd2c6e8a9d685",
+  "code_uncommitted": false,
+  "params": {
+    "sma": 200,
+    "switch_cost": 0.001,
+    "spread": 0.005,
+    "costs": {
+      "1": 0.0,
+      "2": 0.009,
+      "3": 0.0095
+    }
+  },
+  "files": {
+    "research/lev_trend_test_v1/run.py": {
+      "kind": "code",
+      "bytes": 8939,
+      "sha256": "f2600032d8ab78d7b2708f2d1b37269e97cc4a92682b4d4a6d57b457154634ac"
+    },
+    "outputs/lev_trend_data/F-F_Research_Data_Factors_daily.csv": {
+      "kind": "data",
+      "bytes": 1210997,
+      "sha256": "c2dc30c9e89eeea05a689c81fb426f4d76711270733b3731997615cbdff5b247"
+    }
+  }
+}

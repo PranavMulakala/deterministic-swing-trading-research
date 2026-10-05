@@ -141,6 +141,13 @@ This file replaces `CLAUDE_RESUME_PROMPT_20261002.md`. The older one is still co
   - Premium $110k but upside given up $174k.
   - The owner asked to exclude COVID-type shocks: with those windows removed from both, growth ÷ drop is about equal to SPY (0.69 vs 0.67), but it still grows ~5 points/yr less.
   - **Test record: 13 tests.**
+- **Test #14, "2× leverage only above the 200-day, else T-bills" (Gayed & Bilello 2016), Ken French daily data 1927–2026: PASSED all 4 pre-declared checks, the first ever** (`LEVERAGE_TREND_TEST_RESULTS_20261005.md`).
+  - 17.1%/yr vs 10.2%, worst drop −60% vs −84%.
+  - **Catch:** since 2000 it only tied the market (8.55% vs 8.57%) with a deeper drop (−58% vs −55%). Whipsaw years: 2000 (−37%) and 2022 (−25%). 2008 only −6%.
+  - Real-fund QQQ/QLD version 2016–2025: 30.1% vs QQQ 20.7%, worst drop −42% vs −35%.
+  - Taxes from ~5.7 switches/yr not modelled.
+  - The cost model matched actual SSO within 0.01 pts/yr. Data: `outputs/lev_trend_data/` (owner approved the download).
+- **The owner's capital is ~$180k.** Their $1,000/day goal is explained as unrealistic (~$1.7M needed at 15%/yr); the owner has been shown the risk-level framing (SPY / QQQ / leverage).
 - **65% SPY / 35% T-bills comparison check (owner asked, Oct 5):** `MIX_65_35_CHECK_RESULTS_20261005.md`.
   - Monthly rebalance: $100k → $273k, 10.6%/yr, worst drop −22.6%, growth ÷ drop 0.47 (SPY alone 0.44).
   - Same drop as the cash-secured puts but $118k more. A benchmark, not a strategy test.

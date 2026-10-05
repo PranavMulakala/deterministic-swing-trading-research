@@ -1,0 +1,546 @@
+{
+ "plan": "output/LEVERAGE_TREND_TEST_PLAN_20261005.md",
+ "data": "Ken French daily factors (CRSP 202608)",
+ "first_day": "19270304",
+ "last_day": "20260831",
+ "years": 99.49,
+ "results": {
+  "market_1x_hold": {
+   "from": "19270304",
+   "to": "20260831",
+   "growth_of_1": 15904.58,
+   "cagr_pct": 10.21,
+   "max_drawdown_pct": -84.1,
+   "worst_drop_bottom": "19320708",
+   "cagr_over_dd": 0.121,
+   "switches_per_year": 0.0,
+   "time_invested_pct": 100.0,
+   "halves": {
+    "1927-1975": {
+     "from": "19270304",
+     "to": "19751231",
+     "growth_of_1": 44.14,
+     "cagr_pct": 8.07,
+     "max_drawdown_pct": -84.1,
+     "worst_drop_bottom": "19320708",
+     "cagr_over_dd": 0.096
+    },
+    "1976-2026": {
+     "from": "19760102",
+     "to": "20260831",
+     "growth_of_1": 360.34,
+     "cagr_pct": 12.32,
+     "max_drawdown_pct": -54.6,
+     "worst_drop_bottom": "20090309",
+     "cagr_over_dd": 0.226
+    }
+   },
+   "since_1990": {
+    "from": "19900102",
+    "to": "20260831",
+    "growth_of_1": 46.48,
+    "cagr_pct": 11.04,
+    "max_drawdown_pct": -54.6,
+    "worst_drop_bottom": "20090309",
+    "cagr_over_dd": 0.202
+   },
+   "since_2000": {
+    "from": "20000103",
+    "to": "20260831",
+    "growth_of_1": 8.96,
+    "cagr_pct": 8.57,
+    "max_drawdown_pct": -54.6,
+    "worst_drop_bottom": "20090309",
+    "cagr_over_dd": 0.157
+   },
+   "decades_cagr_pct": {
+    "1920s": 15.36,
+    "1930s": -0.45,
+    "1940s": 9.09,
+    "1950s": 18.19,
+    "1960s": 8.29,
+    "1970s": 6.08,
+    "1980s": 16.81,
+    "1990s": 17.91,
+    "2000s": -0.39,
+    "2010s": 13.61,
+    "2020s": 15.46
+   },
+   "worst_years_pct": {
+    "1929": -15.2,
+    "1930": -28.7,
+    "1931": -44.3,
+    "1932": -9.0,
+    "1937": -34.8,
+    "1973": -19.1,
+    "1974": -27.8,
+    "1987": 1.6,
+    "2000": -11.7,
+    "2001": -11.3,
+    "2002": -20.4,
+    "2008": -36.5,
+    "2020": 24.2,
+    "2022": -20.0
+   }
+  },
+  "main_2x_above_200d": {
+   "from": "19270304",
+   "to": "20260831",
+   "growth_of_1": 6413695.22,
+   "cagr_pct": 17.06,
+   "max_drawdown_pct": -60.1,
+   "worst_drop_bottom": "19350411",
+   "cagr_over_dd": 0.284,
+   "switches_per_year": 5.65,
+   "time_invested_pct": 72.5,
+   "halves": {
+    "1927-1975": {
+     "from": "19270304",
+     "to": "19751231",
+     "growth_of_1": 5680.3,
+     "cagr_pct": 19.37,
+     "max_drawdown_pct": -60.1,
+     "worst_drop_bottom": "19350411",
+     "cagr_over_dd": 0.322
+    },
+    "1976-2026": {
+     "from": "19760102",
+     "to": "20260831",
+     "growth_of_1": 1129.11,
+     "cagr_pct": 14.88,
+     "max_drawdown_pct": -58.1,
+     "worst_drop_bottom": "20030416",
+     "cagr_over_dd": 0.256
+    }
+   },
+   "since_1990": {
+    "from": "19900102",
+    "to": "20260831",
+    "growth_of_1": 77.71,
+    "cagr_pct": 12.61,
+    "max_drawdown_pct": -58.1,
+    "worst_drop_bottom": "20030416",
+    "cagr_over_dd": 0.217
+   },
+   "since_2000": {
+    "from": "20000103",
+    "to": "20260831",
+    "growth_of_1": 8.91,
+    "cagr_pct": 8.55,
+    "max_drawdown_pct": -58.1,
+    "worst_drop_bottom": "20030416",
+    "cagr_over_dd": 0.147
+   },
+   "decades_cagr_pct": {
+    "1920s": 42.56,
+    "1930s": 11.32,
+    "1940s": 18.25,
+    "1950s": 30.38,
+    "1960s": 14.96,
+    "1970s": 12.66,
+    "1980s": 26.35,
+    "1990s": 24.2,
+    "2000s": -1.04,
+    "2010s": 12.5,
+    "2020s": 18.23
+   },
+   "worst_years_pct": {
+    "1929": -2.2,
+    "1930": -8.5,
+    "1931": -2.3,
+    "1932": -16.7,
+    "1937": -11.3,
+    "1973": -18.6,
+    "1974": 8.1,
+    "1987": 24.7,
+    "2000": -36.8,
+    "2001": 0.3,
+    "2002": -16.3,
+    "2008": -5.8,
+    "2020": 24.6,
+    "2022": -25.0
+   }
+  },
+  "hold_2x": {
+   "from": "19270304",
+   "to": "20260831",
+   "growth_of_1": 119727.02,
+   "cagr_pct": 12.47,
+   "max_drawdown_pct": -98.4,
+   "worst_drop_bottom": "19320708",
+   "cagr_over_dd": 0.127,
+   "switches_per_year": 0.0,
+   "time_invested_pct": 100.0,
+   "halves": {
+    "1927-1975": {
+     "from": "19270304",
+     "to": "19751231",
+     "growth_of_1": 68.37,
+     "cagr_pct": 9.04,
+     "max_drawdown_pct": -98.4,
+     "worst_drop_bottom": "19320708",
+     "cagr_over_dd": 0.092
+    },
+    "1976-2026": {
+     "from": "19760102",
+     "to": "20260831",
+     "growth_of_1": 1751.14,
+     "cagr_pct": 15.88,
+     "max_drawdown_pct": -87.7,
+     "worst_drop_bottom": "20090309",
+     "cagr_over_dd": 0.181
+    }
+   },
+   "since_1990": {
+    "from": "19900102",
+    "to": "20260831",
+    "growth_of_1": 144.66,
+    "cagr_pct": 14.53,
+    "max_drawdown_pct": -87.7,
+    "worst_drop_bottom": "20090309",
+    "cagr_over_dd": 0.166
+   },
+   "since_2000": {
+    "from": "20000103",
+    "to": "20260831",
+    "growth_of_1": 11.87,
+    "cagr_pct": 9.72,
+    "max_drawdown_pct": -87.7,
+    "worst_drop_bottom": "20090309",
+    "cagr_over_dd": 0.111
+   },
+   "decades_cagr_pct": {
+    "1920s": 19.78,
+    "1930s": -11.28,
+    "1940s": 14.89,
+    "1950s": 33.94,
+    "1960s": 10.27,
+    "1970s": 2.55,
+    "1980s": 20.57,
+    "1990s": 28.43,
+    "2000s": -9.42,
+    "2010s": 23.71,
+    "2020s": 22.23
+   },
+   "worst_years_pct": {
+    "1929": -40.2,
+    "1930": -53.9,
+    "1931": -73.2,
+    "1932": -35.3,
+    "1937": -61.4,
+    "1973": -41.2,
+    "1974": -54.5,
+    "1987": -12.3,
+    "2000": -31.6,
+    "2001": -28.8,
+    "2002": -42.8,
+    "2008": -66.8,
+    "2020": 33.5,
+    "2022": -41.5
+   }
+  },
+  "info_1x_above_200d": {
+   "from": "19270304",
+   "to": "20260831",
+   "growth_of_1": 29925.7,
+   "cagr_pct": 10.91,
+   "max_drawdown_pct": -34.0,
+   "worst_drop_bottom": "19330318",
+   "cagr_over_dd": 0.321,
+   "switches_per_year": 5.65,
+   "time_invested_pct": 72.5,
+   "halves": {
+    "1927-1975": {
+     "from": "19270304",
+     "to": "19751231",
+     "growth_of_1": 198.71,
+     "cagr_pct": 11.45,
+     "max_drawdown_pct": -34.0,
+     "worst_drop_bottom": "19330318",
+     "cagr_over_dd": 0.336
+    },
+    "1976-2026": {
+     "from": "19760102",
+     "to": "20260831",
+     "growth_of_1": 150.6,
+     "cagr_pct": 10.4,
+     "max_drawdown_pct": -31.8,
+     "worst_drop_bottom": "20030416",
+     "cagr_over_dd": 0.327
+    }
+   },
+   "since_1990": {
+    "from": "19900102",
+    "to": "20260831",
+    "growth_of_1": 20.11,
+    "cagr_pct": 8.53,
+    "max_drawdown_pct": -31.8,
+    "worst_drop_bottom": "20030416",
+    "cagr_over_dd": 0.268
+   },
+   "since_2000": {
+    "from": "20000103",
+    "to": "20260831",
+    "growth_of_1": 4.84,
+    "cagr_pct": 6.1,
+    "max_drawdown_pct": -31.8,
+    "worst_drop_bottom": "20030416",
+    "cagr_over_dd": 0.191
+   },
+   "decades_cagr_pct": {
+    "1920s": 23.62,
+    "1930s": 7.71,
+    "1940s": 9.48,
+    "1950s": 16.01,
+    "1960s": 9.79,
+    "1970s": 9.98,
+    "1980s": 18.44,
+    "1990s": 15.31,
+    "2000s": 1.37,
+    "2010s": 7.4,
+    "2020s": 11.55
+   },
+   "worst_years_pct": {
+    "1929": 3.1,
+    "1930": -3.3,
+    "1931": -1.1,
+    "1932": -3.4,
+    "1937": -5.7,
+    "1973": -6.8,
+    "1974": 8.1,
+    "1987": 16.2,
+    "2000": -17.0,
+    "2001": 1.9,
+    "2002": -7.8,
+    "2008": -2.1,
+    "2020": 13.9,
+    "2022": -13.1
+   }
+  },
+  "info_3x_above_200d": {
+   "from": "19270304",
+   "to": "20260831",
+   "growth_of_1": 681682115.51,
+   "cagr_pct": 22.68,
+   "max_drawdown_pct": -78.2,
+   "worst_drop_bottom": "19350411",
+   "cagr_over_dd": 0.29,
+   "switches_per_year": 5.65,
+   "time_invested_pct": 72.5,
+   "halves": {
+    "1927-1975": {
+     "from": "19270304",
+     "to": "19751231",
+     "growth_of_1": 113229.73,
+     "cagr_pct": 26.91,
+     "max_drawdown_pct": -78.2,
+     "worst_drop_bottom": "19350411",
+     "cagr_over_dd": 0.344
+    },
+    "1976-2026": {
+     "from": "19760102",
+     "to": "20260831",
+     "growth_of_1": 6020.35,
+     "cagr_pct": 18.74,
+     "max_drawdown_pct": -74.8,
+     "worst_drop_bottom": "20030416",
+     "cagr_over_dd": 0.251
+    }
+   },
+   "since_1990": {
+    "from": "19900102",
+    "to": "20260831",
+    "growth_of_1": 229.01,
+    "cagr_pct": 15.98,
+    "max_drawdown_pct": -74.8,
+    "worst_drop_bottom": "20030416",
+    "cagr_over_dd": 0.214
+   },
+   "since_2000": {
+    "from": "20000103",
+    "to": "20260831",
+    "growth_of_1": 13.3,
+    "cagr_pct": 10.19,
+    "max_drawdown_pct": -74.8,
+    "worst_drop_bottom": "20030416",
+    "cagr_over_dd": 0.136
+   },
+   "decades_cagr_pct": {
+    "1920s": 62.54,
+    "1930s": 11.52,
+    "1940s": 27.48,
+    "1950s": 46.41,
+    "1960s": 20.64,
+    "1970s": 15.19,
+    "1980s": 33.94,
+    "1990s": 32.95,
+    "2000s": -4.1,
+    "2010s": 17.06,
+    "2020s": 24.01
+   },
+   "worst_years_pct": {
+    "1929": -9.4,
+    "1930": -13.5,
+    "1931": -3.4,
+    "1932": -34.8,
+    "1937": -16.8,
+    "1973": -29.0,
+    "1974": 8.1,
+    "1987": 32.0,
+    "2000": -53.3,
+    "2001": -1.2,
+    "2002": -24.2,
+    "2008": -9.3,
+    "2020": 32.8,
+    "2022": -35.4
+   }
+  },
+  "info_hold_3x": {
+   "from": "19270304",
+   "to": "20260831",
+   "growth_of_1": 92587.65,
+   "cagr_pct": 12.18,
+   "max_drawdown_pct": -99.9,
+   "worst_drop_bottom": "19320708",
+   "cagr_over_dd": 0.122,
+   "switches_per_year": 0.0,
+   "time_invested_pct": 100.0,
+   "halves": {
+    "1927-1975": {
+     "from": "19270304",
+     "to": "19751231",
+     "growth_of_1": 33.5,
+     "cagr_pct": 7.46,
+     "max_drawdown_pct": -99.9,
+     "worst_drop_bottom": "19320708",
+     "cagr_over_dd": 0.075
+    },
+    "1976-2026": {
+     "from": "19760102",
+     "to": "20260831",
+     "growth_of_1": 2763.55,
+     "cagr_pct": 16.93,
+     "max_drawdown_pct": -98.0,
+     "worst_drop_bottom": "20090309",
+     "cagr_over_dd": 0.173
+    }
+   },
+   "since_1990": {
+    "from": "19900102",
+    "to": "20260831",
+    "growth_of_1": 180.07,
+    "cagr_pct": 15.22,
+    "max_drawdown_pct": -98.0,
+    "worst_drop_bottom": "20090309",
+    "cagr_over_dd": 0.155
+   },
+   "since_2000": {
+    "from": "20000103",
+    "to": "20260831",
+    "growth_of_1": 6.92,
+    "cagr_pct": 7.53,
+    "max_drawdown_pct": -98.0,
+    "worst_drop_bottom": "20090309",
+    "cagr_over_dd": 0.077
+   },
+   "decades_cagr_pct": {
+    "1920s": 18.49,
+    "1930s": -27.03,
+    "1940s": 19.85,
+    "1950s": 51.49,
+    "1960s": 12.11,
+    "1970s": -1.76,
+    "1980s": 22.01,
+    "1990s": 38.55,
+    "2000s": -21.04,
+    "2010s": 32.69,
+    "2020s": 24.69
+   },
+   "worst_years_pct": {
+    "1929": -62.9,
+    "1930": -71.6,
+    "1931": -88.5,
+    "1932": -62.7,
+    "1937": -78.8,
+    "1973": -57.9,
+    "1974": -72.3,
+    "1987": -32.6,
+    "2000": -49.8,
+    "2001": -45.1,
+    "2002": -61.1,
+    "2008": -85.3,
+    "2020": 26.6,
+    "2022": -59.6
+   }
+  }
+ },
+ "checks": {
+  "1_cagr_at_least_2pts_higher": true,
+  "2_worst_drop_no_worse": true,
+  "3_cagr_over_dd_higher": true,
+  "4_higher_cagr_both_halves": true
+ },
+ "verdict_pass": true,
+ "real_fund_check": {
+  "simulated_2x_spy_vs_actual_SSO": {
+   "simulated": {
+    "from": "20160104",
+    "to": "20251231",
+    "growth_of_1": 7.98,
+    "cagr_pct": 23.11,
+    "max_drawdown_pct": -58.7,
+    "worst_drop_bottom": "20200323",
+    "cagr_over_dd": 0.394
+   },
+   "actual_SSO": {
+    "from": "20160104",
+    "to": "20251231",
+    "growth_of_1": 7.97,
+    "cagr_pct": 23.1,
+    "max_drawdown_pct": -59.2,
+    "worst_drop_bottom": "20200323",
+    "cagr_over_dd": 0.39
+   },
+   "cagr_gap_pts": 0.01
+  },
+  "qqq_version_real_funds": {
+   "QLD_above_200d_else_tbills": {
+    "from": "20161018",
+    "to": "20251231",
+    "growth_of_1": 11.27,
+    "cagr_pct": 30.12,
+    "max_drawdown_pct": -41.8,
+    "worst_drop_bottom": "20190604",
+    "cagr_over_dd": 0.721,
+    "switches": 38
+   },
+   "hold_QQQ": {
+    "from": "20161018",
+    "to": "20251231",
+    "growth_of_1": 5.63,
+    "cagr_pct": 20.65,
+    "max_drawdown_pct": -35.0,
+    "worst_drop_bottom": "20221103",
+    "cagr_over_dd": 0.59
+   },
+   "hold_QLD": {
+    "from": "20161018",
+    "to": "20251231",
+    "growth_of_1": 13.61,
+    "cagr_pct": 32.81,
+    "max_drawdown_pct": -63.7,
+    "worst_drop_bottom": "20221228",
+    "cagr_over_dd": 0.515
+   },
+   "hold_SPY": {
+    "from": "20161018",
+    "to": "20251231",
+    "growth_of_1": 3.71,
+    "cagr_pct": 15.32,
+    "max_drawdown_pct": -33.8,
+    "worst_drop_bottom": "20200323",
+    "cagr_over_dd": 0.453
+   }
+  }
+ }
+}
