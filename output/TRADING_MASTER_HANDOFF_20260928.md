@@ -457,3 +457,8 @@ Everything below was read-only unless stated otherwise.
   - **The owner's ~$40k 2026 profit was on LITE ("Lumentum, not momentum").** Explained: it came mostly from LITE's +150% year (+196% through Oct 5), not the swing method. Without LITE's 10 best days the year was −27%. Western Digital's Oct 2 drop checked: −10.2%, then +6.5% by Oct 5 (not +20%).
   - **Pre-declared test #19 (buy big drops in strong stocks): FAILED all 5.** $102.5k vs SPY $261.6k; −53% worst drop. +20% hit 28%; another −10% 52%.
   - **The verifier caught a tie-break bug after the first run** (rounded vs exact drop, 26 tied events). Fixed in 89aca16 and disclosed; the verdict was unchanged ($99.7k → $102.5k).
+- **Oct 6:**
+  - **Pre-declared test #20 (the LITE business fingerprint: sales growth that suddenly speeds up): FAILED all 3.** $213.8k vs SPY $260.0k (2020 – Sep 2026); −46% worst drop.
+    - Found MU (rank 21 in May 2024) and SNDK. Missed LITE because of a hole in SEC's frames data; with the hole fixed (info only), it ranks 12th in Sep 2025 at $159 and the account ends at $226k, still failing.
+    - Two data fixes were made before any result (same-tag growth, stale filers); disclosed in the plan.
+  - **Test #21 (Stocks in Play ORB) download started** after the owner's approval ("I gave approval for the test so anyone download"). Plan adb90c8, code 4296e5a.

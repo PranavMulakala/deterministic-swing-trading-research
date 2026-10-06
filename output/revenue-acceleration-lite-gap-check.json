@@ -1,0 +1,39 @@
+{
+ "note": "after the result, information only",
+ "lite_apr_jun_2024_revenue": 308300000,
+ "strategy": {
+  "final": 225974,
+  "total_pct": 126.0,
+  "cagr_pct": 12.86,
+  "max_drawdown_pct": -46.2,
+  "cagr_over_dd": 0.278
+ },
+ "spy": {
+  "final": 260001,
+  "total_pct": 160.0,
+  "cagr_pct": 15.24,
+  "max_drawdown_pct": -33.8,
+  "cagr_over_dd": 0.451
+ },
+ "halves": {
+  "strategy": {
+   "2020-2022": 41.0,
+   "2023-2026": 60.3
+  },
+  "spy": {
+   "2020-2022": 23.9,
+   "2023-2026": 109.9
+  }
+ },
+ "checks": {
+  "1_cagr_above_spy": false,
+  "2_cagr_over_dd_above_spy": false,
+  "3_beats_spy_in_both_halves": false
+ },
+ "passes": false,
+ "lite_held_after_formations": [
+  "2025-09-30",
+  "2025-10-31",
+  "2025-11-28"
+ ]
+}
