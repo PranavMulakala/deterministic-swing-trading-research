@@ -66,3 +66,22 @@
 - **Nothing changes in Plan B, the bots, MNQ or the EP watch.**
 
 **Score:** 17 pre-declared tests. Only #14 passed (and it ties the market since 2000).
+
+## 2026 alone (added after the owner asked "shouldn't we compare since January?"; information only)
+**Dec 31, 2025 close → Sep 28, 2026 close:**
+
+| | Return |
+|---|---|
+| Strategy | **+56.4%** |
+| **SMH** | **+66.6%** |
+| QQQ | +20.3% |
+| SPY | +13.2% |
+
+**Hindsight, single stocks:** SNDK +622%, MRNA +569%, AXTI +351%, MU +270%, LITE +150%.
+
+- **The strategy did hold this year's momentum names:**
+  - Jan: OPEN, ONDS, SNDK, LITE, BE;
+  - Apr: AXTI, SNDK, LITE, AAOI, CIEN;
+  - Jul: SNDK, MXL, AXTI, MU, AAOI.
+- **It peaked at $700,103 on May 5** (about +175% for the year), then fell **63% to $260,918 by July 29** in the summer chip selloff.
+- **Even in the year most favourable to momentum, it finished behind simply holding SMH.**
