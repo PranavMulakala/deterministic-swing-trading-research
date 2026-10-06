@@ -6,6 +6,9 @@ indicator("Plan B helper: LITE dip rule + my levels", shorttitle="PlanB", overla
 // TradingView's data feed differs slightly from the bot's IEX feed, so a borderline day can disagree.
 // Daily charts: plots the 50-day average instead (so this one script replaces the built-in SMA).
 // Written flat (no indented blocks) so it survives being typed into the editor.
+// The -20% check line shows on daily charts only (on intraday charts it squashed the price axis). Values stay
+// off the status line to keep the legend short; the lines and their price labels still show.
+noStatus = display.all - display.status_line
 fillPrice = input.float(0.0, "My LITE fill price (0 = no position)", minval=0.0, step=0.01)
 targetPct = input.float(2.0, "Sell target, % above fill", minval=0.1, step=0.5)
 checkPct = input.float(20.0, "Check level, % below fill", minval=1.0, step=1.0)
@@ -25,15 +28,15 @@ dayOpen := openBar ? open : dayOpen
 winLow := openBar ? low : inWindow and not na(winLow) ? math.min(winLow, low) : winLow
 fired = decisionBar and not na(dayOpen) and winLow <= dayOpen * 0.99 and close < dayOpen
 noFire = decisionBar and not na(dayOpen) and not fired
-plot(intra ? dayOpen : na, "Today's 9:30 open", color.new(color.gray, 0), 1, plot.style_linebr)
-plot(intra ? dayOpen * 0.99 : na, "Open -1% (dip line)", color.new(color.orange, 0), 1, plot.style_linebr)
-plotshape(fired, "Dip rule SIGNAL", shape.labelup, location.belowbar, color.new(color.green, 0), text="SIGNAL", textcolor=color.white, size=size.small)
-plotshape(noFire, "No signal", shape.circle, location.abovebar, color.new(color.gray, 40), size=size.tiny)
-plot(timeframe.isdaily ? ta.sma(close, 50) : na, "50-day average", color.new(color.blue, 0), 2)
+plot(intra ? dayOpen : na, "Today's 9:30 open", color.new(color.gray, 0), 1, plot.style_linebr, display=noStatus)
+plot(intra ? dayOpen * 0.99 : na, "Open -1% (dip line)", color.new(color.orange, 0), 1, plot.style_linebr, display=noStatus)
+plotshape(fired, "Dip rule SIGNAL", shape.labelup, location.belowbar, color.new(color.green, 0), text="SIGNAL", textcolor=color.white, size=size.small, display=noStatus)
+plotshape(noFire, "No signal", shape.circle, location.abovebar, color.new(color.gray, 40), size=size.tiny, display=noStatus)
+plot(timeframe.isdaily ? ta.sma(close, 50) : na, "50-day average", color.new(color.blue, 0), 2, display=noStatus)
 hasFill = syminfo.ticker == "LITE" and fillPrice > 0
-plot(hasFill ? fillPrice : na, "My fill", color.new(color.blue, 0), 1)
-plot(hasFill ? fillPrice * (1 + targetPct / 100) : na, "Sell target", color.new(color.green, 0), 2)
-plot(hasFill ? fillPrice * (1 - checkPct / 100) : na, "Check level", color.new(color.red, 0), 2)
+plot(hasFill ? fillPrice : na, "My fill", color.new(color.blue, 0), 1, display=noStatus)
+plot(hasFill ? fillPrice * (1 + targetPct / 100) : na, "Sell target", color.new(color.green, 0), 2, display=noStatus)
+plot(hasFill and timeframe.isdaily ? fillPrice * (1 - checkPct / 100) : na, "Check level", color.new(color.red, 0), 2, display=noStatus)
 // ---- Levels traders watch for taking profit (added Oct 6; all optional) ----
 // Yesterday's regular-session high, low and close (from this chart's own bars), today's premarket high and low
 // (4:00-9:30 New York; turn on extended hours on the chart), and a small triangle when a bar pokes past yesterday's
@@ -65,13 +68,13 @@ pmh := firstPre ? high : inPre ? math.max(pmh, high) : pmh
 pml := firstPre ? low : inPre ? math.min(pml, low) : pml
 sweptHigh = showLevels and inRegular and high > pdh and close < pdh
 sweptLow = showLevels and inRegular and low < pdl and close > pdl
-plot(showLevels and intra ? pdh : na, "Yesterday's high", color.new(color.red, 0), 1, plot.style_stepline)
-plot(showLevels and intra ? pdl : na, "Yesterday's low", color.new(color.green, 0), 1, plot.style_stepline)
-plot(showLevels and intra ? pdc : na, "Yesterday's close", color.new(color.gray, 40), 1, plot.style_stepline)
-plot(showLevels and intra ? pmh : na, "Premarket high", color.new(color.purple, 0), 1, plot.style_stepline)
-plot(showLevels and intra ? pml : na, "Premarket low", color.new(color.teal, 0), 1, plot.style_stepline)
-plotshape(sweptHigh, "Swept yesterday's high", shape.triangledown, location.abovebar, color.new(color.red, 0), size=size.tiny)
-plotshape(sweptLow, "Swept yesterday's low", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.tiny)
+plot(showLevels and intra ? pdh : na, "Yesterday's high", color.new(color.red, 0), 1, plot.style_stepline, display=noStatus)
+plot(showLevels and intra ? pdl : na, "Yesterday's low", color.new(color.green, 0), 1, plot.style_stepline, display=noStatus)
+plot(showLevels and intra ? pdc : na, "Yesterday's close", color.new(color.gray, 40), 1, plot.style_stepline, display=noStatus)
+plot(showLevels and intra ? pmh : na, "Premarket high", color.new(color.purple, 0), 1, plot.style_stepline, display=noStatus)
+plot(showLevels and intra ? pml : na, "Premarket low", color.new(color.teal, 0), 1, plot.style_stepline, display=noStatus)
+plotshape(sweptHigh, "Swept yesterday's high", shape.triangledown, location.abovebar, color.new(color.red, 0), size=size.tiny, display=noStatus)
+plotshape(sweptLow, "Swept yesterday's low", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.tiny, display=noStatus)
 showVwap = input.bool(true, "Show VWAP (today's volume-weighted average price)")
 vwapNow = ta.vwap(hlc3)
-plot(showVwap and intra ? vwapNow : na, "VWAP", color.new(color.olive, 0), 1)
+plot(showVwap and intra ? vwapNow : na, "VWAP", color.new(color.olive, 0), 1, display=noStatus)
