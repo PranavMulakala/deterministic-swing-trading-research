@@ -446,3 +446,10 @@ Everything below was read-only unless stated otherwise.
   - **LITE vs SMH** (`LITE_VS_SMH_20261005.md`): since Jan 2020, $10k → LITE $137.7k vs SMH $93.0k. But from 2020 to the end of 2024, LITE was $10.6k vs SMH $35.4k: the lead is all from 2025–26.
   - **The owner set the post-COVID window (from Jan 2, 2020) as the default from now on,** with the full history as the stress test (memory `analysis-window-default`).
   - **Pre-declared test #17** (top 5 strongest LITE-like stocks monthly vs SMH): **FAILED all 3.** $399k vs SMH $865k; −84% vs −45%. It caught the 2020–21 mania, then fell 84%. Verifier exact.
+- **Oct 5 (late evening):**
+  - **Three YouTube videos reviewed** (`YOUTUBE_THREE_VIDEOS_NOTES_20261005.md`):
+    - JackTrades PO3 / prop-firm "no losing day": skip (tiny targets, survivorship, same family as the failed CRT);
+    - Trade Your Edge fence bar: tested;
+    - Ross Cameron's Oct 5 recap: commentary. Our scanner flagged SAIQ (−20% after 9:35) and MI (+130%).
+  - **Pre-declared test #18, the fence bar: FAILED** on both QQQ and SPY long (QQQ $92.9k, SPY $96.1k vs holding SPY $260.6k, 2020–2026). It hits its 2× target 32–33% of the time, about break-even before costs. All variants fail. Verifier exact.
+  - **Owner's "final" LITE question answered:** no test found a way to pick the next LITE in advance. Evidence points to owning the theme via SMH and sizing single names; not advice.
