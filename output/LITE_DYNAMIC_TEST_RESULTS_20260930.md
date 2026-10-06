@@ -77,3 +77,17 @@ Profit means realized profit plus the value of any position still open at the en
 - **Skip signals near LITE earnings** (raised Oct 4; next report Nov 10).
 - **Market filter: QQQ's move before 10:00** (from Sept 28).
 - **The bot's learning-only fields** (`rebound_learning_only`, `volume_ratio_learning_only`): check them on the 8 weeks of forward data.
+- **Sell at +3% or +4%, or split the sale 60% at +2% and 40% at +3–4%** (owner, Oct 6, after selling at +2% and watching LITE run to $1,121).
+  - **How it was checked:** a descriptive look (`research/lite_dip_history_v1/target_compare.py`) on the same signals and buys as the replay: $60,000 per buy, one position at a time, no stop. The +2% baseline matches the replay exactly.
+
+  | Realized profit | 2025 | 2026 (to Sep 28) | 2022–24 stress | $1,000 weeks, 2025–26 |
+  |---|---|---|---|---|
+  | All at +2% (today) | $50.4k | $76.4k | $65.3k | **53 of 92** |
+  | All at +3% | $56.4k | **$87.9k** | $41.9k | 44 |
+  | All at +4% | **$62.5k** | $60.5k | $45.7k | 34 |
+  | 60% at +2%, 40% at +3% | $45.6k | $72.9k | $29.2k | 41 |
+  | 60% at +2%, 40% at +4% | $45.8k | $46.0k | $29.2k | 28 |
+
+  - **Higher targets won in parts of the boom but lost badly in 2022–24:** +3% made $23k less than +2% there, with average holds of 39 days against 9.
+  - **Every alternative gave fewer $1,000 weeks.**
+  - **Splits were never the most profitable.** The unsold 40% keeps the position open, which blocks the next buy, though splits roughly halved the worst drop.

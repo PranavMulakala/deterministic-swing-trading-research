@@ -1,0 +1,233 @@
+{
+ "note": "descriptive look, not a pre-declared test; Plan B unchanged (formula freeze)",
+ "windows": {
+  "boom_2025_2026": {
+   "all at +2% (today's rule)": {
+    "buys": 92,
+    "completed_sales": 92,
+    "realized_profit": 125568,
+    "marked_profit_at_end": 125568,
+    "weeks_with_1000_plus_realized": 53,
+    "weeks": 92,
+    "worst_drop_from_peak": -24597,
+    "average_days_held": 3.7,
+    "still_open_at_end": false
+   },
+   "all at +3%": {
+    "buys": 67,
+    "completed_sales": 66,
+    "realized_profit": 132820,
+    "marked_profit_at_end": 131851,
+    "weeks_with_1000_plus_realized": 44,
+    "weeks": 92,
+    "worst_drop_from_peak": -28431,
+    "average_days_held": 5.4,
+    "still_open_at_end": true
+   },
+   "all at +4%": {
+    "buys": 43,
+    "completed_sales": 42,
+    "realized_profit": 109500,
+    "marked_profit_at_end": 103568,
+    "weeks_with_1000_plus_realized": 34,
+    "weeks": 92,
+    "worst_drop_from_peak": -28431,
+    "average_days_held": 6.8,
+    "still_open_at_end": true
+   },
+   "60% at +2%, 40% at +3%": {
+    "buys": 67,
+    "completed_sales": 66,
+    "realized_profit": 109143,
+    "marked_profit_at_end": 108749,
+    "weeks_with_1000_plus_realized": 41,
+    "weeks": 92,
+    "worst_drop_from_peak": -21185,
+    "average_days_held": 5.4,
+    "still_open_at_end": true
+   },
+   "60% at +2%, 40% at +4%": {
+    "buys": 43,
+    "completed_sales": 42,
+    "realized_profit": 81712,
+    "marked_profit_at_end": 79360,
+    "weeks_with_1000_plus_realized": 28,
+    "weeks": 92,
+    "worst_drop_from_peak": -11355,
+    "average_days_held": 6.8,
+    "still_open_at_end": true
+   }
+  },
+  "year_2025": {
+   "all at +2% (today's rule)": {
+    "buys": 38,
+    "completed_sales": 37,
+    "realized_profit": 50402,
+    "marked_profit_at_end": 46535,
+    "weeks_with_1000_plus_realized": 24,
+    "weeks": 53,
+    "worst_drop_from_peak": -24597,
+    "average_days_held": 5.0,
+    "still_open_at_end": true
+   },
+   "all at +3%": {
+    "buys": 28,
+    "completed_sales": 27,
+    "realized_profit": 56422,
+    "marked_profit_at_end": 52555,
+    "weeks_with_1000_plus_realized": 21,
+    "weeks": 53,
+    "worst_drop_from_peak": -28431,
+    "average_days_held": 7.5,
+    "still_open_at_end": true
+   },
+   "all at +4%": {
+    "buys": 25,
+    "completed_sales": 24,
+    "realized_profit": 62450,
+    "marked_profit_at_end": 58583,
+    "weeks_with_1000_plus_realized": 21,
+    "weeks": 53,
+    "worst_drop_from_peak": -28431,
+    "average_days_held": 8.6,
+    "still_open_at_end": true
+   },
+   "60% at +2%, 40% at +3%": {
+    "buys": 28,
+    "completed_sales": 27,
+    "realized_profit": 45562,
+    "marked_profit_at_end": 41695,
+    "weeks_with_1000_plus_realized": 19,
+    "weeks": 53,
+    "worst_drop_from_peak": -11355,
+    "average_days_held": 7.5,
+    "still_open_at_end": true
+   },
+   "60% at +2%, 40% at +4%": {
+    "buys": 25,
+    "completed_sales": 24,
+    "realized_profit": 45805,
+    "marked_profit_at_end": 41938,
+    "weeks_with_1000_plus_realized": 18,
+    "weeks": 53,
+    "worst_drop_from_peak": -11355,
+    "average_days_held": 8.6,
+    "still_open_at_end": true
+   }
+  },
+  "year_2026": {
+   "all at +2% (today's rule)": {
+    "buys": 56,
+    "completed_sales": 56,
+    "realized_profit": 76362,
+    "marked_profit_at_end": 76362,
+    "weeks_with_1000_plus_realized": 29,
+    "weeks": 40,
+    "worst_drop_from_peak": -21185,
+    "average_days_held": 2.6,
+    "still_open_at_end": false
+   },
+   "all at +3%": {
+    "buys": 45,
+    "completed_sales": 44,
+    "realized_profit": 87921,
+    "marked_profit_at_end": 86952,
+    "weeks_with_1000_plus_realized": 25,
+    "weeks": 40,
+    "worst_drop_from_peak": -21185,
+    "average_days_held": 3.4,
+    "still_open_at_end": true
+   },
+   "all at +4%": {
+    "buys": 24,
+    "completed_sales": 23,
+    "realized_profit": 60478,
+    "marked_profit_at_end": 54545,
+    "weeks_with_1000_plus_realized": 15,
+    "weeks": 40,
+    "worst_drop_from_peak": -24834,
+    "average_days_held": 3.3,
+    "still_open_at_end": true
+   },
+   "60% at +2%, 40% at +3%": {
+    "buys": 45,
+    "completed_sales": 44,
+    "realized_profit": 72887,
+    "marked_profit_at_end": 72493,
+    "weeks_with_1000_plus_realized": 25,
+    "weeks": 40,
+    "worst_drop_from_peak": -21185,
+    "average_days_held": 3.4,
+    "still_open_at_end": true
+   },
+   "60% at +2%, 40% at +4%": {
+    "buys": 24,
+    "completed_sales": 23,
+    "realized_profit": 45975,
+    "marked_profit_at_end": 43622,
+    "weeks_with_1000_plus_realized": 13,
+    "weeks": 40,
+    "worst_drop_from_peak": -9848,
+    "average_days_held": 3.3,
+    "still_open_at_end": true
+   }
+  },
+  "stress_2022_2024": {
+   "all at +2% (today's rule)": {
+    "buys": 52,
+    "completed_sales": 51,
+    "realized_profit": 65263,
+    "marked_profit_at_end": 61756,
+    "weeks_with_1000_plus_realized": 41,
+    "weeks": 157,
+    "worst_drop_from_peak": -22736,
+    "average_days_held": 8.7,
+    "still_open_at_end": true
+   },
+   "all at +3%": {
+    "buys": 18,
+    "completed_sales": 17,
+    "realized_profit": 41914,
+    "marked_profit_at_end": 38407,
+    "weeks_with_1000_plus_realized": 15,
+    "weeks": 157,
+    "worst_drop_from_peak": -30273,
+    "average_days_held": 38.6,
+    "still_open_at_end": true
+   },
+   "all at +4%": {
+    "buys": 16,
+    "completed_sales": 15,
+    "realized_profit": 45695,
+    "marked_profit_at_end": 42187,
+    "weeks_with_1000_plus_realized": 15,
+    "weeks": 157,
+    "worst_drop_from_peak": -30273,
+    "average_days_held": 44.4,
+    "still_open_at_end": true
+   },
+   "60% at +2%, 40% at +3%": {
+    "buys": 18,
+    "completed_sales": 17,
+    "realized_profit": 29155,
+    "marked_profit_at_end": 25647,
+    "weeks_with_1000_plus_realized": 10,
+    "weeks": 157,
+    "worst_drop_from_peak": -11784,
+    "average_days_held": 38.6,
+    "still_open_at_end": true
+   },
+   "60% at +2%, 40% at +4%": {
+    "buys": 16,
+    "completed_sales": 15,
+    "realized_profit": 29224,
+    "marked_profit_at_end": 25716,
+    "weeks_with_1000_plus_realized": 9,
+    "weeks": 157,
+    "worst_drop_from_peak": -11784,
+    "average_days_held": 44.4,
+    "still_open_at_end": true
+   }
+  }
+ }
+}
