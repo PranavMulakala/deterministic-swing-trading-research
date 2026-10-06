@@ -4,7 +4,8 @@
   PYTHONPATH=src:. .venv/bin/python -m research.stocks_in_play_orb_v1.fetch [--pilot]
 
 0. SPY daily bars (dividend-adjusted) for the benchmark and the trading calendar.
-1. Daily bars, raw and split-adjusted, Nov 16, 2015 - Oct 2, 2026, for the 5,262 stocks on disk.
+1. Daily bars, raw and split-adjusted, Nov 16, 2015 - Oct 2, 2026, for the 5,259 stocks on disk (the folder also
+   holds two bitcoin price files, saved there on Sep 30; they aren't stocks and are skipped).
 2. The 9:30-9:35 bar (raw) each day for every stock passing the daily filters that day or within its next 14 trading
    days (relative volume needs 14 days of history). The price filter here uses the daily open > $4.50; the exact $5
    rule is applied later to the 9:30 bar's own open.
@@ -36,6 +37,7 @@ NY, UTC = ZoneInfo("America/New_York"), ZoneInfo("UTC")
 FIRST, LAST, TEST_START = "2015-11-16", "2026-10-02", "2016-01-04"
 SLACK_PRICE, CHUNK, SPARE, BATCH = 4.50, 400, 25, 50
 PILOT = ["NVDA", "AAPL", "LITE", "TSLA", "AMC", "GME"]
+NOT_STOCKS = {"SPY", "BTCUSD", "BTCUSD_BITSTAMP"}                 # SPY is fetched separately as the benchmark
 
 
 class Client:
@@ -115,7 +117,7 @@ def main():
     ap.add_argument("--last-day", default=LAST)
     args = ap.parse_args()
     base, client = base_dir(args.pilot), Client()
-    symbols = PILOT if args.pilot else sorted(p.name[:-7] for p in STOCK_DIR.glob("*.csv.gz") if p.name != "SPY.csv.gz")
+    symbols = PILOT if args.pilot else sorted(p.name[:-7] for p in STOCK_DIR.glob("*.csv.gz") if p.name[:-7] not in NOT_STOCKS)
     spy_path = base / "SPY_all.json.gz"
     if not spy_path.exists():
         rows = client.bars(["SPY"], "1Day", f"{FIRST}T00:00:00Z", f"{LAST}T23:59:00Z", "all")["SPY"]

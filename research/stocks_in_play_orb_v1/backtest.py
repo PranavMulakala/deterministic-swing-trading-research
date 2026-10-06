@@ -18,7 +18,7 @@ import math
 
 from research.provenance_v1.provenance import write_manifest
 from research.stocks_in_play_orb_v1.data import ROOT, base_dir, calendar, load, metric_table, save, selections
-from research.stocks_in_play_orb_v1.fetch import FIRST, LAST, TEST_START
+from research.stocks_in_play_orb_v1.fetch import FIRST, LAST, NOT_STOCKS, TEST_START
 from research.stocks_in_play_orb_v1.rules import TOP_N, direction
 
 OUT = ROOT / "output/stocks-in-play-orb-test-results.json"
@@ -186,7 +186,7 @@ def main():
     cal = calendar(base)
     spy = load(base / "SPY_all.json.gz")
     spy = {"date": spy["date"], "close": [b[3] for b in spy["bars"]]}
-    symbols = sorted(p.name[:-8] for p in (base / "daily").glob("*.json.gz"))
+    symbols = sorted(p.name[:-8] for p in (base / "daily").glob("*.json.gz") if p.name[:-8] not in NOT_STOCKS)
     table = metric_table(base, symbols, cal)
     picks = selections(base, table, cal, TOP_N, TEST_START)
     plan, data_checks = plans(base, picks)
