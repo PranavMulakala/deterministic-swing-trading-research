@@ -1,0 +1,66 @@
+# The LITE business fingerprint: buy companies whose sales growth suddenly speeds up. Pre-declared test #20 plan (October 5, 2026)
+
+- **Written and committed before any revenue data was downloaded and before any result.** Research only; no orders.
+- **Owner's request:** "Yes, do test 20, please" (Oct 5). It comes from the question "can we pattern-match what happened with Lumentum?"
+- **Why this, not a chart pattern:** right before its run, LITE's chart looked dead. It was $84 at the end of 2024, 23% below its 2021 high and level with 2019. What changed was the **business**: AI data centers suddenly needed its lasers, and sales growth sped up quarter after quarter.
+- **Independent evidence:** earnings and revenue momentum (Chan, Jegadeesh & Lakonishok 1996; Jegadeesh & Livnat 2006) — stocks with accelerating or surprising sales tend to keep doing slightly better for months. The effect is modest, and weaker in recent decades.
+
+## Data
+- **Quarterly revenue for every SEC filer:** from SEC EDGAR's free XBRL "frames" API (`data.sec.gov/api/xbrl/frames/us-gaap/<concept>/USD/CY<year>Q<n>.json`), calendar quarters 2015 Q1 – 2026 Q2. Annual frames are used for Q4 (Q4 = year − Q1 − Q2 − Q3 when all four exist and the result is positive).
+  - **Revenue tags, in priority order:** `RevenueFromContractWithCustomerExcludingAssessedTax`, `Revenues`, `SalesRevenueNet`, `RevenueFromContractWithCustomerIncludingAssessedTax`.
+  - **The download needs the owner's OK first.** The size will be measured on a pilot. The User-Agent is the same approved name and Gmail as test #16.
+- **When each figure counts as known:** **90 days after the quarter ends.** That's conservative: 10-Q/10-K deadlines are 40–90 days and earnings releases come earlier, so it never uses numbers before they were public.
+- **Prices:** the daily bars on disk for 5,259 US stocks (adjusted). SEC company IDs are matched to tickers with SEC's own ticker list. SPY, SMH and QQQ come from the fresh benchmark files.
+
+## The fingerprint (checked at each month-end, using only revenue known by then)
+For the latest known quarter (Q0) and the two before it (Q−1, Q−2), with growth measured against the same quarter a year earlier:
+1. **Real size:** Q0 revenue ≥ **$50M** (no tiny base effects).
+2. **Fast:** Q0 growth ≥ **+25%**.
+3. **Speeding up:** Q0 growth is at least **10 points faster** than Q−1's, **and** Q−1's growth was at least as fast as Q−2's (two quarters in a row of faster growth).
+4. **Tradeable:** average dollar volume over the prior 60 trading days ≥ **$20M**.
+
+## The portfolio
+- Each month, rank flagged companies by **how much growth sped up** (Q0 minus Q−1). Hold the **top 20, equal weight (5% each)**. **Empty slots are held in SPY.**
+- **Timing:** signals at the month-end close; trades at the **next trading day's open**; costs 0.1% per side.
+
+## Windows (the owner's post-COVID default)
+- **Main (decides the verdict):** Jan 2, 2020 – Sep 28, 2026. Halves: **2020–2022** and **2023–2026**.
+- **Stress check:** Jan 2017 (the first month with enough history) – Sep 2026.
+
+## Pass checks (main window, vs holding SPY from the same open)
+1. **More growth:** a yearly growth rate above SPY's.
+2. **More growth per unit of pain:** growth ÷ |worst drop| above SPY's.
+3. **Not one lucky stretch:** beats SPY in **both halves**.
+
+**Labels:**
+- **PASS (robust):** it also beats SPY on growth ÷ worst drop in the stress window.
+- **PASS (post-COVID only):** it passes the main window only.
+- **FAIL:** any check fails.
+
+**Required before trusting a PASS:** the price data only has stocks still listed in 2026, which flatters this rule. A PASS must be re-checked with delisted stocks (another download, the owner's OK first).
+
+**Nothing will be tuned afterwards:** no other growth cut-offs, sizes, lags, holding counts or tags.
+
+## Also reported (information only, decided now)
+- **Comparisons:** vs SMH and QQQ.
+- **Variants:**
+  - top **10** instead of 20;
+  - **no "speeding up" requirement** (just ≥25% growth);
+  - a **"hasn't run yet" filter** (12-month price gain under 100%);
+  - a **60-day** lag instead of 90.
+- **Detail:**
+  - how many companies are flagged each month;
+  - months with SPY slots;
+  - the most-held stocks;
+  - yearly returns.
+- **A case check:** was LITE (or MU, SNDK) flagged, and when?
+- Provenance manifest.
+
+## Checks
+- **Unit tests:**
+  - growth and acceleration maths;
+  - the Q4 calculation;
+  - the 90-day availability rule;
+  - ranking and SPY filling;
+  - next-open trades with costs.
+- **An independent recount:** the flagged list for 4 random month-ends from the raw SEC files, plus the whole value path re-chained with separate code.
