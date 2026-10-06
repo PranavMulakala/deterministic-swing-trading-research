@@ -64,3 +64,9 @@ For the latest known quarter (Q0) and the two before it (Q−1, Q−2), with gro
   - ranking and SPY filling;
   - next-open trades with costs.
 - **An independent recount:** the flagged list for 4 random month-ends from the raw SEC files, plus the whole value path re-chained with separate code.
+
+## Correction before any result (Oct 5, after the download, before any backtest)
+- **What went wrong:** the first version derived the missing quarter as "calendar year − calendar Q1–Q3". That only works for January–December fiscal years.
+- **Who it hurt:** companies like LITE (June year-end) and MU (September year-end) never tag their **fiscal** Q4, so they lost one quarter a year and would rarely have been flagged.
+- **Fixed** (`research/revenue_accel_v1/revenue.py`): the missing quarter is now the **fiscal-year total minus the three tagged quarters inside that fiscal year** (matched by their own start and end dates), labelled by the calendar quarter holding its midpoint (SEC's own labelling).
+- **Checked on raw quarters only:** LITE now has its April–June quarters and MU its June–August quarters. No fingerprint or return was computed before the fix.
