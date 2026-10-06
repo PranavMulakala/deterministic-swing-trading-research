@@ -70,3 +70,23 @@
   - same-bar handling;
   - sizing with the cap.
 - **An independent recount** of 15 random days: selection and trades, from the raw files with separate code. Plus the account re-chained from the trade list.
+
+## Implementation notes (Oct 6, written with the code, before the download finished and before any result)
+- **Split-safe filters:** the 14-day ATR and average volume are computed from split-adjusted daily bars and converted to each day's own units with that day's split factor, so a split never fakes a huge range or a volume jump. The opening relative volume's 14-day history is scaled the same way.
+  - The $5 rule uses the 9:30 bar's own open.
+  - A stock that was fetched but had no 9:30 bar counts as 0 opening volume that day; any unfetched day in its history means no relative volume.
+- **Entries:** allowed on any later 5-minute bar until the close. The fill is the level, or the bar's open if it opens past it. The stop is 10% of the ATR from the actual fill. The close exit is the last regular-session bar's close.
+- **Same-bar rule, made precise:**
+  - On the entry bar a stop is **certain** if the fill was at the bar's open, or the bar closed past the stop.
+  - Only "the low touched the stop after a mid-bar fill" is ambiguous. The main run assumes the stop (as declared); the flip version is information.
+  - A 6-stock pilot showed this is common, because 10% of the ATR is a tight stop for 5-minute bars. If only the flip version passes, a 1-minute re-check would be needed before trusting it.
+- **Sizing:** whole shares, sized on the day's starting equity.
+- **SPY benchmark:** close to close over the same dates (as in test #18).
+- **Halves for the information windows:**
+  - 2016–2019 / 2020–2023 (the paper's period);
+  - 2024 / 2025–2026 (after the paper).
+- **Code:** `research/stocks_in_play_orb_v1/`:
+  - `rules.py`, `data.py` and `fetch.py` (download);
+  - `backtest.py`;
+  - `test_backtest.py` (10 unit tests);
+  - `verify.py` (independent recount; smoke-tested on the pilot data only).
