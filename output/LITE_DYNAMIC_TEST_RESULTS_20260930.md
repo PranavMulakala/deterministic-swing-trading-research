@@ -91,3 +91,7 @@ Profit means realized profit plus the value of any position still open at the en
   - **Higher targets won in parts of the boom but lost badly in 2022–24:** +3% made $23k less than +2% there, with average holds of 39 days against 9.
   - **Every alternative gave fewer $1,000 weeks.**
   - **Splits were never the most profitable.** The unsold 40% keeps the position open, which blocks the next buy, though splits roughly halved the worst drop.
+- **Time of day** (owner, Oct 6; descriptive, `LITE_INTRADAY_TIMING_20261006.md`; 743 days, Oct 2023 – Sep 2026).
+  - Moves and the day's high and low cluster in the first and last 30 minutes.
+  - No time slot is reliably up or down: none survives correction, and the strongest flip sign between halves.
+  - On 291 Plan B signal days, the low came after 10:00 on 76% of them, at unpredictable times.
