@@ -1,0 +1,50 @@
+{
+  "created_utc": "2026-10-06T05:34:31+00:00",
+  "git_commit": "9db28760b9b39cb1ea6ac74feedd21a92d899450",
+  "code_uncommitted": false,
+  "params": {
+    "top_n": 20,
+    "risk": 0.01,
+    "stop_atr": 0.1,
+    "cap": 0.05,
+    "commission": 0.0035,
+    "slip": 0.0001,
+    "main": [
+      "2020-01-02",
+      "2026-10-02"
+    ],
+    "data_first": "2015-11-16"
+  },
+  "files": {
+    "research/stocks_in_play_orb_v1/backtest.py": {
+      "kind": "code",
+      "bytes": 13973,
+      "sha256": "a40c3c4822b715f81e5c8a34692cd6efee9f4a85c65b4f99b3916199c1cb7d47"
+    },
+    "research/stocks_in_play_orb_v1/rules.py": {
+      "kind": "code",
+      "bytes": 2413,
+      "sha256": "9701a4d2649900f5c70a50ac2a5cd3800acf00b52025d1614e46ea4d8d6361e1"
+    },
+    "research/stocks_in_play_orb_v1/data.py": {
+      "kind": "code",
+      "bytes": 3903,
+      "sha256": "64b9c7e22a8457f991786761c5fd2affecbb2ee5ae06186aedb32fafc9e5a989"
+    },
+    "research/stocks_in_play_orb_v1/fetch.py": {
+      "kind": "code",
+      "bytes": 8829,
+      "sha256": "b9e281c2206394859fad143dfe87bedca3ae440f659a4857041ca10a7b426adc"
+    },
+    "outputs/orb_play_data/SPY_all.json.gz": {
+      "kind": "data",
+      "bytes": 51226,
+      "sha256": "74a99a3245ebce888d1510f14559f0ba124e145443969c8da00001f13703143d"
+    },
+    "outputs/orb_play_data/results_detail.json.gz": {
+      "kind": "data",
+      "bytes": 2879711,
+      "sha256": "42363706be0a40e135f514545fdd77efc87c0e5fe6b0238c60607fccce78ad85"
+    }
+  }
+}

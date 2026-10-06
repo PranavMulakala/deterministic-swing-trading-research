@@ -462,3 +462,8 @@ Everything below was read-only unless stated otherwise.
     - Found MU (rank 21 in May 2024) and SNDK. Missed LITE because of a hole in SEC's frames data; with the hole fixed (info only), it ranks 12th in Sep 2025 at $159 and the account ends at $226k, still failing.
     - Two data fixes were made before any result (same-tag growth, stale filers); disclosed in the plan.
   - **Test #21 (Stocks in Play ORB) download started** after the owner's approval ("I gave approval for the test so anyone download"). Plan adb90c8, code 4296e5a.
+  - **Test #19 disclosure:** two bitcoin price files (from the Sep 30 SMA test) sit in `outputs/breakout_data/`. #19 counted bitcoin as a stock (2 of 955 trades). Without it: $82.0k, still FAIL. No other test used them.
+  - **Pre-declared test #21 (Stocks in Play ORB): FAILED.**
+    - 5-minute bars: $13.3k as declared vs SPY $260.6k. 79% of trades ended on the entry bar, where the order of buy and stop is unknown.
+    - The pre-declared 1-minute re-check: $33.7k as declared. Best case $242k (+14%/yr, −6% drop, PF 1.26), still below SPY.
+    - The paper's 4× version is wiped out or worth $35M depending only on that assumption. Verifier exact on both runs.
