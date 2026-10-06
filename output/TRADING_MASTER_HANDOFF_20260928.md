@@ -453,3 +453,7 @@ Everything below was read-only unless stated otherwise.
     - Ross Cameron's Oct 5 recap: commentary. Our scanner flagged SAIQ (−20% after 9:35) and MI (+130%).
   - **Pre-declared test #18, the fence bar: FAILED** on both QQQ and SPY long (QQQ $92.9k, SPY $96.1k vs holding SPY $260.6k, 2020–2026). It hits its 2× target 32–33% of the time, about break-even before costs. All variants fail. Verifier exact.
   - **Owner's "final" LITE question answered:** no test found a way to pick the next LITE in advance. Evidence points to owning the theme via SMH and sizing single names; not advice.
+- **Oct 5 (night):**
+  - **The owner's ~$40k 2026 profit was on LITE ("Lumentum, not momentum").** Explained: it came mostly from LITE's +150% year (+196% through Oct 5), not the swing method. Without LITE's 10 best days the year was −27%. Western Digital's Oct 2 drop checked: −10.2%, then +6.5% by Oct 5 (not +20%).
+  - **Pre-declared test #19 (buy big drops in strong stocks): FAILED all 5.** $102.5k vs SPY $261.6k; −53% worst drop. +20% hit 28%; another −10% 52%.
+  - **The verifier caught a tie-break bug after the first run** (rounded vs exact drop, 26 tied events). Fixed in 89aca16 and disclosed; the verdict was unchanged ($99.7k → $102.5k).
