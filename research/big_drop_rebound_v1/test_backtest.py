@@ -73,5 +73,21 @@ class PortfolioTest(unittest.TestCase):
         self.assertEqual(skipped["no_slot_or_cash"], 2)
 
 
+    def test_ranks_by_the_exact_drop_not_a_rounded_one(self):
+        cal = weekdays(221)
+        a = stock(UP + [UP[-1] * 0.879994] + [UP[-1] * 0.88] * 10)      # -12.0006%
+        b = stock(UP + [UP[-1] * 0.880004] + [UP[-1] * 0.88] * 10)      # -11.9996%: same when rounded to 0.01%
+        stocks = {"AAA": b, "ZZZ": a}                                    # alphabetical order would pick AAA first
+        evts = events(stocks, (cal[210], cal[220]))
+        import research.big_drop_rebound_v1.backtest as bt
+        old = bt.MAX_POS
+        bt.MAX_POS = 1
+        try:
+            trades, _, _ = portfolio(evts, stocks, cal, (cal[210], cal[220]))
+        finally:
+            bt.MAX_POS = old
+        self.assertEqual([t["symbol"] for t in trades], ["ZZZ"])         # the bigger exact drop wins the only slot
+
+
 if __name__ == "__main__":
     unittest.main()

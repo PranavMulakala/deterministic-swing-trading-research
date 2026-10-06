@@ -88,7 +88,7 @@ def events(stocks, window, entry_at="close", target_on=True, uptrend=True, cost=
                 continue
             res = outcome(b, i, entry_at, target_on, cost, last_day=window[1])
             if res:
-                out.append({"symbol": s, "drop_pct": round(100 * drop, 2), **res})
+                out.append({"symbol": s, "drop": drop, "drop_pct": round(100 * drop, 2), **res})
     return out
 
 
@@ -108,7 +108,7 @@ def portfolio(evts, stocks, calendar, window, entry_at="close"):
 
     def entries(d):
         nonlocal cash
-        for e in sorted(by_entry.get(d, []), key=lambda e: (e["drop_pct"], e["symbol"])):
+        for e in sorted(by_entry.get(d, []), key=lambda e: (e["drop"], e["symbol"])):     # exact drop, biggest first
             if e["symbol"] in held:
                 skipped["already_held"] += 1
                 continue
