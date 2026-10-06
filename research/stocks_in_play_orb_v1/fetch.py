@@ -11,8 +11,9 @@
 3. Full regular-session 5-minute bars (raw) for each day's 25 highest relative volumes under the exact rules
    (the test trades the top 20; 5 spare).
 
-Stored under outputs/orb_play_data/ (gitignored). Resumable: finished files are skipped. Paced under Alpaca's
-free-plan limit (200 requests/minute) on 3 threads; failed pages are retried with backoff.
+Stored under outputs/orb_play_data/ (gitignored). Resumable: finished files are skipped, a day file missing any stock
+it now needs is topped up, and a stage that ends with failures stops the run so a rerun can finish it first. Paced
+under Alpaca's free-plan limit (200 requests/minute) on 3 threads; failed pages are retried with backoff.
 """
 from __future__ import annotations
 
@@ -131,34 +132,45 @@ def main():
                                                     "split": [spl[d] for d in days]})
 
     todo = [s for s in symbols if not (base / "daily" / f"{s}.json.gz").exists()]
-    pool(client, daily, [todo[i:i + BATCH] for i in range(0, len(todo), BATCH)], "1 daily")
+    if pool(client, daily, [todo[i:i + BATCH] for i in range(0, len(todo), BATCH)], "1 daily"):
+        raise SystemExit("stage 1 incomplete: rerun to retry")
     table = metric_table(base, symbols, cal)
     need = need_by_day(table, cal, args.first_day, SLACK_PRICE)
     span = [g for g, d in enumerate(cal) if d <= args.last_day and need[g]]
     print(json.dumps({"stage": "2 plan", "days": len(span), "symbol_days": sum(len(need[g]) for g in span),
                       "requests_about": sum(-(-len(need[g]) // CHUNK) for g in span)}), flush=True)
 
+    def have(path, key):
+        return set(load(path)[key]) if path.exists() else set()
+
     def opening(g):
-        day, syms, found = cal[g], sorted(need[g]), {}
+        day = cal[g]
+        path = base / "open5" / f"{day}.json.gz"
+        old = load(path) if path.exists() else {"requested": [], "bars": {}}
+        syms, found = sorted(need[g] - set(old["requested"])), dict(old["bars"])
         for i in range(0, len(syms), CHUNK):
             for s, rows in client.bars(syms[i:i + CHUNK], "5Min", utc(day, 570), utc(day, 574), "raw").items():
                 for r in rows:
                     if minute_et(r["t"]) == 570:
                         found[s] = ohlcv(r)
-        save(base / "open5" / f"{day}.json.gz", {"requested": syms, "bars": found})
+        save(path, {"requested": sorted(set(old["requested"]) | need[g]), "bars": found})
 
-    failed = pool(client, opening, [g for g in span if not (base / "open5" / f"{cal[g]}.json.gz").exists()], "2 open5")
+    todo = [g for g in span if need[g] - have(base / "open5" / f"{cal[g]}.json.gz", "requested")]
+    failed = pool(client, opening, todo, "2 open5")
     if failed:
         raise SystemExit("stage 2 incomplete: rerun to retry")
     picks = selections(base, table, cal, SPARE, args.first_day)
 
     def full_day(day):
-        syms, out = [p[0] for p in picks[day]], {}
+        path = base / "day5" / f"{day}.json.gz"
+        old = load(path) if path.exists() else {"symbols": [], "bars": {}}
+        syms, out = [p[0] for p in picks[day] if p[0] not in old["symbols"]], dict(old["bars"])
         for s, rows in client.bars(syms, "5Min", utc(day, 570), utc(day, 955), "raw").items():
             out[s] = [[minute_et(r["t"])] + ohlcv(r) for r in rows if 570 <= minute_et(r["t"]) < 960]
-        save(base / "day5" / f"{day}.json.gz", {"symbols": syms, "bars": out})
+        save(path, {"symbols": sorted(set(old["symbols"]) | set(syms)), "bars": out})
 
-    days = [d for d in picks if d <= args.last_day and picks[d] and not (base / "day5" / f"{d}.json.gz").exists()]
+    days = [d for d in picks if d <= args.last_day and picks[d]
+            and {p[0] for p in picks[d]} - have(base / "day5" / f"{d}.json.gz", "symbols")]
     failed = pool(client, full_day, days, "3 day5")
     print(json.dumps({"finished": not failed, "requests": client.requests}), flush=True)
 
