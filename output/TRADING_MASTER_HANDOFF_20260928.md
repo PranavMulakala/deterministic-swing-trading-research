@@ -470,3 +470,11 @@ Everything below was read-only unless stated otherwise.
   - **Owner's LITE decision (Oct 6, theirs):** sell 27 of 46.13 shares at the +2% target ($1,105.63) and let ~19 ride without a stop (a manual deviation from Plan B; log it separately). Evidence given: the Sep 30 test found "let winners run" mixed (worse in 2025, better in 2026). Oct 5 volume was 0.63× its average, not a spike.
   - **Pre-declared test #22 (levels, sweeps, volume spikes; a correlation study): nothing passed.** Levels are a coin flip vs nearby prices. The volume-spike hint (+0.9% over 5 days) isn't significant after correction.
   - **TradingView helper updated** (`research/tradingview_v1/plan_b_helper.pine`): yesterday's high/low/close, premarket high/low, sweep triangles, VWAP. The desktop app is view-only for computer use, so the script went to the clipboard for the owner to paste.
+  - **The owner's LITE trade closed Oct 6.** 46.127588 shares bought at $1,083.95 ($50,000) were sold as:
+    - 27 at $1,105.63 (limit);
+    - 19 at $1,106.56 (limit);
+    - 0.127588 at $1,104.74 (market).
+    - Proceeds $51,016.54, so **profit +$1,016.54 (+2.03%)**. LITE then ran to $1,121.
+  - **10:00 bot:** SOLD_AT_TARGET (paper) and NO_SIGNAL. The TradingView helper showed a borderline SIGNAL from its own data feed; the bot decides.
+  - **TradingView helper v3 installed:** the check line shows on daily charts only, values are off the status line, the chart is set to New York time, and the fill input is 0 (no position).
+  - **Parked idea, descriptive look:** +3%/+4% targets and 60/40 splits. Mixed: better in parts of 2025–26, much worse in 2022–24, and fewer $1,000 weeks. Details in `LITE_DYNAMIC_TEST_RESULTS_20260930.md`.
