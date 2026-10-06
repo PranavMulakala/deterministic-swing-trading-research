@@ -441,3 +441,8 @@ Everything below was read-only unless stated otherwise.
   - **Dates:** events Oct 6, 2026 – Jan 8, 2027; tracking until Feb 12, 2027, then one "finished" email. **Then disable the timers** and write the final results doc.
   - **Honest note given to the owner:** the exact rule trades about twice a year, so the forward event log (every liquid 10%+ gap-up, 10:30 price → day-5/day-20 vs SPY) is the real measurement.
   - **Tailscale again:** it dropped and recovered (the relay switched to a direct path). If SSH hangs, use `-o ServerAliveInterval=5`.
+- **Oct 5 (evening):**
+  - **Volatility screen:** 31 big stocks besides LITE swing 4%+ a day; 10 of 31 fell over the year; median worst drop −56% (`VOLATILE_STOCKS_SCREEN_20261005.md`).
+  - **LITE vs SMH** (`LITE_VS_SMH_20261005.md`): since Jan 2020, $10k → LITE $137.7k vs SMH $93.0k. But from 2020 to the end of 2024, LITE was $10.6k vs SMH $35.4k: the lead is all from 2025–26.
+  - **The owner set the post-COVID window (from Jan 2, 2020) as the default from now on,** with the full history as the stress test (memory `analysis-window-default`).
+  - **Pre-declared test #17** (top 5 strongest LITE-like stocks monthly vs SMH): **FAILED all 3.** $399k vs SMH $865k; −84% vs −45%. It caught the 2020–21 mania, then fell 84%. Verifier exact.
