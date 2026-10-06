@@ -8,7 +8,7 @@
   - `fetch1m.py`, `backtest1m.py` (1-minute re-check);
   - 11 unit tests;
   - `verify.py`, an independent recount.
-  - All committed before each run (4296e5a, f9ccae6, 87196fc, 11298f8, fb29645).
+  - All committed before each run (4296e5a, f9ccae6, 87196fc, 11298f8, 06c2b3b, fb29645).
 - **Data:** Alpaca SIP, Jan 2016 – Oct 2, 2026, for the 5,259 stocks on disk (two bitcoin files in that folder were excluded). About 15,000 requests in total (the plan estimated 49,000; batching 400 stocks per request cut it):
   - raw and split-adjusted daily bars;
   - each stock's 9:30–9:35 bar on every day it could qualify (2.6M stock-days);
