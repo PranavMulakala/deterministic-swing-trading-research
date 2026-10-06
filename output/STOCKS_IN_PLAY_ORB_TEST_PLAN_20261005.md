@@ -90,3 +90,20 @@
   - `backtest.py`;
   - `test_backtest.py` (10 unit tests);
   - `verify.py` (independent recount; smoke-tested on the pilot data only).
+
+## 1-minute re-check (added Oct 6, ~1:50 AM: after the 5-minute result, before any 1-minute data was downloaded)
+- **Why:** on 5-minute bars, the declared "assume the stop" rule decided almost everything.
+  - **79% of long trades** (11,026 of 13,892) counted as stopped out on their entry bar.
+  - 66% of those were unresolvable from 5-minute bars. In **45%, the only "touch" was the bar's opening price, which came before the entry.**
+  - The declared version lost 87% ($13.3k). The flip version passed every check: +31.1%/yr, −4.4% worst drop.
+  - As the implementation notes said, a flip-only pass needs a 1-minute re-check before anyone trusts it.
+- **Data:** Alpaca SIP 1-minute bars (raw), 9:35–16:00, for each day's unchanged top-20 picks, Jan 4, 2016 – Oct 2, 2026. One request per day, about 2,700 requests. The owner's download approval covers this test.
+- **Rule:** identical. The opening range stays the 9:30–9:35 candle; only entries, stops and the close exit are tracked on 1-minute bars. The same-bar rule is identical, applied to 1-minute bars:
+  - certain stops always count;
+  - an ambiguous touch assumes the stop (decides);
+  - the flip version is information.
+- **How it is read (decided now):**
+  - **Passes all 5 checks** (main window, long-only, cash, stop assumed): the flip pass is confirmed. The label is "PASS (robust)" or "PASS (2020–2023 only)" by the 2024–2026 rule.
+  - **Fails with the stop assumed but passes with the flip:** still unresolved (would need tick data); **counted as FAIL.**
+  - **Fails both:** FAIL.
+- **Nothing else changes:** no other ranges, stops, picks or costs.
