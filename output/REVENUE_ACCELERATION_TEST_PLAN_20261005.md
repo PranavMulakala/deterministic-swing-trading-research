@@ -70,3 +70,18 @@ For the latest known quarter (Q0) and the two before it (Q−1, Q−2), with gro
 - **Who it hurt:** companies like LITE (June year-end) and MU (September year-end) never tag their **fiscal** Q4, so they lost one quarter a year and would rarely have been flagged.
 - **Fixed** (`research/revenue_accel_v1/revenue.py`): the missing quarter is now the **fiscal-year total minus the three tagged quarters inside that fiscal year** (matched by their own start and end dates), labelled by the calendar quarter holding its midpoint (SEC's own labelling).
 - **Checked on raw quarters only:** LITE now has its April–June quarters and MU its June–August quarters. No fingerprint or return was computed before the fix.
+
+## Second correction before any result (Oct 6, before any backtest run)
+Found while writing the code, by inspecting the revenue data only (no prices, no returns):
+- **Mixed revenue tags.** The first version merged the four tags into one series per company, so a quarter could be compared with its year-ago quarter under a **different** tag.
+  - That happened in **9% of year-over-year comparisons** (13,469 of 152,421).
+  - Where a company reports 2+ tags for the same quarter, they **disagree by more than 2% in 31%** of cases (e.g. total revenue vs contract revenue only).
+  - A rule that ranks by the **biggest** speed-up would preferentially pick these fake jumps.
+  - **Fixed:** each growth rate now compares a quarter with its year-ago quarter under the **same tag** (the first tag, in priority order, that has both). The size check uses the same tag's revenue.
+- **Stale numbers.** A company that stopped filing (e.g. switched to foreign accounting) would keep its last fingerprint forever.
+  - **Fixed:** the latest known quarter must have ended within **200 days** of the month-end. 200 days still allows a normal company whose newest quarter is just short of the 90-day wait.
+- **Implementation details fixed now:**
+  - In the "no speeding-up requirement" variant, companies are ranked by **growth itself**.
+  - The "hasn't run yet" variant needs 12 months of prices (otherwise skipped).
+  - A pick with no price bar at the next open gives its slot to SPY (counted in the results).
+- **Known limitation (not fixable with this data):** SEC frames hold the **latest filed** number for each quarter. A later restatement can replace what investors saw at the time, which is mild look-ahead of unknown direction.

@@ -1,9 +1,9 @@
 """Quarterly revenue per company from the saved SEC frames (test #20). Pure functions; no network.
 
-For each calendar quarter, a company's revenue comes from the highest-priority revenue tag that has it. A fiscal
-year's untagged quarter is derived per tag as the fiscal-year total minus its three tagged quarters (by their own dates,
-so June or September fiscal years work too). Each value keeps its period end date, which decides when it counts as known
-(period end + the plan's lag).
+Each revenue tag keeps its own quarterly series, so a growth rate always compares a quarter with its year-ago quarter
+under the same tag (the first tag, in priority order, that has both). A fiscal year's untagged quarter is derived per tag
+as the fiscal-year total minus its three tagged quarters (by their own dates, so June or September fiscal years work
+too). Each value keeps its period end date, which decides when it counts as known (period end + the plan's lag).
 """
 from __future__ import annotations
 
@@ -44,22 +44,21 @@ def quarter_label(start, end):
 
 
 def quarterly(frames):
-    """{cik: {"2024Q3": (end_date, revenue), ...}}: the first revenue tag (priority order) wins each quarter.
+    """{cik: [{"2024Q3": (end_date, revenue), ...} for each revenue tag, in priority order]}.
 
     A fiscal year's missing quarter (its Q4, whatever the calendar) is derived per tag as the fiscal-year total minus
     the three quarters of the same tag that fall inside it (all dated by their own start/end); result must be > 0."""
     result = {}
-    for c in CONCEPTS:
+    for k, c in enumerate(CONCEPTS):
         qrows, yrows = frames.get(c, {}).get("q", {}), frames.get(c, {}).get("y", {})
         for cik, rows in qrows.items():
+            series = result.setdefault(cik, [{} for _ in CONCEPTS])[k]
             for label, start, end, val in rows:
-                result.setdefault(cik, {}).setdefault(label, (end, val))
-        for cik, years in yrows.items():
-            mine = qrows.get(cik, [])
-            for ys, ye, total in years:
+                series.setdefault(label, (end, val))
+            for ys, ye, total in yrows.get(cik, []):
                 lo = date.fromisoformat(ys) - timedelta(days=10)
                 hi = date.fromisoformat(ye) + timedelta(days=10)
-                inside = [r for r in mine if date.fromisoformat(r[1]) >= lo and date.fromisoformat(r[2]) <= hi]
+                inside = [r for r in rows if date.fromisoformat(r[1]) >= lo and date.fromisoformat(r[2]) <= hi]
                 if len(inside) != 3:
                     continue
                 missing = total - sum(r[3] for r in inside)
@@ -67,7 +66,7 @@ def quarterly(frames):
                 if missing <= 0 or last_end >= date.fromisoformat(ye):
                     continue
                 start = (last_end + timedelta(days=1)).isoformat()
-                result.setdefault(cik, {}).setdefault(quarter_label(start, ye), (ye, missing))
+                series.setdefault(quarter_label(start, ye), (ye, missing))
     return result
 
 
@@ -77,26 +76,34 @@ def prev_label(label, back=1):
     return f"{n // 4}Q{n % 4 + 1}"
 
 
-def fingerprint(quarters, as_of, lag_days=90):
-    """The plan's numbers for the latest quarter known by `as_of`, or None if any needed quarter is missing.
+def fingerprint(series, as_of, lag_days=90, max_age_days=200):
+    """The plan's numbers for the latest quarter known by `as_of`, or None if it's stale or a needed quarter is missing.
 
-    Returns (q0_revenue, g0, g1, g2) with growth versus the same quarter a year earlier."""
-    cutoff = date.fromisoformat(as_of) - timedelta(days=lag_days)
-    known = [lab for lab, (end, _) in quarters.items() if date.fromisoformat(end) <= cutoff]
-    if not known:
+    `series`: one company's per-tag quarterly revenue (from `quarterly`). Only quarters that ended at least `lag_days`
+    before `as_of` count. Q0 is the latest of them under any tag; it must have ended within `max_age_days` of `as_of`
+    (a company that stopped filing isn't current). Each growth rate uses the first tag holding both the quarter and its
+    year-ago quarter. Returns (q0_revenue, g0, g1, g2); q0_revenue is from the tag used for g0."""
+    day = date.fromisoformat(as_of)
+    cutoff = day - timedelta(days=lag_days)
+    known = [{lab: v for lab, (end, v) in s.items() if date.fromisoformat(end) <= cutoff} for s in series]
+    ends = {}
+    for s in reversed(series):
+        for lab, (end, _) in s.items():
+            if date.fromisoformat(end) <= cutoff:
+                ends[lab] = end
+    if not ends:
         return None
-    q0 = max(known)
-    labels = [q0, prev_label(q0), prev_label(q0, 2)]
-    vals = []
-    for lab in labels:
+    q0 = max(ends)
+    if (day - date.fromisoformat(ends[q0])).days > max_age_days:
+        return None
+    out = []
+    for lab in (q0, prev_label(q0), prev_label(q0, 2)):
         year_ago = prev_label(lab, 4)
-        if lab not in quarters or year_ago not in quarters:
+        pair = next(((s[lab], s[year_ago]) for s in known if lab in s and year_ago in s), None)
+        if pair is None or pair[0] <= 0 or pair[1] <= 0:
             return None
-        now, before = quarters[lab][1], quarters[year_ago][1]
-        if now <= 0 or before <= 0:
-            return None
-        vals.append(now / before - 1)
-    return quarters[q0][1], vals[0], vals[1], vals[2]
+        out.append(pair)
+    return out[0][0], out[0][0] / out[0][1] - 1, out[1][0] / out[1][1] - 1, out[2][0] / out[2][1] - 1
 
 
 def flagged(fp, min_rev=50e6, min_growth=0.25, min_accel=0.10, need_accel=True):
