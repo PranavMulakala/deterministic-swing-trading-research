@@ -34,3 +34,43 @@ hasFill = syminfo.ticker == "LITE" and fillPrice > 0
 plot(hasFill ? fillPrice : na, "My fill", color.new(color.blue, 0), 1)
 plot(hasFill ? fillPrice * (1 + targetPct / 100) : na, "Sell target", color.new(color.green, 0), 2)
 plot(hasFill ? fillPrice * (1 - checkPct / 100) : na, "Check level", color.new(color.red, 0), 2)
+// ---- Levels traders watch for taking profit (added Oct 6; all optional) ----
+// Yesterday's regular-session high, low and close (from this chart's own bars), today's premarket high and low
+// (4:00-9:30 New York; turn on extended hours on the chart), and a small triangle when a bar pokes past yesterday's
+// high or low but closes back inside (a "sweep"). Our tests found such levels no more reliable than nearby prices
+// (tests #8, #9, #11, #12); they help plan exits, they don't predict.
+showLevels = input.bool(true, "Show yesterday's high/low/close + premarket high/low + sweeps")
+inRegular = intra and startMin >= 570 and startMin < 960
+inPre = intra and startMin >= 240 and startMin < 570
+firstPre = inPre and not inPre[1]
+var float dayHigh = na
+var float dayLow = na
+var float dayClose = na
+var float pdh = na
+var float pdl = na
+var float pdc = na
+var float pmh = na
+var float pml = na
+pdh := newDay ? dayHigh : pdh
+pdl := newDay ? dayLow : pdl
+pdc := newDay ? dayClose : pdc
+dayHigh := newDay ? na : dayHigh
+dayLow := newDay ? na : dayLow
+pmh := newDay ? na : pmh
+pml := newDay ? na : pml
+dayHigh := inRegular ? (na(dayHigh) ? high : math.max(dayHigh, high)) : dayHigh
+dayLow := inRegular ? (na(dayLow) ? low : math.min(dayLow, low)) : dayLow
+dayClose := inRegular ? close : dayClose
+pmh := firstPre ? high : inPre ? math.max(pmh, high) : pmh
+pml := firstPre ? low : inPre ? math.min(pml, low) : pml
+sweptHigh = showLevels and inRegular and high > pdh and close < pdh
+sweptLow = showLevels and inRegular and low < pdl and close > pdl
+plot(showLevels and intra ? pdh : na, "Yesterday's high", color.new(color.red, 0), 1, plot.style_stepline)
+plot(showLevels and intra ? pdl : na, "Yesterday's low", color.new(color.green, 0), 1, plot.style_stepline)
+plot(showLevels and intra ? pdc : na, "Yesterday's close", color.new(color.gray, 40), 1, plot.style_stepline)
+plot(showLevels and intra ? pmh : na, "Premarket high", color.new(color.purple, 0), 1, plot.style_stepline)
+plot(showLevels and intra ? pml : na, "Premarket low", color.new(color.teal, 0), 1, plot.style_stepline)
+plotshape(sweptHigh, "Swept yesterday's high", shape.triangledown, location.abovebar, color.new(color.red, 0), size=size.tiny)
+plotshape(sweptLow, "Swept yesterday's low", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.tiny)
+showVwap = input.bool(true, "Show VWAP (today's volume-weighted average price)")
+plot(showVwap and intra ? ta.vwap(hlc3) : na, "VWAP", color.new(color.olive, 0), 1)

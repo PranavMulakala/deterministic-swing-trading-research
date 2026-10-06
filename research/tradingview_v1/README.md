@@ -7,3 +7,4 @@
 - **Checked Oct 4 against the bot:** SIGNAL on Sept 30 (the bot bought); none on Sept 29, Oct 1 or Oct 2 (bot: NO_SIGNAL).
 - TradingView's consolidated data differs slightly from the bot's IEX bars (Oct 2 open $1,053.26 vs IEX $1,052.98), so borderline days can disagree. The bot's 10:00 email decides.
 - Written without indented blocks, so it can be typed into the editor safely.
+- **Added Oct 6 (same script, so still within the 2-indicator limit):** yesterday's high (red), low (green) and close (grey), today's premarket high (purple) and low (teal), small triangles when a bar pokes past yesterday's high or low but closes back inside (a "sweep"), and VWAP (olive). Turn on extended hours on the chart for the premarket lines. One input switches all of it off. Re-paste the whole script into the saved indicator to update it.
