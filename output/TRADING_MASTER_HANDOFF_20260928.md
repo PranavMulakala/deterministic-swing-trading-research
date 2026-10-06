@@ -467,3 +467,6 @@ Everything below was read-only unless stated otherwise.
     - 5-minute bars: $13.3k as declared vs SPY $260.6k. 79% of trades ended on the entry bar, where the order of buy and stop is unknown.
     - The pre-declared 1-minute re-check: $33.7k as declared. Best case $242k (+14%/yr, −6% drop, PF 1.26), still below SPY.
     - The paper's 4× version is wiped out or worth $35M depending only on that assumption. Verifier exact on both runs.
+  - **Owner's LITE decision (Oct 6, theirs):** sell 27 of 46.13 shares at the +2% target ($1,105.63) and let ~19 ride without a stop (a manual deviation from Plan B; log it separately). Evidence given: the Sep 30 test found "let winners run" mixed (worse in 2025, better in 2026). Oct 5 volume was 0.63× its average, not a spike.
+  - **Pre-declared test #22 (levels, sweeps, volume spikes; a correlation study): nothing passed.** Levels are a coin flip vs nearby prices. The volume-spike hint (+0.9% over 5 days) isn't significant after correction.
+  - **TradingView helper updated** (`research/tradingview_v1/plan_b_helper.pine`): yesterday's high/low/close, premarket high/low, sweep triangles, VWAP. The desktop app is view-only for computer use, so the script went to the clipboard for the owner to paste.
