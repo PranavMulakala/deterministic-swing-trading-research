@@ -25,6 +25,19 @@
 
 **Stress check since 2016:** $135,190 (+3.1%/yr, worst drop −52%) vs SPY $412,550.
 
+## A universe error found afterwards (Oct 6, while preparing test #21): bitcoin was counted as a stock
+- **What went wrong:** the stock-price folder also holds two **bitcoin** price files (`BTCUSD`, `BTCUSD_BITSTAMP`), saved there by the Sep 30 50-day-SMA test. This test read every file in the folder, so bitcoin counted as a stock.
+- **How much it mattered:** 3 of the 2,054 qualifying drops and **2 of the 955 trades** were bitcoin (Jan and May 2021), together **+$8.9k**.
+- **Re-run without them** (information only, `research/big_drop_rebound_v1/no_bitcoin_check.py` → `output/big-drop-rebound-no-bitcoin-check.json`):
+  - **$100k → $82,015** (−2.9%/yr), worst drop −51%, profit factor 0.97;
+  - since 2016: $71,962;
+  - **still failing all 5 checks.**
+- Removing 2 trades changed which stocks got the later slots, and the ending value moved by **$20k**. The same luck problem shows up again: tiny changes to the inputs swing this rule's result.
+- **The verdict (FAIL) is unchanged.** Other tests checked:
+  - #20 matches SEC tickers, so bitcoin was never in its universe;
+  - #17 never picked bitcoin;
+  - #15 and #16 don't use this list.
+
 ## Your question: is it a strategy or luck?
 **All 2,054 qualifying drops since 2020, each trade on its own:**
 
