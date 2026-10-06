@@ -73,4 +73,5 @@ plot(showLevels and intra ? pml : na, "Premarket low", color.new(color.teal, 0),
 plotshape(sweptHigh, "Swept yesterday's high", shape.triangledown, location.abovebar, color.new(color.red, 0), size=size.tiny)
 plotshape(sweptLow, "Swept yesterday's low", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.tiny)
 showVwap = input.bool(true, "Show VWAP (today's volume-weighted average price)")
-plot(showVwap and intra ? ta.vwap(hlc3) : na, "VWAP", color.new(color.olive, 0), 1)
+vwapNow = ta.vwap(hlc3)
+plot(showVwap and intra ? vwapNow : na, "VWAP", color.new(color.olive, 0), 1)
