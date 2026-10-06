@@ -85,24 +85,27 @@ def main():
     for s in CORE + ["MU"]:                                            # the split that matters: before 2025 vs after
         core[s]["2016 to end-2024"] = window_stats([p for p in data[s] if p[0] <= "2024-12-31"], "2015-12-31")
         core[s]["2025 to now"] = window_stats(data[s], "2024-12-31")
+        core[s]["since 2020 (post-COVID, main)"] = window_stats(data[s], "2019-12-31")
+        core[s]["2020 to end-2024"] = window_stats([p for p in data[s] if p[0] <= "2024-12-31"], "2019-12-31")
     years = {s: calendar_years(data[s]) for s in CORE}
     monthly = {}
     for s in ("LITE", "SMH", "SPY"):
         pts, seen = [], set()
         for d, c in data[s]:
-            if d >= windows["5 years"] and d[:7] not in seen:
+            if d > "2019-12-31" and d[:7] not in seen:
                 seen.add(d[:7])
                 pts.append((d, c))
         if pts[-1][0] != data[s][-1][0]:
             pts.append(data[s][-1])
-        base = [c for d, c in data[s] if d <= windows["5 years"]][-1]
+        base = [c for d, c in data[s] if d <= "2019-12-31"][-1]
         monthly[s] = [[d[:7], round(10_000 * c / base)] for d, c in pts]
     peer_rows = {}
     for s in peers + ["LITE", "MU"]:
         if s in data:
             peer_rows[s] = {w: window_stats(data[s], windows[w]) for w in ("1 year", "3 years", "5 years")}
+            peer_rows[s]["since 2020"] = window_stats(data[s], "2019-12-31")
     out = {"last_close": last, "windows": windows, "core": core, "calendar_years": years,
-           "growth_of_10k_monthly_since_5y": monthly, "lite_like": peer_rows}
+           "growth_of_10k_monthly_since_2020": monthly, "lite_like": peer_rows}
     OUT.write_text(json.dumps(out, indent=1) + "\n")
     for s in CORE + ["MU"]:
         print(s, json.dumps({w: (v and {k: v[k] for k in ("total_pct", "per_year_pct", "worst_drop_pct", "growth_per_drop")})
