@@ -1,0 +1,431 @@
+{
+ "plan": "output/LEVELS_SWEEPS_VOLUME_STUDY_PLAN_20261006.md",
+ "primary": [
+  {
+   "name": "H1 previous-day high stall",
+   "main": {
+    "effect": -0.0048458392227263,
+    "low": -0.00799170872624666,
+    "high": -0.001940589648005031,
+    "p": 0.001,
+    "days": 1697,
+    "p_holm": 0.005
+   },
+   "halves": {
+    "2020-2022": {
+     "effect": -0.006419847390046196,
+     "low": -0.010633830471583616,
+     "high": -0.002161031750960718,
+     "p": 0.008,
+     "days": 756
+    },
+    "2023-2026": {
+     "effect": -0.003831986384680408,
+     "low": -0.007571236724647212,
+     "high": 5.099639987704574e-05,
+     "p": 0.054,
+     "days": 941
+    }
+   },
+   "threshold": 0.05,
+   "real_correlation": false,
+   "stress_2016_2019": {
+    "effect": 0.0007889634521033306,
+    "low": -0.005202556408164027,
+    "high": 0.006824373495637026,
+    "p": 0.76,
+    "days": 878
+   }
+  },
+  {
+   "name": "H2 premarket high stall",
+   "main": {
+    "effect": 0.0015272913857501402,
+    "low": -0.0020680775931675166,
+    "high": 0.005025552598821537,
+    "p": 0.386,
+    "days": 1191,
+    "p_holm": 0.8639999999999999
+   },
+   "halves": {
+    "2022-2023": {
+     "effect": 0.0003206014459031792,
+     "low": -0.005311978521266247,
+     "high": 0.00544050936027668,
+     "p": 0.962,
+     "days": 500
+    },
+    "2024-2026": {
+     "effect": 0.0017224003729662263,
+     "low": -0.0027530265324522407,
+     "high": 0.006235003354401525,
+     "p": 0.476,
+     "days": 691
+    }
+   },
+   "threshold": 0.05,
+   "real_correlation": false
+  },
+  {
+   "name": "H3 yesterday's 1-hour candle high stall",
+   "main": {
+    "effect": -0.0034172322782467512,
+    "low": -0.009329149223499589,
+    "high": 0.002722556866921577,
+    "p": 0.288,
+    "days": 1191,
+    "p_holm": 0.8639999999999999
+   },
+   "halves": {
+    "2022-2023": {
+     "effect": -0.0018404080672562162,
+     "low": -0.011802644527852624,
+     "high": 0.0078026905528000845,
+     "p": 0.738,
+     "days": 500
+    },
+    "2024-2026": {
+     "effect": -0.005606098660098757,
+     "low": -0.012671702726195666,
+     "high": 0.0012906848328610998,
+     "p": 0.134,
+     "days": 691
+    }
+   },
+   "threshold": 0.05,
+   "real_correlation": false
+  },
+  {
+   "name": "H4 sweep of yesterday's low, next day",
+   "main": {
+    "effect": -3.153633331043391e-05,
+    "low": -0.00030243097263745746,
+    "high": 0.00023292780555277996,
+    "p": 0.856,
+    "days": 1696,
+    "p_holm": 0.8639999999999999
+   },
+   "halves": {
+    "2020-2022": {
+     "effect": -0.00027536762536755076,
+     "low": -0.0006478248225628367,
+     "high": 0.00011340911575894759,
+     "p": 0.166,
+     "days": 756
+    },
+    "2023-2026": {
+     "effect": 0.00013012524691438947,
+     "low": -0.00026120626767365943,
+     "high": 0.000485833329788284,
+     "p": 0.518,
+     "days": 940
+    }
+   },
+   "threshold": 0.0025,
+   "real_correlation": false,
+   "stress_2016_2019": {
+    "effect": 0.00017242354933031618,
+    "low": -0.00014331113618382192,
+    "high": 0.0005377940026485765,
+    "p": 0.334,
+    "days": 878
+   }
+  },
+  {
+   "name": "H5 up-day volume spike, next 5 days",
+   "main": {
+    "effect": 0.008959751012463291,
+    "low": 0.001017112168020863,
+    "high": 0.01726169943054424,
+    "p": 0.028,
+    "days": 1607,
+    "p_holm": 0.112
+   },
+   "halves": {
+    "2020-2022": {
+     "effect": 0.008432763493271137,
+     "low": -0.006165619291039107,
+     "high": 0.023805736855616082,
+     "p": 0.242,
+     "days": 710
+    },
+    "2023-2026": {
+     "effect": 0.009655387757836448,
+     "low": 0.00030882915954015566,
+     "high": 0.01958631472860571,
+     "p": 0.044,
+     "days": 897
+    }
+   },
+   "threshold": 0.0025,
+   "real_correlation": false,
+   "stress_2016_2019": {
+    "effect": 0.0074175216097724815,
+    "low": -0.00463490628825569,
+    "high": 0.018917478378872612,
+    "p": 0.212,
+    "days": 684
+   }
+  }
+ ],
+ "info": {
+  "momentum_h1_rates": {
+   "events": 281131,
+   "touched": 116675,
+   "reach_pct": 41.5,
+   "reach_pct_placebo_half_pct": 40.48,
+   "stall_pct": 50.51,
+   "stall_pct_placebos": 50.99,
+   "avg_close_vs_level_pct": -0.01
+  },
+  "momentum_pdl_support_rates": {
+   "events": 296446,
+   "touched": 110703,
+   "reach_pct": 37.34,
+   "reach_pct_placebo_half_pct": 37.12,
+   "stall_pct": 50.48,
+   "stall_pct_placebos": 51.29,
+   "avg_close_vs_level_pct": -0.05
+  },
+  "momentum_h4": {
+   "effect_pct": -0.0,
+   "events": 71472,
+   "avg_next_day_excess_pct": -0.01
+  },
+  "momentum_h4_mirror_pdh": {
+   "effect_pct": -0.02,
+   "events": 80498,
+   "avg_next_day_excess_pct": -0.03
+  },
+  "momentum_h5_1d": {
+   "effect_pct": 0.14,
+   "spikes": 4414,
+   "calm": 19568
+  },
+  "momentum_h5_down_1d": {
+   "effect_pct": 0.17,
+   "spikes": 4012,
+   "calm": 19859
+  },
+  "momentum_h5_5d": {
+   "effect_pct": 0.9,
+   "spikes": 4411,
+   "calm": 19523
+  },
+  "momentum_h5_down_5d": {
+   "effect_pct": -0.06,
+   "spikes": 4006,
+   "calm": 19810
+  },
+  "momentum_h5_20d": {
+   "effect_pct": 1.28,
+   "spikes": 4376,
+   "calm": 19228
+  },
+  "momentum_h5_down_20d": {
+   "effect_pct": 1.25,
+   "spikes": 3960,
+   "calm": 19567
+  },
+  "liquid_h1_rates": {
+   "events": 1422651,
+   "touched": 575229,
+   "reach_pct": 40.43,
+   "reach_pct_placebo_half_pct": 39.21,
+   "stall_pct": 50.63,
+   "stall_pct_placebos": 50.89,
+   "avg_close_vs_level_pct": -0.01
+  },
+  "liquid_pdl_support_rates": {
+   "events": 1461088,
+   "touched": 566999,
+   "reach_pct": 38.81,
+   "reach_pct_placebo_half_pct": 38.15,
+   "stall_pct": 50.47,
+   "stall_pct_placebos": 50.92,
+   "avg_close_vs_level_pct": -0.01
+  },
+  "liquid_h4": {
+   "effect_pct": -0.0,
+   "events": 367901,
+   "avg_next_day_excess_pct": -0.04
+  },
+  "liquid_h4_mirror_pdh": {
+   "effect_pct": -0.01,
+   "events": 387376,
+   "avg_next_day_excess_pct": -0.03
+  },
+  "liquid_h5_1d": {
+   "effect_pct": -0.15,
+   "spikes": 15408,
+   "calm": 63335
+  },
+  "liquid_h5_down_1d": {
+   "effect_pct": 0.03,
+   "spikes": 16410,
+   "calm": 60162
+  },
+  "liquid_h5_5d": {
+   "effect_pct": 0.36,
+   "spikes": 15388,
+   "calm": 63226
+  },
+  "liquid_h5_down_5d": {
+   "effect_pct": -0.11,
+   "spikes": 16380,
+   "calm": 60024
+  },
+  "liquid_h5_20d": {
+   "effect_pct": 0.05,
+   "spikes": 15285,
+   "calm": 62500
+  },
+  "liquid_h5_down_20d": {
+   "effect_pct": 0.19,
+   "spikes": 16204,
+   "calm": 59234
+  },
+  "intraday_main_h1_intraday_rates": {
+   "events": 100568,
+   "touched": 38853,
+   "reach_pct": 38.63,
+   "reach_pct_placebo_half_pct": 38.17,
+   "stall_pct": 50.64,
+   "stall_pct_placebos": 51.03,
+   "avg_close_vs_level_pct": 0.05
+  },
+  "intraday_main_h2_rates": {
+   "events": 103328,
+   "touched": 69123,
+   "reach_pct": 66.9,
+   "reach_pct_placebo_half_pct": 64.24,
+   "stall_pct": 51.0,
+   "stall_pct_placebos": 50.84,
+   "avg_close_vs_level_pct": 0.05
+  },
+  "intraday_main_h3_rates": {
+   "events": 91273,
+   "touched": 68395,
+   "reach_pct": 74.93,
+   "reach_pct_placebo_half_pct": 66.27,
+   "stall_pct": 50.72,
+   "stall_pct_placebos": 51.06,
+   "avg_close_vs_level_pct": 0.04
+  },
+  "intraday_main_h3_4h_rates": {
+   "events": 79046,
+   "touched": 44598,
+   "reach_pct": 56.42,
+   "reach_pct_placebo_half_pct": 52.78,
+   "stall_pct": 50.9,
+   "stall_pct_placebos": 51.34,
+   "avg_close_vs_level_pct": 0.04
+  },
+  "intraday_main_pml_support_rates": {
+   "events": 99028,
+   "touched": 70802,
+   "reach_pct": 71.5,
+   "reach_pct_placebo_half_pct": 68.3,
+   "stall_pct": 48.85,
+   "stall_pct_placebos": 48.92,
+   "avg_close_vs_level_pct": -0.03
+  },
+  "intraday_ai_hardware_h1_intraday_rates": {
+   "events": 10813,
+   "touched": 4272,
+   "reach_pct": 39.51,
+   "reach_pct_placebo_half_pct": 39.15,
+   "stall_pct": 47.89,
+   "stall_pct_placebos": 48.31,
+   "avg_close_vs_level_pct": 0.07
+  },
+  "intraday_ai_hardware_h2_rates": {
+   "events": 10718,
+   "touched": 7174,
+   "reach_pct": 66.93,
+   "reach_pct_placebo_half_pct": 63.36,
+   "stall_pct": 49.23,
+   "stall_pct_placebos": 48.59,
+   "avg_close_vs_level_pct": 0.13
+  },
+  "intraday_ai_hardware_h3_rates": {
+   "events": 9764,
+   "touched": 7217,
+   "reach_pct": 73.91,
+   "reach_pct_placebo_half_pct": 63.8,
+   "stall_pct": 48.82,
+   "stall_pct_placebos": 48.59,
+   "avg_close_vs_level_pct": 0.13
+  },
+  "intraday_ai_hardware_h3_4h_rates": {
+   "events": 8424,
+   "touched": 4702,
+   "reach_pct": 55.82,
+   "reach_pct_placebo_half_pct": 51.08,
+   "stall_pct": 48.96,
+   "stall_pct_placebos": 49.54,
+   "avg_close_vs_level_pct": 0.08
+  },
+  "intraday_ai_hardware_pml_support_rates": {
+   "events": 10531,
+   "touched": 7065,
+   "reach_pct": 67.09,
+   "reach_pct_placebo_half_pct": 63.28,
+   "stall_pct": 51.75,
+   "stall_pct_placebos": 50.93,
+   "avg_close_vs_level_pct": 0.04
+  },
+  "intraday_LITE_h1_intraday_rates": {
+   "events": 976,
+   "touched": 390,
+   "reach_pct": 39.96,
+   "reach_pct_placebo_half_pct": 39.68,
+   "stall_pct": 47.69,
+   "stall_pct_placebos": 48.42,
+   "avg_close_vs_level_pct": -0.12
+  },
+  "intraday_LITE_h2_rates": {
+   "events": 673,
+   "touched": 470,
+   "reach_pct": 69.84,
+   "reach_pct_placebo_half_pct": 68.08,
+   "stall_pct": 48.94,
+   "stall_pct_placebos": 47.62,
+   "avg_close_vs_level_pct": 0.23
+  },
+  "intraday_LITE_h3_rates": {
+   "events": 889,
+   "touched": 664,
+   "reach_pct": 74.69,
+   "reach_pct_placebo_half_pct": 65.94,
+   "stall_pct": 49.25,
+   "stall_pct_placebos": 48.72,
+   "avg_close_vs_level_pct": 0.19
+  },
+  "intraday_LITE_h3_4h_rates": {
+   "events": 767,
+   "touched": 429,
+   "reach_pct": 55.93,
+   "reach_pct_placebo_half_pct": 52.47,
+   "stall_pct": 48.02,
+   "stall_pct_placebos": 48.62,
+   "avg_close_vs_level_pct": 0.23
+  },
+  "intraday_LITE_pml_support_rates": {
+   "events": 636,
+   "touched": 435,
+   "reach_pct": 68.4,
+   "reach_pct_placebo_half_pct": 65.36,
+   "stall_pct": 55.63,
+   "stall_pct_placebos": 52.66,
+   "avg_close_vs_level_pct": 0.21
+  },
+  "lite_latest_day": {
+   "date": "2026-10-05",
+   "volume_vs_50d_avg": 0.63,
+   "move_pct": 0.58,
+   "close": 1091.67
+  }
+ },
+ "momentum_days": 2575
+}
