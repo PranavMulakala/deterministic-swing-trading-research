@@ -35,3 +35,4 @@ inbox/
 .env.reddit_feed
 outputs/ep_data/
 outputs/momentum_lite_like_data/
+outputs/revenue_accel_data/
