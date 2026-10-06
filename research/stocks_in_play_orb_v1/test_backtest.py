@@ -5,6 +5,7 @@ import tempfile
 import unittest
 
 from research.stocks_in_play_orb_v1.backtest import account, pnl, size, trade_path
+from research.stocks_in_play_orb_v1.backtest1m import plans_1m
 from research.stocks_in_play_orb_v1.data import calendar, metric_table, save, selections
 from research.stocks_in_play_orb_v1.rules import daily_metrics, direction, in_play, relative_volume, tradeable
 
@@ -134,6 +135,23 @@ class AccountTest(unittest.TestCase):
         self.assertEqual(small, 0)
         both, _, _ = account(["2024-01-02"], plan, ("2024-01-01", "2024-12-31"), sides=(1, -1))
         self.assertEqual(len(both), 2)
+
+
+class MinuteRecheckTest(unittest.TestCase):
+    def test_one_minute_bars_resolve_a_five_minute_ambiguity(self):
+        # 5-minute view of 9:35-9:40: open 10.2, high 10.6, low 10.1, close 10.55 -> ambiguous, assumed stopped.
+        # 1-minute bars show the dip to 10.1 came first; the buy at 10.5 then holds to the close.
+        first = [10.0, 10.5, 9.9, 10.4, 1e5]
+        minutes = [[575, 10.2, 10.25, 10.1, 10.2, 0], [576, 10.2, 10.4, 10.2, 10.4, 0], [577, 10.4, 10.6, 10.45, 10.55, 0],
+                   [959, 10.8, 10.9, 10.7, 10.85, 0]]
+        five = [[575, 10.2, 10.6, 10.1, 10.55, 0], [955, 10.8, 10.9, 10.7, 10.85, 0]]
+        self.assertEqual(trade_path(first, five, 2.0, 1)["reason"], "stop_same_bar")
+        with tempfile.TemporaryDirectory() as tmp:
+            save(Path(tmp) / "day1" / "2024-01-02.json.gz", {"symbols": ["AAA"], "bars": {"AAA": minutes}})
+            plan, checks = plans_1m(Path(tmp), {"2024-01-02": [("AAA", 3.0, 2e6, 2.0, first)]})
+        sym, atr, rv, main, flip = plan["2024-01-02"][0]
+        self.assertEqual((sym, main["entry"], main["entry_m"], main["exit"], main["reason"]), ("AAA", 10.5, 577, 10.85, "close"))
+        self.assertEqual(checks, {"picks": 1})
 
 
 if __name__ == "__main__":

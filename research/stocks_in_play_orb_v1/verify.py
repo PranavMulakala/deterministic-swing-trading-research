@@ -5,7 +5,9 @@
 3. Account: re-chain the whole main-window equity path from the logged trades with fresh sizing and cost maths.
 4. SPY over the same dates.
 
-  PYTHONPATH=src:. .venv/bin/python -m research.stocks_in_play_orb_v1.verify
+  PYTHONPATH=src:. .venv/bin/python -m research.stocks_in_play_orb_v1.verify [--minute]
+
+--minute checks the 1-minute re-check instead: its trades on the 15 days from the 1-minute files, and its account.
 """
 from __future__ import annotations
 
@@ -14,6 +16,7 @@ import json
 import math
 from pathlib import Path
 import random
+import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "outputs/orb_play_data"
@@ -102,11 +105,13 @@ def dollars(fill, out, shares):
     return shares * (out * (1 - 0.0001) - fill * (1 + 0.0001)) - 2 * 0.0035 * shares
 
 
-def main():
-    res = json.loads(RESULTS.read_text())
+def main(minute=False):
+    res = json.loads((RESULTS.with_name("stocks-in-play-orb-1min-recheck-results.json") if minute else RESULTS).read_text())
     detail = read(BASE / "results_detail.json.gz")
-    trades, curve = detail["main_trades"], detail["main_curve"]
     picks = detail["picks"]
+    if minute:
+        detail = read(BASE / "results_detail_1min.json.gz")
+    trades, curve = detail["main_trades"], detail["main_curve"]
     files = Files()
     report, ok = {}, True
     main_days = [d for d, _ in curve]
@@ -129,7 +134,7 @@ def main():
         sel_ok &= same
         if not same:
             report[f"selection {day}"] = {"independent": [s for _, s, _, _ in mine], "backtest": theirs}
-        bars = read(BASE / "day5" / f"{day}.json.gz")["bars"]
+        bars = read(BASE / ("day1" if minute else "day5") / f"{day}.json.gz")["bars"]
         expected = []
         for _, sym, atr, first in mine:
             t = long_trade(first, bars.get(sym, []), atr)
@@ -174,4 +179,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(minute="--minute" in sys.argv)
