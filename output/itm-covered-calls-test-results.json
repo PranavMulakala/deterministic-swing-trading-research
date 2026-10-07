@@ -1,0 +1,14342 @@
+{
+ "plan": "output/ITM_COVERED_CALLS_TEST_PLAN_20261007.md",
+ "verdict": "FAIL",
+ "main": {
+  "scorecard": {
+   "from": "2020-01-02",
+   "to": "2025-12-31",
+   "start": 100000,
+   "end": 132596,
+   "profit": 32596,
+   "weeks": 314,
+   "avg_per_week": 104,
+   "median_week": 227,
+   "weeks_up_pct": 66.2,
+   "weeks_at_or_above_1000": 30,
+   "weeks_at_or_above_1000_pct": 9.6,
+   "weeks_losing_1000_or_more": 24,
+   "best_week": 4236,
+   "worst_week": -7180,
+   "worst_week_ending": "2020-03-13",
+   "best_month": 4678,
+   "worst_month": -6948,
+   "worst_month_is": "2020-03",
+   "months_up_pct": 69.4,
+   "worst_drop_dollars": -14130,
+   "worst_drop_from": "2020-02-19",
+   "worst_drop_to": "2020-03-18",
+   "longest_losing_weeks_in_a_row": 5
+  },
+  "final": 132596.17,
+  "max_drawdown_pct": -14.0,
+  "calls_sold": 65,
+  "call_pnl_total": -61242.06,
+  "call_profit_factor": 0.545,
+  "calls_winning_pct": 40.0,
+  "closed_by": {
+   "rolled": 19,
+   "assigned_at_expiry": 40,
+   "early_exercise": 4,
+   "expired": 2
+  },
+  "premium_collected": 379670.04,
+  "paid_to_close": 440912.1,
+  "worst_call": -16762.07,
+  "best_call": 7261.88,
+  "puts_bought": 0,
+  "put_pnl_total": 0,
+  "halves_profit_dollars": {
+   "2020-2022": 7047.74,
+   "2023-2025": 25548.43
+  },
+  "stats": {
+   "closed_rolled": 19,
+   "dividends": 8522.14,
+   "closed_assigned_at_expiry": 40,
+   "shares_sold_to_cover": 115,
+   "closed_early_exercise": 4,
+   "no_sale_day_before_exdate": 4,
+   "closed_expired": 2
+  },
+  "checks": {
+   "C1_calls_earn_their_keep": false,
+   "C2_both_halves_profitable": true,
+   "C3_drawdown_within_25": true
+  },
+  "passes": false
+ },
+ "stress_2016_2019": {
+  "scorecard": {
+   "from": "2016-01-04",
+   "to": "2019-12-31",
+   "start": 100000,
+   "end": 121808,
+   "profit": 21808,
+   "weeks": 209,
+   "avg_per_week": 104,
+   "median_week": 183,
+   "weeks_up_pct": 71.3,
+   "weeks_at_or_above_1000": 9,
+   "weeks_at_or_above_1000_pct": 4.3,
+   "weeks_losing_1000_or_more": 14,
+   "best_week": 1950,
+   "worst_week": -3134,
+   "worst_week_ending": "2018-02-09",
+   "best_month": 3384,
+   "worst_month": -3595,
+   "worst_month_is": "2018-02",
+   "months_up_pct": 81.2,
+   "worst_drop_dollars": -9048,
+   "worst_drop_from": "2018-01-26",
+   "worst_drop_to": "2018-12-24",
+   "longest_losing_weeks_in_a_row": 4
+  },
+  "final": 121807.7,
+  "max_drawdown_pct": -7.5,
+  "calls_sold": 60,
+  "call_pnl_total": -39452.4,
+  "call_profit_factor": 0.503,
+  "calls_winning_pct": 58.3,
+  "closed_by": {
+   "rolled": 29,
+   "assigned_at_expiry": 21,
+   "early_exercise": 9,
+   "expired": 1
+  },
+  "premium_collected": 193334.1,
+  "paid_to_close": 232786.5,
+  "worst_call": -13025.86,
+  "best_call": 4223.76,
+  "puts_bought": 0,
+  "put_pnl_total": 0,
+  "halves_profit_dollars": {
+   "2016-2017": 18764.16,
+   "2018-2019": 3043.55
+  },
+  "stats": {
+   "closed_rolled": 29,
+   "closed_assigned_at_expiry": 21,
+   "shares_sold_to_cover": 120,
+   "closed_early_exercise": 9,
+   "no_sale_day_before_exdate": 9,
+   "dividends": 7629.42,
+   "closed_expired": 1,
+   "no_call_found": 14,
+   "roll_skipped_no_credit_or_call": 2
+  },
+  "checks": {
+   "C1_calls_earn_their_keep": false,
+   "C2_both_halves_profitable": true,
+   "C3_drawdown_within_25": true
+  },
+  "passes": false
+ },
+ "info": {
+  "no_roll": {
+   "scorecard": {
+    "from": "2020-01-02",
+    "to": "2025-12-31",
+    "start": 100000,
+    "end": 125454,
+    "profit": 25454,
+    "weeks": 314,
+    "avg_per_week": 81,
+    "median_week": 222,
+    "weeks_up_pct": 67.5,
+    "weeks_at_or_above_1000": 35,
+    "weeks_at_or_above_1000_pct": 11.1,
+    "weeks_losing_1000_or_more": 30,
+    "best_week": 6865,
+    "worst_week": -12257,
+    "worst_week_ending": "2020-03-20",
+    "best_month": 7943,
+    "worst_month": -12194,
+    "worst_month_is": "2020-03",
+    "months_up_pct": 68.1,
+    "worst_drop_dollars": -32037,
+    "worst_drop_from": "2020-02-19",
+    "worst_drop_to": "2020-03-23",
+    "longest_losing_weeks_in_a_row": 4
+   },
+   "final": 125453.62,
+   "max_drawdown_pct": -31.6,
+   "calls_sold": 53,
+   "call_pnl_total": -61059.62,
+   "call_profit_factor": 0.456,
+   "calls_winning_pct": 34.0,
+   "closed_by": {
+    "assigned_at_expiry": 39,
+    "expired": 9,
+    "early_exercise": 5
+   },
+   "premium_collected": 269741.88,
+   "paid_to_close": 330801.5,
+   "worst_call": -16762.07,
+   "best_call": 5841.94,
+   "puts_bought": 0,
+   "put_pnl_total": 0,
+   "halves_profit_dollars": {
+    "2020-2022": 1548.88,
+    "2023-2025": 23904.73
+   },
+   "stats": {
+    "shares_sold_to_cover": 125,
+    "closed_assigned_at_expiry": 39,
+    "early_exercise_no_quote": 1,
+    "dividends": 8026.83,
+    "closed_expired": 9,
+    "closed_early_exercise": 5,
+    "no_sale_day_before_exdate": 5
+   },
+   "checks": {
+    "C1_calls_earn_their_keep": false,
+    "C2_both_halves_profitable": true,
+    "C3_drawdown_within_25": false
+   },
+   "passes": false
+  },
+  "ann5": {
+   "scorecard": {
+    "from": "2020-01-02",
+    "to": "2025-12-31",
+    "start": 100000,
+    "end": 130705,
+    "profit": 30705,
+    "weeks": 314,
+    "avg_per_week": 98,
+    "median_week": 200,
+    "weeks_up_pct": 64.3,
+    "weeks_at_or_above_1000": 26,
+    "weeks_at_or_above_1000_pct": 8.3,
+    "weeks_losing_1000_or_more": 22,
+    "best_week": 7593,
+    "worst_week": -12318,
+    "worst_week_ending": "2025-05-16",
+    "best_month": 4323,
+    "worst_month": -9875,
+    "worst_month_is": "2025-05",
+    "months_up_pct": 73.6,
+    "worst_drop_dollars": -18404,
+    "worst_drop_from": "2025-05-15",
+    "worst_drop_to": "2025-05-23",
+    "longest_losing_weeks_in_a_row": 4
+   },
+   "final": 130704.97,
+   "max_drawdown_pct": -17.5,
+   "calls_sold": 59,
+   "call_pnl_total": -67066.58,
+   "call_profit_factor": 0.533,
+   "calls_winning_pct": 37.3,
+   "closed_by": {
+    "assigned_at_expiry": 44,
+    "rolled": 6,
+    "early_exercise": 8,
+    "expired": 1
+   },
+   "premium_collected": 518576.55,
+   "paid_to_close": 585643.13,
+   "worst_call": -17084.07,
+   "best_call": 10627.94,
+   "puts_bought": 0,
+   "put_pnl_total": 0,
+   "halves_profit_dollars": {
+    "2020-2022": 8514.57,
+    "2023-2025": 22190.4
+   },
+   "stats": {
+    "shares_sold_to_cover": 117,
+    "closed_assigned_at_expiry": 44,
+    "closed_rolled": 6,
+    "dividends": 8792.25,
+    "closed_early_exercise": 8,
+    "no_sale_day_before_exdate": 8,
+    "closed_expired": 1
+   },
+   "checks": {
+    "C1_calls_earn_their_keep": false,
+    "C2_both_halves_profitable": true,
+    "C3_drawdown_within_25": true
+   },
+   "passes": false
+  },
+  "ann20": {
+   "scorecard": {
+    "from": "2020-01-02",
+    "to": "2025-12-31",
+    "start": 100000,
+    "end": 146932,
+    "profit": 46932,
+    "weeks": 314,
+    "avg_per_week": 149,
+    "median_week": 334,
+    "weeks_up_pct": 62.4,
+    "weeks_at_or_above_1000": 67,
+    "weeks_at_or_above_1000_pct": 21.3,
+    "weeks_losing_1000_or_more": 52,
+    "best_week": 9210,
+    "worst_week": -10329,
+    "worst_week_ending": "2020-05-01",
+    "best_month": 12211,
+    "worst_month": -10368,
+    "worst_month_is": "2020-05",
+    "months_up_pct": 61.1,
+    "worst_drop_dollars": -15243,
+    "worst_drop_from": "2020-01-17",
+    "worst_drop_to": "2020-03-16",
+    "longest_losing_weeks_in_a_row": 4
+   },
+   "final": 146932.16,
+   "max_drawdown_pct": -14.9,
+   "calls_sold": 77,
+   "call_pnl_total": -51467.28,
+   "call_profit_factor": 0.6,
+   "calls_winning_pct": 64.9,
+   "closed_by": {
+    "rolled": 47,
+    "assigned_at_expiry": 28,
+    "early_exercise": 1,
+    "expired": 1
+   },
+   "premium_collected": 307176.14,
+   "paid_to_close": 358643.42,
+   "worst_call": -15658.07,
+   "best_call": 9050.82,
+   "puts_bought": 0,
+   "put_pnl_total": 0,
+   "halves_profit_dollars": {
+    "2020-2022": 3001.96,
+    "2023-2025": 43930.2
+   },
+   "stats": {
+    "no_call_found": 348,
+    "roll_skipped_no_credit_or_call": 3,
+    "closed_rolled": 47,
+    "dividends": 9065.51,
+    "closed_assigned_at_expiry": 28,
+    "shares_sold_to_cover": 95,
+    "closed_early_exercise": 1,
+    "no_sale_day_before_exdate": 9,
+    "closed_expired": 1,
+    "roll_skipped_day_before_exdate": 2
+   },
+   "checks": {
+    "C1_calls_earn_their_keep": false,
+    "C2_both_halves_profitable": true,
+    "C3_drawdown_within_25": true
+   },
+   "passes": false
+  },
+  "iv_band": {
+   "scorecard": {
+    "from": "2020-01-02",
+    "to": "2025-12-31",
+    "start": 100000,
+    "end": 169882,
+    "profit": 69882,
+    "weeks": 314,
+    "avg_per_week": 223,
+    "median_week": 456,
+    "weeks_up_pct": 57.6,
+    "weeks_at_or_above_1000": 119,
+    "weeks_at_or_above_1000_pct": 37.9,
+    "weeks_losing_1000_or_more": 73,
+    "best_week": 7031,
+    "worst_week": -11350,
+    "worst_week_ending": "2020-02-28",
+    "best_month": 9899,
+    "worst_month": -9095,
+    "worst_month_is": "2022-01",
+    "months_up_pct": 59.7,
+    "worst_drop_dollars": -24323,
+    "worst_drop_from": "2025-02-19",
+    "worst_drop_to": "2025-04-08",
+    "longest_losing_weeks_in_a_row": 4
+   },
+   "final": 169882.15,
+   "max_drawdown_pct": -21.2,
+   "calls_sold": 14,
+   "call_pnl_total": -32393.76,
+   "call_profit_factor": 0.247,
+   "calls_winning_pct": 28.6,
+   "closed_by": {
+    "rolled": 1,
+    "assigned_at_expiry": 13
+   },
+   "premium_collected": 143451.1,
+   "paid_to_close": 175844.86,
+   "worst_call": -10110.07,
+   "best_call": 6929.82,
+   "puts_bought": 0,
+   "put_pnl_total": 0,
+   "halves_profit_dollars": {
+    "2020-2022": 5454.14,
+    "2023-2025": 64428.01
+   },
+   "stats": {
+    "no_sale_iv_outside_band": 1110,
+    "closed_rolled": 1,
+    "dividends": 9577.82,
+    "shares_sold_to_cover": 60,
+    "closed_assigned_at_expiry": 13,
+    "no_sale_day_before_exdate": 18
+   },
+   "checks": {
+    "C1_calls_earn_their_keep": false,
+    "C2_both_halves_profitable": true,
+    "C3_drawdown_within_25": true
+   },
+   "passes": false
+  },
+  "collar_on_drops": {
+   "scorecard": {
+    "from": "2020-01-02",
+    "to": "2025-12-31",
+    "start": 100000,
+    "end": 131584,
+    "profit": 31584,
+    "weeks": 314,
+    "avg_per_week": 101,
+    "median_week": 220,
+    "weeks_up_pct": 68.2,
+    "weeks_at_or_above_1000": 30,
+    "weeks_at_or_above_1000_pct": 9.6,
+    "weeks_losing_1000_or_more": 22,
+    "best_week": 4236,
+    "worst_week": -8555,
+    "worst_week_ending": "2020-04-24",
+    "best_month": 7088,
+    "worst_month": -5298,
+    "worst_month_is": "2025-04",
+    "months_up_pct": 68.1,
+    "worst_drop_dollars": -14218,
+    "worst_drop_from": "2020-04-17",
+    "worst_drop_to": "2020-06-11",
+    "longest_losing_weeks_in_a_row": 5
+   },
+   "final": 131584.19,
+   "max_drawdown_pct": -13.7,
+   "calls_sold": 65,
+   "call_pnl_total": -61242.06,
+   "call_profit_factor": 0.545,
+   "calls_winning_pct": 40.0,
+   "closed_by": {
+    "rolled": 19,
+    "assigned_at_expiry": 40,
+    "early_exercise": 4,
+    "expired": 2
+   },
+   "premium_collected": 379670.04,
+   "paid_to_close": 440912.1,
+   "worst_call": -16762.07,
+   "best_call": 7261.88,
+   "puts_bought": 7,
+   "put_pnl_total": 307.19,
+   "halves_profit_dollars": {
+    "2020-2022": 11873.04,
+    "2023-2025": 19711.15
+   },
+   "stats": {
+    "closed_rolled": 19,
+    "dividends": 8309.64,
+    "closed_assigned_at_expiry": 40,
+    "shares_sold_to_cover": 116,
+    "closed_early_exercise": 4,
+    "no_sale_day_before_exdate": 4,
+    "closed_expired": 2
+   },
+   "checks": {
+    "C1_calls_earn_their_keep": false,
+    "C2_both_halves_profitable": true,
+    "C3_drawdown_within_25": true
+   },
+   "passes": false
+  },
+  "mid_fill": {
+   "scorecard": {
+    "from": "2020-01-02",
+    "to": "2025-12-31",
+    "start": 100000,
+    "end": 142600,
+    "profit": 42600,
+    "weeks": 314,
+    "avg_per_week": 136,
+    "median_week": 255,
+    "weeks_up_pct": 66.9,
+    "weeks_at_or_above_1000": 28,
+    "weeks_at_or_above_1000_pct": 8.9,
+    "weeks_losing_1000_or_more": 27,
+    "best_week": 4236,
+    "worst_week": -6697,
+    "worst_week_ending": "2020-03-13",
+    "best_month": 4848,
+    "worst_month": -6465,
+    "worst_month_is": "2020-03",
+    "months_up_pct": 70.8,
+    "worst_drop_dollars": -13368,
+    "worst_drop_from": "2020-02-19",
+    "worst_drop_to": "2020-03-18",
+    "longest_losing_weeks_in_a_row": 5
+   },
+   "final": 142599.97,
+   "max_drawdown_pct": -13.2,
+   "calls_sold": 65,
+   "call_pnl_total": -55839.0,
+   "call_profit_factor": 0.581,
+   "calls_winning_pct": 41.5,
+   "closed_by": {
+    "rolled": 19,
+    "assigned_at_expiry": 40,
+    "early_exercise": 4,
+    "expired": 2
+   },
+   "premium_collected": 399163.45,
+   "paid_to_close": 455002.45,
+   "worst_call": -16542.07,
+   "best_call": 7366.88,
+   "puts_bought": 0,
+   "put_pnl_total": 0,
+   "halves_profit_dollars": {
+    "2020-2022": 12300.6,
+    "2023-2025": 30299.38
+   },
+   "stats": {
+    "closed_rolled": 19,
+    "dividends": 8854.76,
+    "closed_assigned_at_expiry": 40,
+    "shares_sold_to_cover": 102,
+    "closed_early_exercise": 4,
+    "no_sale_day_before_exdate": 4,
+    "closed_expired": 2
+   },
+   "checks": {
+    "C1_calls_earn_their_keep": false,
+    "C2_both_halves_profitable": true,
+    "C3_drawdown_within_25": true
+   },
+   "passes": false
+  },
+  "shares_only": {
+   "scorecard": {
+    "from": "2020-01-02",
+    "to": "2025-12-31",
+    "start": 100000,
+    "end": 222422,
+    "profit": 122422,
+    "weeks": 314,
+    "avg_per_week": 390,
+    "median_week": 647,
+    "weeks_up_pct": 56.1,
+    "weeks_at_or_above_1000": 144,
+    "weeks_at_or_above_1000_pct": 45.9,
+    "weeks_losing_1000_or_more": 94,
+    "best_week": 9210,
+    "worst_week": -15357,
+    "worst_week_ending": "2025-04-04",
+    "best_month": 11726,
+    "worst_month": -12160,
+    "worst_month_is": "2022-04",
+    "months_up_pct": 63.9,
+    "worst_drop_dollars": -35753,
+    "worst_drop_from": "2022-01-03",
+    "worst_drop_to": "2022-10-12",
+    "longest_losing_weeks_in_a_row": 7
+   },
+   "final": 222421.63,
+   "max_drawdown_pct": -33.8,
+   "calls_sold": 0,
+   "call_pnl_total": 0,
+   "call_profit_factor": null,
+   "calls_winning_pct": 0.0,
+   "closed_by": {},
+   "premium_collected": 0,
+   "paid_to_close": 0,
+   "worst_call": 0,
+   "best_call": 0,
+   "puts_bought": 0,
+   "put_pnl_total": 0,
+   "halves_profit_dollars": {
+    "2020-2022": 23222.88,
+    "2023-2025": 99198.75
+   },
+   "stats": {
+    "dividends": 11271.97
+   },
+   "checks": {
+    "C1_calls_earn_their_keep": false,
+    "C2_both_halves_profitable": true,
+    "C3_drawdown_within_25": false
+   },
+   "passes": false
+  }
+ },
+ "main_call_pnl_by_year": {
+  "2020": -18616,
+  "2021": -9926,
+  "2022": 9570,
+  "2023": -11028,
+  "2024": -21332,
+  "2025": -9909
+ },
+ "main_trades": [
+  {
+   "entry_day": "2020-01-02",
+   "expiration": "2020-02-14",
+   "strike": 322.0,
+   "n": 3,
+   "price": 6.81,
+   "credit": 2042.91,
+   "close_day": "2020-01-31",
+   "closed": "rolled",
+   "spot_at_close": 321.79352403466515,
+   "close_cost": 1398.09,
+   "pnl": 644.8200000000002
+  },
+  {
+   "entry_day": "2020-01-31",
+   "expiration": "2020-03-13",
+   "strike": 307.5,
+   "n": 3,
+   "price": 18.09,
+   "credit": 5426.91,
+   "close_day": "2020-02-27",
+   "closed": "rolled",
+   "spot_at_close": 297.6596805482589,
+   "close_cost": 1458.0900000000001,
+   "pnl": 3968.8199999999997
+  },
+  {
+   "entry_day": "2020-02-27",
+   "expiration": "2020-04-09",
+   "strike": 270.0,
+   "n": 3,
+   "price": 31.43,
+   "credit": 9428.91,
+   "close_day": "2020-03-12",
+   "closed": "rolled",
+   "spot_at_close": 247.9681436953364,
+   "close_cost": 2499.09,
+   "pnl": 6929.82
+  },
+  {
+   "entry_day": "2020-03-12",
+   "expiration": "2020-04-24",
+   "strike": 190.0,
+   "n": 3,
+   "price": 60.79,
+   "credit": 18236.91,
+   "close_day": "2020-04-24",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 283.0516266984079,
+   "close_cost": 27915.48800952237,
+   "pnl": -9678.57800952237
+  },
+  {
+   "entry_day": "2020-04-24",
+   "expiration": "2020-06-05",
+   "strike": 245.0,
+   "n": 3,
+   "price": 41.12,
+   "credit": 12335.91,
+   "close_day": "2020-06-05",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 319.2951676902316,
+   "close_cost": 22288.550307069483,
+   "pnl": -9952.640307069483
+  },
+  {
+   "entry_day": "2020-06-05",
+   "expiration": "2020-07-17",
+   "strike": 306.0,
+   "n": 2,
+   "price": 17.06,
+   "credit": 3411.9399999999996,
+   "close_day": "2020-06-11",
+   "closed": "rolled",
+   "spot_at_close": 300.6310349970453,
+   "close_cost": 1798.06,
+   "pnl": 1613.8799999999997
+  },
+  {
+   "entry_day": "2020-06-11",
+   "expiration": "2020-07-24",
+   "strike": 270.0,
+   "n": 2,
+   "price": 34.48,
+   "credit": 6895.939999999999,
+   "close_day": "2020-07-24",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 320.9111427888514,
+   "close_cost": 10182.228557770282,
+   "pnl": -3286.2885577702837
+  },
+  {
+   "entry_day": "2020-07-24",
+   "expiration": "2020-09-04",
+   "strike": 300.0,
+   "n": 2,
+   "price": 24.75,
+   "credit": 4949.94,
+   "close_day": "2020-09-04",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 342.6521990446948,
+   "close_cost": 8530.439808938956,
+   "pnl": -3580.4998089389564
+  },
+  {
+   "entry_day": "2020-09-04",
+   "expiration": "2020-10-16",
+   "strike": 320.0,
+   "n": 2,
+   "price": 26.65,
+   "credit": 5329.94,
+   "close_day": "2020-10-16",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 347.3099643542062,
+   "close_cost": 5461.992870841243,
+   "pnl": -132.05287084124302
+  },
+  {
+   "entry_day": "2020-10-16",
+   "expiration": "2020-11-27",
+   "strike": 325.0,
+   "n": 2,
+   "price": 26.46,
+   "credit": 5291.94,
+   "close_day": "2020-11-27",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 363.6721483329449,
+   "close_cost": 7734.429666588983,
+   "pnl": -2442.4896665889837
+  },
+  {
+   "entry_day": "2020-11-27",
+   "expiration": "2021-01-08",
+   "strike": 350.0,
+   "n": 2,
+   "price": 17.78,
+   "credit": 3555.94,
+   "close_day": "2021-01-08",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 381.2844930070416,
+   "close_cost": 6256.898601408318,
+   "pnl": -2700.9586014083184
+  },
+  {
+   "entry_day": "2021-01-08",
+   "expiration": "2021-02-16",
+   "strike": 370.0,
+   "n": 2,
+   "price": 15.78,
+   "credit": 3155.94,
+   "close_day": "2021-02-16",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 392.37069490294505,
+   "close_cost": 4474.138980589009,
+   "pnl": -1318.1989805890094
+  },
+  {
+   "entry_day": "2021-02-16",
+   "expiration": "2021-03-26",
+   "strike": 381.0,
+   "n": 2,
+   "price": 15.46,
+   "credit": 3091.94,
+   "close_day": "2021-02-26",
+   "closed": "rolled",
+   "spot_at_close": 380.3756434235491,
+   "close_cost": 1696.06,
+   "pnl": 1395.88
+  },
+  {
+   "entry_day": "2021-02-26",
+   "expiration": "2021-04-09",
+   "strike": 360.0,
+   "n": 2,
+   "price": 25.11,
+   "credit": 5021.94,
+   "close_day": "2021-03-18",
+   "closed": "early_exercise",
+   "spot_at_close": 390.22571579592216,
+   "close_cost": 6045.143159184431,
+   "pnl": -1023.2031591844316
+  },
+  {
+   "entry_day": "2021-03-19",
+   "expiration": "2021-04-30",
+   "strike": 375.0,
+   "n": 2,
+   "price": 19.07,
+   "credit": 3813.94,
+   "close_day": "2021-04-30",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 417.28575753918693,
+   "close_cost": 8457.151507837387,
+   "pnl": -4643.211507837386
+  },
+  {
+   "entry_day": "2021-04-30",
+   "expiration": "2021-06-11",
+   "strike": 404.0,
+   "n": 2,
+   "price": 18.09,
+   "credit": 3617.94,
+   "close_day": "2021-06-11",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 424.35592065798,
+   "close_cost": 4071.1841315959987,
+   "pnl": -453.2441315959986
+  },
+  {
+   "entry_day": "2021-06-11",
+   "expiration": "2021-07-23",
+   "strike": 422.0,
+   "n": 2,
+   "price": 7.44,
+   "credit": 1487.94,
+   "close_day": "2021-06-16",
+   "closed": "rolled",
+   "spot_at_close": 421.2687006630983,
+   "close_cost": 1300.06,
+   "pnl": 187.8800000000001
+  },
+  {
+   "entry_day": "2021-06-16",
+   "expiration": "2021-07-23",
+   "strike": 412.0,
+   "n": 2,
+   "price": 13.58,
+   "credit": 2715.94,
+   "close_day": "2021-07-23",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 439.9074236032256,
+   "close_cost": 5581.4847206451195,
+   "pnl": -2865.5447206451195
+  },
+  {
+   "entry_day": "2021-07-23",
+   "expiration": "2021-09-03",
+   "strike": 429.0,
+   "n": 2,
+   "price": 15.9,
+   "credit": 3179.94,
+   "close_day": "2021-09-03",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 453.12749922482095,
+   "close_cost": 4825.49984496419,
+   "pnl": -1645.5598449641898
+  },
+  {
+   "entry_day": "2021-09-03",
+   "expiration": "2021-10-15",
+   "strike": 449.0,
+   "n": 2,
+   "price": 9.24,
+   "credit": 1847.94,
+   "close_day": "2021-09-09",
+   "closed": "rolled",
+   "spot_at_close": 448.9779587153353,
+   "close_cost": 1396.06,
+   "pnl": 451.8800000000001
+  },
+  {
+   "entry_day": "2021-09-09",
+   "expiration": "2021-10-22",
+   "strike": 440.0,
+   "n": 2,
+   "price": 14.14,
+   "credit": 2827.94,
+   "close_day": "2021-09-20",
+   "closed": "rolled",
+   "spot_at_close": 434.10972536151536,
+   "close_cost": 1318.06,
+   "pnl": 1509.88
+  },
+  {
+   "entry_day": "2021-09-20",
+   "expiration": "2021-10-29",
+   "strike": 409.0,
+   "n": 2,
+   "price": 29.47,
+   "credit": 5893.94,
+   "close_day": "2021-10-29",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 459.24472942564097,
+   "close_cost": 10048.945885128194,
+   "pnl": -4155.005885128195
+  },
+  {
+   "entry_day": "2021-10-29",
+   "expiration": "2021-12-10",
+   "strike": 448.0,
+   "n": 2,
+   "price": 16.41,
+   "credit": 3281.94,
+   "close_day": "2021-12-10",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 470.765728093161,
+   "close_cost": 4553.1456186321975,
+   "pnl": -1271.2056186321975
+  },
+  {
+   "entry_day": "2021-12-10",
+   "expiration": "2022-01-18",
+   "strike": 470.0,
+   "n": 2,
+   "price": 7.52,
+   "credit": 1503.94,
+   "close_day": "2021-12-13",
+   "closed": "rolled",
+   "spot_at_close": 466.7018221375762,
+   "close_cost": 1314.06,
+   "pnl": 189.8800000000001
+  },
+  {
+   "entry_day": "2021-12-13",
+   "expiration": "2022-01-21",
+   "strike": 453.0,
+   "n": 2,
+   "price": 18.57,
+   "credit": 3713.94,
+   "close_day": "2022-01-21",
+   "closed": "expired",
+   "spot_at_close": 438.07361810899414,
+   "close_cost": 0.0,
+   "pnl": 3713.94
+  },
+  {
+   "entry_day": "2022-01-21",
+   "expiration": "2022-03-04",
+   "strike": 410.0,
+   "n": 2,
+   "price": 34.08,
+   "credit": 6815.94,
+   "close_day": "2022-03-04",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 432.2523472992401,
+   "close_cost": 4450.469459848023,
+   "pnl": 2365.470540151977
+  },
+  {
+   "entry_day": "2022-03-04",
+   "expiration": "2022-04-14",
+   "strike": 403.0,
+   "n": 2,
+   "price": 34.0,
+   "credit": 6799.94,
+   "close_day": "2022-04-14",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 437.9205025346385,
+   "close_cost": 6984.1005069277,
+   "pnl": -184.16050692770023
+  },
+  {
+   "entry_day": "2022-04-14",
+   "expiration": "2022-05-23",
+   "strike": 415.0,
+   "n": 2,
+   "price": 27.38,
+   "credit": 5475.94,
+   "close_day": "2022-04-29",
+   "closed": "rolled",
+   "spot_at_close": 412.13000986670903,
+   "close_cost": 2128.06,
+   "pnl": 3347.8799999999997
+  },
+  {
+   "entry_day": "2022-04-29",
+   "expiration": "2022-06-10",
+   "strike": 380.0,
+   "n": 2,
+   "price": 36.9,
+   "credit": 7379.94,
+   "close_day": "2022-06-10",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 389.8136950007017,
+   "close_cost": 1962.7390001403455,
+   "pnl": 5417.200999859654
+  },
+  {
+   "entry_day": "2022-06-10",
+   "expiration": "2022-07-22",
+   "strike": 365.0,
+   "n": 2,
+   "price": 29.15,
+   "credit": 5829.94,
+   "close_day": "2022-07-22",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 395.12385769889164,
+   "close_cost": 6024.771539778329,
+   "pnl": -194.831539778329
+  },
+  {
+   "entry_day": "2022-07-22",
+   "expiration": "2022-09-02",
+   "strike": 370.0,
+   "n": 2,
+   "price": 29.47,
+   "credit": 5893.94,
+   "close_day": "2022-09-02",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 392.22151901790585,
+   "close_cost": 4444.30380358117,
+   "pnl": 1449.63619641883
+  },
+  {
+   "entry_day": "2022-09-02",
+   "expiration": "2022-10-14",
+   "strike": 370.0,
+   "n": 2,
+   "price": 26.53,
+   "credit": 5305.94,
+   "close_day": "2022-09-23",
+   "closed": "rolled",
+   "spot_at_close": 367.9329777181293,
+   "close_cost": 1824.0599999999997,
+   "pnl": 3481.88
+  },
+  {
+   "entry_day": "2022-09-23",
+   "expiration": "2022-11-04",
+   "strike": 330.0,
+   "n": 2,
+   "price": 41.69,
+   "credit": 8337.94,
+   "close_day": "2022-11-04",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 376.2932624114178,
+   "close_cost": 9258.65248228356,
+   "pnl": -920.7124822835594
+  },
+  {
+   "entry_day": "2022-11-04",
+   "expiration": "2022-12-16",
+   "strike": 348.0,
+   "n": 2,
+   "price": 32.39,
+   "credit": 6477.94,
+   "close_day": "2022-12-15",
+   "closed": "early_exercise",
+   "spot_at_close": 388.0344822207459,
+   "close_cost": 8006.896444149174,
+   "pnl": -1528.9564441491748
+  },
+  {
+   "entry_day": "2022-12-16",
+   "expiration": "2023-01-27",
+   "strike": 356.0,
+   "n": 2,
+   "price": 31.31,
+   "credit": 6261.94,
+   "close_day": "2023-01-27",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 405.6285314176595,
+   "close_cost": 9925.706283531894,
+   "pnl": -3663.7662835318943
+  },
+  {
+   "entry_day": "2023-01-27",
+   "expiration": "2023-03-10",
+   "strike": 385.0,
+   "n": 2,
+   "price": 25.04,
+   "credit": 5007.94,
+   "close_day": "2023-03-10",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 385.86841218369455,
+   "close_cost": 173.68243673890902,
+   "pnl": 4834.257563261091
+  },
+  {
+   "entry_day": "2023-03-10",
+   "expiration": "2023-04-21",
+   "strike": 360.0,
+   "n": 2,
+   "price": 30.0,
+   "credit": 5999.94,
+   "close_day": "2023-04-21",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 412.1087384565837,
+   "close_cost": 10421.74769131674,
+   "pnl": -4421.80769131674
+  },
+  {
+   "entry_day": "2023-04-21",
+   "expiration": "2023-06-02",
+   "strike": 398.0,
+   "n": 2,
+   "price": 19.0,
+   "credit": 3799.94,
+   "close_day": "2023-06-02",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 427.77666821498485,
+   "close_cost": 5955.33364299697,
+   "pnl": -2155.3936429969704
+  },
+  {
+   "entry_day": "2023-06-02",
+   "expiration": "2023-07-14",
+   "strike": 425.0,
+   "n": 2,
+   "price": 7.9,
+   "credit": 1579.94,
+   "close_day": "2023-07-14",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 449.2278229803664,
+   "close_cost": 4845.56459607328,
+   "pnl": -3265.62459607328
+  },
+  {
+   "entry_day": "2023-07-14",
+   "expiration": "2023-08-25",
+   "strike": 440.0,
+   "n": 2,
+   "price": 15.3,
+   "credit": 3059.94,
+   "close_day": "2023-08-16",
+   "closed": "rolled",
+   "spot_at_close": 439.81105450260833,
+   "close_cost": 892.06,
+   "pnl": 2167.88
+  },
+  {
+   "entry_day": "2023-08-16",
+   "expiration": "2023-09-22",
+   "strike": 422.0,
+   "n": 2,
+   "price": 22.06,
+   "credit": 4411.94,
+   "close_day": "2023-09-14",
+   "closed": "early_exercise",
+   "spot_at_close": 449.2550717504403,
+   "close_cost": 5451.014350088064,
+   "pnl": -1039.0743500880644
+  },
+  {
+   "entry_day": "2023-09-15",
+   "expiration": "2023-10-27",
+   "strike": 425.0,
+   "n": 2,
+   "price": 23.08,
+   "credit": 4615.94,
+   "close_day": "2023-10-03",
+   "closed": "rolled",
+   "spot_at_close": 421.6924358181755,
+   "close_cost": 1346.06,
+   "pnl": 3269.8799999999997
+  },
+  {
+   "entry_day": "2023-10-03",
+   "expiration": "2023-11-10",
+   "strike": 400.0,
+   "n": 2,
+   "price": 25.98,
+   "credit": 5195.94,
+   "close_day": "2023-11-10",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 440.5492752317086,
+   "close_cost": 8109.855046341716,
+   "pnl": -2913.9150463417163
+  },
+  {
+   "entry_day": "2023-11-10",
+   "expiration": "2023-12-22",
+   "strike": 430.0,
+   "n": 2,
+   "price": 15.66,
+   "credit": 3131.94,
+   "close_day": "2023-12-14",
+   "closed": "early_exercise",
+   "spot_at_close": 470.3441356886812,
+   "close_cost": 8068.827137736242,
+   "pnl": -4936.887137736241
+  },
+  {
+   "entry_day": "2023-12-15",
+   "expiration": "2024-01-26",
+   "strike": 455.0,
+   "n": 2,
+   "price": 19.55,
+   "credit": 3909.94,
+   "close_day": "2024-01-26",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 487.3865367393698,
+   "close_cost": 6477.307347873955,
+   "pnl": -2567.367347873955
+  },
+  {
+   "entry_day": "2024-01-26",
+   "expiration": "2024-03-08",
+   "strike": 471.0,
+   "n": 2,
+   "price": 21.77,
+   "credit": 4353.94,
+   "close_day": "2024-03-08",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 511.68794307483296,
+   "close_cost": 8137.588614966591,
+   "pnl": -3783.6486149665916
+  },
+  {
+   "entry_day": "2024-03-08",
+   "expiration": "2024-04-19",
+   "strike": 500.0,
+   "n": 2,
+   "price": 17.5,
+   "credit": 3499.94,
+   "close_day": "2024-04-19",
+   "closed": "expired",
+   "spot_at_close": 495.00519474444303,
+   "close_cost": 0.0,
+   "pnl": 3499.94
+  },
+  {
+   "entry_day": "2024-04-19",
+   "expiration": "2024-05-31",
+   "strike": 460.0,
+   "n": 2,
+   "price": 40.27,
+   "credit": 8053.9400000000005,
+   "close_day": "2024-05-31",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 527.2785557229773,
+   "close_cost": 13455.711144595465,
+   "pnl": -5401.771144595465
+  },
+  {
+   "entry_day": "2024-05-31",
+   "expiration": "2024-07-12",
+   "strike": 524.0,
+   "n": 2,
+   "price": 11.05,
+   "credit": 2209.94,
+   "close_day": "2024-07-12",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 559.8691477049832,
+   "close_cost": 7173.829540996644,
+   "pnl": -4963.889540996644
+  },
+  {
+   "entry_day": "2024-07-12",
+   "expiration": "2024-08-23",
+   "strike": 553.0,
+   "n": 2,
+   "price": 13.2,
+   "credit": 2639.94,
+   "close_day": "2024-07-18",
+   "closed": "rolled",
+   "spot_at_close": 552.8704581368231,
+   "close_cost": 2136.06,
+   "pnl": 503.8800000000001
+  },
+  {
+   "entry_day": "2024-07-18",
+   "expiration": "2024-08-30",
+   "strike": 523.0,
+   "n": 2,
+   "price": 35.99,
+   "credit": 7197.94,
+   "close_day": "2024-08-05",
+   "closed": "rolled",
+   "spot_at_close": 517.5259115784968,
+   "close_cost": 2794.06,
+   "pnl": 4403.879999999999
+  },
+  {
+   "entry_day": "2024-08-05",
+   "expiration": "2024-09-13",
+   "strike": 380.0,
+   "n": 2,
+   "price": 141.9,
+   "credit": 28379.94,
+   "close_day": "2024-09-13",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 561.847046927172,
+   "close_cost": 36369.409385434396,
+   "pnl": -7989.469385434397
+  },
+  {
+   "entry_day": "2024-09-13",
+   "expiration": "2024-10-25",
+   "strike": 544.0,
+   "n": 2,
+   "price": 24.17,
+   "credit": 4833.94,
+   "close_day": "2024-10-25",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 578.9571850437746,
+   "close_cost": 6991.437008754929,
+   "pnl": -2157.497008754929
+  },
+  {
+   "entry_day": "2024-10-25",
+   "expiration": "2024-12-06",
+   "strike": 535.0,
+   "n": 2,
+   "price": 50.38,
+   "credit": 10075.94,
+   "close_day": "2024-12-06",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 607.7805870820243,
+   "close_cost": 14556.117416404868,
+   "pnl": -4480.1774164048675
+  },
+  {
+   "entry_day": "2024-12-06",
+   "expiration": "2025-01-17",
+   "strike": 598.0,
+   "n": 2,
+   "price": 16.72,
+   "credit": 3343.94,
+   "close_day": "2024-12-18",
+   "closed": "rolled",
+   "spot_at_close": 586.4187428623178,
+   "close_cost": 1176.06,
+   "pnl": 2167.88
+  },
+  {
+   "entry_day": "2024-12-18",
+   "expiration": "2025-01-24",
+   "strike": 555.0,
+   "n": 2,
+   "price": 37.13,
+   "credit": 7425.9400000000005,
+   "close_day": "2025-01-24",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 607.7877290476433,
+   "close_cost": 10557.545809528665,
+   "pnl": -3131.6058095286644
+  },
+  {
+   "entry_day": "2025-01-24",
+   "expiration": "2025-03-07",
+   "strike": 590.0,
+   "n": 2,
+   "price": 25.04,
+   "credit": 5007.94,
+   "close_day": "2025-02-27",
+   "closed": "rolled",
+   "spot_at_close": 585.4046627176198,
+   "close_cost": 978.0599999999998,
+   "pnl": 4029.8799999999997
+  },
+  {
+   "entry_day": "2025-02-27",
+   "expiration": "2025-04-11",
+   "strike": 560.0,
+   "n": 2,
+   "price": 32.08,
+   "credit": 6415.94,
+   "close_day": "2025-03-11",
+   "closed": "rolled",
+   "spot_at_close": 556.146867023445,
+   "close_cost": 2690.06,
+   "pnl": 3725.8799999999997
+  },
+  {
+   "entry_day": "2025-03-11",
+   "expiration": "2025-04-17",
+   "strike": 510.0,
+   "n": 2,
+   "price": 51.5,
+   "credit": 10299.94,
+   "close_day": "2025-04-04",
+   "closed": "rolled",
+   "spot_at_close": 505.7073558689072,
+   "close_cost": 3038.06,
+   "pnl": 7261.880000000001
+  },
+  {
+   "entry_day": "2025-04-04",
+   "expiration": "2025-05-16",
+   "strike": 395.0,
+   "n": 2,
+   "price": 115.33,
+   "credit": 23065.94,
+   "close_day": "2025-05-16",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 594.1400619117079,
+   "close_cost": 39828.01238234158,
+   "pnl": -16762.07238234158
+  },
+  {
+   "entry_day": "2025-05-16",
+   "expiration": "2025-06-27",
+   "strike": 570.0,
+   "n": 2,
+   "price": 30.67,
+   "credit": 6133.94,
+   "close_day": "2025-06-27",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 614.6723955174343,
+   "close_cost": 8934.479103486865,
+   "pnl": -2800.5391034868653
+  },
+  {
+   "entry_day": "2025-06-27",
+   "expiration": "2025-08-08",
+   "strike": 585.0,
+   "n": 2,
+   "price": 36.78,
+   "credit": 7355.94,
+   "close_day": "2025-08-08",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 637.0584448826886,
+   "close_cost": 10411.68897653772,
+   "pnl": -3055.7489765377204
+  },
+  {
+   "entry_day": "2025-08-08",
+   "expiration": "2025-09-19",
+   "strike": 612.0,
+   "n": 1,
+   "price": 32.07,
+   "credit": 3206.97,
+   "close_day": "2025-09-19",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 663.5150481514085,
+   "close_cost": 5151.504815140845,
+   "pnl": -1944.5348151408448
+  },
+  {
+   "entry_day": "2025-09-19",
+   "expiration": "2025-10-31",
+   "strike": 632.0,
+   "n": 1,
+   "price": 38.71,
+   "credit": 3870.97,
+   "close_day": "2025-10-31",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 682.0756976751899,
+   "close_cost": 5007.569767518988,
+   "pnl": -1136.5997675189878
+  },
+  {
+   "entry_day": "2025-10-31",
+   "expiration": "2025-12-12",
+   "strike": 640.0,
+   "n": 1,
+   "price": 49.42,
+   "credit": 4941.97,
+   "close_day": "2025-12-12",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 681.692788685398,
+   "close_cost": 4169.2788685398,
+   "pnl": 772.6911314602003
+  }
+ ],
+ "stress_trades": [
+  {
+   "entry_day": "2016-01-04",
+   "expiration": "2016-02-12",
+   "strike": 192.0,
+   "n": 4,
+   "price": 11.14,
+   "credit": 4455.88,
+   "close_day": "2016-01-08",
+   "closed": "rolled",
+   "spot_at_close": 191.955613775383,
+   "close_cost": 2188.12,
+   "pnl": 2267.76
+  },
+  {
+   "entry_day": "2016-01-08",
+   "expiration": "2016-02-19",
+   "strike": 179.0,
+   "n": 4,
+   "price": 15.03,
+   "credit": 6011.88,
+   "close_day": "2016-02-19",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 192.03879191037635,
+   "close_cost": 5215.516764150539,
+   "pnl": 796.3632358494615
+  },
+  {
+   "entry_day": "2016-02-19",
+   "expiration": "2016-03-31",
+   "strike": 185.0,
+   "n": 4,
+   "price": 9.1,
+   "credit": 3639.88,
+   "close_day": "2016-03-31",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 205.57175894673276,
+   "close_cost": 8228.703578693103,
+   "pnl": -4588.823578693103
+  },
+  {
+   "entry_day": "2016-03-31",
+   "expiration": "2016-05-13",
+   "strike": 202.0,
+   "n": 4,
+   "price": 6.0,
+   "credit": 2399.88,
+   "close_day": "2016-05-13",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 204.81287552639188,
+   "close_cost": 1125.150210556751,
+   "pnl": 1274.729789443249
+  },
+  {
+   "entry_day": "2016-05-13",
+   "expiration": "2016-06-24",
+   "strike": 200.5,
+   "n": 4,
+   "price": 6.6,
+   "credit": 2639.88,
+   "close_day": "2016-06-16",
+   "closed": "early_exercise",
+   "spot_at_close": 207.6970003919526,
+   "close_cost": 2878.8001567810397,
+   "pnl": -238.92015678103962
+  },
+  {
+   "entry_day": "2016-06-17",
+   "expiration": "2016-07-29",
+   "strike": 199.0,
+   "n": 4,
+   "price": 10.05,
+   "credit": 4019.8800000000006,
+   "close_day": "2016-07-29",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 217.19001452729543,
+   "close_cost": 7276.005810918173,
+   "pnl": -3256.125810918172
+  },
+  {
+   "entry_day": "2016-07-29",
+   "expiration": "2016-09-09",
+   "strike": 215.5,
+   "n": 4,
+   "price": 4.19,
+   "credit": 1675.8800000000003,
+   "close_day": "2016-09-09",
+   "closed": "expired",
+   "spot_at_close": 213.32532826737759,
+   "close_cost": 0.0,
+   "pnl": 1675.8800000000003
+  },
+  {
+   "entry_day": "2016-09-09",
+   "expiration": "2016-10-21",
+   "strike": 210.0,
+   "n": 4,
+   "price": 5.72,
+   "credit": 2287.88,
+   "close_day": "2016-10-21",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 213.97929007634167,
+   "close_cost": 1591.7160305366679,
+   "pnl": 696.1639694633323
+  },
+  {
+   "entry_day": "2016-10-21",
+   "expiration": "2016-12-02",
+   "strike": 210.5,
+   "n": 4,
+   "price": 5.93,
+   "credit": 2371.88,
+   "close_day": "2016-11-02",
+   "closed": "rolled",
+   "spot_at_close": 209.71207021043827,
+   "close_cost": 1464.12,
+   "pnl": 907.7600000000002
+  },
+  {
+   "entry_day": "2016-11-02",
+   "expiration": "2016-12-09",
+   "strike": 201.0,
+   "n": 4,
+   "price": 10.77,
+   "credit": 4307.88,
+   "close_day": "2016-12-09",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 226.51571612374684,
+   "close_cost": 10206.286449498737,
+   "pnl": -5898.406449498737
+  },
+  {
+   "entry_day": "2016-12-12",
+   "expiration": "2017-01-20",
+   "strike": 226.0,
+   "n": 4,
+   "price": 2.78,
+   "credit": 1111.88,
+   "close_day": "2016-12-14",
+   "closed": "rolled",
+   "spot_at_close": 225.15721772880883,
+   "close_cost": 1056.12,
+   "pnl": 55.76000000000022
+  },
+  {
+   "entry_day": "2016-12-14",
+   "expiration": "2017-01-20",
+   "strike": 224.0,
+   "n": 4,
+   "price": 3.72,
+   "credit": 1487.88,
+   "close_day": "2016-12-30",
+   "closed": "rolled",
+   "spot_at_close": 223.60029177692587,
+   "close_cost": 916.12,
+   "pnl": 571.7600000000001
+  },
+  {
+   "entry_day": "2016-12-30",
+   "expiration": "2017-02-10",
+   "strike": 220.0,
+   "n": 4,
+   "price": 6.26,
+   "credit": 2503.88,
+   "close_day": "2017-02-10",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 231.5107588926909,
+   "close_cost": 4604.303557076355,
+   "pnl": -2100.423557076355
+  },
+  {
+   "entry_day": "2017-02-10",
+   "expiration": "2017-03-24",
+   "strike": 231.5,
+   "n": 4,
+   "price": 2.8,
+   "credit": 1119.88,
+   "close_day": "2017-03-16",
+   "closed": "early_exercise",
+   "spot_at_close": 237.82988326927455,
+   "close_cost": 2531.9533077098185,
+   "pnl": -1412.0733077098184
+  },
+  {
+   "entry_day": "2017-03-17",
+   "expiration": "2017-04-28",
+   "strike": 236.0,
+   "n": 4,
+   "price": 3.86,
+   "credit": 1543.88,
+   "close_day": "2017-03-21",
+   "closed": "rolled",
+   "spot_at_close": 233.83980148761668,
+   "close_cost": 864.12,
+   "pnl": 679.7600000000001
+  },
+  {
+   "entry_day": "2017-03-21",
+   "expiration": "2017-04-28",
+   "strike": 231.0,
+   "n": 4,
+   "price": 5.24,
+   "credit": 2095.88,
+   "close_day": "2017-04-28",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 238.1676377267375,
+   "close_cost": 2867.0550906949984,
+   "pnl": -771.1750906949983
+  },
+  {
+   "entry_day": "2017-04-28",
+   "expiration": "2017-06-09",
+   "strike": 237.5,
+   "n": 4,
+   "price": 3.37,
+   "credit": 1347.88,
+   "close_day": "2017-05-17",
+   "closed": "rolled",
+   "spot_at_close": 235.8877491682356,
+   "close_cost": 772.12,
+   "pnl": 575.7600000000001
+  },
+  {
+   "entry_day": "2017-05-17",
+   "expiration": "2017-06-23",
+   "strike": 233.5,
+   "n": 4,
+   "price": 4.88,
+   "credit": 1951.88,
+   "close_day": "2017-06-15",
+   "closed": "early_exercise",
+   "spot_at_close": 243.05833105024357,
+   "close_cost": 3823.3324200974266,
+   "pnl": -1871.4524200974265
+  },
+  {
+   "entry_day": "2017-06-16",
+   "expiration": "2017-07-28",
+   "strike": 242.5,
+   "n": 4,
+   "price": 3.02,
+   "credit": 1207.88,
+   "close_day": "2017-06-27",
+   "closed": "rolled",
+   "spot_at_close": 241.40331783116918,
+   "close_cost": 832.12,
+   "pnl": 375.7600000000001
+  },
+  {
+   "entry_day": "2017-06-27",
+   "expiration": "2017-08-04",
+   "strike": 240.0,
+   "n": 4,
+   "price": 3.97,
+   "credit": 1587.88,
+   "close_day": "2017-08-04",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 247.456134786853,
+   "close_cost": 2982.4539147411997,
+   "pnl": -1394.5739147411996
+  },
+  {
+   "entry_day": "2017-08-08",
+   "expiration": "2017-09-15",
+   "strike": 247.0,
+   "n": 4,
+   "price": 2.93,
+   "credit": 1171.88,
+   "close_day": "2017-08-10",
+   "closed": "rolled",
+   "spot_at_close": 243.80811981420396,
+   "close_cost": 692.12,
+   "pnl": 479.7600000000001
+  },
+  {
+   "entry_day": "2017-08-10",
+   "expiration": "2017-09-22",
+   "strike": 241.0,
+   "n": 4,
+   "price": 5.74,
+   "credit": 2295.88,
+   "close_day": "2017-09-14",
+   "closed": "early_exercise",
+   "spot_at_close": 249.34306947088155,
+   "close_cost": 3337.227788352618,
+   "pnl": -1041.347788352618
+  },
+  {
+   "entry_day": "2017-09-26",
+   "expiration": "2017-11-03",
+   "strike": 249.0,
+   "n": 4,
+   "price": 2.77,
+   "credit": 1107.88,
+   "close_day": "2017-11-03",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 258.47876109959753,
+   "close_cost": 3791.5044398390137,
+   "pnl": -2683.6244398390136
+  },
+  {
+   "entry_day": "2017-11-08",
+   "expiration": "2017-12-15",
+   "strike": 259.0,
+   "n": 4,
+   "price": 2.78,
+   "credit": 1111.88,
+   "close_day": "2017-11-10",
+   "closed": "rolled",
+   "spot_at_close": 258.1138573452942,
+   "close_cost": 920.1199999999999,
+   "pnl": 191.76000000000022
+  },
+  {
+   "entry_day": "2017-11-10",
+   "expiration": "2017-12-22",
+   "strike": 258.0,
+   "n": 4,
+   "price": 3.07,
+   "credit": 1227.88,
+   "close_day": "2017-11-14",
+   "closed": "rolled",
+   "spot_at_close": 257.76675747160675,
+   "close_cost": 1088.12,
+   "pnl": 139.76000000000022
+  },
+  {
+   "entry_day": "2017-11-14",
+   "expiration": "2017-12-22",
+   "strike": 257.5,
+   "n": 4,
+   "price": 2.98,
+   "credit": 1191.88,
+   "close_day": "2017-11-15",
+   "closed": "rolled",
+   "spot_at_close": 256.46847659764876,
+   "close_cost": 980.1200000000001,
+   "pnl": 211.76
+  },
+  {
+   "entry_day": "2017-11-15",
+   "expiration": "2017-12-22",
+   "strike": 255.0,
+   "n": 4,
+   "price": 4.06,
+   "credit": 1623.8799999999999,
+   "close_day": "2017-12-14",
+   "closed": "early_exercise",
+   "spot_at_close": 264.73615075574696,
+   "close_cost": 3894.460302298785,
+   "pnl": -2270.5803022987848
+  },
+  {
+   "entry_day": "2017-12-18",
+   "expiration": "2018-01-26",
+   "strike": 268.0,
+   "n": 4,
+   "price": 3.11,
+   "credit": 1243.88,
+   "close_day": "2017-12-19",
+   "closed": "rolled",
+   "spot_at_close": 267.2211978113877,
+   "close_cost": 1080.12,
+   "pnl": 163.76000000000022
+  },
+  {
+   "entry_day": "2017-12-19",
+   "expiration": "2018-01-26",
+   "strike": 267.0,
+   "n": 4,
+   "price": 3.22,
+   "credit": 1287.88,
+   "close_day": "2018-01-26",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 286.58776474099375,
+   "close_cost": 7835.105896397499,
+   "pnl": -6547.225896397499
+  },
+  {
+   "entry_day": "2018-01-26",
+   "expiration": "2018-03-09",
+   "strike": 285.0,
+   "n": 4,
+   "price": 5.26,
+   "credit": 2103.88,
+   "close_day": "2018-01-29",
+   "closed": "rolled",
+   "spot_at_close": 284.71110849595283,
+   "close_cost": 1848.12,
+   "pnl": 255.76000000000022
+  },
+  {
+   "entry_day": "2018-01-29",
+   "expiration": "2018-03-09",
+   "strike": 280.0,
+   "n": 4,
+   "price": 7.92,
+   "credit": 3167.88,
+   "close_day": "2018-02-02",
+   "closed": "rolled",
+   "spot_at_close": 275.5465048059957,
+   "close_cost": 1124.12,
+   "pnl": 2043.7600000000002
+  },
+  {
+   "entry_day": "2018-02-02",
+   "expiration": "2018-03-16",
+   "strike": 268.0,
+   "n": 4,
+   "price": 10.88,
+   "credit": 4351.88,
+   "close_day": "2018-02-05",
+   "closed": "rolled",
+   "spot_at_close": 263.94869397564406,
+   "close_cost": 2756.12,
+   "pnl": 1595.7600000000002
+  },
+  {
+   "entry_day": "2018-02-05",
+   "expiration": "2018-03-16",
+   "strike": 237.0,
+   "n": 4,
+   "price": 29.66,
+   "credit": 11863.88,
+   "close_day": "2018-03-15",
+   "closed": "early_exercise",
+   "spot_at_close": 274.35328801943825,
+   "close_cost": 14941.3152077753,
+   "pnl": -3077.435207775301
+  },
+  {
+   "entry_day": "2018-03-16",
+   "expiration": "2018-04-27",
+   "strike": 271.0,
+   "n": 4,
+   "price": 6.82,
+   "credit": 2727.88,
+   "close_day": "2018-03-19",
+   "closed": "rolled",
+   "spot_at_close": 270.5265460473309,
+   "close_cost": 2072.12,
+   "pnl": 655.7600000000002
+  },
+  {
+   "entry_day": "2018-03-19",
+   "expiration": "2018-04-27",
+   "strike": 260.0,
+   "n": 4,
+   "price": 13.37,
+   "credit": 5347.88,
+   "close_day": "2018-03-23",
+   "closed": "rolled",
+   "spot_at_close": 258.0749904502452,
+   "close_cost": 2248.12,
+   "pnl": 3099.76
+  },
+  {
+   "entry_day": "2018-03-23",
+   "expiration": "2018-05-04",
+   "strike": 237.5,
+   "n": 4,
+   "price": 23.32,
+   "credit": 9327.88,
+   "close_day": "2018-05-04",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 266.01633610637924,
+   "close_cost": 11406.534442551696,
+   "pnl": -2078.654442551697
+  },
+  {
+   "entry_day": "2018-05-04",
+   "expiration": "2018-06-15",
+   "strike": 260.0,
+   "n": 4,
+   "price": 9.0,
+   "credit": 3599.88,
+   "close_day": "2018-06-15",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 277.1850066894682,
+   "close_cost": 6874.002675787278,
+   "pnl": -3274.1226757872782
+  },
+  {
+   "entry_day": "2018-06-15",
+   "expiration": "2018-07-27",
+   "strike": 275.0,
+   "n": 4,
+   "price": 5.37,
+   "credit": 2147.88,
+   "close_day": "2018-06-21",
+   "closed": "rolled",
+   "spot_at_close": 274.2167060474915,
+   "close_cost": 1488.12,
+   "pnl": 659.7600000000002
+  },
+  {
+   "entry_day": "2018-06-21",
+   "expiration": "2018-08-03",
+   "strike": 269.0,
+   "n": 4,
+   "price": 8.42,
+   "credit": 3367.88,
+   "close_day": "2018-08-03",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 283.6218202469006,
+   "close_cost": 5848.728098760239,
+   "pnl": -2480.848098760239
+  },
+  {
+   "entry_day": "2018-08-03",
+   "expiration": "2018-09-14",
+   "strike": 282.0,
+   "n": 4,
+   "price": 4.87,
+   "credit": 1947.88,
+   "close_day": "2018-08-15",
+   "closed": "rolled",
+   "spot_at_close": 281.806120546432,
+   "close_cost": 1468.12,
+   "pnl": 479.7600000000002
+  },
+  {
+   "entry_day": "2018-08-15",
+   "expiration": "2018-09-21",
+   "strike": 277.0,
+   "n": 4,
+   "price": 7.62,
+   "credit": 3047.88,
+   "close_day": "2018-09-20",
+   "closed": "early_exercise",
+   "spot_at_close": 292.6396071038574,
+   "close_cost": 6255.842841542949,
+   "pnl": -3207.962841542949
+  },
+  {
+   "entry_day": "2018-09-21",
+   "expiration": "2018-11-02",
+   "strike": 290.0,
+   "n": 4,
+   "price": 5.37,
+   "credit": 2147.88,
+   "close_day": "2018-09-26",
+   "closed": "rolled",
+   "spot_at_close": 289.89446471835885,
+   "close_cost": 1584.12,
+   "pnl": 563.7600000000002
+  },
+  {
+   "entry_day": "2018-09-26",
+   "expiration": "2018-11-02",
+   "strike": 286.0,
+   "n": 4,
+   "price": 6.8,
+   "credit": 2719.88,
+   "close_day": "2018-10-10",
+   "closed": "rolled",
+   "spot_at_close": 278.26798930249925,
+   "close_cost": 656.12,
+   "pnl": 2063.76
+  },
+  {
+   "entry_day": "2018-10-10",
+   "expiration": "2018-11-16",
+   "strike": 261.0,
+   "n": 4,
+   "price": 19.95,
+   "credit": 7979.88,
+   "close_day": "2018-11-16",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 273.6905668677189,
+   "close_cost": 5076.226747087571,
+   "pnl": 2903.653252912429
+  },
+  {
+   "entry_day": "2018-11-16",
+   "expiration": "2018-12-28",
+   "strike": 264.0,
+   "n": 4,
+   "price": 12.71,
+   "credit": 5083.88,
+   "close_day": "2018-11-23",
+   "closed": "rolled",
+   "spot_at_close": 263.3460445742137,
+   "close_cost": 2272.12,
+   "pnl": 2811.76
+  },
+  {
+   "entry_day": "2018-11-23",
+   "expiration": "2019-01-04",
+   "strike": 252.0,
+   "n": 4,
+   "price": 14.24,
+   "credit": 5695.88,
+   "close_day": "2018-12-19",
+   "closed": "rolled",
+   "spot_at_close": 250.2075526402951,
+   "close_cost": 1472.12,
+   "pnl": 4223.76
+  },
+  {
+   "entry_day": "2018-12-19",
+   "expiration": "2019-01-25",
+   "strike": 237.5,
+   "n": 4,
+   "price": 15.56,
+   "credit": 6223.88,
+   "close_day": "2018-12-24",
+   "closed": "rolled",
+   "spot_at_close": 234.47824056438768,
+   "close_cost": 2900.12,
+   "pnl": 3323.76
+  },
+  {
+   "entry_day": "2018-12-24",
+   "expiration": "2019-02-01",
+   "strike": 215.0,
+   "n": 4,
+   "price": 22.5,
+   "credit": 8999.88,
+   "close_day": "2019-02-01",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 270.0643515645009,
+   "close_cost": 22025.740625800358,
+   "pnl": -13025.860625800358
+  },
+  {
+   "entry_day": "2019-02-01",
+   "expiration": "2019-03-15",
+   "strike": 262.0,
+   "n": 4,
+   "price": 11.14,
+   "credit": 4455.88,
+   "close_day": "2019-03-14",
+   "closed": "early_exercise",
+   "spot_at_close": 280.2676901633112,
+   "close_cost": 7307.076065324486,
+   "pnl": -2851.196065324486
+  },
+  {
+   "entry_day": "2019-03-15",
+   "expiration": "2019-04-26",
+   "strike": 277.0,
+   "n": 4,
+   "price": 7.57,
+   "credit": 3027.88,
+   "close_day": "2019-04-26",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 293.42756003511454,
+   "close_cost": 6571.024014045815,
+   "pnl": -3543.1440140458153
+  },
+  {
+   "entry_day": "2019-04-26",
+   "expiration": "2019-06-07",
+   "strike": 289.0,
+   "n": 3,
+   "price": 7.76,
+   "credit": 2327.91,
+   "close_day": "2019-05-07",
+   "closed": "rolled",
+   "spot_at_close": 288.03286748457424,
+   "close_cost": 1698.09,
+   "pnl": 629.8199999999999
+  },
+  {
+   "entry_day": "2019-05-07",
+   "expiration": "2019-06-14",
+   "strike": 272.0,
+   "n": 3,
+   "price": 19.02,
+   "credit": 5705.91,
+   "close_day": "2019-06-14",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 289.19792454876557,
+   "close_cost": 5159.377364629671,
+   "pnl": 546.5326353703285
+  },
+  {
+   "entry_day": "2019-06-14",
+   "expiration": "2019-07-26",
+   "strike": 285.0,
+   "n": 3,
+   "price": 7.66,
+   "credit": 2297.91,
+   "close_day": "2019-07-26",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 301.9988680338294,
+   "close_cost": 5099.660410148823,
+   "pnl": -2801.750410148823
+  },
+  {
+   "entry_day": "2019-07-26",
+   "expiration": "2019-09-03",
+   "strike": 300.0,
+   "n": 3,
+   "price": 5.66,
+   "credit": 1697.91,
+   "close_day": "2019-07-31",
+   "closed": "rolled",
+   "spot_at_close": 297.66441868243356,
+   "close_cost": 1062.09,
+   "pnl": 635.8200000000002
+  },
+  {
+   "entry_day": "2019-07-31",
+   "expiration": "2019-09-06",
+   "strike": 294.0,
+   "n": 3,
+   "price": 6.78,
+   "credit": 2033.91,
+   "close_day": "2019-08-02",
+   "closed": "rolled",
+   "spot_at_close": 292.7581716057337,
+   "close_cost": 1710.09,
+   "pnl": 323.82000000000016
+  },
+  {
+   "entry_day": "2019-08-02",
+   "expiration": "2019-09-13",
+   "strike": 280.0,
+   "n": 3,
+   "price": 15.99,
+   "credit": 4796.91,
+   "close_day": "2019-09-13",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 301.054211482874,
+   "close_cost": 6316.263444862199,
+   "pnl": -1519.3534448621995
+  },
+  {
+   "entry_day": "2019-09-13",
+   "expiration": "2019-10-25",
+   "strike": 299.0,
+   "n": 3,
+   "price": 5.74,
+   "credit": 1721.91,
+   "close_day": "2019-09-20",
+   "closed": "rolled",
+   "spot_at_close": 298.11432490611395,
+   "close_cost": 1446.09,
+   "pnl": 275.82000000000016
+  },
+  {
+   "entry_day": "2019-09-20",
+   "expiration": "2019-11-01",
+   "strike": 290.0,
+   "n": 3,
+   "price": 11.61,
+   "credit": 3482.91,
+   "close_day": "2019-10-02",
+   "closed": "rolled",
+   "spot_at_close": 288.12221576951964,
+   "close_cost": 1644.09,
+   "pnl": 1838.82
+  },
+  {
+   "entry_day": "2019-10-02",
+   "expiration": "2019-11-08",
+   "strike": 272.5,
+   "n": 3,
+   "price": 18.68,
+   "credit": 5603.91,
+   "close_day": "2019-11-08",
+   "closed": "assigned_at_expiry",
+   "spot_at_close": 308.95328117294764,
+   "close_cost": 10935.984351884292,
+   "pnl": -5332.074351884292
+  },
+  {
+   "entry_day": "2019-11-08",
+   "expiration": "2019-12-20",
+   "strike": 305.0,
+   "n": 3,
+   "price": 7.65,
+   "credit": 2294.91,
+   "close_day": "2019-12-19",
+   "closed": "early_exercise",
+   "spot_at_close": 319.91938301421953,
+   "close_cost": 4475.814904265861,
+   "pnl": -2180.9049042658608
+  }
+ ],
+ "collar_put_trades": [
+  {
+   "entry_day": "2020-02-24",
+   "expiration": "2020-04-17",
+   "strike": 322.0,
+   "n": 3,
+   "cost": 2895.09,
+   "value_at_expiry": 10578.882592476122,
+   "pnl": 7683.792592476122
+  },
+  {
+   "entry_day": "2020-04-21",
+   "expiration": "2020-06-19",
+   "strike": 273.0,
+   "n": 3,
+   "cost": 5367.09,
+   "value_at_expiry": 0.0,
+   "pnl": -5367.09
+  },
+  {
+   "entry_day": "2020-09-03",
+   "expiration": "2020-10-23",
+   "strike": 345.0,
+   "n": 2,
+   "cost": 2722.06,
+   "value_at_expiry": 0.0,
+   "pnl": -2722.06
+  },
+  {
+   "entry_day": "2020-10-28",
+   "expiration": "2020-12-18",
+   "strike": 327.0,
+   "n": 2,
+   "cost": 3464.06,
+   "value_at_expiry": 0.0,
+   "pnl": -3464.06
+  },
+  {
+   "entry_day": "2022-04-29",
+   "expiration": "2022-06-17",
+   "strike": 412.0,
+   "n": 2,
+   "cost": 3704.06,
+   "value_at_expiry": 9233.292544987387,
+   "pnl": 5529.232544987388
+  },
+  {
+   "entry_day": "2022-08-26",
+   "expiration": "2022-10-21",
+   "strike": 405.0,
+   "n": 2,
+   "cost": 2868.06,
+   "value_at_expiry": 6145.497089551771,
+   "pnl": 3277.437089551771
+  },
+  {
+   "entry_day": "2025-04-03",
+   "expiration": "2025-05-23",
+   "strike": 550.0,
+   "n": 2,
+   "cost": 4630.06,
+   "value_at_expiry": 0.0,
+   "pnl": -4630.06
+  }
+ ],
+ "main_curve": [
+  [
+   "2020-01-02",
+   99875.34
+  ],
+  [
+   "2020-01-03",
+   99518.84
+  ],
+  [
+   "2020-01-06",
+   99738.97
+  ],
+  [
+   "2020-01-07",
+   99673.0
+  ],
+  [
+   "2020-01-08",
+   99893.33
+  ],
+  [
+   "2020-01-09",
+   100198.1
+  ],
+  [
+   "2020-01-10",
+   100140.5
+  ],
+  [
+   "2020-01-13",
+   100387.67
+  ],
+  [
+   "2020-01-14",
+   100355.87
+  ],
+  [
+   "2020-01-15",
+   100475.47
+  ],
+  [
+   "2020-01-16",
+   100647.17
+  ],
+  [
+   "2020-01-17",
+   100734.18
+  ],
+  [
+   "2020-01-21",
+   100688.17
+  ],
+  [
+   "2020-01-22",
+   100731.19
+  ],
+  [
+   "2020-01-23",
+   100734.89
+  ],
+  [
+   "2020-01-24",
+   100469.27
+  ],
+  [
+   "2020-01-27",
+   99834.72
+  ],
+  [
+   "2020-01-28",
+   100328.21
+  ],
+  [
+   "2020-01-29",
+   100339.89
+  ],
+  [
+   "2020-01-30",
+   100512.07
+  ],
+  [
+   "2020-01-31",
+   99666.47
+  ],
+  [
+   "2020-02-03",
+   99967.89
+  ],
+  [
+   "2020-02-04",
+   100316.1
+  ],
+  [
+   "2020-02-05",
+   100485.2
+  ],
+  [
+   "2020-02-06",
+   100530.55
+  ],
+  [
+   "2020-02-07",
+   100461.31
+  ],
+  [
+   "2020-02-10",
+   100589.35
+  ],
+  [
+   "2020-02-11",
+   100598.24
+  ],
+  [
+   "2020-02-12",
+   100712.73
+  ],
+  [
+   "2020-02-13",
+   100698.38
+  ],
+  [
+   "2020-02-14",
+   100734.81
+  ],
+  [
+   "2020-02-18",
+   100736.05
+  ],
+  [
+   "2020-02-19",
+   100797.41
+  ],
+  [
+   "2020-02-20",
+   100766.92
+  ],
+  [
+   "2020-02-21",
+   100697.87
+  ],
+  [
+   "2020-02-24",
+   99950.91
+  ],
+  [
+   "2020-02-25",
+   99071.7
+  ],
+  [
+   "2020-02-26",
+   99112.15
+  ],
+  [
+   "2020-02-27",
+   96042.96
+  ],
+  [
+   "2020-02-28",
+   95961.22
+  ],
+  [
+   "2020-03-02",
+   96865.38
+  ],
+  [
+   "2020-03-03",
+   96176.02
+  ],
+  [
+   "2020-03-04",
+   96986.69
+  ],
+  [
+   "2020-03-05",
+   96192.2
+  ],
+  [
+   "2020-03-06",
+   96034.76
+  ],
+  [
+   "2020-03-09",
+   93281.16
+  ],
+  [
+   "2020-03-10",
+   95226.08
+  ],
+  [
+   "2020-03-11",
+   93427.49
+  ],
+  [
+   "2020-03-12",
+   87548.62
+  ],
+  [
+   "2020-03-13",
+   88854.5
+  ],
+  [
+   "2020-03-16",
+   86858.75
+  ],
+  [
+   "2020-03-17",
+   87902.15
+  ],
+  [
+   "2020-03-18",
+   86666.94
+  ],
+  [
+   "2020-03-19",
+   87202.44
+  ],
+  [
+   "2020-03-20",
+   87330.14
+  ],
+  [
+   "2020-03-23",
+   87609.01
+  ],
+  [
+   "2020-03-24",
+   88496.35
+  ],
+  [
+   "2020-03-25",
+   88323.59
+  ],
+  [
+   "2020-03-26",
+   88822.8
+  ],
+  [
+   "2020-03-27",
+   88519.46
+  ],
+  [
+   "2020-03-30",
+   89008.36
+  ],
+  [
+   "2020-03-31",
+   89012.83
+  ],
+  [
+   "2020-04-01",
+   88798.52
+  ],
+  [
+   "2020-04-02",
+   89053.96
+  ],
+  [
+   "2020-04-03",
+   89122.49
+  ],
+  [
+   "2020-04-06",
+   89264.03
+  ],
+  [
+   "2020-04-07",
+   89305.67
+  ],
+  [
+   "2020-04-08",
+   92079.64
+  ],
+  [
+   "2020-04-09",
+   93358.79
+  ],
+  [
+   "2020-04-13",
+   92530.08
+  ],
+  [
+   "2020-04-14",
+   95092.12
+  ],
+  [
+   "2020-04-15",
+   93204.22
+  ],
+  [
+   "2020-04-16",
+   93644.8
+  ],
+  [
+   "2020-04-17",
+   95969.41
+  ],
+  [
+   "2020-04-20",
+   94382.24
+  ],
+  [
+   "2020-04-21",
+   91754.19
+  ],
+  [
+   "2020-04-22",
+   93641.02
+  ],
+  [
+   "2020-04-23",
+   93616.45
+  ],
+  [
+   "2020-04-24",
+   89411.23
+  ],
+  [
+   "2020-04-27",
+   89768.07
+  ],
+  [
+   "2020-04-28",
+   89710.91
+  ],
+  [
+   "2020-04-29",
+   90013.67
+  ],
+  [
+   "2020-04-30",
+   89913.96
+  ],
+  [
+   "2020-05-01",
+   89597.08
+  ],
+  [
+   "2020-05-04",
+   89797.16
+  ],
+  [
+   "2020-05-05",
+   89976.48
+  ],
+  [
+   "2020-05-06",
+   89929.05
+  ],
+  [
+   "2020-05-07",
+   90114.81
+  ],
+  [
+   "2020-05-08",
+   90283.91
+  ],
+  [
+   "2020-05-11",
+   90342.8
+  ],
+  [
+   "2020-05-12",
+   90155.61
+  ],
+  [
+   "2020-05-13",
+   89954.32
+  ],
+  [
+   "2020-05-14",
+   90147.57
+  ],
+  [
+   "2020-05-15",
+   90266.16
+  ],
+  [
+   "2020-05-18",
+   90415.87
+  ],
+  [
+   "2020-05-19",
+   90388.67
+  ],
+  [
+   "2020-05-20",
+   90476.28
+  ],
+  [
+   "2020-05-21",
+   90474.13
+  ],
+  [
+   "2020-05-22",
+   90485.77
+  ],
+  [
+   "2020-05-26",
+   90550.07
+  ],
+  [
+   "2020-05-27",
+   90562.84
+  ],
+  [
+   "2020-05-28",
+   90568.13
+  ],
+  [
+   "2020-05-29",
+   90427.79
+  ],
+  [
+   "2020-06-01",
+   90589.7
+  ],
+  [
+   "2020-06-02",
+   90608.63
+  ],
+  [
+   "2020-06-03",
+   90635.03
+  ],
+  [
+   "2020-06-04",
+   90638.8
+  ],
+  [
+   "2020-06-05",
+   90672.23
+  ],
+  [
+   "2020-06-08",
+   91118.77
+  ],
+  [
+   "2020-06-09",
+   90736.11
+  ],
+  [
+   "2020-06-10",
+   90525.87
+  ],
+  [
+   "2020-06-11",
+   86806.59
+  ],
+  [
+   "2020-06-12",
+   87419.24
+  ],
+  [
+   "2020-06-15",
+   87882.29
+  ],
+  [
+   "2020-06-16",
+   88544.2
+  ],
+  [
+   "2020-06-17",
+   88082.55
+  ],
+  [
+   "2020-06-18",
+   88108.95
+  ],
+  [
+   "2020-06-19",
+   88257.43
+  ],
+  [
+   "2020-06-22",
+   88606.98
+  ],
+  [
+   "2020-06-23",
+   88771.03
+  ],
+  [
+   "2020-06-24",
+   87934.0
+  ],
+  [
+   "2020-06-25",
+   88335.86
+  ],
+  [
+   "2020-06-26",
+   87552.64
+  ],
+  [
+   "2020-06-29",
+   88160.95
+  ],
+  [
+   "2020-06-30",
+   88659.33
+  ],
+  [
+   "2020-07-01",
+   88840.92
+  ],
+  [
+   "2020-07-02",
+   89035.81
+  ],
+  [
+   "2020-07-06",
+   89450.8
+  ],
+  [
+   "2020-07-07",
+   89175.94
+  ],
+  [
+   "2020-07-08",
+   89423.77
+  ],
+  [
+   "2020-07-09",
+   89268.71
+  ],
+  [
+   "2020-07-10",
+   89546.93
+  ],
+  [
+   "2020-07-13",
+   89301.28
+  ],
+  [
+   "2020-07-14",
+   89644.4
+  ],
+  [
+   "2020-07-15",
+   89946.53
+  ],
+  [
+   "2020-07-16",
+   89846.24
+  ],
+  [
+   "2020-07-17",
+   89929.74
+  ],
+  [
+   "2020-07-20",
+   90146.38
+  ],
+  [
+   "2020-07-21",
+   90201.24
+  ],
+  [
+   "2020-07-22",
+   90350.82
+  ],
+  [
+   "2020-07-23",
+   90045.5
+  ],
+  [
+   "2020-07-24",
+   89771.35
+  ],
+  [
+   "2020-07-27",
+   90119.28
+  ],
+  [
+   "2020-07-28",
+   89898.68
+  ],
+  [
+   "2020-07-29",
+   90399.35
+  ],
+  [
+   "2020-07-30",
+   90254.94
+  ],
+  [
+   "2020-07-31",
+   90585.05
+  ],
+  [
+   "2020-08-03",
+   90857.06
+  ],
+  [
+   "2020-08-04",
+   91013.55
+  ],
+  [
+   "2020-08-05",
+   91232.76
+  ],
+  [
+   "2020-08-06",
+   91454.63
+  ],
+  [
+   "2020-08-07",
+   91506.23
+  ],
+  [
+   "2020-08-10",
+   91616.9
+  ],
+  [
+   "2020-08-11",
+   91328.68
+  ],
+  [
+   "2020-08-12",
+   91797.56
+  ],
+  [
+   "2020-08-13",
+   91755.15
+  ],
+  [
+   "2020-08-14",
+   91798.79
+  ],
+  [
+   "2020-08-17",
+   91945.24
+  ],
+  [
+   "2020-08-18",
+   91975.24
+  ],
+  [
+   "2020-08-19",
+   91844.06
+  ],
+  [
+   "2020-08-20",
+   91941.06
+  ],
+  [
+   "2020-08-21",
+   92062.58
+  ],
+  [
+   "2020-08-24",
+   92361.24
+  ],
+  [
+   "2020-08-25",
+   92471.39
+  ],
+  [
+   "2020-08-26",
+   92698.97
+  ],
+  [
+   "2020-08-27",
+   92804.06
+  ],
+  [
+   "2020-08-28",
+   93004.63
+  ],
+  [
+   "2020-08-31",
+   92953.08
+  ],
+  [
+   "2020-09-01",
+   93159.15
+  ],
+  [
+   "2020-09-02",
+   93526.23
+  ],
+  [
+   "2020-09-03",
+   92551.9
+  ],
+  [
+   "2020-09-04",
+   92284.95
+  ],
+  [
+   "2020-09-08",
+   91392.42
+  ],
+  [
+   "2020-09-09",
+   92209.37
+  ],
+  [
+   "2020-09-10",
+   91534.47
+  ],
+  [
+   "2020-09-11",
+   91726.76
+  ],
+  [
+   "2020-09-14",
+   92325.93
+  ],
+  [
+   "2020-09-15",
+   92540.53
+  ],
+  [
+   "2020-09-16",
+   92164.21
+  ],
+  [
+   "2020-09-17",
+   91778.45
+  ],
+  [
+   "2020-09-18",
+   91775.7
+  ],
+  [
+   "2020-09-21",
+   91318.47
+  ],
+  [
+   "2020-09-22",
+   91796.53
+  ],
+  [
+   "2020-09-23",
+   90726.58
+  ],
+  [
+   "2020-09-24",
+   90901.26
+  ],
+  [
+   "2020-09-25",
+   91734.21
+  ],
+  [
+   "2020-09-28",
+   92392.06
+  ],
+  [
+   "2020-09-29",
+   92197.5
+  ],
+  [
+   "2020-09-30",
+   92561.07
+  ],
+  [
+   "2020-10-01",
+   92758.74
+  ],
+  [
+   "2020-10-02",
+   92477.29
+  ],
+  [
+   "2020-10-05",
+   93157.67
+  ],
+  [
+   "2020-10-06",
+   92712.65
+  ],
+  [
+   "2020-10-07",
+   93304.41
+  ],
+  [
+   "2020-10-08",
+   93570.25
+  ],
+  [
+   "2020-10-09",
+   93813.01
+  ],
+  [
+   "2020-10-12",
+   94191.31
+  ],
+  [
+   "2020-10-13",
+   94043.72
+  ],
+  [
+   "2020-10-14",
+   93910.99
+  ],
+  [
+   "2020-10-15",
+   93864.57
+  ],
+  [
+   "2020-10-16",
+   93682.79
+  ],
+  [
+   "2020-10-19",
+   93099.0
+  ],
+  [
+   "2020-10-20",
+   93256.24
+  ],
+  [
+   "2020-10-21",
+   93222.14
+  ],
+  [
+   "2020-10-22",
+   93506.53
+  ],
+  [
+   "2020-10-23",
+   93679.63
+  ],
+  [
+   "2020-10-26",
+   92798.93
+  ],
+  [
+   "2020-10-27",
+   92640.05
+  ],
+  [
+   "2020-10-28",
+   90737.77
+  ],
+  [
+   "2020-10-29",
+   91457.06
+  ],
+  [
+   "2020-10-30",
+   90977.14
+  ],
+  [
+   "2020-11-02",
+   91659.03
+  ],
+  [
+   "2020-11-03",
+   92533.45
+  ],
+  [
+   "2020-11-04",
+   93674.27
+  ],
+  [
+   "2020-11-05",
+   94408.26
+  ],
+  [
+   "2020-11-06",
+   94553.41
+  ],
+  [
+   "2020-11-09",
+   94975.09
+  ],
+  [
+   "2020-11-10",
+   94960.75
+  ],
+  [
+   "2020-11-11",
+   95181.41
+  ],
+  [
+   "2020-11-12",
+   94909.15
+  ],
+  [
+   "2020-11-13",
+   95341.41
+  ],
+  [
+   "2020-11-16",
+   95673.49
+  ],
+  [
+   "2020-11-17",
+   95594.14
+  ],
+  [
+   "2020-11-18",
+   95270.69
+  ],
+  [
+   "2020-11-19",
+   95395.42
+  ],
+  [
+   "2020-11-20",
+   95212.16
+  ],
+  [
+   "2020-11-23",
+   95379.52
+  ],
+  [
+   "2020-11-24",
+   95773.49
+  ],
+  [
+   "2020-11-25",
+   95740.7
+  ],
+  [
+   "2020-11-27",
+   95781.34
+  ],
+  [
+   "2020-11-30",
+   95655.25
+  ],
+  [
+   "2020-12-01",
+   96088.75
+  ],
+  [
+   "2020-12-02",
+   96181.32
+  ],
+  [
+   "2020-12-03",
+   96178.93
+  ],
+  [
+   "2020-12-04",
+   96544.88
+  ],
+  [
+   "2020-12-07",
+   96518.09
+  ],
+  [
+   "2020-12-08",
+   96676.31
+  ],
+  [
+   "2020-12-09",
+   96363.56
+  ],
+  [
+   "2020-12-10",
+   96306.03
+  ],
+  [
+   "2020-12-11",
+   96288.93
+  ],
+  [
+   "2020-12-14",
+   96121.3
+  ],
+  [
+   "2020-12-15",
+   96700.82
+  ],
+  [
+   "2020-12-16",
+   96581.53
+  ],
+  [
+   "2020-12-17",
+   96678.08
+  ],
+  [
+   "2020-12-18",
+   97044.02
+  ],
+  [
+   "2020-12-21",
+   96830.86
+  ],
+  [
+   "2020-12-22",
+   96812.93
+  ],
+  [
+   "2020-12-23",
+   96914.37
+  ],
+  [
+   "2020-12-24",
+   97123.42
+  ],
+  [
+   "2020-12-28",
+   97401.88
+  ],
+  [
+   "2020-12-29",
+   97386.52
+  ],
+  [
+   "2020-12-30",
+   97440.16
+  ],
+  [
+   "2020-12-31",
+   97583.85
+  ],
+  [
+   "2021-01-04",
+   97263.61
+  ],
+  [
+   "2021-01-05",
+   97485.75
+  ],
+  [
+   "2021-01-06",
+   97639.52
+  ],
+  [
+   "2021-01-07",
+   98031.79
+  ],
+  [
+   "2021-01-08",
+   97981.37
+  ],
+  [
+   "2021-01-11",
+   97686.46
+  ],
+  [
+   "2021-01-12",
+   97730.53
+  ],
+  [
+   "2021-01-13",
+   97926.49
+  ],
+  [
+   "2021-01-14",
+   97771.72
+  ],
+  [
+   "2021-01-15",
+   97443.8
+  ],
+  [
+   "2021-01-19",
+   97853.03
+  ],
+  [
+   "2021-01-20",
+   98517.75
+  ],
+  [
+   "2021-01-21",
+   98616.16
+  ],
+  [
+   "2021-01-22",
+   98489.44
+  ],
+  [
+   "2021-01-25",
+   98656.15
+  ],
+  [
+   "2021-01-26",
+   98605.96
+  ],
+  [
+   "2021-01-27",
+   97176.96
+  ],
+  [
+   "2021-01-28",
+   97742.66
+  ],
+  [
+   "2021-01-29",
+   96724.59
+  ],
+  [
+   "2021-02-01",
+   97816.98
+  ],
+  [
+   "2021-02-02",
+   98542.56
+  ],
+  [
+   "2021-02-03",
+   98724.3
+  ],
+  [
+   "2021-02-04",
+   99163.09
+  ],
+  [
+   "2021-02-05",
+   99334.58
+  ],
+  [
+   "2021-02-08",
+   99566.83
+  ],
+  [
+   "2021-02-09",
+   99529.43
+  ],
+  [
+   "2021-02-10",
+   99532.46
+  ],
+  [
+   "2021-02-11",
+   99563.08
+  ],
+  [
+   "2021-02-12",
+   99716.51
+  ],
+  [
+   "2021-02-16",
+   99474.54
+  ],
+  [
+   "2021-02-17",
+   99552.67
+  ],
+  [
+   "2021-02-18",
+   99342.51
+  ],
+  [
+   "2021-02-19",
+   99332.09
+  ],
+  [
+   "2021-02-22",
+   98990.56
+  ],
+  [
+   "2021-02-23",
+   99083.0
+  ],
+  [
+   "2021-02-24",
+   99649.41
+  ],
+  [
+   "2021-02-25",
+   98131.82
+  ],
+  [
+   "2021-02-26",
+   97808.71
+  ],
+  [
+   "2021-03-01",
+   98956.75
+  ],
+  [
+   "2021-03-02",
+   98718.25
+  ],
+  [
+   "2021-03-03",
+   98241.7
+  ],
+  [
+   "2021-03-04",
+   97763.23
+  ],
+  [
+   "2021-03-05",
+   98564.05
+  ],
+  [
+   "2021-03-08",
+   98420.74
+  ],
+  [
+   "2021-03-09",
+   98894.53
+  ],
+  [
+   "2021-03-10",
+   99192.33
+  ],
+  [
+   "2021-03-11",
+   99514.31
+  ],
+  [
+   "2021-03-12",
+   99625.33
+  ],
+  [
+   "2021-03-15",
+   99818.34
+  ],
+  [
+   "2021-03-16",
+   99782.75
+  ],
+  [
+   "2021-03-17",
+   99682.14
+  ],
+  [
+   "2021-03-18",
+   99516.6
+  ],
+  [
+   "2021-03-19",
+   99523.2
+  ],
+  [
+   "2021-03-22",
+   99977.96
+  ],
+  [
+   "2021-03-23",
+   99666.38
+  ],
+  [
+   "2021-03-24",
+   99473.6
+  ],
+  [
+   "2021-03-25",
+   99757.33
+  ],
+  [
+   "2021-03-26",
+   100360.43
+  ],
+  [
+   "2021-03-29",
+   100328.21
+  ],
+  [
+   "2021-03-30",
+   100331.66
+  ],
+  [
+   "2021-03-31",
+   100485.06
+  ],
+  [
+   "2021-04-01",
+   100870.93
+  ],
+  [
+   "2021-04-05",
+   101271.04
+  ],
+  [
+   "2021-04-06",
+   101260.89
+  ],
+  [
+   "2021-04-07",
+   101324.98
+  ],
+  [
+   "2021-04-08",
+   101459.22
+  ],
+  [
+   "2021-04-09",
+   101668.57
+  ],
+  [
+   "2021-04-12",
+   101705.61
+  ],
+  [
+   "2021-04-13",
+   101736.91
+  ],
+  [
+   "2021-04-14",
+   101698.59
+  ],
+  [
+   "2021-04-15",
+   101943.06
+  ],
+  [
+   "2021-04-16",
+   101982.13
+  ],
+  [
+   "2021-04-19",
+   101891.8
+  ],
+  [
+   "2021-04-20",
+   101747.98
+  ],
+  [
+   "2021-04-21",
+   101999.29
+  ],
+  [
+   "2021-04-22",
+   101785.74
+  ],
+  [
+   "2021-04-23",
+   102029.08
+  ],
+  [
+   "2021-04-26",
+   102094.3
+  ],
+  [
+   "2021-04-27",
+   102079.09
+  ],
+  [
+   "2021-04-28",
+   102032.64
+  ],
+  [
+   "2021-04-29",
+   102218.12
+  ],
+  [
+   "2021-04-30",
+   102044.25
+  ],
+  [
+   "2021-05-03",
+   102202.17
+  ],
+  [
+   "2021-05-04",
+   101921.03
+  ],
+  [
+   "2021-05-05",
+   101973.88
+  ],
+  [
+   "2021-05-06",
+   102300.91
+  ],
+  [
+   "2021-05-07",
+   102634.15
+  ],
+  [
+   "2021-05-10",
+   102276.16
+  ],
+  [
+   "2021-05-11",
+   101811.31
+  ],
+  [
+   "2021-05-12",
+   100576.78
+  ],
+  [
+   "2021-05-13",
+   101371.93
+  ],
+  [
+   "2021-05-14",
+   102258.46
+  ],
+  [
+   "2021-05-17",
+   102194.21
+  ],
+  [
+   "2021-05-18",
+   101833.52
+  ],
+  [
+   "2021-05-19",
+   101757.28
+  ],
+  [
+   "2021-05-20",
+   102253.24
+  ],
+  [
+   "2021-05-21",
+   102283.67
+  ],
+  [
+   "2021-05-24",
+   102772.37
+  ],
+  [
+   "2021-05-25",
+   102714.38
+  ],
+  [
+   "2021-05-26",
+   102852.3
+  ],
+  [
+   "2021-05-27",
+   102912.05
+  ],
+  [
+   "2021-05-28",
+   103018.41
+  ],
+  [
+   "2021-06-01",
+   103012.2
+  ],
+  [
+   "2021-06-02",
+   103092.09
+  ],
+  [
+   "2021-06-03",
+   103003.22
+  ],
+  [
+   "2021-06-04",
+   103249.07
+  ],
+  [
+   "2021-06-07",
+   103245.77
+  ],
+  [
+   "2021-06-08",
+   103236.64
+  ],
+  [
+   "2021-06-09",
+   103205.27
+  ],
+  [
+   "2021-06-10",
+   103308.3
+  ],
+  [
+   "2021-06-11",
+   103336.25
+  ],
+  [
+   "2021-06-14",
+   103449.36
+  ],
+  [
+   "2021-06-15",
+   103335.75
+  ],
+  [
+   "2021-06-16",
+   102714.94
+  ],
+  [
+   "2021-06-17",
+   102721.27
+  ],
+  [
+   "2021-06-18",
+   102273.23
+  ],
+  [
+   "2021-06-21",
+   103056.23
+  ],
+  [
+   "2021-06-22",
+   103378.05
+  ],
+  [
+   "2021-06-23",
+   103389.67
+  ],
+  [
+   "2021-06-24",
+   103614.94
+  ],
+  [
+   "2021-06-25",
+   103833.32
+  ],
+  [
+   "2021-06-28",
+   103866.77
+  ],
+  [
+   "2021-06-29",
+   103884.0
+  ],
+  [
+   "2021-06-30",
+   103947.52
+  ],
+  [
+   "2021-07-01",
+   104115.13
+  ],
+  [
+   "2021-07-02",
+   104333.97
+  ],
+  [
+   "2021-07-06",
+   104295.79
+  ],
+  [
+   "2021-07-07",
+   104419.95
+  ],
+  [
+   "2021-07-08",
+   104120.37
+  ],
+  [
+   "2021-07-09",
+   104463.18
+  ],
+  [
+   "2021-07-12",
+   104591.05
+  ],
+  [
+   "2021-07-13",
+   104490.82
+  ],
+  [
+   "2021-07-14",
+   104588.71
+  ],
+  [
+   "2021-07-15",
+   104456.05
+  ],
+  [
+   "2021-07-16",
+   104361.24
+  ],
+  [
+   "2021-07-19",
+   103952.36
+  ],
+  [
+   "2021-07-20",
+   104379.87
+  ],
+  [
+   "2021-07-21",
+   104549.39
+  ],
+  [
+   "2021-07-22",
+   104552.06
+  ],
+  [
+   "2021-07-23",
+   104718.11
+  ],
+  [
+   "2021-07-26",
+   104839.16
+  ],
+  [
+   "2021-07-27",
+   104636.07
+  ],
+  [
+   "2021-07-28",
+   104686.24
+  ],
+  [
+   "2021-07-29",
+   104905.36
+  ],
+  [
+   "2021-07-30",
+   104715.23
+  ],
+  [
+   "2021-08-02",
+   104621.5
+  ],
+  [
+   "2021-08-03",
+   105026.35
+  ],
+  [
+   "2021-08-04",
+   104884.83
+  ],
+  [
+   "2021-08-05",
+   105155.3
+  ],
+  [
+   "2021-08-06",
+   105306.51
+  ],
+  [
+   "2021-08-09",
+   105304.28
+  ],
+  [
+   "2021-08-10",
+   105378.34
+  ],
+  [
+   "2021-08-11",
+   105487.79
+  ],
+  [
+   "2021-08-12",
+   105616.53
+  ],
+  [
+   "2021-08-13",
+   105734.51
+  ],
+  [
+   "2021-08-16",
+   105784.08
+  ],
+  [
+   "2021-08-17",
+   105559.4
+  ],
+  [
+   "2021-08-18",
+   105056.49
+  ],
+  [
+   "2021-08-19",
+   105133.48
+  ],
+  [
+   "2021-08-20",
+   105552.62
+  ],
+  [
+   "2021-08-23",
+   105929.05
+  ],
+  [
+   "2021-08-24",
+   105931.67
+  ],
+  [
+   "2021-08-25",
+   106047.21
+  ],
+  [
+   "2021-08-26",
+   105861.53
+  ],
+  [
+   "2021-08-27",
+   106141.62
+  ],
+  [
+   "2021-08-30",
+   106232.13
+  ],
+  [
+   "2021-08-31",
+   106220.9
+  ],
+  [
+   "2021-09-01",
+   106197.27
+  ],
+  [
+   "2021-09-02",
+   106283.24
+  ],
+  [
+   "2021-09-03",
+   106273.11
+  ],
+  [
+   "2021-09-07",
+   106089.7
+  ],
+  [
+   "2021-09-08",
+   106052.2
+  ],
+  [
+   "2021-09-09",
+   105743.01
+  ],
+  [
+   "2021-09-10",
+   105336.55
+  ],
+  [
+   "2021-09-13",
+   105585.26
+  ],
+  [
+   "2021-09-14",
+   105353.17
+  ],
+  [
+   "2021-09-15",
+   105615.8
+  ],
+  [
+   "2021-09-16",
+   105480.97
+  ],
+  [
+   "2021-09-17",
+   105250.05
+  ],
+  [
+   "2021-09-20",
+   103912.95
+  ],
+  [
+   "2021-09-21",
+   103974.14
+  ],
+  [
+   "2021-09-22",
+   104497.88
+  ],
+  [
+   "2021-09-23",
+   104854.06
+  ],
+  [
+   "2021-09-24",
+   104928.71
+  ],
+  [
+   "2021-09-27",
+   104888.93
+  ],
+  [
+   "2021-09-28",
+   104181.43
+  ],
+  [
+   "2021-09-29",
+   104257.23
+  ],
+  [
+   "2021-09-30",
+   103894.97
+  ],
+  [
+   "2021-10-01",
+   104351.43
+  ],
+  [
+   "2021-10-04",
+   104061.03
+  ],
+  [
+   "2021-10-05",
+   104406.64
+  ],
+  [
+   "2021-10-06",
+   104588.63
+  ],
+  [
+   "2021-10-07",
+   104834.24
+  ],
+  [
+   "2021-10-08",
+   104877.06
+  ],
+  [
+   "2021-10-11",
+   104719.86
+  ],
+  [
+   "2021-10-12",
+   104710.12
+  ],
+  [
+   "2021-10-13",
+   104858.02
+  ],
+  [
+   "2021-10-14",
+   105191.26
+  ],
+  [
+   "2021-10-15",
+   105347.0
+  ],
+  [
+   "2021-10-18",
+   105424.54
+  ],
+  [
+   "2021-10-19",
+   105552.06
+  ],
+  [
+   "2021-10-20",
+   105613.76
+  ],
+  [
+   "2021-10-21",
+   105653.54
+  ],
+  [
+   "2021-10-22",
+   105644.51
+  ],
+  [
+   "2021-10-25",
+   105770.78
+  ],
+  [
+   "2021-10-26",
+   105743.54
+  ],
+  [
+   "2021-10-27",
+   105679.23
+  ],
+  [
+   "2021-10-28",
+   105810.09
+  ],
+  [
+   "2021-10-29",
+   105827.96
+  ],
+  [
+   "2021-11-01",
+   105952.19
+  ],
+  [
+   "2021-11-02",
+   106115.71
+  ],
+  [
+   "2021-11-03",
+   106376.64
+  ],
+  [
+   "2021-11-04",
+   106526.52
+  ],
+  [
+   "2021-11-05",
+   106569.55
+  ],
+  [
+   "2021-11-08",
+   106607.79
+  ],
+  [
+   "2021-11-09",
+   106502.55
+  ],
+  [
+   "2021-11-10",
+   106251.6
+  ],
+  [
+   "2021-11-11",
+   106337.32
+  ],
+  [
+   "2021-11-12",
+   106653.35
+  ],
+  [
+   "2021-11-15",
+   106695.89
+  ],
+  [
+   "2021-11-16",
+   106830.7
+  ],
+  [
+   "2021-11-17",
+   106770.82
+  ],
+  [
+   "2021-11-18",
+   106856.06
+  ],
+  [
+   "2021-11-19",
+   106817.48
+  ],
+  [
+   "2021-11-22",
+   106748.53
+  ],
+  [
+   "2021-11-23",
+   106826.97
+  ],
+  [
+   "2021-11-24",
+   106912.62
+  ],
+  [
+   "2021-11-26",
+   105864.14
+  ],
+  [
+   "2021-11-29",
+   106652.46
+  ],
+  [
+   "2021-11-30",
+   105848.19
+  ],
+  [
+   "2021-12-01",
+   105188.01
+  ],
+  [
+   "2021-12-02",
+   105964.83
+  ],
+  [
+   "2021-12-03",
+   105770.14
+  ],
+  [
+   "2021-12-06",
+   106533.34
+  ],
+  [
+   "2021-12-07",
+   107132.31
+  ],
+  [
+   "2021-12-08",
+   107192.14
+  ],
+  [
+   "2021-12-09",
+   107095.31
+  ],
+  [
+   "2021-12-10",
+   106998.79
+  ],
+  [
+   "2021-12-13",
+   106456.18
+  ],
+  [
+   "2021-12-14",
+   106129.36
+  ],
+  [
+   "2021-12-15",
+   106603.3
+  ],
+  [
+   "2021-12-16",
+   106136.29
+  ],
+  [
+   "2021-12-17",
+   106044.61
+  ],
+  [
+   "2021-12-20",
+   105606.29
+  ],
+  [
+   "2021-12-21",
+   106443.29
+  ],
+  [
+   "2021-12-22",
+   106984.27
+  ],
+  [
+   "2021-12-23",
+   107234.33
+  ],
+  [
+   "2021-12-27",
+   107728.68
+  ],
+  [
+   "2021-12-28",
+   107726.29
+  ],
+  [
+   "2021-12-29",
+   107826.59
+  ],
+  [
+   "2021-12-30",
+   107768.34
+  ],
+  [
+   "2021-12-31",
+   107730.31
+  ],
+  [
+   "2022-01-03",
+   107947.07
+  ],
+  [
+   "2022-01-04",
+   107941.19
+  ],
+  [
+   "2022-01-05",
+   107398.34
+  ],
+  [
+   "2022-01-06",
+   107410.89
+  ],
+  [
+   "2022-01-07",
+   107433.99
+  ],
+  [
+   "2022-01-10",
+   107400.06
+  ],
+  [
+   "2022-01-11",
+   107694.2
+  ],
+  [
+   "2022-01-12",
+   107842.77
+  ],
+  [
+   "2022-01-13",
+   107450.87
+  ],
+  [
+   "2022-01-14",
+   107592.98
+  ],
+  [
+   "2022-01-18",
+   107037.09
+  ],
+  [
+   "2022-01-19",
+   106683.1
+  ],
+  [
+   "2022-01-20",
+   105976.39
+  ],
+  [
+   "2022-01-21",
+   103952.52
+  ],
+  [
+   "2022-01-24",
+   104095.61
+  ],
+  [
+   "2022-01-25",
+   103708.77
+  ],
+  [
+   "2022-01-26",
+   103644.23
+  ],
+  [
+   "2022-01-27",
+   103565.08
+  ],
+  [
+   "2022-01-28",
+   104496.17
+  ],
+  [
+   "2022-01-31",
+   104969.82
+  ],
+  [
+   "2022-02-01",
+   105289.43
+  ],
+  [
+   "2022-02-02",
+   105562.64
+  ],
+  [
+   "2022-02-03",
+   104786.59
+  ],
+  [
+   "2022-02-04",
+   105163.21
+  ],
+  [
+   "2022-02-07",
+   105177.8
+  ],
+  [
+   "2022-02-08",
+   105359.08
+  ],
+  [
+   "2022-02-09",
+   105663.54
+  ],
+  [
+   "2022-02-10",
+   105279.05
+  ],
+  [
+   "2022-02-11",
+   104705.01
+  ],
+  [
+   "2022-02-14",
+   104749.09
+  ],
+  [
+   "2022-02-15",
+   105206.52
+  ],
+  [
+   "2022-02-16",
+   105301.46
+  ],
+  [
+   "2022-02-17",
+   104795.49
+  ],
+  [
+   "2022-02-18",
+   104706.92
+  ],
+  [
+   "2022-02-22",
+   104608.42
+  ],
+  [
+   "2022-02-23",
+   104159.38
+  ],
+  [
+   "2022-02-24",
+   104620.62
+  ],
+  [
+   "2022-02-25",
+   105139.85
+  ],
+  [
+   "2022-02-28",
+   105114.75
+  ],
+  [
+   "2022-03-01",
+   104844.9
+  ],
+  [
+   "2022-03-02",
+   105247.67
+  ],
+  [
+   "2022-03-03",
+   105230.25
+  ],
+  [
+   "2022-03-04",
+   104826.32
+  ],
+  [
+   "2022-03-07",
+   103783.93
+  ],
+  [
+   "2022-03-08",
+   103565.27
+  ],
+  [
+   "2022-03-09",
+   104676.68
+  ],
+  [
+   "2022-03-10",
+   104681.07
+  ],
+  [
+   "2022-03-11",
+   104368.76
+  ],
+  [
+   "2022-03-14",
+   104100.4
+  ],
+  [
+   "2022-03-15",
+   104984.61
+  ],
+  [
+   "2022-03-16",
+   105492.53
+  ],
+  [
+   "2022-03-17",
+   105736.27
+  ],
+  [
+   "2022-03-18",
+   106279.76
+  ],
+  [
+   "2022-03-21",
+   106401.32
+  ],
+  [
+   "2022-03-22",
+   106613.75
+  ],
+  [
+   "2022-03-23",
+   106401.37
+  ],
+  [
+   "2022-03-24",
+   106707.75
+  ],
+  [
+   "2022-03-25",
+   106794.15
+  ],
+  [
+   "2022-03-28",
+   106962.29
+  ],
+  [
+   "2022-03-29",
+   107130.78
+  ],
+  [
+   "2022-03-30",
+   107043.49
+  ],
+  [
+   "2022-03-31",
+   106815.57
+  ],
+  [
+   "2022-04-01",
+   106897.15
+  ],
+  [
+   "2022-04-04",
+   107035.53
+  ],
+  [
+   "2022-04-05",
+   106881.83
+  ],
+  [
+   "2022-04-06",
+   106747.44
+  ],
+  [
+   "2022-04-07",
+   106865.17
+  ],
+  [
+   "2022-04-08",
+   106861.22
+  ],
+  [
+   "2022-04-11",
+   106606.88
+  ],
+  [
+   "2022-04-12",
+   106549.01
+  ],
+  [
+   "2022-04-13",
+   106711.49
+  ],
+  [
+   "2022-04-14",
+   106450.69
+  ],
+  [
+   "2022-04-18",
+   106563.35
+  ],
+  [
+   "2022-04-19",
+   106979.42
+  ],
+  [
+   "2022-04-20",
+   107062.03
+  ],
+  [
+   "2022-04-21",
+   106565.92
+  ],
+  [
+   "2022-04-22",
+   105507.3
+  ],
+  [
+   "2022-04-25",
+   105854.55
+  ],
+  [
+   "2022-04-26",
+   104419.45
+  ],
+  [
+   "2022-04-27",
+   104685.77
+  ],
+  [
+   "2022-04-28",
+   105846.44
+  ],
+  [
+   "2022-04-29",
+   103738.07
+  ],
+  [
+   "2022-05-02",
+   104078.71
+  ],
+  [
+   "2022-05-03",
+   104221.75
+  ],
+  [
+   "2022-05-04",
+   104976.97
+  ],
+  [
+   "2022-05-05",
+   103940.29
+  ],
+  [
+   "2022-05-06",
+   104009.33
+  ],
+  [
+   "2022-05-09",
+   102999.13
+  ],
+  [
+   "2022-05-10",
+   103184.54
+  ],
+  [
+   "2022-05-11",
+   102765.29
+  ],
+  [
+   "2022-05-12",
+   102790.77
+  ],
+  [
+   "2022-05-13",
+   103718.27
+  ],
+  [
+   "2022-05-16",
+   103799.51
+  ],
+  [
+   "2022-05-17",
+   104349.55
+  ],
+  [
+   "2022-05-18",
+   103140.74
+  ],
+  [
+   "2022-05-19",
+   103022.04
+  ],
+  [
+   "2022-05-20",
+   103085.8
+  ],
+  [
+   "2022-05-23",
+   103852.65
+  ],
+  [
+   "2022-05-24",
+   103621.34
+  ],
+  [
+   "2022-05-25",
+   103972.14
+  ],
+  [
+   "2022-05-26",
+   104499.04
+  ],
+  [
+   "2022-05-27",
+   104977.43
+  ],
+  [
+   "2022-05-31",
+   104990.18
+  ],
+  [
+   "2022-06-01",
+   104860.46
+  ],
+  [
+   "2022-06-02",
+   105108.53
+  ],
+  [
+   "2022-06-03",
+   104965.96
+  ],
+  [
+   "2022-06-06",
+   105005.19
+  ],
+  [
+   "2022-06-07",
+   105116.9
+  ],
+  [
+   "2022-06-08",
+   105003.83
+  ],
+  [
+   "2022-06-09",
+   104732.14
+  ],
+  [
+   "2022-06-10",
+   104331.54
+  ],
+  [
+   "2022-06-13",
+   102881.77
+  ],
+  [
+   "2022-06-14",
+   103110.77
+  ],
+  [
+   "2022-06-15",
+   103343.89
+  ],
+  [
+   "2022-06-16",
+   101930.81
+  ],
+  [
+   "2022-06-17",
+   102542.43
+  ],
+  [
+   "2022-06-21",
+   103632.03
+  ],
+  [
+   "2022-06-22",
+   103611.15
+  ],
+  [
+   "2022-06-23",
+   104017.83
+  ],
+  [
+   "2022-06-24",
+   104941.32
+  ],
+  [
+   "2022-06-27",
+   104972.54
+  ],
+  [
+   "2022-06-28",
+   104450.25
+  ],
+  [
+   "2022-06-29",
+   104461.54
+  ],
+  [
+   "2022-06-30",
+   104330.32
+  ],
+  [
+   "2022-07-01",
+   104673.66
+  ],
+  [
+   "2022-07-05",
+   104787.77
+  ],
+  [
+   "2022-07-06",
+   104979.62
+  ],
+  [
+   "2022-07-07",
+   105329.15
+  ],
+  [
+   "2022-07-08",
+   105400.2
+  ],
+  [
+   "2022-07-11",
+   105258.4
+  ],
+  [
+   "2022-07-12",
+   105060.19
+  ],
+  [
+   "2022-07-13",
+   105018.14
+  ],
+  [
+   "2022-07-14",
+   105059.47
+  ],
+  [
+   "2022-07-15",
+   105499.16
+  ],
+  [
+   "2022-07-18",
+   105433.26
+  ],
+  [
+   "2022-07-19",
+   105734.01
+  ],
+  [
+   "2022-07-20",
+   105836.0
+  ],
+  [
+   "2022-07-21",
+   105943.82
+  ],
+  [
+   "2022-07-22",
+   105682.36
+  ],
+  [
+   "2022-07-25",
+   105793.96
+  ],
+  [
+   "2022-07-26",
+   105417.56
+  ],
+  [
+   "2022-07-27",
+   106099.09
+  ],
+  [
+   "2022-07-28",
+   106494.97
+  ],
+  [
+   "2022-07-29",
+   106727.86
+  ],
+  [
+   "2022-08-01",
+   106685.64
+  ],
+  [
+   "2022-08-02",
+   106575.65
+  ],
+  [
+   "2022-08-03",
+   106928.47
+  ],
+  [
+   "2022-08-04",
+   106943.46
+  ],
+  [
+   "2022-08-05",
+   106911.89
+  ],
+  [
+   "2022-08-08",
+   106927.26
+  ],
+  [
+   "2022-08-09",
+   106901.32
+  ],
+  [
+   "2022-08-10",
+   107231.96
+  ],
+  [
+   "2022-08-11",
+   107332.31
+  ],
+  [
+   "2022-08-12",
+   107480.57
+  ],
+  [
+   "2022-08-15",
+   107544.18
+  ],
+  [
+   "2022-08-16",
+   107550.92
+  ],
+  [
+   "2022-08-17",
+   107533.82
+  ],
+  [
+   "2022-08-18",
+   107554.53
+  ],
+  [
+   "2022-08-19",
+   107393.15
+  ],
+  [
+   "2022-08-22",
+   107171.71
+  ],
+  [
+   "2022-08-23",
+   107137.1
+  ],
+  [
+   "2022-08-24",
+   107238.4
+  ],
+  [
+   "2022-08-25",
+   107390.38
+  ],
+  [
+   "2022-08-26",
+   106966.77
+  ],
+  [
+   "2022-08-29",
+   106949.62
+  ],
+  [
+   "2022-08-30",
+   106824.87
+  ],
+  [
+   "2022-08-31",
+   106754.9
+  ],
+  [
+   "2022-09-01",
+   106819.12
+  ],
+  [
+   "2022-09-02",
+   106503.1
+  ],
+  [
+   "2022-09-06",
+   106527.57
+  ],
+  [
+   "2022-09-07",
+   107117.21
+  ],
+  [
+   "2022-09-08",
+   107341.77
+  ],
+  [
+   "2022-09-09",
+   107672.65
+  ],
+  [
+   "2022-09-12",
+   107907.75
+  ],
+  [
+   "2022-09-13",
+   106896.83
+  ],
+  [
+   "2022-09-14",
+   106792.44
+  ],
+  [
+   "2022-09-15",
+   106457.23
+  ],
+  [
+   "2022-09-16",
+   106641.0
+  ],
+  [
+   "2022-09-19",
+   106968.51
+  ],
+  [
+   "2022-09-20",
+   106585.72
+  ],
+  [
+   "2022-09-21",
+   106030.2
+  ],
+  [
+   "2022-09-22",
+   105851.0
+  ],
+  [
+   "2022-09-23",
+   104935.68
+  ],
+  [
+   "2022-09-26",
+   104784.01
+  ],
+  [
+   "2022-09-27",
+   104689.16
+  ],
+  [
+   "2022-09-28",
+   105155.49
+  ],
+  [
+   "2022-09-29",
+   104791.3
+  ],
+  [
+   "2022-09-30",
+   104472.51
+  ],
+  [
+   "2022-10-03",
+   105075.73
+  ],
+  [
+   "2022-10-04",
+   105657.97
+  ],
+  [
+   "2022-10-05",
+   105688.22
+  ],
+  [
+   "2022-10-06",
+   105512.52
+  ],
+  [
+   "2022-10-07",
+   105064.05
+  ],
+  [
+   "2022-10-10",
+   105002.91
+  ],
+  [
+   "2022-10-11",
+   104917.78
+  ],
+  [
+   "2022-10-12",
+   104845.92
+  ],
+  [
+   "2022-10-13",
+   105347.93
+  ],
+  [
+   "2022-10-14",
+   105115.83
+  ],
+  [
+   "2022-10-17",
+   105555.4
+  ],
+  [
+   "2022-10-18",
+   105730.57
+  ],
+  [
+   "2022-10-19",
+   105687.93
+  ],
+  [
+   "2022-10-20",
+   105622.93
+  ],
+  [
+   "2022-10-21",
+   105926.9
+  ],
+  [
+   "2022-10-24",
+   106148.06
+  ],
+  [
+   "2022-10-25",
+   106297.13
+  ],
+  [
+   "2022-10-26",
+   106257.76
+  ],
+  [
+   "2022-10-27",
+   106187.78
+  ],
+  [
+   "2022-10-28",
+   106448.36
+  ],
+  [
+   "2022-10-31",
+   106409.43
+  ],
+  [
+   "2022-11-01",
+   106369.45
+  ],
+  [
+   "2022-11-02",
+   106127.79
+  ],
+  [
+   "2022-11-03",
+   106031.36
+  ],
+  [
+   "2022-11-04",
+   106074.9
+  ],
+  [
+   "2022-11-07",
+   106362.41
+  ],
+  [
+   "2022-11-08",
+   106426.18
+  ],
+  [
+   "2022-11-09",
+   105995.12
+  ],
+  [
+   "2022-11-10",
+   107045.33
+  ],
+  [
+   "2022-11-11",
+   107177.57
+  ],
+  [
+   "2022-11-14",
+   107138.69
+  ],
+  [
+   "2022-11-15",
+   107239.48
+  ],
+  [
+   "2022-11-16",
+   107215.55
+  ],
+  [
+   "2022-11-17",
+   107190.31
+  ],
+  [
+   "2022-11-18",
+   107246.46
+  ],
+  [
+   "2022-11-21",
+   107294.77
+  ],
+  [
+   "2022-11-22",
+   107476.99
+  ],
+  [
+   "2022-11-23",
+   107587.24
+  ],
+  [
+   "2022-11-25",
+   107574.22
+  ],
+  [
+   "2022-11-28",
+   107431.48
+  ],
+  [
+   "2022-11-29",
+   107422.4
+  ],
+  [
+   "2022-11-30",
+   107793.26
+  ],
+  [
+   "2022-12-01",
+   107789.99
+  ],
+  [
+   "2022-12-02",
+   107794.08
+  ],
+  [
+   "2022-12-05",
+   107620.35
+  ],
+  [
+   "2022-12-06",
+   107463.58
+  ],
+  [
+   "2022-12-07",
+   107524.19
+  ],
+  [
+   "2022-12-08",
+   107577.53
+  ],
+  [
+   "2022-12-09",
+   107516.1
+  ],
+  [
+   "2022-12-12",
+   107689.18
+  ],
+  [
+   "2022-12-13",
+   107810.53
+  ],
+  [
+   "2022-12-14",
+   107751.87
+  ],
+  [
+   "2022-12-15",
+   107455.23
+  ],
+  [
+   "2022-12-16",
+   106528.52
+  ],
+  [
+   "2022-12-19",
+   106557.53
+  ],
+  [
+   "2022-12-20",
+   106669.22
+  ],
+  [
+   "2022-12-21",
+   107074.91
+  ],
+  [
+   "2022-12-22",
+   106743.42
+  ],
+  [
+   "2022-12-23",
+   106893.08
+  ],
+  [
+   "2022-12-27",
+   106916.89
+  ],
+  [
+   "2022-12-28",
+   106701.68
+  ],
+  [
+   "2022-12-29",
+   107066.3
+  ],
+  [
+   "2022-12-30",
+   107047.74
+  ],
+  [
+   "2023-01-03",
+   107070.09
+  ],
+  [
+   "2023-01-04",
+   107314.68
+  ],
+  [
+   "2023-01-05",
+   107105.09
+  ],
+  [
+   "2023-01-06",
+   107455.88
+  ],
+  [
+   "2023-01-09",
+   107529.91
+  ],
+  [
+   "2023-01-10",
+   107675.86
+  ],
+  [
+   "2023-01-11",
+   107832.41
+  ],
+  [
+   "2023-01-12",
+   107906.05
+  ],
+  [
+   "2023-01-13",
+   107905.53
+  ],
+  [
+   "2023-01-17",
+   107980.95
+  ],
+  [
+   "2023-01-18",
+   107849.18
+  ],
+  [
+   "2023-01-19",
+   107783.85
+  ],
+  [
+   "2023-01-20",
+   107942.46
+  ],
+  [
+   "2023-01-23",
+   108112.05
+  ],
+  [
+   "2023-01-24",
+   108127.69
+  ],
+  [
+   "2023-01-25",
+   108183.73
+  ],
+  [
+   "2023-01-26",
+   108281.82
+  ],
+  [
+   "2023-01-27",
+   108089.52
+  ],
+  [
+   "2023-01-30",
+   107879.25
+  ],
+  [
+   "2023-01-31",
+   108278.58
+  ],
+  [
+   "2023-02-01",
+   108617.54
+  ],
+  [
+   "2023-02-02",
+   108886.86
+  ],
+  [
+   "2023-02-03",
+   108673.13
+  ],
+  [
+   "2023-02-06",
+   108612.16
+  ],
+  [
+   "2023-02-07",
+   108915.15
+  ],
+  [
+   "2023-02-08",
+   108775.25
+  ],
+  [
+   "2023-02-09",
+   108536.82
+  ],
+  [
+   "2023-02-10",
+   108635.56
+  ],
+  [
+   "2023-02-13",
+   108935.37
+  ],
+  [
+   "2023-02-14",
+   109011.52
+  ],
+  [
+   "2023-02-15",
+   109137.1
+  ],
+  [
+   "2023-02-16",
+   108846.53
+  ],
+  [
+   "2023-02-17",
+   108828.69
+  ],
+  [
+   "2023-02-21",
+   108392.22
+  ],
+  [
+   "2023-02-22",
+   108509.62
+  ],
+  [
+   "2023-02-23",
+   108704.76
+  ],
+  [
+   "2023-02-24",
+   108491.59
+  ],
+  [
+   "2023-02-27",
+   108709.75
+  ],
+  [
+   "2023-02-28",
+   108672.99
+  ],
+  [
+   "2023-03-01",
+   108643.2
+  ],
+  [
+   "2023-03-02",
+   108890.86
+  ],
+  [
+   "2023-03-03",
+   109143.0
+  ],
+  [
+   "2023-03-06",
+   109218.09
+  ],
+  [
+   "2023-03-07",
+   109007.84
+  ],
+  [
+   "2023-03-08",
+   109114.24
+  ],
+  [
+   "2023-03-09",
+   108817.6
+  ],
+  [
+   "2023-03-10",
+   108737.9
+  ],
+  [
+   "2023-03-13",
+   108735.12
+  ],
+  [
+   "2023-03-14",
+   109220.69
+  ],
+  [
+   "2023-03-15",
+   109068.25
+  ],
+  [
+   "2023-03-16",
+   109164.77
+  ],
+  [
+   "2023-03-17",
+   109180.33
+  ],
+  [
+   "2023-03-20",
+   109477.55
+  ],
+  [
+   "2023-03-21",
+   109837.41
+  ],
+  [
+   "2023-03-22",
+   109546.45
+  ],
+  [
+   "2023-03-23",
+   109551.98
+  ],
+  [
+   "2023-03-24",
+   109722.29
+  ],
+  [
+   "2023-03-27",
+   109901.51
+  ],
+  [
+   "2023-03-28",
+   109916.2
+  ],
+  [
+   "2023-03-29",
+   110175.84
+  ],
+  [
+   "2023-03-30",
+   110241.53
+  ],
+  [
+   "2023-03-31",
+   110425.02
+  ],
+  [
+   "2023-04-03",
+   110508.89
+  ],
+  [
+   "2023-04-04",
+   110510.48
+  ],
+  [
+   "2023-04-05",
+   110478.52
+  ],
+  [
+   "2023-04-06",
+   110513.95
+  ],
+  [
+   "2023-04-10",
+   110583.47
+  ],
+  [
+   "2023-04-11",
+   110608.83
+  ],
+  [
+   "2023-04-12",
+   110616.78
+  ],
+  [
+   "2023-04-13",
+   110769.8
+  ],
+  [
+   "2023-04-14",
+   110728.88
+  ],
+  [
+   "2023-04-17",
+   110809.71
+  ],
+  [
+   "2023-04-18",
+   110826.31
+  ],
+  [
+   "2023-04-19",
+   110870.54
+  ],
+  [
+   "2023-04-20",
+   110825.44
+  ],
+  [
+   "2023-04-21",
+   110640.03
+  ],
+  [
+   "2023-04-24",
+   110697.46
+  ],
+  [
+   "2023-04-25",
+   110227.61
+  ],
+  [
+   "2023-04-26",
+   110125.07
+  ],
+  [
+   "2023-04-27",
+   110790.66
+  ],
+  [
+   "2023-04-28",
+   111087.43
+  ],
+  [
+   "2023-05-01",
+   111054.86
+  ],
+  [
+   "2023-05-02",
+   110784.74
+  ],
+  [
+   "2023-05-03",
+   110589.37
+  ],
+  [
+   "2023-05-04",
+   110279.33
+  ],
+  [
+   "2023-05-05",
+   111018.94
+  ],
+  [
+   "2023-05-08",
+   111135.87
+  ],
+  [
+   "2023-05-09",
+   111026.85
+  ],
+  [
+   "2023-05-10",
+   111261.29
+  ],
+  [
+   "2023-05-11",
+   111257.11
+  ],
+  [
+   "2023-05-12",
+   111255.08
+  ],
+  [
+   "2023-05-15",
+   111402.21
+  ],
+  [
+   "2023-05-16",
+   111256.54
+  ],
+  [
+   "2023-05-17",
+   111625.85
+  ],
+  [
+   "2023-05-18",
+   111799.1
+  ],
+  [
+   "2023-05-19",
+   111779.61
+  ],
+  [
+   "2023-05-22",
+   111851.13
+  ],
+  [
+   "2023-05-23",
+   111658.05
+  ],
+  [
+   "2023-05-24",
+   111572.39
+  ],
+  [
+   "2023-05-25",
+   111783.72
+  ],
+  [
+   "2023-05-26",
+   111976.53
+  ],
+  [
+   "2023-05-30",
+   112082.84
+  ],
+  [
+   "2023-05-31",
+   112072.84
+  ],
+  [
+   "2023-06-01",
+   112183.86
+  ],
+  [
+   "2023-06-02",
+   112172.6
+  ],
+  [
+   "2023-06-05",
+   112076.67
+  ],
+  [
+   "2023-06-06",
+   112246.7
+  ],
+  [
+   "2023-06-07",
+   112199.61
+  ],
+  [
+   "2023-06-08",
+   112470.8
+  ],
+  [
+   "2023-06-09",
+   112550.9
+  ],
+  [
+   "2023-06-12",
+   112847.71
+  ],
+  [
+   "2023-06-13",
+   113087.73
+  ],
+  [
+   "2023-06-14",
+   113250.55
+  ],
+  [
+   "2023-06-15",
+   113179.47
+  ],
+  [
+   "2023-06-16",
+   113488.22
+  ],
+  [
+   "2023-06-20",
+   113387.56
+  ],
+  [
+   "2023-06-21",
+   113385.67
+  ],
+  [
+   "2023-06-22",
+   113527.31
+  ],
+  [
+   "2023-06-23",
+   113365.91
+  ],
+  [
+   "2023-06-26",
+   113276.05
+  ],
+  [
+   "2023-06-27",
+   113607.72
+  ],
+  [
+   "2023-06-28",
+   113692.06
+  ],
+  [
+   "2023-06-29",
+   113798.7
+  ],
+  [
+   "2023-06-30",
+   113906.47
+  ],
+  [
+   "2023-07-03",
+   114068.65
+  ],
+  [
+   "2023-07-05",
+   114110.26
+  ],
+  [
+   "2023-07-06",
+   114000.93
+  ],
+  [
+   "2023-07-07",
+   113995.36
+  ],
+  [
+   "2023-07-10",
+   114084.93
+  ],
+  [
+   "2023-07-11",
+   114188.26
+  ],
+  [
+   "2023-07-12",
+   114342.65
+  ],
+  [
+   "2023-07-13",
+   114436.58
+  ],
+  [
+   "2023-07-14",
+   114434.61
+  ],
+  [
+   "2023-07-17",
+   114579.31
+  ],
+  [
+   "2023-07-18",
+   114778.0
+  ],
+  [
+   "2023-07-19",
+   114917.42
+  ],
+  [
+   "2023-07-20",
+   114726.99
+  ],
+  [
+   "2023-07-21",
+   114764.67
+  ],
+  [
+   "2023-07-24",
+   114961.39
+  ],
+  [
+   "2023-07-25",
+   115003.82
+  ],
+  [
+   "2023-07-26",
+   115143.34
+  ],
+  [
+   "2023-07-27",
+   114902.16
+  ],
+  [
+   "2023-07-28",
+   115228.61
+  ],
+  [
+   "2023-07-31",
+   115337.53
+  ],
+  [
+   "2023-08-01",
+   115286.75
+  ],
+  [
+   "2023-08-02",
+   114889.65
+  ],
+  [
+   "2023-08-03",
+   114712.76
+  ],
+  [
+   "2023-08-04",
+   114684.07
+  ],
+  [
+   "2023-08-07",
+   115097.09
+  ],
+  [
+   "2023-08-08",
+   114998.53
+  ],
+  [
+   "2023-08-09",
+   114826.1
+  ],
+  [
+   "2023-08-10",
+   114889.21
+  ],
+  [
+   "2023-08-11",
+   114942.46
+  ],
+  [
+   "2023-08-14",
+   115240.29
+  ],
+  [
+   "2023-08-15",
+   114814.71
+  ],
+  [
+   "2023-08-16",
+   114480.62
+  ],
+  [
+   "2023-08-17",
+   114219.36
+  ],
+  [
+   "2023-08-18",
+   114291.84
+  ],
+  [
+   "2023-08-21",
+   114603.34
+  ],
+  [
+   "2023-08-22",
+   114582.99
+  ],
+  [
+   "2023-08-23",
+   114953.05
+  ],
+  [
+   "2023-08-24",
+   114579.25
+  ],
+  [
+   "2023-08-25",
+   114837.36
+  ],
+  [
+   "2023-08-28",
+   115057.32
+  ],
+  [
+   "2023-08-29",
+   115351.61
+  ],
+  [
+   "2023-08-30",
+   115515.34
+  ],
+  [
+   "2023-08-31",
+   115503.48
+  ],
+  [
+   "2023-09-01",
+   115541.8
+  ],
+  [
+   "2023-09-05",
+   115516.26
+  ],
+  [
+   "2023-09-06",
+   115497.18
+  ],
+  [
+   "2023-09-07",
+   115472.93
+  ],
+  [
+   "2023-09-08",
+   115499.22
+  ],
+  [
+   "2023-09-11",
+   115650.63
+  ],
+  [
+   "2023-09-12",
+   115584.44
+  ],
+  [
+   "2023-09-13",
+   115653.55
+  ],
+  [
+   "2023-09-14",
+   115740.06
+  ],
+  [
+   "2023-09-15",
+   114719.05
+  ],
+  [
+   "2023-09-18",
+   114792.26
+  ],
+  [
+   "2023-09-19",
+   114778.04
+  ],
+  [
+   "2023-09-20",
+   114562.8
+  ],
+  [
+   "2023-09-21",
+   113943.42
+  ],
+  [
+   "2023-09-22",
+   113878.32
+  ],
+  [
+   "2023-09-25",
+   114129.36
+  ],
+  [
+   "2023-09-26",
+   113445.04
+  ],
+  [
+   "2023-09-27",
+   113582.71
+  ],
+  [
+   "2023-09-28",
+   113914.34
+  ],
+  [
+   "2023-09-29",
+   113794.93
+  ],
+  [
+   "2023-10-02",
+   113890.49
+  ],
+  [
+   "2023-10-03",
+   112938.15
+  ],
+  [
+   "2023-10-04",
+   113212.89
+  ],
+  [
+   "2023-10-05",
+   113261.25
+  ],
+  [
+   "2023-10-06",
+   113510.04
+  ],
+  [
+   "2023-10-09",
+   113683.35
+  ],
+  [
+   "2023-10-10",
+   113851.08
+  ],
+  [
+   "2023-10-11",
+   113940.72
+  ],
+  [
+   "2023-10-12",
+   113852.27
+  ],
+  [
+   "2023-10-13",
+   113697.77
+  ],
+  [
+   "2023-10-16",
+   113994.24
+  ],
+  [
+   "2023-10-17",
+   114000.93
+  ],
+  [
+   "2023-10-18",
+   113806.31
+  ],
+  [
+   "2023-10-19",
+   113631.97
+  ],
+  [
+   "2023-10-20",
+   113341.35
+  ],
+  [
+   "2023-10-23",
+   113485.27
+  ],
+  [
+   "2023-10-24",
+   113718.6
+  ],
+  [
+   "2023-10-25",
+   113371.48
+  ],
+  [
+   "2023-10-26",
+   113203.9
+  ],
+  [
+   "2023-10-27",
+   113103.66
+  ],
+  [
+   "2023-10-30",
+   113562.31
+  ],
+  [
+   "2023-10-31",
+   113788.08
+  ],
+  [
+   "2023-11-01",
+   113999.67
+  ],
+  [
+   "2023-11-02",
+   114261.39
+  ],
+  [
+   "2023-11-03",
+   114361.35
+  ],
+  [
+   "2023-11-06",
+   114439.28
+  ],
+  [
+   "2023-11-07",
+   114504.25
+  ],
+  [
+   "2023-11-08",
+   114550.05
+  ],
+  [
+   "2023-11-09",
+   114472.08
+  ],
+  [
+   "2023-11-10",
+   114585.59
+  ],
+  [
+   "2023-11-13",
+   114612.17
+  ],
+  [
+   "2023-11-14",
+   115196.04
+  ],
+  [
+   "2023-11-15",
+   115328.43
+  ],
+  [
+   "2023-11-16",
+   115373.5
+  ],
+  [
+   "2023-11-17",
+   115405.6
+  ],
+  [
+   "2023-11-20",
+   115631.91
+  ],
+  [
+   "2023-11-21",
+   115629.53
+  ],
+  [
+   "2023-11-22",
+   115739.77
+  ],
+  [
+   "2023-11-24",
+   115730.6
+  ],
+  [
+   "2023-11-27",
+   115759.08
+  ],
+  [
+   "2023-11-28",
+   115817.84
+  ],
+  [
+   "2023-11-29",
+   115870.57
+  ],
+  [
+   "2023-11-30",
+   115876.98
+  ],
+  [
+   "2023-12-01",
+   116025.52
+  ],
+  [
+   "2023-12-04",
+   115973.64
+  ],
+  [
+   "2023-12-05",
+   116023.79
+  ],
+  [
+   "2023-12-06",
+   116013.09
+  ],
+  [
+   "2023-12-07",
+   116110.72
+  ],
+  [
+   "2023-12-08",
+   116185.45
+  ],
+  [
+   "2023-12-11",
+   116271.86
+  ],
+  [
+   "2023-12-12",
+   116372.81
+  ],
+  [
+   "2023-12-13",
+   116593.13
+  ],
+  [
+   "2023-12-14",
+   116582.35
+  ],
+  [
+   "2023-12-15",
+   116756.47
+  ],
+  [
+   "2023-12-18",
+   116947.92
+  ],
+  [
+   "2023-12-19",
+   117093.51
+  ],
+  [
+   "2023-12-20",
+   116758.78
+  ],
+  [
+   "2023-12-21",
+   117029.05
+  ],
+  [
+   "2023-12-22",
+   117089.62
+  ],
+  [
+   "2023-12-26",
+   117292.51
+  ],
+  [
+   "2023-12-27",
+   117447.79
+  ],
+  [
+   "2023-12-28",
+   117469.42
+  ],
+  [
+   "2023-12-29",
+   117406.61
+  ],
+  [
+   "2024-01-02",
+   117381.72
+  ],
+  [
+   "2024-01-03",
+   117241.63
+  ],
+  [
+   "2024-01-04",
+   117198.55
+  ],
+  [
+   "2024-01-05",
+   117275.15
+  ],
+  [
+   "2024-01-08",
+   117645.15
+  ],
+  [
+   "2024-01-09",
+   117652.43
+  ],
+  [
+   "2024-01-10",
+   117826.34
+  ],
+  [
+   "2024-01-11",
+   117834.2
+  ],
+  [
+   "2024-01-12",
+   117820.27
+  ],
+  [
+   "2024-01-16",
+   117842.56
+  ],
+  [
+   "2024-01-17",
+   117785.42
+  ],
+  [
+   "2024-01-18",
+   117963.73
+  ],
+  [
+   "2024-01-19",
+   118129.33
+  ],
+  [
+   "2024-01-22",
+   118262.15
+  ],
+  [
+   "2024-01-23",
+   118304.04
+  ],
+  [
+   "2024-01-24",
+   118334.59
+  ],
+  [
+   "2024-01-25",
+   118427.9
+  ],
+  [
+   "2024-01-26",
+   118390.69
+  ],
+  [
+   "2024-01-29",
+   118632.64
+  ],
+  [
+   "2024-01-30",
+   118641.78
+  ],
+  [
+   "2024-01-31",
+   118217.73
+  ],
+  [
+   "2024-02-01",
+   118618.97
+  ],
+  [
+   "2024-02-02",
+   118867.37
+  ],
+  [
+   "2024-02-05",
+   118892.74
+  ],
+  [
+   "2024-02-06",
+   118996.8
+  ],
+  [
+   "2024-02-07",
+   119213.43
+  ],
+  [
+   "2024-02-08",
+   119252.78
+  ],
+  [
+   "2024-02-09",
+   119328.09
+  ],
+  [
+   "2024-02-12",
+   119389.77
+  ],
+  [
+   "2024-02-13",
+   119075.74
+  ],
+  [
+   "2024-02-14",
+   119322.92
+  ],
+  [
+   "2024-02-15",
+   119499.64
+  ],
+  [
+   "2024-02-16",
+   119406.61
+  ],
+  [
+   "2024-02-20",
+   119372.95
+  ],
+  [
+   "2024-02-21",
+   119436.62
+  ],
+  [
+   "2024-02-22",
+   119959.15
+  ],
+  [
+   "2024-02-23",
+   119821.79
+  ],
+  [
+   "2024-02-26",
+   119816.95
+  ],
+  [
+   "2024-02-27",
+   119865.79
+  ],
+  [
+   "2024-02-28",
+   119900.66
+  ],
+  [
+   "2024-02-29",
+   119926.07
+  ],
+  [
+   "2024-03-01",
+   120093.52
+  ],
+  [
+   "2024-03-04",
+   120018.23
+  ],
+  [
+   "2024-03-05",
+   120031.38
+  ],
+  [
+   "2024-03-06",
+   120103.27
+  ],
+  [
+   "2024-03-07",
+   120278.7
+  ],
+  [
+   "2024-03-08",
+   120173.68
+  ],
+  [
+   "2024-03-11",
+   120205.19
+  ],
+  [
+   "2024-03-12",
+   120770.75
+  ],
+  [
+   "2024-03-13",
+   120713.66
+  ],
+  [
+   "2024-03-14",
+   120302.5
+  ],
+  [
+   "2024-03-15",
+   120364.22
+  ],
+  [
+   "2024-03-18",
+   120673.71
+  ],
+  [
+   "2024-03-19",
+   120910.74
+  ],
+  [
+   "2024-03-20",
+   121283.79
+  ],
+  [
+   "2024-03-21",
+   121366.15
+  ],
+  [
+   "2024-03-22",
+   121324.06
+  ],
+  [
+   "2024-03-25",
+   121345.23
+  ],
+  [
+   "2024-03-26",
+   121369.44
+  ],
+  [
+   "2024-03-27",
+   121574.99
+  ],
+  [
+   "2024-03-28",
+   121544.25
+  ],
+  [
+   "2024-04-01",
+   121603.37
+  ],
+  [
+   "2024-04-02",
+   121471.94
+  ],
+  [
+   "2024-04-03",
+   121569.05
+  ],
+  [
+   "2024-04-04",
+   121166.02
+  ],
+  [
+   "2024-04-05",
+   121503.95
+  ],
+  [
+   "2024-04-08",
+   121641.38
+  ],
+  [
+   "2024-04-09",
+   121701.28
+  ],
+  [
+   "2024-04-10",
+   121531.9
+  ],
+  [
+   "2024-04-11",
+   121750.54
+  ],
+  [
+   "2024-04-12",
+   121376.73
+  ],
+  [
+   "2024-04-15",
+   121015.7
+  ],
+  [
+   "2024-04-16",
+   121094.91
+  ],
+  [
+   "2024-04-17",
+   120978.09
+  ],
+  [
+   "2024-04-18",
+   121016.39
+  ],
+  [
+   "2024-04-19",
+   120320.19
+  ],
+  [
+   "2024-04-22",
+   120689.8
+  ],
+  [
+   "2024-04-23",
+   120958.61
+  ],
+  [
+   "2024-04-24",
+   121019.42
+  ],
+  [
+   "2024-04-25",
+   121000.11
+  ],
+  [
+   "2024-04-26",
+   121140.02
+  ],
+  [
+   "2024-04-29",
+   121263.49
+  ],
+  [
+   "2024-04-30",
+   121023.33
+  ],
+  [
+   "2024-05-01",
+   121039.59
+  ],
+  [
+   "2024-05-02",
+   121227.07
+  ],
+  [
+   "2024-05-03",
+   121414.63
+  ],
+  [
+   "2024-05-06",
+   121616.63
+  ],
+  [
+   "2024-05-07",
+   121628.14
+  ],
+  [
+   "2024-05-08",
+   121705.24
+  ],
+  [
+   "2024-05-09",
+   121811.83
+  ],
+  [
+   "2024-05-10",
+   121812.15
+  ],
+  [
+   "2024-05-13",
+   121851.08
+  ],
+  [
+   "2024-05-14",
+   121944.67
+  ],
+  [
+   "2024-05-15",
+   122218.45
+  ],
+  [
+   "2024-05-16",
+   122152.97
+  ],
+  [
+   "2024-05-17",
+   122178.59
+  ],
+  [
+   "2024-05-20",
+   122248.7
+  ],
+  [
+   "2024-05-21",
+   122294.62
+  ],
+  [
+   "2024-05-22",
+   122260.95
+  ],
+  [
+   "2024-05-23",
+   122227.65
+  ],
+  [
+   "2024-05-24",
+   122268.78
+  ],
+  [
+   "2024-05-28",
+   122376.95
+  ],
+  [
+   "2024-05-29",
+   122310.45
+  ],
+  [
+   "2024-05-30",
+   122236.97
+  ],
+  [
+   "2024-05-31",
+   122358.38
+  ],
+  [
+   "2024-06-03",
+   122452.17
+  ],
+  [
+   "2024-06-04",
+   122521.67
+  ],
+  [
+   "2024-06-05",
+   123095.42
+  ],
+  [
+   "2024-06-06",
+   123190.26
+  ],
+  [
+   "2024-06-07",
+   123150.28
+  ],
+  [
+   "2024-06-10",
+   123384.97
+  ],
+  [
+   "2024-06-11",
+   123445.14
+  ],
+  [
+   "2024-06-12",
+   123805.26
+  ],
+  [
+   "2024-06-13",
+   123927.15
+  ],
+  [
+   "2024-06-14",
+   123883.75
+  ],
+  [
+   "2024-06-17",
+   124173.02
+  ],
+  [
+   "2024-06-18",
+   124273.55
+  ],
+  [
+   "2024-06-20",
+   123841.87
+  ],
+  [
+   "2024-06-21",
+   124209.95
+  ],
+  [
+   "2024-06-24",
+   124217.19
+  ],
+  [
+   "2024-06-25",
+   124335.77
+  ],
+  [
+   "2024-06-26",
+   124405.44
+  ],
+  [
+   "2024-06-27",
+   124533.21
+  ],
+  [
+   "2024-06-28",
+   124474.05
+  ],
+  [
+   "2024-07-01",
+   124574.17
+  ],
+  [
+   "2024-07-02",
+   124719.61
+  ],
+  [
+   "2024-07-03",
+   124836.99
+  ],
+  [
+   "2024-07-05",
+   124958.76
+  ],
+  [
+   "2024-07-08",
+   125025.1
+  ],
+  [
+   "2024-07-09",
+   125043.91
+  ],
+  [
+   "2024-07-10",
+   125191.85
+  ],
+  [
+   "2024-07-11",
+   125103.42
+  ],
+  [
+   "2024-07-12",
+   124906.01
+  ],
+  [
+   "2024-07-15",
+   125050.84
+  ],
+  [
+   "2024-07-16",
+   125236.92
+  ],
+  [
+   "2024-07-17",
+   124583.82
+  ],
+  [
+   "2024-07-18",
+   124155.88
+  ],
+  [
+   "2024-07-19",
+   123952.86
+  ],
+  [
+   "2024-07-22",
+   124381.92
+  ],
+  [
+   "2024-07-23",
+   124370.19
+  ],
+  [
+   "2024-07-24",
+   123590.9
+  ],
+  [
+   "2024-07-25",
+   123485.23
+  ],
+  [
+   "2024-07-26",
+   123965.8
+  ],
+  [
+   "2024-07-29",
+   124076.93
+  ],
+  [
+   "2024-07-30",
+   123890.73
+  ],
+  [
+   "2024-07-31",
+   124371.99
+  ],
+  [
+   "2024-08-01",
+   123869.9
+  ],
+  [
+   "2024-08-02",
+   122984.7
+  ],
+  [
+   "2024-08-05",
+   120675.45
+  ],
+  [
+   "2024-08-06",
+   121055.13
+  ],
+  [
+   "2024-08-07",
+   120874.54
+  ],
+  [
+   "2024-08-08",
+   121389.5
+  ],
+  [
+   "2024-08-09",
+   121455.73
+  ],
+  [
+   "2024-08-12",
+   121632.11
+  ],
+  [
+   "2024-08-13",
+   121819.13
+  ],
+  [
+   "2024-08-14",
+   122218.66
+  ],
+  [
+   "2024-08-15",
+   124333.0
+  ],
+  [
+   "2024-08-16",
+   124537.36
+  ],
+  [
+   "2024-08-19",
+   125754.01
+  ],
+  [
+   "2024-08-20",
+   125563.75
+  ],
+  [
+   "2024-08-21",
+   126015.72
+  ],
+  [
+   "2024-08-22",
+   125083.0
+  ],
+  [
+   "2024-08-23",
+   126315.99
+  ],
+  [
+   "2024-08-26",
+   126071.43
+  ],
+  [
+   "2024-08-27",
+   126245.83
+  ],
+  [
+   "2024-08-28",
+   125543.93
+  ],
+  [
+   "2024-08-29",
+   125601.24
+  ],
+  [
+   "2024-08-30",
+   126666.24
+  ],
+  [
+   "2024-09-03",
+   124194.17
+  ],
+  [
+   "2024-09-04",
+   123898.75
+  ],
+  [
+   "2024-09-05",
+   123660.29
+  ],
+  [
+   "2024-09-06",
+   122175.48
+  ],
+  [
+   "2024-09-09",
+   123530.81
+  ],
+  [
+   "2024-09-10",
+   124064.9
+  ],
+  [
+   "2024-09-11",
+   125303.7
+  ],
+  [
+   "2024-09-12",
+   126393.06
+  ],
+  [
+   "2024-09-13",
+   122717.97
+  ],
+  [
+   "2024-09-16",
+   122862.94
+  ],
+  [
+   "2024-09-17",
+   122861.11
+  ],
+  [
+   "2024-09-18",
+   122851.59
+  ],
+  [
+   "2024-09-19",
+   123129.66
+  ],
+  [
+   "2024-09-20",
+   123437.79
+  ],
+  [
+   "2024-09-23",
+   123605.33
+  ],
+  [
+   "2024-09-24",
+   123709.13
+  ],
+  [
+   "2024-09-25",
+   123691.88
+  ],
+  [
+   "2024-09-26",
+   123839.94
+  ],
+  [
+   "2024-09-27",
+   123738.96
+  ],
+  [
+   "2024-09-30",
+   123922.29
+  ],
+  [
+   "2024-10-01",
+   123633.48
+  ],
+  [
+   "2024-10-02",
+   123725.57
+  ],
+  [
+   "2024-10-03",
+   123690.25
+  ],
+  [
+   "2024-10-04",
+   124000.54
+  ],
+  [
+   "2024-10-07",
+   123794.29
+  ],
+  [
+   "2024-10-08",
+   124088.5
+  ],
+  [
+   "2024-10-09",
+   124281.42
+  ],
+  [
+   "2024-10-10",
+   124366.87
+  ],
+  [
+   "2024-10-11",
+   124464.67
+  ],
+  [
+   "2024-10-14",
+   124637.95
+  ],
+  [
+   "2024-10-15",
+   124535.19
+  ],
+  [
+   "2024-10-16",
+   124654.54
+  ],
+  [
+   "2024-10-17",
+   124691.33
+  ],
+  [
+   "2024-10-18",
+   124736.41
+  ],
+  [
+   "2024-10-21",
+   124775.79
+  ],
+  [
+   "2024-10-22",
+   124797.59
+  ],
+  [
+   "2024-10-23",
+   124690.73
+  ],
+  [
+   "2024-10-24",
+   124779.59
+  ],
+  [
+   "2024-10-25",
+   124770.3
+  ],
+  [
+   "2024-10-28",
+   124943.49
+  ],
+  [
+   "2024-10-29",
+   125011.51
+  ],
+  [
+   "2024-10-30",
+   124979.87
+  ],
+  [
+   "2024-10-31",
+   124547.15
+  ],
+  [
+   "2024-11-01",
+   124729.2
+  ],
+  [
+   "2024-11-04",
+   124790.0
+  ],
+  [
+   "2024-11-05",
+   125089.28
+  ],
+  [
+   "2024-11-06",
+   125665.3
+  ],
+  [
+   "2024-11-07",
+   125775.15
+  ],
+  [
+   "2024-11-08",
+   125779.11
+  ],
+  [
+   "2024-11-11",
+   125836.43
+  ],
+  [
+   "2024-11-12",
+   125856.26
+  ],
+  [
+   "2024-11-13",
+   125892.51
+  ],
+  [
+   "2024-11-14",
+   125886.87
+  ],
+  [
+   "2024-11-15",
+   125705.3
+  ],
+  [
+   "2024-11-18",
+   125825.69
+  ],
+  [
+   "2024-11-19",
+   125892.12
+  ],
+  [
+   "2024-11-20",
+   125911.34
+  ],
+  [
+   "2024-11-21",
+   125995.98
+  ],
+  [
+   "2024-11-22",
+   126065.1
+  ],
+  [
+   "2024-11-25",
+   126152.08
+  ],
+  [
+   "2024-11-26",
+   126215.79
+  ],
+  [
+   "2024-11-27",
+   126270.9
+  ],
+  [
+   "2024-11-29",
+   126334.01
+  ],
+  [
+   "2024-12-02",
+   126404.93
+  ],
+  [
+   "2024-12-03",
+   126492.19
+  ],
+  [
+   "2024-12-04",
+   126458.22
+  ],
+  [
+   "2024-12-05",
+   126546.52
+  ],
+  [
+   "2024-12-06",
+   126549.21
+  ],
+  [
+   "2024-12-09",
+   126377.38
+  ],
+  [
+   "2024-12-10",
+   126312.85
+  ],
+  [
+   "2024-12-11",
+   126672.83
+  ],
+  [
+   "2024-12-12",
+   126539.0
+  ],
+  [
+   "2024-12-13",
+   126531.71
+  ],
+  [
+   "2024-12-16",
+   126691.14
+  ],
+  [
+   "2024-12-17",
+   126500.94
+  ],
+  [
+   "2024-12-18",
+   124028.85
+  ],
+  [
+   "2024-12-19",
+   123823.41
+  ],
+  [
+   "2024-12-20",
+   124686.9
+  ],
+  [
+   "2024-12-23",
+   124999.71
+  ],
+  [
+   "2024-12-24",
+   125270.7
+  ],
+  [
+   "2024-12-26",
+   125355.6
+  ],
+  [
+   "2024-12-27",
+   125242.77
+  ],
+  [
+   "2024-12-30",
+   125185.02
+  ],
+  [
+   "2024-12-31",
+   125187.8
+  ],
+  [
+   "2025-01-02",
+   125224.53
+  ],
+  [
+   "2025-01-03",
+   125431.44
+  ],
+  [
+   "2025-01-06",
+   125558.35
+  ],
+  [
+   "2025-01-07",
+   125472.03
+  ],
+  [
+   "2025-01-08",
+   125466.59
+  ],
+  [
+   "2025-01-10",
+   125361.92
+  ],
+  [
+   "2025-01-13",
+   125483.06
+  ],
+  [
+   "2025-01-14",
+   125529.57
+  ],
+  [
+   "2025-01-15",
+   125732.53
+  ],
+  [
+   "2025-01-16",
+   125793.83
+  ],
+  [
+   "2025-01-17",
+   125801.73
+  ],
+  [
+   "2025-01-21",
+   125990.65
+  ],
+  [
+   "2025-01-22",
+   125952.24
+  ],
+  [
+   "2025-01-23",
+   126055.94
+  ],
+  [
+   "2025-01-24",
+   126040.64
+  ],
+  [
+   "2025-01-27",
+   125448.25
+  ],
+  [
+   "2025-01-28",
+   125892.18
+  ],
+  [
+   "2025-01-29",
+   125771.88
+  ],
+  [
+   "2025-01-30",
+   126068.43
+  ],
+  [
+   "2025-01-31",
+   125830.78
+  ],
+  [
+   "2025-02-03",
+   125523.55
+  ],
+  [
+   "2025-02-04",
+   125959.43
+  ],
+  [
+   "2025-02-05",
+   126243.77
+  ],
+  [
+   "2025-02-06",
+   126400.19
+  ],
+  [
+   "2025-02-07",
+   126083.8
+  ],
+  [
+   "2025-02-10",
+   126449.57
+  ],
+  [
+   "2025-02-11",
+   126495.21
+  ],
+  [
+   "2025-02-12",
+   126434.84
+  ],
+  [
+   "2025-02-13",
+   126813.47
+  ],
+  [
+   "2025-02-14",
+   126857.52
+  ],
+  [
+   "2025-02-18",
+   127004.03
+  ],
+  [
+   "2025-02-19",
+   127077.79
+  ],
+  [
+   "2025-02-20",
+   127080.7
+  ],
+  [
+   "2025-02-21",
+   126540.83
+  ],
+  [
+   "2025-02-24",
+   126460.08
+  ],
+  [
+   "2025-02-25",
+   126242.2
+  ],
+  [
+   "2025-02-26",
+   126337.45
+  ],
+  [
+   "2025-02-27",
+   125219.45
+  ],
+  [
+   "2025-02-28",
+   125803.42
+  ],
+  [
+   "2025-03-03",
+   125174.02
+  ],
+  [
+   "2025-03-04",
+   124774.74
+  ],
+  [
+   "2025-03-05",
+   125248.74
+  ],
+  [
+   "2025-03-06",
+   124503.48
+  ],
+  [
+   "2025-03-07",
+   124878.48
+  ],
+  [
+   "2025-03-10",
+   123525.47
+  ],
+  [
+   "2025-03-11",
+   123065.25
+  ],
+  [
+   "2025-03-12",
+   123447.79
+  ],
+  [
+   "2025-03-13",
+   123270.73
+  ],
+  [
+   "2025-03-14",
+   123667.88
+  ],
+  [
+   "2025-03-17",
+   123936.49
+  ],
+  [
+   "2025-03-18",
+   123781.74
+  ],
+  [
+   "2025-03-19",
+   124021.83
+  ],
+  [
+   "2025-03-20",
+   123732.83
+  ],
+  [
+   "2025-03-21",
+   124047.33
+  ],
+  [
+   "2025-03-24",
+   124288.94
+  ],
+  [
+   "2025-03-25",
+   124326.9
+  ],
+  [
+   "2025-03-26",
+   124293.04
+  ],
+  [
+   "2025-03-27",
+   124309.7
+  ],
+  [
+   "2025-03-28",
+   124100.5
+  ],
+  [
+   "2025-03-31",
+   124178.12
+  ],
+  [
+   "2025-04-01",
+   124263.7
+  ],
+  [
+   "2025-04-02",
+   124273.9
+  ],
+  [
+   "2025-04-03",
+   123541.3
+  ],
+  [
+   "2025-04-04",
+   120160.05
+  ],
+  [
+   "2025-04-07",
+   120064.66
+  ],
+  [
+   "2025-04-08",
+   119745.67
+  ],
+  [
+   "2025-04-09",
+   120889.28
+  ],
+  [
+   "2025-04-10",
+   120660.43
+  ],
+  [
+   "2025-04-11",
+   120820.57
+  ],
+  [
+   "2025-04-14",
+   121161.45
+  ],
+  [
+   "2025-04-15",
+   121105.83
+  ],
+  [
+   "2025-04-16",
+   121030.53
+  ],
+  [
+   "2025-04-17",
+   121069.91
+  ],
+  [
+   "2025-04-21",
+   121002.39
+  ],
+  [
+   "2025-04-22",
+   121167.49
+  ],
+  [
+   "2025-04-23",
+   121261.14
+  ],
+  [
+   "2025-04-24",
+   121437.14
+  ],
+  [
+   "2025-04-25",
+   121499.35
+  ],
+  [
+   "2025-04-28",
+   121515.63
+  ],
+  [
+   "2025-04-29",
+   121552.63
+  ],
+  [
+   "2025-04-30",
+   121530.5
+  ],
+  [
+   "2025-05-01",
+   121717.93
+  ],
+  [
+   "2025-05-02",
+   123358.06
+  ],
+  [
+   "2025-05-05",
+   121806.7
+  ],
+  [
+   "2025-05-06",
+   121708.99
+  ],
+  [
+   "2025-05-07",
+   121655.23
+  ],
+  [
+   "2025-05-08",
+   122478.52
+  ],
+  [
+   "2025-05-09",
+   121816.96
+  ],
+  [
+   "2025-05-12",
+   125677.33
+  ],
+  [
+   "2025-05-13",
+   126506.81
+  ],
+  [
+   "2025-05-14",
+   126660.53
+  ],
+  [
+   "2025-05-15",
+   127286.14
+  ],
+  [
+   "2025-05-16",
+   122078.39
+  ],
+  [
+   "2025-05-19",
+   122114.03
+  ],
+  [
+   "2025-05-20",
+   122072.46
+  ],
+  [
+   "2025-05-21",
+   121444.42
+  ],
+  [
+   "2025-05-22",
+   121583.79
+  ],
+  [
+   "2025-05-23",
+   121182.04
+  ],
+  [
+   "2025-05-27",
+   122260.19
+  ],
+  [
+   "2025-05-28",
+   122113.41
+  ],
+  [
+   "2025-05-29",
+   122319.05
+  ],
+  [
+   "2025-05-30",
+   122318.41
+  ],
+  [
+   "2025-06-02",
+   122596.49
+  ],
+  [
+   "2025-06-03",
+   122798.68
+  ],
+  [
+   "2025-06-04",
+   122847.39
+  ],
+  [
+   "2025-06-05",
+   122794.55
+  ],
+  [
+   "2025-06-06",
+   123071.06
+  ],
+  [
+   "2025-06-09",
+   123167.64
+  ],
+  [
+   "2025-06-10",
+   123243.7
+  ],
+  [
+   "2025-06-11",
+   123232.42
+  ],
+  [
+   "2025-06-12",
+   123326.22
+  ],
+  [
+   "2025-06-13",
+   123123.17
+  ],
+  [
+   "2025-06-16",
+   123473.88
+  ],
+  [
+   "2025-06-17",
+   123279.17
+  ],
+  [
+   "2025-06-18",
+   123093.41
+  ],
+  [
+   "2025-06-20",
+   123559.09
+  ],
+  [
+   "2025-06-23",
+   123718.28
+  ],
+  [
+   "2025-06-24",
+   123796.47
+  ],
+  [
+   "2025-06-25",
+   123866.02
+  ],
+  [
+   "2025-06-26",
+   124028.55
+  ],
+  [
+   "2025-06-27",
+   123902.06
+  ],
+  [
+   "2025-06-30",
+   124077.68
+  ],
+  [
+   "2025-07-01",
+   124120.41
+  ],
+  [
+   "2025-07-02",
+   124266.28
+  ],
+  [
+   "2025-07-03",
+   124353.87
+  ],
+  [
+   "2025-07-07",
+   124340.15
+  ],
+  [
+   "2025-07-08",
+   124409.64
+  ],
+  [
+   "2025-07-09",
+   124563.15
+  ],
+  [
+   "2025-07-10",
+   124619.05
+  ],
+  [
+   "2025-07-11",
+   124610.75
+  ],
+  [
+   "2025-07-14",
+   124666.57
+  ],
+  [
+   "2025-07-15",
+   124663.01
+  ],
+  [
+   "2025-07-16",
+   124725.9
+  ],
+  [
+   "2025-07-17",
+   124921.81
+  ],
+  [
+   "2025-07-18",
+   124867.07
+  ],
+  [
+   "2025-07-21",
+   124941.14
+  ],
+  [
+   "2025-07-22",
+   124983.14
+  ],
+  [
+   "2025-07-23",
+   125051.29
+  ],
+  [
+   "2025-07-24",
+   125076.68
+  ],
+  [
+   "2025-07-25",
+   125113.7
+  ],
+  [
+   "2025-07-28",
+   125173.66
+  ],
+  [
+   "2025-07-29",
+   125159.99
+  ],
+  [
+   "2025-07-30",
+   125186.14
+  ],
+  [
+   "2025-07-31",
+   125243.98
+  ],
+  [
+   "2025-08-01",
+   125173.6
+  ],
+  [
+   "2025-08-04",
+   125288.76
+  ],
+  [
+   "2025-08-05",
+   125296.72
+  ],
+  [
+   "2025-08-06",
+   125363.25
+  ],
+  [
+   "2025-08-07",
+   125457.87
+  ],
+  [
+   "2025-08-08",
+   125381.06
+  ],
+  [
+   "2025-08-11",
+   125284.07
+  ],
+  [
+   "2025-08-12",
+   126078.3
+  ],
+  [
+   "2025-08-13",
+   126333.9
+  ],
+  [
+   "2025-08-14",
+   126377.42
+  ],
+  [
+   "2025-08-15",
+   126213.25
+  ],
+  [
+   "2025-08-18",
+   126240.88
+  ],
+  [
+   "2025-08-19",
+   125874.04
+  ],
+  [
+   "2025-08-20",
+   125695.25
+  ],
+  [
+   "2025-08-21",
+   125445.47
+  ],
+  [
+   "2025-08-22",
+   126524.26
+  ],
+  [
+   "2025-08-25",
+   126293.47
+  ],
+  [
+   "2025-08-26",
+   126596.49
+  ],
+  [
+   "2025-08-27",
+   126727.53
+  ],
+  [
+   "2025-08-28",
+   127048.25
+  ],
+  [
+   "2025-08-29",
+   126605.43
+  ],
+  [
+   "2025-09-02",
+   126142.55
+  ],
+  [
+   "2025-09-03",
+   126553.59
+  ],
+  [
+   "2025-09-04",
+   127148.8
+  ],
+  [
+   "2025-09-05",
+   126957.11
+  ],
+  [
+   "2025-09-08",
+   127139.62
+  ],
+  [
+   "2025-09-09",
+   127303.89
+  ],
+  [
+   "2025-09-10",
+   127495.18
+  ],
+  [
+   "2025-09-11",
+   128060.57
+  ],
+  [
+   "2025-09-12",
+   127978.6
+  ],
+  [
+   "2025-09-15",
+   128408.31
+  ],
+  [
+   "2025-09-16",
+   128305.21
+  ],
+  [
+   "2025-09-17",
+   128255.78
+  ],
+  [
+   "2025-09-18",
+   128201.75
+  ],
+  [
+   "2025-09-19",
+   129015.0
+  ],
+  [
+   "2025-09-22",
+   129381.98
+  ],
+  [
+   "2025-09-23",
+   129004.49
+  ],
+  [
+   "2025-09-24",
+   128796.39
+  ],
+  [
+   "2025-09-25",
+   128510.81
+  ],
+  [
+   "2025-09-26",
+   128949.41
+  ],
+  [
+   "2025-09-29",
+   129190.14
+  ],
+  [
+   "2025-09-30",
+   129457.39
+  ],
+  [
+   "2025-10-01",
+   129736.19
+  ],
+  [
+   "2025-10-02",
+   129836.82
+  ],
+  [
+   "2025-10-03",
+   129824.29
+  ],
+  [
+   "2025-10-06",
+   130128.99
+  ],
+  [
+   "2025-10-07",
+   129875.19
+  ],
+  [
+   "2025-10-08",
+   130310.14
+  ],
+  [
+   "2025-10-09",
+   130190.02
+  ],
+  [
+   "2025-10-10",
+   128046.48
+  ],
+  [
+   "2025-10-13",
+   129319.03
+  ],
+  [
+   "2025-10-14",
+   129206.48
+  ],
+  [
+   "2025-10-15",
+   129524.01
+  ],
+  [
+   "2025-10-16",
+   128972.23
+  ],
+  [
+   "2025-10-17",
+   129479.18
+  ],
+  [
+   "2025-10-20",
+   130310.17
+  ],
+  [
+   "2025-10-21",
+   130337.89
+  ],
+  [
+   "2025-10-22",
+   130002.5
+  ],
+  [
+   "2025-10-23",
+   130433.7
+  ],
+  [
+   "2025-10-24",
+   130951.5
+  ],
+  [
+   "2025-10-27",
+   131743.19
+  ],
+  [
+   "2025-10-28",
+   131934.29
+  ],
+  [
+   "2025-10-29",
+   131977.05
+  ],
+  [
+   "2025-10-30",
+   131302.1
+  ],
+  [
+   "2025-10-31",
+   131483.92
+  ],
+  [
+   "2025-11-03",
+   131687.44
+  ],
+  [
+   "2025-11-04",
+   130828.32
+  ],
+  [
+   "2025-11-05",
+   131130.87
+  ],
+  [
+   "2025-11-06",
+   130363.15
+  ],
+  [
+   "2025-11-07",
+   130448.38
+  ],
+  [
+   "2025-11-10",
+   131624.88
+  ],
+  [
+   "2025-11-11",
+   131827.24
+  ],
+  [
+   "2025-11-12",
+   131876.16
+  ],
+  [
+   "2025-11-13",
+   130682.99
+  ],
+  [
+   "2025-11-14",
+   130669.84
+  ],
+  [
+   "2025-11-17",
+   129971.88
+  ],
+  [
+   "2025-11-18",
+   129307.61
+  ],
+  [
+   "2025-11-19",
+   129655.32
+  ],
+  [
+   "2025-11-20",
+   128446.57
+  ],
+  [
+   "2025-11-21",
+   129333.52
+  ],
+  [
+   "2025-11-24",
+   130667.5
+  ],
+  [
+   "2025-11-25",
+   131276.28
+  ],
+  [
+   "2025-11-26",
+   131830.78
+  ],
+  [
+   "2025-11-28",
+   132195.43
+  ],
+  [
+   "2025-12-01",
+   131944.17
+  ],
+  [
+   "2025-12-02",
+   132077.52
+  ],
+  [
+   "2025-12-03",
+   132320.65
+  ],
+  [
+   "2025-12-04",
+   132414.63
+  ],
+  [
+   "2025-12-05",
+   132511.44
+  ],
+  [
+   "2025-12-08",
+   132361.37
+  ],
+  [
+   "2025-12-09",
+   132322.52
+  ],
+  [
+   "2025-12-10",
+   132738.33
+  ],
+  [
+   "2025-12-11",
+   132919.9
+  ],
+  [
+   "2025-12-12",
+   132202.48
+  ],
+  [
+   "2025-12-15",
+   132130.94
+  ],
+  [
+   "2025-12-16",
+   131957.98
+  ],
+  [
+   "2025-12-17",
+   131038.36
+  ],
+  [
+   "2025-12-18",
+   131396.49
+  ],
+  [
+   "2025-12-19",
+   132132.53
+  ],
+  [
+   "2025-12-22",
+   132688.3
+  ],
+  [
+   "2025-12-23",
+   133046.31
+  ],
+  [
+   "2025-12-24",
+   133318.38
+  ],
+  [
+   "2025-12-26",
+   133361.74
+  ],
+  [
+   "2025-12-29",
+   133165.66
+  ],
+  [
+   "2025-12-30",
+   133123.43
+  ],
+  [
+   "2025-12-31",
+   132596.17
+  ]
+ ],
+ "shares_only_curve": [
+  [
+   "2020-01-02",
+   99996.93
+  ],
+  [
+   "2020-01-03",
+   99299.84
+  ],
+  [
+   "2020-01-06",
+   99662.21
+  ],
+  [
+   "2020-01-07",
+   99390.66
+  ],
+  [
+   "2020-01-08",
+   99910.9
+  ],
+  [
+   "2020-01-09",
+   100569.58
+  ],
+  [
+   "2020-01-10",
+   100288.4
+  ],
+  [
+   "2020-01-13",
+   100977.81
+  ],
+  [
+   "2020-01-14",
+   100822.92
+  ],
+  [
+   "2020-01-15",
+   101069.93
+  ],
+  [
+   "2020-01-16",
+   101880.54
+  ],
+  [
+   "2020-01-17",
+   102225.47
+  ],
+  [
+   "2020-01-21",
+   102012.62
+  ],
+  [
+   "2020-01-22",
+   102058.55
+  ],
+  [
+   "2020-01-23",
+   102144.66
+  ],
+  [
+   "2020-01-24",
+   101227.95
+  ],
+  [
+   "2020-01-27",
+   99627.14
+  ],
+  [
+   "2020-01-28",
+   100668.05
+  ],
+  [
+   "2020-01-29",
+   100589.64
+  ],
+  [
+   "2020-01-30",
+   100893.73
+  ],
+  [
+   "2020-01-31",
+   99086.73
+  ],
+  [
+   "2020-02-03",
+   99826.87
+  ],
+  [
+   "2020-02-04",
+   101332.82
+  ],
+  [
+   "2020-02-05",
+   102491.67
+  ],
+  [
+   "2020-02-06",
+   102820.26
+  ],
+  [
+   "2020-02-07",
+   102282.77
+  ],
+  [
+   "2020-02-10",
+   103053.54
+  ],
+  [
+   "2020-02-11",
+   103230.17
+  ],
+  [
+   "2020-02-12",
+   103902.41
+  ],
+  [
+   "2020-02-13",
+   103782.8
+  ],
+  [
+   "2020-02-14",
+   103937.48
+  ],
+  [
+   "2020-02-18",
+   103666.19
+  ],
+  [
+   "2020-02-19",
+   104178.79
+  ],
+  [
+   "2020-02-20",
+   103746.04
+  ],
+  [
+   "2020-02-21",
+   102688.24
+  ],
+  [
+   "2020-02-24",
+   99296.01
+  ],
+  [
+   "2020-02-25",
+   96309.05
+  ],
+  [
+   "2020-02-26",
+   95971.24
+  ],
+  [
+   "2020-02-27",
+   91677.97
+  ],
+  [
+   "2020-02-28",
+   91234.14
+  ],
+  [
+   "2020-03-02",
+   95197.95
+  ],
+  [
+   "2020-03-03",
+   92463.97
+  ],
+  [
+   "2020-03-04",
+   96360.02
+  ],
+  [
+   "2020-03-05",
+   93162.43
+  ],
+  [
+   "2020-03-06",
+   91588.87
+  ],
+  [
+   "2020-03-09",
+   84502.92
+  ],
+  [
+   "2020-03-10",
+   88861.23
+  ],
+  [
+   "2020-03-11",
+   84529.02
+  ],
+  [
+   "2020-03-12",
+   76422.72
+  ],
+  [
+   "2020-03-13",
+   83573.85
+  ],
+  [
+   "2020-03-16",
+   73916.87
+  ],
+  [
+   "2020-03-17",
+   78384.52
+  ],
+  [
+   "2020-03-18",
+   73903.06
+  ],
+  [
+   "2020-03-19",
+   73995.82
+  ],
+  [
+   "2020-03-20",
+   71030.27
+  ],
+  [
+   "2020-03-23",
+   68990.91
+  ],
+  [
+   "2020-03-24",
+   75485.01
+  ],
+  [
+   "2020-03-25",
+   76473.0
+  ],
+  [
+   "2020-03-26",
+   80957.47
+  ],
+  [
+   "2020-03-27",
+   78544.88
+  ],
+  [
+   "2020-03-30",
+   81091.04
+  ],
+  [
+   "2020-03-31",
+   79830.78
+  ],
+  [
+   "2020-04-01",
+   76283.35
+  ],
+  [
+   "2020-04-02",
+   78059.67
+  ],
+  [
+   "2020-04-03",
+   76937.09
+  ],
+  [
+   "2020-04-06",
+   82050.79
+  ],
+  [
+   "2020-04-07",
+   82093.81
+  ],
+  [
+   "2020-04-08",
+   84867.67
+  ],
+  [
+   "2020-04-09",
+   86146.7
+  ],
+  [
+   "2020-04-13",
+   85317.53
+  ],
+  [
+   "2020-04-14",
+   87879.46
+  ],
+  [
+   "2020-04-15",
+   85991.45
+  ],
+  [
+   "2020-04-16",
+   86431.91
+  ],
+  [
+   "2020-04-17",
+   88756.41
+  ],
+  [
+   "2020-04-20",
+   87168.9
+  ],
+  [
+   "2020-04-21",
+   84540.74
+  ],
+  [
+   "2020-04-22",
+   86427.45
+  ],
+  [
+   "2020-04-23",
+   86402.76
+  ],
+  [
+   "2020-04-24",
+   87625.0
+  ],
+  [
+   "2020-04-27",
+   88863.69
+  ],
+  [
+   "2020-04-28",
+   88468.96
+  ],
+  [
+   "2020-04-29",
+   90742.67
+  ],
+  [
+   "2020-04-30",
+   89867.41
+  ],
+  [
+   "2020-05-01",
+   87532.98
+  ],
+  [
+   "2020-05-04",
+   87821.41
+  ],
+  [
+   "2020-05-05",
+   88585.67
+  ],
+  [
+   "2020-05-06",
+   88008.7
+  ],
+  [
+   "2020-05-07",
+   89055.41
+  ],
+  [
+   "2020-05-08",
+   90520.46
+  ],
+  [
+   "2020-05-11",
+   90543.19
+  ],
+  [
+   "2020-05-12",
+   88728.45
+  ],
+  [
+   "2020-05-13",
+   87195.11
+  ],
+  [
+   "2020-05-14",
+   88240.31
+  ],
+  [
+   "2020-05-15",
+   88616.85
+  ],
+  [
+   "2020-05-18",
+   91295.41
+  ],
+  [
+   "2020-05-19",
+   90378.66
+  ],
+  [
+   "2020-05-20",
+   91898.72
+  ],
+  [
+   "2020-05-21",
+   91226.01
+  ],
+  [
+   "2020-05-22",
+   91428.11
+  ],
+  [
+   "2020-05-26",
+   92569.2
+  ],
+  [
+   "2020-05-27",
+   93895.92
+  ],
+  [
+   "2020-05-28",
+   93749.67
+  ],
+  [
+   "2020-05-29",
+   94132.77
+  ],
+  [
+   "2020-06-01",
+   94538.99
+  ],
+  [
+   "2020-06-02",
+   95315.36
+  ],
+  [
+   "2020-06-03",
+   96580.7
+  ],
+  [
+   "2020-06-04",
+   96302.41
+  ],
+  [
+   "2020-06-05",
+   98751.89
+  ],
+  [
+   "2020-06-08",
+   99971.78
+  ],
+  [
+   "2020-06-09",
+   99225.17
+  ],
+  [
+   "2020-06-10",
+   98663.87
+  ],
+  [
+   "2020-06-11",
+   93022.02
+  ],
+  [
+   "2020-06-12",
+   94137.19
+  ],
+  [
+   "2020-06-15",
+   94996.51
+  ],
+  [
+   "2020-06-16",
+   96805.95
+  ],
+  [
+   "2020-06-17",
+   96049.6
+  ],
+  [
+   "2020-06-18",
+   96015.4
+  ],
+  [
+   "2020-06-19",
+   95875.36
+  ],
+  [
+   "2020-06-22",
+   96531.99
+  ],
+  [
+   "2020-06-23",
+   96946.03
+  ],
+  [
+   "2020-06-24",
+   94496.44
+  ],
+  [
+   "2020-06-25",
+   95472.39
+  ],
+  [
+   "2020-06-26",
+   93280.95
+  ],
+  [
+   "2020-06-29",
+   94609.71
+  ],
+  [
+   "2020-06-30",
+   95937.53
+  ],
+  [
+   "2020-07-01",
+   96494.84
+  ],
+  [
+   "2020-07-02",
+   97016.82
+  ],
+  [
+   "2020-07-06",
+   98469.53
+  ],
+  [
+   "2020-07-07",
+   97477.3
+  ],
+  [
+   "2020-07-08",
+   98202.43
+  ],
+  [
+   "2020-07-09",
+   97684.55
+  ],
+  [
+   "2020-07-10",
+   98672.77
+  ],
+  [
+   "2020-07-13",
+   97801.79
+  ],
+  [
+   "2020-07-14",
+   99056.91
+  ],
+  [
+   "2020-07-15",
+   99969.38
+  ],
+  [
+   "2020-07-16",
+   99637.17
+  ],
+  [
+   "2020-07-17",
+   99920.9
+  ],
+  [
+   "2020-07-20",
+   100724.67
+  ],
+  [
+   "2020-07-21",
+   100926.64
+  ],
+  [
+   "2020-07-22",
+   101486.1
+  ],
+  [
+   "2020-07-23",
+   100298.8
+  ],
+  [
+   "2020-07-24",
+   99667.62
+  ],
+  [
+   "2020-07-27",
+   100374.7
+  ],
+  [
+   "2020-07-28",
+   99767.7
+  ],
+  [
+   "2020-07-29",
+   100958.05
+  ],
+  [
+   "2020-07-30",
+   100608.92
+  ],
+  [
+   "2020-07-31",
+   101380.9
+  ],
+  [
+   "2020-08-03",
+   102088.07
+  ],
+  [
+   "2020-08-04",
+   102467.97
+  ],
+  [
+   "2020-08-05",
+   103099.73
+  ],
+  [
+   "2020-08-06",
+   103780.45
+  ],
+  [
+   "2020-08-07",
+   103866.62
+  ],
+  [
+   "2020-08-10",
+   104166.65
+  ],
+  [
+   "2020-08-11",
+   103342.98
+  ],
+  [
+   "2020-08-12",
+   104740.79
+  ],
+  [
+   "2020-08-13",
+   104564.89
+  ],
+  [
+   "2020-08-14",
+   104566.68
+  ],
+  [
+   "2020-08-17",
+   104885.1
+  ],
+  [
+   "2020-08-18",
+   105109.85
+  ],
+  [
+   "2020-08-19",
+   104688.62
+  ],
+  [
+   "2020-08-20",
+   104997.8
+  ],
+  [
+   "2020-08-21",
+   105378.81
+  ],
+  [
+   "2020-08-24",
+   106438.66
+  ],
+  [
+   "2020-08-25",
+   106790.76
+  ],
+  [
+   "2020-08-26",
+   107857.12
+  ],
+  [
+   "2020-08-27",
+   108086.36
+  ],
+  [
+   "2020-08-28",
+   108777.72
+  ],
+  [
+   "2020-08-31",
+   108494.21
+  ],
+  [
+   "2020-09-01",
+   109398.82
+  ],
+  [
+   "2020-09-02",
+   110965.7
+  ],
+  [
+   "2020-09-03",
+   107199.09
+  ],
+  [
+   "2020-09-04",
+   106342.27
+  ],
+  [
+   "2020-09-08",
+   103482.73
+  ],
+  [
+   "2020-09-09",
+   105468.46
+  ],
+  [
+   "2020-09-10",
+   103660.8
+  ],
+  [
+   "2020-09-11",
+   103723.88
+  ],
+  [
+   "2020-09-14",
+   105052.47
+  ],
+  [
+   "2020-09-15",
+   105578.11
+  ],
+  [
+   "2020-09-16",
+   104866.72
+  ],
+  [
+   "2020-09-17",
+   103860.38
+  ],
+  [
+   "2020-09-18",
+   103083.45
+  ],
+  [
+   "2020-09-21",
+   101963.57
+  ],
+  [
+   "2020-09-22",
+   102971.36
+  ],
+  [
+   "2020-09-23",
+   100624.96
+  ],
+  [
+   "2020-09-24",
+   100879.08
+  ],
+  [
+   "2020-09-25",
+   102484.76
+  ],
+  [
+   "2020-09-28",
+   104154.21
+  ],
+  [
+   "2020-09-29",
+   103606.9
+  ],
+  [
+   "2020-09-30",
+   104412.13
+  ],
+  [
+   "2020-10-01",
+   105026.87
+  ],
+  [
+   "2020-10-02",
+   104072.25
+  ],
+  [
+   "2020-10-05",
+   105864.42
+  ],
+  [
+   "2020-10-06",
+   104394.44
+  ],
+  [
+   "2020-10-07",
+   106174.52
+  ],
+  [
+   "2020-10-08",
+   107088.48
+  ],
+  [
+   "2020-10-09",
+   108046.85
+  ],
+  [
+   "2020-10-12",
+   109759.05
+  ],
+  [
+   "2020-10-13",
+   109061.05
+  ],
+  [
+   "2020-10-14",
+   108409.68
+  ],
+  [
+   "2020-10-15",
+   108250.55
+  ],
+  [
+   "2020-10-16",
+   108183.52
+  ],
+  [
+   "2020-10-19",
+   106581.38
+  ],
+  [
+   "2020-10-20",
+   106981.08
+  ],
+  [
+   "2020-10-21",
+   106768.67
+  ],
+  [
+   "2020-10-22",
+   107364.85
+  ],
+  [
+   "2020-10-23",
+   107715.32
+  ],
+  [
+   "2020-10-26",
+   105775.47
+  ],
+  [
+   "2020-10-27",
+   105413.81
+  ],
+  [
+   "2020-10-28",
+   101837.9
+  ],
+  [
+   "2020-10-29",
+   102877.91
+  ],
+  [
+   "2020-10-30",
+   101837.16
+  ],
+  [
+   "2020-11-02",
+   102941.73
+  ],
+  [
+   "2020-11-03",
+   104707.74
+  ],
+  [
+   "2020-11-04",
+   107012.88
+  ],
+  [
+   "2020-11-05",
+   109088.81
+  ],
+  [
+   "2020-11-06",
+   109078.7
+  ],
+  [
+   "2020-11-09",
+   110414.72
+  ],
+  [
+   "2020-11-10",
+   110278.5
+  ],
+  [
+   "2020-11-11",
+   111061.01
+  ],
+  [
+   "2020-11-12",
+   110022.15
+  ],
+  [
+   "2020-11-13",
+   111488.96
+  ],
+  [
+   "2020-11-16",
+   112844.84
+  ],
+  [
+   "2020-11-17",
+   112281.78
+  ],
+  [
+   "2020-11-18",
+   110955.11
+  ],
+  [
+   "2020-11-19",
+   111397.59
+  ],
+  [
+   "2020-11-20",
+   110664.6
+  ],
+  [
+   "2020-11-23",
+   111314.35
+  ],
+  [
+   "2020-11-24",
+   113057.01
+  ],
+  [
+   "2020-11-25",
+   112898.6
+  ],
+  [
+   "2020-11-27",
+   113206.88
+  ],
+  [
+   "2020-11-30",
+   112732.83
+  ],
+  [
+   "2020-12-01",
+   113918.21
+  ],
+  [
+   "2020-12-02",
+   114160.49
+  ],
+  [
+   "2020-12-03",
+   114128.52
+  ],
+  [
+   "2020-12-04",
+   115108.99
+  ],
+  [
+   "2020-12-07",
+   114885.09
+  ],
+  [
+   "2020-12-08",
+   115192.33
+  ],
+  [
+   "2020-12-09",
+   114229.6
+  ],
+  [
+   "2020-12-10",
+   114153.1
+  ],
+  [
+   "2020-12-11",
+   114012.9
+  ],
+  [
+   "2020-12-14",
+   113497.37
+  ],
+  [
+   "2020-12-15",
+   115014.29
+  ],
+  [
+   "2020-12-16",
+   114911.22
+  ],
+  [
+   "2020-12-17",
+   115385.78
+  ],
+  [
+   "2020-12-18",
+   115469.75
+  ],
+  [
+   "2020-12-21",
+   115024.81
+  ],
+  [
+   "2020-12-22",
+   114785.58
+  ],
+  [
+   "2020-12-23",
+   114889.97
+  ],
+  [
+   "2020-12-24",
+   115340.6
+  ],
+  [
+   "2020-12-28",
+   116320.48
+  ],
+  [
+   "2020-12-29",
+   116113.44
+  ],
+  [
+   "2020-12-30",
+   116228.58
+  ],
+  [
+   "2020-12-31",
+   116862.05
+  ],
+  [
+   "2021-01-04",
+   115315.07
+  ],
+  [
+   "2021-01-05",
+   116045.96
+  ],
+  [
+   "2021-01-06",
+   116727.39
+  ],
+  [
+   "2021-01-07",
+   118423.78
+  ],
+  [
+   "2021-01-08",
+   119099.11
+  ],
+  [
+   "2021-01-11",
+   118334.68
+  ],
+  [
+   "2021-01-12",
+   118345.51
+  ],
+  [
+   "2021-01-13",
+   118641.72
+  ],
+  [
+   "2021-01-14",
+   118254.96
+  ],
+  [
+   "2021-01-15",
+   117405.72
+  ],
+  [
+   "2021-01-19",
+   118288.75
+  ],
+  [
+   "2021-01-20",
+   119897.47
+  ],
+  [
+   "2021-01-21",
+   120001.88
+  ],
+  [
+   "2021-01-22",
+   119588.89
+  ],
+  [
+   "2021-01-25",
+   120066.36
+  ],
+  [
+   "2021-01-26",
+   119882.17
+  ],
+  [
+   "2021-01-27",
+   117017.62
+  ],
+  [
+   "2021-01-28",
+   117984.85
+  ],
+  [
+   "2021-01-29",
+   115804.71
+  ],
+  [
+   "2021-02-01",
+   117544.44
+  ],
+  [
+   "2021-02-02",
+   119157.78
+  ],
+  [
+   "2021-02-03",
+   119285.27
+  ],
+  [
+   "2021-02-04",
+   120593.06
+  ],
+  [
+   "2021-02-05",
+   121073.85
+  ],
+  [
+   "2021-02-08",
+   121942.58
+  ],
+  [
+   "2021-02-09",
+   121854.89
+  ],
+  [
+   "2021-02-10",
+   121816.71
+  ],
+  [
+   "2021-02-11",
+   122003.8
+  ],
+  [
+   "2021-02-12",
+   122623.09
+  ],
+  [
+   "2021-02-16",
+   122502.71
+  ],
+  [
+   "2021-02-17",
+   122536.69
+  ],
+  [
+   "2021-02-18",
+   122002.28
+  ],
+  [
+   "2021-02-19",
+   121793.88
+  ],
+  [
+   "2021-02-22",
+   120904.87
+  ],
+  [
+   "2021-02-23",
+   121004.5
+  ],
+  [
+   "2021-02-24",
+   122324.86
+  ],
+  [
+   "2021-02-25",
+   119440.28
+  ],
+  [
+   "2021-02-26",
+   118820.25
+  ],
+  [
+   "2021-03-01",
+   121627.99
+  ],
+  [
+   "2021-03-02",
+   120722.1
+  ],
+  [
+   "2021-03-03",
+   119161.05
+  ],
+  [
+   "2021-03-04",
+   117714.91
+  ],
+  [
+   "2021-03-05",
+   119827.44
+  ],
+  [
+   "2021-03-08",
+   119257.77
+  ],
+  [
+   "2021-03-09",
+   120894.03
+  ],
+  [
+   "2021-03-10",
+   121631.08
+  ],
+  [
+   "2021-03-11",
+   122848.17
+  ],
+  [
+   "2021-03-12",
+   123045.2
+  ],
+  [
+   "2021-03-15",
+   123767.98
+  ],
+  [
+   "2021-03-16",
+   123606.5
+  ],
+  [
+   "2021-03-17",
+   123732.67
+  ],
+  [
+   "2021-03-18",
+   121844.25
+  ],
+  [
+   "2021-03-19",
+   122008.23
+  ],
+  [
+   "2021-03-22",
+   122956.73
+  ],
+  [
+   "2021-03-23",
+   122027.78
+  ],
+  [
+   "2021-03-24",
+   121420.08
+  ],
+  [
+   "2021-03-25",
+   122061.55
+  ],
+  [
+   "2021-03-26",
+   124003.99
+  ],
+  [
+   "2021-03-29",
+   123946.9
+  ],
+  [
+   "2021-03-30",
+   123654.96
+  ],
+  [
+   "2021-03-31",
+   124106.26
+  ],
+  [
+   "2021-04-01",
+   125419.92
+  ],
+  [
+   "2021-04-05",
+   127173.81
+  ],
+  [
+   "2021-04-06",
+   127095.07
+  ],
+  [
+   "2021-04-07",
+   127264.39
+  ],
+  [
+   "2021-04-08",
+   127847.26
+  ],
+  [
+   "2021-04-09",
+   128766.26
+  ],
+  [
+   "2021-04-12",
+   128819.47
+  ],
+  [
+   "2021-04-13",
+   129181.23
+  ],
+  [
+   "2021-04-14",
+   128779.56
+  ],
+  [
+   "2021-04-15",
+   130091.53
+  ],
+  [
+   "2021-04-16",
+   130559.37
+  ],
+  [
+   "2021-04-19",
+   129940.13
+  ],
+  [
+   "2021-04-20",
+   128993.96
+  ],
+  [
+   "2021-04-21",
+   130187.28
+  ],
+  [
+   "2021-04-22",
+   129032.34
+  ],
+  [
+   "2021-04-23",
+   130382.83
+  ],
+  [
+   "2021-04-26",
+   130664.71
+  ],
+  [
+   "2021-04-27",
+   130608.86
+  ],
+  [
+   "2021-04-28",
+   130575.68
+  ],
+  [
+   "2021-04-29",
+   131376.39
+  ],
+  [
+   "2021-04-30",
+   130544.03
+  ],
+  [
+   "2021-05-03",
+   130832.05
+  ],
+  [
+   "2021-05-04",
+   130045.5
+  ],
+  [
+   "2021-05-05",
+   130076.77
+  ],
+  [
+   "2021-05-06",
+   131077.06
+  ],
+  [
+   "2021-05-07",
+   132028.57
+  ],
+  [
+   "2021-05-10",
+   130769.12
+  ],
+  [
+   "2021-05-11",
+   129621.83
+  ],
+  [
+   "2021-05-12",
+   126951.27
+  ],
+  [
+   "2021-05-13",
+   128398.39
+  ],
+  [
+   "2021-05-14",
+   130329.13
+  ],
+  [
+   "2021-05-17",
+   130023.06
+  ],
+  [
+   "2021-05-18",
+   128932.6
+  ],
+  [
+   "2021-05-19",
+   128607.68
+  ],
+  [
+   "2021-05-20",
+   129921.18
+  ],
+  [
+   "2021-05-21",
+   129856.3
+  ],
+  [
+   "2021-05-24",
+   131119.15
+  ],
+  [
+   "2021-05-25",
+   130849.9
+  ],
+  [
+   "2021-05-26",
+   131097.66
+  ],
+  [
+   "2021-05-27",
+   131161.52
+  ],
+  [
+   "2021-05-28",
+   131413.61
+  ],
+  [
+   "2021-06-01",
+   131267.38
+  ],
+  [
+   "2021-06-02",
+   131501.27
+  ],
+  [
+   "2021-06-03",
+   131023.31
+  ],
+  [
+   "2021-06-04",
+   132181.92
+  ],
+  [
+   "2021-06-07",
+   132070.81
+  ],
+  [
+   "2021-06-08",
+   132079.45
+  ],
+  [
+   "2021-06-09",
+   131878.93
+  ],
+  [
+   "2021-06-10",
+   132481.64
+  ],
+  [
+   "2021-06-11",
+   132714.65
+  ],
+  [
+   "2021-06-14",
+   133018.0
+  ],
+  [
+   "2021-06-15",
+   132759.5
+  ],
+  [
+   "2021-06-16",
+   131766.88
+  ],
+  [
+   "2021-06-17",
+   131600.53
+  ],
+  [
+   "2021-06-18",
+   130273.94
+  ],
+  [
+   "2021-06-21",
+   132060.34
+  ],
+  [
+   "2021-06-22",
+   132739.82
+  ],
+  [
+   "2021-06-23",
+   132612.99
+  ],
+  [
+   "2021-06-24",
+   133359.99
+  ],
+  [
+   "2021-06-25",
+   133827.91
+  ],
+  [
+   "2021-06-28",
+   134105.15
+  ],
+  [
+   "2021-06-29",
+   134159.77
+  ],
+  [
+   "2021-06-30",
+   134303.19
+  ],
+  [
+   "2021-07-01",
+   135031.65
+  ],
+  [
+   "2021-07-02",
+   136034.57
+  ],
+  [
+   "2021-07-06",
+   135750.08
+  ],
+  [
+   "2021-07-07",
+   136240.47
+  ],
+  [
+   "2021-07-08",
+   135154.49
+  ],
+  [
+   "2021-07-09",
+   136552.81
+  ],
+  [
+   "2021-07-12",
+   137061.77
+  ],
+  [
+   "2021-07-13",
+   136606.67
+  ],
+  [
+   "2021-07-14",
+   136802.35
+  ],
+  [
+   "2021-07-15",
+   136322.7
+  ],
+  [
+   "2021-07-16",
+   135318.55
+  ],
+  [
+   "2021-07-19",
+   133266.98
+  ],
+  [
+   "2021-07-20",
+   135200.59
+  ],
+  [
+   "2021-07-21",
+   136278.9
+  ],
+  [
+   "2021-07-22",
+   136565.26
+  ],
+  [
+   "2021-07-23",
+   137911.5
+  ],
+  [
+   "2021-07-26",
+   138246.94
+  ],
+  [
+   "2021-07-27",
+   137644.43
+  ],
+  [
+   "2021-07-28",
+   137585.31
+  ],
+  [
+   "2021-07-29",
+   138155.61
+  ],
+  [
+   "2021-07-30",
+   137492.42
+  ],
+  [
+   "2021-08-02",
+   137207.69
+  ],
+  [
+   "2021-08-03",
+   138284.58
+  ],
+  [
+   "2021-08-04",
+   137654.42
+  ],
+  [
+   "2021-08-05",
+   138478.0
+  ],
+  [
+   "2021-08-06",
+   138729.81
+  ],
+  [
+   "2021-08-09",
+   138610.82
+  ],
+  [
+   "2021-08-10",
+   138752.8
+  ],
+  [
+   "2021-08-11",
+   139091.32
+  ],
+  [
+   "2021-08-12",
+   139497.31
+  ],
+  [
+   "2021-08-13",
+   139763.01
+  ],
+  [
+   "2021-08-16",
+   140102.99
+  ],
+  [
+   "2021-08-17",
+   139181.11
+  ],
+  [
+   "2021-08-18",
+   137715.88
+  ],
+  [
+   "2021-08-19",
+   137905.48
+  ],
+  [
+   "2021-08-20",
+   138972.42
+  ],
+  [
+   "2021-08-23",
+   140175.17
+  ],
+  [
+   "2021-08-24",
+   140378.48
+  ],
+  [
+   "2021-08-25",
+   140677.16
+  ],
+  [
+   "2021-08-26",
+   139876.53
+  ],
+  [
+   "2021-08-27",
+   141095.61
+  ],
+  [
+   "2021-08-30",
+   141685.75
+  ],
+  [
+   "2021-08-31",
+   141519.06
+  ],
+  [
+   "2021-09-01",
+   141581.45
+  ],
+  [
+   "2021-09-02",
+   141998.04
+  ],
+  [
+   "2021-09-03",
+   141970.22
+  ],
+  [
+   "2021-09-07",
+   141486.88
+  ],
+  [
+   "2021-09-08",
+   141314.36
+  ],
+  [
+   "2021-09-09",
+   140696.33
+  ],
+  [
+   "2021-09-10",
+   139661.9
+  ],
+  [
+   "2021-09-13",
+   139971.14
+  ],
+  [
+   "2021-09-14",
+   139244.18
+  ],
+  [
+   "2021-09-15",
+   140057.12
+  ],
+  [
+   "2021-09-16",
+   139756.9
+  ],
+  [
+   "2021-09-17",
+   138830.76
+  ],
+  [
+   "2021-09-20",
+   136570.25
+  ],
+  [
+   "2021-09-21",
+   136449.8
+  ],
+  [
+   "2021-09-22",
+   137724.67
+  ],
+  [
+   "2021-09-23",
+   139355.68
+  ],
+  [
+   "2021-09-24",
+   139595.31
+  ],
+  [
+   "2021-09-27",
+   139222.97
+  ],
+  [
+   "2021-09-28",
+   136478.99
+  ],
+  [
+   "2021-09-29",
+   136684.69
+  ],
+  [
+   "2021-09-30",
+   135048.32
+  ],
+  [
+   "2021-10-01",
+   136606.22
+  ],
+  [
+   "2021-10-04",
+   134927.66
+  ],
+  [
+   "2021-10-05",
+   136245.65
+  ],
+  [
+   "2021-10-06",
+   136828.15
+  ],
+  [
+   "2021-10-07",
+   137948.05
+  ],
+  [
+   "2021-10-08",
+   137730.01
+  ],
+  [
+   "2021-10-11",
+   136757.55
+  ],
+  [
+   "2021-10-12",
+   136429.89
+  ],
+  [
+   "2021-10-13",
+   136894.19
+  ],
+  [
+   "2021-10-14",
+   139130.07
+  ],
+  [
+   "2021-10-15",
+   140174.05
+  ],
+  [
+   "2021-10-18",
+   140607.67
+  ],
+  [
+   "2021-10-19",
+   141664.48
+  ],
+  [
+   "2021-10-20",
+   142188.86
+  ],
+  [
+   "2021-10-21",
+   142553.29
+  ],
+  [
+   "2021-10-22",
+   142424.66
+  ],
+  [
+   "2021-10-25",
+   143145.26
+  ],
+  [
+   "2021-10-26",
+   143284.0
+  ],
+  [
+   "2021-10-27",
+   142661.71
+  ],
+  [
+   "2021-10-28",
+   143974.79
+  ],
+  [
+   "2021-10-29",
+   144286.87
+  ],
+  [
+   "2021-11-01",
+   144551.46
+  ],
+  [
+   "2021-11-02",
+   145095.41
+  ],
+  [
+   "2021-11-03",
+   145977.6
+  ],
+  [
+   "2021-11-04",
+   146638.15
+  ],
+  [
+   "2021-11-05",
+   147145.41
+  ],
+  [
+   "2021-11-08",
+   147277.87
+  ],
+  [
+   "2021-11-09",
+   146791.68
+  ],
+  [
+   "2021-11-10",
+   145659.86
+  ],
+  [
+   "2021-11-11",
+   145704.87
+  ],
+  [
+   "2021-11-12",
+   146764.72
+  ],
+  [
+   "2021-11-15",
+   146808.15
+  ],
+  [
+   "2021-11-16",
+   147365.83
+  ],
+  [
+   "2021-11-17",
+   147032.29
+  ],
+  [
+   "2021-11-18",
+   147502.45
+  ],
+  [
+   "2021-11-19",
+   147266.75
+  ],
+  [
+   "2021-11-22",
+   146845.03
+  ],
+  [
+   "2021-11-23",
+   147081.87
+  ],
+  [
+   "2021-11-24",
+   147408.43
+  ],
+  [
+   "2021-11-26",
+   144205.63
+  ],
+  [
+   "2021-11-29",
+   145943.94
+  ],
+  [
+   "2021-11-30",
+   143339.42
+  ],
+  [
+   "2021-12-01",
+   141613.3
+  ],
+  [
+   "2021-12-02",
+   143509.78
+  ],
+  [
+   "2021-12-03",
+   142529.13
+  ],
+  [
+   "2021-12-06",
+   144163.16
+  ],
+  [
+   "2021-12-07",
+   147054.27
+  ],
+  [
+   "2021-12-08",
+   147454.47
+  ],
+  [
+   "2021-12-09",
+   146470.96
+  ],
+  [
+   "2021-12-10",
+   147824.01
+  ],
+  [
+   "2021-12-13",
+   146576.41
+  ],
+  [
+   "2021-12-14",
+   145574.51
+  ],
+  [
+   "2021-12-15",
+   147429.95
+  ],
+  [
+   "2021-12-16",
+   146039.64
+  ],
+  [
+   "2021-12-17",
+   145002.76
+  ],
+  [
+   "2021-12-20",
+   143517.35
+  ],
+  [
+   "2021-12-21",
+   145967.95
+  ],
+  [
+   "2021-12-22",
+   147377.14
+  ],
+  [
+   "2021-12-23",
+   148296.86
+  ],
+  [
+   "2021-12-27",
+   150339.48
+  ],
+  [
+   "2021-12-28",
+   150218.57
+  ],
+  [
+   "2021-12-29",
+   150417.78
+  ],
+  [
+   "2021-12-30",
+   150014.42
+  ],
+  [
+   "2021-12-31",
+   149599.18
+  ],
+  [
+   "2022-01-03",
+   150484.66
+  ],
+  [
+   "2022-01-04",
+   150400.96
+  ],
+  [
+   "2022-01-05",
+   147646.27
+  ],
+  [
+   "2022-01-06",
+   147464.43
+  ],
+  [
+   "2022-01-07",
+   146920.88
+  ],
+  [
+   "2022-01-10",
+   146732.95
+  ],
+  [
+   "2022-01-11",
+   148012.52
+  ],
+  [
+   "2022-01-12",
+   148433.89
+  ],
+  [
+   "2022-01-13",
+   146428.38
+  ],
+  [
+   "2022-01-14",
+   146482.6
+  ],
+  [
+   "2022-01-18",
+   143963.16
+  ],
+  [
+   "2022-01-19",
+   142526.88
+  ],
+  [
+   "2022-01-20",
+   140965.22
+  ],
+  [
+   "2022-01-21",
+   138290.37
+  ],
+  [
+   "2022-01-24",
+   138894.89
+  ],
+  [
+   "2022-01-25",
+   137216.69
+  ],
+  [
+   "2022-01-26",
+   136900.8
+  ],
+  [
+   "2022-01-27",
+   136218.93
+  ],
+  [
+   "2022-01-28",
+   139475.64
+  ],
+  [
+   "2022-01-31",
+   141882.33
+  ],
+  [
+   "2022-02-01",
+   142851.39
+  ],
+  [
+   "2022-02-02",
+   144171.54
+  ],
+  [
+   "2022-02-03",
+   140952.61
+  ],
+  [
+   "2022-02-04",
+   141574.11
+  ],
+  [
+   "2022-02-07",
+   141110.73
+  ],
+  [
+   "2022-02-08",
+   142214.58
+  ],
+  [
+   "2022-02-09",
+   144242.39
+  ],
+  [
+   "2022-02-10",
+   141780.22
+  ],
+  [
+   "2022-02-11",
+   139030.59
+  ],
+  [
+   "2022-02-14",
+   138594.92
+  ],
+  [
+   "2022-02-15",
+   140745.76
+  ],
+  [
+   "2022-02-16",
+   140926.8
+  ],
+  [
+   "2022-02-17",
+   138014.98
+  ],
+  [
+   "2022-02-18",
+   137137.73
+  ],
+  [
+   "2022-02-22",
+   135712.56
+  ],
+  [
+   "2022-02-23",
+   133383.54
+  ],
+  [
+   "2022-02-24",
+   135292.02
+  ],
+  [
+   "2022-02-25",
+   138172.9
+  ],
+  [
+   "2022-02-28",
+   137860.06
+  ],
+  [
+   "2022-03-01",
+   135827.42
+  ],
+  [
+   "2022-03-02",
+   138204.52
+  ],
+  [
+   "2022-03-03",
+   137579.0
+  ],
+  [
+   "2022-03-04",
+   136504.49
+  ],
+  [
+   "2022-03-07",
+   132601.67
+  ],
+  [
+   "2022-03-08",
+   131607.92
+  ],
+  [
+   "2022-03-09",
+   135027.21
+  ],
+  [
+   "2022-03-10",
+   134432.49
+  ],
+  [
+   "2022-03-11",
+   132780.58
+  ],
+  [
+   "2022-03-14",
+   131843.66
+  ],
+  [
+   "2022-03-15",
+   134633.82
+  ],
+  [
+   "2022-03-16",
+   137205.82
+  ],
+  [
+   "2022-03-17",
+   138775.46
+  ],
+  [
+   "2022-03-18",
+   140662.56
+  ],
+  [
+   "2022-03-21",
+   140669.53
+  ],
+  [
+   "2022-03-22",
+   142259.03
+  ],
+  [
+   "2022-03-23",
+   140473.13
+  ],
+  [
+   "2022-03-24",
+   142493.99
+  ],
+  [
+   "2022-03-25",
+   143198.96
+  ],
+  [
+   "2022-03-28",
+   144179.1
+  ],
+  [
+   "2022-03-29",
+   145940.43
+  ],
+  [
+   "2022-03-30",
+   145048.62
+  ],
+  [
+   "2022-03-31",
+   142910.35
+  ],
+  [
+   "2022-04-01",
+   143255.69
+  ],
+  [
+   "2022-04-04",
+   144453.53
+  ],
+  [
+   "2022-04-05",
+   142723.88
+  ],
+  [
+   "2022-04-06",
+   141331.4
+  ],
+  [
+   "2022-04-07",
+   142016.4
+  ],
+  [
+   "2022-04-08",
+   141676.7
+  ],
+  [
+   "2022-04-11",
+   139319.39
+  ],
+  [
+   "2022-04-12",
+   138780.99
+  ],
+  [
+   "2022-04-13",
+   140340.67
+  ],
+  [
+   "2022-04-14",
+   138666.54
+  ],
+  [
+   "2022-04-18",
+   138702.88
+  ],
+  [
+   "2022-04-19",
+   140835.48
+  ],
+  [
+   "2022-04-20",
+   140750.84
+  ],
+  [
+   "2022-04-21",
+   138686.62
+  ],
+  [
+   "2022-04-22",
+   135044.8
+  ],
+  [
+   "2022-04-25",
+   135797.63
+  ],
+  [
+   "2022-04-26",
+   131982.04
+  ],
+  [
+   "2022-04-27",
+   132350.07
+  ],
+  [
+   "2022-04-28",
+   135557.3
+  ],
+  [
+   "2022-04-29",
+   130750.18
+  ],
+  [
+   "2022-05-02",
+   131510.85
+  ],
+  [
+   "2022-05-03",
+   132064.85
+  ],
+  [
+   "2022-05-04",
+   135936.59
+  ],
+  [
+   "2022-05-05",
+   131309.85
+  ],
+  [
+   "2022-05-06",
+   130539.83
+  ],
+  [
+   "2022-05-09",
+   126521.24
+  ],
+  [
+   "2022-05-10",
+   126760.63
+  ],
+  [
+   "2022-05-11",
+   124829.84
+  ],
+  [
+   "2022-05-12",
+   124694.7
+  ],
+  [
+   "2022-05-13",
+   127545.75
+  ],
+  [
+   "2022-05-16",
+   127113.03
+  ],
+  [
+   "2022-05-17",
+   129576.65
+  ],
+  [
+   "2022-05-18",
+   124649.5
+  ],
+  [
+   "2022-05-19",
+   123795.98
+  ],
+  [
+   "2022-05-20",
+   123842.44
+  ],
+  [
+   "2022-05-23",
+   126099.16
+  ],
+  [
+   "2022-05-24",
+   125193.44
+  ],
+  [
+   "2022-05-25",
+   126298.91
+  ],
+  [
+   "2022-05-26",
+   128658.21
+  ],
+  [
+   "2022-05-27",
+   131755.24
+  ],
+  [
+   "2022-05-31",
+   131008.9
+  ],
+  [
+   "2022-06-01",
+   129995.48
+  ],
+  [
+   "2022-06-02",
+   132351.99
+  ],
+  [
+   "2022-06-03",
+   130281.17
+  ],
+  [
+   "2022-06-06",
+   130644.12
+  ],
+  [
+   "2022-06-07",
+   131847.89
+  ],
+  [
+   "2022-06-08",
+   130509.41
+  ],
+  [
+   "2022-06-09",
+   127490.37
+  ],
+  [
+   "2022-06-10",
+   123904.53
+  ],
+  [
+   "2022-06-13",
+   119372.39
+  ],
+  [
+   "2022-06-14",
+   119008.87
+  ],
+  [
+   "2022-06-15",
+   120263.01
+  ],
+  [
+   "2022-06-16",
+   116430.43
+  ],
+  [
+   "2022-06-17",
+   117027.97
+  ],
+  [
+   "2022-06-21",
+   119867.32
+  ],
+  [
+   "2022-06-22",
+   119643.28
+  ],
+  [
+   "2022-06-23",
+   120799.45
+  ],
+  [
+   "2022-06-24",
+   124446.54
+  ],
+  [
+   "2022-06-27",
+   124052.79
+  ],
+  [
+   "2022-06-28",
+   121627.79
+  ],
+  [
+   "2022-06-29",
+   121506.75
+  ],
+  [
+   "2022-06-30",
+   120561.4
+  ],
+  [
+   "2022-07-01",
+   121739.57
+  ],
+  [
+   "2022-07-05",
+   121984.92
+  ],
+  [
+   "2022-07-06",
+   122407.78
+  ],
+  [
+   "2022-07-07",
+   124119.08
+  ],
+  [
+   "2022-07-08",
+   124040.47
+  ],
+  [
+   "2022-07-11",
+   122702.48
+  ],
+  [
+   "2022-07-12",
+   121664.64
+  ],
+  [
+   "2022-07-13",
+   121042.22
+  ],
+  [
+   "2022-07-14",
+   120761.12
+  ],
+  [
+   "2022-07-15",
+   122940.58
+  ],
+  [
+   "2022-07-18",
+   122000.06
+  ],
+  [
+   "2022-07-19",
+   125135.76
+  ],
+  [
+   "2022-07-20",
+   125936.13
+  ],
+  [
+   "2022-07-21",
+   127160.94
+  ],
+  [
+   "2022-07-22",
+   126029.23
+  ],
+  [
+   "2022-07-25",
+   126163.25
+  ],
+  [
+   "2022-07-26",
+   124735.67
+  ],
+  [
+   "2022-07-27",
+   127850.79
+  ],
+  [
+   "2022-07-28",
+   129371.87
+  ],
+  [
+   "2022-07-29",
+   131216.2
+  ],
+  [
+   "2022-08-01",
+   130818.09
+  ],
+  [
+   "2022-08-02",
+   130029.13
+  ],
+  [
+   "2022-08-03",
+   131962.33
+  ],
+  [
+   "2022-08-04",
+   131867.12
+  ],
+  [
+   "2022-08-05",
+   131642.68
+  ],
+  [
+   "2022-08-08",
+   131526.67
+  ],
+  [
+   "2022-08-09",
+   131023.13
+  ],
+  [
+   "2022-08-10",
+   133659.34
+  ],
+  [
+   "2022-08-11",
+   133693.1
+  ],
+  [
+   "2022-08-12",
+   135824.37
+  ],
+  [
+   "2022-08-15",
+   136391.64
+  ],
+  [
+   "2022-08-16",
+   136645.03
+  ],
+  [
+   "2022-08-17",
+   135736.89
+  ],
+  [
+   "2022-08-18",
+   136091.67
+  ],
+  [
+   "2022-08-19",
+   134324.37
+  ],
+  [
+   "2022-08-22",
+   131684.98
+  ],
+  [
+   "2022-08-23",
+   131332.01
+  ],
+  [
+   "2022-08-24",
+   131747.09
+  ],
+  [
+   "2022-08-25",
+   133527.68
+  ],
+  [
+   "2022-08-26",
+   129174.24
+  ],
+  [
+   "2022-08-29",
+   128358.32
+  ],
+  [
+   "2022-08-30",
+   126981.37
+  ],
+  [
+   "2022-08-31",
+   126072.05
+  ],
+  [
+   "2022-09-01",
+   126444.75
+  ],
+  [
+   "2022-09-02",
+   125152.78
+  ],
+  [
+   "2022-09-06",
+   124726.23
+  ],
+  [
+   "2022-09-07",
+   126880.53
+  ],
+  [
+   "2022-09-08",
+   127663.37
+  ],
+  [
+   "2022-09-09",
+   129546.16
+  ],
+  [
+   "2022-09-12",
+   130903.92
+  ],
+  [
+   "2022-09-13",
+   125435.21
+  ],
+  [
+   "2022-09-14",
+   125529.72
+  ],
+  [
+   "2022-09-15",
+   124040.81
+  ],
+  [
+   "2022-09-16",
+   123606.75
+  ],
+  [
+   "2022-09-19",
+   124525.51
+  ],
+  [
+   "2022-09-20",
+   123177.81
+  ],
+  [
+   "2022-09-21",
+   121119.1
+  ],
+  [
+   "2022-09-22",
+   120131.94
+  ],
+  [
+   "2022-09-23",
+   118195.38
+  ],
+  [
+   "2022-09-26",
+   117103.21
+  ],
+  [
+   "2022-09-27",
+   116809.54
+  ],
+  [
+   "2022-09-28",
+   118996.46
+  ],
+  [
+   "2022-09-29",
+   116649.34
+  ],
+  [
+   "2022-09-30",
+   114946.53
+  ],
+  [
+   "2022-10-03",
+   117804.12
+  ],
+  [
+   "2022-10-04",
+   121266.97
+  ],
+  [
+   "2022-10-05",
+   121062.05
+  ],
+  [
+   "2022-10-06",
+   119825.31
+  ],
+  [
+   "2022-10-07",
+   116603.54
+  ],
+  [
+   "2022-10-10",
+   115792.85
+  ],
+  [
+   "2022-10-11",
+   115077.56
+  ],
+  [
+   "2022-10-12",
+   114731.85
+  ],
+  [
+   "2022-10-13",
+   117602.03
+  ],
+  [
+   "2022-10-14",
+   115077.24
+  ],
+  [
+   "2022-10-17",
+   117871.71
+  ],
+  [
+   "2022-10-18",
+   119205.75
+  ],
+  [
+   "2022-10-19",
+   118420.8
+  ],
+  [
+   "2022-10-20",
+   117443.31
+  ],
+  [
+   "2022-10-21",
+   120156.54
+  ],
+  [
+   "2022-10-24",
+   121568.28
+  ],
+  [
+   "2022-10-25",
+   123410.7
+  ],
+  [
+   "2022-10-26",
+   122574.71
+  ],
+  [
+   "2022-10-27",
+   121913.72
+  ],
+  [
+   "2022-10-28",
+   124661.59
+  ],
+  [
+   "2022-10-31",
+   123826.83
+  ],
+  [
+   "2022-11-01",
+   123319.57
+  ],
+  [
+   "2022-11-02",
+   120379.73
+  ],
+  [
+   "2022-11-03",
+   119165.91
+  ],
+  [
+   "2022-11-04",
+   120784.98
+  ],
+  [
+   "2022-11-07",
+   121960.52
+  ],
+  [
+   "2022-11-08",
+   122571.82
+  ],
+  [
+   "2022-11-09",
+   120120.12
+  ],
+  [
+   "2022-11-10",
+   126404.08
+  ],
+  [
+   "2022-11-11",
+   127590.79
+  ],
+  [
+   "2022-11-14",
+   126604.63
+  ],
+  [
+   "2022-11-15",
+   127624.39
+  ],
+  [
+   "2022-11-16",
+   126724.08
+  ],
+  [
+   "2022-11-17",
+   126321.05
+  ],
+  [
+   "2022-11-18",
+   126858.48
+  ],
+  [
+   "2022-11-21",
+   126432.47
+  ],
+  [
+   "2022-11-22",
+   128060.04
+  ],
+  [
+   "2022-11-23",
+   128801.82
+  ],
+  [
+   "2022-11-25",
+   128755.09
+  ],
+  [
+   "2022-11-28",
+   126835.92
+  ],
+  [
+   "2022-11-29",
+   126627.85
+  ],
+  [
+   "2022-11-30",
+   130390.4
+  ],
+  [
+   "2022-12-01",
+   130340.27
+  ],
+  [
+   "2022-12-02",
+   130164.86
+  ],
+  [
+   "2022-12-05",
+   127968.35
+  ],
+  [
+   "2022-12-06",
+   126205.38
+  ],
+  [
+   "2022-12-07",
+   126004.95
+  ],
+  [
+   "2022-12-08",
+   126928.04
+  ],
+  [
+   "2022-12-09",
+   126014.84
+  ],
+  [
+   "2022-12-12",
+   127756.32
+  ],
+  [
+   "2022-12-13",
+   128702.41
+  ],
+  [
+   "2022-12-14",
+   127941.72
+  ],
+  [
+   "2022-12-15",
+   124415.22
+  ],
+  [
+   "2022-12-16",
+   123490.84
+  ],
+  [
+   "2022-12-19",
+   122499.81
+  ],
+  [
+   "2022-12-20",
+   122666.3
+  ],
+  [
+   "2022-12-21",
+   124459.73
+  ],
+  [
+   "2022-12-22",
+   122735.27
+  ],
+  [
+   "2022-12-23",
+   123368.3
+  ],
+  [
+   "2022-12-27",
+   122942.85
+  ],
+  [
+   "2022-12-28",
+   121540.65
+  ],
+  [
+   "2022-12-29",
+   123549.02
+  ],
+  [
+   "2022-12-30",
+   123222.88
+  ],
+  [
+   "2023-01-03",
+   122767.33
+  ],
+  [
+   "2023-01-04",
+   123681.28
+  ],
+  [
+   "2023-01-05",
+   122328.34
+  ],
+  [
+   "2023-01-06",
+   124957.44
+  ],
+  [
+   "2023-01-09",
+   124929.9
+  ],
+  [
+   "2023-01-10",
+   125779.42
+  ],
+  [
+   "2023-01-11",
+   127307.32
+  ],
+  [
+   "2023-01-12",
+   127720.95
+  ],
+  [
+   "2023-01-13",
+   128154.64
+  ],
+  [
+   "2023-01-17",
+   127976.4
+  ],
+  [
+   "2023-01-18",
+   126098.48
+  ],
+  [
+   "2023-01-19",
+   125192.16
+  ],
+  [
+   "2023-01-20",
+   127355.79
+  ],
+  [
+   "2023-01-23",
+   128845.04
+  ],
+  [
+   "2023-01-24",
+   128712.29
+  ],
+  [
+   "2023-01-25",
+   128811.32
+  ],
+  [
+   "2023-01-26",
+   130105.98
+  ],
+  [
+   "2023-01-27",
+   130394.95
+  ],
+  [
+   "2023-01-30",
+   128876.46
+  ],
+  [
+   "2023-01-31",
+   130646.98
+  ],
+  [
+   "2023-02-01",
+   132017.98
+  ],
+  [
+   "2023-02-02",
+   133822.25
+  ],
+  [
+   "2023-02-03",
+   132438.79
+  ],
+  [
+   "2023-02-06",
+   131722.49
+  ],
+  [
+   "2023-02-07",
+   133341.02
+  ],
+  [
+   "2023-02-08",
+   131991.14
+  ],
+  [
+   "2023-02-09",
+   130874.5
+  ],
+  [
+   "2023-02-10",
+   131121.34
+  ],
+  [
+   "2023-02-13",
+   132622.71
+  ],
+  [
+   "2023-02-14",
+   132582.04
+  ],
+  [
+   "2023-02-15",
+   133023.41
+  ],
+  [
+   "2023-02-16",
+   131245.25
+  ],
+  [
+   "2023-02-17",
+   130875.95
+  ],
+  [
+   "2023-02-21",
+   128435.66
+  ],
+  [
+   "2023-02-22",
+   128295.25
+  ],
+  [
+   "2023-02-23",
+   128891.54
+  ],
+  [
+   "2023-02-24",
+   127564.28
+  ],
+  [
+   "2023-02-27",
+   127993.63
+  ],
+  [
+   "2023-02-28",
+   127532.47
+  ],
+  [
+   "2023-03-01",
+   127129.39
+  ],
+  [
+   "2023-03-02",
+   128015.76
+  ],
+  [
+   "2023-03-03",
+   129941.45
+  ],
+  [
+   "2023-03-06",
+   130064.91
+  ],
+  [
+   "2023-03-07",
+   128176.24
+  ],
+  [
+   "2023-03-08",
+   128399.57
+  ],
+  [
+   "2023-03-09",
+   126119.51
+  ],
+  [
+   "2023-03-10",
+   124361.06
+  ],
+  [
+   "2023-03-13",
+   124205.67
+  ],
+  [
+   "2023-03-14",
+   126140.35
+  ],
+  [
+   "2023-03-15",
+   125491.88
+  ],
+  [
+   "2023-03-16",
+   127027.53
+  ],
+  [
+   "2023-03-17",
+   126118.03
+  ],
+  [
+   "2023-03-20",
+   127223.09
+  ],
+  [
+   "2023-03-21",
+   128841.69
+  ],
+  [
+   "2023-03-22",
+   126798.16
+  ],
+  [
+   "2023-03-23",
+   127047.67
+  ],
+  [
+   "2023-03-24",
+   127848.67
+  ],
+  [
+   "2023-03-27",
+   128096.26
+  ],
+  [
+   "2023-03-28",
+   127846.93
+  ],
+  [
+   "2023-03-29",
+   129622.11
+  ],
+  [
+   "2023-03-30",
+   130305.94
+  ],
+  [
+   "2023-03-31",
+   132024.12
+  ],
+  [
+   "2023-04-03",
+   132535.77
+  ],
+  [
+   "2023-04-04",
+   131907.45
+  ],
+  [
+   "2023-04-05",
+   131535.34
+  ],
+  [
+   "2023-04-06",
+   131975.21
+  ],
+  [
+   "2023-04-10",
+   132162.9
+  ],
+  [
+   "2023-04-11",
+   132180.72
+  ],
+  [
+   "2023-04-12",
+   131716.53
+  ],
+  [
+   "2023-04-13",
+   133324.33
+  ],
+  [
+   "2023-04-14",
+   133011.77
+  ],
+  [
+   "2023-04-17",
+   133481.43
+  ],
+  [
+   "2023-04-18",
+   133559.07
+  ],
+  [
+   "2023-04-19",
+   133598.33
+  ],
+  [
+   "2023-04-20",
+   132848.7
+  ],
+  [
+   "2023-04-21",
+   132915.26
+  ],
+  [
+   "2023-04-24",
+   133082.43
+  ],
+  [
+   "2023-04-25",
+   131083.39
+  ],
+  [
+   "2023-04-26",
+   130577.84
+  ],
+  [
+   "2023-04-27",
+   133009.92
+  ],
+  [
+   "2023-04-28",
+   134069.55
+  ],
+  [
+   "2023-05-01",
+   133976.62
+  ],
+  [
+   "2023-05-02",
+   132553.19
+  ],
+  [
+   "2023-05-03",
+   131706.9
+  ],
+  [
+   "2023-05-04",
+   130806.97
+  ],
+  [
+   "2023-05-05",
+   133059.07
+  ],
+  [
+   "2023-05-08",
+   133146.67
+  ],
+  [
+   "2023-05-09",
+   132588.93
+  ],
+  [
+   "2023-05-10",
+   133185.42
+  ],
+  [
+   "2023-05-11",
+   132956.09
+  ],
+  [
+   "2023-05-12",
+   132764.83
+  ],
+  [
+   "2023-05-15",
+   133219.21
+  ],
+  [
+   "2023-05-16",
+   132380.64
+  ],
+  [
+   "2023-05-17",
+   133931.77
+  ],
+  [
+   "2023-05-18",
+   135129.83
+  ],
+  [
+   "2023-05-19",
+   134914.96
+  ],
+  [
+   "2023-05-22",
+   134993.87
+  ],
+  [
+   "2023-05-23",
+   133570.49
+  ],
+  [
+   "2023-05-24",
+   132698.11
+  ],
+  [
+   "2023-05-25",
+   133725.87
+  ],
+  [
+   "2023-05-26",
+   135330.4
+  ],
+  [
+   "2023-05-30",
+   135434.2
+  ],
+  [
+   "2023-05-31",
+   134762.87
+  ],
+  [
+   "2023-06-01",
+   135937.55
+  ],
+  [
+   "2023-06-02",
+   137764.26
+  ],
+  [
+   "2023-06-05",
+   137563.69
+  ],
+  [
+   "2023-06-06",
+   137854.77
+  ],
+  [
+   "2023-06-07",
+   137450.56
+  ],
+  [
+   "2023-06-08",
+   138188.17
+  ],
+  [
+   "2023-06-09",
+   138417.13
+  ],
+  [
+   "2023-06-12",
+   139624.07
+  ],
+  [
+   "2023-06-13",
+   140507.51
+  ],
+  [
+   "2023-06-14",
+   140705.0
+  ],
+  [
+   "2023-06-15",
+   141883.12
+  ],
+  [
+   "2023-06-16",
+   141824.91
+  ],
+  [
+   "2023-06-20",
+   141201.65
+  ],
+  [
+   "2023-06-21",
+   140525.86
+  ],
+  [
+   "2023-06-22",
+   140982.76
+  ],
+  [
+   "2023-06-23",
+   139945.18
+  ],
+  [
+   "2023-06-26",
+   139422.8
+  ],
+  [
+   "2023-06-27",
+   140869.73
+  ],
+  [
+   "2023-06-28",
+   140993.52
+  ],
+  [
+   "2023-06-29",
+   141507.22
+  ],
+  [
+   "2023-06-30",
+   143001.61
+  ],
+  [
+   "2023-07-03",
+   143235.19
+  ],
+  [
+   "2023-07-05",
+   143063.38
+  ],
+  [
+   "2023-07-06",
+   141960.95
+  ],
+  [
+   "2023-07-07",
+   141587.14
+  ],
+  [
+   "2023-07-10",
+   141960.54
+  ],
+  [
+   "2023-07-11",
+   142824.06
+  ],
+  [
+   "2023-07-12",
+   143948.68
+  ],
+  [
+   "2023-07-13",
+   144988.83
+  ],
+  [
+   "2023-07-14",
+   144895.29
+  ],
+  [
+   "2023-07-17",
+   145399.78
+  ],
+  [
+   "2023-07-18",
+   146429.14
+  ],
+  [
+   "2023-07-19",
+   146749.48
+  ],
+  [
+   "2023-07-20",
+   145820.38
+  ],
+  [
+   "2023-07-21",
+   145789.43
+  ],
+  [
+   "2023-07-24",
+   146440.0
+  ],
+  [
+   "2023-07-25",
+   146817.15
+  ],
+  [
+   "2023-07-26",
+   146888.76
+  ],
+  [
+   "2023-07-27",
+   145916.73
+  ],
+  [
+   "2023-07-28",
+   147228.43
+  ],
+  [
+   "2023-07-31",
+   147547.92
+  ],
+  [
+   "2023-08-01",
+   147140.34
+  ],
+  [
+   "2023-08-02",
+   145246.03
+  ],
+  [
+   "2023-08-03",
+   144800.44
+  ],
+  [
+   "2023-08-04",
+   144152.25
+  ],
+  [
+   "2023-08-07",
+   145383.33
+  ],
+  [
+   "2023-08-08",
+   144782.65
+  ],
+  [
+   "2023-08-09",
+   143908.97
+  ],
+  [
+   "2023-08-10",
+   143919.15
+  ],
+  [
+   "2023-08-11",
+   143791.56
+  ],
+  [
+   "2023-08-14",
+   144589.59
+  ],
+  [
+   "2023-08-15",
+   143009.73
+  ],
+  [
+   "2023-08-16",
+   142039.3
+  ],
+  [
+   "2023-08-17",
+   140956.84
+  ],
+  [
+   "2023-08-18",
+   140993.84
+  ],
+  [
+   "2023-08-21",
+   141909.6
+  ],
+  [
+   "2023-08-22",
+   141520.81
+  ],
+  [
+   "2023-08-23",
+   143059.78
+  ],
+  [
+   "2023-08-24",
+   141163.8
+  ],
+  [
+   "2023-08-25",
+   142072.61
+  ],
+  [
+   "2023-08-28",
+   142936.24
+  ],
+  [
+   "2023-08-29",
+   144921.82
+  ],
+  [
+   "2023-08-30",
+   145558.26
+  ],
+  [
+   "2023-08-31",
+   145276.98
+  ],
+  [
+   "2023-09-01",
+   145511.2
+  ],
+  [
+   "2023-09-05",
+   144966.11
+  ],
+  [
+   "2023-09-06",
+   144067.82
+  ],
+  [
+   "2023-09-07",
+   143611.54
+  ],
+  [
+   "2023-09-08",
+   143786.22
+  ],
+  [
+   "2023-09-11",
+   144731.59
+  ],
+  [
+   "2023-09-12",
+   143968.39
+  ],
+  [
+   "2023-09-13",
+   144165.81
+  ],
+  [
+   "2023-09-14",
+   144969.67
+  ],
+  [
+   "2023-09-15",
+   143606.09
+  ],
+  [
+   "2023-09-18",
+   143744.3
+  ],
+  [
+   "2023-09-19",
+   143472.16
+  ],
+  [
+   "2023-09-20",
+   142242.47
+  ],
+  [
+   "2023-09-21",
+   139999.64
+  ],
+  [
+   "2023-09-22",
+   139650.56
+  ],
+  [
+   "2023-09-25",
+   140248.36
+  ],
+  [
+   "2023-09-26",
+   138290.95
+  ],
+  [
+   "2023-09-27",
+   138391.93
+  ],
+  [
+   "2023-09-28",
+   139119.02
+  ],
+  [
+   "2023-09-29",
+   138741.13
+  ],
+  [
+   "2023-10-02",
+   138756.67
+  ],
+  [
+   "2023-10-03",
+   137015.77
+  ],
+  [
+   "2023-10-04",
+   137997.79
+  ],
+  [
+   "2023-10-05",
+   137873.02
+  ],
+  [
+   "2023-10-06",
+   139382.56
+  ],
+  [
+   "2023-10-09",
+   140281.2
+  ],
+  [
+   "2023-10-10",
+   140956.2
+  ],
+  [
+   "2023-10-11",
+   141551.29
+  ],
+  [
+   "2023-10-12",
+   140722.17
+  ],
+  [
+   "2023-10-13",
+   140024.15
+  ],
+  [
+   "2023-10-16",
+   141432.85
+  ],
+  [
+   "2023-10-17",
+   141447.83
+  ],
+  [
+   "2023-10-18",
+   139706.93
+  ],
+  [
+   "2023-10-19",
+   138492.51
+  ],
+  [
+   "2023-10-20",
+   136865.2
+  ],
+  [
+   "2023-10-23",
+   136669.18
+  ],
+  [
+   "2023-10-24",
+   137635.75
+  ],
+  [
+   "2023-10-25",
+   135844.15
+  ],
+  [
+   "2023-10-26",
+   134250.72
+  ],
+  [
+   "2023-10-27",
+   133658.54
+  ],
+  [
+   "2023-10-30",
+   135182.41
+  ],
+  [
+   "2023-10-31",
+   135983.24
+  ],
+  [
+   "2023-11-01",
+   137395.16
+  ],
+  [
+   "2023-11-02",
+   139835.11
+  ],
+  [
+   "2023-11-03",
+   141016.28
+  ],
+  [
+   "2023-11-06",
+   141343.78
+  ],
+  [
+   "2023-11-07",
+   141725.67
+  ],
+  [
+   "2023-11-08",
+   141867.96
+  ],
+  [
+   "2023-11-09",
+   140805.54
+  ],
+  [
+   "2023-11-10",
+   142848.83
+  ],
+  [
+   "2023-11-13",
+   142750.18
+  ],
+  [
+   "2023-11-14",
+   145371.22
+  ],
+  [
+   "2023-11-15",
+   145699.24
+  ],
+  [
+   "2023-11-16",
+   145829.38
+  ],
+  [
+   "2023-11-17",
+   145970.38
+  ],
+  [
+   "2023-11-20",
+   147092.6
+  ],
+  [
+   "2023-11-21",
+   146820.46
+  ],
+  [
+   "2023-11-22",
+   147294.34
+  ],
+  [
+   "2023-11-24",
+   147347.27
+  ],
+  [
+   "2023-11-27",
+   147161.92
+  ],
+  [
+   "2023-11-28",
+   147276.76
+  ],
+  [
+   "2023-11-29",
+   147244.14
+  ],
+  [
+   "2023-11-30",
+   147708.79
+  ],
+  [
+   "2023-12-01",
+   148522.57
+  ],
+  [
+   "2023-12-04",
+   147825.61
+  ],
+  [
+   "2023-12-05",
+   147820.65
+  ],
+  [
+   "2023-12-06",
+   147283.03
+  ],
+  [
+   "2023-12-07",
+   148307.92
+  ],
+  [
+   "2023-12-08",
+   148875.81
+  ],
+  [
+   "2023-12-11",
+   149466.74
+  ],
+  [
+   "2023-12-12",
+   150143.13
+  ],
+  [
+   "2023-12-13",
+   152108.87
+  ],
+  [
+   "2023-12-14",
+   152034.79
+  ],
+  [
+   "2023-12-15",
+   152293.85
+  ],
+  [
+   "2023-12-18",
+   153149.72
+  ],
+  [
+   "2023-12-19",
+   153998.21
+  ],
+  [
+   "2023-12-20",
+   151987.24
+  ],
+  [
+   "2023-12-21",
+   153355.98
+  ],
+  [
+   "2023-12-22",
+   153608.03
+  ],
+  [
+   "2023-12-26",
+   154259.99
+  ],
+  [
+   "2023-12-27",
+   154649.59
+  ],
+  [
+   "2023-12-28",
+   154633.93
+  ],
+  [
+   "2023-12-29",
+   154178.15
+  ],
+  [
+   "2024-01-02",
+   153363.01
+  ],
+  [
+   "2024-01-03",
+   152223.87
+  ],
+  [
+   "2024-01-04",
+   151744.72
+  ],
+  [
+   "2024-01-05",
+   151889.95
+  ],
+  [
+   "2024-01-08",
+   153947.49
+  ],
+  [
+   "2024-01-09",
+   153733.91
+  ],
+  [
+   "2024-01-10",
+   154620.69
+  ],
+  [
+   "2024-01-11",
+   154505.26
+  ],
+  [
+   "2024-01-12",
+   154549.7
+  ],
+  [
+   "2024-01-16",
+   154075.6
+  ],
+  [
+   "2024-01-17",
+   153300.19
+  ],
+  [
+   "2024-01-18",
+   154544.55
+  ],
+  [
+   "2024-01-19",
+   156347.85
+  ],
+  [
+   "2024-01-22",
+   156721.37
+  ],
+  [
+   "2024-01-23",
+   157141.54
+  ],
+  [
+   "2024-01-24",
+   157340.8
+  ],
+  [
+   "2024-01-25",
+   158106.4
+  ],
+  [
+   "2024-01-26",
+   157904.82
+  ],
+  [
+   "2024-01-29",
+   159107.46
+  ],
+  [
+   "2024-01-30",
+   158987.43
+  ],
+  [
+   "2024-01-31",
+   156600.48
+  ],
+  [
+   "2024-02-01",
+   158483.51
+  ],
+  [
+   "2024-02-02",
+   159997.55
+  ],
+  [
+   "2024-02-05",
+   159507.55
+  ],
+  [
+   "2024-02-06",
+   159944.6
+  ],
+  [
+   "2024-02-07",
+   161252.04
+  ],
+  [
+   "2024-02-08",
+   161316.22
+  ],
+  [
+   "2024-02-09",
+   162126.87
+  ],
+  [
+   "2024-02-12",
+   162114.7
+  ],
+  [
+   "2024-02-13",
+   160013.12
+  ],
+  [
+   "2024-02-14",
+   161452.49
+  ],
+  [
+   "2024-02-15",
+   162419.23
+  ],
+  [
+   "2024-02-16",
+   161606.53
+  ],
+  [
+   "2024-02-20",
+   160824.49
+  ],
+  [
+   "2024-02-21",
+   160994.58
+  ],
+  [
+   "2024-02-22",
+   164122.24
+  ],
+  [
+   "2024-02-23",
+   164189.5
+  ],
+  [
+   "2024-02-26",
+   163654.58
+  ],
+  [
+   "2024-02-27",
+   163941.2
+  ],
+  [
+   "2024-02-28",
+   163782.93
+  ],
+  [
+   "2024-02-29",
+   164292.14
+  ],
+  [
+   "2024-03-01",
+   165739.97
+  ],
+  [
+   "2024-03-04",
+   165593.9
+  ],
+  [
+   "2024-03-05",
+   164028.12
+  ],
+  [
+   "2024-03-06",
+   164895.01
+  ],
+  [
+   "2024-03-07",
+   166394.2
+  ],
+  [
+   "2024-03-08",
+   165417.38
+  ],
+  [
+   "2024-03-11",
+   165304.97
+  ],
+  [
+   "2024-03-12",
+   167006.79
+  ],
+  [
+   "2024-03-13",
+   166800.81
+  ],
+  [
+   "2024-03-14",
+   166002.38
+  ],
+  [
+   "2024-03-15",
+   165306.57
+  ],
+  [
+   "2024-03-18",
+   166308.53
+  ],
+  [
+   "2024-03-19",
+   167184.65
+  ],
+  [
+   "2024-03-20",
+   168674.8
+  ],
+  [
+   "2024-03-21",
+   169133.48
+  ],
+  [
+   "2024-03-22",
+   168832.84
+  ],
+  [
+   "2024-03-25",
+   168437.3
+  ],
+  [
+   "2024-03-26",
+   168188.46
+  ],
+  [
+   "2024-03-27",
+   169468.31
+  ],
+  [
+   "2024-03-28",
+   169379.11
+  ],
+  [
+   "2024-04-01",
+   169160.39
+  ],
+  [
+   "2024-04-02",
+   168164.15
+  ],
+  [
+   "2024-04-03",
+   168369.59
+  ],
+  [
+   "2024-04-04",
+   166377.14
+  ],
+  [
+   "2024-04-05",
+   167972.61
+  ],
+  [
+   "2024-04-08",
+   168107.6
+  ],
+  [
+   "2024-04-09",
+   168299.22
+  ],
+  [
+   "2024-04-10",
+   166768.82
+  ],
+  [
+   "2024-04-11",
+   167913.56
+  ],
+  [
+   "2024-04-12",
+   165661.75
+  ],
+  [
+   "2024-04-15",
+   163759.35
+  ],
+  [
+   "2024-04-16",
+   163453.7
+  ],
+  [
+   "2024-04-17",
+   162578.64
+  ],
+  [
+   "2024-04-18",
+   162228.48
+  ],
+  [
+   "2024-04-19",
+   160840.42
+  ],
+  [
+   "2024-04-22",
+   162279.91
+  ],
+  [
+   "2024-04-23",
+   164118.39
+  ],
+  [
+   "2024-04-24",
+   164113.52
+  ],
+  [
+   "2024-04-25",
+   163457.98
+  ],
+  [
+   "2024-04-26",
+   164885.45
+  ],
+  [
+   "2024-04-29",
+   165475.42
+  ],
+  [
+   "2024-04-30",
+   163034.87
+  ],
+  [
+   "2024-05-01",
+   162523.45
+  ],
+  [
+   "2024-05-02",
+   163936.81
+  ],
+  [
+   "2024-05-03",
+   165830.39
+  ],
+  [
+   "2024-05-06",
+   167492.18
+  ],
+  [
+   "2024-05-07",
+   167676.23
+  ],
+  [
+   "2024-05-08",
+   167731.24
+  ],
+  [
+   "2024-05-09",
+   168587.56
+  ],
+  [
+   "2024-05-10",
+   168765.93
+  ],
+  [
+   "2024-05-13",
+   168827.7
+  ],
+  [
+   "2024-05-14",
+   169559.59
+  ],
+  [
+   "2024-05-15",
+   171602.23
+  ],
+  [
+   "2024-05-16",
+   171229.1
+  ],
+  [
+   "2024-05-17",
+   171426.83
+  ],
+  [
+   "2024-05-20",
+   171656.53
+  ],
+  [
+   "2024-05-21",
+   172050.75
+  ],
+  [
+   "2024-05-22",
+   171653.01
+  ],
+  [
+   "2024-05-23",
+   170394.29
+  ],
+  [
+   "2024-05-24",
+   171400.09
+  ],
+  [
+   "2024-05-28",
+   171610.36
+  ],
+  [
+   "2024-05-29",
+   170463.6
+  ],
+  [
+   "2024-05-30",
+   169453.47
+  ],
+  [
+   "2024-05-31",
+   170804.21
+  ],
+  [
+   "2024-06-03",
+   170965.92
+  ],
+  [
+   "2024-06-04",
+   171146.83
+  ],
+  [
+   "2024-06-05",
+   173071.33
+  ],
+  [
+   "2024-06-06",
+   173130.97
+  ],
+  [
+   "2024-06-07",
+   172846.0
+  ],
+  [
+   "2024-06-10",
+   173406.54
+  ],
+  [
+   "2024-06-11",
+   173788.49
+  ],
+  [
+   "2024-06-12",
+   175125.2
+  ],
+  [
+   "2024-06-13",
+   175504.09
+  ],
+  [
+   "2024-06-14",
+   175537.71
+  ],
+  [
+   "2024-06-17",
+   176930.77
+  ],
+  [
+   "2024-06-18",
+   177318.63
+  ],
+  [
+   "2024-06-20",
+   176419.05
+  ],
+  [
+   "2024-06-21",
+   176503.36
+  ],
+  [
+   "2024-06-24",
+   176109.83
+  ],
+  [
+   "2024-06-25",
+   176757.43
+  ],
+  [
+   "2024-06-26",
+   176996.71
+  ],
+  [
+   "2024-06-27",
+   177305.11
+  ],
+  [
+   "2024-06-28",
+   176543.83
+  ],
+  [
+   "2024-07-01",
+   176941.3
+  ],
+  [
+   "2024-07-02",
+   178064.76
+  ],
+  [
+   "2024-07-03",
+   178812.16
+  ],
+  [
+   "2024-07-05",
+   179772.75
+  ],
+  [
+   "2024-07-08",
+   180005.53
+  ],
+  [
+   "2024-07-09",
+   180166.55
+  ],
+  [
+   "2024-07-10",
+   181830.3
+  ],
+  [
+   "2024-07-11",
+   180407.32
+  ],
+  [
+   "2024-07-12",
+   181407.75
+  ],
+  [
+   "2024-07-15",
+   181924.79
+  ],
+  [
+   "2024-07-16",
+   182936.19
+  ],
+  [
+   "2024-07-17",
+   180538.67
+  ],
+  [
+   "2024-07-18",
+   179267.66
+  ],
+  [
+   "2024-07-19",
+   178060.05
+  ],
+  [
+   "2024-07-22",
+   179824.33
+  ],
+  [
+   "2024-07-23",
+   179546.37
+  ],
+  [
+   "2024-07-24",
+   175719.94
+  ],
+  [
+   "2024-07-25",
+   174907.91
+  ],
+  [
+   "2024-07-26",
+   176643.08
+  ],
+  [
+   "2024-07-29",
+   176809.12
+  ],
+  [
+   "2024-07-30",
+   175923.41
+  ],
+  [
+   "2024-07-31",
+   178544.73
+  ],
+  [
+   "2024-08-01",
+   176332.05
+  ],
+  [
+   "2024-08-02",
+   173152.78
+  ],
+  [
+   "2024-08-05",
+   168442.28
+  ],
+  [
+   "2024-08-06",
+   169883.38
+  ],
+  [
+   "2024-08-07",
+   168822.68
+  ],
+  [
+   "2024-08-08",
+   172526.07
+  ],
+  [
+   "2024-08-09",
+   173136.4
+  ],
+  [
+   "2024-08-12",
+   173292.97
+  ],
+  [
+   "2024-08-13",
+   175968.04
+  ],
+  [
+   "2024-08-14",
+   176512.71
+  ],
+  [
+   "2024-08-15",
+   179418.12
+  ],
+  [
+   "2024-08-16",
+   179694.11
+  ],
+  [
+   "2024-08-19",
+   181352.99
+  ],
+  [
+   "2024-08-20",
+   181085.7
+  ],
+  [
+   "2024-08-21",
+   181702.57
+  ],
+  [
+   "2024-08-22",
+   180413.15
+  ],
+  [
+   "2024-08-23",
+   182105.21
+  ],
+  [
+   "2024-08-26",
+   181752.46
+  ],
+  [
+   "2024-08-27",
+   181987.18
+  ],
+  [
+   "2024-08-28",
+   181015.53
+  ],
+  [
+   "2024-08-29",
+   181089.07
+  ],
+  [
+   "2024-08-30",
+   182549.86
+  ],
+  [
+   "2024-09-03",
+   179126.69
+  ],
+  [
+   "2024-09-04",
+   178715.01
+  ],
+  [
+   "2024-09-05",
+   178381.74
+  ],
+  [
+   "2024-09-06",
+   175510.75
+  ],
+  [
+   "2024-09-09",
+   177361.66
+  ],
+  [
+   "2024-09-10",
+   178091.95
+  ],
+  [
+   "2024-09-11",
+   179792.39
+  ],
+  [
+   "2024-09-12",
+   181287.1
+  ],
+  [
+   "2024-09-13",
+   182101.76
+  ],
+  [
+   "2024-09-16",
+   182426.57
+  ],
+  [
+   "2024-09-17",
+   182504.58
+  ],
+  [
+   "2024-09-18",
+   181973.25
+  ],
+  [
+   "2024-09-19",
+   184439.53
+  ],
+  [
+   "2024-09-20",
+   184534.38
+  ],
+  [
+   "2024-09-23",
+   185036.03
+  ],
+  [
+   "2024-09-24",
+   185533.18
+  ],
+  [
+   "2024-09-25",
+   185158.55
+  ],
+  [
+   "2024-09-26",
+   185899.69
+  ],
+  [
+   "2024-09-27",
+   185569.1
+  ],
+  [
+   "2024-09-30",
+   186388.72
+  ],
+  [
+   "2024-10-01",
+   184765.57
+  ],
+  [
+   "2024-10-02",
+   184808.25
+  ],
+  [
+   "2024-10-03",
+   184534.91
+  ],
+  [
+   "2024-10-04",
+   186017.11
+  ],
+  [
+   "2024-10-07",
+   184509.43
+  ],
+  [
+   "2024-10-08",
+   186140.79
+  ],
+  [
+   "2024-10-09",
+   187357.72
+  ],
+  [
+   "2024-10-10",
+   187115.04
+  ],
+  [
+   "2024-10-11",
+   188064.22
+  ],
+  [
+   "2024-10-14",
+   189582.23
+  ],
+  [
+   "2024-10-15",
+   188209.83
+  ],
+  [
+   "2024-10-16",
+   188938.69
+  ],
+  [
+   "2024-10-17",
+   189027.42
+  ],
+  [
+   "2024-10-18",
+   189626.35
+  ],
+  [
+   "2024-10-21",
+   189401.07
+  ],
+  [
+   "2024-10-22",
+   189301.12
+  ],
+  [
+   "2024-10-23",
+   187637.05
+  ],
+  [
+   "2024-10-24",
+   188083.58
+  ],
+  [
+   "2024-10-25",
+   187946.17
+  ],
+  [
+   "2024-10-28",
+   188520.09
+  ],
+  [
+   "2024-10-29",
+   188822.24
+  ],
+  [
+   "2024-10-30",
+   188290.98
+  ],
+  [
+   "2024-10-31",
+   184848.09
+  ],
+  [
+   "2024-11-01",
+   185504.43
+  ],
+  [
+   "2024-11-04",
+   185166.82
+  ],
+  [
+   "2024-11-05",
+   187278.51
+  ],
+  [
+   "2024-11-06",
+   191678.75
+  ],
+  [
+   "2024-11-07",
+   193165.83
+  ],
+  [
+   "2024-11-08",
+   193844.87
+  ],
+  [
+   "2024-11-11",
+   194052.06
+  ],
+  [
+   "2024-11-12",
+   193490.06
+  ],
+  [
+   "2024-11-13",
+   193592.63
+  ],
+  [
+   "2024-11-14",
+   192468.8
+  ],
+  [
+   "2024-11-15",
+   190034.25
+  ],
+  [
+   "2024-11-18",
+   190824.1
+  ],
+  [
+   "2024-11-19",
+   191463.83
+  ],
+  [
+   "2024-11-20",
+   191524.95
+  ],
+  [
+   "2024-11-21",
+   192536.24
+  ],
+  [
+   "2024-11-22",
+   193011.33
+  ],
+  [
+   "2024-11-25",
+   193664.94
+  ],
+  [
+   "2024-11-26",
+   194699.18
+  ],
+  [
+   "2024-11-27",
+   194106.16
+  ],
+  [
+   "2024-11-29",
+   195190.35
+  ],
+  [
+   "2024-12-02",
+   195601.23
+  ],
+  [
+   "2024-12-03",
+   195642.45
+  ],
+  [
+   "2024-12-04",
+   196787.12
+  ],
+  [
+   "2024-12-05",
+   196564.24
+  ],
+  [
+   "2024-12-06",
+   196849.07
+  ],
+  [
+   "2024-12-09",
+   195916.88
+  ],
+  [
+   "2024-12-10",
+   195382.41
+  ],
+  [
+   "2024-12-11",
+   196788.12
+  ],
+  [
+   "2024-12-12",
+   195896.02
+  ],
+  [
+   "2024-12-13",
+   195758.96
+  ],
+  [
+   "2024-12-16",
+   196573.21
+  ],
+  [
+   "2024-12-17",
+   195779.47
+  ],
+  [
+   "2024-12-18",
+   190305.8
+  ],
+  [
+   "2024-12-19",
+   189708.36
+  ],
+  [
+   "2024-12-20",
+   192281.19
+  ],
+  [
+   "2024-12-23",
+   193494.16
+  ],
+  [
+   "2024-12-24",
+   195428.63
+  ],
+  [
+   "2024-12-26",
+   195505.72
+  ],
+  [
+   "2024-12-27",
+   193540.98
+  ],
+  [
+   "2024-12-30",
+   191532.56
+  ],
+  [
+   "2024-12-31",
+   190833.61
+  ],
+  [
+   "2025-01-02",
+   190411.58
+  ],
+  [
+   "2025-01-03",
+   192567.35
+  ],
+  [
+   "2025-01-06",
+   193683.05
+  ],
+  [
+   "2025-01-07",
+   191665.92
+  ],
+  [
+   "2025-01-08",
+   191833.04
+  ],
+  [
+   "2025-01-10",
+   189106.45
+  ],
+  [
+   "2025-01-13",
+   189434.34
+  ],
+  [
+   "2025-01-14",
+   189639.76
+  ],
+  [
+   "2025-01-15",
+   192898.14
+  ],
+  [
+   "2025-01-16",
+   192635.37
+  ],
+  [
+   "2025-01-17",
+   194351.27
+  ],
+  [
+   "2025-01-21",
+   196015.56
+  ],
+  [
+   "2025-01-22",
+   197068.3
+  ],
+  [
+   "2025-01-23",
+   198127.12
+  ],
+  [
+   "2025-01-24",
+   197517.51
+  ],
+  [
+   "2025-01-27",
+   194961.2
+  ],
+  [
+   "2025-01-28",
+   196514.27
+  ],
+  [
+   "2025-01-29",
+   195682.17
+  ],
+  [
+   "2025-01-30",
+   196691.86
+  ],
+  [
+   "2025-01-31",
+   195656.09
+  ],
+  [
+   "2025-02-03",
+   194439.25
+  ],
+  [
+   "2025-02-04",
+   195682.26
+  ],
+  [
+   "2025-02-05",
+   196415.79
+  ],
+  [
+   "2025-02-06",
+   197112.36
+  ],
+  [
+   "2025-02-07",
+   195342.82
+  ],
+  [
+   "2025-02-10",
+   196629.44
+  ],
+  [
+   "2025-02-11",
+   196764.25
+  ],
+  [
+   "2025-02-12",
+   196193.08
+  ],
+  [
+   "2025-02-13",
+   198174.32
+  ],
+  [
+   "2025-02-14",
+   198078.37
+  ],
+  [
+   "2025-02-18",
+   198636.77
+  ],
+  [
+   "2025-02-19",
+   199129.18
+  ],
+  [
+   "2025-02-20",
+   198395.29
+  ],
+  [
+   "2025-02-21",
+   195149.38
+  ],
+  [
+   "2025-02-24",
+   194351.47
+  ],
+  [
+   "2025-02-25",
+   193408.78
+  ],
+  [
+   "2025-02-26",
+   193482.2
+  ],
+  [
+   "2025-02-27",
+   190690.08
+  ],
+  [
+   "2025-02-28",
+   193293.77
+  ],
+  [
+   "2025-03-03",
+   190277.79
+  ],
+  [
+   "2025-03-04",
+   188101.09
+  ],
+  [
+   "2025-03-05",
+   189981.06
+  ],
+  [
+   "2025-03-06",
+   186883.4
+  ],
+  [
+   "2025-03-07",
+   187747.45
+  ],
+  [
+   "2025-03-10",
+   183146.61
+  ],
+  [
+   "2025-03-11",
+   181723.6
+  ],
+  [
+   "2025-03-12",
+   182578.22
+  ],
+  [
+   "2025-03-13",
+   180369.36
+  ],
+  [
+   "2025-03-14",
+   183737.25
+  ],
+  [
+   "2025-03-17",
+   185079.01
+  ],
+  [
+   "2025-03-18",
+   183238.43
+  ],
+  [
+   "2025-03-19",
+   185081.59
+  ],
+  [
+   "2025-03-20",
+   184195.74
+  ],
+  [
+   "2025-03-21",
+   184666.19
+  ],
+  [
+   "2025-03-24",
+   187722.4
+  ],
+  [
+   "2025-03-25",
+   188151.98
+  ],
+  [
+   "2025-03-26",
+   186127.33
+  ],
+  [
+   "2025-03-27",
+   185665.14
+  ],
+  [
+   "2025-03-28",
+   182147.98
+  ],
+  [
+   "2025-03-31",
+   183188.69
+  ],
+  [
+   "2025-04-01",
+   183774.93
+  ],
+  [
+   "2025-04-02",
+   184873.76
+  ],
+  [
+   "2025-04-03",
+   176663.52
+  ],
+  [
+   "2025-04-04",
+   166791.43
+  ],
+  [
+   "2025-04-07",
+   166405.25
+  ],
+  [
+   "2025-04-08",
+   164052.08
+  ],
+  [
+   "2025-04-09",
+   178251.11
+  ],
+  [
+   "2025-04-10",
+   172650.19
+  ],
+  [
+   "2025-04-11",
+   175427.24
+  ],
+  [
+   "2025-04-14",
+   177037.68
+  ],
+  [
+   "2025-04-15",
+   176632.36
+  ],
+  [
+   "2025-04-16",
+   172989.93
+  ],
+  [
+   "2025-04-17",
+   173130.39
+  ],
+  [
+   "2025-04-21",
+   169343.75
+  ],
+  [
+   "2025-04-22",
+   173324.99
+  ],
+  [
+   "2025-04-23",
+   175920.37
+  ],
+  [
+   "2025-04-24",
+   179367.55
+  ],
+  [
+   "2025-04-25",
+   180541.48
+  ],
+  [
+   "2025-04-28",
+   180697.57
+  ],
+  [
+   "2025-04-29",
+   181681.34
+  ],
+  [
+   "2025-04-30",
+   181737.97
+  ],
+  [
+   "2025-05-01",
+   183056.04
+  ],
+  [
+   "2025-05-02",
+   185482.98
+  ],
+  [
+   "2025-05-05",
+   184607.23
+  ],
+  [
+   "2025-05-06",
+   183142.77
+  ],
+  [
+   "2025-05-07",
+   183873.24
+  ],
+  [
+   "2025-05-08",
+   185088.75
+  ],
+  [
+   "2025-05-09",
+   184803.59
+  ],
+  [
+   "2025-05-12",
+   190512.32
+  ],
+  [
+   "2025-05-13",
+   191737.01
+  ],
+  [
+   "2025-05-14",
+   191959.48
+  ],
+  [
+   "2025-05-15",
+   192881.79
+  ],
+  [
+   "2025-05-16",
+   193997.97
+  ],
+  [
+   "2025-05-19",
+   194227.26
+  ],
+  [
+   "2025-05-20",
+   193591.67
+  ],
+  [
+   "2025-05-21",
+   190586.23
+  ],
+  [
+   "2025-05-22",
+   190685.86
+  ],
+  [
+   "2025-05-23",
+   189380.59
+  ],
+  [
+   "2025-05-27",
+   193065.74
+  ],
+  [
+   "2025-05-28",
+   192047.96
+  ],
+  [
+   "2025-05-29",
+   192781.46
+  ],
+  [
+   "2025-05-30",
+   192542.62
+  ],
+  [
+   "2025-06-02",
+   193558.8
+  ],
+  [
+   "2025-06-03",
+   194631.57
+  ],
+  [
+   "2025-06-04",
+   194568.46
+  ],
+  [
+   "2025-06-05",
+   193727.31
+  ],
+  [
+   "2025-06-06",
+   195505.92
+  ],
+  [
+   "2025-06-09",
+   195705.16
+  ],
+  [
+   "2025-06-10",
+   196768.76
+  ],
+  [
+   "2025-06-11",
+   196272.88
+  ],
+  [
+   "2025-06-12",
+   197015.61
+  ],
+  [
+   "2025-06-13",
+   194872.76
+  ],
+  [
+   "2025-06-16",
+   196682.07
+  ],
+  [
+   "2025-06-17",
+   195113.3
+  ],
+  [
+   "2025-06-18",
+   194561.3
+  ],
+  [
+   "2025-06-20",
+   194579.27
+  ],
+  [
+   "2025-06-23",
+   196416.26
+  ],
+  [
+   "2025-06-24",
+   198474.42
+  ],
+  [
+   "2025-06-25",
+   198580.32
+  ],
+  [
+   "2025-06-26",
+   200105.86
+  ],
+  [
+   "2025-06-27",
+   200901.38
+  ],
+  [
+   "2025-06-30",
+   201873.87
+  ],
+  [
+   "2025-07-01",
+   201809.35
+  ],
+  [
+   "2025-07-02",
+   202727.15
+  ],
+  [
+   "2025-07-03",
+   204139.38
+  ],
+  [
+   "2025-07-07",
+   202797.46
+  ],
+  [
+   "2025-07-08",
+   202648.57
+  ],
+  [
+   "2025-07-09",
+   203781.16
+  ],
+  [
+   "2025-07-10",
+   204396.59
+  ],
+  [
+   "2025-07-11",
+   203643.19
+  ],
+  [
+   "2025-07-14",
+   204021.84
+  ],
+  [
+   "2025-07-15",
+   203228.34
+  ],
+  [
+   "2025-07-16",
+   203840.69
+  ],
+  [
+   "2025-07-17",
+   205079.28
+  ],
+  [
+   "2025-07-18",
+   204868.95
+  ],
+  [
+   "2025-07-21",
+   205270.9
+  ],
+  [
+   "2025-07-22",
+   205293.87
+  ],
+  [
+   "2025-07-23",
+   206926.9
+  ],
+  [
+   "2025-07-24",
+   207064.99
+  ],
+  [
+   "2025-07-25",
+   207795.16
+  ],
+  [
+   "2025-07-28",
+   207779.96
+  ],
+  [
+   "2025-07-29",
+   207270.37
+  ],
+  [
+   "2025-07-30",
+   207040.02
+  ],
+  [
+   "2025-07-31",
+   206380.0
+  ],
+  [
+   "2025-08-01",
+   203101.76
+  ],
+  [
+   "2025-08-04",
+   205988.85
+  ],
+  [
+   "2025-08-05",
+   205069.36
+  ],
+  [
+   "2025-08-06",
+   206505.95
+  ],
+  [
+   "2025-08-07",
+   206418.36
+  ],
+  [
+   "2025-08-08",
+   207835.65
+  ],
+  [
+   "2025-08-11",
+   207483.15
+  ],
+  [
+   "2025-08-12",
+   209565.92
+  ],
+  [
+   "2025-08-13",
+   210244.25
+  ],
+  [
+   "2025-08-14",
+   210317.88
+  ],
+  [
+   "2025-08-15",
+   209802.27
+  ],
+  [
+   "2025-08-18",
+   209772.61
+  ],
+  [
+   "2025-08-19",
+   208685.81
+  ],
+  [
+   "2025-08-20",
+   208168.44
+  ],
+  [
+   "2025-08-21",
+   207463.9
+  ],
+  [
+   "2025-08-22",
+   210354.2
+  ],
+  [
+   "2025-08-25",
+   209552.48
+  ],
+  [
+   "2025-08-26",
+   210353.66
+  ],
+  [
+   "2025-08-27",
+   210801.66
+  ],
+  [
+   "2025-08-28",
+   211587.49
+  ],
+  [
+   "2025-08-29",
+   210287.7
+  ],
+  [
+   "2025-09-02",
+   208889.67
+  ],
+  [
+   "2025-09-03",
+   209874.88
+  ],
+  [
+   "2025-09-04",
+   211573.82
+  ],
+  [
+   "2025-09-05",
+   210962.58
+  ],
+  [
+   "2025-09-08",
+   211494.95
+  ],
+  [
+   "2025-09-09",
+   211964.41
+  ],
+  [
+   "2025-09-10",
+   212550.61
+  ],
+  [
+   "2025-09-11",
+   214237.31
+  ],
+  [
+   "2025-09-12",
+   214110.41
+  ],
+  [
+   "2025-09-15",
+   215191.29
+  ],
+  [
+   "2025-09-16",
+   214930.27
+  ],
+  [
+   "2025-09-17",
+   214690.68
+  ],
+  [
+   "2025-09-18",
+   215144.79
+  ],
+  [
+   "2025-09-19",
+   216579.15
+  ],
+  [
+   "2025-09-22",
+   217582.13
+  ],
+  [
+   "2025-09-23",
+   216510.73
+  ],
+  [
+   "2025-09-24",
+   215826.06
+  ],
+  [
+   "2025-09-25",
+   214935.69
+  ],
+  [
+   "2025-09-26",
+   216019.76
+  ],
+  [
+   "2025-09-29",
+   216626.73
+  ],
+  [
+   "2025-09-30",
+   217380.28
+  ],
+  [
+   "2025-10-01",
+   218144.99
+  ],
+  [
+   "2025-10-02",
+   218393.54
+  ],
+  [
+   "2025-10-03",
+   218334.84
+  ],
+  [
+   "2025-10-06",
+   219097.59
+  ],
+  [
+   "2025-10-07",
+   218345.34
+  ],
+  [
+   "2025-10-08",
+   219545.47
+  ],
+  [
+   "2025-10-09",
+   219041.94
+  ],
+  [
+   "2025-10-10",
+   213386.0
+  ],
+  [
+   "2025-10-13",
+   216484.25
+  ],
+  [
+   "2025-10-14",
+   216230.87
+  ],
+  [
+   "2025-10-15",
+   217122.55
+  ],
+  [
+   "2025-10-16",
+   215808.54
+  ],
+  [
+   "2025-10-17",
+   216855.17
+  ],
+  [
+   "2025-10-20",
+   219023.63
+  ],
+  [
+   "2025-10-21",
+   219012.79
+  ],
+  [
+   "2025-10-22",
+   217958.14
+  ],
+  [
+   "2025-10-23",
+   219173.68
+  ],
+  [
+   "2025-10-24",
+   220793.72
+  ],
+  [
+   "2025-10-27",
+   223280.58
+  ],
+  [
+   "2025-10-28",
+   223860.61
+  ],
+  [
+   "2025-10-29",
+   223951.12
+  ],
+  [
+   "2025-10-30",
+   221775.98
+  ],
+  [
+   "2025-10-31",
+   222336.74
+  ],
+  [
+   "2025-11-03",
+   222762.64
+  ],
+  [
+   "2025-11-04",
+   220300.5
+  ],
+  [
+   "2025-11-05",
+   220974.19
+  ],
+  [
+   "2025-11-06",
+   218803.7
+  ],
+  [
+   "2025-11-07",
+   218934.04
+  ],
+  [
+   "2025-11-10",
+   222110.92
+  ],
+  [
+   "2025-11-11",
+   222618.82
+  ],
+  [
+   "2025-11-12",
+   222741.45
+  ],
+  [
+   "2025-11-13",
+   219343.05
+  ],
+  [
+   "2025-11-14",
+   219240.12
+  ],
+  [
+   "2025-11-17",
+   217336.38
+  ],
+  [
+   "2025-11-18",
+   215647.91
+  ],
+  [
+   "2025-11-19",
+   216410.6
+  ],
+  [
+   "2025-11-20",
+   213360.62
+  ],
+  [
+   "2025-11-21",
+   215299.73
+  ],
+  [
+   "2025-11-24",
+   218477.39
+  ],
+  [
+   "2025-11-25",
+   220234.73
+  ],
+  [
+   "2025-11-26",
+   221672.65
+  ],
+  [
+   "2025-11-28",
+   222743.5
+  ],
+  [
+   "2025-12-01",
+   221852.93
+  ],
+  [
+   "2025-12-02",
+   222205.67
+  ],
+  [
+   "2025-12-03",
+   222933.04
+  ],
+  [
+   "2025-12-04",
+   223147.69
+  ],
+  [
+   "2025-12-05",
+   223452.4
+  ],
+  [
+   "2025-12-08",
+   222884.32
+  ],
+  [
+   "2025-12-09",
+   222710.69
+  ],
+  [
+   "2025-12-10",
+   224061.14
+  ],
+  [
+   "2025-12-11",
+   224599.72
+  ],
+  [
+   "2025-12-12",
+   222276.68
+  ],
+  [
+   "2025-12-15",
+   221995.6
+  ],
+  [
+   "2025-12-16",
+   221416.72
+  ],
+  [
+   "2025-12-17",
+   219118.69
+  ],
+  [
+   "2025-12-18",
+   220145.3
+  ],
+  [
+   "2025-12-19",
+   221917.69
+  ],
+  [
+   "2025-12-22",
+   223248.06
+  ],
+  [
+   "2025-12-23",
+   224202.52
+  ],
+  [
+   "2025-12-24",
+   224934.03
+  ],
+  [
+   "2025-12-26",
+   224905.56
+  ],
+  [
+   "2025-12-29",
+   224211.9
+  ],
+  [
+   "2025-12-30",
+   223969.17
+  ],
+  [
+   "2025-12-31",
+   222421.63
+  ]
+ ]
+}
