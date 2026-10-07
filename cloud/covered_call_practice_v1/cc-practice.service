@@ -1,0 +1,24 @@
+[Unit]
+Description=Covered-call practice: 16:50 dollars email for paper account ...U036 (read-only, no orders)
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+Type=oneshot
+User=cc-practice
+Group=cc-practice
+WorkingDirectory=/opt/cc-practice
+Environment=PYTHONPATH=/opt/cc-practice
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -u -m research.covered_call_practice_v1.report
+TimeoutStartSec=10min
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/opt/cc-practice/outputs
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes

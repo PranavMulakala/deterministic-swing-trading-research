@@ -17,7 +17,7 @@
   - $3,270 premium collected;
   - **+$10,580** if both are called away on Nov 13;
   - about −$19,100 if both stocks fall 20%.
-- **Cash left:** about $3,580. Rolls should be done for a net credit.
+- **Cash left:** about $7,580. Rolls should be done for a net credit.
 - **Earnings before Nov 13:** both companies report in late October (exact dates not confirmed yet). Decide what to do before each report.
 
 ## Starting rules (break them freely, but write down why)

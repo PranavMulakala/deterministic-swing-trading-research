@@ -1,0 +1,10 @@
+[Unit]
+Description=Covered-call practice: dollars email at 16:50 New York time, Monday to Friday
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 16:50:00 America/New_York
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target
