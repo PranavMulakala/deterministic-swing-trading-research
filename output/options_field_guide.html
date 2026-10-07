@@ -1,0 +1,297 @@
+<title>Options Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single reading column (~68ch) with full-width diagram panels; a sticky chapter bar; payoff charts drawn from the real trade numbers. */
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --ink:#1d2421; --muted:#5d6a64; --line:#d9dfdb;
+  --accent:#1f6f5c; --accent-soft:#e3efe9; --gain:#1f7a4a; --loss:#b23a2e; --warn:#a86a00; --zero:#8a948f;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121614; --surface:#1a201d; --ink:#e6ece8; --muted:#9aa7a0; --line:#2c3531;
+  --accent:#5fc2a4; --accent-soft:#1f2f29; --gain:#5fc98b; --loss:#ef7d70; --warn:#e2a93b; --zero:#6f7a75; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614; --surface:#1a201d; --ink:#e6ece8; --muted:#9aa7a0; --line:#2c3531;
+  --accent:#5fc2a4; --accent-soft:#1f2f29; --gain:#5fc98b; --loss:#ef7d70; --warn:#e2a93b; --zero:#6f7a75; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-inline:18px;padding-block:28px 80px}
+nav.chapters{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav.chapters div{max-width:860px;margin:0 auto;padding:10px 18px;display:flex;gap:18px}
+nav.chapters a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.02em}
+nav.chapters a:hover,nav.chapters a:focus-visible{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,6vw,46px);font-weight:700}
+h2{font-size:28px;margin-top:56px;padding-top:12px;border-top:2px solid var(--ink)}
+h3{font-size:21px;margin-top:30px}
+p{margin:10px 0;max-width:68ch}
+.lede{font-size:19px;color:var(--muted);max-width:60ch}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:700}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;margin:18px 0}
+.tbl{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:14px}
+.gain{color:var(--gain)} .loss{color:var(--loss)}
+.chart{width:100%;overflow-x:auto}
+.chart svg{display:block;width:100%;min-width:480px;height:auto}
+.caption{font-size:14px;color:var(--muted);margin-top:6px}
+.steps{display:grid;gap:10px;margin:14px 0;padding:0;list-style:none;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--mono);font-weight:600;background:var(--accent-soft);color:var(--accent);border-radius:50%;width:30px;height:30px;display:grid;place-items:center}
+.callout{border-left:4px solid var(--warn);padding:8px 14px;background:var(--surface);margin:16px 0}
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+.term{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.term b{font-family:var(--display);font-size:18px;display:block}
+.term span{font-size:15px;color:var(--muted)}
+.term em{display:block;font-style:normal;font-size:14px;margin-top:6px;font-family:var(--mono);color:var(--ink)}
+.vid{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.vid .n{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600;padding-top:3px}
+.vid a{color:var(--accent);font-weight:700;text-decoration:none}
+.vid a:hover,.vid a:focus-visible{text-decoration:underline}
+.vid small{display:block;color:var(--muted);font-size:14px}
+code,.mono{font-family:var(--mono);font-size:.92em}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin-top:4px}
+.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:6px}
+footer{margin-top:60px;font-size:14px;color:var(--muted)}
+@media (max-width:520px){body{font-size:16px} h2{font-size:24px}}
+</style>
+
+<nav class="chapters" aria-label="Chapters"><div>
+<a href="#big">Big picture</a><a href="#cc">Covered call</a><a href="#roll">Rolling</a><a href="#collar">Collar</a><a href="#diag">Diagonal</a><a href="#put">Selling puts</a><a href="#picks">Joey's checks</a><a href="#mine">Your strategies</a><a href="#gloss">Glossary</a><a href="#watch">Watch</a>
+</div></nav>
+
+<main class="wrap">
+<p class="eyebrow">For Pranav · October 7, 2026</p>
+<h1>Options Field Guide</h1>
+<p class="lede">How Joey makes money with options, how your own strategies work, and every term you'll run into, explained with your real trades and pictures of how each one pays.</p>
+
+<div class="panel">
+<p style="margin-top:0"><b>How to read the charts on this page.</b> Every chart is a <b>payoff diagram</b>. Left to right is the stock price on expiration day. Up and down is how many dollars you make or lose.</p>
+<ul>
+<li>The <span class="gain">green part</span> of the line is profit; the <span class="loss">red part</span> is loss; the grey line is $0.</li>
+<li>The dot marks today's price.</li>
+<li>Once you can read one of these, you can read any options trade, including the ones Joey sends you from thinkorswim.</li>
+</ul>
+</div>
+
+<h2 id="big">The big picture</h2>
+<p>An <b>option</b> is a contract about 100 shares of a stock. It has a price (the <b>strike</b>) and a deadline (the <b>expiration</b>).</p>
+<ul>
+<li>A <b>call</b> is the right to <b>buy</b> 100 shares at the strike.</li>
+<li>A <b>put</b> is the right to <b>sell</b> 100 shares at the strike.</li>
+<li>The buyer pays the seller cash upfront, called the <b>premium</b>.</li>
+</ul>
+<p>There are two sides to every option:</p>
+<div class="tbl"><table>
+<thead><tr><th></th><th>Buyer</th><th>Seller (Joey, and your paper account)</th></tr></thead>
+<tbody>
+<tr><td>Pays or gets</td><td>Pays the premium</td><td>Collects the premium, and keeps it</td></tr>
+<tr><td>Wants</td><td>A big move, soon</td><td>Not much to happen. Time passing makes the option lose value</td></tr>
+<tr><td>Wins</td><td>Rarely, but sometimes big (the Twitter screenshots)</td><td>Often, but small</td></tr>
+<tr><td>Our tests</td><td>Weekly SPY calls: the typical call lost 37%</td><td>SPY covered calls: won about half the months, but rallies cost more than the premiums</td></tr>
+</tbody></table></div>
+<p>Joey is mostly a <b>seller</b>. He collects premium on stocks he owns or would happily own, and when a trade goes against him he adjusts it instead of taking the loss.</p>
+
+<h2 id="cc">1. Covered call: your AMZN trade</h2>
+<p><b>In one sentence:</b> you own 100 shares and sell someone the right to buy them at a higher price. They pay you cash now, and you keep it no matter what.</p>
+<ol class="steps">
+<li><div><b>Buy the shares.</b> 200 AMZN at $259.69 = $51,938.</div></li>
+<li><div><b>Sell the calls.</b> 2 × Nov 13 $275 call at $6.85 = <b class="gain">$1,370 in your pocket today</b>.</div></li>
+<li><div><b>Wait for Nov 13.</b> If AMZN is below $275, the calls expire worthless: you keep the shares and the $1,370, then sell new calls. If AMZN is above $275, your shares sell at $275 automatically ("called away").</div></li>
+</ol>
+<div class="panel"><div class="chart" id="ch-cc"></div>
+<div class="legend"><span><i style="background:var(--accent)"></i>Covered call (your trade)</span><span><i style="background:var(--zero);height:2px"></i>Just holding the shares</span></div>
+<p class="caption">200 AMZN shares at $259.69, plus 2 sold $275 calls at $6.85, on Nov 13. The line goes flat above $275: that's the ceiling. Your break-even is $252.84. You keep only $6.85 more per share than a shareholder on the way down.</p></div>
+<div class="tbl"><table>
+<thead><tr><th>AMZN on Nov 13</th><th class="num">Your total</th><th class="num">Just holding shares</th><th>What happened</th></tr></thead>
+<tbody>
+<tr><td>$200 (bad earnings)</td><td class="num loss">−$10,568</td><td class="num loss">−$11,938</td><td>The premium only softens the drop</td></tr>
+<tr><td>$252.84</td><td class="num">$0</td><td class="num loss">−$1,370</td><td>Break-even</td></tr>
+<tr><td>$259.69 (flat)</td><td class="num gain">+$1,370</td><td class="num">$0</td><td>The best case for covered calls: you get paid for waiting</td></tr>
+<tr><td>$275 or higher</td><td class="num gain">+$4,432</td><td class="num gain">+$3,062</td><td>The most you can make</td></tr>
+<tr><td>$320 (huge rally)</td><td class="num gain">+$4,432</td><td class="num gain">+$12,062</td><td>You missed $7,630 of upside</td></tr>
+</tbody></table></div>
+<p><b>Your HOOD trade works the same way:</b> 400 shares at $109.38, plus 4 sold $120 calls at $4.75 ($1,900 collected).</p>
+<ul>
+<li>Break-even: $104.63.</li>
+<li>Most you can make: <b class="gain">+$6,148</b>, if HOOD is at $120 or higher on Nov 13.</li>
+</ul>
+
+<h2 id="roll">2. Rolling: Joey's main skill</h2>
+<p><b>Rolling</b> means buying back the call you sold and selling a new one in the same order, usually further out in time. You do it to change the deal without closing the whole trade.</p>
+<div class="tbl"><table>
+<thead><tr><th>Situation</th><th>Roll</th><th>Example (rough prices)</th><th>The catch</th></tr></thead>
+<tbody>
+<tr><td>The stock ran past your strike, and you want to keep the shares</td><td><b>Up and out:</b> a higher strike, a later month</td><td>AMZN at $290 on Nov 12: buy back the $275 call (~$15), sell a Dec $300 call (~$16). Net +$1 a share, and the ceiling moves up $25</td><td>You're committed for another month. Only do it for a <b>net credit</b></td></tr>
+<tr><td>The stock fell, and the call is nearly worthless</td><td><b>Down and out:</b> a lower strike, a later month</td><td>AMZN at $240: buy back the $275 call (~$0.50), sell a Dec $255 call (~$8). You collect more, and your break-even drops</td><td>$255 is below the $259.69 you paid. If AMZN rebounds, the shares sell at a loss</td></tr>
+<tr><td>Most of the premium is already earned</td><td><b>Close early and re-sell</b></td><td>The call fell from $6.85 to $1.30 (80% earned). Buy it back, sell next month's</td><td>More trades and more spread costs</td></tr>
+</tbody></table></div>
+<div class="callout"><b>What Joey does:</b> he says "the beauty is I don't close it for a loss. I just roll my call out or I buy a put for protection." <b>What our test showed:</b> rolling down for credits made $51k on SPY, but getting called away in rallies cost $111k. Rolling buys time; it doesn't erase a loss. That's why you're practicing it on paper first.</div>
+
+<h2 id="collar">3. Collar: covered call + insurance</h2>
+<p><b>In one sentence:</b> a covered call where you <b>also buy a put</b> below the price, so a crash can't hurt you much.</p>
+<ul>
+<li>The call's premium pays for some or all of the put.</li>
+<li>Joey did this on MU before earnings ("I just had a PUT on for earnings so if it dropped I capped losses").</li>
+</ul>
+<div class="panel"><div class="chart" id="ch-collar"></div>
+<div class="legend"><span><i style="background:var(--accent)"></i>Collar</span><span><i style="background:var(--zero);height:2px"></i>Covered call alone</span></div>
+<p class="caption">An example on your AMZN trade, with made-up put prices: also buy 2 Nov 13 $245 puts at about $5. Below $245 the loss stops at about −$3,940, instead of getting worse and worse. The cost: your best case drops from +$4,432 to about +$3,432.</p></div>
+<p><b>When Joey uses it:</b> only when he truly thinks the stock is heading down, or before a risky event like earnings. He uses an in-the-money put about 30 days out, and he sells it back if the worry passes.</p>
+
+<h2 id="diag">4. Diagonal: Joey's MU trade today</h2>
+<p><b>In one sentence:</b> a covered call where, instead of 100 shares, you own a <b>long-dated call</b>, and you sell short-dated calls against it.</p>
+<ul>
+<li>It needs far less money than buying shares.</li>
+<li>It's also called a "poor man's covered call".</li>
+</ul>
+<p><b>Joey's version today:</b> he sold the MU $1,120 call expiring Fri Oct 9 for $4.95, and owns the MU $1,520 call expiring Jan 15, 2027 (bought at $19.57). He says the best case is about <b>+$970</b> if MU closes right at $1,120 on Friday, with a <b>57%</b> chance of the trade making money.</p>
+<div class="panel"><div class="chart" id="ch-diag"></div>
+<p class="caption">Traced from Joey's thinkorswim chart (approximate). The profit zone on Friday is about $1,051 to $1,132. Below that, he loses about what he paid. The danger is a <b>fast rally</b>: his long call is way up at $1,520, so above about $1,132 the sold $1,120 call loses money quickly.</p></div>
+
+<h2 id="put">5. Selling puts (the wheel)</h2>
+<p><b>In one sentence:</b> you get paid to promise to buy a stock at a lower price.</p>
+<ul>
+<li>If the stock stays above the strike, you keep the cash.</li>
+<li>If it drops below, you buy 100 shares at the strike, and then you can start covered calls on them. That loop is called <b>the wheel</b>.</li>
+</ul>
+<div class="panel"><div class="chart" id="ch-put"></div>
+<p class="caption">An illustration: sell one $100 put for $4 on a stock at $108. You keep $400 if it stays above $100. If it falls to $70, you lose $2,600. That's the same risk as owning the shares from $96.</p></div>
+<div class="callout"><b>Joey's two conditions:</b> he would "never recommend" selling puts except on stocks <b>under $50</b> (so even a total collapse costs at most $5,000), or on S&amp;P 500 stocks with a <b>90%+</b> chance of the put expiring worthless. Our test #10 sold SPY puts: wins in 76% of weeks, but only about $104 a week on $100k.</div>
+
+<h2 id="picks">How Joey picks stocks and timing</h2>
+<div class="tbl"><table>
+<thead><tr><th>Check</th><th>What it is</th><th>How he uses it</th></tr></thead>
+<tbody>
+<tr><td>Implied volatility (IV)</td><td>How much the options market expects the stock to swing, per year</td><td>He likes 25–45%. Higher pays more premium, with more risk. Your AMZN is about 39%; HOOD about 61%</td></tr>
+<tr><td>Yearly (annualized) return</td><td>Premium ÷ money tied up, scaled to a year</td><td>"If that theoretically beats the SPY then run with it": start with a high target and lower it if needed</td></tr>
+<tr><td>Barchart screens</td><td>"Strong Buy" lists from 13 indicators; put screens</td><td>A source of ideas, not orders</td></tr>
+<tr><td>Weekly RSI</td><td>A 0–100 momentum gauge on weekly candles</td><td>When a stock is oversold, he waits for RSI to turn back up above 20 before buying</td></tr>
+<tr><td>VIX above 30–35</td><td>The market's "fear index"</td><td>Panic = a buying opportunity, if you kept some cash ready</td></tr>
+<tr><td>Golden cross</td><td>50-day average crossing above the 200-day</td><td>"Just a gauge" of mood. He prefers fundamentals</td></tr>
+<tr><td>Price levels</td><td>Lines that matter to him on a chart</td><td>MU: bearish only after <b>two closes below $1,020</b>; a possible buy near <b>$1,050</b></td></tr>
+</tbody></table></div>
+
+<h2 id="mine">Your strategies</h2>
+<h3>Real money (you place every trade)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Position</th><th>The rule, simply</th><th>Status Oct 7</th></tr></thead>
+<tbody>
+<tr><td><b>MU</b>: 51 shares @ $1,079.08</td><td>A long-term AI-memory bet. Sell at +25% ($1,349); re-read your note at −10% ($971); decide at −20% ($863). Always on <b>closing prices</b></td><td>Closed at $1,088: <span class="gain">+$455</span>. Samsung reports tonight</td></tr>
+<tr><td><b>LITE</b>: 31.9 shares @ $1,097.07 (<b>Plan B</b>)</td><td><b>Buy the 10 AM dip:</b> LITE 1%+ below its open, and still below the open at 10:00, means buy. <b>Sell at +2%.</b> No stop; a −20% "check" line</td><td>Sell target $1,119 (≈ <span class="gain">+$700</span>). An email alert is set</td></tr>
+</tbody></table></div>
+<h3>Paper practice (fake money, real prices)</h3>
+<ul>
+<li><b>Covered-call account ($100k):</b> AMZN and HOOD, as above. A daily dollars email; every decision is logged with its reason.</li>
+<li><b>The LITE paper bot</b> runs Plan B automatically (today: 54 shares at $1,098.25, selling at $1,120.22).</li>
+<li><b>Other paper bots:</b> SPY put spread, MNQ futures, an earnings-gap watch, and the scanner and daily brief. A <b>forward watch</b> tracks everyone's tips with real money results.</li>
+</ul>
+<h3>What 26 tests taught you</h3>
+<ul>
+<li>Most popular rules (breakouts, levels, liquidity sweeps, opening-range trades) don't hold up. One of 26 passed.</li>
+<li>Buying short-dated calls usually loses. Selling options wins often but small, and loses rarely but big.</li>
+<li>Your biggest edge was <b>the company</b>: knowing LITE's business early. The same dip rule lost money on 100 other stocks. Hence the company checklist (MU was the first).</li>
+</ul>
+<div class="panel"><b>How it fits together:</b> you find good companies and buy smart dips. Joey squeezes extra income out of stocks he holds. The paper account is where you learn his skill without risking your money: through both earnings reports in late October, then decide on real money.</div>
+
+<h2 id="gloss">Glossary</h2>
+<p>Each term comes with an example from your trades or Joey's.</p>
+<div class="gloss">
+<div class="term"><b>Option</b><span>A contract about 100 shares, with a set price and a deadline.</span><em>1 AMZN call = 100 shares</em></div>
+<div class="term"><b>Call</b><span>The right to buy 100 shares at the strike before expiration.</span><em>AMZN Nov 13 $275 call</em></div>
+<div class="term"><b>Put</b><span>The right to sell 100 shares at the strike before expiration.</span><em>Joey's MU earnings put</em></div>
+<div class="term"><b>Strike</b><span>The agreed price in the contract.</span><em>$275 for your AMZN calls</em></div>
+<div class="term"><b>Expiration</b><span>The deadline. After it, the option is gone.</span><em>Nov 13, 2026</em></div>
+<div class="term"><b>Premium</b><span>The price of an option, quoted per share (× 100 per contract).</span><em>$6.85 × 100 × 2 = $1,370</em></div>
+<div class="term"><b>Sell to open / Buy to close</b><span>Selling an option to start a trade; buying it back to end it.</span><em>You sold to open 2 AMZN calls</em></div>
+<div class="term"><b>Covered call</b><span>Owning the shares and selling a call against them.</span><em>AMZN, HOOD paper trades</em></div>
+<div class="term"><b>Called away / Assignment</b><span>Your shares sell at the strike because the buyer used the option.</span><em>AMZN ≥ $275 on Nov 13</em></div>
+<div class="term"><b>In the money (ITM)</b><span>A call whose strike is below the stock price (or a put whose strike is above it).</span><em>A $275 call when AMZN is at $290</em></div>
+<div class="term"><b>Out of the money (OTM)</b><span>A call whose strike is above the stock price; it would expire worthless today.</span><em>Your $275 call today (AMZN ~$260)</em></div>
+<div class="term"><b>At the money (ATM)</b><span>Strike ≈ the stock price.</span><em>OptionsAnimal's FSLR $180 call</em></div>
+<div class="term"><b>Intrinsic value</b><span>The part of a premium that's real money right now: how far in the money it is.</span><em>AMZN $290, $275 call = $15</em></div>
+<div class="term"><b>Extrinsic (time) value</b><span>The rest of the premium: what you pay for time and possibility. It melts to zero by expiration.</span><em>All $6.85 of your AMZN calls today</em></div>
+<div class="term"><b>Break-even</b><span>The stock price where your total is $0.</span><em>AMZN $252.84; HOOD $104.63</em></div>
+<div class="term"><b>Roll</b><span>Buy back one option and sell another (different strike or date) in one order.</span><em>"Roll up and out for a credit"</em></div>
+<div class="term"><b>Credit / Debit</b><span>Money you receive / money you pay for a trade.</span><em>FSLR trade: net debit $174</em></div>
+<div class="term"><b>Collar</b><span>Shares + a sold call + a bought put: capped upside, limited downside.</span><em>Joey's MU around earnings</em></div>
+<div class="term"><b>Diagonal</b><span>Long a later-dated option and short a nearer one at a different strike.</span><em>MU: short $1,120 Oct 9, long $1,520 Jan</em></div>
+<div class="term"><b>Cash-secured put</b><span>Selling a put with enough cash set aside to buy the shares.</span><em>Joey: only stocks under $50</em></div>
+<div class="term"><b>The wheel</b><span>Sell puts until assigned, then covered calls until called away, then repeat.</span><em>Kevin's $99/mo group</em></div>
+<div class="term"><b>Implied volatility (IV)</b><span>The swing the options market expects, per year. Higher IV = pricier options.</span><em>AMZN ~39%, HOOD ~61%</em></div>
+<div class="term"><b>Delta</b><span>How much an option moves per $1 of stock, and roughly its chance of finishing in the money.</span><em>AMZN $275 call ≈ 0.35 (≈ 35%)</em></div>
+<div class="term"><b>Theta</b><span>How much value an option loses per day just from time passing. Sellers earn it.</span><em>Why Joey's Friday call melts</em></div>
+<div class="term"><b>Bid / Ask / Spread</b><span>Bid = what buyers pay now; ask = what sellers want. The gap is a cost.</span><em>Your AMZN calls filled at $6.85 (the bid)</em></div>
+<div class="term"><b>Annualized return</b><span>A trade's return scaled to a full year, to compare trades.</span><em>FSLR: 3.3% in 9 days</em></div>
+<div class="term"><b>Earnings</b><span>A company's quarterly report. Stocks can jump 10–20% overnight; IV rises before it.</span><em>AMZN, HOOD: late October</em></div>
+<div class="term"><b>Payoff diagram</b><span>A picture of profit or loss at each stock price on expiration day.</span><em>The charts on this page</em></div>
+</div>
+
+<h2 id="watch">What to watch, in order</h2>
+<p>These are free videos and pages, ordered so each one builds on the last. Start at 1, and come back to this page after each one to match the terms to your trades.</p>
+<div class="vid"><span class="n">01</span><div><a href="https://www.optionseducation.org/videolibrary/4-options-trading-strategies-for-beginners" target="_blank" rel="noopener">4 Options Trading Strategies for Beginners</a><small>Options Industry Council (the non-profit, unbiased one). Covered calls, cash-secured puts, protective puts and collars in one sitting.</small></div></div>
+<div class="vid"><span class="n">02</span><div><a href="https://ryanoconnellfinance.com/video/covered-calls-explained/" target="_blank" rel="noopener">Covered Calls Explained: Option Strategy Basics</a><small>Ryan O'Connell, CFA. About 7 minutes. Draws the payoff diagram step by step: the shares, the call, then both together.</small></div></div>
+<div class="vid"><span class="n">03</span><div><a href="https://prd-web.optionseducation.org/videolibrary/covered-call-strategy-for-income-options-trading" target="_blank" rel="noopener">Covered Call Strategy for Income</a><small>Options Industry Council. Includes what to do when the stock drops sharply or rises above the strike: your two November decision points.</small></div></div>
+<div class="vid"><span class="n">04</span><div><a href="https://www.tastylive.com/shows/market-mindset/episodes/rolling-covered-calls-defensively-12-07-2020" target="_blank" rel="noopener">Rolling Covered Calls Defensively</a><small>tastylive. Rolling down and out when a stock falls, and why to know your break-even so you don't lock in a loss (Joey's DELL move).</small></div></div>
+<div class="vid"><span class="n">05</span><div><a href="https://tastylive.com/shows/wdis-amped-to-trade/episodes/rolling-an-itm-covered-call-11-07-2017" target="_blank" rel="noopener">Rolling an In-the-Money Covered Call</a><small>tastylive. The "up and out" case: when the stock runs past your strike.</small></div></div>
+<div class="vid"><span class="n">06</span><div><a href="https://www.fidelity.com/learning-center/investment-products/options/rolling-covered-calls" target="_blank" rel="noopener">Rolling Covered Calls (Fidelity Learning Center)</a><small>A written walkthrough with diagrams, good to read after videos 4–5.</small></div></div>
+<div class="vid"><span class="n">07</span><div><a href="https://www.optionseducation.org/videolibrary/understanding-option-collars" target="_blank" rel="noopener">Understanding Option Collars</a><small>Options Industry Council webinar. Protective puts, collars and their variations, with timestamps.</small></div></div>
+<div class="vid"><span class="n">08</span><div><a href="https://ryanoconnellfinance.com/collar-strategy/" target="_blank" rel="noopener">Collar Option Strategy: Protection with Income</a><small>Ryan O'Connell. A worked example with payoff formulas.</small></div></div>
+<div class="vid"><span class="n">09</span><div><a href="https://tastylive.com/shows/options-trading-concepts-live/episodes/call-diagonal-spreads-101-02-23-2021" target="_blank" rel="noopener">Call Diagonal Spreads 101</a><small>tastylive. The structure behind Joey's MU trade, with several examples.</small></div></div>
+<div class="vid"><span class="n">10</span><div><a href="https://prd-web.optionseducation.org/videolibrary/diagonal-equity-call-spread-trading-strategies-explained" target="_blank" rel="noopener">Diagonal Call Spreads Explained</a><small>Options Industry Council (Bill Ryan). How diagonals are built and why to use them.</small></div></div>
+<div class="vid"><span class="n">11</span><div><a href="https://options-101.com" target="_blank" rel="noopener">Options 101 (free course)</a><small>An ex-Jane Street trader's lectures on how options are really priced. Deeper; watch after you're comfortable with 1–10.</small></div></div>
+<p style="margin-top:18px"><b>Joey's book pick:</b> <i>Get Rich with Options</i> (Lee Lowell). It covers the Greeks and four high-probability strategies. Joey said it's on his Google Drive, or cheap used.</p>
+
+<footer>Research and education, not financial advice. Example prices marked "illustrative" are made up to show the shape. Your trade numbers are real paper fills from Oct 7, 2026.</footer>
+</main>
+
+<script>
+(function(){
+  const css = getComputedStyle(document.documentElement);
+  const tok = n => css.getPropertyValue(n).trim();
+  function money(v){const s=Math.round(Math.abs(v)).toLocaleString('en-US');return (v<0?'−$':v>0?'+$':'$')+s;}
+  function draw(id, f, xmin, xmax, opts){
+    const el=document.getElementById(id); if(!el) return;
+    const W=760,H=300,L=74,R=20,T=18,B=40, n=240;
+    const xs=[...Array(n+1)].map((_,i)=>xmin+(xmax-xmin)*i/n);
+    const series=[{f,color:'var(--accent)',w:3}].concat(opts.ref?[{f:opts.ref,color:'var(--zero)',w:2,dash:'5 5'}]:[]);
+    let ys=[];series.forEach(s=>xs.forEach(x=>ys.push(s.f(x))));
+    let ymin=Math.min(...ys,0), ymax=Math.max(...ys,0); const pad=(ymax-ymin)*0.08; ymin-=pad; ymax+=pad;
+    const X=x=>L+(x-xmin)/(xmax-xmin)*(W-L-R), Y=y=>T+(ymax-y)/(ymax-ymin)*(H-T-B);
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${opts.label}">`;
+    const step=opts.ystep;
+    for(let v=Math.ceil(ymin/step)*step; v<=ymax; v+=step){
+      svg+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="1"/>`;
+      svg+=`<text x="${L-8}" y="${Y(v)+4}" text-anchor="end" font-size="12" font-family="JetBrains Mono, monospace" fill="var(--muted)">${money(v)}</text>`;
+    }
+    svg+=`<line x1="${L}" x2="${W-R}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--zero)" stroke-width="1.5"/>`;
+    opts.xticks.forEach(x=>{svg+=`<text x="${X(x)}" y="${H-14}" text-anchor="middle" font-size="12" font-family="JetBrains Mono, monospace" fill="var(--muted)">$${x.toLocaleString('en-US')}</text>`;});
+    series.slice(1).forEach(s=>{svg+=`<polyline fill="none" stroke="${s.color}" stroke-width="${s.w}" stroke-dasharray="${s.dash||''}" points="${xs.map(x=>X(x)+','+Y(s.f(x))).join(' ')}"/>`;});
+    // main line split by sign
+    for(let i=0;i<n;i++){const a=xs[i],b=xs[i+1],ya=f(a),yb=f(b);const c=((ya+yb)/2)>=0?'var(--gain)':'var(--loss)';
+      svg+=`<line x1="${X(a)}" y1="${Y(ya)}" x2="${X(b)}" y2="${Y(yb)}" stroke="${c}" stroke-width="3" stroke-linecap="round"/>`;}
+    (opts.marks||[]).forEach(m=>{const y=f(m.x);svg+=`<circle cx="${X(m.x)}" cy="${Y(y)}" r="5" fill="${m.dot?'var(--ink)':'var(--surface)'}" stroke="var(--ink)" stroke-width="1.5"/>`;
+      svg+=`<text x="${X(m.x)+(m.dx||8)}" y="${Y(y)+(m.dy||-10)}" font-size="12.5" font-family="Source Sans 3, sans-serif" fill="var(--ink)" text-anchor="${m.anchor||'start'}">${m.t}</text>`;});
+    svg+=`<text x="${W-R}" y="${H-1}" text-anchor="end" font-size="11" fill="var(--muted)" font-family="Source Sans 3, sans-serif">stock price on expiration day →</text>`;
+    el.innerHTML=svg+'</svg>';
+  }
+  const cc=s=>200*(Math.min(s,275)-259.69+6.85);
+  draw('ch-cc',cc,200,330,{label:'AMZN covered call payoff',ystep:4000,xticks:[200,225,250,275,300,325],ref:s=>200*(s-259.69),
+    marks:[{x:259.69,t:'today $259.69',dot:1,dx:-8,dy:22,anchor:'end'},{x:252.84,t:'break-even $252.84',dx:10,dy:18},{x:290,t:'max +$4,432 from $275',dy:-12}]});
+  const collar=s=>200*(Math.min(Math.max(s,245),275)-259.69+6.85-5);
+  draw('ch-collar',collar,200,330,{label:'AMZN collar payoff (illustrative put)',ystep:2000,xticks:[200,225,250,275,300,325],ref:cc,
+    marks:[{x:215,t:'floor ≈ −$3,940',dy:-12},{x:300,t:'cap ≈ +$3,432',dy:-12}]});
+  const pts=[[930,-1000],[1000,-700],[1040,-150],[1051,0],[1090,600],[1120,970],[1132,0],[1180,-4600],[1240,-9000]];
+  const diag=s=>{for(let i=0;i<pts.length-1;i++){const[a,ya]=pts[i],[b,yb]=pts[i+1];if(s<=b)return ya+(yb-ya)*(s-a)/(b-a);}return pts[pts.length-1][1];};
+  draw('ch-diag',diag,930,1240,{label:"Joey's MU diagonal at Friday expiration (approximate)",ystep:2000,xticks:[950,1000,1050,1100,1150,1200],
+    marks:[{x:1088,t:'MU close $1,088',dot:1,dx:-8,dy:24,anchor:'end'},{x:1120,t:'best ≈ +$970 at $1,120',dy:-12},{x:1200,t:'fast rally hurts',dx:-8,dy:-10,anchor:'end'}]});
+  const put=s=>100*(4-Math.max(100-s,0));
+  draw('ch-put',put,60,130,{label:'Short put payoff (illustrative)',ystep:1000,xticks:[60,70,80,90,100,110,120,130],ref:s=>100*(s-96),
+    marks:[{x:115,t:'keep +$400',dy:-12},{x:96,t:'break-even $96',dx:10,dy:18},{x:70,t:'−$2,600 at $70',dx:10,dy:-8}]});
+})();
+</script>
