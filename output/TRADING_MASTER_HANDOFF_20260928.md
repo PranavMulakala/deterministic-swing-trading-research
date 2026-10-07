@@ -516,3 +516,7 @@ Everything below was read-only unless stated otherwise.
     - the test #26 summary;
     - two new questions: what implied volatility he wants before selling ITM calls (and whether that's why he uses MU/DELL rather than SPY), and whether he buys back right away after being called away or waits for a pullback.
   - **The owner got a plain-language walkthrough of the lesson:** words, the $66.42/$60-call example in dollars, exits and rolls, the Greeks, and the homework answers.
+  - **Indicative shadow pipeline turned off (owner: "Yes, turn it off"), ~1:20 PM:**
+    - `systemctl disable --now trading-shadow-indicative-producer.timer trading-shadow-indicative.path`; the consumer and producer were stopped and their failed marks cleared.
+    - The server's failed-unit list is now empty. All other timers (paper bot, scanner, brief, forward watch, EP watch) are unchanged, and `trading-shadow-7500` was left alone.
+    - **To turn it back on:** `systemctl enable --now trading-shadow-indicative-producer.timer trading-shadow-indicative.path`.
