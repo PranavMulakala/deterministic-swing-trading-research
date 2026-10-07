@@ -520,3 +520,8 @@ Everything below was read-only unless stated otherwise.
     - `systemctl disable --now trading-shadow-indicative-producer.timer trading-shadow-indicative.path`; the consumer and producer were stopped and their failed marks cleared.
     - The server's failed-unit list is now empty. All other timers (paper bot, scanner, brief, forward watch, EP watch) are unchanged, and `trading-shadow-7500` was left alone.
     - **To turn it back on:** `systemctl enable --now trading-shadow-indicative-producer.timer trading-shadow-indicative.path`.
+  - **Forward-watch email: SPY lines removed (owner: "Yes, remove the SPY lines from the forward-watch email"), e2d1f3d, redeployed ~1:30 PM.**
+    - The subject is now "ideas ±$X on $70,000".
+    - Each idea shows only its dollars; the total line reads "Making money: k of N".
+    - The SPY twin is still saved in `history.json` (not emailed).
+    - A test checks that the email text has no SPY comparison.
