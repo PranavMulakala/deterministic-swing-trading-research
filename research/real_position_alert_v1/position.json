@@ -1,15 +1,9 @@
 {
-  "note": "Pranav's real Robinhood LITE position, user-reported via app screenshot 2026-09-28 10:01 ET. Alerts only; nothing here can trade.",
+  "note": "Pranav's real Robinhood LITE position, user-reported via app screenshot 2026-10-07 10:05 ET (Plan B buy). Alerts only; nothing here can trade.",
   "symbol": "LITE",
-  "shares": "33.034698",
-  "average_cost": "908.14",
+  "shares": "31.903158",
+  "average_cost": "1097.07",
   "levels": [
-    {"id": "minus_500", "direction": "down", "price": "893.00", "label": "down $500", "armed_at": "2026-09-28T10:07:00-04:00"},
-    {"id": "minus_1000", "direction": "down", "price": "877.87", "label": "down $1,000", "armed_at": "2026-09-28T10:07:00-04:00"},
-    {"id": "at_840", "direction": "down", "price": "840.00", "label": "reached your $840 level", "armed_at": "2026-09-28T10:07:00-04:00"},
-    {"id": "at_820", "direction": "down", "price": "820.00", "label": "reached your $820 level", "armed_at": "2026-09-28T10:07:00-04:00"},
-    {"id": "break_even", "direction": "up", "price": "908.14", "label": "back to break-even", "requires": "minus_500", "armed_at": "2026-09-28T10:07:00-04:00"},
-    {"id": "plus_2pct", "direction": "up", "price": "926.30", "label": "up 2% (+$600)", "armed_at": "2026-09-28T10:07:00-04:00"},
-    {"id": "sep25_close", "direction": "up", "price": "941.64", "label": "back to Sep 25 close (+$1,107)", "armed_at": "2026-09-28T10:07:00-04:00"}
+    {"id": "target_1119_20261007", "direction": "up", "price": "1119.00", "label": "hit your $1,119 target (about +$700)", "armed_at": "2026-10-07T10:06:00-04:00"}
   ]
 }
