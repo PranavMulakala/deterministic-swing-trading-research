@@ -1,0 +1,34 @@
+{
+  "created_utc": "2026-10-07T00:23:26+00:00",
+  "git_commit": "d229359ce996c0e9aef896772f84ab352add2197",
+  "code_uncommitted": false,
+  "params": {
+    "range_days": 20,
+    "max_range": 0.25,
+    "low_band": 0.02,
+    "close_zone": 0.25,
+    "max_risk": 0.2,
+    "hold": 20,
+    "risk": 0.01,
+    "cap": 0.1,
+    "max_pos": 10,
+    "slip": 0.001
+  },
+  "files": {
+    "research/rfk_test_v1/backtest.py": {
+      "kind": "code",
+      "bytes": 13366,
+      "sha256": "7ec7108a74edcf7defe9b536bfaff4248bbebc5694ace5b51c53a398af4d0d89"
+    },
+    "outputs/orb_play_data/SPY_all.json.gz": {
+      "kind": "data",
+      "bytes": 51226,
+      "sha256": "74a99a3245ebce888d1510f14559f0ba124e145443969c8da00001f13703143d"
+    },
+    "outputs/orb_play_data/rfk_detail.json.gz": {
+      "kind": "data",
+      "bytes": 141092,
+      "sha256": "dd8aaf03a484340af59f6392865a2f7952e6cf2acf6fdb2d755f1cfce45d289c"
+    }
+  }
+}

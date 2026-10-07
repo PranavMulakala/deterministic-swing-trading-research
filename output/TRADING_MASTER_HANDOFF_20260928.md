@@ -478,3 +478,7 @@ Everything below was read-only unless stated otherwise.
   - **10:00 bot:** SOLD_AT_TARGET (paper) and NO_SIGNAL. The TradingView helper showed a borderline SIGNAL from its own data feed; the bot decides.
   - **TradingView helper v3 installed:** the check line shows on daily charts only, values are off the status line, the chart is set to New York time, and the fill input is 0 (no position).
   - **Parked idea, descriptive look:** +3%/+4% targets and 60/40 splits. Mixed: better in parts of 2025–26, much worse in 2022–24, and fewer $1,000 weeks. Details in `LITE_DYNAMIC_TEST_RESULTS_20260930.md`.
+  - **Owner's tweets reviewed** (`TWEETS_OPTIONS_FLOW_RFK_NOTES_20261006.md`): the SPY 790C $7M flow, a "9 waves" stock list, and GAnderson's RFK video (transcribed).
+  - **Test #23 (RFK): FAILED.** $123.9k vs SPY $260.6k; a small real edge over the baseline (+0.06R per trade).
+  - **Test #24 (weekly short-dated SPY calls): FAILED.** $144.9k vs $229.1k; out-of-the-money calls lost 36%.
+  - **LITE intraday timing study (descriptive):** moves and the day's high/low cluster at the open and close; no time slot is reliably up or down.
