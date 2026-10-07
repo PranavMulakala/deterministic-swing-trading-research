@@ -490,3 +490,24 @@ Everything below was read-only unless stated otherwise.
       - **MU:** sales growth +37% → +46% → +57% → +196% → +346% → +379% (checked against the 8-K), but mostly price in a shortage. New factories arrive late 2027–28. In 2018 and 2022 the stock peaked during record quarters. The first LITE-style signal was the Dec 2025 report at $248.55 (×4.2 by Oct 6); buyers after the Jun/Sep 2026 reports are −14%/−5%.
   - **Morning:** chips fell premarket on the 10-year yield above 5.3% before the Fed minutes, plus oil; Samsung reports Oct 8.
   - **Joey:** META "just a gauge"; MU bearish only after 2 bearish days below $1,020, unconcerned above $1,000; a Barchart "Strong Buy" 9-stock screen.
+- **Oct 7 afternoon (~1:30 PM ET):**
+  - **Joey's reply (12:08 PM):** rolling is "experience and market conditions"; no fixed rules. He sent an Options Animal lesson ("Advanced Covered Calls", 5.4) and asked that it not be shared. It sits only in `~/Downloads`; never copy it into the repo.
+    - The lesson teaches **in-the-money** covered calls rolled down and out for a credit. That matches his DELL 560 → 545 roll.
+    - He also said (Oct 1) that to keep the shares he rolls **out and up** for a credit. Not tested.
+  - **Test #26 (ITM covered calls with roll-downs, SPY): FAIL.** Plan de4ca94, code 726befa, results 9d9e027.
+    - **Account:** +$32,596 ($104/week), 30 of 314 weeks at $1,000+, worst drop −$14,130 (−14%).
+    - **Calls:** −$61,242 (PF 0.55). Called away in rallies −$111k; the rolled calls +$51k.
+    - **Shares:** fell from 308 to 192 (sold to pay assignments).
+    - **2016–19:** calls −$39k.
+    - **The roll rule** cut the worst drop from −31.6% to −14% vs never rolling.
+    - **The IV 25–45% filter:** 14 calls, −$32k.
+    - **Verifier:** 12/12 calls, all 19 rolls and all 4 early exercises matched.
+  - **Emails/positions (12:50 PM):**
+    - **LITE:** $1,101 (high since the buy $1,110.29); the $1,119 alert hasn't fired.
+    - **Paper bot:** the 54-share catch-up's GTC sell at $1,120.22 is still open.
+    - **Forward watch:** a print-only run on the server worked (7 ideas −$5,368 on $70k, almost all from the SPY 790C at −$5,234); the first email is due at 4:45 PM.
+  - **Market brief:** `positions.json` now holds the Oct 7 LITE buy (31.903158 @ $1,097.07); redeployed (3d4e95d). Today's 4:30 brief uses it.
+  - **Failed `trading-shadow-indicative-consumer.service`, diagnosed:**
+    - **Cause:** its limits (`CPUQuota=10%`, `TimeoutStartSec=30`) allow 3.0 s of CPU per run. Each run now needs ~3.2 s because the saved observations keep growing, so it has timed out on every packet since about Oct 1. It is plumbing only and holds no money.
+    - **Fix options (owner's call):** raise the timeout, or switch off the producer timer and path unit.
+  - **MNQ:** the Gateway needs the owner's login (status `DATA_OR_RISK_BLOCKED`, `PREVIOUS_SESSION_INCOMPLETE`). Log in through noVNC (port 6081).
