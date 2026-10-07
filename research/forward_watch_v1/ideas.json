@@ -1,0 +1,22 @@
+[
+ {"id": "joey-strong-buy-9", "name": "Joey's Barchart 'Strong Buy' screen (9 stocks)", "source": "Joey email, Oct 7 (screen as of Oct 6)",
+  "added": "2026-10-06", "entry_at": "close", "kind": "basket",
+  "symbols": ["MRNA", "CRWD", "DELL", "HPE", "ANET", "PANW", "TEAM", "NET", "VLO"]},
+ {"id": "joey-meta-golden-cross", "name": "META golden cross (Barchart top pick)", "source": "Joey email, Oct 7",
+  "added": "2026-10-06", "kind": "stock", "symbol": "META", "entry": 738.88},
+ {"id": "barchart-mu-still-a-buy", "name": "MU 'still a top stock to buy' (Barchart note)", "source": "Joey forward, Oct 6 premarket",
+  "added": "2026-10-06", "entry_at": "open", "kind": "stock", "symbol": "MU"},
+ {"id": "ganderson-rfk-app", "name": "AppLovin RFK call-out (stop $266.84, 1:1 target $297.10)", "source": "GAnderson X video, Oct 5",
+  "added": "2026-10-05", "kind": "stock", "symbol": "APP", "entry": 281.97, "stop": 266.84, "target": 297.10},
+ {"id": "ganderson-rfk-avgo", "name": "Broadcom RFK example (stop $343.29, 1:1 target $366.99)", "source": "GAnderson X video, Oct 5",
+  "added": "2026-10-02", "kind": "stock", "symbol": "AVGO", "entry": 355.14, "stop": 343.29, "target": 366.99},
+ {"id": "spy-790c-flow", "name": "SPY $790 call expiring Oct 14 (the $7M flow)", "source": "kiantrades / Unusual Whales, Oct 6",
+  "added": "2026-10-06", "kind": "option", "symbol": "SPY261014C00790000", "underlying": "SPY", "strike": 790.0,
+  "expires": "2026-10-14", "entry": 1.07},
+ {"id": "nine-waves", "name": "'9 waves' AI stock list (about 48 stocks)", "source": "Haywhykomo X post, Oct 6",
+  "added": "2026-10-06", "entry_at": "close", "kind": "basket",
+  "symbols": ["NVDA", "ARM", "AMD", "AVGO", "INTC", "TSM", "MU", "WDC", "STX", "SNDK", "NOK", "LITE", "COHR", "AAOI", "GLW",
+              "CIEN", "MRVL", "IREN", "CIFR", "WULF", "CORZ", "NBIS", "CRWV", "SMCI", "DELL", "ANET", "CSCO", "VRT", "ETN",
+              "GEV", "CEG", "SMR", "OKLO", "VST", "MP", "USAR", "UUUU", "FCX", "AA", "SPCX", "ASTS", "RKLB", "LUNR", "PL",
+              "TSLA", "PLTR", "SYM", "SERV"]}
+]

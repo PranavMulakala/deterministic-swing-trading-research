@@ -1,0 +1,24 @@
+[Unit]
+Description=Forward watch: 16:45 dollars-first email on the owner's ideas vs SPY (read-only market data, no orders)
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+Type=oneshot
+User=forward-watch
+Group=forward-watch
+WorkingDirectory=/opt/forward-watch
+Environment=PYTHONPATH=/opt/forward-watch
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -u -m research.forward_watch_v1.watch
+TimeoutStartSec=10min
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/opt/forward-watch/outputs
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
