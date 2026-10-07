@@ -511,3 +511,8 @@ Everything below was read-only unless stated otherwise.
     - **Cause:** its limits (`CPUQuota=10%`, `TimeoutStartSec=30`) allow 3.0 s of CPU per run. Each run now needs ~3.2 s because the saved observations keep growing, so it has timed out on every packet since about Oct 1. It is plumbing only and holds no money.
     - **Fix options (owner's call):** raise the timeout, or switch off the producer timer and path unit.
   - **MNQ:** the Gateway needs the owner's login (status `DATA_OR_RISK_BLOCKED`, `PREVIOUS_SESSION_INCOMPLETE`). Log in through noVNC (port 6081).
+  - **Sent to Joey (owner approved: "Yes, reply to Joey, please"), ~1:10 PM, thread "MU trade closed":**
+    - thanks for the lesson, which will stay private;
+    - the test #26 summary;
+    - two new questions: what implied volatility he wants before selling ITM calls (and whether that's why he uses MU/DELL rather than SPY), and whether he buys back right away after being called away or waits for a pullback.
+  - **The owner got a plain-language walkthrough of the lesson:** words, the $66.42/$60-call example in dollars, exits and rolls, the Greeks, and the homework answers.
