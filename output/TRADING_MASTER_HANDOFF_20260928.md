@@ -482,3 +482,10 @@ Everything below was read-only unless stated otherwise.
   - **Test #23 (RFK): FAILED.** $123.9k vs SPY $260.6k; a small real edge over the baseline (+0.06R per trade).
   - **Test #24 (weekly short-dated SPY calls): FAILED.** $144.9k vs $229.1k; out-of-the-money calls lost 36%.
   - **LITE intraday timing study (descriptive):** moves and the day's high/low cluster at the open and close; no time slot is reliably up or down.
+- **Oct 7 (owner: "we can't keep testing against SPY… let's do this 100% right now"):**
+  - **New way of working, 3 pillars:**
+    - **(1) Dollars-first reports:** `DOLLARS_FIRST_SCORECARD_20261007.md`, `research/scorecard_v1/`. Per-week $, $1k weeks, worst week/month; SPY as the bottom line.
+    - **(2) Forward watch:** `research/forward_watch_v1`, deployed to `/opt/forward-watch`. A 16:45 ET weekday email follows each idea with $10k vs SPY: Joey's 9 strong buys, META golden cross, the Barchart MU note, GAnderson's APP/AVGO RFK, the SPY 790C flow, and the '9 waves' list. Add ideas in `ideas.json`, then redeploy.
+    - **(3) LITE-style company research:** `COMPANY_CONVICTION_CHECKLIST.md`; first note on MU.
+  - **Morning:** chips fell premarket on the 10-year yield above 5.3% before the Fed minutes, plus oil; Samsung reports Oct 8.
+  - **Joey:** META "just a gauge"; MU bearish only after 2 bearish days below $1,020, unconcerned above $1,000; a Barchart "Strong Buy" 9-stock screen.
