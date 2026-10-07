@@ -156,6 +156,12 @@ def simulate(sigs, closes, calendar, start, end=LAST):
                 continue
             cost = shares * price
             cash -= cost
+            if s["exit_date"] == d:                    # bought at the open and exited the same day (next-open variant)
+                proceeds = shares * s["exit"] * (1 - SLIP)
+                cash += proceeds
+                trades.append({**{k: s[k] for k in ("symbol", "date", "exit_date", "reason", "entry", "exit")},
+                               "shares": shares, "pnl": proceeds - cost, "r": s["r_after_costs"]})
+                continue
             held[s["symbol"]] = {**s, "shares": shares, "cost": cost, "last": s["entry"]}
         curve.append((d, cash + sum(p["shares"] * p["last"] for p in held.values())))
     return trades, curve, len(held)
