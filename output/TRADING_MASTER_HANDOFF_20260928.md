@@ -486,6 +486,7 @@ Everything below was read-only unless stated otherwise.
   - **New way of working, 3 pillars:**
     - **(1) Dollars-first reports:** `DOLLARS_FIRST_SCORECARD_20261007.md`, `research/scorecard_v1/`. Per-week $, $1k weeks, worst week/month; SPY as the bottom line.
     - **(2) Forward watch:** `research/forward_watch_v1`, deployed to `/opt/forward-watch`. A 16:45 ET weekday email follows each idea with $10k vs SPY: Joey's 9 strong buys, META golden cross, the Barchart MU note, GAnderson's APP/AVGO RFK, the SPY 790C flow, and the '9 waves' list. Add ideas in `ideas.json`, then redeploy.
-    - **(3) LITE-style company research:** `COMPANY_CONVICTION_CHECKLIST.md`; first note on MU.
+    - **(3) LITE-style company research:** `COMPANY_CONVICTION_CHECKLIST.md`; first note `MU_CONVICTION_NOTE_20261007.md`; `research/company_research_v1/numbers.py <TICKER>` prints SEC quarterly sales/growth/margins and price facts.
+      - **MU:** sales growth +37% → +46% → +57% → +196% → +346% → +379% (checked against the 8-K), but mostly price in a shortage. New factories arrive late 2027–28. In 2018 and 2022 the stock peaked during record quarters. The first LITE-style signal was the Dec 2025 report at $248.55 (×4.2 by Oct 6); buyers after the Jun/Sep 2026 reports are −14%/−5%.
   - **Morning:** chips fell premarket on the 10-year yield above 5.3% before the Fed minutes, plus oil; Samsung reports Oct 8.
   - **Joey:** META "just a gauge"; MU bearish only after 2 bearish days below $1,020, unconcerned above $1,000; a Barchart "Strong Buy" 9-stock screen.
