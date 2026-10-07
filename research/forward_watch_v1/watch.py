@@ -1,6 +1,7 @@
 """Forward watch (owner's request, Oct 7, 2026: "test forward, not just backward"): every idea the owner brings in (tweets,
-Joey's picks, newsletter calls) is followed as if $10,000 had gone into it, next to the same $10,000 in SPY from the
-same moment. Paper only: read-only market data, no orders. Dollars first.
+Joey's picks, newsletter calls) is followed as if $10,000 had gone into it. Paper only: read-only market data, no orders.
+Dollars first. The email shows no SPY comparison (owner, Oct 7: "remove the SPY lines"); the SPY twin is still computed
+and kept in history.json in case the owner asks for it.
 
   PYTHONPATH=src:. .venv/bin/python -m research.forward_watch_v1.watch --print     # print today's table
   PYTHONPATH=src:. .venv/bin/python -m research.forward_watch_v1.watch             # email it (the server's 16:45 job)
@@ -134,22 +135,22 @@ def evaluate(ideas, bars, spy, options, today):
     good = [r for r in rows if "profit" in r]
     totals = {"ideas": len(good), "invested": STAKE * len(good), "profit": round(sum(r["profit"] for r in good), 2),
               "spy_profit": round(sum(r["spy_profit"] for r in good), 2),
-              "beating_spy": sum(r["profit"] > r["spy_profit"] for r in good)}
+              "beating_spy": sum(r["profit"] > r["spy_profit"] for r in good), "in_profit": sum(r["profit"] > 0 for r in good)}
     return rows, totals
 
 
 def render(rows, totals, today):
-    lines = [f"Forward watch, {today}: every idea as if $10,000 went in, next to the same $10,000 in SPY.",
+    lines = [f"Forward watch, {today}: every idea as if $10,000 went in.",
              "Paper only. No orders.", ""]
     for r in rows:
         if "profit" not in r:
             lines.append(f"- {r['idea']}: {r['status']}")
             continue
         lines.append(f"- {r['idea']}  (since {r['since']}; {r['source']})")
-        lines.append(f"    ${r['value']:,.0f} now, {r['profit']:+,.0f}   vs SPY {r['spy_profit']:+,.0f}   [{r['status']}]"
+        lines.append(f"    ${r['value']:,.0f} now, {r['profit']:+,.0f}   [{r['status']}]"
                      + (f"  {r['note']}" if r["note"] else ""))
-    lines += ["", f"All {totals['ideas']} ideas: {totals['profit']:+,.0f} on ${totals['invested']:,.0f}; "
-                  f"the same money in SPY: {totals['spy_profit']:+,.0f}. Beating SPY: {totals['beating_spy']} of {totals['ideas']}."]
+    lines += ["", f"All {totals['ideas']} ideas: {totals['profit']:+,.0f} on ${totals['invested']:,.0f}. "
+                  f"Making money: {totals['in_profit']} of {totals['ideas']}."]
     return "\n".join(lines)
 
 
@@ -184,7 +185,7 @@ def main():
         return
     from research.real_position_alert_v1.monitor import resend_key, send
     today = datetime.now(NY).date().isoformat()
-    subject = f"Forward watch {today}: ideas {totals['profit']:+,.0f} vs SPY {totals['spy_profit']:+,.0f}"
+    subject = f"Forward watch {today}: ideas {totals['profit']:+,.0f} on ${totals['invested']:,.0f}"
     send(subject, body, resend_key(), f"forward-watch|{today}")
     print(json.dumps({"emailed": True, "totals": totals}))
 

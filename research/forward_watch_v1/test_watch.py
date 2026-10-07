@@ -1,7 +1,7 @@
 """Offline tests for the forward watch."""
 import unittest
 
-from research.forward_watch_v1.watch import evaluate, stock_result
+from research.forward_watch_v1.watch import evaluate, render, stock_result
 
 
 SPY = [("2026-10-05", 100, 101, 99, 100), ("2026-10-06", 100, 102, 99, 101), ("2026-10-07", 101, 103, 100, 102)]
@@ -27,7 +27,12 @@ class WatchTest(unittest.TestCase):
         self.assertAlmostEqual(rows[0]["profit"], 10_000 * ((1.1 + 0.95) / 2 - 1))
         self.assertAlmostEqual(rows[0]["spy_profit"], 10_000 * (102 / 100 - 1))
         self.assertAlmostEqual(rows[1]["profit"], 10_000 * (0.5 / 2.0 - 1))             # expired: 102 - 101.5 = 0.50
-        self.assertEqual(totals["ideas"], 2)
+        self.assertEqual((totals["ideas"], totals["in_profit"]), (2, 1))
+        body = render(rows, totals, "2026-10-07")                                       # owner: no SPY lines in the email
+        self.assertNotIn("vs SPY", body)
+        self.assertNotIn("in SPY", body)
+        self.assertNotIn("Beating SPY", body)
+        self.assertIn("Making money: 1 of 2.", body)
 
 
 if __name__ == "__main__":
