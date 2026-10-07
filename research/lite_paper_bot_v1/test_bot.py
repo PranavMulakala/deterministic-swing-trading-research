@@ -345,5 +345,11 @@ class ClientGuardTests(unittest.TestCase):
                 bot.credentials(path)
 
 
+class SizingTests(unittest.TestCase):
+    def test_buy_is_about_60000_and_never_more_than_shares(self):
+        self.assertEqual(bot.buy_size(Decimal("1102.45")), 54)  # Oct 7: 66 shares would have been $72,762
+        self.assertEqual(bot.buy_size(Decimal("98.70")), bot.SHARES)
+
+
 if __name__ == "__main__":
     unittest.main()

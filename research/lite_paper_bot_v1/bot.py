@@ -32,7 +32,8 @@ KEY_NAMES = ("LITE_PAPER_API_KEY", "LITE_PAPER_API_SECRET")
 PAPER = "https://paper-api.alpaca.markets"
 DATA = "https://data.alpaca.markets"
 SYMBOL = "LITE"
-SHARES = 66  # owner change Sept 28 evening: about $60,000 per trade (paper)
+SHARES = 66  # owner change Sept 28 evening: about $60,000 per trade (paper); now the most shares per buy
+TICKET = Decimal("60000")  # Oct 7 fix: 66 shares grew to $72,762 at $1,100 and hit MAX_DEBIT; buy about $60,000
 TARGET_MULTIPLIER = Decimal("1.02")
 BUY_BUFFER = Decimal("1.001")
 MAX_DEBIT = Decimal("72000")
@@ -151,8 +152,8 @@ class PaperBroker:
         return self._call("GET", DATA, "/v2/stocks/LITE/trades/latest", {"feed": "iex"})["trade"]
 
     def submit_buy(self, qty, limit, client_order_id):
-        if qty != SHARES or limit <= 0 or limit != limit.quantize(CENT) or not client_order_id.startswith(PREFIX):
-            raise ValueError(f"Buy must be exactly {SHARES} LITE shares at a positive cent limit")
+        if not 1 <= qty <= SHARES or limit <= 0 or limit != limit.quantize(CENT) or not client_order_id.startswith(PREFIX):
+            raise ValueError(f"Buy must be 1-{SHARES} LITE shares at a positive cent limit")
         return self._call("POST", PAPER, "/v2/orders", body={
             "symbol": SYMBOL, "qty": str(qty), "side": "buy", "type": "limit", "time_in_force": "day",
             "limit_price": str(limit), "client_order_id": client_order_id, "extended_hours": False})
@@ -269,8 +270,14 @@ def reconcile(broker, state, log, persist=lambda: None):
     log({"type": "TARGET_SELL_REPLACED", "client_order_id": client_order_id, "target": str(target)})
 
 
+def buy_size(limit):
+    """Shares for one buy: about TICKET dollars at the limit price, never more than SHARES (the replay's sizing)."""
+    return min(SHARES, int(TICKET / limit))
+
+
 def enter(broker, state, account, now, sleep, log, persist):
-    """At 10:00:30 ET evaluate the dip rule; if flat, buy SHARES, cancel the rest at 10:05, place the +2% sell."""
+    """At 10:00:30 ET evaluate the dip rule; if flat, buy about $60,000 (at most SHARES), cancel the rest at 10:05,
+    place the +2% sell."""
     today = now().astimezone(NY).date()
     wait = (at(today, DECIDE_AT) - now()).total_seconds()
     if wait > 0:
@@ -302,8 +309,9 @@ def enter(broker, state, account, now, sleep, log, persist):
         log({"type": "NO_FRESH_PRICE", "detail": "No fresh IEX ask or trade within 2% of the 09:55 close"})
         return
     limit = (reference * BUY_BUFFER).quantize(CENT, rounding=ROUND_HALF_UP)
-    debit = limit * SHARES
-    if debit > MAX_DEBIT or D(account["cash"]) < debit * Decimal("1.01"):
+    shares = buy_size(limit)
+    debit = limit * shares
+    if shares < 1 or debit > MAX_DEBIT or D(account["cash"]) < debit * Decimal("1.01"):
         log({"type": "INSUFFICIENT_CASH_OR_CAP", "debit": str(debit), "cash": str(account["cash"])})
         return
     if now() > at(today, LAST_SUBMIT):
@@ -312,7 +320,7 @@ def enter(broker, state, account, now, sleep, log, persist):
     buy_id = f"{PREFIX}{today}-buy"
     state["pending_buy"] = {"date": today.isoformat(), "client_order_id": buy_id}
     persist()
-    order = broker.submit_buy(SHARES, limit, buy_id)
+    order = broker.submit_buy(shares, limit, buy_id)
     log({"type": "BUY_SUBMITTED", "limit": str(limit), "reference": str(reference), "source": source,
          "order_id": order["id"]})
     deadline = at(today, CANCEL_AT)
