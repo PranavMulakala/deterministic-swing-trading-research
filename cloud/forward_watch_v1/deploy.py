@@ -48,7 +48,7 @@ find /opt/forward-watch/research /opt/forward-watch/systemd /opt/forward-watch/D
 install -d -o forward-watch -g forward-watch -m 0700 /opt/forward-watch/outputs /opt/forward-watch/outputs/forward_watch
 install -o root -g root -m 0644 /opt/forward-watch/systemd/*.service /opt/forward-watch/systemd/*.timer /etc/systemd/system/
 systemctl daemon-reload
-systemd-analyze verify /etc/systemd/system/forward-watch-*.service 2>&1 | grep -v '^$' | head -5 || true
+systemd-analyze verify /etc/systemd/system/forward-watch.service 2>&1 | grep -v '^$' | head -5 || true
 cd /tmp && runuser -u forward-watch -- env PYTHONPATH=/opt/forward-watch PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -q """ + " ".join(TESTS) + r""" 2>&1 | tail -1
 """
 
@@ -89,7 +89,7 @@ with tempfile.TemporaryDirectory() as tmp, mock.patch.object(watch, "OUT", Path(
 
 ENABLE = f"""set -euo pipefail
 systemctl enable --now {TIMERS} >/dev/null 2>&1
-systemctl list-timers 'forward-watch-*' --no-pager --no-legend
+systemctl list-timers forward-watch.timer --no-pager --no-legend
 """
 
 

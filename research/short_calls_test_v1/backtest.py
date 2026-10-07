@@ -186,7 +186,8 @@ def main():
            "stress_2016_2019": st, "info": {k: v for k, v in res.items() if k != "main_atm_ask_2pct"},
            "main_call_pnl_by_year": {y: round(v) for y, v in sorted(by_year.items())},
            "stats": {v: dict(a.stats) for v, a in main_accts.items()},
-           "main_trades": main_accts["main_atm_ask_2pct"].trades}
+           "main_trades": main_accts["main_atm_ask_2pct"].trades,
+           "main_curve": [[d, round(v, 2)] for d, v in main_accts["main_atm_ask_2pct"].curve]}
     OUT.write_text(json.dumps(out, indent=1, default=str) + "\n")
     write_manifest(OUT, code=["research/short_calls_test_v1/backtest.py", "research/spy_put_spread_backtest_v1/backtest.py"],
                    data=[str(DATA / str(d.year) / f"{d.isoformat()}.csv.gz") for d in days] + [str(SPY_FILE)],

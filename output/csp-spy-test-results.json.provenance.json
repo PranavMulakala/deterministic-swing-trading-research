@@ -1,7 +1,7 @@
 {
-  "created_utc": "2026-10-05T13:09:38+00:00",
-  "git_commit": "ed4177b72aca3a70888c1e1a258304a516d3098e",
-  "code_uncommitted": false,
+  "created_utc": "2026-10-07T12:52:20+00:00",
+  "git_commit": "6ae1d6b900ff5d4406af0a4a11ff90832893e44a",
+  "code_uncommitted": true,
   "params": {
     "variants": {
       "main_delta30_bid": [
@@ -35,8 +35,8 @@
   "files": {
     "research/csp_spy_test_v1/backtest.py": {
       "kind": "code",
-      "bytes": 10700,
-      "sha256": "5f9d639ad9671d2e3d199fc797fafbdf2884d661a866b3d0aff510b28e5b9340"
+      "bytes": 10802,
+      "sha256": "f0275f023df9dc544ae766cb1447042992f0d117716d5ebe78a94554ad14a5a8"
     },
     "research/spy_put_spread_backtest_v1/backtest.py": {
       "kind": "code",

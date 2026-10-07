@@ -1,7 +1,7 @@
 {
-  "created_utc": "2026-10-07T00:25:25+00:00",
-  "git_commit": "c0414e9abd182cb31c11972823dfd567216e0a96",
-  "code_uncommitted": false,
+  "created_utc": "2026-10-07T12:51:44+00:00",
+  "git_commit": "6ae1d6b900ff5d4406af0a4a11ff90832893e44a",
+  "code_uncommitted": true,
   "params": {
     "variants": {
       "main_atm_ask_2pct": {},
@@ -34,8 +34,8 @@
   "files": {
     "research/short_calls_test_v1/backtest.py": {
       "kind": "code",
-      "bytes": 10992,
-      "sha256": "4da39e577e9b6e276360a022d104179d112f0f2576a9cd23afae18947fb132d9"
+      "bytes": 11087,
+      "sha256": "87afd48aaeae9fe8506b28dac15743a66bbb40518c238b53e72c12320abac5c7"
     },
     "research/spy_put_spread_backtest_v1/backtest.py": {
       "kind": "code",

@@ -194,6 +194,7 @@ def main():
            "data_days": len(days), "spy_with_dividends": bench,
            "results": {name: report(acct, bench, years) for name, acct in accounts.items()}}
     out["verdict_pass"] = out["results"]["main_delta30_bid"]["passes"]
+    out["curve_main_delta30_bid"] = [[d, round(v, 2)] for d, v in accounts["main_delta30_bid"].curve]
     Path(args.output).write_text(json.dumps(out, indent=1, default=str) + "\n")
     data_files = [str(DATA / str(d.year) / f"{d.isoformat()}.csv.gz") for d in days]
     write_manifest(args.output, code=["research/csp_spy_test_v1/backtest.py",
