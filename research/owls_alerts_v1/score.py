@@ -36,7 +36,11 @@ def get_bars(occ, start, end):
     from research.lite_dip_history_v1.run import DATA as ALPACA
     CACHE.mkdir(parents=True, exist_ok=True)
     path = CACHE / f"{occ}.json.gz"
-    if path.exists():
+    now = datetime.now(timezone.utc)
+    live = end[:10] >= (now - timedelta(hours=4)).date().isoformat()  # today or later: clamp, and never cache
+    if live:
+        end = min(end, (now - timedelta(minutes=16)).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    if path.exists() and not live:
         with gzip.open(path, "rt") as f:
             return [tuple(x) for x in json.load(f)]
     rows, token = [], None
@@ -62,8 +66,9 @@ def get_bars(occ, start, end):
         token = page.get("next_page_token")
         if not token:
             break
-    with gzip.open(path, "wt") as f:
-        json.dump(rows, f)
+    if not live:
+        with gzip.open(path, "wt") as f:
+            json.dump(rows, f)
     return rows
 
 
