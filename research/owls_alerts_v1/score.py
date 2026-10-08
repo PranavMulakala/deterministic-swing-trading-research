@@ -44,14 +44,19 @@ def get_bars(occ, start, end):
         q = {"symbols": occ, "timeframe": "1Min", "start": start, "end": end, "limit": 10000}
         if token:
             q["page_token"] = token
+        page = None
         for attempt in range(8):
             try:
                 time.sleep(0.3)
                 page = get(f"{ALPACA}/v1beta1/options/bars?{urllib.parse.urlencode(q)}")
                 break
-            except Exception:
+            except Exception as exc:
+                code = getattr(exc, "code", None)
+                if code and 400 <= code < 500 and code != 429:
+                    page = {}  # contract does not exist (e.g. a guessed expiry): no data
+                    break
                 time.sleep(5 * (attempt + 1))
-        else:
+        if page is None:
             raise RuntimeError("bars failed " + occ)
         rows += [(b["t"][:16], b["o"], b["h"], b["l"], b["c"]) for b in (page.get("bars") or {}).get(occ, [])]
         token = page.get("next_page_token")
