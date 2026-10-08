@@ -1,9 +1,15 @@
 {
-  "note": "Pranav's real Robinhood LITE position, user-reported via app screenshot 2026-10-07 10:05 ET (Plan B buy). Alerts only; nothing here can trade.",
+  "note": "Pranav's real Robinhood LITE position, user-reported via app screenshots: 31.903158 sh @ $1,097.07 (Plan B buy, 2026-10-07 10:05 ET) + 19.110799 sh @ ~$1,046.54 ($20,000, owner's own add, 2026-10-08 ~3:59 PM ET) = 51.013957 sh @ $1,078.14 avg ($55,000). Alerts only; nothing here can trade.",
   "symbol": "LITE",
-  "shares": "31.903158",
-  "average_cost": "1097.07",
+  "shares": "51.013957",
+  "average_cost": "1078.14",
   "levels": [
-    {"id": "target_1119_20261007", "direction": "up", "price": "1119.00", "label": "hit your $1,119 target (about +$700)", "armed_at": "2026-10-07T10:06:00-04:00"}
+    {
+      "id": "target_1119_20261007",
+      "direction": "up",
+      "price": "1119.00",
+      "label": "hit $1,119 (about +$2,084 on all 51.01 shares)",
+      "armed_at": "2026-10-07T10:06:00-04:00"
+    }
   ]
 }

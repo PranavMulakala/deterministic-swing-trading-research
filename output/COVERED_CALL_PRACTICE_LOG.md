@@ -19,6 +19,7 @@
   - about −$19,100 if both stocks fall 20%.
 - **Cash left:** about $7,580. Rolls should be done for a net credit.
 - **Earnings before Nov 13:** both companies report in late October (exact dates not confirmed yet). Decide what to do before each report.
+  - **Checked Oct 8:** neither company has announced its date yet. Estimates: **AMZN ~Thu Oct 29** (Alpha Vantage calendar; Amazon usually announces ~2 weeks ahead), **HOOD ~Mon Nov 2** after the close (Earnings Whispers; Robinhood usually announces ~4 weeks ahead, and its Q1 estimate was off by a week). Both are before the Nov 13 expiry. Re-check around Oct 15.
 
 ## Starting rules (break them freely, but write down why)
 1. Hold to expiration unless one of rules 2–4 applies.
