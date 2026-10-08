@@ -13,6 +13,7 @@ every request. The key is never printed. Finished files are skipped on rerun.
 from __future__ import annotations
 
 import base64
+import http.client
 import csv
 from datetime import date, datetime, time as dtime, timedelta, timezone
 import gzip
@@ -53,7 +54,7 @@ class Databento:
                     time.sleep(min(60, 5 * (attempt + 1)))
                     continue
                 raise RuntimeError(f"HTTP {e.code}: {detail}") from None
-            except OSError:
+            except (OSError, http.client.HTTPException):
                 if attempt == 19:
                     raise
                 time.sleep(min(60, 5 * (attempt + 1)))
