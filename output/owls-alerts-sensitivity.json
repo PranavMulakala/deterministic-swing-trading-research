@@ -1,0 +1,134 @@
+{
+ "conservative": {
+  "ab": {
+   "alerts": 19,
+   "total_$": -1775,
+   "per_alert_$": -93,
+   "win_pct": 37
+  },
+  "eli-alerts": {
+   "alerts": 23,
+   "total_$": -2578,
+   "per_alert_$": -112,
+   "win_pct": 48
+  },
+  "eva": {
+   "alerts": 6,
+   "total_$": -2254,
+   "per_alert_$": -376,
+   "win_pct": 17
+  },
+  "jon-and-kian": {
+   "alerts": 3,
+   "total_$": -1043,
+   "per_alert_$": -348,
+   "win_pct": 0
+  },
+  "muggzone-options": {
+   "alerts": 78,
+   "total_$": -17726,
+   "per_alert_$": -227,
+   "win_pct": 23
+  },
+  "shabs-sky-alerts": {
+   "alerts": 106,
+   "total_$": -45570,
+   "per_alert_$": -430,
+   "win_pct": 22
+  },
+  "tt": {
+   "alerts": 20,
+   "total_$": -4595,
+   "per_alert_$": -230,
+   "win_pct": 35
+  }
+ },
+ "close": {
+  "ab": {
+   "alerts": 19,
+   "total_$": -513,
+   "per_alert_$": -27,
+   "win_pct": 37
+  },
+  "eli-alerts": {
+   "alerts": 23,
+   "total_$": 602,
+   "per_alert_$": 26,
+   "win_pct": 65
+  },
+  "eva": {
+   "alerts": 6,
+   "total_$": -1831,
+   "per_alert_$": -305,
+   "win_pct": 17
+  },
+  "jon-and-kian": {
+   "alerts": 3,
+   "total_$": -1014,
+   "per_alert_$": -338,
+   "win_pct": 0
+  },
+  "muggzone-options": {
+   "alerts": 78,
+   "total_$": -10948,
+   "per_alert_$": -140,
+   "win_pct": 27
+  },
+  "shabs-sky-alerts": {
+   "alerts": 106,
+   "total_$": -33020,
+   "per_alert_$": -312,
+   "win_pct": 25
+  },
+  "tt": {
+   "alerts": 20,
+   "total_$": 1417,
+   "per_alert_$": 71,
+   "win_pct": 55
+  }
+ },
+ "close_no_runners": {
+  "ab": {
+   "alerts": 19,
+   "total_$": 4495,
+   "per_alert_$": 237,
+   "win_pct": 74
+  },
+  "eli-alerts": {
+   "alerts": 23,
+   "total_$": 602,
+   "per_alert_$": 26,
+   "win_pct": 65
+  },
+  "eva": {
+   "alerts": 6,
+   "total_$": -1831,
+   "per_alert_$": -305,
+   "win_pct": 17
+  },
+  "jon-and-kian": {
+   "alerts": 3,
+   "total_$": -510,
+   "per_alert_$": -170,
+   "win_pct": 67
+  },
+  "muggzone-options": {
+   "alerts": 78,
+   "total_$": -5275,
+   "per_alert_$": -68,
+   "win_pct": 41
+  },
+  "shabs-sky-alerts": {
+   "alerts": 106,
+   "total_$": -18148,
+   "per_alert_$": -171,
+   "win_pct": 31
+  },
+  "tt": {
+   "alerts": 20,
+   "total_$": 2251,
+   "per_alert_$": 113,
+   "win_pct": 60
+  }
+ }
+}

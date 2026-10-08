@@ -1,0 +1,115 @@
+{
+ "plan": "output/OWLS_ALERTS_BACKTEST_PLAN_20261008.md",
+ "window": [
+  "2026-09-08",
+  "2026-10-08"
+ ],
+ "events": 886,
+ "positions": 362,
+ "position_outcomes": {
+  "ok": 274,
+  "not_scorable": 17,
+  "no_price_at_entry": 71
+ },
+ "unmatched_exit_messages": 29,
+ "by_analyst": {
+  "ab": {
+   "alerts_scored": 19,
+   "follower_total_$": -1775.1,
+   "follower_$_per_alert": -93.43,
+   "follower_median_$": -234.78,
+   "follower_win_pct": 36.8,
+   "best_$": 1155.33,
+   "worst_$": -994.32,
+   "posted_avg_pct": 75.8,
+   "follower_avg_pct_same_trades": 1.3,
+   "share_with_exit_posted_pct": 26.3,
+   "entry_price_mismatch_dropped": 1,
+   "inferred_expiry": 2
+  },
+  "eli-alerts": {
+   "alerts_scored": 23,
+   "follower_total_$": -2577.5,
+   "follower_$_per_alert": -112.07,
+   "follower_median_$": -20.17,
+   "follower_win_pct": 47.8,
+   "best_$": 636.36,
+   "worst_$": -993.33,
+   "posted_avg_pct": 29.1,
+   "follower_avg_pct_same_trades": -4.9,
+   "share_with_exit_posted_pct": 100.0,
+   "entry_price_mismatch_dropped": 0,
+   "inferred_expiry": 0
+  },
+  "muggzone-options": {
+   "alerts_scored": 78,
+   "follower_total_$": -17726.17,
+   "follower_$_per_alert": -227.26,
+   "follower_median_$": -461.14,
+   "follower_win_pct": 23.1,
+   "best_$": 5720.43,
+   "worst_$": -997.34,
+   "posted_avg_pct": 55.1,
+   "follower_avg_pct_same_trades": 1.7,
+   "share_with_exit_posted_pct": 30.8,
+   "entry_price_mismatch_dropped": 4,
+   "inferred_expiry": 1
+  },
+  "tt": {
+   "alerts_scored": 20,
+   "follower_total_$": -4594.68,
+   "follower_$_per_alert": -229.73,
+   "follower_median_$": -218.45,
+   "follower_win_pct": 35.0,
+   "best_$": 1137.03,
+   "worst_$": -998.46,
+   "posted_avg_pct": 112.1,
+   "follower_avg_pct_same_trades": 23.4,
+   "share_with_exit_posted_pct": 50.0,
+   "entry_price_mismatch_dropped": 0,
+   "inferred_expiry": 0
+  },
+  "jon-and-kian": {
+   "alerts_scored": 3,
+   "follower_total_$": -1043.41,
+   "follower_$_per_alert": -347.8,
+   "follower_median_$": -79.4,
+   "follower_win_pct": 0.0,
+   "best_$": -54.92,
+   "worst_$": -909.09,
+   "posted_avg_pct": 21.8,
+   "follower_avg_pct_same_trades": -6.7,
+   "share_with_exit_posted_pct": 0.0,
+   "entry_price_mismatch_dropped": 0,
+   "inferred_expiry": 0
+  },
+  "eva": {
+   "alerts_scored": 6,
+   "follower_total_$": -2253.82,
+   "follower_$_per_alert": -375.64,
+   "follower_median_$": -305.85,
+   "follower_win_pct": 16.7,
+   "best_$": 297.62,
+   "worst_$": -948.39,
+   "posted_avg_pct": -17.0,
+   "follower_avg_pct_same_trades": -37.6,
+   "share_with_exit_posted_pct": 100.0,
+   "entry_price_mismatch_dropped": 0,
+   "inferred_expiry": 0
+  },
+  "shabs-sky-alerts": {
+   "alerts_scored": 106,
+   "follower_total_$": -45570.33,
+   "follower_$_per_alert": -429.91,
+   "follower_median_$": -967.12,
+   "follower_win_pct": 21.7,
+   "best_$": 8888.89,
+   "worst_$": -996.18,
+   "posted_avg_pct": 142.1,
+   "follower_avg_pct_same_trades": 48.9,
+   "share_with_exit_posted_pct": 16.0,
+   "entry_price_mismatch_dropped": 14,
+   "inferred_expiry": 6
+  }
+ }
+}
