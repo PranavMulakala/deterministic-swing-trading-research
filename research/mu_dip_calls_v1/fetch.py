@@ -71,9 +71,17 @@ class Databento:
 
 
 def alpaca(path):
+    """Paced (about 3 requests a second) with retries on Alpaca's 429 rate limit."""
     from research.forward_watch_v1.watch import get
     from research.lite_dip_history_v1.run import DATA as ALPACA
-    return get(ALPACA + path)
+    for attempt in range(10):
+        time.sleep(0.35)
+        try:
+            return get(ALPACA + path)
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 9:
+                raise
+            time.sleep(10 * (attempt + 1))
 
 
 def daily():
