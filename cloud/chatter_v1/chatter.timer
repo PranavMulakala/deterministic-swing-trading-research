@@ -1,0 +1,10 @@
+[Unit]
+Description=LITE chatter: email at 16:15 New York time, Monday to Friday
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 16:15:00 America/New_York
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target
