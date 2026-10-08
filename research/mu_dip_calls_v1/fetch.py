@@ -13,6 +13,8 @@ every request. The key is never printed. Finished files are skipped on rerun.
 from __future__ import annotations
 
 import base64
+from concurrent.futures import ThreadPoolExecutor
+import threading
 import http.client
 import csv
 from datetime import date, datetime, time as dtime, timedelta, timezone
@@ -39,6 +41,7 @@ class Databento:
         self.key = api_key()
         self.auth = "Basic " + base64.b64encode((self.key + ":").encode()).decode()
         self.spent = 0.0
+        self.lock = threading.Lock()
 
     def _post(self, path, params):
         body = urllib.parse.urlencode(params).encode()
@@ -63,11 +66,12 @@ class Databento:
         p = {"dataset": "OPRA.PILLAR", "symbols": symbols, "stype_in": stype, "schema": "cbbo-1m",
              "start": start.astimezone(timezone.utc).isoformat(), "end": end.astimezone(timezone.utc).isoformat()}
         cost = float(self._post("metadata.get_cost", p))
-        if self.spent + cost > BUDGET:
-            raise SystemExit(f"Budget guard: ${self.spent:.3f} spent, next request ${cost:.4f} would pass ${BUDGET}")
+        with self.lock:
+            if self.spent + cost > BUDGET:
+                raise SystemExit(f"Budget guard: ${self.spent:.3f} spent, next request ${cost:.4f} would pass ${BUDGET}")
+            self.spent += cost  # reserved before the download so parallel workers cannot overshoot
         text = self._post("timeseries.get_range", {**p, "encoding": "csv", "compression": "none", "pretty_px": "true",
                                                    "pretty_ts": "true", "map_symbols": "true"})
-        self.spent += cost
         return list(csv.DictReader(io.StringIO(text)))
 
 
@@ -155,10 +159,12 @@ def fetch_chain(db, day, spot):
             continue
         keep.append([info[0].isoformat(), f"{info[2]:g}", f"{bid:.2f}", f"{ask:.2f}", r.get("ts_recv", "")])
     out.parent.mkdir(parents=True, exist_ok=True)
-    with gzip.open(out, "wt", newline="") as f:
+    tmp = out.with_name(out.name + ".tmp")
+    with gzip.open(tmp, "wt", newline="") as f:
         w = csv.writer(f)
         w.writerow(["expiration", "strike", "bid", "ask", "ts_recv"])
         w.writerows(keep)
+    tmp.replace(out)  # atomic: a stopped run never leaves a half-written file behind
 
 
 def fetch_hold(db, day, exp, strike):
@@ -170,7 +176,8 @@ def fetch_hold(db, day, exp, strike):
     end = datetime.combine(exp, dtime(16, 0), NY)
     rows = db.get(sym, "raw_symbol", start, end)
     out.parent.mkdir(parents=True, exist_ok=True)
-    with gzip.open(out, "wt", newline="") as f:
+    tmp = out.with_name(out.name + ".tmp")
+    with gzip.open(tmp, "wt", newline="") as f:
         w = csv.writer(f)
         w.writerow(["ts", "bid", "ask"])
         for r in rows:
@@ -178,6 +185,7 @@ def fetch_hold(db, day, exp, strike):
                 w.writerow([r["ts_recv"], f"{float(r.get('bid_px_00') or 0):.2f}", f"{float(r.get('ask_px_00') or 0):.2f}"])
             except ValueError:
                 continue
+    tmp.replace(out)
 
 
 def main():
@@ -186,7 +194,8 @@ def main():
     print(json.dumps({"signal_days": sum(m["signal"] for m in days.values()), "ordinary_days": sum(m["baseline"] for m in days.values()),
                       "missing_10am_price": sum(m["spot10"] is None for m in days.values())}), flush=True)
     db = Databento()
-    for n, day in enumerate(sorted(days), 1):
+
+    def work(day):
         m = days[day]
         fetch_chain(db, day, m["spot10"])
         chain = load_chain(day)
@@ -194,8 +203,12 @@ def main():
             pick = pick_contract(chain, date.fromisoformat(day), m["spot10"], dte)
             if pick and pick[0].isoformat() <= LAST:
                 fetch_hold(db, day, pick[0], pick[1])
-        if n % 25 == 0:
-            print(json.dumps({"days_done": n, "of": len(days), "databento_dollars_this_run": round(db.spent, 4)}), flush=True)
+        return day
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        for n, _ in enumerate(pool.map(work, sorted(days)), 1):
+            if n % 25 == 0:
+                print(json.dumps({"days_done": n, "of": len(days), "databento_dollars_this_run": round(db.spent, 4)}), flush=True)
     print(json.dumps({"done": True, "databento_dollars_this_run": round(db.spent, 4)}))
 
 
