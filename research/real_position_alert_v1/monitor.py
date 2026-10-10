@@ -1,10 +1,11 @@
-"""Price-only email alerts for Pranav's real LITE position. Never trades.
+"""Price-only email alerts for Pranav's real positions (LITE, plus any level with its own "symbol"). Never trades.
 
 One-shot run (launchd calls this every two minutes):
 PYTHONPATH=src:. .venv/bin/python -m research.real_position_alert_v1.monitor
 Add --test-email to send one delivery test, or --status to print levels only.
 
-Each run reads the market clock and LITE IEX one-minute bars through the
+Each run reads the market clock and IEX one-minute bars (LITE by default; a level may name
+another symbol whose shares/average live under "positions") through the
 allowlisted GET-only client. A level emails once, when a bar at or after its
 arming time trades through it; a level with `requires` arms only after that
 other level has fired. Email uses Resend's test sender, which delivers only to
@@ -74,15 +75,21 @@ def bar_time(bar):
     return datetime.fromisoformat(bar["t"].replace("Z", "+00:00"))
 
 
-def fetch_bars(client, start, end):
+def bar_path(symbol):
+    if not re.fullmatch(r"[A-Z]{1,5}", symbol):
+        raise ValueError("Bad symbol")
+    return f"/v2/stocks/{symbol}/bars"
+
+
+def fetch_bars(client, start, end, symbol="LITE"):
     rows, token = [], None
     for _ in range(MAX_PAGES):
         query = {"feed": "iex", "adjustment": "raw", "timeframe": "1Min", "sort": "asc", "limit": 1000,
                  "start": start.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                  "end": end.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                  **({"page_token": token} if token else {})}
-        reply = client._request("GET", BAR_PATH, data_api=True, query=query)
-        if not isinstance(reply, dict) or reply.get("symbol") != "LITE" or not isinstance(reply.get("bars"), list):
+        reply = client._request("GET", bar_path(symbol), data_api=True, query=query)
+        if not isinstance(reply, dict) or reply.get("symbol") != symbol or not isinstance(reply.get("bars"), list):
             raise ValueError("Wrong bar response")
         rows.extend(reply["bars"])
         token = reply.get("next_page_token")
@@ -99,6 +106,16 @@ def position_line(config, price):
             f"({(price / average - 1) * 100:+.2f}%).")
 
 
+def symbol_of(config, level):
+    return level.get("symbol", config.get("symbol", "LITE"))
+
+
+def position_of(config, symbol):
+    if symbol == config.get("symbol", "LITE"):
+        return config
+    return config["positions"][symbol]
+
+
 def run(client, config, state, now, key, opener=None):
     """Check once; returns the updated state and the ids of levels emailed this run."""
     clock = client._request("GET", "/v2/clock")
@@ -106,16 +123,25 @@ def run(client, config, state, now, key, opener=None):
         return state, []
     fired = state.setdefault("fired", {})
     pending = [level for level in config["levels"] if level["id"] not in fired]
-    if not pending:
-        return state, []
+    sent = []
+    for symbol in sorted({symbol_of(config, level) for level in pending}):
+        levels = [level for level in pending if symbol_of(config, level) == symbol]
+        sent += check_symbol(client, config, state, now, key, opener, symbol, levels)
+    return state, sent
+
+
+def check_symbol(client, config, state, now, key, opener, symbol, pending):
+    fired = state["fired"]
+    default = symbol == config.get("symbol", "LITE")
+    by_symbol = state.setdefault("checked_through_by_symbol", {})
     session_open = datetime.combine(now.astimezone(NY).date(), time(9, 30), NY)
     earliest = min(datetime.fromisoformat(level["armed_at"]) for level in pending)
-    checked = state.get("checked_through")
+    checked = by_symbol.get(symbol) or (state.get("checked_through") if default else None)
     start = max(earliest, datetime.fromisoformat(checked) if checked else earliest,
                 session_open - timedelta(days=7))
-    bars = [bar for bar in fetch_bars(client, start, now) if bar_time(bar) >= start]
+    bars = [bar for bar in fetch_bars(client, start, now, symbol) if bar_time(bar) >= start]
     if not bars:
-        return state, []
+        return []
     sent = []
     for level in pending:
         requires = level.get("requires")
@@ -131,12 +157,12 @@ def run(client, config, state, now, key, opener=None):
             continue
         when = bar_time(hit).astimezone(NY)
         last = D(bars[-1]["c"])
-        subject = f"LITE {level['label']}: traded {'at/below' if level['direction'] == 'down' else 'at/above'} ${price:,.2f}"
+        subject = f"{symbol} {level['label']}: traded {'at/below' if level['direction'] == 'down' else 'at/above'} ${price:,.2f}"
         body = "\n".join((
-            f"LITE traded {'at or below' if level['direction'] == 'down' else 'at or above'} ${price:,.2f} "
+            f"{symbol} traded {'at or below' if level['direction'] == 'down' else 'at or above'} ${price:,.2f} "
             f"in the minute starting {when:%H:%M} ET on {when:%a %b %d}.",
             f"Latest IEX price: ${last:,.2f} ({bar_time(bars[-1]).astimezone(NY):%H:%M} ET).",
-            position_line(config, last),
+            position_line(position_of(config, symbol), last),
             "",
             "Informational only. No order was placed; this alert cannot trade.",
             "Prices come from the IEX exchange feed and can differ slightly from Robinhood's.",
@@ -148,8 +174,10 @@ def run(client, config, state, now, key, opener=None):
             continue
         fired[level["id"]] = {"bar_time": hit["t"], "sent_at": now.isoformat(), "email_id": email_id}
         sent.append(level["id"])
-    state["checked_through"] = bars[-1]["t"]
-    return state, sent
+    by_symbol[symbol] = bars[-1]["t"]
+    if default:
+        state["checked_through"] = bars[-1]["t"]
+    return sent
 
 
 def save_state(state, path=STATE):
@@ -169,7 +197,7 @@ def main():
     now = datetime.now(timezone.utc)
     if args.status:
         for level in config["levels"]:
-            print(f"{level['id']:>13} {level['direction']:>4} ${D(level['price']):,.2f}  "
+            print(f"{symbol_of(config, level):>4} {level['id']:>22} {level['direction']:>4} ${D(level['price']):,.2f}  "
                   f"{'FIRED ' + state['fired'][level['id']]['bar_time'] if level['id'] in state.get('fired', {}) else 'waiting'}")
         return
     if args.test_email:

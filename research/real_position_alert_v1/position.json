@@ -1,5 +1,5 @@
 {
-  "note": "Pranav's real Robinhood LITE position, user-reported via app screenshots: 31.903158 sh @ $1,097.07 (Plan B buy, 2026-10-07 10:05 ET) + 19.110799 sh @ ~$1,046.54 ($20,000, owner's own add, 2026-10-08 ~3:59 PM ET) = 51.013957 sh @ $1,078.14 avg ($55,000). Alerts only; nothing here can trade.",
+  "note": "Pranav's real Robinhood LITE position, user-reported via app screenshots: 31.903158 sh @ $1,097.07 (Plan B buy, 2026-10-07 10:05 ET) + 19.110799 sh @ ~$1,046.54 ($20,000, owner's own add, 2026-10-08 ~3:59 PM ET) = 51.013957 sh @ $1,078.14 avg ($55,000). Alerts only; nothing here can trade. Oct 10: owner confirmed still holding all 51.013957 LITE; re-armed $1,119 up, $1,078 break-even and $1,020 down; added MU $1,000 (owner: 50.96 sh @ $1,079.08).",
   "symbol": "LITE",
   "shares": "51.013957",
   "average_cost": "1078.14",
@@ -10,6 +10,41 @@
       "price": "1119.00",
       "label": "hit $1,119 (about +$2,084 on all 51.01 shares)",
       "armed_at": "2026-10-07T10:06:00-04:00"
+    },
+    {
+      "id": "recross_1119_20261010",
+      "direction": "up",
+      "price": "1119.00",
+      "label": "back above $1,119 (about +$2,084 on all 51.01 shares)",
+      "armed_at": "2026-10-10T20:00:00-04:00"
+    },
+    {
+      "id": "breakeven_1078_20261010",
+      "direction": "down",
+      "price": "1078.14",
+      "label": "down to break-even $1,078.14",
+      "armed_at": "2026-10-10T20:00:00-04:00"
+    },
+    {
+      "id": "down_1020_20261010",
+      "direction": "down",
+      "price": "1020.00",
+      "label": "down to $1,020 (about -$2,968)",
+      "armed_at": "2026-10-10T20:00:00-04:00"
+    },
+    {
+      "id": "mu_1000_20261010",
+      "symbol": "MU",
+      "direction": "down",
+      "price": "1000.00",
+      "label": "down to $1,000, Joey's hedge line (about -$4,029)",
+      "armed_at": "2026-10-10T20:00:00-04:00"
     }
-  ]
+  ],
+  "positions": {
+    "MU": {
+      "shares": "50.96",
+      "average_cost": "1079.08"
+    }
+  }
 }

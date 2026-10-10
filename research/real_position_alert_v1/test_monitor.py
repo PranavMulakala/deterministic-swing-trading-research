@@ -33,8 +33,10 @@ class FakeClient:
         assert method == "GET", "mutation attempted"
         if path == "/v2/clock":
             return {"is_open": self.is_open}
-        if path == monitor.BAR_PATH and data_api:
-            return {"symbol": "LITE", "bars": self.bars, "next_page_token": None}
+        if path.startswith("/v2/stocks/") and data_api:
+            symbol = path.split("/")[3]
+            bars = self.bars.get(symbol, []) if isinstance(self.bars, dict) else self.bars
+            return {"symbol": symbol, "bars": bars, "next_page_token": None}
         raise AssertionError("unexpected endpoint")
 
 
@@ -96,6 +98,24 @@ class AlertTests(unittest.TestCase):
         self.assertEqual(state["last_send_error"]["error"], "OSError")
         state, sent = monitor.run(FakeClient([bar(10, 892, 899)]), config(), state, NOW, "re_test", FakeOpener())
         self.assertEqual(sent, ["minus_500"])
+
+    def test_second_symbol_uses_its_own_bars_and_position(self):
+        cfg = config()
+        cfg["positions"] = {"MU": {"shares": "50.96", "average_cost": "1079.08"}}
+        cfg["levels"].append({"id": "mu_1000", "symbol": "MU", "direction": "down", "price": "1000.00",
+                              "label": "down to $1,000", "armed_at": ARMED})
+        mail = FakeOpener()
+        bars = {"LITE": [bar(10, 900, 905)], "MU": [bar(10, 999, 1010, 1001)]}
+        state, sent = monitor.run(FakeClient(bars), cfg, {}, NOW, "re_test", mail)
+        self.assertEqual(sent, ["mu_1000"])
+        self.assertTrue(mail.requests[0]["subject"].startswith("MU down to $1,000"))
+        self.assertIn("50.96 shares (average $1,079.08)", mail.requests[0]["text"])
+        self.assertEqual(state["checked_through_by_symbol"]["MU"], "2026-09-28T14:10:00Z")
+        self.assertEqual(state["checked_through"], "2026-09-28T14:10:00Z")  # LITE, legacy key kept
+
+    def test_bad_symbol_refused(self):
+        with self.assertRaises(ValueError):
+            monitor.bar_path("../v2/orders")
 
     def test_resend_key_requires_private_single_valid_key(self):
         with tempfile.TemporaryDirectory() as folder:
