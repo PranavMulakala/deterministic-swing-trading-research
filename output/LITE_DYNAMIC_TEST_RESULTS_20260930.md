@@ -95,3 +95,6 @@ Profit means realized profit plus the value of any position still open at the en
   - Moves and the day's high and low cluster in the first and last 30 minutes.
   - No time slot is reliably up or down: none survives correction, and the strongest flip sign between halves.
   - On 291 Plan B signal days, the low came after 10:00 on 76% of them, at unpredictable times.
+- **Wheel only on stocks likely to go sideways** (owner, Oct 11, after test #33). Not a LITE idea, but parked here so it's reviewed with the others.
+  - **What #33 showed:** the wheel beat holding on stocks that went sideways or slowly down: RKLB +$12.8k vs −$4.8k holding; PRAX +$3.7k vs −$4.7k. It lost $8–13k on stocks that fell hard (RIVN, CVNA, HL) and trailed on the big risers (LITE, STX).
+  - **What a fair test needs:** a rule, using only data known in advance, that predicts "sideways" (e.g. weak trend plus high option prices). Then a pre-declared test on a fresh window. Every "predict the next move" rule so far has failed, so expect the same bar.
