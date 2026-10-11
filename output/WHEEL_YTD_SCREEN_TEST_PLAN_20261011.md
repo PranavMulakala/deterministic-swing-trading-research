@@ -68,3 +68,15 @@
 - **Unit tests:** the stock list loads exactly as frozen above; the 2026 window; earnings-skip on by default; the settings reach the engine unchanged.
 - **An independent verifier** (adapting `research/wheel_lite_mu_v1/verify.py`) that recomputes 12 random contracts from the raw quotes and each account's final value.
 - **Provenance manifest.**
+
+## Correction before any result (Oct 11, 2026, after the code check and before the paid run)
+- **Stock #6 "RNA":** on Dec 31, 2025 the symbol was **Avidity Biosciences**, not Atrium Therapeutics. Alpaca now shows Atrium's name under the old symbol.
+- **The deal:** Novartis bought Avidity for $72.00 cash plus 0.1 Atrium share per share, effective Feb 27, 2026.
+- **The list stays frozen.** Avidity is what the screen picked that day.
+- **How the account is treated:**
+  - It wheels until Feb 25, the last day RNA options traded, with any open option valued at its last mid.
+  - Shares convert on Feb 27 at $72 plus 0.1 × Atrium's close. After that the account holds T-bills.
+  - Holding RNA gets the same treatment.
+  - This makes RNA close to a cash account, which helps C2/C3 and drags C1. This is disclosed and will be shown separately.
+- **Earnings timing:** each filing's acceptance time is read from its EDGAR index page, because SEC API time bases differ by company. The session rule is unchanged from test #32.
+- **First Majestic (AG):** files 6-K, not 8-K. A 6-K whose headline says "Financial Results" counts as an earnings release.
