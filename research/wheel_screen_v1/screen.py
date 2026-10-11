@@ -58,6 +58,10 @@ def metrics(d, as_of):
             "est_weekly_fee_per_50k": round(50_000 * 0.03 * vol)}
 
 
+def latest_date():
+    return load("SPY")["date"][-1] if (DAILY / "SPY.json.gz").exists() else load("AAPL")["date"][-1]
+
+
 def passes(m):
     return (m and m["price"] <= 500 and m["dollar_vol_m"] >= 200 and m["above_50_200"] and m["ytd_pct"] >= 30
             and m["from_high_pct"] >= -15)
@@ -106,7 +110,7 @@ def main():
     ap.add_argument("--start", default="2026-10-12")
     ap.add_argument("--end", default="2026-10-31")
     a = ap.parse_args()
-    as_of = "2026-12-31" if a.as_of == "latest" else a.as_of
+    as_of = latest_date() if a.as_of == "latest" else a.as_of
     rows, n = screen(as_of, a.top)
     if a.options:
         for r in rows:
