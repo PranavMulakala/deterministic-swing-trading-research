@@ -29,6 +29,15 @@ class ScoreTests(unittest.TestCase):
         self.assertAlmostEqual(r["pnl"]["tp50"], 500.0, places=1)       # 4.30 >= 2.80 * 1.5
         self.assertAlmostEqual(r["pnl"]["tp100"], r["pnl"]["hold"], places=6)  # never doubled
 
+    def test_new_rules_his_rule_and_stops(self):
+        r = score_alert(A, now=NOW, bars=BARS, stake=300)
+        self.assertAlmostEqual(r["pnl"]["first_update"], 300 * (3.90 / 2.80 - 1), places=1)
+        self.assertAlmostEqual(r["pnl"]["his_rule"], 300 * ((0.75 * 3.90 + 0.25 * 3.00) / 2.80 - 1), places=1)
+        self.assertAlmostEqual(r["pnl"]["tp20_sl30"], 60.0, places=1)   # 4.30 high >= 2.80 * 1.2 before any -30%
+        down = [BARS[0], BARS[1], bar("2026-10-09T15:01:00Z", 2.85, 1.90, 2.00), bar("2026-10-09T15:02:00Z", 4.0, 3.9, 4.0)]
+        r2 = score_alert(A, now=NOW, bars=down, stake=300)
+        self.assertAlmostEqual(r2["pnl"]["tp30_sl30"], -90.0, places=1)  # stop hit before the later spike
+
     def test_expired_uses_intrinsic_value_and_no_update_means_held(self):
         a = dict(A, updates=[], expiry="2026-10-09")
         r = score_alert(a, now=NOW, bars=BARS, expiry_close=206.0)
