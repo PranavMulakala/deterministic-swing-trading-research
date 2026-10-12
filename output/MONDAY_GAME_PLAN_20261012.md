@@ -3,7 +3,7 @@
 ## ✅ Already set up for you
 - **Robinhood options:** Level 2 is on, which covers buying calls and puts.
 - **Watchlists:** **Demon alerts** (SPY, QQQ, TSLA, NVDA, MSFT, COIN, QCOM) and **Edward alerts** (SPY, PLTR, GLD, SPCX, SCSC, MCRI, JBLU).
-- **Discord:** #demon-alerts and Edward's #trade-ideas both send **All Messages**.
+- **Discord (updated Oct 12):** only Edward's trade channels notify, at **All Messages**: VIP #alerts and #swings-and-leaps, and free #trade-ideas. Both Edward servers are otherwise set to Nothing. Every other server, including Optionality/Demon, is muted until turned back on, and so are the Sapphire, MEE6 and Verification bot DMs.
   - **On your phone:** Settings → Discord → Notifications on, and allow it through Focus / Do Not Disturb.
 - **Price alerts emailed to you:**
 
