@@ -1,0 +1,28 @@
+[Unit]
+Description=EdwardAlerts cloud relay: order details + paper copies (...U036) from the iPhone Shortcut's ntfy inbox; never real money
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+Type=simple
+User=edward-relay
+Group=edward-relay
+WorkingDirectory=/opt/edward-relay
+Environment=PYTHONPATH=/opt/edward-relay
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -u -m research.edward_live_v1.cloud run
+Restart=always
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/opt/edward-relay/outputs
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target
