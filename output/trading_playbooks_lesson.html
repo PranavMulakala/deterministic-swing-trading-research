@@ -1,0 +1,264 @@
+<title>Pranav's Trading Playbooks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column (~68ch) with wide "playbook cards" that break out to a 2-col grid on desktop; a sticky jump bar of section chips. */
+:root{
+  --paper:#f5f7fa; --card:#ffffff; --ink:#14213a; --muted:#566178; --line:#d9dfe9;
+  --accent:#0b7a6f; --accent-soft:#e1f2ef;
+  --good:#1d7a3a; --good-bg:#e3f4e8; --warn:#9a6200; --warn-bg:#fbf0d9; --bad:#b0322a; --bad-bg:#fbe5e3; --wait:#45539a; --wait-bg:#e8eafb;
+  --display:"Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f1522; --card:#172033; --ink:#e7ecf5; --muted:#a2adc2; --line:#2a3550;
+  --accent:#4cc2b3; --accent-soft:#16352f;
+  --good:#6fd18c; --good-bg:#173323; --warn:#f0bd5c; --warn-bg:#352a12; --bad:#ff8f86; --bad-bg:#3a1b19; --wait:#a9b4ff; --wait-bg:#232a52; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1522; --card:#172033; --ink:#e7ecf5; --muted:#a2adc2; --line:#2a3550;
+  --accent:#4cc2b3; --accent-soft:#16352f;
+  --good:#6fd18c; --good-bg:#173323; --warn:#f0bd5c; --warn-bg:#352a12; --bad:#ff8f86; --bad-bg:#3a1b19; --wait:#a9b4ff; --wait-bg:#232a52; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+.col{max-width:68ch}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.01em}
+h2{font-size:1.65rem;margin-top:2.6rem}
+h3{font-size:1.2rem}
+p{margin:.6rem 0}
+.lede{font-size:1.15rem;color:var(--muted)}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding-block:10px;margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+nav.jump a{font-size:.85rem;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:var(--card)}
+nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--accent);outline:none}
+.engines{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:14px}
+.engine{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.engine .big{font-family:var(--display);font-size:1.25rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+.tbl{overflow-x:auto;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);font-size:.9rem;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+dl.words{display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:8px 16px;margin-top:12px}
+dl.words dt{font-weight:700}
+dl.words dd{margin:0;color:var(--ink)}
+@media (max-width:560px){dl.words{grid-template-columns:1fr}dl.words dd{margin-bottom:8px}}
+.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+.book{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.book h3{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.book .kid{font-style:italic;color:var(--muted)}
+.book ul{margin:.2rem 0;padding-left:1.1rem}
+.book li{margin:.2rem 0}
+.pill{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.p-good{background:var(--good-bg);color:var(--good)} .p-warn{background:var(--warn-bg);color:var(--warn)}
+.p-bad{background:var(--bad-bg);color:var(--bad)} .p-wait{background:var(--wait-bg);color:var(--wait)}
+.stat{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--line);padding-top:6px;font-size:.92rem}
+.stat span:last-child{font-family:var(--mono);text-align:right}
+.callout{background:var(--accent-soft);border-radius:10px;padding:14px 16px;margin-top:14px}
+.steps{counter-reset:s;list-style:none;padding:0;margin-top:12px;display:grid;gap:10px}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px 12px 52px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--card);font-family:var(--display);display:grid;place-items:center;font-size:.9rem}
+.foot{color:var(--muted);font-size:.85rem;margin-top:3rem;border-top:1px solid var(--line);padding-top:12px}
+a{color:var(--accent)}
+@media (prefers-reduced-motion:no-preference){nav.jump a{transition:border-color .15s}}
+</style>
+
+<div class="wrap">
+  <div class="col">
+    <div class="eyebrow">Lesson 1 · October 10, 2026</div>
+    <h1>Pranav's Trading Playbooks</h1>
+    <p class="lede">Every strategy you've seen fits one of three engines. This page explains them in plain words, shows what we actually tested, and lays out each playbook with your own numbers.</p>
+  </div>
+
+  <nav class="jump" aria-label="Sections">
+    <a href="#engines">3 engines</a><a href="#words">Words</a><a href="#money">Your money</a><a href="#playbooks">Playbooks</a><a href="#reliable">Most reliable</a><a href="#lite">LITE plan</a><a href="#mu">MU plan</a><a href="#start">How to start</a>
+  </nav>
+
+  <section id="engines">
+    <h2>The 3 ways money gets made</h2>
+    <p class="col">Think of a lemonade stand on your street.</p>
+    <div class="engines">
+      <div class="engine"><div class="eyebrow">Engine 1</div><div class="big">Own the stand</div><p>You buy part of a business. If it grows, your part is worth more. That's buying shares and holding them.</p><p class="num">Your LITE and MU shares</p></div>
+      <div class="engine"><div class="eyebrow">Engine 2</div><div class="big">Sell rain insurance</div><p>Other stands pay you a small fee every week to promise you'll help if it storms. Most weeks you keep the fee. Some weeks it storms hard and you pay out a lot.</p><p class="num">Selling puts and calls · the wheel</p></div>
+      <div class="engine"><div class="eyebrow">Engine 3</div><div class="big">Guess tomorrow's weather</div><p>You bet on what happens next: up or down, today or this week. Being right a little more than half the time isn't enough after costs.</p><p class="num">Day trading · 0DTE · chart patterns · alerts</p></div>
+    </div>
+    <p class="col">Most "$20k in options" screenshots are Engine 3 with borrowed money. The big wins get posted and the losses don't. In our OWLS check, the analyst posted +142% while a follower copying him got +49%.</p>
+  </section>
+
+  <section id="words" class="col">
+    <h2>Words you need (8 of them)</h2>
+    <dl class="words">
+      <dt>Share</dt><dd>A tiny piece of a company. 1 LITE share ≈ <span class="num">$1,103</span>.</dd>
+      <dt>Option</dt><dd>A contract about <b>100 shares</b>. It's a promise, not the shares themselves.</dd>
+      <dt>Call</dt><dd>The right to <b>buy</b> 100 shares at a set price. If you <i>sell</i> one, you promise to sell your shares at that price.</dd>
+      <dt>Put</dt><dd>The right to <b>sell</b> 100 shares at a set price. If you <i>sell</i> one, you promise to buy 100 shares at that price if asked.</dd>
+      <dt>Strike</dt><dd>The set price in the promise.</dd>
+      <dt>Expiration</dt><dd>The day the promise ends. "Weekly" = about 7 days.</dd>
+      <dt>Premium</dt><dd>The fee paid for the promise. When you sell, you get it right away and keep it.</dd>
+      <dt>Delta</dt><dd>Roughly the chance the promise gets used. A 0.30-delta put ≈ a 30% chance you end up buying the shares.</dd>
+    </dl>
+  </section>
+
+  <section id="money">
+    <h2>Your money right now</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>What</th><th>Amount</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Cash and other money (not counting LITE/MU)</td><td class="num">$186,000</td><td>your number, Oct 10</td></tr>
+        <tr><td>Buying power in the trading account</td><td class="num">$77,400</td><td>what you can spend today</td></tr>
+        <tr><td>LITE: 51.01 shares @ $1,078.14</td><td class="num">$56,290</td><td>+$1,290 at Friday's $1,103.43 · each 1% ≈ $563</td></tr>
+        <tr><td>MU: 50.96 shares @ $1,079.08</td><td class="num">$52,444</td><td>−$2,546 at Friday's $1,029.13 · each 1% ≈ $524</td></tr>
+      </tbody></table></div>
+    <p class="col"><b>$1,000 a week = $52,000 a year.</b> On $186,000 that's about 28% a year; on $77,400 it's about 67% a year. The goal is a <i>year that averages</i> $1,000 a week, not $1,000 every single week.</p>
+  </section>
+
+  <section id="playbooks">
+    <h2>The playbooks</h2>
+    <p class="col">Each card: what you do, the kid version, what our tests found, and a grade. Grades come only from tests we wrote down before seeing results.</p>
+    <div class="books">
+
+      <article class="book">
+        <h3>A · Plan B on LITE <span class="pill p-good">Best $ record</span></h3>
+        <p class="kid">"When LITE dips in the morning, buy it, and sell when it's up 2%."</p>
+        <ul>
+          <li>At 10:00 AM, if LITE fell at least 1% below its opening price and is still below it, buy.</li>
+          <li>Sell at <b>+2%</b>. No stop-loss. One position at a time.</li>
+        </ul>
+        <div class="stat"><span>History, $60k a buy, 2025 – Sep 2026</span><span>+$125,568 · $1,365/wk</span></div>
+        <div class="stat"><span>Weeks at $1,000+</span><span>52 of 92</span></div>
+        <div class="stat"><span>2022–2024</span><span>+$61,756</span></div>
+        <div class="stat"><span>All 144 buys eventually hit +2%</span><span>84% within 5 days</span></div>
+        <div class="stat"><span>Worst dip before recovering</span><span>−45.6%, 86 days</span></div>
+        <div class="stat"><span>Same rule on 100 other stocks (test #15)</span><span>lost money</span></div>
+        <p><b>The catch:</b> it works because LITE kept rising. If LITE has a long bad stretch, a buy can sit −30% or worse for months.</p>
+      </article>
+
+      <article class="book">
+        <h3>B · Sell puts on LITE or MU <span class="pill p-warn">$1k+/wk, but deep drops</span></h3>
+        <p class="kid">"Get paid each week to promise you'll buy LITE cheaper."</p>
+        <ul>
+          <li>Sell 1 put about 1 week out at about 0.30 delta, so the strike is ~6% under the price.</li>
+          <li>LITE example: strike ≈ <span class="num">$1,040</span>, fee ≈ <span class="num">$2,000–3,000</span> (my estimate from LITE's 98% volatility; real quotes will differ).</li>
+          <li>You need <b>≈ $104,000 cash</b> set aside for 1 contract. MU: ≈ $98,000.</li>
+          <li>If the price ends below the strike, you buy 100 shares, then sell calls on them (that's "the wheel").</li>
+        </ul>
+        <div class="stat"><span>Your buying power</span><span>$77,400 → not enough for 1 yet</span></div>
+        <div class="stat"><span>Risk</span><span>a 30% drop ≈ −$31,000</span></div>
+        <div class="stat"><span>Test #29: Reddit rules, 5 big stocks, $200k, 2020–2026</span><span>$200k → $310,791 · $313/wk</span></div>
+        <div class="stat"><span>"Premiums collected" in that test</span><span>$1,129,357 (!)</span></div>
+        <div class="stat"><span>Losses on the shares</span><span>−$868,444</span></div>
+        <div class="stat"><span>Just holding the same 5 stocks</span><span>$880,291</span></div>
+        <div class="stat"><span>Same, but calls never below what you paid</span><span>$654,818 · $1,285/wk</span></div>
+        <div class="stat"><span><b>Test #32: LITE + MU, $100k each, calls never below cost</b></span><span>$200k → $921,832</span></div>
+        <div class="stat"><span>Average / median week</span><span>$2,039 / $1,154</span></div>
+        <div class="stat"><span>2020–2022 (before the boom)</span><span>−$38,215</span></div>
+        <div class="stat"><span>Worst month · worst drop</span><span>−$180,091 · LITE −62%</span></div>
+        <div class="stat"><span>Just holding LITE + MU</span><span>$3,208,339</span></div>
+        <p><b>The catch:</b> the fee is big because the risk is big. On LITE/MU the wheel spent most weeks <b>stuck holding shares</b> (no call allowed below cost), so its money mostly came from LITE and MU soaring in 2025–26, not from the fees. Before the boom it lost money for 3 years.</p>
+      </article>
+
+      <article class="book">
+        <h3>C · Covered calls on shares you own <span class="pill p-warn">Needs 100 shares</span></h3>
+        <p class="kid">"Rent out your shares for a week; if the price jumps past the line, you sell them at the line."</p>
+        <ul>
+          <li>You own 100 shares and sell 1 call above the price.</li>
+          <li>You have 51 LITE and 51 MU, so you can't sell one yet on either.</li>
+          <li>Practicing now on paper: AMZN 200 sh and HOOD 400 sh (account U036).</li>
+        </ul>
+        <div class="stat"><span>Tests #25/#26 (index, monthly)</span><span>the calls lost money</span></div>
+        <p><b>The catch:</b> on stocks that shoot up, the call caps your gain. The Reddit poster's META call at $600, with META at $718, gave up about $11,800.</p>
+      </article>
+
+      <article class="book">
+        <h3>D · MU calls on gap-down mornings <span class="pill p-warn">Passed, but thin</span></h3>
+        <p class="kid">"When MU opens 2% lower, buy a 1-week call and sell at double or at the end."</p>
+        <div class="stat"><span>Test #27, 2020–2026, $1,000 a trade</span><span>181 trades · +$16,638</span></div>
+        <div class="stat"><span>Average per trade</span><span>+$92 (ordinary mornings −$49)</span></div>
+        <div class="stat"><span>Bad stretch</span><span>2024: −$6,513 · 9 losses in a row</span></div>
+        <p><b>The catch:</b> the edge is small and could be luck (about a 1-in-9 chance). It's ready for a paper test; it isn't a $1,000-a-week engine by itself.</p>
+      </article>
+
+      <article class="book">
+        <h3>E · Ride the trend, long term <span class="pill p-good">Most reliable test</span></h3>
+        <p class="kid">"Stay in while the market is above its 200-day average; step out when it falls below."</p>
+        <div class="stat"><span>Test #14, 1927–2026</span><span>about 17%/yr</span></div>
+        <div class="stat"><span>Since 2000</span><span>about 8.6%/yr</span></div>
+        <div class="stat"><span>Worst drop</span><span>about −60%</span></div>
+        <p><b>The catch:</b> it's slow and boring. It's for growing money over years, not weekly income.</p>
+      </article>
+
+      <article class="book">
+        <h3>F · Things that didn't work <span class="pill p-bad">Failed</span></h3>
+        <ul>
+          <li><b>Chart setups</b> (CRT sweeps, fence bar, RFK, opening-range breakout, the Reddit VWAP rule): small or no edge after costs.</li>
+          <li><b>Weekly and 0DTE call buying</b>, and <b>copying Discord alerts</b>: lost money.</li>
+          <li><b>"Find the next hot stock"</b> rules (breakouts, big drops, momentum, sales speed-ups): winners only show up in hindsight.</li>
+        </ul>
+        <div class="stat"><span>VWAP rule (test #30, today)</span><span>−$5,674 on $100k</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="reliable" class="col">
+    <h2>Which playbook is most reliable?</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Rank</th><th>Playbook</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>E · Trend rule</td><td>Passed every check over 99 years. Slow; not a weekly-income tool.</td></tr>
+        <tr><td class="num">2</td><td>A · Plan B on LITE</td><td>Best weekly dollars ($1,365/wk since 2025), but only on LITE, with deep dips along the way. Paper bot is checking it live until late November.</td></tr>
+        <tr><td class="num">3</td><td>D · MU gap-down calls</td><td>Passed, but the evidence is thin.</td></tr>
+        <tr><td class="num">4</td><td>B/C · The wheel</td><td>Test #29 (Reddit rules, 5 stocks): failed, $313/wk. Test #32 (LITE/MU, calls never below cost): <b>$2,039/wk average</b>, but lost money 2020–22 and fell 44–62% at its worst. Its money mostly came from holding shares while LITE/MU soared. Test #33 ($50k each on 10 "bullish movers" screened on Dec 31, 2025, YTD 2026): <b>+$120/wk on average</b>; LITE best at +$867/wk, four of ten lost $8–13k.</td></tr>
+      </tbody></table></div>
+    <div class="callout"><b>Short answer:</b> for your $1,000-a-week goal, the strongest record so far is <b>Plan B on LITE</b>. The most <i>trustworthy</i> evidence is the trend rule, but it doesn't pay weekly. The wheel on LITE/MU (test #32) averaged $2,039 a week, but mostly by holding shares through LITE/MU's boom, with a −$180k month and three losing years first. It's a way to <i>own</i> LITE/MU while getting paid a little, not a separate money machine.</div>
+  </section>
+
+  <section id="lite" class="col">
+    <h2>The LITE plan, in plain words</h2>
+    <p>You hold <b>51.01 shares at $1,078.14</b> (31.9 from a Plan B buy, plus 19.1 you added on Oct 8). Here's where each choice lands:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>LITE price</th><th>Your result</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td class="num">$1,099.70</td><td class="num">+$1,100</td><td>Plan B's +2% on your new average. Friday's close ($1,103.43) is already past it.</td></tr>
+        <tr><td class="num">$1,119.00</td><td class="num">+$2,084</td><td>Plan B's original target for the first buy · <b>email alert armed</b></td></tr>
+        <tr><td class="num">$1,078.14</td><td class="num">$0</td><td>Break-even · <b>email alert armed</b></td></tr>
+        <tr><td class="num">$1,020.00</td><td class="num">−$2,968</td><td><b>Email alert armed</b></td></tr>
+        <tr><td class="num">Nov 5</td><td>—</td><td>LITE earnings. Last year: +23.6% that day. Moves of ±15% or more happen.</td></tr>
+      </tbody></table></div>
+    <p><b>With LITE options allowed</b>, two new tools open up later:</p>
+    <ul>
+      <li><b>Selling puts</b> (playbook B): needs about $104k cash for 1 contract.</li>
+      <li><b>Covered calls</b> (playbook C): needs 100 shares (about $110k of LITE).</li>
+    </ul>
+    <p>Neither fits today's $77.4k buying power with 51 shares. Test #32 shows how they would have done.</p>
+  </section>
+
+  <section id="mu" class="col">
+    <h2>The MU plan: 3–4 years, or until January?</h2>
+    <p>These are facts to decide with; the choice is yours.</p>
+    <ul>
+      <li><b>Taxes:</b> you bought on Oct 2, 2026. Sell after <b>Oct 2, 2027</b> and the gain is long-term (lower tax). Sell in January 2027 and it's short-term (taxed like salary), but it falls in the 2027 tax year.</li>
+      <li><b>Business:</b> sales are up +379% from a year earlier, mostly from <b>higher memory prices</b> in a shortage. The new factories (Micron, Samsung, SK hynix, China) mostly start producing in <b>late 2027–2028</b>.</li>
+      <li><b>History:</b> in the last two memory booms (2018, 2022), the stock peaked <b>while Micron was still reporting records</b>, then fell about 50%. On your shares, −50% ≈ <span class="num">−$27,500</span>.</li>
+      <li><b>What that means for timing:</b> a hold until January or mid-2027 sits <i>before</i> the new factories arrive. A 3–4-year hold would likely ride through the next downturn as well as the boom.</li>
+      <li><b>December:</b> Micron usually reports its next quarter in mid/late December. If you meant a buyback announcement, tell me where you saw it and I'll check it.</li>
+    </ul>
+    <div class="callout">If you hold long-term, decide <b>now</b> what you'll do at −30% (≈ −$16,500) and −50%. Deciding in the moment is where most people go wrong.</div>
+  </section>
+
+  <section id="start" class="col">
+    <h2>How to start (instead of 30 ideas at once)</h2>
+    <ol class="steps">
+      <li><b>Pick one playbook for 8 weeks.</b> Plan B, or the wheel if tonight's tests hold up.</li>
+      <li><b>Write the rules on one card:</b> when you get in, when you take profit, what you do if it drops, how much per trade.</li>
+      <li><b>Paper first, or small with real money.</b> Account U036 is ready for option practice.</li>
+      <li><b>Log dollars every week:</b> what it made, and the worst moment.</li>
+      <li><b>Sunday check-in, 15 minutes:</b> did you follow the rules? New ideas go on a "later" list.</li>
+    </ol>
+  </section>
+
+  <p class="foot">Research and education, not financial advice. You place and decide every real trade. Numbers come from pre-declared tests in your research repo (tests #14, #15, #25–#30) and the LITE Plan B replay; the option fees shown are estimates. Updated Oct 11 with tests #29 and #32 (both independently verified).</p>
+</div>

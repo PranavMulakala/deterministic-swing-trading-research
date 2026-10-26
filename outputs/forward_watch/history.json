@@ -1,0 +1,84 @@
+{
+ "2026-10-07": {
+  "rows": [
+   {
+    "idea": "Joey's Barchart 'Strong Buy' screen (9 stocks)",
+    "source": "Joey email, Oct 7 (screen as of Oct 6)",
+    "since": "2026-10-06",
+    "status": "9 stocks",
+    "note": "best HPE +3.2%, worst CRWD -4.3%",
+    "value": 10002.09,
+    "profit": 2.09,
+    "spy_profit": -22.21
+   },
+   {
+    "idea": "META golden cross (Barchart top pick)",
+    "source": "Joey email, Oct 7",
+    "since": "2026-10-06",
+    "status": "open",
+    "note": "META 738.88 -> 724.67",
+    "value": 9807.68,
+    "profit": -192.32,
+    "spy_profit": -22.21
+   },
+   {
+    "idea": "MU 'still a top stock to buy' (Barchart note)",
+    "source": "Joey forward, Oct 6 premarket",
+    "since": "2026-10-06",
+    "status": "open",
+    "note": "MU 1064.48 -> 1087.37",
+    "value": 10214.99,
+    "profit": 214.99,
+    "spy_profit": -10.15
+   },
+   {
+    "idea": "AppLovin RFK call-out (stop $266.84, 1:1 target $297.10)",
+    "source": "GAnderson X video, Oct 5",
+    "since": "2026-10-05",
+    "status": "open",
+    "note": "APP 281.97 -> 276.99",
+    "value": 9823.39,
+    "profit": -176.61,
+    "spy_profit": 32.65
+   },
+   {
+    "idea": "Broadcom RFK example (stop $343.29, 1:1 target $366.99)",
+    "source": "GAnderson X video, Oct 5",
+    "since": "2026-10-02",
+    "status": "target hit (gap) 2026-10-06 at 367.03",
+    "note": "AVGO 355.14 -> sold 367.03 (now 374.05)",
+    "value": 10334.8,
+    "profit": 334.8,
+    "spy_profit": 100.31
+   },
+   {
+    "idea": "SPY $790 call expiring Oct 14 (the $7M flow)",
+    "source": "kiantrades / Unusual Whales, Oct 6",
+    "since": "2026-10-06",
+    "status": "open, last 0.56",
+    "note": "",
+    "value": 5233.64,
+    "profit": -4766.36,
+    "spy_profit": -22.21
+   },
+   {
+    "idea": "'9 waves' AI stock list (about 48 stocks)",
+    "source": "Haywhykomo X post, Oct 6",
+    "since": "2026-10-06",
+    "status": "48 stocks",
+    "note": "best SNDK +4.0%, worst UUUU -8.6%",
+    "value": 9754.66,
+    "profit": -245.34,
+    "spy_profit": -22.21
+   }
+  ],
+  "totals": {
+   "ideas": 7,
+   "invested": 70000.0,
+   "profit": -4828.75,
+   "spy_profit": 33.97,
+   "beating_spy": 3,
+   "in_profit": 3
+  }
+ }
+}

@@ -1,0 +1,605 @@
+{
+ "vt_us_weight_est": 0.623397709290764,
+ "vt_proxy_tracking_error": 0.0024538551042490196,
+ "expense_ratios": {
+  "VT": 0.0006,
+  "VTI": 0.0003,
+  "VXUS": 0.0005,
+  "VOO": 0.0003,
+  "QQQM": 0.0015,
+  "VUG": 0.0003,
+  "SCHG": 0.0004
+ },
+ "dividend_yields": {
+  "VT": 0.0155,
+  "VTI": 0.0101,
+  "VXUS": 0.0251,
+  "VOO": 0.0098,
+  "QQQM": 0.0044,
+  "VUG": 0.0035
+ },
+ "blended_er": {
+  "VT": 0.0006,
+  "70/30": 0.00035999999999999997,
+  "80/20": 0.00033999999999999997,
+  "VOO": 0.0003,
+  "VTI": 0.0003,
+  "VT+20% QQQM": 0.00078,
+  "QQQM": 0.0015,
+  "VT mix DIY": 0.0003754
+ },
+ "backtests": {
+  "post_covid": {
+   "VT": {
+    "CAGR": 0.1254751250817454,
+    "Volatility": 0.16360051285058114,
+    "Max drawdown": -0.2552213667723877,
+    "Worst 12m": -0.20829583039635624,
+    "Ending balance": 88104.79665957442,
+    "Contributed": 51158.25
+   },
+   "70/30": {
+    "CAGR": 0.13243602336507676,
+    "Volatility": 0.165436664416274,
+    "Max drawdown": -0.25362843563619963,
+    "Worst 12m": -0.20066033406435968,
+    "Ending balance": 89713.98629308952,
+    "Contributed": 51158.25
+   },
+   "80/20": {
+    "CAGR": 0.13728336067032076,
+    "Volatility": 0.16758029331051635,
+    "Max drawdown": -0.2517959063369436,
+    "Worst 12m": -0.1935982073838598,
+    "Ending balance": 90737.14400710145,
+    "Contributed": 51158.25
+   },
+   "VOO": {
+    "CAGR": 0.15294709423006214,
+    "Volatility": 0.1687662763156789,
+    "Max drawdown": -0.2391469949780035,
+    "Worst 12m": -0.1818576588626143,
+    "Ending balance": 95230.40243102468,
+    "Contributed": 51158.25
+   },
+   "VTI": {
+    "CAGR": 0.14665921147324723,
+    "Volatility": 0.17324936026961377,
+    "Max drawdown": -0.24813084773843197,
+    "Worst 12m": -0.19511622020596076,
+    "Ending balance": 92722.63238822418,
+    "Contributed": 51158.25
+   },
+   "VT+20% QQQM": {
+    "CAGR": 0.14445686521706458,
+    "Volatility": 0.16836873153799617,
+    "Max drawdown": -0.26902663572243624,
+    "Worst 12m": -0.21552000805947824,
+    "Ending balance": 93195.01945246066,
+    "Contributed": 51158.25
+   },
+   "QQQM": {
+    "CAGR": 0.21100520034214743,
+    "Volatility": 0.20915684664639145,
+    "Max drawdown": -0.3251894510049633,
+    "Worst 12m": -0.3251894510049633,
+    "Ending balance": 113897.24765045324,
+    "Contributed": 51158.25
+   },
+   "VT mix DIY": {
+    "CAGR": 0.12863087636113835,
+    "Volatility": 0.1641184208898438,
+    "Max drawdown": -0.2550394831966267,
+    "Worst 12m": -0.20613268663051265,
+    "Ending balance": 88913.2826796508,
+    "Contributed": 51158.25
+   },
+   "_window": "2020-01 to 2026-09 (81 months) [MAIN: post-COVID, actual funds (QQQM before Nov 2020 = QQQ)]"
+  },
+  "since_vt_2008": {
+   "VT": {
+    "CAGR": 0.09024429381662968,
+    "Volatility": 0.16601983482682092,
+    "Max drawdown": -0.43424353785799563,
+    "Worst 12m": -0.20829583039635624,
+    "Ending balance": 407534.05270488304,
+    "Contributed": 127592.83333333333
+   },
+   "70/30": {
+    "CAGR": 0.10341341779190838,
+    "Volatility": 0.1606278018606641,
+    "Max drawdown": -0.4320647906029179,
+    "Worst 12m": -0.20066033406435912,
+    "Ending balance": 462115.7586736653,
+    "Contributed": 127592.83333333333
+   },
+   "80/20": {
+    "CAGR": 0.1098043221785927,
+    "Volatility": 0.16021047745807443,
+    "Max drawdown": -0.42906945112236194,
+    "Worst 12m": -0.19864024572255423,
+    "Ending balance": 493937.9387208027,
+    "Contributed": 127592.83333333333
+   },
+   "VOO": {
+    "CAGR": 0.1249106258620738,
+    "Volatility": 0.15584383999534202,
+    "Max drawdown": -0.4178326443021697,
+    "Worst 12m": -0.1983070577937952,
+    "Ending balance": 591136.1790075864,
+    "Contributed": 127592.83333333333
+   },
+   "VTI": {
+    "CAGR": 0.12235686131768353,
+    "Volatility": 0.1607952156415715,
+    "Max drawdown": -0.4231012515733116,
+    "Worst 12m": -0.19793499992385688,
+    "Ending balance": 563999.543201903,
+    "Contributed": 127592.83333333333
+   },
+   "VT+20% QQQM": {
+    "CAGR": 0.10833665775872703,
+    "Volatility": 0.16627039320282447,
+    "Max drawdown": -0.4269192005392348,
+    "Worst 12m": -0.21552000805947813,
+    "Ending balance": 497059.2308576328,
+    "Contributed": 127592.83333333333
+   },
+   "QQQM": {
+    "CAGR": 0.1763323170194493,
+    "Volatility": 0.18696852464455882,
+    "Max drawdown": -0.4016561590466109,
+    "Worst 12m": -0.32518945100496344,
+    "Ending balance": 1072951.16272005,
+    "Contributed": 127592.83333333333
+   },
+   "VT mix DIY": {
+    "CAGR": 0.09843987524184494,
+    "Volatility": 0.16127570267250754,
+    "Max drawdown": -0.4343764355105497,
+    "Worst 12m": -0.20613268663051243,
+    "Ending balance": 438981.34553298407,
+    "Contributed": 127592.83333333333
+   },
+   "_window": "2008-08 to 2026-09 (218 months) [stress: since VT launch, incl. 2008 crash; older classes before each ETF existed]"
+  },
+  "long_2000": {
+   "VT": {
+    "CAGR": 0.07255519272196098,
+    "Volatility": 0.1550937059484032,
+    "Max drawdown": -0.5376276455650634,
+    "Worst 12m": -0.4643620772494482,
+    "Ending balance": 861301.1554572543,
+    "Contributed": 185058.25
+   },
+   "70/30": {
+    "CAGR": 0.07544617703991219,
+    "Volatility": 0.1545862219569044,
+    "Max drawdown": -0.5319499625537327,
+    "Worst 12m": -0.4580766329016889,
+    "Ending balance": 918814.2708848325,
+    "Contributed": 185058.25
+   },
+   "80/20": {
+    "CAGR": 0.07845653898150418,
+    "Volatility": 0.15440490450997718,
+    "Max drawdown": -0.5241747370464173,
+    "Worst 12m": -0.4498512183158698,
+    "Ending balance": 985674.8603065636,
+    "Contributed": 185058.25
+   },
+   "VOO": {
+    "CAGR": 0.08304663619545716,
+    "Volatility": 0.15142851552105163,
+    "Max drawdown": -0.5091217154274894,
+    "Worst 12m": -0.4327316912999688,
+    "Ending balance": 1152692.616784722,
+    "Contributed": 185058.25
+   },
+   "VTI": {
+    "CAGR": 0.08420639585683376,
+    "Volatility": 0.1554105701258693,
+    "Max drawdown": -0.5083878300178517,
+    "Worst 12m": -0.43326276764932004,
+    "Ending balance": 1130514.2827854042,
+    "Contributed": 185058.25
+   },
+   "VT+20% QQQM": {
+    "CAGR": 0.07746695635783718,
+    "Volatility": 0.16346486380841385,
+    "Max drawdown": -0.5445635495042319,
+    "Worst 12m": -0.4438383641515369,
+    "Ending balance": 1062349.2661495402,
+    "Contributed": 185058.25
+   },
+   "QQQM": {
+    "CAGR": 0.0888528280017884,
+    "Volatility": 0.2287256984029959,
+    "Max drawdown": -0.8105242381341067,
+    "Worst 12m": -0.6732836774906454,
+    "Ending balance": 2305734.344900365,
+    "Contributed": 185058.25
+   },
+   "VT mix DIY": {
+    "CAGR": 0.07306615459429189,
+    "Volatility": 0.15504115328782572,
+    "Max drawdown": -0.5378845705067224,
+    "Worst 12m": -0.46437897766991054,
+    "Ending balance": 869781.1161644205,
+    "Contributed": 185058.25
+   },
+   "_window": "2000-01 to 2026-09 (321 months) [deep stress: 2000-2026; VT row = today's mix proxy]"
+  }
+ },
+ "monte_carlo": {
+  "bootstrap": {
+   "VT": {
+    "P10 @55": 241151.61645963628,
+    "Median @55": 560128.7679245127,
+    "P90 @55": 1361848.5576474483,
+    "Median worst drop": -0.45647110801106633,
+    "P(worse than VT at 55)": 0.0
+   },
+   "70/30": {
+    "P10 @55": 253010.91601999992,
+    "Median @55": 590580.6444207428,
+    "P90 @55": 1432163.0024767665,
+    "Median worst drop": -0.45045542016147677,
+    "P(worse than VT at 55)": 0.031
+   },
+   "80/20": {
+    "P10 @55": 266408.05963374866,
+    "Median @55": 624686.1078208839,
+    "P90 @55": 1508558.583251726,
+    "Median worst drop": -0.4437940676540343,
+    "P(worse than VT at 55)": 0.0416
+   },
+   "VOO": {
+    "P10 @55": 294189.96048887743,
+    "Median @55": 682662.5193533059,
+    "P90 @55": 1600642.8290957166,
+    "Median worst drop": -0.42691070389605196,
+    "P(worse than VT at 55)": 0.1226
+   },
+   "VTI": {
+    "P10 @55": 296583.0302094108,
+    "Median @55": 699586.5322959109,
+    "P90 @55": 1687907.3945321408,
+    "Median worst drop": -0.43242057274693757,
+    "P(worse than VT at 55)": 0.0482
+   },
+   "VT+20% QQQM": {
+    "P10 @55": 244555.34046173026,
+    "Median @55": 616817.6964238391,
+    "P90 @55": 1599147.976843743,
+    "Median worst drop": -0.469765823622097,
+    "P(worse than VT at 55)": 0.2066
+   },
+   "QQQM": {
+    "P10 @55": 205359.94501558098,
+    "Median @55": 817004.2052558282,
+    "P90 @55": 3222295.724988065,
+    "Median worst drop": -0.6438898594866611,
+    "P(worse than VT at 55)": 0.2741
+   },
+   "VT mix DIY": {
+    "P10 @55": 242080.9780413021,
+    "Median @55": 562733.8728669627,
+    "P90 @55": 1368524.7034521431,
+    "Median worst drop": -0.4563143256200021,
+    "P(worse than VT at 55)": 0.0
+   }
+  },
+  "cma": {
+   "VT": {
+    "P10 @55": 242648.4114012432,
+    "Median @55": 564168.3393657772,
+    "P90 @55": 1372653.470494174,
+    "Median worst drop": -0.4561785816126319,
+    "P(worse than VT at 55)": 0.0
+   },
+   "70/30": {
+    "P10 @55": 242268.3412809821,
+    "Median @55": 561310.2660061768,
+    "P90 @55": 1353464.1948818876,
+    "Median worst drop": -0.452239177530003,
+    "P(worse than VT at 55)": 0.6222
+   },
+   "80/20": {
+    "P10 @55": 239256.071896443,
+    "Median @55": 550232.4141594109,
+    "P90 @55": 1306435.1835676515,
+    "Median worst drop": -0.44786173695942166,
+    "P(worse than VT at 55)": 0.6659
+   },
+   "VOO": {
+    "P10 @55": 232748.18350452345,
+    "Median @55": 520126.4222687498,
+    "P90 @55": 1186411.5660635387,
+    "Median worst drop": -0.43616241775883197,
+    "P(worse than VT at 55)": 0.7085
+   },
+   "VTI": {
+    "P10 @55": 231962.71003786096,
+    "Median @55": 529296.5086163469,
+    "P90 @55": 1237648.2980816797,
+    "Median worst drop": -0.44132819691198194,
+    "P(worse than VT at 55)": 0.6981
+   },
+   "VT+20% QQQM": {
+    "P10 @55": 230820.97339041837,
+    "Median @55": 575589.2976169402,
+    "P90 @55": 1480196.4664981158,
+    "Median worst drop": -0.4718000022020014,
+    "P(worse than VT at 55)": 0.425
+   },
+   "QQQM": {
+    "P10 @55": 154444.9554337406,
+    "Median @55": 561254.8360529824,
+    "P90 @55": 2097026.080264422,
+    "Median worst drop": -0.6537824101873224,
+    "P(worse than VT at 55)": 0.4997
+   },
+   "VT mix DIY": {
+    "P10 @55": 243659.04895480198,
+    "Median @55": 566635.9975931597,
+    "P90 @55": 1380074.1933721805,
+    "Median worst drop": -0.4560616073339678,
+    "P(worse than VT at 55)": 0.0
+   }
+  }
+ },
+ "household": {
+  "no MU | VT": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 0.0,
+   "taxable index $": 78028.91,
+   "intl % of stocks": 0.21451636180269462,
+   "info-tech % of stocks": 0.5039107288788414,
+   "LITE % of stocks (look-through)": 0.3157634915862664,
+   "MU % of stocks (look-through)": 0.0066041119611560594,
+   "LITE+MU % of total assets": 0.27604163316979013
+  },
+  "no MU | 70/30": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 0.0,
+   "taxable index $": 78028.91,
+   "intl % of stocks": 0.21144799183711827,
+   "info-tech % of stocks": 0.5045857702712682,
+   "LITE % of stocks (look-through)": 0.31576655995623193,
+   "MU % of stocks (look-through)": 0.006648910162653474,
+   "LITE+MU % of total assets": 0.27608262105571746
+  },
+  "no MU | 80/20": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 0.0,
+   "taxable index $": 78028.91,
+   "intl % of stocks": 0.20744240670752584,
+   "info-tech % of stocks": 0.5054669989997785,
+   "LITE % of stocks (look-through)": 0.3157705655413615,
+   "MU % of stocks (look-through)": 0.006707391705545524,
+   "LITE+MU % of total assets": 0.2761361284450499
+  },
+  "no MU | VOO": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 0.0,
+   "taxable index $": 78028.91,
+   "intl % of stocks": 0.1994312364483409,
+   "info-tech % of stocks": 0.5083109644417891,
+   "LITE % of stocks (look-through)": 0.3157825822967503,
+   "MU % of stocks (look-through)": 0.006892449738532695,
+   "LITE+MU % of total assets": 0.27630488251909846
+  },
+  "no MU | VTI": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 0.0,
+   "taxable index $": 78028.91,
+   "intl % of stocks": 0.1994312364483409,
+   "info-tech % of stocks": 0.5072294564567992,
+   "LITE % of stocks (look-through)": 0.31577857671162074,
+   "MU % of stocks (look-through)": 0.006824354791329624,
+   "LITE+MU % of total assets": 0.2762431432237149
+  },
+  "no MU | VT+20% QQQM": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 0.0,
+   "taxable index $": 78028.91,
+   "intl % of stocks": 0.2114993367318239,
+   "info-tech % of stocks": 0.5063930100432679,
+   "LITE % of stocks (look-through)": 0.3157865365369852,
+   "MU % of stocks (look-through)": 0.006941369358676941,
+   "LITE+MU % of total assets": 0.2763501581194083
+  },
+  "no MU | QQQM": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 0.0,
+   "taxable index $": 78028.91,
+   "intl % of stocks": 0.1994312364483409,
+   "info-tech % of stocks": 0.5163221347009741,
+   "LITE % of stocks (look-through)": 0.31587871633986053,
+   "MU % of stocks (look-through)": 0.008290398948760465,
+   "LITE+MU % of total assets": 0.277584257917881
+  },
+  "MU held | VT": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 53292.193199999994,
+   "taxable index $": 24736.71680000001,
+   "intl % of stocks": 0.1071928743188895,
+   "info-tech % of stocks": 0.7600561190068562,
+   "LITE % of stocks (look-through)": 0.31551307011547086,
+   "MU % of stocks (look-through)": 0.3606929167668915,
+   "LITE+MU % of total assets": 0.5790315246449319
+  },
+  "MU held | 70/30": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 53292.193199999994,
+   "taxable index $": 24736.71680000001,
+   "intl % of stocks": 0.10412450435331316,
+   "info-tech % of stocks": 0.760731160399283,
+   "LITE % of stocks (look-through)": 0.31551613848543636,
+   "MU % of stocks (look-through)": 0.3607377149683889,
+   "LITE+MU % of total assets": 0.5790725125308592
+  },
+  "MU held | 80/20": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 53292.193199999994,
+   "taxable index $": 24736.71680000001,
+   "intl % of stocks": 0.1001189192237207,
+   "info-tech % of stocks": 0.7616123891277934,
+   "LITE % of stocks (look-through)": 0.315520144070566,
+   "MU % of stocks (look-through)": 0.360796196511281,
+   "LITE+MU % of total assets": 0.5791260199201917
+  },
+  "MU held | VOO": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 53292.193199999994,
+   "taxable index $": 24736.71680000001,
+   "intl % of stocks": 0.09210774896453579,
+   "info-tech % of stocks": 0.764456354569804,
+   "LITE % of stocks (look-through)": 0.31553216082595476,
+   "MU % of stocks (look-through)": 0.36098125454426816,
+   "LITE+MU % of total assets": 0.5792947739942403
+  },
+  "MU held | VTI": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 53292.193199999994,
+   "taxable index $": 24736.71680000001,
+   "intl % of stocks": 0.09210774896453579,
+   "info-tech % of stocks": 0.763374846584814,
+   "LITE % of stocks (look-through)": 0.31552815524082517,
+   "MU % of stocks (look-through)": 0.3609131595970651,
+   "LITE+MU % of total assets": 0.5792330346988568
+  },
+  "MU held | VT+20% QQQM": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 53292.193199999994,
+   "taxable index $": 24736.71680000001,
+   "intl % of stocks": 0.10417584924801876,
+   "info-tech % of stocks": 0.7625384001712828,
+   "LITE % of stocks (look-through)": 0.31553611506618967,
+   "MU % of stocks (look-through)": 0.3610301741644124,
+   "LITE+MU % of total assets": 0.5793400495945501
+  },
+  "MU held | QQQM": {
+   "total_assets": 173967.0,
+   "equity": 148967.0,
+   "LITE $": 46971.090000000004,
+   "LITE shares": 41.4426416093171,
+   "MU $": 53292.193199999994,
+   "taxable index $": 24736.71680000001,
+   "intl % of stocks": 0.09210774896453579,
+   "info-tech % of stocks": 0.772467524828989,
+   "LITE % of stocks (look-through)": 0.31562829486906496,
+   "MU % of stocks (look-through)": 0.3623792037544959,
+   "LITE+MU % of total assets": 0.5805741493930228
+  }
+ },
+ "correlations": {
+  "since 2016-01": {
+   "LITE": {
+    "VTI": 0.35,
+    "VXUS": 0.27,
+    "VT": 0.33,
+    "QQQ": 0.37,
+    "VUG": 0.32
+   },
+   "MU": {
+    "VTI": 0.49,
+    "VXUS": 0.48,
+    "VT": 0.5,
+    "QQQ": 0.53,
+    "VUG": 0.47
+   }
+  },
+  "since 2020-01": {
+   "LITE": {
+    "VTI": 0.33,
+    "VXUS": 0.28,
+    "VT": 0.33,
+    "QQQ": 0.31,
+    "VUG": 0.29
+   },
+   "MU": {
+    "VTI": 0.48,
+    "VXUS": 0.5,
+    "VT": 0.51,
+    "QQQ": 0.53,
+    "VUG": 0.45
+   }
+  }
+ },
+ "quotes": {
+  "LITE": 1133.4,
+  "MU": 1045.56,
+  "VT": 160.7,
+  "VTI": 382.54,
+  "VXUS": 85.8,
+  "VOO": 716.2
+ },
+ "sources": {
+  "VTI": {
+   "VTI": 303,
+   "VTSMX": 12,
+   "VTSAX": 6
+  },
+  "VXUS": {
+   "VXUS": 187,
+   "VGTSX": 134
+  },
+  "VOO": {
+   "VOO": 191,
+   "VFIAX": 118,
+   "VFINX": 12
+  },
+  "VT": {
+   "VT": 218
+  },
+  "QQQM": {
+   "QQQ": 251,
+   "QQQM": 70
+  },
+  "VUG": {
+   "VUG": 271,
+   "VIGRX": 50
+  }
+ }
+}

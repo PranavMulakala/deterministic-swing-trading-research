@@ -4,10 +4,13 @@ Flow: Edward posts -> Discord push on your iPhone -> a Shortcut automation (Noti
 "EdwardAlerts") does two things:
   1. a Pushover Critical Alert straight from the phone (rings through Do Not Disturb; never depends on this server);
   2. POSTs the notification to a private ntfy.sh inbox topic.
-This service (always on, personal DigitalOcean server; a streaming subscription, so no open ports) reads the inbox,
-places the paper copy in ...U036 (research/edward_live_v1/copier.py) and sends ONE quiet Pushover follow-up with the
-order and the paper fill, plus a link that opens the stock in the Robinhood app. His full exits ("stopped out",
-"sell all") close the paper copy. A 4:05 PM ET weekday note sums up the day, which doubles as a heartbeat.
+This service (always on, personal DigitalOcean server; a streaming subscription, so no open ports) reads the inbox.
+For an entry it first rings the phone (Pushover priority 1, through Do Not Disturb) with the $300 order and a button
+that opens the stock in the Robinhood app, before any broker call. It then places the paper copy in ...U036
+(research/edward_live_v1/copier.py) and files the result silently in the Pushover app, so the alert stays on top.
+On iOS a plain tap opens Pushover; press and hold the alert for its "Open URL" button. Robinhood's app links cover
+only /stocks/<ticker>, so expiry, strike and the limit order stay manual taps. His full exits ("stopped out",
+"sell all") close the paper copy (one quiet note). A 4:05 PM ET weekday note sums up the day and doubles as a heartbeat.
 
 Inbox message (the Shortcut's Text action, one item per line):
     EDW1 <inbox key>
@@ -36,8 +39,8 @@ import urllib.request
 
 from research.edward_live_v1 import notify
 from research.edward_live_v1.copier import Alpaca, Copier, et
-from research.edward_live_v1.parse import TARGET, parse, push_text, ticket
-from research.edward_live_v1.relay import OUT, load, save, write_env
+from research.edward_live_v1.parse import parse, push_text, ticket
+from research.edward_live_v1.relay import LATE_MIN, OUT, load, save, write_env
 
 EVENTS, STATE, CARD = OUT / "cloud_events.jsonl", OUT / "cloud_state.json", OUT / "SHORTCUT_CARD.md"
 NTFY = "https://ntfy.sh"
@@ -64,34 +67,37 @@ def label_of(title, subtitle):
 
 
 def handle_inbox(msg, copier, now, push=notify.push):
-    """One key-checked inbox message -> paper action + at most one quiet follow-up push. Returns the log record."""
+    """One key-checked inbox message -> phone pushes + paper action. Returns the log record.
+
+    Entries ring first (your order + a Robinhood button), then the paper copy; exits get one quiet note."""
     posted = datetime.fromtimestamp(msg["time"], timezone.utc)
     label = label_of(msg["title"], msg["subtitle"])
     text = AUTHOR.sub("", msg["body"]) or AUTHOR.sub("", msg["subtitle"])
     ev = parse(text, et(posted).date())
     rec = {"at": now.isoformat(), "posted": posted.isoformat(), "channel": label, "msg_id": msg["id"],
            "author": msg["title"], **ev}
-    lines, result = [], None
+    sym = ev.get("underlying")
+    link = {"url": f"https://robinhood.com/stocks/{sym}", "url_title": f"Open {sym} in Robinhood"} if sym else {}
+    title, message, _ = push_text(ev, label)
+    title = ("TEST " if msg["title"].startswith("TEST") else "") + "📋 " + title.split(" ", 1)[1]
     if ev["kind"] == "entry":
-        t = ticket(ev["price"])
-        lines.append(t["line"])
-        if t["contracts_at_his_price"]:
-            lines.append(f"Then sell GTC at your fill × {TARGET:g}.")
+        late = (now - posted).total_seconds() > LATE_MIN * 60
+        loud = not late and ticket(ev["price"])["contracts_at_his_price"] > 0  # nothing to buy or too old: no ring
+        rec["pushed"] = push(("(late) " if late else "") + title, message, priority=1 if loud else -1, **link)
+    result = None
     try:
         if copier is not None and ev["kind"] == "entry":
             result = copier.entry(ev, f"n-{msg['id']}", label, posted, now)
         elif copier is not None and ev["kind"] == "exit":
             result = copier.exit(ev, label, now)
-    except Exception as exc:  # a broker hiccup must not stop the order details
+    except Exception as exc:  # a broker hiccup must not stop the log
         result = {"summary": f"Paper copy error: {type(exc).__name__}: {str(exc)[:160]}"}
     if result:
         rec["copy"] = result["summary"]
-        lines.append(result["summary"])
-    if lines:
-        sym = ev.get("underlying")
-        rec["pushed"] = push("📋 " + push_text(ev, label)[0].split(" ", 1)[1], "\n".join(lines), priority=-1,
-                             url=f"https://robinhood.com/stocks/{sym}" if sym else None,
-                             url_title=f"Open {sym} in Robinhood" if sym else None)
+        if ev["kind"] == "entry":  # priority -2: in the Pushover app only, no banner over the alert above
+            rec["copy_pushed"] = push("📝 Paper copy", result["summary"], priority=-2, **link)
+        else:
+            rec["pushed"] = push(title, result["summary"], priority=-1, **link)
     OUT.mkdir(parents=True, exist_ok=True)
     with EVENTS.open("a") as f:
         f.write(json.dumps(rec) + "\n")
@@ -224,8 +230,8 @@ Add these two actions to your Edward automation, **after** the Pushover action.
   - `topic` = `{topic}`
   - `message` = [Text]  (the output of action 2)
 
-Then your cloud server answers each alert with a quiet "📋" Pushover note: your order, the paper fill, and an
-"Open in Robinhood" link.
+Then your cloud server answers each entry with a loud "📋" Pushover alert: your order and an "Open in Robinhood"
+button (press and hold the alert). The paper fill lands silently in the Pushover app.
 """)
     print(f"Inbox ready (topic and key saved in .env.edward). Private Shortcut card: {CARD}")
 

@@ -1,0 +1,116 @@
+{
+ "2026-10-07": {
+  "equity": 99948.63,
+  "rows": [
+   {
+    "symbol": "AMZN",
+    "shares": 200.0,
+    "cost": 259.69,
+    "price": 260.0401,
+    "shares_pnl": 70.01999999999953,
+    "calls": [
+     {
+      "symbol": "AMZN261113C00275000",
+      "n": 2,
+      "strike": 275.0,
+      "expiry": "2026-11-13",
+      "sold_at": 6.85,
+      "now": 7.4,
+      "days_left": 37,
+      "in_the_money": false
+     }
+    ],
+    "flags": [],
+    "premium_kept": 1370.0,
+    "call_value_now": 1480.0,
+    "call_pnl": -110.0,
+    "total_pnl": -39.98000000000047,
+    "if_called_away": 4432.0,
+    "break_even": 252.84
+   },
+   {
+    "symbol": "HOOD",
+    "shares": 400.0,
+    "cost": 109.38,
+    "price": 109.5519,
+    "shares_pnl": 68.76000000000317,
+    "calls": [
+     {
+      "symbol": "HOOD261113C00120000",
+      "n": 4,
+      "strike": 120.0,
+      "expiry": "2026-11-13",
+      "sold_at": 4.75,
+      "now": 4.95,
+      "days_left": 37,
+      "in_the_money": false
+     }
+    ],
+    "flags": [],
+    "premium_kept": 1900.0,
+    "call_value_now": 1980.0,
+    "call_pnl": -80.0,
+    "total_pnl": -11.239999999996826,
+    "if_called_away": 6148.000000000002,
+    "break_even": 104.63
+   }
+  ]
+ },
+ "2026-10-10": {
+  "equity": 100457.29,
+  "rows": [
+   {
+    "symbol": "AMZN",
+    "shares": 200.0,
+    "cost": 259.69,
+    "price": 262.43,
+    "shares_pnl": 548.0000000000018,
+    "calls": [
+     {
+      "symbol": "AMZN261113C00275000",
+      "n": 2,
+      "strike": 275.0,
+      "expiry": "2026-11-13",
+      "sold_at": 6.85,
+      "now": 7.85,
+      "days_left": 34,
+      "in_the_money": false
+     }
+    ],
+    "flags": [],
+    "premium_kept": 1370.0,
+    "call_value_now": 1570.0,
+    "call_pnl": -200.0,
+    "total_pnl": 348.0000000000018,
+    "if_called_away": 4432.0,
+    "break_even": 252.84
+   },
+   {
+    "symbol": "HOOD",
+    "shares": 400.0,
+    "cost": 109.38,
+    "price": 109.02,
+    "shares_pnl": -143.99999999999977,
+    "calls": [
+     {
+      "symbol": "HOOD261113C00120000",
+      "n": 4,
+      "strike": 120.0,
+      "expiry": "2026-11-13",
+      "sold_at": 4.75,
+      "now": 4.8,
+      "days_left": 34,
+      "in_the_money": false
+     }
+    ],
+    "flags": [],
+    "premium_kept": 1900.0,
+    "call_value_now": 1920.0,
+    "call_pnl": -20.0,
+    "total_pnl": -163.99999999999977,
+    "if_called_away": 6148.000000000002,
+    "break_even": 104.63
+   }
+  ]
+ }
+}
