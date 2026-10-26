@@ -20,7 +20,8 @@ from swingbot.paper_cli import _load_env
 ROOT = Path(__file__).resolve().parents[2]
 PAPER_PATHS = {"/v2/account", "/v2/account/configurations", "/v2/assets/LITE",
                "/v2/positions", "/v2/orders", "/v2/clock", "/v2/calendar"}
-DATA_PATHS = {f"/v2/stocks/{s}/{kind}" for s in ("LITE", "SPY") for kind in ("bars", "quotes", "trades")}
+# MU/MRVL: real-position alert levels (research/real_position_alert_v1) read their bars too.
+DATA_PATHS = {f"/v2/stocks/{s}/{kind}" for s in ("LITE", "SPY", "MU", "MRVL") for kind in ("bars", "quotes", "trades")}
 
 
 class ReadOnlyClient(AlpacaPaperClient):

@@ -1,8 +1,8 @@
 {
-  "note": "Pranav's real Robinhood LITE position, user-reported via app screenshots: 31.903158 sh @ $1,097.07 (Plan B buy, 2026-10-07 10:05 ET) + 19.110799 sh @ ~$1,046.54 ($20,000, owner's own add, 2026-10-08 ~3:59 PM ET) = 51.013957 sh @ $1,078.14 avg ($55,000). Alerts only; nothing here can trade. Oct 10: owner confirmed still holding all 51.013957 LITE; re-armed $1,119 up, $1,078 break-even and $1,020 down; added MU $1,000 (owner: 50.96 sh @ $1,079.08).",
+  "note": "Pranav's real Robinhood LITE position, user-reported via app screenshots: 31.903158 sh @ $1,097.07 (Plan B buy, 2026-10-07 10:05 ET) + 19.110799 sh @ ~$1,046.54 ($20,000, owner's own add, 2026-10-08 ~3:59 PM ET) = 51.013957 sh @ $1,078.14 avg ($55,000). Alerts only; nothing here can trade. Oct 10: owner confirmed still holding all 51.013957 LITE; re-armed $1,119 up, $1,078 break-even and $1,020 down; added MU $1,000 (owner: 50.96 sh @ $1,079.08). Oct 12 ~11:35 ET Robinhood screenshot: owner added ~34.41 sh (~$35,200, avg ~$1,022.95) during the morning drop; now 85.424217 sh @ $1,055.91 avg (~$90,200). Level labels below still quote the old 51.01-share dollars. Oct 12 3:55 PM ET screenshot: owner added ~20.18 sh (~$20,000, ~$990.87) more; now 105.607684 sh @ $1,043.48 (~$110,200). Oct 14: owner added $20,000 at $904.90 (~22.1019 sh, owner-reported); now ~127.7096 sh @ $1,019.50. Confirmed 3:35 PM screenshot: 127.708357 sh @ $1,019.51.",
   "symbol": "LITE",
-  "shares": "51.013957",
-  "average_cost": "1078.14",
+  "shares": "127.708357",
+  "average_cost": "1019.51",
   "levels": [
     {
       "id": "target_1119_20261007",

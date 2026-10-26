@@ -252,8 +252,8 @@ class CloudTest(unittest.TestCase):
         self.sent.append((title, message, kw))
         return {"pushover": "ok"}
 
-    def msg(self, body, title="Edward Johnson (#🚨|alerts, EdwardAlerts)", subtitle="", t=NOW):
-        return {"id": "nX1", "time": int(t.timestamp()) - 20, "title": title, "subtitle": subtitle, "body": body}
+    def msg(self, body, title="Edward Johnson (#🚨|alerts, EdwardAlerts)", subtitle="", t=NOW, msg_id="nX1"):
+        return {"id": msg_id, "time": int(t.timestamp()) - 20, "title": title, "subtitle": subtitle, "body": body}
 
     def test_read_inbox(self):
         text = "EDW1 k1\nEdward Johnson (#🚨|alerts, EdwardAlerts)\n\n$TSLA 375 CALL 10/16 @ 1.00\n\nLOTTO"
@@ -268,21 +268,41 @@ class CloudTest(unittest.TestCase):
         self.assertEqual(self.cloud.label_of("EdwardAlerts A+", "#🚨|trade-ideas"), "free")
         self.assertEqual(self.cloud.label_of("", ""), "edward")
 
-    def test_entry_gets_order_details_and_paper_copy_in_one_quiet_push(self):
+    def test_entry_rings_with_order_and_robinhood_link_before_the_paper_copy(self):
+        orders_at_push = []
+        push = lambda *a, **k: orders_at_push.append(len(self.api.sent)) or self.push(*a, **k)
         rec = self.cloud.handle_inbox(self.msg("Edward Johnson: $QQQ 720 PUT 10/19 @ 0.73 0DTE LOTTO"),
-                                      self.copier, NOW, push=self.push)
-        (title, message, kw), = self.sent
+                                      self.copier, NOW, push=push)
+        (title, message, kw), (paper_title, paper, paper_kw) = self.sent
         self.assertEqual(title, "📋 VIP: QQQ 720 PUT 10/19 @ 0.73")
         self.assertIn("Buy 4 if you can get ≤ $0.75, else 3 up to $0.87.", message)
-        self.assertIn("Paper copy: bought 3 QQQ 720P 10/19 at 0.78", message)
-        self.assertEqual((kw["priority"], kw["url"]), (-1, "https://robinhood.com/stocks/QQQ"))
+        self.assertEqual((kw["priority"], kw["url"], kw["url_title"]),
+                         (1, "https://robinhood.com/stocks/QQQ", "Open QQQ in Robinhood"))
+        self.assertEqual(orders_at_push, [0, 2])  # the alert goes out before any paper order
+        self.assertEqual(paper_title, "📝 Paper copy")
+        self.assertIn("Paper copy: bought 3 QQQ 720P 10/19 at 0.78", paper)
+        self.assertEqual((paper_kw["priority"], paper_kw["url"]), (-2, "https://robinhood.com/stocks/QQQ"))
         self.assertEqual(self.api.sent[0]["client_order_id"], "edw-b-n-nX1")
         self.assertEqual(json.loads((Path(self.tmp.name) / "ev.jsonl").read_text())["copy"], rec["copy"])
+
+    def test_late_too_pricey_and_test_entries(self):
+        def alert(body, **kw):  # the first push for one inbox message: (title, first line, priority)
+            n = len(self.sent)
+            self.cloud.handle_inbox(self.msg(body, **kw), self.copier, NOW, push=self.push)
+            return self.sent[n][0], self.sent[n][1].split("\n")[0], self.sent[n][2]["priority"]
+
+        old = datetime(2026, 10, 19, 16, 0, tzinfo=timezone.utc)
+        self.assertEqual(alert("$QQQ 720 PUT 10/19 @ 0.73", t=old), ("(late) 📋 VIP: QQQ 720 PUT 10/19 @ 0.73",
+                                                                    "Buy 4 if you can get ≤ $0.75, else 3 up to $0.87.", -1))
+        self.assertEqual(alert("$NVDA 150 CALL 10/23 @ 3.50", msg_id="nX2"), ("📋 VIP: NVDA 150 CALL 10/23 @ 3.50",
+                                                                             "Skip: 1 contract costs $350, over your $300 limit.", -1))
+        self.assertEqual(alert("$TSLA 375 CALL 10/23 @ 1.00", msg_id="nX3", title="TEST Edward Johnson (#🚨|alerts, EdwardAlerts)"),
+                         ("TEST 📋 VIP: TSLA 375 CALL 10/23 @ 1.00", "Buy 3 if you can get ≤ $1.00, else 2 up to $1.20.", 1))
 
     def test_updates_stay_quiet_and_exits_close_the_copy(self):
         self.cloud.handle_inbox(self.msg("$QQQ 720 PUT 10/19 @ 0.73"), self.copier, NOW, push=self.push)
         self.cloud.handle_inbox(self.msg("$QQQ UP 94% AT 1.42"), self.copier, NOW, push=self.push)
-        self.assertEqual(len(self.sent), 1)  # the phone's own alert already showed the update
+        self.assertEqual(len(self.sent), 2)  # entry alert + paper note; the phone's own alert already showed the update
         self.cloud.handle_inbox(self.msg("$QQQ stopped out"), self.copier, NOW, push=self.push)
         self.assertEqual(self.sent[-1][0], "📋 VIP EXIT: QQQ")
         self.assertIn("selling 3 QQQ 720P 10/19 at 0.70", self.sent[-1][1])

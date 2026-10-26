@@ -49,14 +49,20 @@ iOS 27's Shortcuts app can run an automation **when a notification arrives** fro
    `PYTHONPATH=src:. .venv/bin/python -m research.edward_live_v1.relay setup` (paste the two keys; they stay hidden), then
    `.venv/bin/python cloud/edward_relay_v1/deploy.py --keys-only`. Or just tell me and I'll open both for you.
 
-**What each alert does after that:**
+**What each alert does after that (updated Oct 21):**
 - Your phone rings with Edward's post, straight from the Shortcut. This doesn't depend on the server.
-- **Within a few seconds**, a quiet **📋** note arrives in Pushover:
-  > 📋 VIP: QQQ 720 PUT 10/19 @ 0.73
+- **For a new trade, a second ring follows 1–3 seconds later: the 📋 alert with your order.**
+  > 📋 VIP: QQQ 720 PUT 10/23 @ 0.73
   > Buy 4 if you can get ≤ $0.75, else 3 up to $0.87.
   > Then sell GTC at your fill × 1.5.
-  > Paper copy: bought 3 QQQ 720P 10/19 at 0.78 (his 0.73); sell order at 1.17.
-  > [Open QQQ in Robinhood]
+  > Edward: $QQQ 720 PUT 10/23 @ 0.73
+- **To jump into Robinhood:** press and hold the 📋 alert, then tap **Open URL**. Robinhood opens on that stock.
+  - A plain tap opens Pushover instead. The **Open QQQ in Robinhood** link is under the message there.
+- **The rest is manual in Robinhood:** pick Call or Put, the expiry date and the strike, then Buy with a limit price.
+  - Robinhood has no link that opens one option contract or fills in an order.
+- **No second ring?** The server is down. Trade from the first alert.
+- The 📋 alert shows up without ringing if there's nothing to buy (one contract costs over $300) or the alert is 15+ minutes old.
+- The paper copy's result goes into the Pushover app without a banner, so the 📋 alert stays on top. Example: "Paper copy: bought 3 QQQ 720P 10/23 at 0.78 (his 0.73); sell order at 1.17."
 - **Paper rules:** copied only while the market is open and the alert is under 10 minutes old; skipped if the ask is above his price + 20%.
 - **Exits:** when he posts a full exit ("stopped out", "sell all"), the paper copy is sold. Trims are logged, not followed. Expiring copies are sold at 3:45 PM ET.
 - **4:05 PM ET weekdays:** a quiet summary of today's paper copies and this week's P&L. It also tells you the server is alive.
